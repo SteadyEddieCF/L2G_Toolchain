@@ -1,0 +1,36 @@
+{
+  "manifest_kind": "cmmc_l2_ssp_release_manifest_v1",
+  "generated_at": "2026-07-17T03:25:00Z",
+  "release": {
+    "version": "v1.7",
+    "baseline": "v1.6.2",
+    "name": "L2G Workshop Handshake and SSP Return Foundation"
+  },
+  "primary_artifacts": [
+    "CMMC_L2_SSP_Modern_Editable_v1.7.html",
+    "CMMC_L2_SSP_Modern_Editable_v1.7.docx",
+    "CMMC_L2_SSP_User_Guide_v1.7.docx"
+  ],
+  "integration_artifacts": [
+    "integration/l2g_ssp_handoff_v1_mcfirecoal_v70.json",
+    "integration/l2g_ssp_return_package_v1_mcfirecoal_v1.7.json",
+    "integration/CMMC_L2_SSP_v1.7_McFirecoal_Populated_Workspace_Backup.json"
+  ],
+  "contracts": [
+    "L2G_SSP_HANDOFF_SCHEMA_v1.json",
+    "L2G_SSP_RETURN_SCHEMA_v1.json"
+  ],
+  "test_status": {
+    "release": "v1.7",
+    "generated_at": "2026-07-17T03:35:00Z",
+    "passed": 107,
+    "total": 107,
+    "suites": [
+      {"name":"release_integrity","passed":34,"total":34},
+      {"name":"chromium_l2g_handshake","passed":32,"total":32},
+      {"name":"compatibility_and_image_security","passed":20,"total":20},
+      {"name":"word_review_security","passed":21,"total":21}
+    ],
+    "status": "passed"
+  }
+}
