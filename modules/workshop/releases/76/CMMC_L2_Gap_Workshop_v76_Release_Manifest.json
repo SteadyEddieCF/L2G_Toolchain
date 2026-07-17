@@ -1,0 +1,20 @@
+{
+  "release": "v76",
+  "generated_at": "2026-07-17",
+  "module": "CMMC L2 Gap Workshop Tool",
+  "focus": "Responsibility Review UX",
+  "repository": "SteadyEddieCF/L2G_Toolchain",
+  "target_path": "modules/workshop/releases/v76",
+  "files": [
+    {"name":"cmmc_l2_gap_workshop_tool_v76.html","size_bytes":1731651,"sha256":"d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a"},
+    {"name":"CMMC_L2_Gap_Workshop_v76_Release_Report.md","size_bytes":3122,"sha256":"7116e53a5e20b6ef4dd72a1f10799c97c763057a343ed96e8bfb51c24122866c"},
+    {"name":"CMMC_L2_Gap_Workshop_v76_Regression.json","size_bytes":2698,"sha256":"4414ffb84fa9977ef3e9ded4875e99e70dd4f2ce6b2d203465557547b48fde97"},
+    {"name":"CMMC_L2_Gap_Workshop_v76_Compatibility_Manifest.json","size_bytes":10364,"sha256":"2d40c8f60ffebc564cd255ffe73346c37bba2e150a3523d9c85f6a320f0103ea"},
+    {"name":"CMMC_L2_Gap_Workshop_Roadmap_v76.md","size_bytes":4275,"sha256":"01e8891995b8984524f1f8c9e924152f722e3f41b7a741a84bd1f8d06d2a83d5"},
+    {"name":"l2g_responsibility_reconciliation_v1_mcfirecoal_v76_reviewed.json","size_bytes":646463,"sha256":"9a1ed552f534dba6521e0c0e1df5c8e0d41a19c421b137856d7e175a091ed346"},
+    {"name":"l2g_workbook_handoff_v1_mcfirecoal_v76_responsibility_review.json","size_bytes":2027037,"sha256":"dce6d49486f2a38ab08a97536390e2ea1c357cc3dc680c1d1c8e3a3c5036435b"},
+    {"name":"l2g_workshop_observability_v1_workshop_v76.json","size_bytes":4637,"sha256":"ac57794eda2f03a8985deb533e4b0630eaedf1d629130c539b55ed326d9c4b05"},
+    {"name":"CMMC_L2_Gap_Workshop_v76_Responsibility_Review.png","size_bytes":306502,"sha256":"4b533dbfd6b1507b4330ca22d1324b4b183a3f657a19ceb70f1a6494ece9ac23"},
+    {"name":"CMMC_L2_Gap_Workshop_v76_Responsibility_Review_Dark.png","size_bytes":238297,"sha256":"008756eb8c7f1d0702ee570e280200f7eefb96d3ff9a82a4d06586ce158ff411"}
+  ]
+}

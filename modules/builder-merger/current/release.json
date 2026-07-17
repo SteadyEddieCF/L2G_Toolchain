@@ -1,0 +1,13 @@
+{
+  "module": "L2G Builder/Merger",
+  "current_supplied_version": "v3.8",
+  "release_path": "modules/builder-merger/releases/3.8",
+  "status": "current_supplied_release",
+  "next_action": "v3.9 Advisor and Client Delivery Profiles",
+  "recorded_at": "2026-07-17",
+  "stable_contracts": {
+    "workbook_handoff": "1.7",
+    "workbook_merge": "1.1",
+    "builder_decision_plan": "1.0 optional"
+  }
+}

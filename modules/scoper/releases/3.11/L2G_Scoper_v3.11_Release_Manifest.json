@@ -1,0 +1,60 @@
+{
+  "release": "L2G Scoper v3.11",
+  "generated_at": "2026-07-11",
+  "release_focus": "Technology, Service, and Provider Scoping Profile",
+  "baseline": "L2G Scoper v3.10",
+  "contracts": {
+    "input": "l2g_scope_context_v1 v1.0",
+    "return": "l2g_scope_return_package_v1 v1.0"
+  },
+  "validation_summary": {
+    "status": "pass_with_native_file_launch_limitation",
+    "source_documents": 71,
+    "technology_profiles": 10,
+    "practice_records_emitted": 0,
+    "pptx_slides": 11
+  },
+  "artifacts": [
+    {
+      "filename": "L2Scoper-v3.11.html",
+      "size_bytes": 420147,
+      "sha256": "4cef94f43ceb71dac43167b0b1e41b3ec5ba398d2b6032089b2a720062572d20"
+    },
+    {
+      "filename": "McFeddy_Fed_l2g_scope_return_package_v1_scoper_v3.11.json",
+      "size_bytes": 3059434,
+      "sha256": "7fdf7a6e7c9ea0da43b6ee611b99be2f3ffb806299f1b4f8d5022919df25cd0c"
+    },
+    {
+      "filename": "CUI_Boundary_Scoping_Questionnaire_v3.11.doc",
+      "size_bytes": 27935,
+      "sha256": "969fdcbd66474e75a7c6ca2045761bfe916f4c966916289fac9c0ca665191357"
+    },
+    {
+      "filename": "McFeddy_Fed_CUI_Boundary_Scoping_Advisor_Report_v3.11.doc",
+      "size_bytes": 18856,
+      "sha256": "0d44f4a2d978040c814aa381a589ccd420f6049bf53e97a722054479b2b73e5b"
+    },
+    {
+      "filename": "McFeddy_Fed_CUI_Boundary_Executive_Summary_v3.11.doc",
+      "size_bytes": 826650,
+      "sha256": "f5288493a6c4c0f8145620783e9086aa7bebd83409f1de90785b67121e312c25"
+    },
+    {
+      "filename": "McFeddy_Fed_CUI_Boundary_Scoping_Overview_v3.11.pptx",
+      "size_bytes": 650234,
+      "sha256": "8a5049e757652ef9d6d9f31c570c5e5e5e866d649782440e71bf751519ef0e4d"
+    },
+    {
+      "filename": "L2G_Scoper_v3.11_Regression.json",
+      "size_bytes": 3812,
+      "sha256": "9ac10ea35afec829096d6a6d30d2ccd46afb9d1fd4eddad74d02624f9a9cf5bd"
+    },
+    {
+      "filename": "L2G_Scoper_v3.11_Compatibility_Manifest.json",
+      "size_bytes": 2362,
+      "sha256": "fb8329adcbf373ffa0668eae09196878f022a6159481ec3cfb990e034879652c"
+    }
+  ],
+  "browser_runtime_note": "Native file:// or localhost browser launch was blocked by the container's administrator policy; focused Chromium DOM runtime was performed with page.set_content()."
+}

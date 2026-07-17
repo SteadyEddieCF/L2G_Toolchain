@@ -1,0 +1,12 @@
+{
+  "module": "CMMC L2 SSP Modern Editable",
+  "current_supplied_version": "v1.7",
+  "release_path": "modules/ssp/releases/1.7",
+  "status": "current_supplied_release",
+  "next_action": "Round-trip smoke test; release only for demonstrated need",
+  "recorded_at": "2026-07-17",
+  "stable_contracts": {
+    "ssp_handoff": "1.0",
+    "ssp_return": "1.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "module": "L2G Scoper",
+  "current_supplied_version": "v3.11",
+  "release_path": "modules/scoper/releases/3.11",
+  "status": "current_supplied_release",
+  "next_action": "Complete post-release audit gate before code changes",
+  "recorded_at": "2026-07-17"
+}

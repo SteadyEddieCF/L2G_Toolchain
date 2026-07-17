@@ -1,0 +1,28 @@
+# Local operating data
+*.tmp
+*.bak
+*.log
+.DS_Store
+Thumbs.db
+
+# Test/build caches
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+dist/
+
+# Generated release bundles and binary previews
+*.zip
+*.7z
+*.png
+*.jpg
+*.jpeg
+*.xlsx
+*.xlsm
+*.docx
+*.doc
+*.pptx
+*.pdf
+
+# Small approved synthetic fixtures may be force-added when needed.

@@ -1,0 +1,8 @@
+{
+  "module": "L2G Control Center",
+  "current_supplied_version": "v0.3.2",
+  "release_path": "modules/control-center/releases/0.3.2",
+  "status": "current_supplied_release",
+  "next_action": "v0.4 Read-only Action and Blocker Overview",
+  "recorded_at": "2026-07-17"
+}

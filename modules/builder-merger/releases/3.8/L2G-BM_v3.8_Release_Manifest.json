@@ -1,0 +1,45 @@
+{
+  "release": "L2G Builder/Merger v3.8",
+  "generated_at": "2026-07-13",
+  "primary_artifact": "L2G-BM_v3.8.html",
+  "roadmap_artifact": "L2G-BM_Release_Roadmap_v3.8.md",
+  "deliverables": [
+    {
+      "filename": "L2G-BM_v3.8.html",
+      "size_bytes": 732967,
+      "sha256": "e63fb2225b27bce5c7f8ce1f48d68d16ab0e21f92543f2741795e3f21f5f2a6c"
+    },
+    {
+      "filename": "L2G-BM_v3.8_Release_Notes.md",
+      "size_bytes": 3060,
+      "sha256": "ff497fdf04e175a303202eb5412d5d26d5ac161a923139ac80f3eb4abd2ab955"
+    },
+    {
+      "filename": "L2G-BM_Release_Roadmap_v3.8.md",
+      "size_bytes": 3172,
+      "sha256": "090f7dfecb7c1a80938835f91bd8fbf6561df024ef6e1380c315433dad3a4a9b"
+    },
+    {
+      "filename": "L2G-BM_v3.8_Regression_Report.md",
+      "size_bytes": 2448,
+      "sha256": "773c7e7f6baae9e2a375778f597e2265d402eff4e0fc80b74bd3c78bc2d6d53c"
+    },
+    {
+      "filename": "L2G-BM_v3.8_Regression_Results.json",
+      "size_bytes": 1993,
+      "sha256": "480f29d740e67f1db039b30988e174585bfabf2a5527e5fd6d8516bdd9c76798"
+    },
+    {
+      "filename": "l2g_builder_decision_plan_v1_v38_example.json",
+      "size_bytes": 1971,
+      "sha256": "a9501440a12c7578b9c83df36b7353c3f7198521c35ebe47e19b2ca20de6d786"
+    },
+    {
+      "filename": "CMMC_L2_Gap_Analysis_Workbook_L2G_v54_v38_Regression_Baseline.xlsx",
+      "size_bytes": 994260,
+      "sha256": "adb3ee3b337922647a0792ae77038ce56ca7797f25c5d3ca55e4c7a58c960cbd"
+    }
+  ],
+  "offline_only": true,
+  "tool_boundary": "L2G Builder/Merger only"
+}
