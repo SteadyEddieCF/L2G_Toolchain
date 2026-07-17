@@ -1,0 +1,20 @@
+{
+  "package_kind": "l2g_workshop_observability_v1",
+  "package_version": "0.1",
+  "status": "foundation_read_only",
+  "generated_by": "CMMC L2 Gap Workshop Tool",
+  "gap_workshop_tool_version": "v76",
+  "generated_at": "2026-07-17T20:48:35.319Z",
+  "content_trust_level": "operational_summary_only",
+  "module": {"name":"CMMC L2 Gap Workshop Tool","version":"v76","local_only":true},
+  "stable_contracts": {"workshop_state":"1.0","workbook_handoff":"1.7","workbook_merge":"1.1","ssp_handoff":"1.0 validated","ssp_return":"1.0 validated"},
+  "validated_adjacent_references": {"docconverter":"v7.9.1 baseline","scoper":"v3.11","builder_merger":"v3.6 baseline","control_center":"v0.x developing","ssp":"v1.7 validated bidirectional handshake"},
+  "counts": {
+    "practices":110,"assessment_objectives":320,"source_documents":0,"open_actions":1,"client_visible_open_actions":1,"client_evidence_tracker_rows":24,"workbook_review_queue":0,"workbook_objective_results":0,"handoff_exports":0,"workbook_merge_packages":0,"applied_change_sets":0,"ssp_handoff_exports":0,"ssp_handoff_control_records":110,"ssp_handoff_candidate_statuses":0,"ssp_return_imports":0,"ssp_overlay_controls":0,"ssp_unresolved_word_review_items":0,"responsibility_practice_candidates":0,"responsibility_objective_candidates":0,"responsibility_candidates_needing_validation":0,"responsibility_candidates_confirmed":0,"responsibility_suggestions":68,"responsibility_accepted":55,"responsibility_modified":0,"responsibility_needs_validation":13,"responsibility_unreviewed":13,"responsibility_reviewed":55
+  },
+  "latest_activity": {"action_register_updated":"","last_handoff_export":null,"last_workbook_merge":null,"last_change_set":null},
+  "delivery_readiness": {"engagement_identity_complete":false,"client_package_candidate":false,"workbook_handoff_candidate":false,"recommended_next_output":"Set the organization and environment, then review imported context.","ssp_handoff_candidate":false,"ssp_handoff_blocking_errors":2,"ssp_import_consumer_status":"validated","ssp_round_trip_ready":true,"responsibility_reconciliation_generated":true,"responsibility_validation_complete":false,"responsibility_suggestions_reviewed":false,"responsibility_focused_review_available":true,"responsibility_review_complete":false},
+  "guardrails": ["Read-only observability artifact.","Does not replace Workshop state, official workbook, or stable handoff/merge contracts.","Does not create final scope, evidence sufficiency, assessment readiness, score, certification, or Met/Not Met practice conclusions."],
+  "expected_modules": [{"name":"CMMC Level 2 SSP Modern Editable","stage":5,"baseline_version":"v1.7","route_in":"l2g_ssp_handoff_v1 1.0","route_out":"l2g_ssp_return_package_v1 1.0","status":"bidirectional_handshake_validated"}],
+  "optional_observability_contracts": {"responsibility_overlay":"l2g_responsibility_overlay_v1 0.1 foundation_draft","microsoft_azure_overlay_pack":"l2g_responsibility_overlay_pack_v1 0.1 / pack 2026.07 advisory_preview","aws_overlay_pack":"l2g_responsibility_overlay_pack_v1 0.1 / aws_cloud 2026.07 advisory_preview","security_provider_overlay_pack":"l2g_responsibility_overlay_pack_v1 0.1 / security_provider_services 2026.07 advisory_preview","responsibility_reconciliation":"l2g_responsibility_reconciliation_v1 0.1 advisory_working"}
+}
