@@ -1,0 +1,25 @@
+{
+  "snapshot_id": "suite-2026.07-draft",
+  "status": "draft_not_validated",
+  "repository": "SteadyEddieCF/L2G_Toolchain",
+  "modules": [
+    {"module":"docconverter","version":"v7.9.1","next_action":"bounded Exception & Trust Queue release"},
+    {"module":"scoper","version":"v3.11","next_action":"post-release audit decision"},
+    {"module":"workshop","version":"v76","next_action":"v77 evidence ownership and provider follow-up"},
+    {"module":"builder-merger","version":"v3.6","next_action":"bounded compatibility/exception/diff release"},
+    {"module":"ssp","version":"v1.7","next_action":"Workshop refreshed-handoff smoke test"},
+    {"module":"control-center","version":"v0.1","next_action":"v0.2 manifest governance and SSP Stage 5 registration"}
+  ],
+  "stable_routes": [
+    "l2g_intake_package_v1 1.0",
+    "l2g_scope_context_v1 1.0",
+    "l2g_meeting_context_v1 1.0",
+    "l2g_scope_return_package_v1 1.0",
+    "l2g_workshop_state_v1 1.0",
+    "l2g_workbook_handoff_v1 1.7",
+    "l2g_workbook_merge_v1 1.1",
+    "l2g_ssp_handoff_v1 1.0",
+    "l2g_ssp_return_package_v1 1.0"
+  ],
+  "validation_note": "Do not promote this to a validated suite snapshot until the current DocConverter and Builder/Merger bounded releases, Scoper audit decision, SSP smoke test, and Control Center v0.2 regression are complete."
+}
