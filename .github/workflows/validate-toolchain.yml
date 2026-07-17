@@ -1,0 +1,28 @@
+name: Validate L2G Toolchain
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate JSON, HTML, manifests, and contracts
+        run: python scripts/validate_toolchain.py
+      - name: Summarize repository layout
+        run: |
+          echo 'Module directories:'
+          find modules -maxdepth 2 -type f | sort
+          echo 'Contract registry:'
+          python -m json.tool contracts/registry.json >/dev/null
