@@ -1,0 +1,15 @@
+{
+  "module": "CMMC L2 Gap Workshop Tool",
+  "current_supplied_version": "v76",
+  "release_path": "modules/workshop/releases/76",
+  "status": "current_supplied_release",
+  "next_action": "v77 Evidence Ownership and Provider Follow-up",
+  "recorded_at": "2026-07-17",
+  "stable_contracts": {
+    "workshop_state": "1.0",
+    "workbook_handoff": "1.7",
+    "workbook_merge": "1.1",
+    "ssp_handoff": "1.0",
+    "ssp_return": "1.0"
+  }
+}
