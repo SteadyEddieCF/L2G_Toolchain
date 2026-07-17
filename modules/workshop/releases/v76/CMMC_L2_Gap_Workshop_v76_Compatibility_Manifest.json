@@ -1,0 +1,46 @@
+{
+  "manifest_kind": "l2g_workshop_production_compatibility_v1",
+  "generated_at": "2026-07-17T20:48:34.942Z",
+  "release": {
+    "name": "CMMC L2 Gap Workshop Tool",
+    "version": "v76",
+    "focus": "Responsibility Review UX",
+    "stable_contracts": {"workshop_state":"1.0","workbook_handoff":"1.7","workbook_merge":"1.1","ssp_handoff":"1.0","ssp_return":"1.0","responsibility_reconciliation":"0.1 advisory_working"}
+  },
+  "package_contracts": {
+    "workshop_state": {"package_kind":"l2g_workshop_state_v1","status":"stable"},
+    "workshop_handoff": {"package_kind":"l2g_workbook_handoff_v1","package_version":"1.0","enhancement_contract":"1.7","status":"frozen production baseline"},
+    "workbook_merge": {"package_kind":"l2g_workbook_merge_v1","contract_version":"1.1","status":"frozen production baseline"},
+    "meeting_context": {"package_kind":"l2g_meeting_context_v1","status":"additive compatible input"}
+  },
+  "compatibility": [
+    {"tool":"DocConverter-L2G","minimum_recommended":"v7.9.1","direction":"intake / scope / meeting input","status":"validated contract reference"},
+    {"tool":"L2G Scoper","minimum_recommended":"v3.11","direction":"scope return + technology profile input","status":"profile sync validated"},
+    {"tool":"L2G Builder/Merger","minimum_recommended":"v3.6","direction":"Handoff 1.7 / Workbook Merge 1.1","status":"validated reference"},
+    {"tool":"CMMC L2 SSP Modern Editable","minimum_recommended":"v1.7","direction":"SSP Handoff 1.0 / SSP Return 1.0","status":"bidirectional handshake validated"}
+  ],
+  "catalog": {"practices":110,"assessment_objectives":320},
+  "current_handoff": {"package_kind":"l2g_workbook_handoff_v1","contract_status":"stable","enhancement_version":"1.7","producer_version":"v76"},
+  "guardrails": {"local_only":true,"no_remote_scripts":true,"no_telemetry":true,"no_cloud_uploads":true,"no_automatic_final_assessment_conclusions":true},
+  "workflow_architecture": {"advisor_work_lenses":["Live Facilitation","Cleanup & Handoff","Full Workspace"],"default":"Live Facilitation","package_contract_change":false},
+  "practice_review_experience": {"one_practice_default":true,"progressive_disclosure":true,"matrix_bulk_review_advanced":true,"sticky_decision_footer":true,"keyboard_navigation_preserved":true,"contract_change":false},
+  "action_register": {"contract":"0.1-foundation","authoritative_tool":"Workshop","persistent":true,"client_tracker":true,"control_center_summary_export":"l2g_workshop_action_summary_v1 0.1 foundation draft","automatic_assessment_conclusions":false},
+  "stable_contracts": {"workshop_state":"1.0","workbook_handoff":"1.7 stable/frozen","workbook_merge":"1.1 stable/frozen","ssp_handoff":"1.0 validated","ssp_return":"1.0 validated","responsibility_overlay":"0.1 foundation","responsibility_overlay_pack":"0.1 advisory_preview"},
+  "workbook_round_trip_governance": {"contract":"0.1-foundation","field_level_preview":true,"applied_change_set_history":true,"audit_package":"l2g_workbook_round_trip_audit_v1 0.1 foundation draft","action_generation_from_not_met_changes":true,"official_workbook_remains_source_of_truth":true},
+  "reports_and_deliverables": {"contract":"0.1-foundation","governed_output_categories":true,"report_profiles":["Leadership Brief","Client Readout","Advisor Detail"],"cross_tool_operating_guide":true,"package_contract_reference":true,"control_center_observability":"l2g_workshop_observability_v1 0.1 foundation read-only"},
+  "ssp_integration": {
+    "stage":5,"ssp_baseline":"CMMC L2 SSP Modern Editable v1.7",
+    "workshop_export":{"package_kind":"l2g_ssp_handoff_v1","package_version":"1.0","status":"validated"},
+    "ssp_return":{"package_kind":"l2g_ssp_return_package_v1","package_version":"1.0","status":"validated"},
+    "return_import":{"preview_required":true,"field_level_diff":true,"explicit_selection":true,"backup_supported":true,"one_step_undo":true,"rejections_recorded":true,"round_trip_audit":true},
+    "source_precedence_preserved":true,"automatic_control_application":false,"automatic_status_application":false,"reviewer_notes_imported":false
+  },
+  "responsibility_overlay": {"package_kind":"l2g_responsibility_overlay_v1","package_version":"0.1","contract_status":"foundation_draft","source":"Scoper v3.11 technology/service profile plus Workshop context","practice_candidates":true,"objective_candidates":true,"source_traceability":true,"confidence":true,"assumptions":true,"limitations":true,"confirmation_state":true,"automatic_application":false,"overlay_engine_active":false,"vendor_specific_packs_active":false,"final_responsibility_claims":false},
+  "microsoft_azure_responsibility_pack": {"package_kind":"l2g_responsibility_overlay_pack_v1","package_version":"0.1","pack_id":"microsoft_azure","pack_version":"2026.07","contract_status":"advisory_preview","coverage":["Azure Commercial","Azure Government","Microsoft 365 Commercial/GCC/GCC High/DoD","Microsoft Entra","Microsoft Sentinel","Microsoft Defender","Microsoft Intune","Microsoft Purview"],"official_reference_title_date_url_governance":true,"service_edition_and_environment_detection":true,"enabled_module_context":true,"provider_platform_vs_customer_duties":true,"contract_sow_raci_reconciliation_required":true,"preview_required":true,"automatic_application":false,"final_responsibility_claims":false},
+  "aws_responsibility_pack": {"package_kind":"l2g_responsibility_overlay_pack_v1","package_version":"0.1","pack_id":"aws_cloud","pack_version":"2026.07","contract_status":"advisory_preview","coverage":["AWS Commercial","AWS GovCloud (US)","Compute/containers","Storage","Managed databases","IAM/Organizations","Security/logging","Backup/recovery"],"official_reference_title_date_url_governance":true,"service_edition_and_environment_detection":true,"enabled_module_context":true,"provider_platform_vs_customer_duties":true,"preview_required":true,"automatic_application":false,"final_responsibility_claims":false},
+  "security_provider_responsibility_pack": {"package_kind":"l2g_responsibility_overlay_pack_v1","package_version":"0.1","pack_id":"security_provider_services","pack_version":"2026.07","contract_status":"advisory_preview","coverage":["CrowdStrike Falcon","Wiz CNAPP/CSPM","Tenable/Nessus","Splunk Cloud/SOAR","ServiceNow","OpenText Fortify on Demand"],"official_reference_title_date_url_governance":true,"exact_product_module_offering_required":true,"provider_msp_access_validation":true,"preview_required":true,"automatic_application":false,"final_responsibility_claims":false},
+  "responsibility_reconciliation": {"package_kind":"l2g_responsibility_reconciliation_v1","package_version":"0.1","contract_status":"advisory_working","source_packs":["microsoft_azure 2026.07","aws_cloud 2026.07","security_provider_services 2026.07"],"working_suggestions_visible":true,"provider_platform_and_client_duties_separated":true,"service_module_context":true,"source_traceability":true,"explicit_advisor_acceptance":true,"separate_overlay_only":true,"validation_action_generation":true,"automatic_application":false,"final_responsibility_claims":false},
+  "responsibility_review_ux": {"focused_one_practice":true,"previous_next_navigation":true,"review_completion_indicator":true,"current_workshop_owner_context":true,"services_and_enabled_modules":true,"provider_and_client_duties_separated":true,"responsibility_dimensions":true,"open_actions_visible":true,"keyboard_navigation":"Alt+Left/Right","bulk_matrix_under_advanced":true,"reviewed":55,"total":68,"separate_overlay_only":true,"automatic_application":false},
+  "adjacent_tool_release_required": false,
+  "adjacent_tool_actions": ["Control Center may consume existing reconciliation/observability summaries read-only; no route change is required.","DocConverter, Scoper, Builder/Merger, and SSP do not require a release solely for v76."]
+}
