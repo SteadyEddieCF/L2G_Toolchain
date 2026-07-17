@@ -1,0 +1,15 @@
+{
+  "module": "CMMC L2 Gap Workshop Tool",
+  "current_validated_version": "v76",
+  "release_path": "modules/workshop/releases/v76",
+  "standalone_html": "cmmc_l2_gap_workshop_tool_v76.html",
+  "html_sha256": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a",
+  "status": "validated_release_assets_pending_local_git_or_github_release",
+  "stable_contracts": {
+    "workshop_state": "1.0",
+    "workbook_handoff": "1.7",
+    "workbook_merge": "1.1",
+    "ssp_handoff": "1.0",
+    "ssp_return": "1.0"
+  }
+}
