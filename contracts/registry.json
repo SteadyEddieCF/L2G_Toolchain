@@ -1,0 +1,22 @@
+{
+  "registry_version": "1.0",
+  "status": "foundation",
+  "contracts": [
+    {"package_kind":"l2g_intake_package_v1","version":"1.0","producer":"docconverter","consumers":["workshop"],"stability":"stable"},
+    {"package_kind":"l2g_scope_context_v1","version":"1.0","producer":"docconverter","consumers":["scoper","workshop"],"stability":"stable"},
+    {"package_kind":"l2g_meeting_context_v1","version":"1.0","producer":"docconverter","consumers":["workshop"],"stability":"stable"},
+    {"package_kind":"l2g_scope_return_package_v1","version":"1.0","producer":"scoper","consumers":["workshop"],"stability":"stable"},
+    {"package_kind":"l2g_workshop_state_v1","version":"1.0","producer":"workshop","consumers":["workshop"],"stability":"stable"},
+    {"package_kind":"l2g_workbook_handoff_v1","version":"1.7","producer":"workshop","consumers":["builder-merger"],"stability":"stable-frozen"},
+    {"package_kind":"l2g_workbook_merge_v1","version":"1.1","producer":"builder-merger","consumers":["workshop"],"stability":"stable-frozen"},
+    {"package_kind":"l2g_ssp_handoff_v1","version":"1.0","producer":"workshop","consumers":["ssp"],"stability":"validated"},
+    {"package_kind":"l2g_ssp_return_package_v1","version":"1.0","producer":"ssp","consumers":["workshop"],"stability":"validated"},
+    {"package_kind":"l2g_workshop_observability_v1","version":"0.1","producer":"workshop","consumers":["control-center"],"stability":"optional-read-only"},
+    {"package_kind":"l2g_workshop_action_summary_v1","version":"0.1","producer":"workshop","consumers":["control-center"],"stability":"optional-read-only"},
+    {"package_kind":"l2g_workbook_round_trip_audit_v1","version":"0.1","producer":"workshop","consumers":["control-center"],"stability":"optional-read-only"},
+    {"package_kind":"l2g_ssp_round_trip_audit_v1","version":"0.1","producer":"workshop","consumers":["control-center","ssp"],"stability":"optional-read-only"},
+    {"package_kind":"l2g_responsibility_overlay_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"foundation-draft"},
+    {"package_kind":"l2g_responsibility_overlay_pack_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"advisory-preview"},
+    {"package_kind":"l2g_responsibility_reconciliation_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"advisory-working"}
+  ]
+}
