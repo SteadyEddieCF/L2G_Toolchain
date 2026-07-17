@@ -1,0 +1,48 @@
+{
+  "release": "DocConverter-L2G v7.9.5",
+  "generated_at": "2026-07-13",
+  "release_focus": "Provenance Explorer and source-to-output reverse trace",
+  "result": "PASS",
+  "artifacts": [
+    {
+      "filename": "DocConverter-L2G_v7.9.5.html",
+      "size_bytes": 7937765,
+      "sha256": "781668a7cfa84f91d2541485f512ad2f9ee41260da5d06bf2d0106e5be92357c"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5_Release_Report.md",
+      "size_bytes": 4299,
+      "sha256": "1515405ebf643f21e57438ada2f2904386e83c78a0cbf7685ef0b7194eb670ee"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5_Provenance_Explorer_Spec.md",
+      "size_bytes": 3468,
+      "sha256": "563f4f756adcc4b83bac89d7a0ce418902ff360b232fef53f14b67a2489aa6b5"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5_Next_10_Release_Roadmap.md",
+      "size_bytes": 6552,
+      "sha256": "64a9b3f33e0857c5abae2ae7173e7f72fdbc18bc3f26a8fea5a175e4c16bcf25"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5_Runtime_Regression.json",
+      "size_bytes": 8469,
+      "sha256": "7a900f1a7e844d04dee8e5b1524c02b4e327c7d5f73b03cbd47a62b143e7119f"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5_Static_Scan.json",
+      "size_bytes": 1108,
+      "sha256": "19345285dc82ac1c640c0279e4799896853844396340f976ff2622d91eb00840"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5_Compatibility_Manifest.json",
+      "size_bytes": 1212,
+      "sha256": "e6598c89f1f6ce35c81a37cd2f89ca1485e2b515ac8832a42024fca60c695c8d"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5_Local_Test_Checklist.md",
+      "size_bytes": 3447,
+      "sha256": "329c420bf19b0455a1d6289bf014f6b5b24f9580a9ff058227f229ffc5eab22c"
+    }
+  ]
+}
