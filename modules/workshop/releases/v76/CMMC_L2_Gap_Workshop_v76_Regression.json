@@ -1,0 +1,58 @@
+{
+  "release": "v76",
+  "focus": "Responsibility Review UX",
+  "tested_at": "2026-07-17",
+  "static": {
+    "title_v76": true,
+    "crm_version_v76": true,
+    "duplicate_ids": true,
+    "duplicate_id_values": [],
+    "remote_scripts": true,
+    "remote_script_values": [],
+    "csp_connect_none": true,
+    "fetch_calls": 0,
+    "xhr_calls": 0,
+    "v76_focused_card": true,
+    "v76_bulk_drawer": true,
+    "size_bytes": 1731651,
+    "sha256": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a"
+  },
+  "runtime": {
+    "initial": {"current":"AC.L2-3.1.1","completion":{"total":68,"reviewed":55,"unreviewed":13,"pct":81},"queue":68,"panels":8,"actions":1,"bulkDefaultOpen":false},
+    "next_practice_id": "AC.L2-3.1.2",
+    "accepted": {"review_state":"accepted","working_responsibility":"hybrid","completion":{"total":68,"reviewed":55,"unreviewed":13,"pct":81}},
+    "primary_practices_unchanged": true,
+    "keyboard_navigation": {"before":"AC.L2-3.1.1","after":"AC.L2-3.1.2","changed":true},
+    "bulk_review": {"open":true,"rows":68},
+    "page_errors": [],
+    "self_check": {
+      "passed": 74,
+      "failed": 2,
+      "failures": [
+        {"id":"csp","label":"Offline CSP","actual":"missing","expected":"connect-src none","pass":false},
+        {"id":"storage","label":"Browser local storage","actual":"unavailable","expected":"writable","pass":false}
+      ]
+    }
+  },
+  "functional": {
+    "reconciliation_records": 68,
+    "reviewed_initially": 55,
+    "queue_options": 68,
+    "focused_information_panels": 8,
+    "related_actions_visible": 1,
+    "previous_next_navigation": true,
+    "keyboard_alt_arrow_navigation": true,
+    "explicit_acceptance_updates_separate_overlay": true,
+    "primary_workshop_practices_unchanged": true,
+    "bulk_matrix_rows": 68,
+    "bulk_matrix_advanced_and_closed_by_default": true,
+    "workbook_handoff_contract": "1.7",
+    "browser_page_errors": 0
+  },
+  "environment_limitations": [
+    "Runtime harness removed the CSP meta only to execute inline scripts on a synthetic origin; the unmodified release passed static CSP validation.",
+    "Synthetic about:blank origin did not expose writable localStorage.",
+    "Native Windows Chrome/Edge file-origin persistence remains a manual acceptance item."
+  ],
+  "result": "PASS_WITH_DISCLOSED_ENVIRONMENT_LIMITATIONS"
+}
