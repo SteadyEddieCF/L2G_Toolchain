@@ -31,7 +31,9 @@ try:
     if result["patch_base64_sha256"] != EXPECTED_PATCH_B64_SHA256:
         raise RuntimeError("Patch base64 SHA-256 mismatch")
 
-    gzip_bytes = base64.b64decode(b64_text, validate=True)
+    padded_b64 = b64_text + ("=" * (-len(b64_text) % 4))
+    result["patch_base64_padding_added"] = len(padded_b64) - len(b64_text)
+    gzip_bytes = base64.b64decode(padded_b64, validate=True)
     result["patch_gzip_length"] = len(gzip_bytes)
     result["patch_gzip_sha256"] = hashlib.sha256(gzip_bytes).hexdigest()
 
