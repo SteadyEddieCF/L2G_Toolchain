@@ -1,0 +1,52 @@
+{
+  "baseline_set": "L2G current module landing pages",
+  "version": "1.0",
+  "source_workflow_run": 29764263338,
+  "files": [
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/builder-merger-v3-8-light-chromium-linux.png",
+      "size_bytes": 286874,
+      "sha256": "ddf596d9cb693d4b071eecf9874e0dfa8332c33e63aee91fba39da316d850580"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/control-center-v0-3-2-dark-chromium-linux.png",
+      "size_bytes": 165570,
+      "sha256": "216cdd74864d55e6f8189e63a0880683aa2d32a25870d267b4b50e7d70948e15"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/control-center-v0-3-2-light-chromium-linux.png",
+      "size_bytes": 162752,
+      "sha256": "a276659e423316c2599e9ba04fd6a96531e99b5f762136b940248eb9554b6404"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/docconverter-v7-9-5-light-chromium-linux.png",
+      "size_bytes": 237380,
+      "sha256": "e9d912b3cd657ab918d1691d097965335a01f2c2befe13009005e32dc092f281"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/scoper-v3-11-light-chromium-linux.png",
+      "size_bytes": 315144,
+      "sha256": "adeb1c04ab3c87f2eeb3f36101968b7459da0d51b0a9c688776f79efb831dbc0"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/ssp-v1-7-dark-chromium-linux.png",
+      "size_bytes": 306974,
+      "sha256": "0deb5ea6aee9651e81818b8a47c5033fef8e6cbf9da34b68efc83f7d85bcf7ca"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/ssp-v1-7-light-chromium-linux.png",
+      "size_bytes": 293220,
+      "sha256": "71563b3a3befa8d1377413a697fcf0ee27d00cd76b7f6ff6eff6575a0ee83e29"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/workshop-v76-dark-chromium-linux.png",
+      "size_bytes": 313978,
+      "sha256": "a74d94349a1dc73bd091c320064d0256a293568da24f764859b9076d001e8f4c"
+    },
+    {
+      "path": "tests/playwright/visual.spec.mjs-snapshots/workshop-v76-light-chromium-linux.png",
+      "size_bytes": 261442,
+      "sha256": "6f9dd4479574a17d618447369e636fa771707591520caea336e37438a9e941a7"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "l2g-toolchain-qa",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cross-module Playwright, axe-core, visual, and local-file regression for the L2G Toolchain.",
+  "scripts": {
+    "test:qa": "playwright test tests/playwright/runtime.spec.mjs tests/playwright/accessibility.spec.mjs --project=chromium",
+    "test:visual": "playwright test tests/playwright/visual.spec.mjs --project=chromium",
+    "test:file": "playwright test tests/playwright/file-smoke.spec.mjs --project=chromium",
+    "test:all": "playwright test --project=chromium"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.61.1"
+  }
+}
