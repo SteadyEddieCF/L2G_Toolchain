@@ -1,0 +1,53 @@
+{
+  "snapshot_id": "suite-2026.07.20-control-center-v0.3.3-current-inputs",
+  "status": "control_center_regression_passed_not_full_cross_tool_validated",
+  "repository": "SteadyEddieCF/L2G_Toolchain",
+  "generated_at": "2026-07-20T14:30:00-04:00",
+  "modules": [
+    {
+      "module": "control-center",
+      "version": "v0.3.3",
+      "next_action": "v0.4 read-only action and blocker overview"
+    },
+    {
+      "module": "docconverter",
+      "version": "v7.9.5",
+      "next_action": "v7.9.6 OCR Review Workbench and Batch Navigation"
+    },
+    {
+      "module": "scoper",
+      "version": "v3.11",
+      "next_action": "post-release audit gate"
+    },
+    {
+      "module": "workshop",
+      "version": "v76",
+      "next_action": "v77 Evidence Ownership and Provider Follow-up"
+    },
+    {
+      "module": "builder-merger",
+      "version": "v3.8",
+      "next_action": "v3.9 Advisor and Client Delivery Profiles"
+    },
+    {
+      "module": "ssp",
+      "version": "v1.7",
+      "next_action": "refreshed Workshop handoff smoke test"
+    }
+  ],
+  "qualification": "Current supplied inputs synchronized in Control Center; not a claim of completed full exact-version cross-tool regression.",
+  "validated_at": "2026-07-20T19:15:00-04:00",
+  "control_center_validation": {
+    "built_in_self_tests": {
+      "passed": 58,
+      "failed": 0
+    },
+    "package_rules": 16,
+    "stable_routes": 9,
+    "optional_or_read_only_routes": 7,
+    "browser_console_errors": 0,
+    "browser_page_errors": 0,
+    "browser_screenshots": 14,
+    "static_qa": "pass"
+  }
+}

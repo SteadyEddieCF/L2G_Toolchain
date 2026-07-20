@@ -1,15 +1,45 @@
 {
   "snapshot_id": "suite-2026.07.17-current-inputs",
-  "status": "current_supplied_releases_not_full_cross_tool_validated",
+  "status": "current_supplied_releases_control_center_regression_passed_not_full_cross_tool_validated",
   "repository": "SteadyEddieCF/L2G_Toolchain",
-  "recorded_at": "2026-07-17",
+  "recorded_at": "2026-07-20",
   "modules": [
-    {"module":"control-center","version":"v0.3.2","source":"L2G_CC_v0.3.2_Deliverables","next_action":"v0.4 read-only action and blocker overview"},
-    {"module":"docconverter","version":"v7.9.5","source":"DocConverter-L2G_v7.9.5_Deliverables","next_action":"v7.9.6 OCR Review Workbench and Batch Navigation"},
-    {"module":"scoper","version":"v3.11","source":"L2G_Scoper_v3.11_Deliverables","next_action":"complete post-release audit gate"},
-    {"module":"workshop","version":"v76","source":"CMMC_L2_Gap_Workshop_v76_Deliverables","next_action":"v77 Evidence Ownership and Provider Follow-up"},
-    {"module":"builder-merger","version":"v3.8","source":"L2G-BM_v3.8_Deliverables","next_action":"v3.9 Advisor and Client Delivery Profiles"},
-    {"module":"ssp","version":"v1.7","source":"CMMC_L2_SSP_Modern_Editable_v1.7_Deliverables","next_action":"round-trip smoke test; release only for demonstrated need"}
+    {
+      "module": "control-center",
+      "version": "v0.3.3",
+      "source": "L2G_CC_v0.3.3_Deliverables",
+      "next_action": "v0.4 read-only action and blocker overview"
+    },
+    {
+      "module": "docconverter",
+      "version": "v7.9.5",
+      "source": "DocConverter-L2G_v7.9.5_Deliverables",
+      "next_action": "v7.9.6 OCR Review Workbench and Batch Navigation"
+    },
+    {
+      "module": "scoper",
+      "version": "v3.11",
+      "source": "L2G_Scoper_v3.11_Deliverables",
+      "next_action": "complete post-release audit gate"
+    },
+    {
+      "module": "workshop",
+      "version": "v76",
+      "source": "CMMC_L2_Gap_Workshop_v76_Deliverables",
+      "next_action": "v77 Evidence Ownership and Provider Follow-up"
+    },
+    {
+      "module": "builder-merger",
+      "version": "v3.8",
+      "source": "L2G-BM_v3.8_Deliverables",
+      "next_action": "v3.9 Advisor and Client Delivery Profiles"
+    },
+    {
+      "module": "ssp",
+      "version": "v1.7",
+      "source": "CMMC_L2_SSP_Modern_Editable_v1.7_Deliverables",
+      "next_action": "round-trip smoke test; release only for demonstrated need"
+    }
   ],
   "stable_routes": [
     "l2g_intake_package_v1 1.0",
@@ -22,5 +52,24 @@
     "l2g_ssp_handoff_v1 1.0",
     "l2g_ssp_return_package_v1 1.0"
   ],
-  "validation_note": "This records the latest supplied releases. Promote a later snapshot to validated only after full route and round-trip regression across the exact versions."
+  "optional_read_only_routes": [
+    "l2g_workshop_action_summary_v1 0.1",
+    "l2g_workbook_round_trip_audit_v1 0.1",
+    "l2g_workshop_observability_v1 0.1",
+    "l2g_ssp_round_trip_audit_v1 0.1",
+    "l2g_responsibility_overlay_v1 0.1",
+    "l2g_responsibility_overlay_pack_v1 0.1",
+    "l2g_responsibility_reconciliation_v1 0.1"
+  ],
+  "control_center_validation": {
+    "release": "v0.3.3",
+    "built_in_self_tests": {
+      "passed": 58,
+      "failed": 0
+    },
+    "static_qa": "pass",
+    "browser_qa": "pass",
+    "accessibility_violations": 0
+  },
+  "validation_note": "This records the latest supplied releases and passed Control Center v0.3.3 regression. Promote a later snapshot to fully validated only after route and round-trip regression across the exact versions."
 }

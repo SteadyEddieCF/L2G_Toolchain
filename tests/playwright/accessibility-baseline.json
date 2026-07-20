@@ -1,16 +1,8 @@
 {
-  "baseline_version": "1.0",
+  "baseline_version": "1.1",
   "policy": "Only exact known critical findings are tolerated. New critical rules or targets fail CI.",
+  "updated_for": "L2G Control Center v0.3.3; inherited package-picker label exception closed.",
   "modules": {
-    "control-center-v0.3.2": [
-      {
-        "rule": "label",
-        "target": ".dropzone.panel > .packageFile[accept=\"application/json,.json\"][type=\"file\"]",
-        "owner": "control-center",
-        "expires_by": "v0.3.3",
-        "reason": "Current package picker lacks an accessible label; fix in the next bounded Control Center release."
-      }
-    ],
     "builder-merger-v3.8": [
       {
         "rule": "aria-required-children",
