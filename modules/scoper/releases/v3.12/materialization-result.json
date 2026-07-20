@@ -9,5 +9,8 @@
   ],
   "patch_base64_length": 15387,
   "patch_base64_sha256": "9e43af79fa4649a2fbb9905f4d591db6bfb191940583f23c0be3dc24bcc6b894",
-  "error": "Incorrect padding"
+  "patch_base64_padding_added": 1,
+  "patch_gzip_length": 11540,
+  "patch_gzip_sha256": "53ac5c85e1f0f6793d1a01a2f89713fd6882a59e6541c027b44b56733e7d263e",
+  "error": "Error -3 while decompressing data: invalid distance too far back"
 }
