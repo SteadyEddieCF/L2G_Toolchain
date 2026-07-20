@@ -1,0 +1,60 @@
+{
+  "artifact": "L2G_CC_v0.3.3.html",
+  "generated_at": "2026-07-20T19:15:00-04:00",
+  "scope": "Control Center v0.3.3 static, privacy, contract, and browser-backed regression validation",
+  "result": "pass",
+  "checks": {
+    "html_title_v0_3_3": true,
+    "strict_csp_present": true,
+    "javascript_syntax_valid": true,
+    "single_inline_script": true,
+    "no_duplicate_static_ids": true,
+    "no_external_http_refs": true,
+    "no_runtime_network_apis": true,
+    "five_modules_registered": true,
+    "current_versions_match": true,
+    "ssp_is_stage_5": true,
+    "sixteen_package_rules": true,
+    "nine_stable_routes": true,
+    "seven_optional_read_only_routes": true,
+    "responsibility_routes_read_only": true,
+    "v0_4_remains_next_committed": true,
+    "rolling_ten_release_window": true,
+    "suggestions_labeled_not_committed": true,
+    "offline_no_telemetry_no_writeback_text": true,
+    "storage_migrates_v0_3_2": true,
+    "current_storage_is_v0_3_3": true,
+    "browser_zero_console_errors": true,
+    "browser_zero_page_errors": true,
+    "browser_58_self_tests_pass": true,
+    "browser_valid_responsibility_route": true,
+    "browser_wrong_generator_review_required": true,
+    "browser_unsupported_version_rejected": true,
+    "browser_safe_summary_excludes_narrative": true,
+    "browser_all_six_pages_both_themes": true
+  },
+  "failed_checks": [],
+  "details": {
+    "static_id_count": 47,
+    "duplicate_static_ids": [],
+    "inline_script_count": 1,
+    "node_check_stderr": "",
+    "external_refs": [],
+    "network_pattern_flags": {
+      "fetch_call": false,
+      "xml_http_request": false,
+      "web_socket": false,
+      "event_source": false,
+      "external_script_src": false,
+      "external_stylesheet": false
+    },
+    "package_rule_count": 16,
+    "stable_route_count": 9,
+    "optional_read_only_route_count": 7,
+    "browser_screenshot_count": 14
+  },
+  "limitations": [
+    "Managed Chromium QA used a synthetic about:blank document with an in-memory localStorage polyfill; the production CSP was removed only inside the test harness.",
+    "The exact six-module current-input combination was not exercised as a full end-to-end suite regression; this release validates Control Center recognition, routing, privacy, and display behavior against supplied evidence and fixtures."
+  ]
+}

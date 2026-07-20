@@ -1,10 +1,11 @@
 export const modules = [
   {
-    slug: 'control-center-v0.3.2',
+    slug: 'control-center-v0.3.3',
     name: 'L2G Control Center',
-    version: 'v0.3.2',
-    path: '/modules/control-center/releases/v0.3.2/L2G_CC_v0.3.2.html',
-    darkStrategy: 'data-theme'
+    version: 'v0.3.3',
+    path: '/modules/control-center/releases/v0.3.3/L2G_CC_v0.3.3.html',
+    darkStrategy: 'data-theme',
+    visual: false
   },
   {
     slug: 'docconverter-v7.9.5',

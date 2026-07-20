@@ -1,0 +1,343 @@
+{
+  "schema": "l2g_cc_compatibility_rules_v1",
+  "schema_version": "1.5",
+  "control_center_version": "0.3.3",
+  "generated_at": "2026-07-20T14:30:00-04:00",
+  "policy": {
+    "default_unknown_result": "review_required",
+    "filename_only_is_not_compatibility_evidence": true,
+    "contract_compatibility_is_separate_from_generator_version_drift": true,
+    "unknown_optional_fields": "ignore_without_failure_when_safe",
+    "assessment_conclusions": "never_infer",
+    "optional_foundation_packages": "recognize_and_route_without_promoting_to_stable_contract",
+    "metadata_persistence": "opt_in_safe_summary_only",
+    "intended_route_mismatch": "review_required",
+    "wrong_generator_identity": "review_required",
+    "persisted_filename": "redacted_fingerprint_label_only",
+    "metadata_text": "control_characters_removed_and_length_bounded",
+    "generation_timestamp": "warn_when_unparseable_without_inference",
+    "responsibility_artifacts": "optional_read_only_advisory_workshop_authoritative",
+    "current_input_snapshot": "not_full_cross_tool_validated"
+  },
+  "package_rules": [
+    {
+      "kind": "l2g_intake_package_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1"
+      ],
+      "generated_by": [
+        "DocConverter-L2G"
+      ],
+      "current_generator_versions": [
+        "7.9.5",
+        "v7.9.5"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_prepare",
+      "operator_label": "Intake Package",
+      "contract_note": "Draft normalized engagement intake; not assessment conclusions."
+    },
+    {
+      "kind": "l2g_scope_context_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1"
+      ],
+      "generated_by": [
+        "DocConverter-L2G"
+      ],
+      "current_generator_versions": [
+        "7.9.5",
+        "v7.9.5"
+      ],
+      "recommended_module": "L2G Scoper",
+      "route_key": "scoper_import",
+      "operator_label": "Scope Context",
+      "contract_note": "Draft scope context for advisor validation."
+    },
+    {
+      "kind": "l2g_meeting_context_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1"
+      ],
+      "generated_by": [
+        "DocConverter-L2G"
+      ],
+      "current_generator_versions": [
+        "7.9.5",
+        "v7.9.5"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_meeting",
+      "operator_label": "Meeting Context",
+      "contract_note": "Meeting-source context; review before facilitation use."
+    },
+    {
+      "kind": "l2g_scope_return_package_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1"
+      ],
+      "generated_by": [
+        "L2G Scoper"
+      ],
+      "current_generator_versions": [
+        "3.11"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_scope",
+      "operator_label": "Scope Return",
+      "contract_note": "Advisor-reviewed draft boundary context; not final scope."
+    },
+    {
+      "kind": "l2g_workshop_state_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_restore",
+      "operator_label": "Workshop State",
+      "contract_note": "Workshop backup/restore package; Workshop remains authoritative."
+    },
+    {
+      "kind": "l2g_workbook_handoff_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1",
+        "1.7"
+      ],
+      "enhancement_contracts": [
+        "1.7"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "L2G Builder/Merger",
+      "route_key": "builder_handoff",
+      "operator_label": "Workbook Handoff",
+      "contract_note": "Workshop-approved context for workbook population; use with designated XLSX."
+    },
+    {
+      "kind": "l2g_workbook_merge_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1",
+        "1.1"
+      ],
+      "enhancement_contracts": [
+        "1.1"
+      ],
+      "generated_by": [
+        "L2G Builder/Merger"
+      ],
+      "current_generator_versions": [
+        "3.8"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_workbook_loop",
+      "operator_label": "Workbook Merge",
+      "contract_note": "Workbook-derived reviewed overlay; preserve as separate provenance."
+    },
+    {
+      "kind": "l2g_workshop_action_summary_v1",
+      "lifecycle": "optional_foundation",
+      "supported_versions": [
+        "0.1",
+        "0.1-foundation"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_action_summary",
+      "operator_label": "Workshop Action Summary",
+      "contract_note": "Read-only foundation package recognized for governance; Control Center blocker overview remains committed to v0.4."
+    },
+    {
+      "kind": "l2g_workbook_round_trip_audit_v1",
+      "lifecycle": "optional_foundation",
+      "supported_versions": [
+        "0.1",
+        "0.1-foundation"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_round_trip_audit",
+      "operator_label": "Workbook Round-Trip Audit",
+      "contract_note": "Read-only audit foundation package; review in the Workshop workbook loop."
+    },
+    {
+      "kind": "l2g_workshop_observability_v1",
+      "lifecycle": "foundation_read_only",
+      "supported_versions": [
+        "0.1"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "L2G Control Center",
+      "route_key": "cc_observability",
+      "operator_label": "Workshop Observability",
+      "contract_note": "Optional operational summary only. Control Center may display safe metadata/counters; Workshop remains authoritative and no write-back is permitted."
+    },
+    {
+      "kind": "l2g_ssp_handoff_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "intended_next_tool": "CMMC Level 2 SSP Modern Editable",
+      "recommended_module": "CMMC Level 2 SSP Modern Editable",
+      "route_key": "ssp_handoff",
+      "operator_label": "SSP Handoff",
+      "direction": "Workshop → SSP",
+      "persist": "metadata_only",
+      "contract_note": "SSP authoring candidates with review labels and source precedence; never automatic final conclusions."
+    },
+    {
+      "kind": "l2g_ssp_return_package_v1",
+      "lifecycle": "stable",
+      "supported_versions": [
+        "1.0",
+        "1"
+      ],
+      "generated_by": [
+        "CMMC Level 2 SSP Modern Editable"
+      ],
+      "current_generator_versions": [
+        "1.7",
+        "v1.7"
+      ],
+      "intended_next_tool": "CMMC L2 Gap Workshop Tool",
+      "recommended_module": "CMMC L2 Gap Workshop Tool",
+      "route_key": "workshop_ssp_return",
+      "operator_label": "SSP Return Package",
+      "direction": "SSP → Workshop",
+      "persist": "metadata_only",
+      "contract_note": "SSP authoring/review overlay; Workshop must preview and explicitly select; never assessment truth."
+    },
+    {
+      "kind": "l2g_ssp_round_trip_audit_v1",
+      "lifecycle": "foundation_read_only",
+      "supported_versions": [
+        "0.1"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "L2G Control Center Observability",
+      "route_key": "cc_ssp_audit",
+      "operator_label": "SSP Round-Trip Audit",
+      "direction": "Workshop → Control Center observability",
+      "persist": "safe_summary_metadata_only",
+      "contract_note": "Optional read-only metadata and counters; never editable and never an assessment-result source."
+    },
+    {
+      "kind": "l2g_responsibility_overlay_v1",
+      "lifecycle": "foundation_read_only",
+      "supported_versions": [
+        "0.1"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool / Responsibility Review",
+      "route_key": "workshop_responsibility_review",
+      "operator_label": "Responsibility Overlay",
+      "direction": "Workshop → read-only inspection / Workshop review",
+      "persist": "safe_summary_metadata_only",
+      "contract_note": "Optional advisory responsibility candidates. Read-only outside Workshop; no automatic application or final responsibility claim."
+    },
+    {
+      "kind": "l2g_responsibility_overlay_pack_v1",
+      "lifecycle": "foundation_read_only",
+      "supported_versions": [
+        "0.1"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool / Responsibility Review",
+      "route_key": "workshop_responsibility_review",
+      "operator_label": "Responsibility Overlay Pack",
+      "direction": "Workshop → read-only inspection / Workshop review",
+      "persist": "safe_summary_metadata_only",
+      "contract_note": "Optional official-reference-informed advisory pack. Exact service, contract, tenant, module, and operating evidence require Workshop/advisor validation."
+    },
+    {
+      "kind": "l2g_responsibility_reconciliation_v1",
+      "lifecycle": "foundation_read_only",
+      "supported_versions": [
+        "0.1"
+      ],
+      "generated_by": [
+        "CMMC L2 Gap Workshop Tool"
+      ],
+      "current_generator_versions": [
+        "76",
+        "v76"
+      ],
+      "recommended_module": "CMMC L2 Gap Workshop Tool / Responsibility Review",
+      "route_key": "workshop_responsibility_review",
+      "operator_label": "Responsibility Reconciliation",
+      "direction": "Workshop → read-only inspection / Workshop review",
+      "persist": "safe_summary_metadata_only",
+      "contract_note": "Optional advisory working reconciliation. Explicit advisor acceptance remains in Workshop; no primary field, workbook, SSP, scope, or assessment conclusion is changed automatically."
+    }
+  ]
+}

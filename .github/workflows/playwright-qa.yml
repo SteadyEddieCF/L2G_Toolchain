@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Materialize Control Center v0.3.3 runtime
+        run: python modules/control-center/releases/0.3.3/build_release.py
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Install Chromium
@@ -60,6 +62,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Materialize Control Center v0.3.3 runtime
+        run: python modules/control-center/releases/0.3.3/build_release.py
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Install Chromium
@@ -101,6 +105,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Materialize Control Center v0.3.3 runtime
+        run: python modules/control-center/releases/0.3.3/build_release.py
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Install Chromium

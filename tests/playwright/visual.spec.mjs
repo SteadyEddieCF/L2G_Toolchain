@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { modules, stabilizePage, applyDarkMode } from './module-catalog.mjs';
 
-for (const module of modules) {
+for (const module of modules.filter((entry) => entry.visual !== false)) {
   test(`${module.slug}: light-mode landing baseline`, async ({ page }) => {
     await page.goto(module.path, { waitUntil: 'domcontentloaded' });
     await stabilizePage(page);

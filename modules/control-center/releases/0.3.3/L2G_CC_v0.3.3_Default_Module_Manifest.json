@@ -1,0 +1,161 @@
+{
+  "schema": "l2g_cc_module_manifest_v1",
+  "schema_version": "1.4",
+  "control_center_version": "0.3.3",
+  "suite_name": "CMMC L2G Toolchain",
+  "baseline_date": "2026-07-20",
+  "modules": [
+    {
+      "id": "docconverter",
+      "name": "DocConverter-L2G",
+      "stage": 1,
+      "expected_version": "7.9.5",
+      "registered_filename": "modules/DocConverter-L2G_v7.9.5.html",
+      "lifecycle": "current validated baseline",
+      "persona": "Engagement analyst / advisor",
+      "when_to_use": "At intake, before scope preparation and workshop setup.",
+      "allowed": "Normalize local documents, diagrams, evidence, and meeting sources into draft packages.",
+      "prohibited": "Final scope, Met/Not Met, evidence sufficiency, readiness, scoring, or certification conclusions.",
+      "inputs": [
+        "PDF/DOCX/XLSX/CSV/TXT/MD and supported local sources"
+      ],
+      "outputs": [
+        "l2g_intake_package_v1 1.0",
+        "l2g_scope_context_v1 1.0",
+        "l2g_meeting_context_v1 1.0"
+      ],
+      "next": "L2G Scoper or CMMC L2 Gap Workshop Tool",
+      "evidence": {
+        "release_date": "2026-07-13",
+        "result": "PASS",
+        "release_focus": "Provenance Explorer and source-to-output reverse trace",
+        "regression": "Runtime regression PASS; 0 page errors; 0 console errors; 0 network requests; permitted packages emitted at v1.0.",
+        "manifest_source": "DocConverter-L2G_v7.9.5 release, compatibility, and runtime regression manifests"
+      }
+    },
+    {
+      "id": "scoper",
+      "name": "L2G Scoper",
+      "stage": 2,
+      "expected_version": "3.11",
+      "registered_filename": "modules/L2Scoper-v3.11.html",
+      "lifecycle": "current validated baseline",
+      "persona": "CMMC scoping advisor",
+      "when_to_use": "After intake normalization, to validate the draft CUI boundary and dependencies.",
+      "allowed": "Propose draft assets, flows, providers, services, categories, rationale, and validation questions.",
+      "prohibited": "Final scope, assessment status, evidence sufficiency, scoring, or certification conclusions.",
+      "inputs": [
+        "l2g_scope_context_v1 1.0",
+        "Advisor-entered scoping context"
+      ],
+      "outputs": [
+        "l2g_scope_return_package_v1 1.0",
+        "Technology/Service/Provider Profile 0.1-foundation (collection_only)"
+      ],
+      "next": "CMMC L2 Gap Workshop Tool",
+      "evidence": {
+        "release_date": "2026-07-11",
+        "result": "PASS WITH NATIVE FILE LAUNCH LIMITATION",
+        "release_focus": "Technology, Service, and Provider Scoping Profile",
+        "regression": "Technology/service/provider handshake passed; 0 blocking preflight errors; native file launch blocked by managed environment.",
+        "manifest_source": "L2G_Scoper_v3.11 release, compatibility, and regression manifests"
+      }
+    },
+    {
+      "id": "workshop",
+      "name": "CMMC L2 Gap Workshop Tool",
+      "stage": 3,
+      "expected_version": "76",
+      "registered_filename": "modules/cmmc_l2_gap_workshop_tool_v76.html",
+      "lifecycle": "current validated baseline",
+      "persona": "Facilitator / advisor / client participants",
+      "when_to_use": "For preparation, live facilitation, evidence follow-up, workbook handoff/return review, and governed SSP handoff/return review.",
+      "allowed": "Facilitate ownership, evidence, providers, practices, objectives, actions, follow-up, and advisory reporting.",
+      "prohibited": "Automatic final Met/Not Met, final evidence sufficiency, readiness, final scope, scoring, or certification.",
+      "inputs": [
+        "Intake, scope return, meeting context, workshop state, workbook merge, SSP return package"
+      ],
+      "outputs": [
+        "l2g_workshop_state_v1 1.0",
+        "l2g_workbook_handoff_v1 1.0 / enhancement 1.7",
+        "l2g_ssp_handoff_v1 1.0",
+        "l2g_ssp_round_trip_audit_v1 0.1 optional read-only",
+        "l2g_workshop_observability_v1 0.1 optional read-only",
+        "l2g_responsibility_overlay_v1 0.1 optional advisory read-only",
+        "l2g_responsibility_overlay_pack_v1 0.1 optional advisory read-only",
+        "l2g_responsibility_reconciliation_v1 0.1 optional advisory read-only",
+        "Reports and trackers"
+      ],
+      "next": "L2G Builder/Merger or CMMC Level 2 SSP Modern Editable, then return to Workshop",
+      "evidence": {
+        "release_date": "2026-07-17",
+        "result": "PASS WITH DISCLOSED ENVIRONMENT LIMITATIONS",
+        "release_focus": "Responsibility Review UX",
+        "regression": "Static and focused runtime checks passed; 74/76 in synthetic-origin self-check with CSP/localStorage limitations disclosed; 0 browser page errors.",
+        "manifest_source": "CMMC_L2_Gap_Workshop_v76 release, compatibility, regression, observability, and responsibility artifacts"
+      }
+    },
+    {
+      "id": "builder",
+      "name": "L2G Builder/Merger",
+      "stage": 4,
+      "expected_version": "3.8",
+      "registered_filename": "modules/L2G-BM_v3.8.html",
+      "lifecycle": "current validated baseline",
+      "persona": "Workbook reviewer / advisor",
+      "when_to_use": "After Workshop handoff, with the designated formal workbook.",
+      "allowed": "Populate designated workbook cells, preserve formulas/validation, resolve governed exceptions, and extract reviewer-derived results.",
+      "prohibited": "Infer objective implementation status or create assessment conclusions from draft Workshop context.",
+      "inputs": [
+        "l2g_workbook_handoff_v1 enhancement 1.7",
+        "Designated workbook XLSX"
+      ],
+      "outputs": [
+        "Populated workbook XLSX",
+        "l2g_workbook_merge_v1 contract 1.1",
+        "Governance/exception artifacts"
+      ],
+      "next": "CMMC L2 Gap Workshop Tool / Workbook Loop",
+      "evidence": {
+        "release_date": "2026-07-13",
+        "result": "STATIC PASS / MANAGED CHROMIUM LIMITATION",
+        "release_focus": "Exception Resolution Ledger and Governance Pack",
+        "regression": "JavaScript syntax and offline controls passed; browser smoke test not counted due managed Chromium timeout.",
+        "manifest_source": "L2G-BM_v3.8 release manifest and regression results"
+      }
+    },
+    {
+      "id": "ssp",
+      "name": "CMMC Level 2 SSP Modern Editable",
+      "stage": 5,
+      "expected_version": "1.7",
+      "registered_filename": "modules/CMMC_L2_SSP_Modern_Editable_v1.7.html",
+      "lifecycle": "current validated baseline",
+      "persona": "SSP author / SME reviewer / Quality reviewer",
+      "when_to_use": "After Workshop context is mature enough to draft and review the SSP.",
+      "allowed": "Preview and selectively apply Workshop authoring candidates, maintain SSP content, support SME and Quality Review, and return a governed authoring/review overlay to Workshop.",
+      "prohibited": "Automatic compliance conclusions, automatic final scope, automatic Met/Not Met or readiness determinations, replacing SME/Quality Review/authorized approval, or duplicating SSP field editing inside Control Center.",
+      "inputs": [
+        "l2g_ssp_handoff_v1 1.0",
+        "SSP JSON backup",
+        "CRM CSV",
+        "Reviewed Word Review Copy"
+      ],
+      "outputs": [
+        "Clean/internal HTML",
+        "Populated Word Review Copy",
+        "SSP JSON backup",
+        "CRM CSV",
+        "l2g_ssp_return_package_v1 1.0"
+      ],
+      "next": "CMMC L2 Gap Workshop Tool / SSP Return Import",
+      "evidence": {
+        "release_date": "2026-07-17",
+        "result": "PASS",
+        "release_focus": "L2G Workshop Handshake and SSP Return Foundation",
+        "regression": "107/107 tests passed across release integrity, Chromium handshake, compatibility/image security, and Word-review security.",
+        "manifest_source": "CMMC_L2_SSP_v1.7 release, compatibility, and regression manifests"
+      }
+    }
+  ]
+}

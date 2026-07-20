@@ -1,0 +1,54 @@
+{
+  "release": "L2G_CC_v0.3.3",
+  "result": "pass",
+  "validated_at": "2026-07-20T19:15:00-04:00",
+  "baseline": "L2G_CC_v0.3.2",
+  "bounded_change": "Current-suite baseline synchronization only; v0.4 feature scope not implemented.",
+  "module_versions": {
+    "docconverter": "7.9.5",
+    "scoper": "3.11",
+    "workshop": "76",
+    "builder": "3.8",
+    "ssp": "1.7"
+  },
+  "contract_summary": {
+    "total": 16,
+    "stable": 9,
+    "optional_or_read_only": 7
+  },
+  "built_in_self_tests": {
+    "passed": 58,
+    "failed": 0
+  },
+  "browser_qa": {
+    "result": "pass",
+    "console_errors": 0,
+    "page_errors": 0,
+    "screenshots": 14,
+    "valid_responsibility_route": "compatible",
+    "wrong_generator": "review_required",
+    "unsupported_version": "unsupported_version",
+    "safe_summary_narrative_exclusion": "pass"
+  },
+  "static_qa": {
+    "result": "pass",
+    "checks": 28,
+    "failed": 0
+  },
+  "preserved": [
+    "SSP v1.7 remains Stage 5",
+    "Workshop–Builder/Merger workbook loop",
+    "All nine stable routes",
+    "Generator drift warning independent of contract compatibility",
+    "Opt-in metadata-only observability with redacted filenames",
+    "Offline/no telemetry/no write-back safeguards",
+    "v0.4 and v0.5 roadmap commitments"
+  ],
+  "new_optional_read_only_recognition": [
+    "l2g_workshop_observability_v1 0.1",
+    "l2g_responsibility_overlay_v1 0.1",
+    "l2g_responsibility_overlay_pack_v1 0.1",
+    "l2g_responsibility_reconciliation_v1 0.1"
+  ],
+  "qualification": "Control Center regression passed against current supplied evidence and fixtures. This is not a claim of a completed full exact-version six-module end-to-end regression."
+}
