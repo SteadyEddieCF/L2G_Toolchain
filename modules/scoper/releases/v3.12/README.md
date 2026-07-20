@@ -18,6 +18,8 @@ Bounded release from the merged v3.11 post-release audit.
 
 `2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3`
 
+The branch materialization workflow verifies this checksum before committing the generated runtime.
+
 ## Contracts
 
 - Input: `l2g_scope_context_v1`, version `1.0`
