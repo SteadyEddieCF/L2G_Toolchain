@@ -1,0 +1,43 @@
+{
+  "release": "DocConverter-L2G v7.9.5.1",
+  "generated_at": "2026-07-20",
+  "artifact": {
+    "filename": "DocConverter-L2G_v7.9.5.1.html",
+    "size_bytes": 7952581,
+    "sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"
+  },
+  "html": {
+    "title": "DocConverter-L2G v7.9.5.1",
+    "inline_script_count": 25,
+    "all_inline_scripts_syntax_pass": true,
+    "static_id_count": 100,
+    "duplicate_static_ids": [],
+    "external_script_sources": [],
+    "external_stylesheet_links": []
+  },
+  "offline_security": {
+    "csp_present": true,
+    "csp": "default-src 'self' 'unsafe-inline' data: blob:; connect-src 'none'; img-src 'self' data: blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline' 'wasm-unsafe-eval' blob:; worker-src blob:; child-src blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none';",
+    "connect_src_none": true,
+    "object_src_none": true,
+    "frame_src_none": true,
+    "remote_runtime_dependencies": false,
+    "runtime_http_https_requests": []
+  },
+  "identity": {
+    "expected": "DocConverter-L2G v7.9.5.1",
+    "runtime_title": "DocConverter-L2G v7.9.5.1",
+    "identity_mutations": []
+  },
+  "contract_guardrails": {
+    "intake_package_version": "1.0",
+    "scope_package_version": "1.0",
+    "meeting_package_version": "1.0",
+    "prohibited_outputs_in_runtime_scope_package": [],
+    "local_path_leakage_in_runtime_scope_package": false
+  },
+  "limitations": [
+    "Embedded third-party OCR/PDF libraries contain license and implementation text. Runtime request capture, rather than string matching alone, is the authoritative application-network check."
+  ],
+  "pass": true
+}
