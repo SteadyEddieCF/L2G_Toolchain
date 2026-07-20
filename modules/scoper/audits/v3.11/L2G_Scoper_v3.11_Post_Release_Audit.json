@@ -1,0 +1,401 @@
+{
+  "audit_kind": "l2g_scoper_post_release_audit_v1",
+  "audit_date": "2026-07-20",
+  "repository": "SteadyEddieCF/L2G_Toolchain",
+  "branch": "audit/scoper-v3.11",
+  "repository_scope": "modules/scoper/ audit documentation only",
+  "release_audited": {
+    "tool": "L2G Scoper",
+    "version": "v3.11",
+    "authoritative_html": "L2Scoper-v3.11.html",
+    "html_sha256": "4cef94f43ceb71dac43167b0b1e41b3ec5ba398d2b6032089b2a720062572d20",
+    "application_modified": false,
+    "v3_12_implementation_started": false
+  },
+  "contracts": {
+    "input": {
+      "package_kind": "l2g_scope_context_v1",
+      "package_version": "1.0"
+    },
+    "output": {
+      "package_kind": "l2g_scope_return_package_v1",
+      "package_version": "1.0"
+    },
+    "browser_storage_key_change": false,
+    "practice_records_emitted": 0,
+    "contract_change_recommended": "additive_optional_sections_only"
+  },
+  "test_run": {
+    "organization": "McFeddy Fed",
+    "environment": "McFeddyFed GovOps SaaS Boundary",
+    "input_sha256": "a2c06c696551f2e2eb1efb02463e467db77e6b8b18fff99b0b73341fa56cf017",
+    "return_sha256": "4ab1b844b7a6b8ba6d8b714c7624032b38d98900eef4e628e869a39ca4afd3a4",
+    "counts": {
+      "source_documents": 71,
+      "assets": 10,
+      "providers": 2,
+      "flows": 4,
+      "imported_validation_questions": 21,
+      "boundary_unknown_items": 28,
+      "technology_profiles": 10,
+      "technology_profile_questions": 41,
+      "profiles_at_or_above_70_percent": 2,
+      "enabled_module_gaps": 3,
+      "admin_support_access_unknowns": 8,
+      "responsibility_source_gaps": 10,
+      "practice_records": 0
+    },
+    "runtime_method": "Chromium page.set_content with normal staged import and Replace Workspace application path",
+    "runtime_errors": [],
+    "native_file_url_tested": false,
+    "generated_artifacts": [
+      {
+        "name": "l2g_scope_return_package_v1_audit.json",
+        "sha256": "4ab1b844b7a6b8ba6d8b714c7624032b38d98900eef4e628e869a39ca4afd3a4"
+      },
+      {
+        "name": "advisor_report_audit.html",
+        "sha256": "0d44f4a2d978040c814aa381a589ccd420f6049bf53e97a722054479b2b73e5b"
+      },
+      {
+        "name": "client_summary_audit.html",
+        "sha256": "f5288493a6c4c0f8145620783e9086aa7bebd83409f1de90785b67121e312c25"
+      },
+      {
+        "name": "questionnaire_audit.html",
+        "sha256": "969fdcbd66474e75a7c6ca2045761bfe916f4c966916289fac9c0ca665191357"
+      },
+      {
+        "name": "McFeddy_Fed_CUI_Boundary_Scoping_Overview_v3.11_Audit.pptx",
+        "sha256": "c9db3102cdaf7fa491e2c7f7d356ca9a4dc27546632410f205d9a40cb4c56f0a"
+      }
+    ]
+  },
+  "verdicts": {
+    "inclusion_exclusion_rationale_visibility": {
+      "verdict": "Partially sufficient",
+      "summary": "Rich rationale and traceability ingredients exist, but they are scattered and not consistently visible in normal summaries or generated outputs.",
+      "evidence_locations": [
+        "UI: Technology & Providers detail form",
+        "UI: Assets table",
+        "UI: Providers table",
+        "UI: CUI Flows table",
+        "UI: Review and Finish / Handoff",
+        "Advisor Report: Candidate asset summary; Technology, service, and provider inventory",
+        "Client Executive Summary: Technology and provider profile",
+        "PowerPoint: slide 6 Candidate Asset Categories",
+        "Return JSON: candidate_assets, service_scope_relationships, technology_service_profile.records"
+      ],
+      "measurements": {
+        "technology_profiles": 10,
+        "profiles_with_boundary_impact": 10,
+        "profiles_with_boundary_impact_explanation": 0,
+        "profiles_with_related_asset_ids": 0,
+        "profiles_with_related_flow_ids": 0
+      },
+      "severity": "High",
+      "classification": "existing capability needing better presentation plus limited linkage fields"
+    },
+    "scoping_decision_ledger_completeness": {
+      "verdict": "Insufficient",
+      "summary": "Decision fragments exist, but v3.11 has no coherent decision ledger or additive ledger section.",
+      "evidence_locations": [
+        "UI: Review shows pre-flight and first 15 imported questions only",
+        "UI: Interview / Workshop provides eight prompts, not a decision ledger",
+        "Return JSON: no scoping_decision_ledger key",
+        "Return JSON: decision information scattered across assets, providers, flows, unknowns, questions, and profiles"
+      ],
+      "missing_fields": [
+        "stable decision ID",
+        "proposed disposition",
+        "affected record IDs",
+        "validating stakeholder",
+        "current validation status",
+        "decision sequence/date",
+        "dependency",
+        "next action",
+        "Workshop impact",
+        "value origin in one coherent record"
+      ],
+      "severity": "Critical",
+      "classification": "genuinely missing data model and workflow"
+    },
+    "unresolved_unknowns_prominence": {
+      "verdict": "Partially sufficient",
+      "summary": "Aggregate service-profile gaps and 28 unknown items are retained, but there is no prioritized, owned, blocker-aware queue.",
+      "evidence_locations": [
+        "UI: Technology profile cards and completion summary",
+        "UI: Review pre-flight warnings",
+        "UI: Dashboard omits unknown/question counts",
+        "Return JSON: unknown_boundary_items and boundary_review_items"
+      ],
+      "measurements": {
+        "unknown_items": 28,
+        "unknown_items_with_priority": 0,
+        "unknown_items_with_owner_or_expected_respondent": 0,
+        "unknown_items_with_next_action": 0,
+        "unknown_items_with_blocking_classification": 0
+      },
+      "severity": "High",
+      "classification": "existing unknown data plus missing operational metadata and presentation"
+    },
+    "pre_workshop_question_packaging": {
+      "verdict": "Insufficient",
+      "summary": "Question content exists but is split across arrays, includes malformed imported strings, and lacks the structure needed for a clean Workshop handoff.",
+      "evidence_locations": [
+        "UI: Review displays first 15 imported questions including raw JSON fragments",
+        "UI: Technology & Providers displays first 18 technology questions",
+        "UI: Interview / Workshop uses generic eight-topic prompts",
+        "Advisor Report: first 25 technology questions",
+        "Client Executive Summary: no specific question subset",
+        "PowerPoint: slide 8 contains one specific question",
+        "Return JSON: validation_questions, scope_questions_for_workshop, technology_profile_validation_questions"
+      ],
+      "measurements": {
+        "imported_questions": 21,
+        "raw_json_fragment_questions": 7,
+        "technology_questions": 41,
+        "technology_questions_with_source_references": 0,
+        "technology_questions_with_expected_respondent": 0,
+        "technology_questions_with_before_during_phase": 0,
+        "technology_questions_with_related_asset_ids": 0,
+        "technology_questions_with_related_flow_ids": 0,
+        "technology_questions_with_related_service_id": 41
+      },
+      "severity": "Critical",
+      "classification": "genuinely incomplete contract and workflow"
+    }
+  },
+  "additional_findings": [
+    {
+      "id": "SC-AUD-006",
+      "title": "Return package generation is not idempotent",
+      "type": "contract/export defect",
+      "severity": "Critical",
+      "owner": "L2G Scoper",
+      "evidence": {
+        "test": "seven consecutive makeReturn calls in one unchanged imported workspace",
+        "results": [
+          {
+            "call": 1,
+            "total_records": 147,
+            "technology_profile_records": 10,
+            "unique_profile_ids": 10
+          },
+          {
+            "call": 2,
+            "total_records": 157,
+            "technology_profile_records": 20,
+            "unique_profile_ids": 10
+          },
+          {
+            "call": 3,
+            "total_records": 167,
+            "technology_profile_records": 30,
+            "unique_profile_ids": 10
+          },
+          {
+            "call": 4,
+            "total_records": 177,
+            "technology_profile_records": 40,
+            "unique_profile_ids": 10
+          },
+          {
+            "call": 5,
+            "total_records": 187,
+            "technology_profile_records": 50,
+            "unique_profile_ids": 10
+          },
+          {
+            "call": 6,
+            "total_records": 197,
+            "technology_profile_records": 60,
+            "unique_profile_ids": 10
+          },
+          {
+            "call": 7,
+            "total_records": 207,
+            "technology_profile_records": 70,
+            "unique_profile_ids": 10
+          }
+        ]
+      },
+      "recommended_response": "Make return generation idempotent and add repeat-call regression coverage."
+    },
+    {
+      "id": "SC-AUD-007",
+      "title": "Fresh PowerPoint contains clipped sentence fragments",
+      "type": "report/output gap",
+      "severity": "Medium",
+      "owner": "L2G Scoper",
+      "evidence": {
+        "slides": {
+          "4": [
+            "Confirm provider and administrator access, support locations, service dependencies, and."
+          ],
+          "8": [
+            "Confirm each provider, service module, administrator path, support location, data exposure, evidence owner, and.",
+            "Confirm actual CUI behavior, including uploads, downloads, synchronization, printing, backups, remote access, provider.",
+            "Confirm the SSP, diagrams, inventories, and responsibility records match the current boundary and provider/service."
+          ]
+        }
+      },
+      "recommended_response": "Add complete-phrase fitting assertions for populated presentation output."
+    }
+  ],
+  "gaps": [
+    {
+      "id": "SC-AUD-001",
+      "severity": "High",
+      "owner": "L2G Scoper",
+      "type": [
+        "presentation/discoverability",
+        "report/output"
+      ],
+      "classification": "existing capability needing promotion",
+      "title": "Inclusion/exclusion rationale is scattered and inconsistently visible"
+    },
+    {
+      "id": "SC-AUD-002",
+      "severity": "Critical",
+      "owner": "L2G Scoper",
+      "type": [
+        "data-model",
+        "workflow",
+        "contract/export"
+      ],
+      "classification": "genuinely missing",
+      "title": "No coherent Scoping Decision Ledger"
+    },
+    {
+      "id": "SC-AUD-003",
+      "severity": "High",
+      "owner": "L2G Scoper",
+      "type": [
+        "workflow",
+        "data-model",
+        "presentation"
+      ],
+      "classification": "existing data plus missing operational fields",
+      "title": "Unknowns lack unified priority, owner, next action, and blocking state"
+    },
+    {
+      "id": "SC-AUD-004",
+      "severity": "Critical",
+      "owner": "L2G Scoper",
+      "type": [
+        "contract/export",
+        "workflow",
+        "report/output"
+      ],
+      "classification": "genuinely incomplete",
+      "title": "Pre-Workshop questions are not one coherent package"
+    },
+    {
+      "id": "SC-AUD-005",
+      "severity": "High",
+      "owner": "DocConverter-L2G primary; L2G Scoper defensive handling",
+      "type": [
+        "adjacent-tool",
+        "input sanitation"
+      ],
+      "classification": "upstream precision defect plus missing defensive filtering",
+      "title": "Seven imported validation questions are raw JSON fragments"
+    },
+    {
+      "id": "SC-AUD-006",
+      "severity": "Critical",
+      "owner": "L2G Scoper",
+      "type": [
+        "contract/export"
+      ],
+      "classification": "genuinely missing idempotency safeguard",
+      "title": "Repeated makeReturn calls duplicate technology profile records"
+    },
+    {
+      "id": "SC-AUD-007",
+      "severity": "Medium",
+      "owner": "L2G Scoper",
+      "type": [
+        "report/output"
+      ],
+      "classification": "existing fitting capability needs correction",
+      "title": "PowerPoint has clipped sentence fragments"
+    },
+    {
+      "id": "SC-AUD-008",
+      "severity": "High",
+      "owner": "L2G Scoper",
+      "type": [
+        "data-model",
+        "contract/export"
+      ],
+      "classification": "genuinely incomplete",
+      "title": "Technology questions lack source, respondent, phase, and affected-record links"
+    },
+    {
+      "id": "SC-AUD-009",
+      "severity": "Medium",
+      "owner": "L2G Scoper",
+      "type": [
+        "data quality",
+        "presentation"
+      ],
+      "classification": "existing fields not populated or linked",
+      "title": "Fresh service profiles have empty rationale explanations and no specific asset/flow links"
+    }
+  ],
+  "contract_impact": {
+    "breaking_change_required": false,
+    "package_kind_change_required": false,
+    "package_version_change_required": false,
+    "recommended_additive_optional_sections": [
+      "scoping_decision_ledger_v1",
+      "pre_workshop_question_package_v1"
+    ],
+    "existing_sections_to_preserve": [
+      "validation_questions",
+      "scope_questions_for_workshop",
+      "technology_profile_validation_questions",
+      "technology_service_profile",
+      "unknown_boundary_items",
+      "boundary_review_items"
+    ]
+  },
+  "adjacent_tool_actions": [
+    {
+      "tool": "DocConverter-L2G",
+      "action_required": true,
+      "prompt_file": "DocConverter_L2G_Validation_Question_Candidate_Precision_Prompt.md",
+      "reason": "DocConverter produced JSON field/value fragments as validation-question candidates. Scoper should defensively filter them, but upstream extraction precision belongs to DocConverter."
+    },
+    {
+      "tool": "CMMC L2 Gap Workshop Tool",
+      "action_required": false,
+      "reason": "No new Scoper contract exists yet. Perform a smoke test after a future bounded Scoper release adds optional ledger/question sections."
+    },
+    {
+      "tool": "L2G Builder/Merger",
+      "action_required": false,
+      "reason": "No workbook/package responsibility is involved."
+    }
+  ],
+  "recommended_next_action": {
+    "decision_gate": "3. Bounded v3.12 justified",
+    "v3_12_justified": true,
+    "implementation_authorized_by_this_audit": false,
+    "proposal_file": "L2G_Scoper_v3.12_Bounded_Proposal.md",
+    "release_focus": "Scoping Decision and Pre-Workshop Handoff Consolidation",
+    "non_goals": [
+      "practice readiness",
+      "evidence sufficiency",
+      "scoring",
+      "final scope",
+      "final provider responsibility",
+      "full application redesign",
+      "cross-session task management",
+      "Workshop Capability Questionnaire duplication"
+    ]
+  },
+  "final_decision": "3. Bounded v3.12 justified"
+}
