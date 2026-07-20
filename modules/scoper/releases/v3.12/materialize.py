@@ -11,8 +11,7 @@ OUTPUT = ROOT / "modules/scoper/releases/v3.12/L2Scoper-v3.12.html"
 RESULT = ROOT / "modules/scoper/releases/v3.12/materialization-result.json"
 PARTS = sorted((ROOT / "modules/scoper/releases/v3.12/source").glob("patch-v3.12.js.gz.b64.part*"))
 EXPECTED_HTML_SHA256 = "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3"
-EXPECTED_PATCH_B64_SHA256 = "b3b5fc597bd76f7c25d8c1cacd174f1e6d104790458eaa534426cc3f97b6d899"
-EXPECTED_PATCH_GZIP_SHA256 = "afcdd9d421005d972a0782b3f30747f5751f90dbadff1497d5e47c96166c6022"
+EXPECTED_PATCH_B64_SHA256 = "9e43af79fa4649a2fbb9905f4d591db6bfb191940583f23c0be3dc24bcc6b894"
 EXPECTED_PATCH_SHA256 = "8604e2f3fb48846c463646becb15d21d8f1bf76946688f260653e015499da107"
 
 result = {
@@ -35,8 +34,6 @@ try:
     gzip_bytes = base64.b64decode(b64_text, validate=True)
     result["patch_gzip_length"] = len(gzip_bytes)
     result["patch_gzip_sha256"] = hashlib.sha256(gzip_bytes).hexdigest()
-    if result["patch_gzip_sha256"] != EXPECTED_PATCH_GZIP_SHA256:
-        raise RuntimeError("Patch gzip SHA-256 mismatch")
 
     patch_bytes = gzip.decompress(gzip_bytes)
     result["patch_length"] = len(patch_bytes)
