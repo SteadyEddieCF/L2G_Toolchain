@@ -5,9 +5,10 @@
   "parts": [
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part00",
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01",
-    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part02"
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part02",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part03"
   ],
-  "patch_base64_length": 12000,
-  "patch_base64_sha256": "a136af5a4a325f9a588103e93d6cadcfe67eaa97f792d16a7bb602eeca39a706",
+  "patch_base64_length": 15356,
+  "patch_base64_sha256": "b0221123b58edcda8418fa666d9148e15474b8b6cea7e58f60ee0719fa6a8e6d",
   "error": "Patch base64 SHA-256 mismatch"
 }
