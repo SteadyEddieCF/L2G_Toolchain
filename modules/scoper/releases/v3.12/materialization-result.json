@@ -9,5 +9,5 @@
   ],
   "patch_base64_length": 15387,
   "patch_base64_sha256": "9e43af79fa4649a2fbb9905f4d591db6bfb191940583f23c0be3dc24bcc6b894",
-  "error": "Patch base64 SHA-256 mismatch"
+  "error": "Incorrect padding"
 }
