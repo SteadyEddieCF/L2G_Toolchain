@@ -1,0 +1,31 @@
+{
+  "release": "DocConverter-L2G v7.9.5.1",
+  "generated_at": "2026-07-20",
+  "release_type": "bounded upstream precision hotfix",
+  "baseline": "DocConverter-L2G v7.9.5",
+  "package_contract_changed": false,
+  "outputs": [
+    {"package_kind":"l2g_intake_package_v1","package_version":"1.0","status":"preserved","runtime_converter_version":"v7.9.5.1"},
+    {"package_kind":"l2g_scope_context_v1","package_version":"1.0","status":"preserved; validation-question candidates sanitized before export","runtime_converter_version":"v7.9.5.1"},
+    {"package_kind":"l2g_meeting_context_v1","package_version":"1.0","status":"preserved","runtime_converter_version":"v7.9.5.1"}
+  ],
+  "adjacent_tools": {
+    "scoper": "reference-only; supplied v3.11 audit/v3.12 handoff evidence consumed; no code modified",
+    "workshop": "not modified",
+    "builder_merger": "not modified",
+    "ssp": "not modified",
+    "control_center": "not modified"
+  },
+  "preserved": [
+    "source document IDs, fingerprints, filenames, source basis and source references",
+    "unknown optional field compatibility",
+    "local/offline single-file operation and CSP network blocking",
+    "native extraction, selective OCR, diagrams, security evidence, meeting-context precision and evidence-bundle safeguards",
+    "draft/advisor-review-required trust language and human-controlled compliance conclusions"
+  ],
+  "prohibited_outputs_generated": [],
+  "runtime_regression_result": "PASS",
+  "limitations": [
+    "Representative candidate-stage regression used six real files from the supplied 104-file McFirecoal package. A full browser ZIP extraction run was attempted but timed out in the managed environment and is not claimed as a pass."
+  ]
+}
