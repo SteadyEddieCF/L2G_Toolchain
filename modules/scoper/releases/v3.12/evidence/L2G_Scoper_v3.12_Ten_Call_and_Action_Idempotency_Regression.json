@@ -1,0 +1,23 @@
+{
+  "release": "L2G Scoper v3.12",
+  "test": "return_generation_idempotency_across_actions",
+  "status": "pass",
+  "expected_profiles": 10,
+  "rows": [
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"initial","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"renderDashboard","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"renderReview","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"renderFinish","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"preflight","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"preflightText","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"advisorReport","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"clientReport","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"questionnaire","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"deckValues","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"downloadReturn","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"downloadAdvisorReport","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"downloadClientReport","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"},
+    {"profiles":10,"profile_records":10,"unique_profiles":10,"decisions":54,"questions":73,"practices":0,"action":"downloadBuiltInPPTX","sha256":"b4d1cd9af725ef5e4e08b3f13b6e91158c84b7486bdcacb009e650642a3e9a98"}
+  ],
+  "page_errors": []
+}
