@@ -46,26 +46,10 @@
     "offline_and_security": "pass"
   },
   "promotion_artifacts": [
-    {
-      "filename": "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Report.md",
-      "size_bytes": 6210,
-      "sha256": "1e6f7e196d6970e97b1640227ecc4b064a5191b2540ed2a618bf624048d28d5b"
-    },
-    {
-      "filename": "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Regression.json",
-      "size_bytes": 7426,
-      "sha256": "0751e69d1fef2b8e41371af37e9466cd8fce3ffff646ec610a4a5e39faf282c1"
-    },
-    {
-      "filename": "DocConverter-L2G_v7.9.5.1_Deterministic_Build_Verification.json",
-      "size_bytes": 740,
-      "sha256": "3127372e0f291273ca65c0b2279e6e24ff5a3051f7f24e2e6efd04f36db98767"
-    },
-    {
-      "filename": "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Static_Verification.json",
-      "size_bytes": 2918,
-      "sha256": "597a6d507a10c3706199facbc9729af914b16ff56089c307fac1cd295591a0a4"
-    }
+    "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Report.md",
+    "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Regression.json",
+    "DocConverter-L2G_v7.9.5.1_Deterministic_Build_Verification.json",
+    "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Static_Verification.json"
   ],
   "stable_packages": {
     "l2g_intake_package_v1": "1.0",
