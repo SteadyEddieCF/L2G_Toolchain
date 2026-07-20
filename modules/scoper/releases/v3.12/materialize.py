@@ -3,40 +3,79 @@ from pathlib import Path
 import base64
 import gzip
 import hashlib
+import json
 
 ROOT = Path(__file__).resolve().parents[4]
 BASELINE = ROOT / "modules/scoper/releases/v3.11/L2Scoper-v3.11.html"
 OUTPUT = ROOT / "modules/scoper/releases/v3.12/L2Scoper-v3.12.html"
+RESULT = ROOT / "modules/scoper/releases/v3.12/materialization-result.json"
 PARTS = sorted((ROOT / "modules/scoper/releases/v3.12/source").glob("patch-v3.12.js.gz.b64.part*"))
-EXPECTED_SHA256 = "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3"
+EXPECTED_HTML_SHA256 = "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3"
+EXPECTED_PATCH_B64_SHA256 = "b3b5fc597bd76f7c25d8c1cacd174f1e6d104790458eaa534426cc3f97b6d899"
+EXPECTED_PATCH_GZIP_SHA256 = "afcdd9d421005d972a0782b3f30747f5751f90dbadff1497d5e47c96166c6022"
+EXPECTED_PATCH_SHA256 = "8604e2f3fb48846c463646becb15d21d8f1bf76946688f260653e015499da107"
 
-if not BASELINE.exists() or not PARTS:
-    raise SystemExit("Missing v3.11 baseline or v3.12 patch source parts")
-
-patch = gzip.decompress(
-    base64.b64decode("".join(part.read_text(encoding="utf-8").strip() for part in PARTS))
-).decode("utf-8")
-
-text = BASELINE.read_text(encoding="utf-8")
-replacements = {
-    "<title>L2G Scoper v3.11</title>": "<title>L2G Scoper v3.12</title>",
-    "CUI Boundary / Scoping • v3.11": "CUI Boundary / Scoping • v3.12",
-    "const VERSION='3.10';": "const VERSION='3.12';",
-    "l2g_scoper_schema_v3.7.json": "l2g_scoper_schema_v3.12.json",
+result = {
+    "status": "failure",
+    "baseline": str(BASELINE.relative_to(ROOT)),
+    "output": str(OUTPUT.relative_to(ROOT)),
+    "parts": [str(part.relative_to(ROOT)) for part in PARTS],
 }
-for old, new in replacements.items():
-    if old not in text:
-        raise SystemExit(f"Expected baseline token not found: {old}")
-    text = text.replace(old, new, 1)
 
-marker = "\ninit();\n</script></body></html>"
-if marker not in text:
-    raise SystemExit("Final init marker not found")
-text = text.replace(marker, "\n" + patch + "\n\ninit();\n</script></body></html>", 1)
+try:
+    if not BASELINE.exists() or not PARTS:
+        raise RuntimeError("Missing v3.11 baseline or v3.12 patch source parts")
 
-OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-OUTPUT.write_text(text, encoding="utf-8")
-actual = hashlib.sha256(OUTPUT.read_bytes()).hexdigest()
-if actual != EXPECTED_SHA256:
-    raise SystemExit(f"Generated HTML SHA-256 mismatch: {actual} != {EXPECTED_SHA256}")
-print(f"Materialized {OUTPUT} ({OUTPUT.stat().st_size} bytes, sha256 {actual})")
+    b64_text = "".join(part.read_text(encoding="utf-8").strip() for part in PARTS)
+    result["patch_base64_length"] = len(b64_text)
+    result["patch_base64_sha256"] = hashlib.sha256(b64_text.encode("ascii")).hexdigest()
+    if result["patch_base64_sha256"] != EXPECTED_PATCH_B64_SHA256:
+        raise RuntimeError("Patch base64 SHA-256 mismatch")
+
+    gzip_bytes = base64.b64decode(b64_text, validate=True)
+    result["patch_gzip_length"] = len(gzip_bytes)
+    result["patch_gzip_sha256"] = hashlib.sha256(gzip_bytes).hexdigest()
+    if result["patch_gzip_sha256"] != EXPECTED_PATCH_GZIP_SHA256:
+        raise RuntimeError("Patch gzip SHA-256 mismatch")
+
+    patch_bytes = gzip.decompress(gzip_bytes)
+    result["patch_length"] = len(patch_bytes)
+    result["patch_sha256"] = hashlib.sha256(patch_bytes).hexdigest()
+    if result["patch_sha256"] != EXPECTED_PATCH_SHA256:
+        raise RuntimeError("Patch source SHA-256 mismatch")
+    patch = patch_bytes.decode("utf-8")
+
+    text = BASELINE.read_text(encoding="utf-8")
+    result["baseline_sha256"] = hashlib.sha256(BASELINE.read_bytes()).hexdigest()
+    replacements = {
+        "<title>L2G Scoper v3.11</title>": "<title>L2G Scoper v3.12</title>",
+        "CUI Boundary / Scoping • v3.11": "CUI Boundary / Scoping • v3.12",
+        "const VERSION='3.10';": "const VERSION='3.12';",
+        "l2g_scoper_schema_v3.7.json": "l2g_scoper_schema_v3.12.json",
+    }
+    for old, new in replacements.items():
+        if old not in text:
+            raise RuntimeError(f"Expected baseline token not found: {old}")
+        text = text.replace(old, new, 1)
+
+    marker = "\ninit();\n</script></body></html>"
+    if marker not in text:
+        raise RuntimeError("Final init marker not found")
+    text = text.replace(marker, "\n" + patch + "\n\ninit();\n</script></body></html>", 1)
+
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT.write_text(text, encoding="utf-8")
+    actual = hashlib.sha256(OUTPUT.read_bytes()).hexdigest()
+    result["generated_html_sha256"] = actual
+    result["generated_html_size_bytes"] = OUTPUT.stat().st_size
+    if actual != EXPECTED_HTML_SHA256:
+        raise RuntimeError(f"Generated HTML SHA-256 mismatch: {actual} != {EXPECTED_HTML_SHA256}")
+    result["status"] = "pass"
+except Exception as exc:
+    result["error"] = str(exc)
+finally:
+    RESULT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+
+print(json.dumps(result, indent=2))
+if result["status"] != "pass":
+    raise SystemExit(1)
