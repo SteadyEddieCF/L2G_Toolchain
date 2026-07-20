@@ -1,0 +1,21 @@
+{
+  "test": "deterministic v7.9.5 to v7.9.5.1 runtime materialization",
+  "baseline": {
+    "filename": "DocConverter-L2G_v7.9.5.html",
+    "size_bytes": 7937765,
+    "sha256": "781668a7cfa84f91d2541485f512ad2f9ee41260da5d06bf2d0106e5be92357c"
+  },
+  "generated_runtime": {
+    "filename": "DocConverter-L2G_v7.9.5.1.html",
+    "size_bytes": 7952581,
+    "sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"
+  },
+  "rebuilt_runtime": {
+    "filename": "rebuilt.html",
+    "size_bytes": 7952581,
+    "sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"
+  },
+  "byte_identical": true,
+  "expected_sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d",
+  "result": "PASS"
+}
