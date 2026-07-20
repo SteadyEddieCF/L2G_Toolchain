@@ -7,7 +7,7 @@
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01",
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part02"
   ],
-  "patch_base64_length": 11388,
-  "patch_base64_sha256": "b12a3c85bd7305c935be86ea83a24b8e105e202e15744f1195527f95095a94e0",
+  "patch_base64_length": 12000,
+  "patch_base64_sha256": "a136af5a4a325f9a588103e93d6cadcfe67eaa97f792d16a7bb602eeca39a706",
   "error": "Patch base64 SHA-256 mismatch"
 }
