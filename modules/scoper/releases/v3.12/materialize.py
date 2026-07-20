@@ -25,7 +25,16 @@ try:
     if not BASELINE.exists() or not PARTS:
         raise RuntimeError("Missing v3.11 baseline or v3.12 patch source parts")
 
-    b64_text = "".join(part.read_text(encoding="utf-8").strip() for part in PARTS)
+    part_texts = [part.read_text(encoding="utf-8").strip() for part in PARTS]
+    result["part_details"] = [
+        {
+            "path": str(part.relative_to(ROOT)),
+            "length": len(text),
+            "sha256": hashlib.sha256(text.encode("ascii")).hexdigest(),
+        }
+        for part, text in zip(PARTS, part_texts)
+    ]
+    b64_text = "".join(part_texts)
     result["patch_base64_length"] = len(b64_text)
     result["patch_base64_sha256"] = hashlib.sha256(b64_text.encode("ascii")).hexdigest()
     if result["patch_base64_sha256"] != EXPECTED_PATCH_B64_SHA256:
