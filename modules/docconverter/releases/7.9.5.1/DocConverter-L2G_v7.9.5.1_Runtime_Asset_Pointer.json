@@ -1,0 +1,13 @@
+{
+  "release": "DocConverter-L2G v7.9.5.1",
+  "status": "generated_release_asset_pending_repository_publish",
+  "filename": "DocConverter-L2G_v7.9.5.1.html",
+  "size_bytes": 7952581,
+  "sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d",
+  "baseline_filename": "DocConverter-L2G_v7.9.5.html",
+  "baseline_sha256": "781668a7cfa84f91d2541485f512ad2f9ee41260da5d06bf2d0106e5be92357c",
+  "build_script": "build_v7951.py",
+  "patch_source": "DocConverter-L2G_v7.9.5.1_Candidate_Precision_Patch.js",
+  "current_pointer_updated": false,
+  "reason": "Draft PR intentionally does not advance the current-release pointer until the generated runtime is published and reviewed."
+}
