@@ -11,7 +11,7 @@ OUTPUT = ROOT / "modules/scoper/releases/v3.12/L2Scoper-v3.12.html"
 RESULT = ROOT / "modules/scoper/releases/v3.12/materialization-result.json"
 PARTS = sorted((ROOT / "modules/scoper/releases/v3.12/source").glob("patch-v3.12.js.gz.b64.part*"))
 EXPECTED_HTML_SHA256 = "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3"
-EXPECTED_PATCH_B64_SHA256 = "9e43af79fa4649a2fbb9905f4d591db6bfb191940583f23c0be3dc24bcc6b894"
+EXPECTED_PATCH_B64_SHA256 = "c8befb2206d7ed00f567938f276d7b02841cbc861ea3f669f16a32a5b4398789"
 EXPECTED_PATCH_SHA256 = "8604e2f3fb48846c463646becb15d21d8f1bf76946688f260653e015499da107"
 
 result = {
