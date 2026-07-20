@@ -1,0 +1,35 @@
+name: Materialize Scoper v3.12
+
+on:
+  push:
+    branches:
+      - release/scoper-v3.12
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Materialize deterministic v3.12 runtime
+        run: python3 modules/scoper/releases/v3.12/materialize.py
+
+      - name: Commit generated runtime when needed
+        shell: bash
+        run: |
+          git add modules/scoper/releases/v3.12/L2Scoper-v3.12.html
+          if git diff --cached --quiet; then
+            echo "Scoper v3.12 runtime already matches the expected checksum."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Materialize L2G Scoper v3.12 runtime"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
