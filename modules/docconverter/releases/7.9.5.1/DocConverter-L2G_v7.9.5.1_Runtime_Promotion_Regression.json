@@ -1,0 +1,143 @@
+{
+  "promotion": "DocConverter-L2G v7.9.5.1 runtime promotion",
+  "generated_at": "2026-07-20",
+  "result": "PASS",
+  "runtime": {
+    "filename": "DocConverter-L2G_v7.9.5.1.html",
+    "size_bytes": 7952581,
+    "sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d",
+    "deterministic_build": true,
+    "static_verification": true
+  },
+  "browser_environment": {
+    "engine": "system Chromium 144 via Python Playwright",
+    "mode": "real Chromium DOM/File API using set_content because managed policy blocks direct URL navigation",
+    "native_windows_file_origin": "required and delegated to repository Windows file:// CI gate"
+  },
+  "full_archive": {
+    "archive_files": 104,
+    "zip_sha256": "aec6ff6bdc4826931d439e39f29bbe309203093393e62407d6a25be8861b2099",
+    "outer_zip_completed": true,
+    "outer_zip_session_documents": 91,
+    "outer_zip_inner_entry_cap": 90,
+    "supplemental_overflow_files": 14,
+    "supplemental_overflow_completed": true,
+    "combined_file_coverage": 104,
+    "documents_with_extracted_text": 84,
+    "source_ids_present": 91,
+    "page_errors": 0,
+    "console_warnings_errors": 0,
+    "http_https_requests": 0
+  },
+  "validation_question_precision": {
+    "original_count": 14,
+    "accepted_count": 12,
+    "rejected_count": 2,
+    "merged_duplicate_count": 0,
+    "raw_json_field_value_fragments": 0,
+    "genuine_question_or_instruction_count": 12,
+    "accepted_with_source_traceability": 12,
+    "sample": [
+      {
+        "question": "Row 9 Guardrail All scope categories and responsibility values are draft and require advisor validation.",
+        "source_file": "McFirecoal_Asset_Provider_Technology_Profile_Completed.xlsx",
+        "source_document_id": "sd_2c9e67fa"
+      },
+      {
+        "question": "Validate provider responsibility at practice and objective level before relying on inherited controls.",
+        "source_file": "McFirecoal_Capability_Technology_Provider_Questionnaire_Completed.docx",
+        "source_document_id": "sd_864cc3ea"
+      },
+      {
+        "question": "Confirm all transient storage in AKS, logging pipelines, support exports, and provider diagnostic bundles.",
+        "source_file": "McFirecoal_CUI_Boundary_Scoping_Questionnaire_Completed.docx",
+        "source_document_id": "sd_9fd10006"
+      },
+      {
+        "question": "Validate emergency support exports, emailed diagnostic bundles, and customer download-link expiration.",
+        "source_file": "McFirecoal_CUI_Boundary_Scoping_Questionnaire_Completed.docx",
+        "source_document_id": "sd_9fd10006"
+      },
+      {
+        "question": "Validate GitLab dedicated tenant authorization, commercial CI runner isolation, and provider diagnostic traffic.",
+        "source_file": "McFirecoal_CUI_Boundary_Scoping_Questionnaire_Completed.docx",
+        "source_document_id": "sd_9fd10006"
+      }
+    ]
+  },
+  "capability_regression": {
+    "ocr": {
+      "result": "PASS",
+      "attempted": 1,
+      "successful": 1,
+      "confidence": 93,
+      "text_length": 328,
+      "local_only": true,
+      "network_requests": 0
+    },
+    "diagram": {
+      "result": "PASS",
+      "artifacts": 4,
+      "nodes": 10,
+      "edges": 4,
+      "primary_flow_source": "McFirecoal_CFMS_CUI_Data_Flow.drawio"
+    },
+    "security_evidence": {
+      "result": "PASS",
+      "artifacts": 42,
+      "parsed": 39,
+      "inventory_only": 3,
+      "records": 1110,
+      "finding_candidates": 137
+    },
+    "meeting_context": {
+      "result": "PASS",
+      "strict_auto_sources": 1,
+      "records": 7,
+      "conflicts": 0,
+      "retained_source": {
+        "filename": "McFirecoal_CMMC_Workshop_Transcript.vtt",
+        "format": "Microsoft Teams/WebVTT",
+        "source_fingerprint": "fnv1a-e0965b28",
+        "selection_method": "automatic_strict",
+        "selection_basis": "WEBVTT signature",
+        "selection_confidence": "High"
+      },
+      "note": "Strict auto-detection retained the VTT and did not falsely classify looser recap/notes sources; those remain available through the explicit meeting lane."
+    },
+    "evidence_bundle": {
+      "result": "PASS",
+      "outer_zip_entry_limit_honored": true,
+      "overflow_tested_separately": true,
+      "nested_zip_retained": true,
+      "nested_children_present": true,
+      "pcap_inventory_only": true
+    },
+    "package_contract": {
+      "result": "PASS",
+      "intake_kind": "l2g_intake_package_v1",
+      "intake_version": "1.0",
+      "scope_kind": "l2g_scope_context_v1",
+      "scope_version": "1.0",
+      "meeting_kind": "l2g_meeting_context_v1",
+      "meeting_version": "1.0"
+    },
+    "offline_security": {
+      "result": "PASS",
+      "csp_connect_none": true,
+      "external_scripts": 0,
+      "http_https_requests": 0,
+      "page_errors": 0
+    }
+  },
+  "inherited_limitation": {
+    "sqlite_picker_retained_v7951": false,
+    "sqlite_picker_retained_v795": false,
+    "classification": "preexisting baseline behavior; not introduced by v7.9.5.1 candidate-precision patch",
+    "promotion_blocking": false
+  },
+  "promotion_decision": {
+    "advance_current_release_pointer": true,
+    "reason": "Full supplied archive completed under the documented 90-entry inner ZIP safeguard; all 14 capped entries were processed in a supplemental real-browser batch. Precision, extraction, OCR, diagram, security-evidence, meeting, bundle, package-contract, offline, and security checks passed without a v7.9.5.1 regression."
+  }
+}
