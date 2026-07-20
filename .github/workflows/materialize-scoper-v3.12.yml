@@ -36,7 +36,12 @@ jobs:
       - name: Commit generated runtime or diagnostic
         shell: bash
         run: |
-          git add modules/scoper/releases/v3.12/L2Scoper-v3.12.html modules/scoper/releases/v3.12/materialization-result.json 2>/dev/null || true
+          if [ -f modules/scoper/releases/v3.12/materialization-result.json ]; then
+            git add modules/scoper/releases/v3.12/materialization-result.json
+          fi
+          if [ -f modules/scoper/releases/v3.12/L2Scoper-v3.12.html ]; then
+            git add modules/scoper/releases/v3.12/L2Scoper-v3.12.html
+          fi
           if git diff --cached --quiet; then
             echo "No materialization changes to commit."
             exit 0
