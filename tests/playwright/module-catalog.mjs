@@ -10,8 +10,8 @@ export const modules = [
   {
     slug: 'docconverter-v7.9.5',
     name: 'DocConverter-L2G',
-    version: 'v7.9.5',
-    path: '/modules/docconverter/releases/v7.9.5/DocConverter-L2G_v7.9.5.html'
+    version: 'v7.9.5.1',
+    path: '/modules/docconverter/releases/7.9.5.1/DocConverter-L2G_v7.9.5.1.html'
   },
   {
     slug: 'scoper-v3.11',
