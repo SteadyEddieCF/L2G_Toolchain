@@ -1,0 +1,24 @@
+{
+  "release": "DocConverter-L2G v7.9.5.1",
+  "generated_at": "2026-07-20",
+  "release_focus": "Validation-question candidate precision hotfix",
+  "baseline": {"version":"v7.9.5","sha256":"781668a7cfa84f91d2541485f512ad2f9ee41260da5d06bf2d0106e5be92357c"},
+  "result": "PASS",
+  "package_contract_changed": false,
+  "primary_runtime": {"filename":"DocConverter-L2G_v7.9.5.1.html","size_bytes":7952581,"sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"},
+  "reviewable_source": {
+    "patch":{"filename":"DocConverter-L2G_v7.9.5.1_Candidate_Precision_Patch.js","sha256":"fd5bcd31eab9514ef3644ed73398d2afe8f914b174893503bb9829946145001f"},
+    "build":{"filename":"build_v7951.py","sha256":"8bb49113c4e0e57366b5a5c13bb9d59c3c522a1436cead01056d3d20d81051ae"}
+  },
+  "reference_inputs": {
+    "affected_scope_context_sha256":"a2c06c696551f2e2eb1efb02463e467db77e6b8b18fff99b0b73341fa56cf017",
+    "mcfirecoal_test_package_sha256":"e61edf8b0655205c664208d3c7bebda6e0d4b21731936e1c9812cb63d440b876",
+    "scoper_audit_report_sha256":"fed991cf259a69afa1d807cf2327c504c24189918c8e455873d582f9da56175b",
+    "scoper_audit_json_sha256":"e95acac286a28e9041e7fbc5845a02f3734258d0462375b7ea7b20719f1a75c4"
+  },
+  "limitations": [
+    "Representative candidate-stage regression used six real files from the supplied 104-file McFirecoal package. A full browser ZIP extraction run was attempted but timed out in the managed environment and is not claimed as a pass.",
+    "The draft PR intentionally leaves the current-release pointer unchanged until the generated runtime is published and reviewed."
+  ],
+  "tool_boundary": "DocConverter-L2G only"
+}

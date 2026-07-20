@@ -1,0 +1,104 @@
+{
+  "release": "DocConverter-L2G v7.9.5.1",
+  "generated_at": "2026-07-20",
+  "tests": {
+    "startup_identity": {
+      "title": "DocConverter-L2G v7.9.5.1",
+      "hero": "v7.9.5.1",
+      "footer": "Offline single-file HTML. No network calls by default. DocConverter-L2G v7.9.5.1.",
+      "pass": true
+    },
+    "controlled_replay": {
+      "original_raw_fragment_count": 7,
+      "exported_question_count": 4,
+      "exported_raw_fragment_count": 0,
+      "clean_questionnaire_candidates_retained": [
+        "Validate mailbox forwarding and external sharing controls.",
+        "Confirm whether provider administrators can access security logs.",
+        "RISK-002: ServiceNow attachment handling requires validation.",
+        "Provider responsibilities are shared and must be validated."
+      ],
+      "source_traceability_retained": true,
+      "diagnostics": {
+        "original_count": 12,
+        "accepted_count": 4,
+        "rejected_count": 8,
+        "merged_duplicate_count": 0,
+        "accepted": [
+          {"question":"Validate mailbox forwarding and external sharing controls.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_questionnaire","source_basis":"Validation/open item detected in source text.","source_reference":"","confidence":"Medium"},
+          {"question":"Confirm whether provider administrators can access security logs.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_questionnaire","source_basis":"Validation/open item detected in source text.","source_reference":"","confidence":"Medium"},
+          {"question":"RISK-002: ServiceNow attachment handling requires validation.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_questionnaire","source_basis":"Validation/open item detected in source text.","source_reference":"","confidence":"Medium"},
+          {"question":"Provider responsibilities are shared and must be validated.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_questionnaire","source_basis":"Validation/open item detected in source text.","source_reference":"","confidence":"Medium"}
+        ],
+        "rejected": [
+          {"question":"\"review_required_reason\": \"Synthetic setup data requires advisor review.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_reprojson","source_basis":"Validation/open item detected in source text.","source_reference":""},
+          {"question":"\"review_required_reason\": \"Open scoping decision requires validation.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_reprojson","source_basis":"Validation/open item detected in source text.","source_reference":""},
+          {"question":"\"review_required_reason\": \"Capability ownership is draft and requires workshop validation.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_reprojson","source_basis":"Validation/open item detected in source text.","source_reference":""},
+          {"question":"\"Notes\": \"Scope must be validated before practice conclusions.\"","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_reprojson","source_basis":"Validation/open item detected in source text.","source_reference":""},
+          {"question":"\"Notes\": \"Provider admin access requires validation.\"","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_reprojson","source_basis":"Validation/open item detected in source text.","source_reference":""},
+          {"question":"\"Notes\": \"Draft evidence exists but requires advisor review; do not treat as final assessment readiness.","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_reprojson","source_basis":"Validation/open item detected in source text.","source_reference":""},
+          {"question":"\"why_review_required\": \"Client-proposed categorization must be validated by advisor.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_reprojson","source_basis":"Validation/open item detected in source text.","source_reference":""},
+          {"question":"Open items","reason_code":"header","reason":"Header or schema label, not a question","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_questionnaire","source_basis":"Validation/open item detected in source text.","source_reference":""}
+        ]
+      },
+      "pass": true
+    },
+    "affected_21_candidate_fixture": {
+      "original_count": 21,
+      "accepted_count": 11,
+      "rejected_count": 8,
+      "accepted": [
+        {"question":"Validate mailbox forwarding and external sharing controls.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_b612e357","source_basis":"Validation/open item detected in source text."},
+        {"question":"Validate application roles and storage account access.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_b612e357","source_basis":"Validation/open item detected in source text."},
+        {"question":"Validate access paths, contractual flow-down, and evidence ownership.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_b612e357","source_basis":"Validation/open item detected in source text."},
+        {"question":"Confirm no CUI processing or connectivity that would change categorization.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_b612e357","source_basis":"Validation/open item detected in source text."},
+        {"question":"Provider inherited responsibilities require validation and should not be assumed.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_b612e357","source_basis":"Validation/open item detected in source text."},
+        {"question":"Engineering sandbox is proposed specialized/out-of-scope but requires validation that no production CUI was copied.","source_file":"McFeddy_Fed_CUI_Boundary_Scoping_Questionnaire_Filled.docx","source_document_id":"sd_b612e357","source_basis":"Validation/open item detected in source text."},
+        {"question":"Validate asset inventory and data flow diagrams.","source_file":"McFeddy_Fed_L2G_Workshop_Questionnaire_Filled.docx","source_document_id":"sd_a17da029","source_basis":"Validation/open item detected in source text."},
+        {"question":"Validate contracts, support access, and inherited responsibility.","source_file":"McFeddy_Fed_L2G_Workshop_Questionnaire_Filled.docx","source_document_id":"sd_a17da029","source_basis":"Validation/open item detected in source text."},
+        {"question":"Provider responsibilities are shared and must be validated.","source_file":"McFeddy_Fed_Draft_SSP_System_Description.docx","source_document_id":"sd_ddbc099b","source_basis":"Validation/open item detected in source text."},
+        {"question":"RISK-002: ServiceNow attachment handling requires validation.","source_file":"McFeddy_Fed_Annual_Risk_Assessment_2026.pdf","source_document_id":"sd_e8a41963","source_basis":"Validation/open item detected in source text."},
+        {"question":"Validate with real tenant export during workshop.","source_file":"ServiceNow_Attachment_Policy_Export.html","source_document_id":"sd_2fb40bb5","source_basis":"Validation/open item detected in source text."}
+      ],
+      "rejected": [
+        {"question":"\"review_required_reason\": \"Synthetic setup data requires advisor review.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_faa802a0","source_basis":"Validation/open item detected in source text.","source_reference":""},
+        {"question":"\"review_required_reason\": \"Open scoping decision requires validation.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_faa802a0","source_basis":"Validation/open item detected in source text.","source_reference":""},
+        {"question":"\"review_required_reason\": \"Capability ownership is draft and requires workshop validation.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_faa802a0","source_basis":"Validation/open item detected in source text.","source_reference":""},
+        {"question":"\"Notes\": \"Scope must be validated before practice conclusions.\"","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_faa802a0","source_basis":"Validation/open item detected in source text.","source_reference":""},
+        {"question":"\"Notes\": \"Provider admin access requires validation.\"","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_faa802a0","source_basis":"Validation/open item detected in source text.","source_reference":""},
+        {"question":"\"Notes\": \"Draft evidence exists but requires advisor review; do not treat as final assessment readiness.","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_intake_package_v1.json","source_document_id":"sd_faa802a0","source_basis":"Validation/open item detected in source text.","source_reference":""},
+        {"question":"\"why_review_required\": \"Client-proposed categorization must be validated by advisor.\",","reason_code":"nonquestion_field","reason":"Serialized non-question field/value fragment","source_file":"McFeddy_Fed_l2g_scope_context_v1.json","source_document_id":"sd_ed71db03","source_basis":"Validation/open item detected in source text.","source_reference":""},
+        {"question":"Open items","reason_code":"header","reason":"Header or schema label, not a question","source_file":"McFeddy_Fed_POAM_Summary.docx","source_document_id":"sd_55895c8d","source_basis":"Validation/open item detected in source text.","source_reference":""}
+      ],
+      "raw_json_fragments_exported": 0,
+      "accepted_source_traceability_retained": true,
+      "pass": true
+    },
+    "mcfirecoal_representative_candidate_stage": {
+      "source_file_count": 6,
+      "source_documents_in_scope": 6,
+      "elapsed_seconds": 0.56,
+      "accepted_question_count": 5,
+      "rejected_question_count": 1,
+      "raw_json_fragments_exported": 0,
+      "source_traceability_retained": true,
+      "ordinary_questionnaire_or_evidence_instructions_retained": 4,
+      "candidate_precision_summary": {"policy_version":"1.0","release":"v7.9.5.1","original_count":6,"accepted_count":5,"rejected_count":1,"merged_duplicate_count":0,"guardrail":"Rejected candidates do not remove their source document. Accepted questions remain draft/advisor-review-required."},
+      "pass": true
+    },
+    "package_identity_and_guardrails": {
+      "intake": {"package_kind":"l2g_intake_package_v1","package_version":"1.0","converter_version":"v7.9.5.1"},
+      "scope": {"package_kind":"l2g_scope_context_v1","package_version":"1.0","converter_version":"v7.9.5.1"},
+      "meeting": {"package_kind":"l2g_meeting_context_v1","package_version":"1.0","converter_version":"v7.9.5.1","record_count":0},
+      "prohibited_output_strings_present": [],
+      "local_path_leakage": false,
+      "raw_json_fragments_in_scope_download": 0,
+      "pass": true
+    },
+    "runtime_safety": {"page_errors":[],"console_warnings_or_errors":[],"http_https_requests":[],"identity_mutations":[],"pass":true}
+  },
+  "limitations": [
+    "Representative candidate-stage regression used six real files from the supplied 104-file McFirecoal package. A full browser ZIP extraction run was attempted but timed out in the managed environment and is not claimed as a pass."
+  ],
+  "overall_pass": true
+}
