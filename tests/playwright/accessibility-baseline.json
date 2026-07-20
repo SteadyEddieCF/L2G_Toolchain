@@ -1,0 +1,38 @@
+{
+  "baseline_version": "1.0",
+  "policy": "Only exact known critical findings are tolerated. New critical rules or targets fail CI.",
+  "modules": {
+    "control-center-v0.3.2": [
+      {
+        "rule": "label",
+        "target": ".dropzone.panel > .packageFile[accept=\"application/json,.json\"][type=\"file\"]",
+        "owner": "control-center",
+        "expires_by": "v0.3.3",
+        "reason": "Current package picker lacks an accessible label; fix in the next bounded Control Center release."
+      }
+    ],
+    "builder-merger-v3.8": [
+      {
+        "rule": "aria-required-children",
+        "target": ".mode-select",
+        "owner": "builder-merger",
+        "expires_by": "v3.9",
+        "reason": "Current tablist contains a non-tab clear-session button; correct the role structure in the next Builder/Merger release."
+      },
+      {
+        "rule": "label",
+        "target": "#workbookFile",
+        "owner": "builder-merger",
+        "expires_by": "v3.9",
+        "reason": "Current workbook file input lacks an accessible label."
+      },
+      {
+        "rule": "label",
+        "target": "#handoffFile",
+        "owner": "builder-merger",
+        "expires_by": "v3.9",
+        "reason": "Current handoff file input lacks an accessible label."
+      }
+    ]
+  }
+}
