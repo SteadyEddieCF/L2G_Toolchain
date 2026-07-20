@@ -14,10 +14,11 @@ export const modules = [
     path: '/modules/docconverter/releases/v7.9.5/DocConverter-L2G_v7.9.5.html'
   },
   {
-    slug: 'scoper-v3.11',
+    slug: 'scoper-v3.12',
     name: 'L2G Scoper',
-    version: 'v3.11',
-    path: '/modules/scoper/releases/v3.11/L2Scoper-v3.11.html'
+    version: 'v3.12',
+    path: '/modules/scoper/releases/v3.12/L2Scoper-v3.12.html',
+    visual: false
   },
   {
     slug: 'workshop-v76',
