@@ -1,24 +1,81 @@
 {
   "release": "DocConverter-L2G v7.9.5.1",
   "generated_at": "2026-07-20",
-  "release_focus": "Validation-question candidate precision hotfix",
-  "baseline": {"version":"v7.9.5","sha256":"781668a7cfa84f91d2541485f512ad2f9ee41260da5d06bf2d0106e5be92357c"},
-  "result": "PASS",
-  "package_contract_changed": false,
-  "primary_runtime": {"filename":"DocConverter-L2G_v7.9.5.1.html","size_bytes":7952581,"sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"},
-  "reviewable_source": {
-    "patch":{"filename":"DocConverter-L2G_v7.9.5.1_Candidate_Precision_Patch.js","sha256":"fd5bcd31eab9514ef3644ed73398d2afe8f914b174893503bb9829946145001f"},
-    "build":{"filename":"build_v7951.py","sha256":"8bb49113c4e0e57366b5a5c13bb9d59c3c522a1436cead01056d3d20d81051ae"}
+  "promoted_at": "2026-07-20",
+  "release_focus": "Validation-question candidate precision hotfix and governed runtime promotion",
+  "baseline": {
+    "version": "v7.9.5",
+    "sha256": "781668a7cfa84f91d2541485f512ad2f9ee41260da5d06bf2d0106e5be92357c"
   },
-  "reference_inputs": {
-    "affected_scope_context_sha256":"a2c06c696551f2e2eb1efb02463e467db77e6b8b18fff99b0b73341fa56cf017",
-    "mcfirecoal_test_package_sha256":"e61edf8b0655205c664208d3c7bebda6e0d4b21731936e1c9812cb63d440b876",
-    "scoper_audit_report_sha256":"fed991cf259a69afa1d807cf2327c504c24189918c8e455873d582f9da56175b",
-    "scoper_audit_json_sha256":"e95acac286a28e9041e7fbc5845a02f3734258d0462375b7ea7b20719f1a75c4"
+  "result": "PASS",
+  "status": "current_supplied_release_candidate_pending_pr_ci_and_merge",
+  "package_contract_changed": false,
+  "primary_runtime": {
+    "filename": "DocConverter-L2G_v7.9.5.1.html",
+    "repository_path": "modules/docconverter/releases/7.9.5.1/DocConverter-L2G_v7.9.5.1.html",
+    "size_bytes": 7952581,
+    "sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d",
+    "materialized": true,
+    "deterministic_build_verified": true
+  },
+  "reviewable_source": {
+    "patch": {
+      "filename": "DocConverter-L2G_v7.9.5.1_Candidate_Precision_Patch.js",
+      "sha256": "fd5bcd31eab9514ef3644ed73398d2afe8f914b174893503bb9829946145001f"
+    },
+    "build": {
+      "filename": "build_v7951.py",
+      "sha256": "8bb49113c4e0e57366b5a5c13bb9d59c3c522a1436cead01056d3d20d81051ae"
+    }
+  },
+  "promotion_validation": {
+    "mcfirecoal_test_package_sha256": "aec6ff6bdc4826931d439e39f29bbe309203093393e62407d6a25be8861b2099",
+    "supplied_file_count": 104,
+    "coverage_method": "normal 90-entry inner-ZIP safeguard plus 14-file overflow real-browser batch",
+    "covered_file_count": 104,
+    "validation_questions_original": 14,
+    "validation_questions_accepted": 12,
+    "validation_questions_rejected": 2,
+    "raw_json_field_value_fragments_exported": 0,
+    "accepted_questions_with_source_traceability": 12,
+    "embedded_ocr_real_browser": "pass",
+    "diagram_intelligence": "pass",
+    "security_evidence": "pass",
+    "meeting_context_precision": "pass",
+    "evidence_bundle_safeguards": "pass",
+    "offline_and_security": "pass"
+  },
+  "promotion_artifacts": [
+    {
+      "filename": "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Report.md",
+      "size_bytes": 6210,
+      "sha256": "1e6f7e196d6970e97b1640227ecc4b064a5191b2540ed2a618bf624048d28d5b"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Regression.json",
+      "size_bytes": 7426,
+      "sha256": "0751e69d1fef2b8e41371af37e9466cd8fce3ffff646ec610a4a5e39faf282c1"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5.1_Deterministic_Build_Verification.json",
+      "size_bytes": 740,
+      "sha256": "3127372e0f291273ca65c0b2279e6e24ff5a3051f7f24e2e6efd04f36db98767"
+    },
+    {
+      "filename": "DocConverter-L2G_v7.9.5.1_Runtime_Promotion_Static_Verification.json",
+      "size_bytes": 2918,
+      "sha256": "597a6d507a10c3706199facbc9729af914b16ff56089c307fac1cd295591a0a4"
+    }
+  ],
+  "stable_packages": {
+    "l2g_intake_package_v1": "1.0",
+    "l2g_scope_context_v1": "1.0",
+    "l2g_meeting_context_v1": "1.0"
   },
   "limitations": [
-    "Representative candidate-stage regression used six real files from the supplied 104-file McFirecoal package. A full browser ZIP extraction run was attempted but timed out in the managed environment and is not claimed as a pass.",
-    "The draft PR intentionally leaves the current-release pointer unchanged until the generated runtime is published and reviewed."
+    "The supplied ZIP exceeds the existing 90-inner-entry safeguard. The first 90 entries completed through normal ZIP ingestion and the remaining 14 supplied files completed in a supplemental real-browser batch; the safeguard was not bypassed or redesigned.",
+    "Direct browser URL navigation is blocked by the managed execution policy. Full functional validation used real system Chromium with the actual HTML DOM and File API; native Windows file-origin behavior remains a repository CI gate.",
+    "Evidence_Index.sqlite is not retained by the normal picker in either v7.9.5 or v7.9.5.1. This is inherited baseline behavior and was not changed in the bounded promotion follow-up."
   ],
-  "tool_boundary": "DocConverter-L2G only"
+  "tool_boundary": "DocConverter-L2G runtime promotion and necessary shared QA catalog pointer only"
 }
