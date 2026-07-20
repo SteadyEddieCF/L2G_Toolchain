@@ -5,6 +5,7 @@
   "parts": [
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part00",
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01a",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01b",
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part02",
     "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part03"
   ],
@@ -20,6 +21,11 @@
       "sha256": "5cfdf2f9f93978b904afcee701f4ba827c789211ddeb9db25986cc47d05e32d1"
     },
     {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01b",
+      "length": 500,
+      "sha256": "533b7a567c1dc0ad2f9b82858d7e13965c3e66866f976d2523e0822c220d3c5c"
+    },
+    {
       "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part02",
       "length": 4000,
       "sha256": "5b4f1da3d92b4edd99629d0ab0757a9ffc599b911dbb80426b9446a049bd3ed9"
@@ -30,7 +36,7 @@
       "sha256": "ab4b43cad65bb23515dd7f797ba1bc82f18857634043956583c84273d182f580"
     }
   ],
-  "patch_base64_length": 11856,
-  "patch_base64_sha256": "ba55bf44fd0bb0659dfa7f87b2d2694f9d2bc16e930c449f8d1f72192ebbbca4",
+  "patch_base64_length": 12356,
+  "patch_base64_sha256": "d35e33a2b62247bc81a81984bff69ef892df65f10491ca8087f0cf25cb9ae86d",
   "error": "Patch base64 SHA-256 mismatch"
 }
