@@ -70,7 +70,7 @@ jobs:
           if find tests/playwright -type f -path '*-snapshots/*.png' -print -quit | grep -q .; then
             npm run test:visual
           else
-            npm run test:visual -- --update-snapshots=missing
+            npx playwright test tests/playwright/visual.spec.mjs --project=chromium --update-snapshots
           fi
       - name: Upload visual baseline candidates and diffs
         if: always()
@@ -80,6 +80,7 @@ jobs:
           path: |
             tests/playwright/**/*-snapshots/*.png
             test-results/playwright-report
+            test-results/playwright-results.json
             test-results/playwright
           if-no-files-found: warn
           retention-days: 30
