@@ -1,8 +1,10 @@
 {
   "module": "DocConverter-L2G",
-  "current_supplied_version": "v7.9.5",
-  "release_path": "modules/docconverter/releases/7.9.5",
+  "current_supplied_version": "v7.9.5.1",
+  "release_path": "modules/docconverter/releases/7.9.5.1",
+  "runtime_filename": "DocConverter-L2G_v7.9.5.1.html",
+  "runtime_sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d",
   "status": "current_supplied_release",
   "next_action": "v7.9.6 OCR Review Workbench and Batch Navigation",
-  "recorded_at": "2026-07-17"
+  "recorded_at": "2026-07-20"
 }
