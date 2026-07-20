@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - release/scoper-v3.12
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -11,11 +15,13 @@ permissions:
 jobs:
   materialize:
     runs-on: ubuntu-latest
+    env:
+      TARGET_BRANCH: ${{ github.head_ref || github.ref_name }}
     steps:
       - name: Check out release branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
 
       - name: Materialize deterministic v3.12 runtime
@@ -32,4 +38,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Materialize L2G Scoper v3.12 runtime"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          git push origin "HEAD:${TARGET_BRANCH}"
