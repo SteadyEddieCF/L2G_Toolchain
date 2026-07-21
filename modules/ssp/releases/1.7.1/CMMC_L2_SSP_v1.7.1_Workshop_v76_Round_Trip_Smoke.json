@@ -1,0 +1,27 @@
+{
+  "release_candidate": "CMMC L2 SSP Modern Editable v1.7.1",
+  "workshop": "CMMC L2 Gap Workshop Tool v76",
+  "result": "PASS",
+  "passed": 32,
+  "total": 32,
+  "contracts": {
+    "l2g_ssp_handoff_v1": "1.0",
+    "l2g_ssp_return_package_v1": "1.0",
+    "l2g_ssp_round_trip_audit_v1": "0.1"
+  },
+  "control_count": 110,
+  "automatic_control_or_status_application": false,
+  "protected_requirements_and_objectives_unchanged": true,
+  "assessment_state_changed_before_workshop_apply": false,
+  "page_errors": 0,
+  "console_errors": 0,
+  "network_requests": 0,
+  "local_path_leakage": false,
+  "input_package_mutations": false,
+  "remaining_gates": [
+    "repository CI",
+    "independent draft PR review",
+    "SME/QMS pilot",
+    "production governance"
+  ]
+}
