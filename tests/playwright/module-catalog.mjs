@@ -34,7 +34,7 @@ export const modules = [
     path: '/modules/builder-merger/releases/v3.8/L2G-BM_v3.8.html'
   },
   {
-    slug: 'ssp-v1.7.1',
+    slug: 'ssp-v1.7',
     name: 'CMMC L2 SSP Modern Editable',
     version: 'v1.7.1',
     path: '/modules/ssp/releases/v1.7.1/CMMC_L2_SSP_Modern_Editable_v1.7.1.html',
