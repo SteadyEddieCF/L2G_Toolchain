@@ -1,0 +1,29 @@
+{
+  "release_candidate": "CMMC L2 SSP Modern Editable v1.7.1",
+  "workshop": "CMMC L2 Gap Workshop Tool v76",
+  "result": "PASS",
+  "passed": 38,
+  "total": 38,
+  "contracts": {
+    "handoff": {"package_kind": "l2g_ssp_handoff_v1", "package_version": "1.0", "control_count": 110},
+    "return": {"package_kind": "l2g_ssp_return_package_v1", "package_version": "1.0", "control_count": 110},
+    "audit": {"package_kind": "l2g_ssp_round_trip_audit_v1", "package_version": "0.1", "read_only": true}
+  },
+  "guardrails": {
+    "existing_ssp_and_word_review_precedence": true,
+    "protected_text_unchanged": true,
+    "automatic_control_application": false,
+    "automatic_status_application": false,
+    "automatic_assessment_conclusions": false,
+    "backup_apply_undo_redo": true,
+    "workshop_assessment_state_unchanged_before_apply": true
+  },
+  "repeatability": {"package_identity_stable": true, "control_counts_stable": true, "state_fingerprints_stable": true},
+  "runtime": {"page_errors": 0, "console_errors": 0, "network_requests": 0, "local_path_leakage": false, "source_mutation": false},
+  "input_sha256": {
+    "workshop_v76_html": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a",
+    "ssp_v1.7.1_html": "8d1e7bd57808b4af216918bf8f692611f27b41ddf222a99cb47a848aec23a1b3",
+    "workshop_v76_zip": "27f25fd30338cbbcf9a575c29646492feed74d7a698cb1c0894857d8fcffa728",
+    "ssp_v1.7.1_rc_zip": "816b395ec7649d272c45f9f0f5a3bc479b25c6ebd06a36693c726d9a158047ef"
+  }
+}
