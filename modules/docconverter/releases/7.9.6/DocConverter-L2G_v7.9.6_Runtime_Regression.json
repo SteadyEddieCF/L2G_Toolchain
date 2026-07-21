@@ -1,0 +1,94 @@
+{
+  "release": "DocConverter-L2G v7.9.6",
+  "generated_at": "2026-07-21",
+  "result": "PASS_WITH_DISCLOSED_LARGE_BUNDLE_TIMEOUT",
+  "baseline": {
+    "version": "v7.9.5.1",
+    "sha256": "df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"
+  },
+  "runtime": {
+    "filename": "DocConverter-L2G_v7.9.6.html",
+    "size_bytes": 7987979,
+    "sha256": "a4e1532fbd2ecafd43f50e5c2e9cb86c6ee0b208dc5073a6702a2c267b86a4a5"
+  },
+  "tests": {
+    "basic_runtime": {
+      "result": "PASS",
+      "page_errors": 0,
+      "console_errors": 0,
+      "network_requests": 0,
+      "identity_stable": true,
+      "workbench_present": true,
+      "legacy_auto_apply_hidden": true
+    },
+    "synthetic_workbench": {
+      "result": "PASS",
+      "page_states": ["Completed", "Completed", "Failed"],
+      "previous_next_navigation": true,
+      "native_decision": "native",
+      "combined_decision": "combined",
+      "automatic_replacement": false,
+      "candidate_precision_questions": 1
+    },
+    "real_embedded_ocr": {
+      "result": "PASS",
+      "status": "success",
+      "ocr_characters": 328,
+      "confidence": 93,
+      "text_automatically_replaced": false,
+      "pending_review_state": "pending_review",
+      "explicit_decision": "ocr",
+      "package_selected_source": "ocr"
+    },
+    "six_file_core_fixture": {
+      "result": "PASS",
+      "selected_files": 6,
+      "session_records": 8,
+      "processing_complete": true,
+      "package_build_ms": 41,
+      "package_kind": "l2g_intake_package_v1",
+      "package_version": "1.0",
+      "meeting_records": 7,
+      "identity": {
+        "title": "DocConverter-L2G v7.9.6",
+        "version": "v7.9.6",
+        "hero": ["v7.9.6"],
+        "footer": ["Offline single-file HTML. No network calls by default. DocConverter-L2G v7.9.6."]
+      }
+    },
+    "candidate_precision_21": {
+      "result": "PASS",
+      "original": 21,
+      "accepted": 11,
+      "rejected": 8,
+      "duplicates_merged": 2,
+      "raw_fragments_exported": 0,
+      "accepted_with_traceability": 11
+    },
+    "static_scan": {
+      "result": "PASS",
+      "inline_scripts": 26,
+      "syntax_passed": true,
+      "duplicate_ids": 0,
+      "external_scripts": 0,
+      "csp_connect_src_none": true
+    },
+    "full_104_file_outer_zip": {
+      "result": "NOT_COMPLETED_WITHIN_TIMEOUT",
+      "claimed_pass": false,
+      "timeout_seconds": 720
+    }
+  },
+  "stable_packages": {
+    "l2g_intake_package_v1": "1.0",
+    "l2g_scope_context_v1": "1.0",
+    "l2g_meeting_context_v1": "1.0"
+  },
+  "limitations": [
+    "The large outer-ZIP attempt did not return a complete result within the managed execution timeout.",
+    "This release does not claim a v7.9.6 full 104-file ZIP pass.",
+    "The authoritative v7.9.5.1 promotion previously covered all 104 supplied files using the normal 90-entry ZIP safeguard plus a 14-file overflow batch.",
+    "v7.9.6 completed a real-browser six-file core regression, a real embedded-OCR regression, the exact 21-candidate precision regression, and package/identity/offline checks.",
+    "The Windows checklist requires another full outer-ZIP run before treating v7.9.6 as a large-bundle performance baseline."
+  ]
+}
