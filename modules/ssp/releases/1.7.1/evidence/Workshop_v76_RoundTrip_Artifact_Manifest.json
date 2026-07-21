@@ -1,0 +1,12 @@
+{
+  "evidence_kind": "ssp_workshop_exact_version_round_trip_artifact_manifest_v1",
+  "ssp_version": "v1.7.1",
+  "workshop_version": "v76",
+  "result": "PASS",
+  "artifacts": [
+    {"filename": "l2g_ssp_handoff_v1_mcfirecoal_workshop_v76.json", "size_bytes": 128430, "sha256": "164b10ae3718a076c07e12c2db8c0756276bb9666018d3525a5f858cd2ca34d0", "package_kind": "l2g_ssp_handoff_v1", "package_version": "1.0", "control_count": 110},
+    {"filename": "l2g_ssp_return_package_v1_mcfirecoal_ssp_v1.7.1.json", "size_bytes": 70698, "sha256": "886d6f0fe4579f0e6a03f7562f4e3dac383c80769d07be936c7e00363f1716e1", "package_kind": "l2g_ssp_return_package_v1", "package_version": "1.0", "control_count": 110},
+    {"filename": "l2g_ssp_round_trip_audit_v1_mcfirecoal_workshop_v76.json", "size_bytes": 1327, "sha256": "44d7fc3feb5566c2f89b2efdf1305f62ffe2641757f1f6d934c9aede3c22c862", "package_kind": "l2g_ssp_round_trip_audit_v1", "package_version": "0.1", "control_count": null},
+    {"filename": "CMMC_L2_SSP_v1.7.1_PreApply_Backup.json", "size_bytes": 157514, "sha256": "ce365147ef31c0ca2b33984a2555b3454afb1834890491df94cc670155d1234f", "package_kind": null, "package_version": null, "control_count": null}
+  ]
+}
