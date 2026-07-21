@@ -1,0 +1,42 @@
+name: Materialize SSP v1.7.1 visual baselines
+
+on:
+  push:
+    branches:
+      - release/cmmc-l2-ssp-v1.7.1
+    paths:
+      - '.github/workflows/materialize-ssp-v171-visual.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-visuals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release/cmmc-l2-ssp-v1.7.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Materialize Control Center runtime
+        run: python modules/control-center/releases/0.3.3/build_release.py
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Generate current visual baselines
+        run: npx playwright test tests/playwright/visual.spec.mjs --project=chromium --update-snapshots
+      - name: Commit SSP v1.7.1 baselines
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/playwright/visual.spec.mjs-snapshots/ssp-v1-7-1-light-chromium-linux.png tests/playwright/visual.spec.mjs-snapshots/ssp-v1-7-1-dark-chromium-linux.png
+          git diff --cached --quiet || git commit -m "Add SSP v1.7.1 visual regression baselines"
+          git push origin HEAD:release/cmmc-l2-ssp-v1.7.1
