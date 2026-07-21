@@ -1,0 +1,53 @@
+{
+  "release": "L2G Scoper v3.12",
+  "generated_at": "2026-07-20T21:13:07.568143+00:00",
+  "status": "pass",
+  "baseline": "L2G Scoper v3.11",
+  "organization": "McFeddy Fed",
+  "package_sha256": "2709cced75bbc12b61bacab3500909f6e920118a7bb4c017d290c1f340e88070",
+  "html_sha256": "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3",
+  "counts": {
+    "source_documents": 71,
+    "assets": 10,
+    "providers": 2,
+    "flows": 4,
+    "unknown_boundary_items": 28,
+    "technology_profiles": 10,
+    "profile_records": 10,
+    "material_decisions": 54,
+    "clean_pre_workshop_questions": 73,
+    "quarantined_question_candidates": 14,
+    "practice_records": 0
+  },
+  "assertions": {
+    "package_identity_unchanged": true,
+    "generator_version_v312": true,
+    "storage_key_preserved": true,
+    "ten_unique_profiles": true,
+    "ten_profile_records": true,
+    "ten_call_and_action_idempotency_pass": true,
+    "decision_ledger_present_and_valid": true,
+    "question_package_present_and_valid": true,
+    "question_diagnostics_traceable": true,
+    "zero_practice_records": true,
+    "no_local_path_leakage": true,
+    "no_prohibited_conclusion_flags": true,
+    "static_security_pass": true,
+    "browser_accessibility_pass": true,
+    "document_outputs_pass": true,
+    "powerpoint_outputs_pass": true,
+    "workshop_backward_smoke_pass": true,
+    "authoritative_template_embedded_exactly": true
+  },
+  "path_scan_hits": [],
+  "related_evidence": [
+    "L2G_Scoper_v3.12_Ten_Call_and_Action_Idempotency_Regression.json",
+    "L2G_Scoper_v3.12_Decision_Ledger_Extraction.json",
+    "L2G_Scoper_v3.12_Pre_Workshop_Question_Package_Extraction.json",
+    "L2G_Scoper_v3.12_Static_Security_Scan.json",
+    "L2G_Scoper_v3.12_Browser_Static_Security_Accessibility.json",
+    "L2G_Scoper_v3.12_Document_Output_Validation.json",
+    "L2G_Scoper_v3.12_PowerPoint_Output_Validation.json",
+    "L2G_Scoper_v3.12_Workshop_Smoke_Import_Report.json"
+  ]
+}

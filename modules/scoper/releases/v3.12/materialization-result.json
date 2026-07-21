@@ -1,0 +1,85 @@
+{
+  "status": "pass",
+  "baseline": "modules/scoper/releases/v3.11/L2Scoper-v3.11.html",
+  "output": "modules/scoper/releases/v3.12/L2Scoper-v3.12.html",
+  "parts": [
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part00",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01a",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01b",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01c",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01d",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01e",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01f",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01g",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01h",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part02",
+    "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part03"
+  ],
+  "part_details": [
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part00",
+      "length": 4000,
+      "sha256": "9ba7b2a1b52d2826831221075a5e9fc890de0b5351cedab1c6e247568ef446a5"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01a",
+      "length": 500,
+      "sha256": "5cfdf2f9f93978b904afcee701f4ba827c789211ddeb9db25986cc47d05e32d1"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01b",
+      "length": 500,
+      "sha256": "533b7a567c1dc0ad2f9b82858d7e13965c3e66866f976d2523e0822c220d3c5c"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01c",
+      "length": 500,
+      "sha256": "3cd2cc42cb2111c51636fb1526db8c6e5685f79cce30260b7c96699069ffd840"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01d",
+      "length": 500,
+      "sha256": "61abd136c803dcaa51ed4dfb76e1decbf95e9d9a9695283d2d8521fafb2c54f4"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01e",
+      "length": 500,
+      "sha256": "fe66dfff3d36e7419c70863466e90ae0913ea671d8ed62105026b2e559a864c9"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01f",
+      "length": 500,
+      "sha256": "9d1decf1c578f829da6c5bd90ee62a606a6ae992aa28e974982847a5f98df9a5"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01g",
+      "length": 500,
+      "sha256": "3aa5da37b6a911d83637ed27257809f970f1da79d5687c7cb0857a010ff678bd"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part01h",
+      "length": 500,
+      "sha256": "9f2b9cc053fde23504f87e2d278c988e09732d4a6c042d50e54970d675f0699e"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part02",
+      "length": 4000,
+      "sha256": "5b4f1da3d92b4edd99629d0ab0757a9ffc599b911dbb80426b9446a049bd3ed9"
+    },
+    {
+      "path": "modules/scoper/releases/v3.12/source/patch-v3.12.js.gz.b64.part03",
+      "length": 3356,
+      "sha256": "ab4b43cad65bb23515dd7f797ba1bc82f18857634043956583c84273d182f580"
+    }
+  ],
+  "patch_base64_length": 15356,
+  "patch_base64_sha256": "c8befb2206d7ed00f567938f276d7b02841cbc861ea3f669f16a32a5b4398789",
+  "patch_base64_padding_added": 0,
+  "patch_gzip_length": 11517,
+  "patch_gzip_sha256": "9267e4ed6cfefcee4dbcbb0ddaa95272ab2f9a1dcdf352a43f0dcbceab7c9ad4",
+  "patch_length": 42781,
+  "patch_sha256": "8604e2f3fb48846c463646becb15d21d8f1bf76946688f260653e015499da107",
+  "baseline_sha256": "4cef94f43ceb71dac43167b0b1e41b3ec5ba398d2b6032089b2a720062572d20",
+  "generated_html_sha256": "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3",
+  "generated_html_size_bytes": 462931
+}

@@ -1,0 +1,43 @@
+{
+  "package_kind": "l2g_scoper_compatibility_manifest_v1",
+  "release": "L2G Scoper v3.12",
+  "generated_at": "2026-07-20T21:13:07.572436+00:00",
+  "baseline": "v3.11",
+  "input_contract": {
+    "package_kind": "l2g_scope_context_v1",
+    "package_version": "1.0"
+  },
+  "output_contract": {
+    "package_kind": "l2g_scope_return_package_v1",
+    "package_version": "1.0"
+  },
+  "additive_optional_sections": [
+    "scoping_decision_ledger_v1",
+    "pre_workshop_question_package_v1",
+    "question_candidate_diagnostics_v312",
+    "scoper_release_v312"
+  ],
+  "backward_compatibility": {
+    "v3_11_optional_sections_preserved": true,
+    "unknown_optional_fields_preserved_or_safely_ignored": true,
+    "existing_question_arrays_preserved": true,
+    "browser_storage_key": "l2scoper_v30_state",
+    "existing_v3_11_workspace_compatible": true,
+    "older_importers_may_ignore_additive_sections": true,
+    "workshop_v49_backward_smoke": "pass",
+    "current_workshop_v76_contract_target": "unchanged package identity; repository CI smoke remains recommended"
+  },
+  "guardrails": {
+    "practice_records_emitted": 0,
+    "final_scope_determinations": 0,
+    "readiness_or_evidence_sufficiency_conclusions": 0,
+    "offline_local_only": true,
+    "network_calls_required": false
+  },
+  "powerpoint": {
+    "built_in_template_sha256": "6a5bb9bb166619933b78eb4845541f996cfe346f0cf266b9c9292441f11af32c",
+    "embedded_template_exact_match": true,
+    "custom_template_supported": true
+  },
+  "status": "pass"
+}

@@ -1,0 +1,72 @@
+{
+  "release": "L2G Scoper v3.12",
+  "generated_at": "2026-07-20T21:15:00Z",
+  "baseline": "L2G Scoper v3.11",
+  "runtime": {
+    "path": "modules/scoper/releases/v3.12/L2Scoper-v3.12.html",
+    "sha256": "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3",
+    "size_bytes": 462931,
+    "materialization": "authoritative v3.11 runtime plus deterministic bounded v3.12 patch"
+  },
+  "package_contracts": {
+    "input": {
+      "package_kind": "l2g_scope_context_v1",
+      "package_version": "1.0"
+    },
+    "output": {
+      "package_kind": "l2g_scope_return_package_v1",
+      "package_version": "1.0"
+    }
+  },
+  "browser_storage_key": "l2scoper_v30_state",
+  "authoritative_built_in_template": {
+    "filename": "CMMC_Scoper_Built-In_v2.pptx",
+    "sha256": "6a5bb9bb166619933b78eb4845541f996cfe346f0cf266b9c9292441f11af32c",
+    "embedded_exact_match": true
+  },
+  "additive_optional_sections": [
+    "scoping_decision_ledger_v1",
+    "pre_workshop_question_package_v1",
+    "question_candidate_diagnostics_v312",
+    "scoper_release_v312"
+  ],
+  "regression": {
+    "status": "pass",
+    "fresh_return_sha256": "2709cced75bbc12b61bacab3500909f6e920118a7bb4c017d290c1f340e88070",
+    "technology_profiles": 10,
+    "profile_records": 10,
+    "material_decisions": 54,
+    "clean_questions": 73,
+    "quarantined_candidates": 14,
+    "practice_records": 0
+  },
+  "final_workshop_v76_smoke_import": {
+    "status": "pass",
+    "evidence_path": "modules/scoper/releases/v3.12/evidence/L2G_Scoper_v3.12_Workshop_v76_Smoke_Import_Evidence.json",
+    "workshop_version": "v76",
+    "workshop_sha256": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a",
+    "recognized_package_kind": "l2g_scope_return_package_v1",
+    "recognized_package_version": "1.0",
+    "source_documents": 71,
+    "candidate_assets": 10,
+    "providers": 2,
+    "cui_flows": 4,
+    "legacy_validation_questions": 10,
+    "practice_targets": 0,
+    "practice_records": 0,
+    "additive_sections_safely_ignored": true,
+    "content_state_unchanged_before_apply": true,
+    "source_package_mutated": false,
+    "page_errors": 0,
+    "console_errors": 0,
+    "external_network_requests": 0,
+    "repeated_preview_identity_and_counts_stable": true
+  },
+  "external_release_artifacts": {
+    "standalone_html": "L2Scoper-v3.12.html",
+    "standalone_html_sha256": "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3",
+    "complete_zip": "L2G_Scoper_v3.12_Deliverables_Final_Smoke.zip",
+    "complete_zip_sha256": "827d81ab1daba805fb6b6d041932d4f4eae490b4eb5d4f5767194ef82e8af8ae",
+    "binary_policy": "Generated Office outputs, rendered PDFs, screenshots, and full regression fixtures are distributed in the release ZIP rather than repeated in git history."
+  }
+}
