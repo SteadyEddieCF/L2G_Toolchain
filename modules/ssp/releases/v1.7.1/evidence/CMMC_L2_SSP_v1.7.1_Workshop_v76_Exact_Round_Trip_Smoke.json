@@ -1,0 +1,67 @@
+{
+  "release_candidate": "CMMC L2 SSP Modern Editable v1.7.1",
+  "workshop": "CMMC L2 Gap Workshop Tool v76",
+  "executed_at": "2026-07-21T19:30:58.731569+00:00",
+  "status": "pass",
+  "passed": 37,
+  "failed": 0,
+  "assertions": {
+    "workshop_exact_version_v76": true,
+    "workshop_handoff_kind": "l2g_ssp_handoff_v1",
+    "workshop_handoff_version": "1.0",
+    "workshop_handoff_controls": 110,
+    "repeated_workshop_preview_identity_stable": true,
+    "repeated_workshop_preview_counts_stable": true,
+    "ssp_exact_version_v171": true,
+    "ssp_controls": 110,
+    "ssp_recognized_handoff": true,
+    "ssp_preview_controls": 110,
+    "control_or_status_auto_selected": false,
+    "existing_ssp_and_word_values_retain_precedence": true,
+    "lower_precedence_candidates_flagged": true,
+    "existing_word_review_value_unchanged": true,
+    "status_auto_applied": false,
+    "protected_requirement_unchanged": true,
+    "protected_objectives_unchanged": true,
+    "backup_created": true,
+    "undo_pass": true,
+    "redo_pass": true,
+    "ssp_return_kind": "l2g_ssp_return_package_v1",
+    "ssp_return_version": "1.0",
+    "ssp_return_controls": 110,
+    "repeated_ssp_export_identity_and_counts_stable": true,
+    "source_handoff_fingerprint_preserved": "fnv1a-acabbe69",
+    "workshop_recognized_ssp_return": true,
+    "workshop_return_preview_controls": 110,
+    "workshop_state_unchanged_before_apply": true,
+    "workshop_preview_selected_fields": 0,
+    "workshop_assessment_state_unchanged_before_apply": true,
+    "audit_kind": "l2g_ssp_round_trip_audit_v1",
+    "audit_version": "0.1",
+    "audit_read_only": true,
+    "repeated_audit_counts_stable": true,
+    "source_handoff_mutated": false,
+    "page_errors": 0,
+    "console_errors": 0,
+    "network_requests": 0,
+    "local_path_leakage_hits": 0
+  },
+  "artifacts": {
+    "l2g_ssp_handoff_v1_mcfirecoal_v76_exact.json": {
+      "sha256": "416ee5fc57d3ff38da6a183b75781819bec45ec02fbd89174c4c20ab36e9eed1",
+      "size_bytes": 148036
+    },
+    "l2g_ssp_return_package_v1_mcfirecoal_v1.7.1_exact.json": {
+      "sha256": "d85bae0472dc95e0195ea297484c043a0365a71a66cf63362a81ec01ec43fe63",
+      "size_bytes": 70310
+    },
+    "l2g_ssp_round_trip_audit_v1_mcfirecoal_v76_exact.json": {
+      "sha256": "c523c892013658132a540e35003381de1ce2eab3e171561da86a1929e86cd441",
+      "size_bytes": 1327
+    },
+    "CMMC_L2_SSP_v1.7.1_v76_smoke_backup.json": {
+      "sha256": "1bc745bbb385510b47acc24f6cc647b031fe5e3a6d991d91d9c7eddd42957bf9",
+      "size_bytes": 160604
+    }
+  }
+}
