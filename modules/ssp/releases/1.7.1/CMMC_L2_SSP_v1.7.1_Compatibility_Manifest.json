@@ -1,0 +1,17 @@
+{
+  "manifest_kind": "l2g_ssp_production_compatibility_v1",
+  "generated_at": "2026-07-21T03:31:55Z",
+  "release": {"tool_name": "CMMC Level 2 SSP Modern Editable", "version": "v1.7.1", "release_name": "Documentation and Package-Integrity Closeout", "local_only": true},
+  "package_contracts": {
+    "ssp_backup": {"schema": "cmmc-l2-ssp-modern-v1.7.1", "status": "stable"},
+    "word_review": {"format": "cmmc-l2-ssp-word-review-v1", "status": "stable"},
+    "workshop_ssp_handoff": {"package_kind": "l2g_ssp_handoff_v1", "package_version": "1.0", "direction": "in", "status": "validated"},
+    "ssp_return": {"package_kind": "l2g_ssp_return_package_v1", "package_version": "1.0", "direction": "out", "status": "validated"},
+    "round_trip_audit": {"package_kind": "l2g_ssp_round_trip_audit_v1", "package_version": "0.1", "direction": "reference_only", "status": "optional_read_only"}
+  },
+  "compatibility": [
+    {"tool": "CMMC L2 Gap Workshop Tool", "version": "v76", "status": "exact-version bidirectional smoke passed"},
+    {"tool": "L2G Control Center", "status": "not modified in this release"}
+  ],
+  "guardrails": {"preview_required": true, "automatic_control_application": false, "automatic_status_application": false, "protected_requirement_overwrite": false, "final_assessment_conclusions": false}
+}
