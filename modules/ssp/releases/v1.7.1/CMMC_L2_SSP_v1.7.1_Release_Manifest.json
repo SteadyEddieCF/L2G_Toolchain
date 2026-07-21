@@ -1,0 +1,24 @@
+{
+  "manifest_kind": "cmmc_l2_ssp_release_manifest_v1",
+  "generated_at": "2026-07-21T19:30:58Z",
+  "release": {"version": "v1.7.1", "baseline": "v1.7", "name": "Documentation and Package-Integrity Closeout"},
+  "runtime": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.7.1.html",
+    "repository_path": "modules/ssp/releases/v1.7.1/CMMC_L2_SSP_Modern_Editable_v1.7.1.html",
+    "size_bytes": 1295285,
+    "sha256": "8d1e7bd57808b4af216918bf8f692611f27b41ddf222a99cb47a848aec23a1b3",
+    "materialization": "authoritative v1.7 runtime plus deterministic bounded v1.7.1 patch"
+  },
+  "contracts": {
+    "in": {"package_kind": "l2g_ssp_handoff_v1", "package_version": "1.0"},
+    "out": {"package_kind": "l2g_ssp_return_package_v1", "package_version": "1.0"},
+    "optional_audit": {"package_kind": "l2g_ssp_round_trip_audit_v1", "package_version": "0.1", "read_only": true}
+  },
+  "test_status": {
+    "packaged_regression": {"passed": 150, "total": 150},
+    "workshop_v76_exact_round_trip": {"passed": 37, "total": 37},
+    "status": "passed"
+  },
+  "release_scope": {"new_product_features": false, "package_contract_changes": false, "version_consistency_closeout": true, "workshop_v76_exact_smoke": true},
+  "approval_posture": "draft_pull_request_only; SME/QMS and production-governance gates remain open"
+}
