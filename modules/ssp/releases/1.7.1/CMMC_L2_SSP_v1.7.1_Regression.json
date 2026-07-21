@@ -1,0 +1,19 @@
+{
+  "release": "v1.7.1",
+  "generated_at": "2026-07-21T03:42:19Z",
+  "passed": 150,
+  "total": 150,
+  "suites": [
+    {"name": "release_integrity_and_version_consistency", "passed": 71, "total": 71},
+    {"name": "chromium_l2g_handshake_and_v17_migration", "passed": 38, "total": 38},
+    {"name": "compatibility_and_image_security", "passed": 20, "total": 20},
+    {"name": "word_review_security", "passed": 21, "total": 21}
+  ],
+  "exact_version_smoke": {
+    "adjacent_tool": "CMMC L2 Gap Workshop Tool v76",
+    "passed": 38,
+    "total": 38,
+    "status": "passed"
+  },
+  "status": "passed"
+}
