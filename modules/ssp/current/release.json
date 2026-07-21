@@ -1,12 +1,21 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.7",
-  "release_path": "modules/ssp/releases/1.7",
-  "status": "current_supplied_release",
-  "next_action": "Round-trip smoke test; release only for demonstrated need",
-  "recorded_at": "2026-07-17",
+  "current_supplied_version": "v1.7.1",
+  "release_path": "modules/ssp/releases/1.7.1",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.7.1.html",
+  "status": "release_candidate_pending_pr_ci_and_independent_review",
+  "next_action": "Complete repository CI and independent draft-PR review, then begin SME/QMS pilot",
+  "recorded_at": "2026-07-21",
   "stable_contracts": {
     "ssp_handoff": "1.0",
-    "ssp_return": "1.0"
-  }
+    "ssp_return": "1.0",
+    "round_trip_audit": "0.1-read-only"
+  },
+  "workshop_v76_round_trip": {
+    "result": "PASS",
+    "checks": "32/32",
+    "control_count": 110,
+    "evidence_path": "modules/ssp/releases/1.7.1/CMMC_L2_SSP_v1.7.1_Workshop_v76_Round_Trip_Smoke.json"
+  },
+  "production_baseline_approved": false
 }
