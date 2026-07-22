@@ -1,0 +1,22 @@
+{
+  "release": "v1.7.1",
+  "generated_at": "2026-07-21T19:30:58Z",
+  "packaged_regression": {
+    "passed": 150,
+    "total": 150,
+    "status": "passed"
+  },
+  "exact_version_round_trip": {
+    "workshop": "v76",
+    "passed": 37,
+    "total": 37,
+    "status": "passed"
+  },
+  "combined_evidence": {
+    "passed": 187,
+    "total": 187,
+    "status": "passed"
+  },
+  "package_contract_changes": false,
+  "new_product_features": false
+}
