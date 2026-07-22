@@ -1,0 +1,182 @@
+{
+  "release": "v1.8.0",
+  "suite": "static-and-contract-regression",
+  "status": "passed",
+  "passed": 34,
+  "total": 34,
+  "baseline_sha256": "8d1e7bd57808b4af216918bf8f692611f27b41ddf222a99cb47a848aec23a1b3",
+  "runtime_sha256": "b51cfe17065fd900c6360c3b85c9e4f29600ac8440ff35a5e6b4ba79f719bdff",
+  "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "checks": [
+    {
+      "name": "Runtime title identifies v1.8.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Application meta identifies 1.8.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Application constant identifies 1.8.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Backup schema identifies v1.8.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.7.1 backup migration retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.7.1 image migration retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.7.1 Word queue migration retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All 110 controls retained",
+      "passed": true,
+      "detail": "110"
+    },
+    {
+      "name": "All 110 reviewer panels retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No duplicate element identifiers",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "No external script or stylesheet dependency",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "No telemetry or analytics integration",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Optional portfolio action exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio controls start hidden",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Migration preview exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Pre-conversion rollback storage exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio foundation schema is versioned",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Stable portfolio and module identifiers are generated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Circular hierarchy prevention is implemented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Orphan hierarchy prevention is implemented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-system backup includes portfolio foundation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Complete foundation package is importable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Foundation and module exports include classification warning or limitation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Module shells do not infer requirement records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Known initial-release boundary is visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Workshop handoff identity remains stable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Workshop return identity remains stable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Word Review format remains stable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Protected requirement text remains excluded from handoff mapping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Authoritative 110-requirement model is byte-semantically unchanged",
+      "passed": true,
+      "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+    },
+    {
+      "name": "Embedded model retains 110 controls",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Application JavaScript syntax passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Authoritative v1.7.1 baseline hash is correct",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Runtime contains no local workspace path",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

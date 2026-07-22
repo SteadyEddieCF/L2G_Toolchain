@@ -1,0 +1,89 @@
+{
+  "release": "v1.8.0",
+  "suite": "happy-dom-runtime-foundation",
+  "status": "passed",
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "Application boots with 110 controls and consistent v1.8.0 identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System mode remains the default and modular controls are hidden",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Versioned portfolio foundation creates one stable anchor module",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Valid parent-child module relationship is accepted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Orphaned module relationship is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Circular module relationship is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Guided migration preview opens before any conversion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Confirmed conversion enables modular portfolio mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Conversion creates a complete local rollback snapshot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Converted backup preserves one anchor module and modular operating mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Foundation conversion does not infer child requirement implementation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Shared-service module can be created through the accessible UI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "New module retains the selected parent identifier",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Complete portfolio foundation export shape can be imported",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Rollback restores the pre-conversion Single-System workspace",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A v1.7.1 backup migrates to v1.8.0 without forcing portfolio mode",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

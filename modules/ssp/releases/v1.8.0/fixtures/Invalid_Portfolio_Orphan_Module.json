@@ -1,0 +1,186 @@
+{
+  "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
+  "schemaVersion": "1.0.0",
+  "operatingMode": "modular-portfolio",
+  "portfolio": {
+    "portfolioId": "portfolio-mcfirecoal-cmmc-l2",
+    "name": "McFirecoal CMMC Level 2 SSP Portfolio",
+    "description": "Synthetic anchor, shared-service, and product hierarchy for foundation testing.",
+    "operatingMode": "modular-portfolio",
+    "cmmcLevel": "2",
+    "environment": "Azure Government and AWS GovCloud",
+    "topLevelModuleId": "module-mcfirecoal-anchor",
+    "schemaVersion": "1.0.0",
+    "portfolioVersion": "1.0",
+    "status": "draft",
+    "owners": [
+      "Security Program Owner"
+    ],
+    "createdAt": "2026-07-22T00:00:00Z",
+    "updatedAt": "2026-07-22T00:00:00Z",
+    "approvedAt": "",
+    "approvedBy": ""
+  },
+  "modules": [
+    {
+      "moduleId": "module-mcfirecoal-anchor",
+      "portfolioId": "portfolio-mcfirecoal-cmmc-l2",
+      "parentModuleId": null,
+      "moduleType": "top-level",
+      "name": "McFirecoal Anchor SSP",
+      "shortName": "Anchor",
+      "description": "Synthetic McFirecoal hierarchy fixture.",
+      "boundaryStatement": "Boundary metadata for McFirecoal Anchor SSP.",
+      "subscriptionIdentifiers": [],
+      "services": [],
+      "applications": [],
+      "dataTypes": [
+        "CUI",
+        "FCI"
+      ],
+      "identitySources": [
+        "Microsoft Entra ID"
+      ],
+      "interconnections": [],
+      "responsibleOrganizations": [
+        "McFirecoal Federal Systems"
+      ],
+      "owners": [
+        "Security Program Owner"
+      ],
+      "status": "draft",
+      "version": "1.0",
+      "createdAt": "2026-07-22T00:00:00Z",
+      "updatedAt": "2026-07-22T00:00:00Z"
+    },
+    {
+      "moduleId": "module-shared-security",
+      "portfolioId": "portfolio-mcfirecoal-cmmc-l2",
+      "parentModuleId": "module-mcfirecoal-anchor",
+      "moduleType": "shared-service",
+      "name": "Shared Security Services",
+      "shortName": "Shared Security",
+      "description": "Synthetic McFirecoal hierarchy fixture.",
+      "boundaryStatement": "Boundary metadata for Shared Security Services.",
+      "subscriptionIdentifiers": [],
+      "services": [
+        "Entra ID",
+        "CrowdStrike",
+        "Wiz",
+        "SIEM"
+      ],
+      "applications": [],
+      "dataTypes": [
+        "CUI",
+        "FCI"
+      ],
+      "identitySources": [
+        "Microsoft Entra ID"
+      ],
+      "interconnections": [],
+      "responsibleOrganizations": [
+        "McFirecoal Federal Systems"
+      ],
+      "owners": [
+        "Security Program Owner"
+      ],
+      "status": "draft",
+      "version": "1.0",
+      "createdAt": "2026-07-22T00:00:00Z",
+      "updatedAt": "2026-07-22T00:00:00Z"
+    },
+    {
+      "moduleId": "module-product-alpha",
+      "portfolioId": "portfolio-mcfirecoal-cmmc-l2",
+      "parentModuleId": "module-missing",
+      "moduleType": "product",
+      "name": "Federal SaaS Product Alpha",
+      "shortName": "Product Alpha",
+      "description": "Synthetic McFirecoal hierarchy fixture.",
+      "boundaryStatement": "Boundary metadata for Federal SaaS Product Alpha.",
+      "subscriptionIdentifiers": [],
+      "services": [
+        "SaaS application"
+      ],
+      "applications": [],
+      "dataTypes": [
+        "CUI",
+        "FCI"
+      ],
+      "identitySources": [
+        "Microsoft Entra ID"
+      ],
+      "interconnections": [],
+      "responsibleOrganizations": [
+        "McFirecoal Federal Systems"
+      ],
+      "owners": [
+        "Security Program Owner"
+      ],
+      "status": "draft",
+      "version": "1.0",
+      "createdAt": "2026-07-22T00:00:00Z",
+      "updatedAt": "2026-07-22T00:00:00Z"
+    },
+    {
+      "moduleId": "module-product-bravo",
+      "portfolioId": "portfolio-mcfirecoal-cmmc-l2",
+      "parentModuleId": "module-mcfirecoal-anchor",
+      "moduleType": "product",
+      "name": "Federal SaaS Product Bravo",
+      "shortName": "Product Bravo",
+      "description": "Synthetic McFirecoal hierarchy fixture.",
+      "boundaryStatement": "Boundary metadata for Federal SaaS Product Bravo.",
+      "subscriptionIdentifiers": [],
+      "services": [
+        "SaaS application"
+      ],
+      "applications": [],
+      "dataTypes": [
+        "CUI",
+        "FCI"
+      ],
+      "identitySources": [
+        "Microsoft Entra ID"
+      ],
+      "interconnections": [],
+      "responsibleOrganizations": [
+        "McFirecoal Federal Systems"
+      ],
+      "owners": [
+        "Security Program Owner"
+      ],
+      "status": "draft",
+      "version": "1.0",
+      "createdAt": "2026-07-22T00:00:00Z",
+      "updatedAt": "2026-07-22T00:00:00Z"
+    }
+  ],
+  "moduleRequirements": [],
+  "evidence": [],
+  "decisions": [],
+  "actions": [],
+  "risks": [],
+  "conflicts": [],
+  "exceptions": [],
+  "interconnections": [],
+  "assetsAndServices": [],
+  "changeHistory": [
+    {
+      "changeId": "change-fixture-created",
+      "changeType": "fixture-created",
+      "changedAt": "2026-07-22T00:00:00Z",
+      "summary": "Created foundation hierarchy fixture."
+    }
+  ],
+  "approvedBaselines": [],
+  "migration": {
+    "sourceOperatingMode": "single-system",
+    "sourceAppVersion": "1.7.1",
+    "targetAppVersion": "1.8.0",
+    "migratedAt": "2026-07-22T00:00:00Z",
+    "backupCreated": true,
+    "contentDuplicated": false,
+    "rollbackAvailable": true
+  }
+}

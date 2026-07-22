@@ -1,0 +1,32 @@
+{
+  "manifest_kind": "cmmc_l2_ssp_release_manifest_v1",
+  "generated_at": "2026-07-22T00:00:00Z",
+  "release": {
+    "version": "v1.8.0",
+    "baseline": "v1.7.1",
+    "name": "Optional Multi-Module Portfolio Foundation"
+  },
+  "runtime": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.8.0.html",
+    "size_bytes": 1336434,
+    "sha256": "b51cfe17065fd900c6360c3b85c9e4f29600ac8440ff35a5e6b4ba79f719bdff",
+    "materialization": "governed v1.7.1 runtime plus deterministic gzip/base64 unified patch"
+  },
+  "scope": {
+    "single_system_default": true,
+    "optional_portfolio_mode": true,
+    "versioned_schema": true,
+    "migration_preview_backup_rollback": true,
+    "module_hierarchy": true,
+    "later_modular_control_model": false
+  },
+  "test_status": {
+    "local": {
+      "passed": 50,
+      "total": 50,
+      "status": "passed"
+    },
+    "repository": "pending draft PR"
+  },
+  "approval_posture": "unmerged draft pull request; independent review, SME/QMS pilot, and production governance remain open"
+}
