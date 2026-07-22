@@ -1,0 +1,217 @@
+{
+  "release": "v1.8.2",
+  "suite": "static-contract-inheritance-regression",
+  "status": "passed",
+  "passed": 41,
+  "total": 41,
+  "baseline_sha256": "f1142a23378780afc544348b84ad62cd965fe1fe353f0c3d6f6adfb3318fb640",
+  "runtime_sha256": "d43294c9121aa968bed5ec983c174b2cc5edfbea7b695f9d323707ae95419d19",
+  "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "checks": [
+    {
+      "name": "Runtime title identifies v1.8.2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Application meta identifies 1.8.2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Application constant identifies 1.8.2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Backup schema identifies v1.8.2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.1 backup migration retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.1 image migration retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.1 Word queue migration retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.1 rollback namespace recognized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All 110 controls retained",
+      "passed": true,
+      "detail": "110"
+    },
+    {
+      "name": "All 110 reviewer panels retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No duplicate element identifiers",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "No external script or stylesheet dependency",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "No telemetry or analytics integration",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System remains explicit default",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio schema advances to 1.2.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.1 portfolio schema is migratable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Deterministic canonical fingerprint exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Fingerprint uses a fixed canonical payload",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Only ancestors and active shared services are eligible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Same-requirement source resolution exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Inheritance graph validation exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Circular inheritance rejection exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Stale-parent detection exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Source changes never silently overwrite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Deterministic inherited field allowlist exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Local supplement fields exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Governed local override fields exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Override rationale is mandatory",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Stale filter and statistics exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Module deletion protects inheritance sources",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio export includes stale and override counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio package advances to 1.2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Workshop handoff identity remains stable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Workshop return identity remains stable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Word Review format remains stable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Protected requirement text remains excluded from handoff mapping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Authoritative 110-requirement model is semantically unchanged",
+      "passed": true,
+      "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+    },
+    {
+      "name": "Embedded model retains 110 controls",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Application JavaScript syntax passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Authoritative v1.8.1 baseline hash is correct",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Runtime contains no local workspace path",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}
