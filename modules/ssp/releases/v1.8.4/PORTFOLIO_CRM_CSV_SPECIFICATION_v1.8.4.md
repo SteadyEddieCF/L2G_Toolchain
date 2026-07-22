@@ -1,0 +1,3 @@
+# Portfolio CRM CSV Specification — v1.8.4
+
+Each row represents one module-requirement record. Key identity columns are Package Kind, Package Version, Portfolio ID, Module ID, Requirement Record ID, and Requirement ID. Derived columns include Record Classification, Counting Disposition, Authoritative Implementation Source, inherited-base source, evidence disposition, and open conflicts. Editable governance columns include applicability, implementation, responsibility, owners, evidence, scope, remediation, POA&M, supplements, and override metadata. Semicolon-delimited list cells are normalized on import. Derived or conflicting governed values cannot be automatically applied.

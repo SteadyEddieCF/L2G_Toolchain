@@ -1,0 +1,19 @@
+{
+  "release": "v1.8.4",
+  "status": "passed",
+  "runtimeSha256": "976251ec10d227844a7b1b4f8131f9dbcb17e2ebb1aa31c5296d711274aeeb6b",
+  "requirementModelSha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "checks": {
+    "static": 21,
+    "schemaValidFixture": 1,
+    "schemaInvalidFixtures": 6,
+    "browserFileUrl": "pending-repository-windows-gate",
+    "browserRows": 440,
+    "moduleRows": 110,
+    "reconciliationSafe": 1,
+    "reconciliationConflict": 1,
+    "reconciliationInvalid": 1,
+    "materializationRepository": 1,
+    "materializationExtractedPackage": 1
+  }
+}

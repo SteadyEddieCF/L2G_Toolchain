@@ -1,0 +1,30 @@
+{
+  "release": "v1.8.4",
+  "baseline": "v1.8.3",
+  "baselineRuntimeSha256": "81602cf206a05efb39297dce21bc06d1d3d43ec495465bb8acf97ceed632b2f5",
+  "runtimeSha256": "976251ec10d227844a7b1b4f8131f9dbcb17e2ebb1aa31c5296d711274aeeb6b",
+  "requirementModelSha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "portfolioSchemaVersion": "1.4.0",
+  "portfolioPackageVersion": "1.4",
+  "stableContracts": {
+    "sspHandoff": "1.0",
+    "sspReturn": "1.0",
+    "wordReview": "1",
+    "roundTripAudit": "0.1-read-only"
+  },
+  "migrates": [
+    "1.0.0",
+    "1.1.0",
+    "1.2.0",
+    "1.3.0"
+  ],
+  "singleSystemDefault": true,
+  "offline": true,
+  "crm": {
+    "derivedRows": true,
+    "consolidatedCsv": true,
+    "moduleCsv": true,
+    "safeOnlyReconciliation": true,
+    "assessmentConclusion": false
+  }
+}

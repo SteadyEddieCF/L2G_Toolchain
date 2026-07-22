@@ -1,0 +1,34 @@
+{
+  "release": "v1.8.4",
+  "generatedAt": "2026-07-22",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.8.4.html",
+    "sha256": "976251ec10d227844a7b1b4f8131f9dbcb17e2ebb1aa31c5296d711274aeeb6b",
+    "bytes": 1459953
+  },
+  "baseline": {
+    "release": "v1.8.3",
+    "sha256": "81602cf206a05efb39297dce21bc06d1d3d43ec495465bb8acf97ceed632b2f5"
+  },
+  "governedSource": {
+    "patchFile": "source/runtime-v1.8.3-to-v1.8.4.patch.gz.b64",
+    "patchSourceSha256": "3d9efef235652abd2743bb4e068621dd3176677b0e24e4259c23f07af80a577f",
+    "packageFallbackBaseline": "Complete deliverables package only; repository materialization uses sibling v1.8.3."
+  },
+  "schemas": [
+    "CMMC_L2_SSP_Data_Schema_v1.8.4.json",
+    "CMMC_L2_SSP_Portfolio_Foundation_Schema_v1.json"
+  ],
+  "fixtures": [
+    "Invalid_CRM_Missing_Reconciliations.json",
+    "Invalid_CRM_Reconciliation_Fingerprint.json",
+    "Invalid_CRM_Source_Identifier.json",
+    "Invalid_Impact_Field_v1.8.4.json",
+    "Invalid_Impact_Fingerprint_v1.8.4.json",
+    "Invalid_Impact_Without_Rationale_v1.8.4.json",
+    "Portfolio_CRM_McFirecoal_v1.8.4.json",
+    "Portfolio_CRM_Reconciliation_Mixed_v1.8.4.csv"
+  ],
+  "validation": "passed",
+  "nextBoundedRelease": "v1.8.5 portfolio/module JSON and Word Review exchange"
+}
