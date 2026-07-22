@@ -15,6 +15,7 @@ finally:
     for index,chunk in enumerate(chunks):
         (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\n')
 bootstrap=HERE.parents[3]/'.ssp-v1.8.7-materialize.py'
+status=HERE/'v1.8.7-materialization-status.txt'
 if bootstrap.exists():
     text=bootstrap.read_text()
     internal="""if subprocess.run(['git','diff','--cached','--quiet'],cwd=REPO).returncode:
@@ -25,4 +26,8 @@ if bootstrap.exists():
 """
     text=text.replace(internal,"print('Staged governed SSP v1.8.7 release for the approved workflow commit step.')\n")
     bootstrap.write_text(text)
-    subprocess.run([sys.executable,str(bootstrap)],check=True)
+    result=subprocess.run([sys.executable,str(bootstrap)],text=True,capture_output=True)
+    status.write_text(f'returncode={result.returncode}\n--- stdout ---\n{result.stdout}\n--- stderr ---\n{result.stderr}\n')
+    print(status.read_text())
+else:
+    status.write_text('returncode=0\nBootstrap was already consumed; no additional materialization was required.\n')
