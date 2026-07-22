@@ -12,6 +12,11 @@
     "sha256": "f1142a23378780afc544348b84ad62cd965fe1fe353f0c3d6f6adfb3318fb640"
   },
   "method": "authoritative v1.8.0 runtime plus governed gzip/base64 unified patch",
+  "repository_materialization": {
+    "status": "verified",
+    "materialized_by": "github-actions[bot]",
+    "runtime_hash_matches_release_manifest": true
+  },
   "package_contract_changes": {
     "workshop_handoff": false,
     "ssp_return": false,
