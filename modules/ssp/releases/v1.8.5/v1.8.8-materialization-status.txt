@@ -1,4 +1,0 @@
-status=passed
-runtime_sha256=c919bf7728fdca903c852a0cbc674f07b023d1bed2e59f32e030f32b56e43efe
-release=modules/ssp/releases/v1.8.8
-workflow_files_changed=false
