@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.8.2",
-  "release_path": "modules/ssp/releases/v1.8.2",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.8.2.html",
-  "runtime_sha256": "d43294c9121aa968bed5ec983c174b2cc5edfbea7b695f9d323707ae95419d19",
+  "current_supplied_version": "v1.8.3",
+  "release_path": "modules/ssp/releases/v1.8.3",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.8.3.html",
+  "runtime_sha256": "81602cf206a05efb39297dce21bc06d1d3d43ec495465bb8acf97ceed632b2f5",
   "status": "current_supplied_release_candidate",
-  "next_action": "v1.8.3 parent-change impact and conflict workflow",
+  "next_action": "v1.8.4 consolidated and module-specific CRM",
   "recorded_at": "2026-07-22",
   "operating_modes": {
     "default": "single-system",
@@ -19,10 +19,13 @@
   "optional_contracts": {
     "portfolio_foundation": {
       "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
-      "schema_version": "1.2.0",
-      "package_version": "1.2",
+      "schema_version": "1.3.0",
+      "package_version": "1.3",
       "requirements_per_module": 110,
       "deterministic_inheritance": true,
+      "grouped_impact_review": true,
+      "explicit_impact_decisions": ["refresh", "preserve", "defer", "escalate"],
+      "conflict_escalation": true,
       "silent_parent_overwrite": false
     }
   }
