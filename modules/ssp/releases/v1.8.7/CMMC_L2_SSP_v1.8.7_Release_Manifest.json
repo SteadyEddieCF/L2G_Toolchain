@@ -1,0 +1,64 @@
+{
+  "release": "v1.8.7",
+  "generatedAt": "2026-07-22",
+  "module": "CMMC L2 SSP Modern Editable",
+  "focus": "Immutable named baselines",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.8.7.html",
+    "sha256": "96736cd935d5d77fe32ec467e52aca6ea681545ce1eda8ea753a5fac543f6e4b",
+    "bytes": 1567595
+  },
+  "baseline": {
+    "release": "v1.8.6",
+    "sha256": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630"
+  },
+  "governedSource": {
+    "patchFile": "source/runtime-v1.8.6-to-v1.8.7.patch.gz.b64",
+    "patchSourceSha256": "928dae12a5524eeaec6fed01102c53bba390a04313da3242563a1043dda0e104",
+    "packageFallbackBaseline": "CMMC_L2_SSP_Modern_Editable_v1.8.6.html",
+    "deterministicGzipMtime": 0
+  },
+  "schemas": [
+    "CMMC_L2_SSP_Data_Schema_v1.8.7.json",
+    "CMMC_L2_SSP_Portfolio_Foundation_Schema_v1.json"
+  ],
+  "baselineGovernance": {
+    "packageKind": "cmmc_l2_ssp_named_baseline_v1",
+    "packageVersion": "1.7",
+    "comparisonKind": "cmmc_l2_ssp_baseline_comparison_v1",
+    "approvalLinked": true,
+    "conflictAware": true,
+    "appendOnly": true,
+    "restoreAsNewVersion": true,
+    "immutableBaseline": true,
+    "digitalSignature": false,
+    "assessmentConclusion": false
+  },
+  "fixtures": [
+    "Invalid_Baseline_Event.json",
+    "Invalid_CRM_Missing_Reconciliations.json",
+    "Invalid_CRM_Reconciliation_Fingerprint.json",
+    "Invalid_CRM_Source_Identifier.json",
+    "Invalid_Exchange_History.json",
+    "Invalid_Formal_Approval_Record.json",
+    "Invalid_Impact_Field_v1.8.7.json",
+    "Invalid_Impact_Fingerprint_v1.8.7.json",
+    "Invalid_Impact_Without_Rationale_v1.8.7.json",
+    "Invalid_Module_Word_Queue.json",
+    "Invalid_Named_Baseline_Record.json",
+    "Invalid_Review_Role_Assignment.json",
+    "Module_Exchange_Product_Alpha_v1.8.7.json",
+    "Named_Baseline_Record_v1.8.7.json",
+    "Portfolio_CRM_Consolidated_McFirecoal_v1.8.7.csv",
+    "Portfolio_CRM_McFirecoal_v1.8.7.json",
+    "Portfolio_CRM_Module_Product_Alpha_v1.8.7.csv",
+    "Portfolio_CRM_Reconciliation_Mixed_v1.8.7.csv"
+  ],
+  "validation": {
+    "local": "passed",
+    "staticChecks": 26,
+    "browserPageErrors": 0,
+    "repository": "pending draft PR"
+  },
+  "nextBoundedRelease": "v1.8.8 consolidated change and decision register"
+}

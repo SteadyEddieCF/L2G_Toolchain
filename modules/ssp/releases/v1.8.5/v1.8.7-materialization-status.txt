@@ -1,6 +1,8 @@
-returncode=1
+returncode=0
 --- stdout ---
+Materialized CMMC_L2_SSP_Modern_Editable_v1.8.7.html
+SHA-256: 96736cd935d5d77fe32ec467e52aca6ea681545ce1eda8ea753a5fac543f6e4b
+Staged governed SSP v1.8.7 release for the approved workflow commit step.
 
 --- stderr ---
-Expected 7 governed delta parts, found 6.
 

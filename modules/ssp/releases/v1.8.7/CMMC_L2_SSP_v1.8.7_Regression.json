@@ -1,0 +1,257 @@
+{
+  "release": "v1.8.7",
+  "status": "passed",
+  "runtime_sha256": "96736cd935d5d77fe32ec467e52aca6ea681545ce1eda8ea753a5fac543f6e4b",
+  "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "localSuites": {
+    "static": {
+      "release": "v1.8.7",
+      "suite": "static-immutable-baseline-regression",
+      "status": "passed",
+      "passed": 26,
+      "total": 26,
+      "runtime_sha256": "96736cd935d5d77fe32ec467e52aca6ea681545ce1eda8ea753a5fac543f6e4b",
+      "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+      "checks": [
+        {
+          "name": "Identity is v1.8.7",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "v1.8.6 migration namespaces retained",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "110 requirements retained",
+          "passed": true,
+          "detail": "110"
+        },
+        {
+          "name": "No duplicate IDs",
+          "passed": true,
+          "detail": "0"
+        },
+        {
+          "name": "Offline single-file runtime",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "No telemetry",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Single-System remains default",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Portfolio schema 1.7.0",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Baseline collections exist",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Immutable baseline UI exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Baseline functions exist",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Append-only events represented",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "No baseline edit or delete operation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Conflict gate and authorized exception exist",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Fresh approval gate exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Restoration requires administrator",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Restoration is a new version",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Baseline package contracts exist",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Deterministic fingerprint boundary explicit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "No automated assessment conclusion",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Stable prior contracts remain",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Authoritative model unchanged",
+          "passed": true,
+          "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+        },
+        {
+          "name": "JavaScript syntax passes",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "No local workspace path",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Runtime hash matches governed release",
+          "passed": true,
+          "detail": "96736cd935d5d77fe32ec467e52aca6ea681545ce1eda8ea753a5fac543f6e4b"
+        },
+        {
+          "name": "Extracted-package materialization passes",
+          "passed": true,
+          "detail": "Materialized CMMC_L2_SSP_Modern_Editable_v1.8.7.html\nSHA-256: 96736cd935d5d77fe32ec467e52aca6ea681545ce1eda8ea753a5fac543f6e4b\n"
+        }
+      ]
+    },
+    "schema": {
+      "release": "v1.8.7",
+      "suite": "schema-immutable-baseline-regression",
+      "status": "passed",
+      "validFixture": {
+        "modules": 4,
+        "moduleRequirements": 440
+      },
+      "baselineRecordValid": true,
+      "invalidBaselineRejected": true,
+      "invalidEventRejected": true,
+      "invalidFixtures": [
+        {
+          "file": "Invalid_CRM_Missing_Reconciliations.json",
+          "rejected": true,
+          "firstError": "'crmReconciliations' is a required property"
+        },
+        {
+          "file": "Invalid_CRM_Reconciliation_Fingerprint.json",
+          "rejected": true,
+          "firstError": "'bad-fingerprint' does not match '^fnv1a64-[0-9a-f]{16}$'"
+        },
+        {
+          "file": "Invalid_CRM_Source_Identifier.json",
+          "rejected": true,
+          "firstError": "42 is not of type 'string'"
+        },
+        {
+          "file": "Invalid_Exchange_History.json",
+          "rejected": true,
+          "firstError": "'bad' is not one of ['cmmc_l2_ssp_portfolio_exchange_v1', 'cmmc_l2_ssp_module_exchange_v1']"
+        },
+        {
+          "file": "Invalid_Formal_Approval_Record.json",
+          "rejected": true,
+          "firstError": "'bad' does not match '^fnv1a64-[0-9a-f]{16}$'"
+        },
+        {
+          "file": "Invalid_Impact_Field_v1.8.7.json",
+          "rejected": true,
+          "firstError": "'assessmentConclusion' is not one of ['implementationStatus', 'implementationNarrative', 'responsibilityModel', 'cspResponsibility', 'espResponsibility', 'organizationResponsibility', 'moduleResponsibility', 'ownerIds', 'evidenceIds', 'scope', 'remediationPlan', 'poamReference', 'lastValidatedAt']"
+        },
+        {
+          "file": "Invalid_Impact_Fingerprint_v1.8.7.json",
+          "rejected": true,
+          "firstError": "'sha256-not-allowed' does not match '^(?:|fnv1a64-[0-9a-f]{16})$'"
+        },
+        {
+          "file": "Invalid_Impact_Without_Rationale_v1.8.7.json",
+          "rejected": true,
+          "firstError": "'' should be non-empty"
+        },
+        {
+          "file": "Invalid_Module_Word_Queue.json",
+          "rejected": true,
+          "firstError": "'module' was expected"
+        },
+        {
+          "file": "Invalid_Review_Role_Assignment.json",
+          "rejected": true,
+          "firstError": "'owner' is not one of ['author', 'reviewer', 'approver', 'administrator']"
+        }
+      ]
+    },
+    "browser": {
+      "release": "v1.8.7",
+      "suite": "browser-immutable-baseline-regression",
+      "status": "passed",
+      "fileUrlSmoke": "blocked-by-local-browser-policy",
+      "title": "CMMC Level 2 System Security Plan - Modern Editable v1.8.7",
+      "controls": 110,
+      "baselines": {
+        "created": 3,
+        "firstStatus": "superseded",
+        "secondStatus": "active",
+        "comparisonDifferences": 1
+      },
+      "negative": {
+        "duplicateNameRejected": true,
+        "blockingConflictRejected": true
+      },
+      "exceptionGate": {
+        "blockingConflicts": 1,
+        "authorizedExceptionAllowed": true
+      },
+      "restoration": {
+        "priorVersion": "1.3",
+        "newVersion": "1.4",
+        "historyPreserved": true
+      },
+      "pageErrors": [],
+      "screenshot": "CMMC_L2_SSP_v1.8.7_Immutable_Baseline_Workbench.png"
+    }
+  },
+  "acceptance": {
+    "singleSystemDefault": true,
+    "offlineSingleFile": true,
+    "requirementsPerModule": 110,
+    "validModules": 4,
+    "validRequirementRecords": 440,
+    "namedBaselinesCreated": 3,
+    "comparisonDifferences": 1,
+    "duplicateNameRejected": true,
+    "blockingConflictRejected": true,
+    "authorizedExceptionAllowed": true,
+    "restoreAsNewVersion": true,
+    "historyPreserved": true
+  },
+  "repositoryGates": "pending draft PR"
+}
