@@ -1,0 +1,41 @@
+{
+  "release": "v1.8.6",
+  "status": "passed",
+  "runtimeSha256": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630",
+  "baselineSha256": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a",
+  "patchSourceSha256": "30bdfc53c81acc45fa47328e4d936d4d9137d5389c438d3009e0d6cd82b8a545",
+  "static": {
+    "passed": 22,
+    "total": 22
+  },
+  "schema": {
+    "validModules": 4,
+    "validModuleRequirements": 440,
+    "invalidFixturesRejected": 10
+  },
+  "browser": {
+    "release": "v1.8.6",
+    "suite": "browser-formal-review-regression",
+    "status": "passed",
+    "fileUrlSmoke": "blocked-by-local-browser-policy",
+    "title": "CMMC Level 2 System Security Plan - Modern Editable v1.8.6",
+    "controls": 110,
+    "roles": 4,
+    "submissions": 2,
+    "dispositions": 2,
+    "approval": {
+      "id": "approval-mrwflk9k-0oe2c0fgla",
+      "freshState": "approved",
+      "changedState": "stale",
+      "revokedState": "revoked"
+    },
+    "negative": {
+      "incompatibleAssignmentRejected": true,
+      "reviewerApprovalRejected": true
+    },
+    "registerFingerprint": "fnv1a64-2da440172c537d01",
+    "pageErrors": [],
+    "screenshot": "CMMC_L2_SSP_v1.8.6_Formal_Review_Workbench.png"
+  },
+  "repositoryGates": "pending draft PR"
+}

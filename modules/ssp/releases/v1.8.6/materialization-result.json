@@ -1,0 +1,9 @@
+{
+  "release": "v1.8.6",
+  "baseline": "v1.8.5",
+  "baseline_sha256": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a",
+  "patch_source_sha256": "30bdfc53c81acc45fa47328e4d936d4d9137d5389c438d3009e0d6cd82b8a545",
+  "runtime_sha256": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630",
+  "runtime": "CMMC_L2_SSP_Modern_Editable_v1.8.6.html",
+  "status": "passed"
+}

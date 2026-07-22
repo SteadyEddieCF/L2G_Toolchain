@@ -1,0 +1,61 @@
+{
+  "release": "v1.8.6",
+  "suite": "schema-formal-review-regression",
+  "status": "passed",
+  "validFixture": {
+    "modules": 4,
+    "moduleRequirements": 440
+  },
+  "invalidFixtures": [
+    {
+      "file": "Invalid_CRM_Missing_Reconciliations.json",
+      "rejected": true,
+      "firstError": "'crmReconciliations' is a required property"
+    },
+    {
+      "file": "Invalid_CRM_Reconciliation_Fingerprint.json",
+      "rejected": true,
+      "firstError": "'bad-fingerprint' does not match '^fnv1a64-[0-9a-f]{16}$'"
+    },
+    {
+      "file": "Invalid_CRM_Source_Identifier.json",
+      "rejected": true,
+      "firstError": "42 is not of type 'string'"
+    },
+    {
+      "file": "Invalid_Exchange_History.json",
+      "rejected": true,
+      "firstError": "'bad' is not one of ['cmmc_l2_ssp_portfolio_exchange_v1', 'cmmc_l2_ssp_module_exchange_v1']"
+    },
+    {
+      "file": "Invalid_Formal_Approval_Record.json",
+      "rejected": true,
+      "firstError": "'bad' does not match '^fnv1a64-[0-9a-f]{16}$'"
+    },
+    {
+      "file": "Invalid_Impact_Field_v1.8.6.json",
+      "rejected": true,
+      "firstError": "'assessmentConclusion' is not one of ['implementationStatus', 'implementationNarrative', 'responsibilityModel', 'cspResponsibility', 'espResponsibility', 'organizationResponsibility', 'moduleResponsibility', 'ownerIds', 'evidenceIds', 'scope', 'remediationPlan', 'poamReference', 'lastValidatedAt']"
+    },
+    {
+      "file": "Invalid_Impact_Fingerprint_v1.8.6.json",
+      "rejected": true,
+      "firstError": "'sha256-not-allowed' does not match '^(?:|fnv1a64-[0-9a-f]{16})$'"
+    },
+    {
+      "file": "Invalid_Impact_Without_Rationale_v1.8.6.json",
+      "rejected": true,
+      "firstError": "'' should be non-empty"
+    },
+    {
+      "file": "Invalid_Module_Word_Queue.json",
+      "rejected": true,
+      "firstError": "'module' was expected"
+    },
+    {
+      "file": "Invalid_Review_Role_Assignment.json",
+      "rejected": true,
+      "firstError": "'owner' is not one of ['author', 'reviewer', 'approver', 'administrator']"
+    }
+  ]
+}

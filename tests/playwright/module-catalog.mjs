@@ -36,8 +36,8 @@ export const modules = [
   {
     slug: 'ssp-v1.7',
     name: 'CMMC L2 SSP Modern Editable',
-    version: 'v1.8.5',
-    path: '/modules/ssp/releases/v1.8.5/CMMC_L2_SSP_Modern_Editable_v1.8.5.html',
+    version: 'v1.8.6',
+    path: '/modules/ssp/releases/v1.8.6/CMMC_L2_SSP_Modern_Editable_v1.8.6.html',
     darkStrategy: 'body-dark'
   }
 ];

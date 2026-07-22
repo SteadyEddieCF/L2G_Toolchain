@@ -1,0 +1,55 @@
+{
+  "release": "v1.8.6",
+  "generatedAt": "2026-07-22",
+  "module": "CMMC L2 SSP Modern Editable",
+  "focus": "Formal review and approval workflow",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.8.6.html",
+    "sha256": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630",
+    "bytes": 1540291
+  },
+  "baseline": {
+    "release": "v1.8.5",
+    "sha256": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a"
+  },
+  "governedSource": {
+    "patchFile": "source/runtime-v1.8.5-to-v1.8.6.patch.gz.b64",
+    "patchSourceSha256": "30bdfc53c81acc45fa47328e4d936d4d9137d5389c438d3009e0d6cd82b8a545",
+    "packageFallbackBaseline": "CMMC_L2_SSP_Modern_Editable_v1.8.5.html",
+    "deterministicGzipMtime": 0
+  },
+  "schemas": [
+    "CMMC_L2_SSP_Data_Schema_v1.8.6.json",
+    "CMMC_L2_SSP_Portfolio_Foundation_Schema_v1.json"
+  ],
+  "formalReview": {
+    "registerKind": "cmmc_l2_ssp_review_approval_register_v1",
+    "registerVersion": "1.6",
+    "roleAware": true,
+    "segregationOfDuties": true,
+    "revocation": true,
+    "immutableBaseline": false
+  },
+  "fixtures": [
+    "Invalid_CRM_Missing_Reconciliations.json",
+    "Invalid_CRM_Reconciliation_Fingerprint.json",
+    "Invalid_CRM_Source_Identifier.json",
+    "Invalid_Exchange_History.json",
+    "Invalid_Formal_Approval_Record.json",
+    "Invalid_Impact_Field_v1.8.6.json",
+    "Invalid_Impact_Fingerprint_v1.8.6.json",
+    "Invalid_Impact_Without_Rationale_v1.8.6.json",
+    "Invalid_Module_Word_Queue.json",
+    "Invalid_Review_Role_Assignment.json",
+    "Module_Exchange_Product_Alpha_v1.8.6.json",
+    "Portfolio_CRM_Consolidated_McFirecoal_v1.8.6.csv",
+    "Portfolio_CRM_McFirecoal_v1.8.6.json",
+    "Portfolio_CRM_Module_Product_Alpha_v1.8.6.csv",
+    "Portfolio_CRM_Reconciliation_Mixed_v1.8.6.csv"
+  ],
+  "validation": {
+    "local": "passed",
+    "repository": "pending draft PR"
+  },
+  "nextBoundedRelease": "v1.8.7 immutable named baselines"
+}

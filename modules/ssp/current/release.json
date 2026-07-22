@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.8.5",
-  "release_path": "modules/ssp/releases/v1.8.5",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.8.5.html",
-  "runtime_sha256": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a",
+  "current_supplied_version": "v1.8.6",
+  "release_path": "modules/ssp/releases/v1.8.6",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.8.6.html",
+  "runtime_sha256": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630",
   "status": "current_supplied_release_candidate",
-  "next_action": "v1.8.6 formal review and approval workflow",
+  "next_action": "v1.8.7 immutable named baselines",
   "recorded_at": "2026-07-22",
   "operating_modes": {
     "default": "single-system",
@@ -14,13 +14,15 @@
   "stable_contracts": {
     "ssp_handoff": "1.0",
     "ssp_return": "1.0",
-    "round_trip_audit": "0.1-read-only"
+    "round_trip_audit": "0.1-read-only",
+    "word_review": "cmmc-l2-ssp-word-review-v1",
+    "portfolio_exchange": "1.5-compatible",
+    "module_exchange": "1.5-compatible"
   },
   "optional_contracts": {
     "portfolio_foundation": {
       "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
-      "schema_version": "1.5.0",
-      "package_version": "1.5",
+      "schema_version": "1.6.0",
       "requirements_per_module": 110,
       "deterministic_inheritance": true,
       "grouped_impact_review": true,
@@ -34,6 +36,17 @@
       "module_json_exchange": true,
       "module_word_review_exchange": true,
       "safe_only_exchange_reconciliation": true,
+      "formal_review_workflow": true,
+      "review_register_kind": "cmmc_l2_ssp_review_approval_register_v1",
+      "review_register_version": "1.6",
+      "review_roles": ["author", "reviewer", "approver", "administrator"],
+      "segregation_of_duties": true,
+      "fingerprint_bound_approvals": true,
+      "approval_staleness_detection": true,
+      "approval_revocation_history": true,
+      "authenticated_identity": false,
+      "assessment_conclusion": false,
+      "immutable_named_baselines": false,
       "silent_parent_overwrite": false
     }
   }
