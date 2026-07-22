@@ -1,0 +1,79 @@
+{
+  "release": "v1.8.3",
+  "suite": "happy-dom-runtime-impact-review",
+  "status": "passed",
+  "passed": 14,
+  "total": 14,
+  "checks": [
+    {
+      "name": "Application boots with 110 controls and consistent v1.8.3 identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System remains the default",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Four modules receive exactly 440 stable requirement records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Parent change creates a pending impact without overwriting the child snapshot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Stale records are grouped by source module with field-level impact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Defer records rationale, reviewer, source fingerprint, and preserves the child snapshot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A newer parent change reopens a previously deferred decision",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserve explicitly acknowledges the change without copying source values",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Refresh is explicit and copies current source values while clearing any override",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Refreshing inherited base fields preserves the separate local supplement",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Local-override collision is detected and can be escalated without propagation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Preserve, defer, and escalate reject missing rationale",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.2 schema migrates to 1.3.0 and derives pending impacts without decisions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio 1.3 JSON round trip preserves module and impact records",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}
