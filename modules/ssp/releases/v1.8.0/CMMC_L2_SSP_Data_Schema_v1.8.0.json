@@ -1,0 +1,564 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:l2g:cmmc-l2-ssp:data-schema:1.8.0",
+  "title": "CMMC L2 SSP Working Data Backup v1.8.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "schemaVersion",
+    "appVersion",
+    "catalog",
+    "savedAt",
+    "fields",
+    "statuses",
+    "reviewerStatuses",
+    "tables",
+    "portfolioFoundation"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cmmc-l2-ssp-modern-v1.8.0"
+    },
+    "schemaVersion": {
+      "const": "1.8.0"
+    },
+    "appVersion": {
+      "const": "1.8.0"
+    },
+    "catalog": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "additionalProperties": true
+    },
+    "savedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fields": {
+      "type": "object",
+      "patternProperties": {
+        "^token:[A-Z][A-Z0-9_]{1,127}$": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "statuses": {
+      "type": "object",
+      "patternProperties": {
+        "^3\\.(?:[1-9]|1[0-4])\\.\\d+$": {
+          "enum": [
+            "implemented",
+            "inherited",
+            "not-implemented",
+            "planned",
+            "na"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "reviewerStatuses": {
+      "type": "object",
+      "patternProperties": {
+        "^3\\.(?:[1-9]|1[0-4])\\.\\d+$": {
+          "enum": [
+            "not-reviewed",
+            "needs-revision",
+            "reviewed",
+            "approved"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "tables": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/table"
+      }
+    },
+    "images": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/imageData"
+      }
+    },
+    "portfolioFoundation": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:l2g:cmmc-l2-ssp:portfolio-foundation:1.0.0",
+      "title": "CMMC L2 SSP Portfolio Foundation",
+      "description": "v1.8.0 foundation schema. Cross-record parent-child and circularity rules are enforced by the runtime in addition to JSON Schema validation.",
+      "type": "object",
+      "required": [
+        "schema",
+        "schemaVersion",
+        "operatingMode",
+        "portfolio",
+        "modules",
+        "moduleRequirements",
+        "evidence",
+        "decisions",
+        "actions",
+        "risks",
+        "conflicts",
+        "exceptions",
+        "interconnections",
+        "assetsAndServices",
+        "changeHistory",
+        "approvedBaselines",
+        "migration"
+      ],
+      "properties": {
+        "schema": {
+          "const": "cmmc-l2-ssp-portfolio-foundation-v1"
+        },
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "operatingMode": {
+          "enum": [
+            "single-system",
+            "modular-portfolio"
+          ]
+        },
+        "portfolio": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": [
+                "portfolioId",
+                "name",
+                "description",
+                "operatingMode",
+                "cmmcLevel",
+                "environment",
+                "topLevelModuleId",
+                "schemaVersion",
+                "portfolioVersion",
+                "status",
+                "owners",
+                "createdAt",
+                "updatedAt",
+                "approvedAt",
+                "approvedBy"
+              ],
+              "properties": {
+                "portfolioId": {
+                  "$ref": "#/$defs/stableId"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 2000
+                },
+                "operatingMode": {
+                  "const": "modular-portfolio"
+                },
+                "cmmcLevel": {
+                  "const": "2"
+                },
+                "environment": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "topLevelModuleId": {
+                  "$ref": "#/$defs/stableId"
+                },
+                "schemaVersion": {
+                  "const": "1.0.0"
+                },
+                "portfolioVersion": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32
+                },
+                "status": {
+                  "enum": [
+                    "draft",
+                    "in-review",
+                    "approved",
+                    "retired"
+                  ]
+                },
+                "owners": {
+                  "$ref": "#/$defs/stringList"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "approvedAt": {
+                  "type": "string"
+                },
+                "approvedBy": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modules": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "type": "object",
+            "required": [
+              "moduleId",
+              "portfolioId",
+              "parentModuleId",
+              "moduleType",
+              "name",
+              "shortName",
+              "description",
+              "boundaryStatement",
+              "subscriptionIdentifiers",
+              "services",
+              "applications",
+              "dataTypes",
+              "identitySources",
+              "interconnections",
+              "responsibleOrganizations",
+              "owners",
+              "status",
+              "version",
+              "createdAt",
+              "updatedAt"
+            ],
+            "properties": {
+              "moduleId": {
+                "$ref": "#/$defs/stableId"
+              },
+              "portfolioId": {
+                "$ref": "#/$defs/stableId"
+              },
+              "parentModuleId": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "moduleType": {
+                "enum": [
+                  "top-level",
+                  "shared-service",
+                  "tenant",
+                  "product",
+                  "application",
+                  "enclave"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "shortName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "boundaryStatement": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "subscriptionIdentifiers": {
+                "$ref": "#/$defs/stringList"
+              },
+              "services": {
+                "$ref": "#/$defs/stringList"
+              },
+              "applications": {
+                "$ref": "#/$defs/stringList"
+              },
+              "dataTypes": {
+                "$ref": "#/$defs/stringList"
+              },
+              "identitySources": {
+                "$ref": "#/$defs/stringList"
+              },
+              "interconnections": {
+                "$ref": "#/$defs/stringList"
+              },
+              "responsibleOrganizations": {
+                "$ref": "#/$defs/stringList"
+              },
+              "owners": {
+                "$ref": "#/$defs/stringList"
+              },
+              "status": {
+                "enum": [
+                  "draft",
+                  "in-review",
+                  "approved",
+                  "retired"
+                ]
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              },
+              "createdAt": {
+                "type": "string"
+              },
+              "updatedAt": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "migration": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "moduleRequirements": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "interconnections": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "assetsAndServices": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "changeHistory": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "approvedBaselines": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "operatingMode": {
+                "const": "single-system"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "portfolio": {
+                "type": "null"
+              },
+              "modules": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operatingMode": {
+                "const": "modular-portfolio"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "portfolio": {
+                "type": "object",
+                "required": [
+                  "portfolioId",
+                  "name",
+                  "description",
+                  "operatingMode",
+                  "cmmcLevel",
+                  "environment",
+                  "topLevelModuleId",
+                  "schemaVersion",
+                  "portfolioVersion",
+                  "status",
+                  "owners",
+                  "createdAt",
+                  "updatedAt",
+                  "approvedAt",
+                  "approvedBy"
+                ],
+                "properties": {
+                  "portfolioId": {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "operatingMode": {
+                    "const": "modular-portfolio"
+                  },
+                  "cmmcLevel": {
+                    "const": "2"
+                  },
+                  "environment": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "topLevelModuleId": {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  "schemaVersion": {
+                    "const": "1.0.0"
+                  },
+                  "portfolioVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "status": {
+                    "enum": [
+                      "draft",
+                      "in-review",
+                      "approved",
+                      "retired"
+                    ]
+                  },
+                  "owners": {
+                    "$ref": "#/$defs/stringList"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string"
+                  },
+                  "approvedAt": {
+                    "type": "string"
+                  },
+                  "approvedBy": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "additionalProperties": false
+              },
+              "modules": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ],
+      "$defs": {
+        "stableId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,119}$"
+        },
+        "stringList": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "migration": {
+      "type": "object"
+    },
+    "l2gIntegration": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "table": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "imageData": {
+      "type": "string",
+      "pattern": "^(?:|data:image/(?:png|jpe?g|gif|webp|svg\\+xml);base64,[A-Za-z0-9+/=\\s]+)$"
+    }
+  },
+  "additionalProperties": true
+}
