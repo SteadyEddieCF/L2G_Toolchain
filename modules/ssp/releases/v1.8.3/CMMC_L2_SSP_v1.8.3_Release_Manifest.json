@@ -1,0 +1,38 @@
+{
+  "manifest_kind": "cmmc_l2_ssp_release_manifest_v1",
+  "generated_at": "2026-07-22T00:00:00Z",
+  "release": {
+    "version": "v1.8.3",
+    "baseline": "v1.8.2",
+    "name": "Grouped Parent-Change Impact Review and Conflict Escalation"
+  },
+  "runtime": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.8.3.html",
+    "size_bytes": 1412336,
+    "sha256": "81602cf206a05efb39297dce21bc06d1d3d43ec495465bb8acf97ceed632b2f5",
+    "materialization": "governed v1.8.2 runtime plus deterministic gzip/base64 unified patch"
+  },
+  "scope": {
+    "single_system_default": true,
+    "requirements_per_module": 110,
+    "grouped_impact_review": true,
+    "explicit_decisions": [
+      "refresh",
+      "preserve",
+      "defer",
+      "escalate"
+    ],
+    "conflict_escalation": true,
+    "automatic_parent_propagation": false,
+    "formal_approvals": false
+  },
+  "test_status": {
+    "local": {
+      "passed": 73,
+      "total": 73,
+      "status": "passed"
+    },
+    "repository": "pending draft PR"
+  },
+  "approval_posture": "unmerged draft pull request; independent review, SME/QMS pilot, and production governance remain open"
+}
