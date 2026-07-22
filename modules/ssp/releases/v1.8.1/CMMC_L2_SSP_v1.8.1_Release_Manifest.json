@@ -1,0 +1,34 @@
+{
+  "manifest_kind": "cmmc_l2_ssp_release_manifest_v1",
+  "generated_at": "2026-07-22T00:00:00Z",
+  "release": {
+    "version": "v1.8.1",
+    "baseline": "v1.8.0",
+    "name": "Module Applicability and Responsibility"
+  },
+  "runtime": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.8.1.html",
+    "size_bytes": 1370362,
+    "sha256": "f1142a23378780afc544348b84ad62cd965fe1fe353f0c3d6f6adfb3318fb640",
+    "materialization": "governed v1.8.0 runtime plus deterministic gzip/base64 unified patch"
+  },
+  "scope": {
+    "single_system_default": true,
+    "requirements_per_module": 110,
+    "applicability": true,
+    "responsibility": true,
+    "bulk_review": true,
+    "unresolved_queue": true,
+    "deterministic_inheritance": false,
+    "formal_approvals": false
+  },
+  "test_status": {
+    "local": {
+      "passed": 67,
+      "total": 67,
+      "status": "passed"
+    },
+    "repository": "pending draft PR"
+  },
+  "approval_posture": "unmerged draft pull request; independent review, SME/QMS pilot, and production governance remain open"
+}
