@@ -1,0 +1,50 @@
+{
+  "release": "v1.8.5",
+  "generatedAt": "2026-07-22",
+  "module": "CMMC L2 SSP Modern Editable",
+  "focus": "Portfolio/module JSON and Word Review exchange",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.8.5.html",
+    "sha256": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a",
+    "bytes": 1503416
+  },
+  "baseline": {
+    "release": "v1.8.4",
+    "sha256": "976251ec10d227844a7b1b4f8131f9dbcb17e2ebb1aa31c5296d711274aeeb6b"
+  },
+  "governedSource": {
+    "patchFile": "source/runtime-v1.8.4-to-v1.8.5.patch.gz.b64",
+    "patchSourceSha256": "9d1b37c3f89a9c17f112f5e19e3913f333e16fcdeb72af620b758d3d38a92d49",
+    "packageFallbackBaseline": "CMMC_L2_SSP_Modern_Editable_v1.8.4.html"
+  },
+  "schemas": [
+    "CMMC_L2_SSP_Data_Schema_v1.8.5.json",
+    "CMMC_L2_SSP_Portfolio_Foundation_Schema_v1.json"
+  ],
+  "exchangeContracts": {
+    "portfolio": "cmmc_l2_ssp_portfolio_exchange_v1",
+    "module": "cmmc_l2_ssp_module_exchange_v1",
+    "packageVersion": "1.5",
+    "wordReview": "cmmc-l2-ssp-word-review-v1"
+  },
+  "fixtures": [
+    "Invalid_CRM_Missing_Reconciliations.json",
+    "Invalid_CRM_Reconciliation_Fingerprint.json",
+    "Invalid_CRM_Source_Identifier.json",
+    "Invalid_Exchange_History.json",
+    "Invalid_Impact_Field_v1.8.5.json",
+    "Invalid_Impact_Fingerprint_v1.8.5.json",
+    "Invalid_Impact_Without_Rationale_v1.8.5.json",
+    "Invalid_Module_Word_Queue.json",
+    "Module_Exchange_Product_Alpha_v1.8.5.json",
+    "Portfolio_CRM_Consolidated_McFirecoal_v1.8.5.csv",
+    "Portfolio_CRM_McFirecoal_v1.8.5.json",
+    "Portfolio_CRM_Module_Product_Alpha_v1.8.5.csv",
+    "Portfolio_CRM_Reconciliation_Mixed_v1.8.5.csv"
+  ],
+  "validation": {
+    "local": "passed",
+    "repository": "pending draft PR"
+  },
+  "nextBoundedRelease": "v1.8.6 formal review and approval workflow"
+}
