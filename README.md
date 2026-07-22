@@ -11,9 +11,9 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 | L2G Scoper | v3.11 | Complete the post-release audit gate before authorizing code changes |
 | CMMC L2 Gap Workshop Tool | v76 | v77 Evidence Ownership and Provider Follow-up |
 | L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles |
-| CMMC L2 SSP Modern Editable | v1.7.1 | Independent review and SME/QMS pilot; bounded corrections only |
+| CMMC L2 SSP Modern Editable | v1.8.0 | v1.8.1 module applicability and responsibility model |
 
-These are the latest releases supplied to the repository bootstrap on 2026-07-17, with the SSP pointer advanced by its governed v1.7.1 promotion candidate. This table is not a claim that the six releases have completed one full end-to-end suite regression together.
+These are the latest releases supplied to the repository bootstrap on 2026-07-17, with the SSP pointer advanced by its governed v1.8.0 optional portfolio-foundation candidate. This table is not a claim that the six releases have completed one full end-to-end suite regression together.
 
 ## Repository layout
 
