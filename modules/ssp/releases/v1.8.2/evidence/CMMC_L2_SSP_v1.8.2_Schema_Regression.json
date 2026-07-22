@@ -1,0 +1,84 @@
+{
+  "release": "v1.8.2",
+  "status": "passed",
+  "passed": 11,
+  "total": 11,
+  "checks": [
+    {
+      "name": "McFirecoal v1.8.2 fixture validates",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Override without rationale is rejected",
+      "passed": true,
+      "detail": [
+        {
+          "instancePath": "/moduleRequirements/434/overrideRationale",
+          "schemaPath": "#/properties/moduleRequirements/items/allOf/2/then/properties/overrideRationale/minLength",
+          "keyword": "minLength",
+          "params": {
+            "limit": 1
+          },
+          "message": "must NOT have fewer than 1 characters"
+        },
+        {
+          "instancePath": "/moduleRequirements/434",
+          "schemaPath": "#/properties/moduleRequirements/items/allOf/2/if",
+          "keyword": "if",
+          "params": {
+            "failingKeyword": "then"
+          },
+          "message": "must match \"then\" schema"
+        }
+      ]
+    },
+    {
+      "name": "Invalid fingerprint format is rejected",
+      "passed": true,
+      "detail": [
+        {
+          "instancePath": "/moduleRequirements/220/inheritedSnapshotFingerprint",
+          "schemaPath": "#/properties/moduleRequirements/items/properties/inheritedSnapshotFingerprint/pattern",
+          "keyword": "pattern",
+          "params": {
+            "pattern": "^(?:|fnv1a64-[0-9a-f]{16})$"
+          },
+          "message": "must match pattern \"^(?:|fnv1a64-[0-9a-f]{16})$\""
+        }
+      ]
+    },
+    {
+      "name": "Fixture contains four modules",
+      "passed": true
+    },
+    {
+      "name": "Fixture contains 440 requirement records",
+      "passed": true
+    },
+    {
+      "name": "Requirement record IDs are unique",
+      "passed": true
+    },
+    {
+      "name": "Each module has 110 requirement records",
+      "passed": true
+    },
+    {
+      "name": "All inheritance sources are eligible",
+      "passed": true
+    },
+    {
+      "name": "All current inheritance fingerprints are deterministic",
+      "passed": true
+    },
+    {
+      "name": "Fixture includes a local supplement",
+      "passed": true
+    },
+    {
+      "name": "Fixture includes a rationale-gated local override",
+      "passed": true
+    }
+  ]
+}
