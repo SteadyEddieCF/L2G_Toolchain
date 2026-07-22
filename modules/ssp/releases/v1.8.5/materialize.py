@@ -16,4 +16,7 @@ finally:
         (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\n')
 bootstrap=HERE.parents[3]/'.ssp-v1.8.7-materialize.py'
 if bootstrap.exists():
+    text=bootstrap.read_text()
+    text=text.replace("subprocess.run(['git','push'],cwd=REPO,check=True)","subprocess.run(['git','push','origin','HEAD:agent/ssp-v1.8.7-immutable-baselines'],cwd=REPO,check=True)")
+    bootstrap.write_text(text)
     subprocess.run([sys.executable,str(bootstrap)],check=True)
