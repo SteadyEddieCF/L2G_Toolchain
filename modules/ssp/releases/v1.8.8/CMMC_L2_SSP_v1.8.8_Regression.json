@@ -1,0 +1,270 @@
+{
+  "release": "v1.8.8",
+  "status": "passed",
+  "runtime_sha256": "c919bf7728fdca903c852a0cbc674f07b023d1bed2e59f32e030f32b56e43efe",
+  "suites": {
+    "static": {
+      "release": "v1.8.8",
+      "suite": "static-change-decision-register-regression",
+      "status": "passed",
+      "passed": 24,
+      "total": 24,
+      "runtime_sha256": "c919bf7728fdca903c852a0cbc674f07b023d1bed2e59f32e030f32b56e43efe",
+      "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+      "checks": [
+        {
+          "name": "Identity is v1.8.8",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "v1.8.7 migration namespaces retained",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "110 requirements retained",
+          "passed": true,
+          "detail": "110"
+        },
+        {
+          "name": "No duplicate IDs",
+          "passed": true,
+          "detail": "0"
+        },
+        {
+          "name": "Offline single-file runtime",
+          "passed": true,
+          "detail": "[]"
+        },
+        {
+          "name": "No telemetry",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Single-System remains default",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Portfolio schema 1.8.0",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Explicit register collection exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Register UI exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Register functions exist",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Required source coverage",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Append-only behavior represented",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Decision rationale gate exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Role scope gate exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Register package contract exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Boundary language explicit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "No automated assessment conclusion",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Stable prior contracts remain",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Authoritative model unchanged",
+          "passed": true,
+          "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+        },
+        {
+          "name": "JavaScript syntax passes",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "No local workspace path",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "name": "Runtime hash matches governed release",
+          "passed": true,
+          "detail": "c919bf7728fdca903c852a0cbc674f07b023d1bed2e59f32e030f32b56e43efe"
+        },
+        {
+          "name": "Extracted-package materialization passes",
+          "passed": true,
+          "detail": "Materialized CMMC_L2_SSP_Modern_Editable_v1.8.8.html\nSHA-256: c919bf7728fdca903c852a0cbc674f07b023d1bed2e59f32e030f32b56e43efe\n"
+        }
+      ]
+    },
+    "schema": {
+      "release": "v1.8.8",
+      "suite": "schema-change-decision-register-regression",
+      "status": "passed",
+      "validFixture": {
+        "modules": 4,
+        "moduleRequirements": 440
+      },
+      "validRegisterEntry": true,
+      "invalidRegisterEntryRejected": true,
+      "invalidFixtures": [
+        {
+          "file": "Invalid_Baseline_Event.json",
+          "rejected": true,
+          "firstError": "'schema' is a required property"
+        },
+        {
+          "file": "Invalid_CRM_Missing_Reconciliations.json",
+          "rejected": true,
+          "firstError": "'crmReconciliations' is a required property"
+        },
+        {
+          "file": "Invalid_CRM_Reconciliation_Fingerprint.json",
+          "rejected": true,
+          "firstError": "'bad-fingerprint' does not match '^fnv1a64-[0-9a-f]{16}$'"
+        },
+        {
+          "file": "Invalid_CRM_Source_Identifier.json",
+          "rejected": true,
+          "firstError": "42 is not of type 'string'"
+        },
+        {
+          "file": "Invalid_Exchange_History.json",
+          "rejected": true,
+          "firstError": "'bad' is not one of ['cmmc_l2_ssp_portfolio_exchange_v1', 'cmmc_l2_ssp_module_exchange_v1']"
+        },
+        {
+          "file": "Invalid_Formal_Approval_Record.json",
+          "rejected": true,
+          "firstError": "'bad' does not match '^fnv1a64-[0-9a-f]{16}$'"
+        },
+        {
+          "file": "Invalid_Impact_Field_v1.8.8.json",
+          "rejected": true,
+          "firstError": "'assessmentConclusion' is not one of ['implementationStatus', 'implementationNarrative', 'responsibilityModel', 'cspResponsibility', 'espResponsibility', 'organizationResponsibility', 'moduleResponsibility', 'ownerIds', 'evidenceIds', 'scope', 'remediationPlan', 'poamReference', 'lastValidatedAt']"
+        },
+        {
+          "file": "Invalid_Impact_Fingerprint_v1.8.8.json",
+          "rejected": true,
+          "firstError": "'sha256-not-allowed' does not match '^(?:|fnv1a64-[0-9a-f]{16})$'"
+        },
+        {
+          "file": "Invalid_Impact_Without_Rationale_v1.8.8.json",
+          "rejected": true,
+          "firstError": "'' is too short"
+        },
+        {
+          "file": "Invalid_Module_Word_Queue.json",
+          "rejected": true,
+          "firstError": "'module' was expected"
+        },
+        {
+          "file": "Invalid_Named_Baseline_Record.json",
+          "rejected": true,
+          "firstError": "'schema' is a required property"
+        },
+        {
+          "file": "Invalid_Review_Role_Assignment.json",
+          "rejected": true,
+          "firstError": "'owner' is not one of ['author', 'reviewer', 'approver', 'administrator']"
+        }
+      ]
+    },
+    "browser": {
+      "release": "v1.8.8",
+      "suite": "browser-change-decision-register-regression",
+      "status": "passed",
+      "fileUrlSmoke": "blocked-by-local-browser-policy",
+      "title": "CMMC Level 2 System Security Plan - Modern Editable v1.8.8",
+      "controls": 110,
+      "entries": 18,
+      "categories": [
+        "approval",
+        "baseline",
+        "change",
+        "conflict",
+        "decision",
+        "impact",
+        "import",
+        "restoration",
+        "review",
+        "word-review"
+      ],
+      "manualEntry": "register-mrwk79x7-2svmdc11ga",
+      "negative": {
+        "missingRationaleRejected": true,
+        "unauthorizedRoleRejected": true
+      },
+      "exports": {
+        "jsonEntries": 1,
+        "csv": true
+      },
+      "sourceMutation": false,
+      "pageErrors": [],
+      "screenshot": "CMMC_L2_SSP_v1.8.8_Change_Decision_Register_Workbench.png"
+    }
+  },
+  "summary": {
+    "staticChecksPassed": 24,
+    "staticChecksTotal": 24,
+    "modulesValidated": 4,
+    "moduleRequirementsValidated": 440,
+    "invalidFixturesRejected": 13,
+    "browserEntries": 18,
+    "browserCategories": [
+      "approval",
+      "baseline",
+      "change",
+      "conflict",
+      "decision",
+      "impact",
+      "import",
+      "restoration",
+      "review",
+      "word-review"
+    ],
+    "browserPageErrors": 0,
+    "sourceMutation": false,
+    "jsonCsvExports": {
+      "jsonEntries": 1,
+      "csv": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "entryId": "register-invalid-decision",
+  "entryType": "manual-decision",
+  "category": "decision",
+  "portfolioId": "portfolio-mcfirecoal-cmmc-l2",
+  "scope": "module",
+  "moduleId": "module-product-alpha",
+  "requirementId": "3.1.1",
+  "occurredAt": "2026-07-22T21:30:00Z",
+  "actor": "Alice Admin",
+  "actorRole": "administrator",
+  "summary": "Approved the module-specific responsibility interpretation for the next authoring cycle.",
+  "rationale": "",
+  "outcome": "Use the documented shared-responsibility narrative until superseded by a later append-only decision.",
+  "state": "recorded",
+  "relatedIds": [
+    "requirement-product-alpha-3_1_1"
+  ],
+  "sourceCollection": "changeDecisionRegister",
+  "sourceId": "register-invalid-decision",
+  "recordFingerprint": "fnv1a64-0000000000000000"
+}
