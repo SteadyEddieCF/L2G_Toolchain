@@ -1,0 +1,6 @@
+returncode=1
+--- stdout ---
+
+--- stderr ---
+Expected 7 governed delta parts, found 6.
+
