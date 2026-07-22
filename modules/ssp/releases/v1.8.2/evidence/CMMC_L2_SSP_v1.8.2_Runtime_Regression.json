@@ -1,0 +1,69 @@
+{
+  "release": "v1.8.2",
+  "suite": "happy-dom-runtime-inheritance",
+  "status": "passed",
+  "passed": 12,
+  "total": 12,
+  "checks": [
+    {
+      "name": "Application boots with 110 controls and consistent v1.8.2 identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System remains the default",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Four modules receive exactly 440 stable requirement records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Deterministic inheritance copies the fixed field set and records a canonical fingerprint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Parent changes mark inherited records stale without overwriting child snapshots",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Local supplements remain separate from the inherited base snapshot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Governed override preserves local fields while retaining source fingerprint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Local override without rationale is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Sibling product cannot become an inheritance source",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Circular per-requirement inheritance is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.1 declarations migrate without invented source snapshots",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio 1.2 JSON round trip preserves module requirement cardinality",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}
