@@ -17,6 +17,12 @@ finally:
 bootstrap=HERE.parents[3]/'.ssp-v1.8.7-materialize.py'
 if bootstrap.exists():
     text=bootstrap.read_text()
-    text=text.replace("subprocess.run(['git','push'],cwd=REPO,check=True)","subprocess.run(['git','push','origin','HEAD:agent/ssp-v1.8.7-immutable-baselines'],cwd=REPO,check=True)")
+    internal="""if subprocess.run(['git','diff','--cached','--quiet'],cwd=REPO).returncode:
+    subprocess.run(['git','config','user.name','github-actions[bot]'],cwd=REPO,check=True)
+    subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],cwd=REPO,check=True)
+    subprocess.run(['git','commit','-m','Materialize governed SSP v1.8.7 release'],cwd=REPO,check=True)
+    subprocess.run(['git','push'],cwd=REPO,check=True)
+"""
+    text=text.replace(internal,"print('Staged governed SSP v1.8.7 release for the approved workflow commit step.')\n")
     bootstrap.write_text(text)
     subprocess.run([sys.executable,str(bootstrap)],check=True)
