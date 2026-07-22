@@ -1,0 +1,141 @@
+{
+  "release": "v1.8.3",
+  "status": "passed",
+  "passed": 19,
+  "total": 19,
+  "checks": [
+    {
+      "name": "McFirecoal v1.8.3 fixture validates",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Impact decision without rationale is rejected",
+      "passed": true,
+      "detail": [
+        {
+          "instancePath": "/moduleRequirements/221/impactReviewRationale",
+          "schemaPath": "#/properties/moduleRequirements/items/allOf/3/then/properties/impactReviewRationale/minLength",
+          "keyword": "minLength",
+          "params": {
+            "limit": 1
+          },
+          "message": "must NOT have fewer than 1 characters"
+        },
+        {
+          "instancePath": "/moduleRequirements/221",
+          "schemaPath": "#/properties/moduleRequirements/items/allOf/3/if",
+          "keyword": "if",
+          "params": {
+            "failingKeyword": "then"
+          },
+          "message": "must match \"then\" schema"
+        }
+      ]
+    },
+    {
+      "name": "Invalid impact fingerprint is rejected",
+      "passed": true,
+      "detail": [
+        {
+          "instancePath": "/moduleRequirements/434/impactSourceFingerprint",
+          "schemaPath": "#/properties/moduleRequirements/items/properties/impactSourceFingerprint/pattern",
+          "keyword": "pattern",
+          "params": {
+            "pattern": "^(?:|fnv1a64-[0-9a-f]{16})$"
+          },
+          "message": "must match pattern \"^(?:|fnv1a64-[0-9a-f]{16})$\""
+        }
+      ]
+    },
+    {
+      "name": "Unsupported impact field is rejected",
+      "passed": true,
+      "detail": [
+        {
+          "instancePath": "/moduleRequirements/220/impactChangedFields/0",
+          "schemaPath": "#/properties/moduleRequirements/items/properties/impactChangedFields/items/enum",
+          "keyword": "enum",
+          "params": {
+            "allowedValues": [
+              "implementationStatus",
+              "implementationNarrative",
+              "responsibilityModel",
+              "cspResponsibility",
+              "espResponsibility",
+              "organizationResponsibility",
+              "moduleResponsibility",
+              "ownerIds",
+              "evidenceIds",
+              "scope",
+              "remediationPlan",
+              "poamReference",
+              "lastValidatedAt"
+            ]
+          },
+          "message": "must be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "name": "Fixture contains four modules",
+      "passed": true
+    },
+    {
+      "name": "Fixture contains 440 requirement records",
+      "passed": true
+    },
+    {
+      "name": "Requirement record IDs are unique",
+      "passed": true
+    },
+    {
+      "name": "Each module has 110 requirement records",
+      "passed": true
+    },
+    {
+      "name": "All inheritance sources are eligible",
+      "passed": true
+    },
+    {
+      "name": "All current inheritance fingerprints are deterministic",
+      "passed": true
+    },
+    {
+      "name": "Fixture includes a local supplement",
+      "passed": true
+    },
+    {
+      "name": "Fixture includes a rationale-gated local override",
+      "passed": true
+    },
+    {
+      "name": "Fixture includes grouped stale records from one source module",
+      "passed": true
+    },
+    {
+      "name": "Fixture includes pending, deferred, and escalated states",
+      "passed": true
+    },
+    {
+      "name": "Acknowledged decisions reference the current source fingerprint",
+      "passed": true
+    },
+    {
+      "name": "Deferred and escalated decisions include rationale",
+      "passed": true
+    },
+    {
+      "name": "Escalated override includes conflict fields",
+      "passed": true
+    },
+    {
+      "name": "Open conflict record references the escalated requirement",
+      "passed": true
+    },
+    {
+      "name": "Stale child snapshots are not silently overwritten",
+      "passed": true
+    }
+  ]
+}
