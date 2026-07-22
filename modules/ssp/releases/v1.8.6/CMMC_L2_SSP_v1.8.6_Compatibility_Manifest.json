@@ -1,0 +1,47 @@
+{
+  "release": "v1.8.6",
+  "baseline": "v1.8.5",
+  "baselineRuntimeSha256": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a",
+  "runtimeSha256": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630",
+  "requirementModelSha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "portfolioSchemaVersion": "1.6.0",
+  "reviewRegisterPackageVersion": "1.6",
+  "singleSystemDefault": true,
+  "offline": true,
+  "stableContracts": {
+    "sspHandoff": "1.0",
+    "sspReturn": "1.0",
+    "wordReview": "cmmc-l2-ssp-word-review-v1",
+    "portfolioExchange": "1.5-compatible",
+    "moduleExchange": "1.5-compatible",
+    "roundTripAudit": "0.1-read-only"
+  },
+  "formalReview": {
+    "roleAssignments": true,
+    "scopes": [
+      "portfolio",
+      "module"
+    ],
+    "roles": [
+      "author",
+      "reviewer",
+      "approver",
+      "administrator"
+    ],
+    "segregationOfDuties": true,
+    "fingerprintBound": true,
+    "stalenessDetection": true,
+    "revocationHistory": true,
+    "authenticatedIdentity": false,
+    "assessmentConclusion": false,
+    "immutableBaseline": false
+  },
+  "migratesPortfolioSchemas": [
+    "1.0.0",
+    "1.1.0",
+    "1.2.0",
+    "1.3.0",
+    "1.4.0",
+    "1.5.0"
+  ]
+}

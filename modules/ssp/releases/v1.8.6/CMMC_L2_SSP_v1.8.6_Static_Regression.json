@@ -1,0 +1,121 @@
+{
+  "release": "v1.8.6",
+  "suite": "static-formal-review-regression",
+  "status": "passed",
+  "passed": 22,
+  "total": 22,
+  "runtime_sha256": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630",
+  "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "checks": [
+    {
+      "name": "Identity is v1.8.6",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.5 migration namespaces retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "110 requirements retained",
+      "passed": true,
+      "detail": "110"
+    },
+    {
+      "name": "No duplicate IDs",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "Offline single-file runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "No telemetry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System remains default",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio schema 1.6.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Formal review collections exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Formal review UI exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Role-aware functions exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Segregation of duties enforced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Fingerprint-bound approval exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Review register contract exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Approval boundary is explicit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No automated assessment conclusion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Stable prior contracts remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Authoritative model unchanged",
+      "passed": true,
+      "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+    },
+    {
+      "name": "JavaScript syntax passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No local workspace path",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Runtime hash matches governed release",
+      "passed": true,
+      "detail": "a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630"
+    },
+    {
+      "name": "Extracted-package materialization passes",
+      "passed": true,
+      "detail": "Materialized CMMC_L2_SSP_Modern_Editable_v1.8.6.html\nSHA-256: a9f872d7e3f0e9dd8515ac34a784086d536306cd00d0768066f657025c82f630\n"
+    }
+  ]
+}

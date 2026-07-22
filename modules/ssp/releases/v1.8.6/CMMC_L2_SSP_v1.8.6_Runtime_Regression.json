@@ -1,0 +1,24 @@
+{
+  "release": "v1.8.6",
+  "suite": "browser-formal-review-regression",
+  "status": "passed",
+  "fileUrlSmoke": "blocked-by-local-browser-policy",
+  "title": "CMMC Level 2 System Security Plan - Modern Editable v1.8.6",
+  "controls": 110,
+  "roles": 4,
+  "submissions": 2,
+  "dispositions": 2,
+  "approval": {
+    "id": "approval-mrwflk9k-0oe2c0fgla",
+    "freshState": "approved",
+    "changedState": "stale",
+    "revokedState": "revoked"
+  },
+  "negative": {
+    "incompatibleAssignmentRejected": true,
+    "reviewerApprovalRejected": true
+  },
+  "registerFingerprint": "fnv1a64-2da440172c537d01",
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.8.6_Formal_Review_Workbench.png"
+}
