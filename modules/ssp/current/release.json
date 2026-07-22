@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.8.0",
-  "release_path": "modules/ssp/releases/v1.8.0",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.8.0.html",
-  "runtime_sha256": "b51cfe17065fd900c6360c3b85c9e4f29600ac8440ff35a5e6b4ba79f719bdff",
+  "current_supplied_version": "v1.8.1",
+  "release_path": "modules/ssp/releases/v1.8.1",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.8.1.html",
+  "runtime_sha256": "f1142a23378780afc544348b84ad62cd965fe1fe353f0c3d6f6adfb3318fb640",
   "status": "current_supplied_release_candidate",
-  "next_action": "v1.8.1 module applicability and responsibility model",
+  "next_action": "v1.8.2 deterministic inheritance, supplements, overrides, and stale-parent detection",
   "recorded_at": "2026-07-22",
   "operating_modes": {
     "default": "single-system",
@@ -19,7 +19,9 @@
   "optional_contracts": {
     "portfolio_foundation": {
       "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
-      "schema_version": "1.0.0"
+      "schema_version": "1.1.0",
+      "package_version": "1.1",
+      "requirements_per_module": 110
     }
   }
 }

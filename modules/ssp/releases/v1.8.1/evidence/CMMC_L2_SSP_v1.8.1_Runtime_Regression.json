@@ -1,0 +1,89 @@
+{
+  "release": "v1.8.1",
+  "suite": "happy-dom-runtime-applicability-responsibility",
+  "status": "passed",
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "Application boots with 110 controls and consistent v1.8.1 identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System remains the default with portfolio controls hidden",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio creation establishes exactly 110 uninferred pending decisions for the anchor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.0 portfolio foundations migrate to 110 pending records per module without inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Duplicate module-requirement pairs are rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Orphaned module requirement records are rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Guided conversion creates rollback plus 110 visible unresolved decisions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Adding a module atomically creates its complete 110-record decision set",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Not-applicable save is blocked until a rationale is supplied",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Individual review persists rationale, responsibility, and approval-tracking metadata",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Bulk review updates only the currently visible family records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Unresolved-decision queue filters the selected module without hiding resolved records permanently",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio JSON round trip preserves stable requirement identifiers and decisions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Deleting a leaf module also removes exactly its 110 decision records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Rollback restores the captured Single-System workspace",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Legacy Single-System JSON migrates without enabling portfolio mode",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

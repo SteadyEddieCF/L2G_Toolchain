@@ -1,0 +1,53 @@
+{
+  "release": "v1.8.1",
+  "status": "passed",
+  "passed": 6,
+  "total": 6,
+  "checks": [
+    {
+      "name": "McFirecoal 440-record fixture validates against portfolio schema",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Not-applicable without rationale is rejected by schema",
+      "passed": true,
+      "detail": [
+        {
+          "instancePath": "/moduleRequirements/0/applicabilityRationale",
+          "schemaPath": "#/properties/moduleRequirements/items/allOf/0/then/properties/applicabilityRationale/minLength",
+          "keyword": "minLength",
+          "params": {
+            "limit": 1
+          },
+          "message": "must NOT have fewer than 1 characters"
+        },
+        {
+          "instancePath": "/moduleRequirements/0",
+          "schemaPath": "#/properties/moduleRequirements/items/allOf/0/if",
+          "keyword": "if",
+          "params": {
+            "failingKeyword": "then"
+          },
+          "message": "must match \"then\" schema"
+        }
+      ]
+    },
+    {
+      "name": "Fixture contains four modules",
+      "passed": true
+    },
+    {
+      "name": "Fixture contains 440 requirement records",
+      "passed": true
+    },
+    {
+      "name": "Fixture pairs are unique",
+      "passed": true
+    },
+    {
+      "name": "Each fixture module has 110 requirements",
+      "passed": true
+    }
+  ]
+}
