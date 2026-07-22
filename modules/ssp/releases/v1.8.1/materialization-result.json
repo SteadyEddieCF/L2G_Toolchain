@@ -1,0 +1,30 @@
+{
+  "release": "CMMC L2 SSP Modern Editable v1.8.1",
+  "status": "pass",
+  "baseline_runtime": {
+    "path": "modules/ssp/releases/v1.8.0/CMMC_L2_SSP_Modern_Editable_v1.8.0.html",
+    "size_bytes": 1336434,
+    "sha256": "b51cfe17065fd900c6360c3b85c9e4f29600ac8440ff35a5e6b4ba79f719bdff"
+  },
+  "materialized_runtime": {
+    "path": "modules/ssp/releases/v1.8.1/CMMC_L2_SSP_Modern_Editable_v1.8.1.html",
+    "size_bytes": 1370362,
+    "sha256": "f1142a23378780afc544348b84ad62cd965fe1fe353f0c3d6f6adfb3318fb640"
+  },
+  "method": "authoritative v1.8.0 runtime plus governed gzip/base64 unified patch",
+  "package_contract_changes": {
+    "workshop_handoff": false,
+    "ssp_return": false,
+    "word_review": false
+  },
+  "optional_portfolio_schema": {
+    "name": "cmmc-l2-ssp-portfolio-foundation-v1",
+    "schema_version": "1.1.0",
+    "package_version": "1.1"
+  },
+  "module_requirement_model": {
+    "requirements_per_module": 110,
+    "default_applicability": "pending-decision",
+    "inference": false
+  }
+}
