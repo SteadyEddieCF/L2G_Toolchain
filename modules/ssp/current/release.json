@@ -1,15 +1,25 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.7.1",
-  "release_path": "modules/ssp/releases/v1.7.1",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.7.1.html",
-  "runtime_sha256": "8d1e7bd57808b4af216918bf8f692611f27b41ddf222a99cb47a848aec23a1b3",
-  "status": "current_supplied_release",
-  "next_action": "Independent review and SME/QMS pilot; bounded corrections only",
-  "recorded_at": "2026-07-21",
+  "current_supplied_version": "v1.8.0",
+  "release_path": "modules/ssp/releases/v1.8.0",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.8.0.html",
+  "runtime_sha256": "b51cfe17065fd900c6360c3b85c9e4f29600ac8440ff35a5e6b4ba79f719bdff",
+  "status": "current_supplied_release_candidate",
+  "next_action": "v1.8.1 module applicability and responsibility model",
+  "recorded_at": "2026-07-22",
+  "operating_modes": {
+    "default": "single-system",
+    "optional": "modular-portfolio"
+  },
   "stable_contracts": {
     "ssp_handoff": "1.0",
     "ssp_return": "1.0",
     "round_trip_audit": "0.1-read-only"
+  },
+  "optional_contracts": {
+    "portfolio_foundation": {
+      "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
+      "schema_version": "1.0.0"
+    }
   }
 }
