@@ -1,0 +1,36 @@
+{
+  "release": "v1.8.5",
+  "suite": "browser-exchange-word-regression",
+  "status": "passed",
+  "fileUrlSmoke": "blocked-by-local-browser-policy",
+  "title": "CMMC Level 2 System Security Plan - Modern Editable v1.8.5",
+  "controls": 110,
+  "portfolioExchange": {
+    "modules": 4,
+    "moduleRequirements": 440,
+    "fingerprint": "fnv1a64-83eedf58e33726cc"
+  },
+  "moduleExchange": {
+    "requirements": 110,
+    "fingerprint": "fnv1a64-9aa88ee47680e3ce"
+  },
+  "reconciliation": {
+    "safe": 1,
+    "added": 0,
+    "unchanged": 33,
+    "conflict": 1,
+    "invalid": 0,
+    "applied": 1
+  },
+  "negative": {
+    "tamperedFingerprintRejected": true,
+    "foreignPortfolioInvalid": 1
+  },
+  "moduleWord": {
+    "exportedBytes": 75788,
+    "manifestEntries": 2099,
+    "reviewAppliedScope": "Reviewed module scope from Word."
+  },
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.8.5_Exchange_Workbench.png"
+}

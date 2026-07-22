@@ -1,0 +1,141 @@
+{
+  "release": "v1.8.5",
+  "suite": "static-exchange-regression",
+  "status": "passed",
+  "passed": 26,
+  "total": 26,
+  "runtime_sha256": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a",
+  "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "checks": [
+    {
+      "name": "Identity is v1.8.5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.8.4 migration namespaces retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "110 requirements retained",
+      "passed": true,
+      "detail": "110"
+    },
+    {
+      "name": "No duplicate IDs",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "Offline single-file runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "No telemetry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System remains default",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio schema 1.5.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Portfolio and module exchange contracts exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Exchange workbench controls exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Exchange build, validation, preview, and application exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Safe-only merge protections exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Protected identity enforcement exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Exchange history is schema-backed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Module Word queues are schema-backed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Requirement reviewer notes are schema-backed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Module Word package has protected manifest identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Module Word tags are module-scoped",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Reviewed module Word changes are queued",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No automated assessment conclusion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Stable handoff/return/Word Review contracts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Authoritative model unchanged",
+      "passed": true,
+      "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+    },
+    {
+      "name": "JavaScript syntax passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Runtime hash matches governed manifest",
+      "passed": true,
+      "detail": "4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a"
+    },
+    {
+      "name": "Extracted-package materialization passes",
+      "passed": true,
+      "detail": "Materialized CMMC_L2_SSP_Modern_Editable_v1.8.5.html\nSHA-256: 4fb6eea6a95cbc311a6f6b008a7733590d88e275c61b74aa8b0b73be1802131a\n"
+    },
+    {
+      "name": "No local workspace path",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

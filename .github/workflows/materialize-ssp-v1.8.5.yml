@@ -1,0 +1,38 @@
+name: Materialize SSP v1.8.5 release
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    # Validate the complete, deterministically reproducible release on every human-authored update.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull-request branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Materialize governed SSP v1.8.5 release
+        run: python modules/ssp/releases/v1.8.5/materialize.py
+
+      - name: Commit generated release files when needed
+        shell: bash
+        run: |
+          RELEASE="modules/ssp/releases/v1.8.5"
+          if [ -z "$(git status --porcelain -- "$RELEASE")" ]; then
+            echo "Governed SSP v1.8.5 release is already materialized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$RELEASE"
+          git commit -m "Materialize governed SSP v1.8.5 release"
+          git push
