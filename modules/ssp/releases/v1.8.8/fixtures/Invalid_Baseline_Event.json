@@ -1,0 +1,1 @@
+{"eventId":"baseline-event-invalid","eventType":"deleted","baselineId":"baseline-schema-valid-1","eventAt":"2026-07-22T20:01:00Z","actor":"Alice Admin","reason":"Deletion must not be allowed.","supersededByBaselineId":"","scope":"module","moduleId":"module-product-alpha"}

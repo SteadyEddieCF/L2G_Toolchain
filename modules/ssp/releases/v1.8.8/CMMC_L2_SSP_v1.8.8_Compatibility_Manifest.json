@@ -1,0 +1,35 @@
+{
+  "release": "v1.8.8",
+  "baseline": "v1.8.7",
+  "singleSystemDefault": true,
+  "offlineOnly": true,
+  "requirementsPerModule": 110,
+  "portfolioSchema": "1.8.0",
+  "stableContracts": {
+    "l2g_ssp_handoff_v1": "1.0",
+    "l2g_ssp_return_package_v1": "1.0",
+    "portfolio_exchange": "1.5",
+    "formal_review_register": "1.6",
+    "named_baseline": "1.7",
+    "change_decision_register": "1.8"
+  },
+  "preserved": [
+    "Word Review",
+    "CRM CSV",
+    "inheritance",
+    "impact review",
+    "conflicts",
+    "formal review",
+    "approvals",
+    "immutable baselines",
+    "Workshop handoff",
+    "SSP return"
+  ],
+  "exclusions": [
+    "authenticated audit service",
+    "digital signature",
+    "assessment finding",
+    "certification decision",
+    "compliance conclusion"
+  ]
+}

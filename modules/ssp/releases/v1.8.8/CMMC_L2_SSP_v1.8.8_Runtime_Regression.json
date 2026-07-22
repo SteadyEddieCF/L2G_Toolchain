@@ -1,0 +1,33 @@
+{
+  "release": "v1.8.8",
+  "suite": "browser-change-decision-register-regression",
+  "status": "passed",
+  "fileUrlSmoke": "blocked-by-local-browser-policy",
+  "title": "CMMC Level 2 System Security Plan - Modern Editable v1.8.8",
+  "controls": 110,
+  "entries": 18,
+  "categories": [
+    "approval",
+    "baseline",
+    "change",
+    "conflict",
+    "decision",
+    "impact",
+    "import",
+    "restoration",
+    "review",
+    "word-review"
+  ],
+  "manualEntry": "register-mrwk79x7-2svmdc11ga",
+  "negative": {
+    "missingRationaleRejected": true,
+    "unauthorizedRoleRejected": true
+  },
+  "exports": {
+    "jsonEntries": 1,
+    "csv": true
+  },
+  "sourceMutation": false,
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.8.8_Change_Decision_Register_Workbench.png"
+}

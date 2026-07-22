@@ -1,0 +1,36 @@
+{
+  "baselineId": "baseline-schema-valid-1",
+  "baselineKind": "cmmc_l2_ssp_named_baseline_v1",
+  "packageVersion": "1.7",
+  "portfolioId": "portfolio-mcfirecoal-cmmc-l2",
+  "scope": "module",
+  "moduleId": "module-product-alpha",
+  "name": "Product Alpha Approved Baseline",
+  "baselineVersion": "1.0",
+  "description": "Schema validation fixture.",
+  "releaseNotes": "Initial approved authoring baseline.",
+  "createdAt": "2026-07-22T20:00:00Z",
+  "createdBy": "Dave Approver",
+  "approvalId": "approval-schema-valid-1",
+  "sourceFingerprint": "fnv1a64-1111111111111111",
+  "snapshotFingerprint": "fnv1a64-2222222222222222",
+  "parentBaselineId": "",
+  "supersedesBaselineId": "",
+  "restoredFromBaselineId": "",
+  "snapshot": {
+    "baselineKind": "cmmc_l2_ssp_named_baseline_v1",
+    "baselineVersion": "1.7",
+    "scope": "module",
+    "moduleId": "module-product-alpha",
+    "sourceFingerprint": "fnv1a64-1111111111111111",
+    "payload": {
+      "portfolio": {
+        "portfolioId": "portfolio-mcfirecoal-cmmc-l2"
+      },
+      "module": {
+        "moduleId": "module-product-alpha"
+      },
+      "moduleRequirements": []
+    }
+  }
+}

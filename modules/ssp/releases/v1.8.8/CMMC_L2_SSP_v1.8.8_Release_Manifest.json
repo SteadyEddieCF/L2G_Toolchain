@@ -1,0 +1,78 @@
+{
+  "release": "v1.8.8",
+  "generatedAt": "2026-07-22",
+  "module": "CMMC L2 SSP Modern Editable",
+  "focus": "Consolidated change and decision register",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.8.8.html",
+    "sha256": "c919bf7728fdca903c852a0cbc674f07b023d1bed2e59f32e030f32b56e43efe",
+    "bytes": 1603658
+  },
+  "baseline": {
+    "release": "v1.8.7",
+    "sha256": "96736cd935d5d77fe32ec467e52aca6ea681545ce1eda8ea753a5fac543f6e4b"
+  },
+  "governedSource": {
+    "patchFile": "source/runtime-v1.8.7-to-v1.8.8.patch.gz.b64",
+    "patchSourceSha256": "77e2fcff2f527d80cec1e8e62c554d42d94b476ee70727b564cde84dbb84c828",
+    "packageFallbackBaseline": "CMMC_L2_SSP_Modern_Editable_v1.8.7.html",
+    "deterministicGzipMtime": 0
+  },
+  "schemas": [
+    "CMMC_L2_SSP_Data_Schema_v1.8.8.json",
+    "CMMC_L2_SSP_Portfolio_Foundation_Schema_v1.json"
+  ],
+  "changeDecisionRegister": {
+    "packageKind": "cmmc_l2_ssp_change_decision_register_v1",
+    "packageVersion": "1.8",
+    "explicitEntriesAppendOnly": true,
+    "derivedSourceRecords": true,
+    "filteredJsonCsv": true,
+    "authenticatedAuditLog": false,
+    "assessmentConclusion": false
+  },
+  "fixtures": [
+    "Change_Decision_Register_Entry_v1.8.8.json",
+    "Invalid_Baseline_Event.json",
+    "Invalid_CRM_Missing_Reconciliations.json",
+    "Invalid_CRM_Reconciliation_Fingerprint.json",
+    "Invalid_CRM_Source_Identifier.json",
+    "Invalid_Change_Decision_Register_Entry.json",
+    "Invalid_Exchange_History.json",
+    "Invalid_Formal_Approval_Record.json",
+    "Invalid_Impact_Field_v1.8.8.json",
+    "Invalid_Impact_Fingerprint_v1.8.8.json",
+    "Invalid_Impact_Without_Rationale_v1.8.8.json",
+    "Invalid_Module_Word_Queue.json",
+    "Invalid_Named_Baseline_Record.json",
+    "Invalid_Review_Role_Assignment.json",
+    "Module_Exchange_Product_Alpha_v1.8.8.json",
+    "Named_Baseline_Record_v1.8.8.json",
+    "Portfolio_CRM_McFirecoal_v1.8.8.json"
+  ],
+  "validation": {
+    "local": "passed",
+    "staticChecks": 24,
+    "staticChecksTotal": 24,
+    "schemaModules": 4,
+    "schemaModuleRequirements": 440,
+    "invalidFixturesRejected": 13,
+    "browserRegisterEntries": 18,
+    "browserCategories": [
+      "approval",
+      "baseline",
+      "change",
+      "conflict",
+      "decision",
+      "impact",
+      "import",
+      "restoration",
+      "review",
+      "word-review"
+    ],
+    "browserPageErrors": 0,
+    "sourceMutation": false,
+    "repository": "pending draft PR"
+  },
+  "nextBoundedRelease": "v1.8.9 configurable inheritance/reconciliation policy profiles"
+}
