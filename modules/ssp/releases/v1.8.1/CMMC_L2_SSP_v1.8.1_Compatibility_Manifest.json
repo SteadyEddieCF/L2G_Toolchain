@@ -1,0 +1,47 @@
+{
+  "manifest_kind": "l2g_ssp_production_compatibility_v1",
+  "generated_at": "2026-07-22T00:00:00Z",
+  "release": {
+    "tool_name": "CMMC Level 2 SSP Modern Editable",
+    "version": "v1.8.1",
+    "release_name": "Module Applicability and Responsibility",
+    "local_only": true
+  },
+  "package_contracts": {
+    "ssp_backup": {
+      "schema": "cmmc-l2-ssp-modern-v1.8.1",
+      "status": "additive backward-compatible migration"
+    },
+    "portfolio_foundation": {
+      "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
+      "schema_version": "1.1.0",
+      "package_version": "1.1",
+      "status": "optional additive evolution"
+    },
+    "word_review": {
+      "format": "cmmc-l2-ssp-word-review-v1",
+      "status": "unchanged"
+    },
+    "workshop_ssp_handoff": {
+      "package_kind": "l2g_ssp_handoff_v1",
+      "package_version": "1.0",
+      "status": "unchanged"
+    },
+    "ssp_return": {
+      "package_kind": "l2g_ssp_return_package_v1",
+      "package_version": "1.0",
+      "status": "unchanged"
+    },
+    "round_trip_audit": {
+      "package_kind": "l2g_ssp_round_trip_audit_v1",
+      "package_version": "0.1",
+      "status": "optional read-only"
+    }
+  },
+  "guardrails": {
+    "single_system_default": true,
+    "uninferred_module_decisions": true,
+    "evidence_references_only": true,
+    "automatic_assessment_conclusions": false
+  }
+}
