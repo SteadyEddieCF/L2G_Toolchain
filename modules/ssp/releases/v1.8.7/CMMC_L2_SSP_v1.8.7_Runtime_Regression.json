@@ -1,0 +1,29 @@
+{
+  "release": "v1.8.7",
+  "suite": "browser-immutable-baseline-regression",
+  "status": "passed",
+  "fileUrlSmoke": "blocked-by-local-browser-policy",
+  "title": "CMMC Level 2 System Security Plan - Modern Editable v1.8.7",
+  "controls": 110,
+  "baselines": {
+    "created": 3,
+    "firstStatus": "superseded",
+    "secondStatus": "active",
+    "comparisonDifferences": 1
+  },
+  "negative": {
+    "duplicateNameRejected": true,
+    "blockingConflictRejected": true
+  },
+  "exceptionGate": {
+    "blockingConflicts": 1,
+    "authorizedExceptionAllowed": true
+  },
+  "restoration": {
+    "priorVersion": "1.3",
+    "newVersion": "1.4",
+    "historyPreserved": true
+  },
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.8.7_Immutable_Baseline_Workbench.png"
+}
