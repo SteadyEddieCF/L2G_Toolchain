@@ -1,0 +1,1080 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:l2g:cmmc-l2-ssp:data-schema:1.8.4",
+  "title": "CMMC L2 SSP Working Data Backup v1.8.4",
+  "type": "object",
+  "required": [
+    "schema",
+    "schemaVersion",
+    "appVersion",
+    "catalog",
+    "savedAt",
+    "fields",
+    "statuses",
+    "reviewerStatuses",
+    "tables",
+    "portfolioFoundation"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cmmc-l2-ssp-modern-v1.8.4"
+    },
+    "schemaVersion": {
+      "const": "1.8.4"
+    },
+    "appVersion": {
+      "const": "1.8.4"
+    },
+    "catalog": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "additionalProperties": true
+    },
+    "savedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fields": {
+      "type": "object",
+      "patternProperties": {
+        "^token:[A-Z][A-Z0-9_]{1,127}$": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "statuses": {
+      "type": "object",
+      "patternProperties": {
+        "^3\\.(?:[1-9]|1[0-4])\\.\\d+$": {
+          "enum": [
+            "implemented",
+            "inherited",
+            "not-implemented",
+            "planned",
+            "na"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "reviewerStatuses": {
+      "type": "object",
+      "patternProperties": {
+        "^3\\.(?:[1-9]|1[0-4])\\.\\d+$": {
+          "enum": [
+            "not-reviewed",
+            "needs-revision",
+            "reviewed",
+            "approved"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "tables": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/table"
+      }
+    },
+    "images": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/imageData"
+      }
+    },
+    "portfolioFoundation": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "urn:l2g:cmmc-l2-ssp:portfolio-foundation:1.4.0",
+      "title": "CMMC L2 SSP Portfolio CRM and Reconciliation Foundation",
+      "description": "v1.8.4 schema. Runtime validation additionally enforces provenance-aware consolidated and module CRM derivation, safe-only CRM reconciliation, stable inheritance, and no double counting.",
+      "type": "object",
+      "required": [
+        "schema",
+        "schemaVersion",
+        "operatingMode",
+        "portfolio",
+        "modules",
+        "moduleRequirements",
+        "evidence",
+        "decisions",
+        "actions",
+        "risks",
+        "conflicts",
+        "exceptions",
+        "interconnections",
+        "assetsAndServices",
+        "changeHistory",
+        "approvedBaselines",
+        "crmReconciliations",
+        "migration"
+      ],
+      "properties": {
+        "schema": {
+          "const": "cmmc-l2-ssp-portfolio-foundation-v1"
+        },
+        "schemaVersion": {
+          "const": "1.4.0"
+        },
+        "operatingMode": {
+          "enum": [
+            "single-system",
+            "modular-portfolio"
+          ]
+        },
+        "portfolio": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": [
+                "portfolioId",
+                "name",
+                "description",
+                "operatingMode",
+                "cmmcLevel",
+                "environment",
+                "topLevelModuleId",
+                "schemaVersion",
+                "portfolioVersion",
+                "status",
+                "owners",
+                "createdAt",
+                "updatedAt",
+                "approvedAt",
+                "approvedBy"
+              ],
+              "properties": {
+                "portfolioId": {
+                  "$ref": "#/$defs/stableId"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 2000
+                },
+                "operatingMode": {
+                  "const": "modular-portfolio"
+                },
+                "cmmcLevel": {
+                  "const": "2"
+                },
+                "environment": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "topLevelModuleId": {
+                  "$ref": "#/$defs/stableId"
+                },
+                "schemaVersion": {
+                  "const": "1.3.0"
+                },
+                "portfolioVersion": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 32
+                },
+                "status": {
+                  "enum": [
+                    "draft",
+                    "in-review",
+                    "approved",
+                    "retired"
+                  ]
+                },
+                "owners": {
+                  "$ref": "#/$defs/stringList"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "approvedAt": {
+                  "type": "string"
+                },
+                "approvedBy": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modules": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "type": "object",
+            "required": [
+              "moduleId",
+              "portfolioId",
+              "parentModuleId",
+              "moduleType",
+              "name",
+              "shortName",
+              "description",
+              "boundaryStatement",
+              "subscriptionIdentifiers",
+              "services",
+              "applications",
+              "dataTypes",
+              "identitySources",
+              "interconnections",
+              "responsibleOrganizations",
+              "owners",
+              "status",
+              "version",
+              "createdAt",
+              "updatedAt"
+            ],
+            "properties": {
+              "moduleId": {
+                "$ref": "#/$defs/stableId"
+              },
+              "portfolioId": {
+                "$ref": "#/$defs/stableId"
+              },
+              "parentModuleId": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "moduleType": {
+                "enum": [
+                  "top-level",
+                  "shared-service",
+                  "tenant",
+                  "product",
+                  "application",
+                  "enclave"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "shortName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "boundaryStatement": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "subscriptionIdentifiers": {
+                "$ref": "#/$defs/stringList"
+              },
+              "services": {
+                "$ref": "#/$defs/stringList"
+              },
+              "applications": {
+                "$ref": "#/$defs/stringList"
+              },
+              "dataTypes": {
+                "$ref": "#/$defs/stringList"
+              },
+              "identitySources": {
+                "$ref": "#/$defs/stringList"
+              },
+              "interconnections": {
+                "$ref": "#/$defs/stringList"
+              },
+              "responsibleOrganizations": {
+                "$ref": "#/$defs/stringList"
+              },
+              "owners": {
+                "$ref": "#/$defs/stringList"
+              },
+              "status": {
+                "enum": [
+                  "draft",
+                  "in-review",
+                  "approved",
+                  "retired"
+                ]
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              },
+              "createdAt": {
+                "type": "string"
+              },
+              "updatedAt": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "moduleRequirements": {
+          "type": "array",
+          "maxItems": 5500,
+          "items": {
+            "type": "object",
+            "required": [
+              "requirementRecordId",
+              "requirementId",
+              "moduleId",
+              "applicability",
+              "applicabilityRationale",
+              "implementationStatus",
+              "implementationNarrative",
+              "inheritedFromModuleId",
+              "inheritedSourceVersion",
+              "inheritedSourceRecordId",
+              "inheritedSourceRecordVersion",
+              "inheritedSnapshotAlgorithm",
+              "inheritedSnapshotFingerprint",
+              "inheritedSnapshotAt",
+              "inheritanceStatus",
+              "inheritanceType",
+              "responsibilityModel",
+              "cspResponsibility",
+              "espResponsibility",
+              "organizationResponsibility",
+              "moduleResponsibility",
+              "ownerIds",
+              "evidenceIds",
+              "scope",
+              "remediationPlan",
+              "poamReference",
+              "supplementNarrative",
+              "supplementOwnerIds",
+              "supplementEvidenceIds",
+              "overrideState",
+              "overrideRationale",
+              "overrideFields",
+              "impactDecisionId",
+              "impactReviewState",
+              "impactReviewRationale",
+              "impactReviewedAt",
+              "impactReviewedBy",
+              "impactSourceFingerprint",
+              "impactPreviousSnapshotFingerprint",
+              "impactChangedFields",
+              "impactConflictFields",
+              "reviewStatus",
+              "approvalStatus",
+              "crmSourceIdentifiers",
+              "crmLegacyIdentifiers",
+              "lastValidatedAt",
+              "version",
+              "createdAt",
+              "updatedAt"
+            ],
+            "properties": {
+              "requirementRecordId": {
+                "$ref": "#/$defs/stableId"
+              },
+              "requirementId": {
+                "type": "string",
+                "pattern": "^3\\.(?:[1-9]|1[0-4])\\.\\d+$"
+              },
+              "moduleId": {
+                "$ref": "#/$defs/stableId"
+              },
+              "applicability": {
+                "enum": [
+                  "pending-decision",
+                  "applicable-inherited",
+                  "applicable-shared-responsibility",
+                  "applicable-locally-implemented",
+                  "applicable-inherited-with-local-supplement",
+                  "not-applicable"
+                ]
+              },
+              "applicabilityRationale": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "implementationStatus": {
+                "enum": [
+                  "not-assessed",
+                  "implemented",
+                  "inherited",
+                  "planned",
+                  "not-implemented",
+                  "not-applicable"
+                ]
+              },
+              "implementationNarrative": {
+                "type": "string",
+                "maxLength": 8000
+              },
+              "inheritedFromModuleId": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "inheritedSourceVersion": {
+                "type": "string",
+                "maxLength": 32
+              },
+              "inheritanceType": {
+                "enum": [
+                  "none",
+                  "parent",
+                  "shared-service",
+                  "supplement"
+                ]
+              },
+              "responsibilityModel": {
+                "enum": [
+                  "undecided",
+                  "inherited",
+                  "shared",
+                  "organization-led",
+                  "module-led",
+                  "provider-led"
+                ]
+              },
+              "cspResponsibility": {
+                "type": "string",
+                "maxLength": 3000
+              },
+              "espResponsibility": {
+                "type": "string",
+                "maxLength": 3000
+              },
+              "organizationResponsibility": {
+                "type": "string",
+                "maxLength": 3000
+              },
+              "moduleResponsibility": {
+                "type": "string",
+                "maxLength": 3000
+              },
+              "ownerIds": {
+                "$ref": "#/$defs/stringList"
+              },
+              "evidenceIds": {
+                "$ref": "#/$defs/stringList"
+              },
+              "scope": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "remediationPlan": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "poamReference": {
+                "type": "string",
+                "maxLength": 300
+              },
+              "overrideState": {
+                "enum": [
+                  "none",
+                  "local-override"
+                ]
+              },
+              "overrideRationale": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "reviewStatus": {
+                "enum": [
+                  "not-reviewed",
+                  "needs-review",
+                  "reviewed"
+                ]
+              },
+              "approvalStatus": {
+                "enum": [
+                  "not-submitted",
+                  "pending-approval",
+                  "approved",
+                  "rejected"
+                ]
+              },
+              "lastValidatedAt": {
+                "type": "string",
+                "maxLength": 40
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              },
+              "createdAt": {
+                "type": "string"
+              },
+              "updatedAt": {
+                "type": "string"
+              },
+              "inheritedSourceRecordId": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  {
+                    "const": ""
+                  }
+                ]
+              },
+              "inheritedSourceRecordVersion": {
+                "type": "string",
+                "maxLength": 32
+              },
+              "inheritedSnapshotAlgorithm": {
+                "enum": [
+                  "",
+                  "fnv1a64-canonical-v1"
+                ]
+              },
+              "inheritedSnapshotFingerprint": {
+                "type": "string",
+                "pattern": "^(?:|fnv1a64-[0-9a-f]{16})$"
+              },
+              "inheritedSnapshotAt": {
+                "type": "string",
+                "maxLength": 40
+              },
+              "inheritanceStatus": {
+                "enum": [
+                  "not-inherited",
+                  "current",
+                  "stale",
+                  "source-missing",
+                  "source-pending"
+                ]
+              },
+              "supplementNarrative": {
+                "type": "string",
+                "maxLength": 8000
+              },
+              "supplementOwnerIds": {
+                "$ref": "#/$defs/stringList"
+              },
+              "supplementEvidenceIds": {
+                "$ref": "#/$defs/stringList"
+              },
+              "overrideFields": {
+                "$ref": "#/$defs/stringList"
+              },
+              "impactDecisionId": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  {
+                    "const": ""
+                  }
+                ]
+              },
+              "impactReviewState": {
+                "enum": [
+                  "none",
+                  "pending",
+                  "deferred",
+                  "preserved",
+                  "escalated",
+                  "refreshed"
+                ]
+              },
+              "impactReviewRationale": {
+                "type": "string",
+                "maxLength": 4000
+              },
+              "impactReviewedAt": {
+                "type": "string",
+                "maxLength": 40
+              },
+              "impactReviewedBy": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "impactSourceFingerprint": {
+                "type": "string",
+                "pattern": "^(?:|fnv1a64-[0-9a-f]{16})$"
+              },
+              "impactPreviousSnapshotFingerprint": {
+                "type": "string",
+                "pattern": "^(?:|fnv1a64-[0-9a-f]{16})$"
+              },
+              "impactChangedFields": {
+                "type": "array",
+                "maxItems": 13,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "implementationStatus",
+                    "implementationNarrative",
+                    "responsibilityModel",
+                    "cspResponsibility",
+                    "espResponsibility",
+                    "organizationResponsibility",
+                    "moduleResponsibility",
+                    "ownerIds",
+                    "evidenceIds",
+                    "scope",
+                    "remediationPlan",
+                    "poamReference",
+                    "lastValidatedAt"
+                  ]
+                }
+              },
+              "impactConflictFields": {
+                "type": "array",
+                "maxItems": 13,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "implementationStatus",
+                    "implementationNarrative",
+                    "responsibilityModel",
+                    "cspResponsibility",
+                    "espResponsibility",
+                    "organizationResponsibility",
+                    "moduleResponsibility",
+                    "ownerIds",
+                    "evidenceIds",
+                    "scope",
+                    "remediationPlan",
+                    "poamReference",
+                    "lastValidatedAt"
+                  ]
+                }
+              },
+              "crmSourceIdentifiers": {
+                "$ref": "#/$defs/stringList"
+              },
+              "crmLegacyIdentifiers": {
+                "$ref": "#/$defs/stringList"
+              }
+            },
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "applicability": {
+                      "const": "not-applicable"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "applicabilityRationale": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "applicability": {
+                      "enum": [
+                        "applicable-inherited",
+                        "applicable-inherited-with-local-supplement"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "inheritedFromModuleId": {
+                      "$ref": "#/$defs/stableId"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "overrideState": {
+                      "const": "local-override"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "overrideRationale": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "impactReviewState": {
+                      "enum": [
+                        "deferred",
+                        "preserved",
+                        "escalated"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "impactReviewRationale": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "migration": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "interconnections": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "assetsAndServices": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "changeHistory": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "approvedBaselines": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "crmReconciliations": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "object",
+            "required": [
+              "reconciliationId",
+              "importedAt",
+              "sourceFileName",
+              "sourceFingerprint",
+              "importFormat",
+              "targetModuleId",
+              "totalRows",
+              "safeRows",
+              "unchangedRows",
+              "conflictRows",
+              "invalidRows",
+              "appliedRows",
+              "reportFingerprint"
+            ],
+            "properties": {
+              "reconciliationId": {
+                "$ref": "#/$defs/stableId"
+              },
+              "importedAt": {
+                "type": "string",
+                "maxLength": 40
+              },
+              "sourceFileName": {
+                "type": "string",
+                "maxLength": 260
+              },
+              "sourceFingerprint": {
+                "type": "string",
+                "pattern": "^fnv1a64-[0-9a-f]{16}$"
+              },
+              "importFormat": {
+                "enum": [
+                  "modular-crm-v1",
+                  "legacy-single-system-crm"
+                ]
+              },
+              "targetModuleId": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  {
+                    "const": ""
+                  }
+                ]
+              },
+              "totalRows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5500
+              },
+              "safeRows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5500
+              },
+              "unchangedRows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5500
+              },
+              "conflictRows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5500
+              },
+              "invalidRows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5500
+              },
+              "appliedRows": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 5500
+              },
+              "reportFingerprint": {
+                "type": "string",
+                "pattern": "^fnv1a64-[0-9a-f]{16}$"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "operatingMode": {
+                "const": "single-system"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "portfolio": {
+                "type": "null"
+              },
+              "modules": {
+                "type": "array",
+                "maxItems": 0
+              },
+              "moduleRequirements": {
+                "type": "array",
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operatingMode": {
+                "const": "modular-portfolio"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "portfolio": {
+                "type": "object",
+                "required": [
+                  "portfolioId",
+                  "name",
+                  "description",
+                  "operatingMode",
+                  "cmmcLevel",
+                  "environment",
+                  "topLevelModuleId",
+                  "schemaVersion",
+                  "portfolioVersion",
+                  "status",
+                  "owners",
+                  "createdAt",
+                  "updatedAt",
+                  "approvedAt",
+                  "approvedBy"
+                ],
+                "properties": {
+                  "portfolioId": {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "description": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "operatingMode": {
+                    "const": "modular-portfolio"
+                  },
+                  "cmmcLevel": {
+                    "const": "2"
+                  },
+                  "environment": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "topLevelModuleId": {
+                    "$ref": "#/$defs/stableId"
+                  },
+                  "schemaVersion": {
+                    "const": "1.3.0"
+                  },
+                  "portfolioVersion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "status": {
+                    "enum": [
+                      "draft",
+                      "in-review",
+                      "approved",
+                      "retired"
+                    ]
+                  },
+                  "owners": {
+                    "$ref": "#/$defs/stringList"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string"
+                  },
+                  "approvedAt": {
+                    "type": "string"
+                  },
+                  "approvedBy": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "additionalProperties": false
+              },
+              "modules": {
+                "type": "array",
+                "minItems": 1
+              },
+              "moduleRequirements": {
+                "type": "array",
+                "minItems": 110
+              }
+            }
+          }
+        }
+      ],
+      "$defs": {
+        "stableId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,119}$"
+        },
+        "stringList": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "migration": {
+      "type": "object"
+    },
+    "l2gIntegration": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "table": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "imageData": {
+      "type": "string",
+      "pattern": "^(?:|data:image/(?:png|jpe?g|gif|webp|svg\\+xml);base64,[A-Za-z0-9+/=\\s]+)$"
+    }
+  },
+  "additionalProperties": true
+}
