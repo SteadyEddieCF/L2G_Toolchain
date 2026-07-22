@@ -7,5 +7,5 @@
 - Gzip timestamp fixed at zero: PASS
 - Extracted complete-package materialization: PASS
 - Runtime byte comparison against governed build: PASS
-- Repository dependency repair: the two validated v1.8.5 CRM CSV fixtures omitted from the prior repository materialization are restored byte-for-byte before v1.8.6 generation.
+- Repository dependency repair: two validated CRM CSV fixtures omitted from the prior v1.8.5 repository materialization are reconstructed byte-for-byte during generation, copied into the governed v1.8.6 fixture set, and then removed from the unchanged v1.8.5 release tree.
 - Workflow governance: no `.github/workflows` file is added or modified by this release.
