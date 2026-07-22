@@ -1,0 +1,47 @@
+{
+  "release": "v1.8.2",
+  "generated_at": "2026-07-22T00:00:00Z",
+  "local_validation": {
+    "passed": 66,
+    "total": 66,
+    "status": "passed",
+    "suites": {
+      "static": {
+        "passed": 41,
+        "total": 41
+      },
+      "runtime": {
+        "passed": 12,
+        "total": 12
+      },
+      "schema_fixture": {
+        "passed": 11,
+        "total": 11
+      },
+      "materialization_and_archive": {
+        "passed": 2,
+        "total": 2
+      }
+    }
+  },
+  "repository_validation": {
+    "status": "pending_draft_pr",
+    "required": [
+      "repository validation",
+      "deterministic materialization",
+      "Playwright/axe",
+      "visual regression",
+      "Windows file smoke"
+    ]
+  },
+  "contracts_changed": {
+    "workshop_handoff": false,
+    "ssp_return": false,
+    "word_review": false
+  },
+  "optional_contract_evolved": {
+    "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
+    "from": "1.1.0",
+    "to": "1.2.0"
+  }
+}
