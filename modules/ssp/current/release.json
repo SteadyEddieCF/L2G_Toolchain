@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.5.1",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html",
   "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
-  "status": "current_supplied_release_candidate",
-  "next_action": "Independent review of bounded issue #31 correction; v1.9.6 remains reserved and uncommitted",
+  "status": "current_supplied_release",
+  "next_action": "Post-fix closeout passed; v1.9.6 remains reserved and uncommitted pending architecture authorization",
   "recorded_at": "2026-07-23",
   "operating_modes": {
     "default": "single-system",
@@ -77,5 +77,14 @@
     "commit": "f5aaeab72271b2a25cc27d42eeebde95bf0c7df2",
     "runtime_sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
     "issue": 31
+  },
+  "post_fix_closeout": {
+    "verdict": "pass",
+    "merged_pr": 33,
+    "merge_commit": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb",
+    "workshop_version": "v76",
+    "workshop_round_trip": "pass",
+    "backup_schema_validation": "pass",
+    "closed_issue": 31
   }
 }
