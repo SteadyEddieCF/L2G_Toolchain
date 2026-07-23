@@ -1,0 +1,36 @@
+{
+  "release": "v1.9.2",
+  "suite": "browser-evidence-reminder-regression",
+  "status": "passed",
+  "portfolioSnapshot": {
+    "evidenceRecords": 10,
+    "reminderRecords": 9,
+    "current": 3,
+    "dueSoon": 1,
+    "stale": 2,
+    "ownerFollowUps": 1,
+    "unresolvedReferences": 2,
+    "fingerprint": "b96f3d3f028ccfd5810e5a5cd52cdf8bce5e47257c5e2cff5d17b064afa9af98"
+  },
+  "moduleSnapshot": {
+    "moduleId": "module-product-alpha",
+    "requirements": 110,
+    "evidenceRecords": 4
+  },
+  "deliveryPackage": {
+    "files": 12,
+    "includesEvidenceReminderSnapshot": true,
+    "includesEvidenceReminderCsv": true
+  },
+  "negative": {
+    "snapshotTamperRejected": true,
+    "deliveryTamperRejected": true,
+    "invalidPolicyRejected": true
+  },
+  "exports": {
+    "json": true,
+    "csv": true
+  },
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.9.2_Evidence_Reminder_Dashboard.png"
+}
