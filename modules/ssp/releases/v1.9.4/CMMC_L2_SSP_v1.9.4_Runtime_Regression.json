@@ -1,0 +1,58 @@
+{
+  "release": "v1.9.4",
+  "suite": "browser-change-calendar-regression",
+  "status": "passed",
+  "portfolioSnapshot": {
+    "events": 22,
+    "overdue": 5,
+    "due_soon": 2,
+    "upcoming": 5,
+    "later": 1,
+    "historical": 5,
+    "unscheduled": 4,
+    "event_types": {
+      "action": 3,
+      "approval": 1,
+      "baseline": 2,
+      "change": 1,
+      "evidence-review": 10,
+      "formal-review": 1,
+      "module-review": 4
+    },
+    "modules": 4,
+    "fingerprint": "58c1be46c7310f1b4a1cd54dbda10483d228777198f11de17359a5a135476fb5"
+  },
+  "moduleSnapshot": {
+    "events": 10,
+    "overdue": 1,
+    "due_soon": 1,
+    "upcoming": 3,
+    "later": 0,
+    "historical": 4,
+    "unscheduled": 1,
+    "event_types": {
+      "action": 1,
+      "approval": 1,
+      "baseline": 2,
+      "evidence-review": 4,
+      "formal-review": 1,
+      "module-review": 1
+    },
+    "modules": 1,
+    "moduleId": "module-product-alpha"
+  },
+  "negative": {
+    "snapshotTamperRejected": true
+  },
+  "deliveryPackage": {
+    "files": 18,
+    "calendarArtifacts": 3
+  },
+  "exports": {
+    "json": true,
+    "csv": true,
+    "ics": true
+  },
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.9.4_Change_Calendar_Dashboard.png"
+}

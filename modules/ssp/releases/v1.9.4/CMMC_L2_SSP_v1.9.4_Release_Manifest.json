@@ -1,0 +1,52 @@
+{
+  "release": "v1.9.4",
+  "application": "CMMC L2 SSP Modern Editable",
+  "status": "release-candidate",
+  "releaseDate": "2026-07-23",
+  "baseline": "v1.9.3",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.9.4.html",
+    "sha256": "51588c4776b82e5c1ef907cfc38b64b54098e2f21fb060563711e12857096fbc",
+    "bytes": 1786995
+  },
+  "portfolioSchemaVersion": "1.10.0",
+  "maintenanceSnapshotVersion": "1.11",
+  "evidenceReminderSnapshotVersion": "1.12",
+  "moduleDependencySnapshotVersion": "1.13",
+  "changeCalendarSnapshotVersion": "1.14",
+  "requirementsPerModule": 110,
+  "defaultMode": "single-system",
+  "optionalMode": "modular-portfolio",
+  "capabilities": [
+    "portfolio and module change calendar",
+    "derived module and evidence review-cycle dates",
+    "documented action/review/approval/baseline/change milestones",
+    "calendar JSON export",
+    "event CSV export",
+    "publish-only ICS export",
+    "calendar artifacts in delivery packages"
+  ],
+  "validation": {
+    "static": "15/15",
+    "events": 22,
+    "overdue": 5,
+    "dueSoon": 2,
+    "unscheduled": 4,
+    "browserPageErrors": 0,
+    "snapshotTamperRejected": true,
+    "independentVerifierPassed": true
+  },
+  "deliberateExclusions": [
+    "remote calendar integration",
+    "email or background notifications",
+    "regulatory deadline determination",
+    "workflow execution",
+    "assessment findings",
+    "readiness/risk/compliance scores",
+    "certification decisions",
+    "authenticated identity",
+    "digital signatures",
+    "legal custody records"
+  ],
+  "nextBoundedRelease": "v1.9.5 portfolio role coverage and responsibility matrix (suggested)"
+}
