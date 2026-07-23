@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:l2g:l2g_ssp_return_package_v1:1.0",
+  "title": "SSP to L2G Workshop Return Package v1",
+  "type": "object",
+  "required": [
+    "package_kind",
+    "package_version",
+    "generated_by",
+    "ssp_tool_version",
+    "generated_at",
+    "schema_trusted",
+    "engagement",
+    "document_control",
+    "controls",
+    "review_summary",
+    "import_policy",
+    "guardrails"
+  ],
+  "properties": {
+    "package_kind": {
+      "const": "l2g_ssp_return_package_v1"
+    },
+    "package_version": {
+      "const": "1.0"
+    },
+    "generated_by": {
+      "const": "CMMC Level 2 SSP Modern Editable"
+    },
+    "ssp_tool_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "schema_trusted": {
+      "const": true
+    },
+    "engagement": {
+      "type": "object"
+    },
+    "document_control": {
+      "type": "object"
+    },
+    "controls": {
+      "type": "array",
+      "minItems": 110,
+      "maxItems": 110,
+      "items": {
+        "type": "object",
+        "required": [
+          "control_id",
+          "ssp_authoring_status",
+          "ssp_review_status",
+          "implementation_statement",
+          "responsible_role",
+          "evidence_references",
+          "accepted_source_references",
+          "source_handoff_values_changed",
+          "unresolved_word_review_item_count"
+        ],
+        "properties": {
+          "control_id": {
+            "type": "string",
+            "pattern": "^3\\.(?:[1-9]|1[0-4])\\.\\d+$"
+          },
+          "ssp_authoring_status": {
+            "enum": [
+              "",
+              "Implemented",
+              "Inherited",
+              "Open Gap",
+              "Planned",
+              "Not Applicable"
+            ]
+          },
+          "ssp_review_status": {
+            "enum": [
+              "Not Reviewed",
+              "Needs Revision",
+              "Reviewed",
+              "Approved"
+            ]
+          },
+          "evidence_references": {
+            "type": "array"
+          },
+          "accepted_source_references": {
+            "type": "array"
+          },
+          "source_handoff_values_changed": {
+            "type": "boolean"
+          },
+          "unresolved_word_review_item_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "review_summary": {
+      "type": "object"
+    },
+    "import_policy": {
+      "type": "object",
+      "properties": {
+        "workshop_preview_required": {
+          "const": true
+        },
+        "overwrite_existing_workshop_values": {
+          "const": false
+        },
+        "reviewer_notes_included": {
+          "const": false
+        }
+      },
+      "required": [
+        "workshop_preview_required",
+        "overwrite_existing_workshop_values",
+        "reviewer_notes_included"
+      ]
+    },
+    "guardrails": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

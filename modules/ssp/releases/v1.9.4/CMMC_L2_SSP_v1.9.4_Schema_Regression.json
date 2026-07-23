@@ -1,0 +1,15 @@
+{
+  "release": "v1.9.4",
+  "suite": "schema-change-calendar-regression",
+  "status": "passed",
+  "validFixture": {
+    "events": 22,
+    "deliveryFiles": 18
+  },
+  "calendarDefinitions": {
+    "validSnapshot": true,
+    "badFingerprintRejected": true,
+    "scoreFieldRejected": true,
+    "invalidStatusRejected": true
+  }
+}
