@@ -1,0 +1,14 @@
+{
+  "fixture_set": "McFirecoal Toolchain Test Fixture",
+  "current_version": "v1.2.0",
+  "manifest_path": "fixtures/mcfirecoal/v1.2.0/fixture-set-manifest.json",
+  "expected_results_path": "fixtures/mcfirecoal/v1.2.0/EXPECTED_RESULTS.md",
+  "release_tag": "test-fixture-mcfirecoal-v1.2.0",
+  "release_asset_status": "pending_manual_private_release_upload",
+  "synthetic_only": true,
+  "clean_baseline_files": 104,
+  "adversarial_payload_files": 50,
+  "parts": 3,
+  "maximum_zip_entries": 67,
+  "untrusted_zip_cap": 90
+}

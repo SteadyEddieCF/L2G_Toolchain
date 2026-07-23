@@ -1,0 +1,37 @@
+{
+  "fixture_set": "McFirecoal Toolchain Test Fixture",
+  "set_version": "1.2.0",
+  "synthetic_only": true,
+  "parts": [
+    {
+      "part": 1,
+      "filename": "McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_1_Scoping_Governance.zip",
+      "size": 922013,
+      "sha256": "d4b0f05a5ab27f683ab351ef5162901703fca6320c397052f7b3530aed67ad6a",
+      "zip_entries": 43,
+      "crc_error": null
+    },
+    {
+      "part": 2,
+      "filename": "McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_2_Technical_Provider_Evidence.zip",
+      "size": 634113,
+      "sha256": "154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2",
+      "zip_entries": 67,
+      "crc_error": null
+    },
+    {
+      "part": 3,
+      "filename": "McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_3_Adversarial_Integration.zip",
+      "size": 2221699,
+      "sha256": "52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226",
+      "zip_entries": 53,
+      "crc_error": null
+    }
+  ],
+  "baseline_original_entries_parts_1_2": 104,
+  "part_3_expansion_payload_files": 50,
+  "recommended_upload_order": [1, 2, 3],
+  "max_zip_entries_observed": 67,
+  "safety_note": "All parts remain below the 90-entry untrusted-ZIP cap. Do not increase or bypass safeguards.",
+  "publication": "Private GitHub Release assets; commit only this small manifest and fixture specification."
+}
