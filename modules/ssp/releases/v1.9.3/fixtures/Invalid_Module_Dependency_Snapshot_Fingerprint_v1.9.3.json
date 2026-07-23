@@ -1,0 +1,182 @@
+{
+  "package_kind": "cmmc_l2_ssp_module_dependency_snapshot_v1",
+  "package_version": "1.13",
+  "generated_by": "CMMC Level 2 SSP Modern Editable v1.9.3",
+  "generated_at": "2026-07-23T16:00:00Z",
+  "scope": "portfolio",
+  "module_id": "",
+  "scope_label": "McFirecoal CMMC Level 2 SSP Portfolio",
+  "portfolio": {
+    "portfolio_id": "portfolio-mcfirecoal-cmmc-l2",
+    "portfolio_name": "McFirecoal CMMC Level 2 SSP Portfolio",
+    "portfolio_version": "1.3",
+    "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
+    "schema_version": "1.10.0"
+  },
+  "summary": {
+    "modules": 4,
+    "relationships": 6,
+    "parent_relationships": 3,
+    "inheritance_relationships": 3,
+    "inherited_requirements": 7,
+    "shared_service_relationships": 1,
+    "orphan_references": 0,
+    "cycles": 0,
+    "isolated_modules": 0
+  },
+  "nodes": [
+    {
+      "node_id": "module-module-mcfirecoal-anchor",
+      "module_id": "module-mcfirecoal-anchor",
+      "name": "McFirecoal Anchor SSP",
+      "short_name": "Anchor",
+      "module_type": "top-level",
+      "status": "draft",
+      "parent_module_id": "",
+      "depth": 0,
+      "missing_reference": false,
+      "incoming_edge_count": 0,
+      "outgoing_edge_count": 5,
+      "isolated": false
+    },
+    {
+      "node_id": "module-module-product-alpha",
+      "module_id": "module-product-alpha",
+      "name": "Federal SaaS Product Alpha",
+      "short_name": "Product Alpha",
+      "module_type": "product",
+      "status": "draft",
+      "parent_module_id": "module-mcfirecoal-anchor",
+      "depth": 1,
+      "missing_reference": false,
+      "incoming_edge_count": 2,
+      "outgoing_edge_count": 0,
+      "isolated": false
+    },
+    {
+      "node_id": "module-module-product-bravo",
+      "module_id": "module-product-bravo",
+      "name": "Federal SaaS Product Bravo",
+      "short_name": "Product Bravo",
+      "module_type": "product",
+      "status": "draft",
+      "parent_module_id": "module-mcfirecoal-anchor",
+      "depth": 1,
+      "missing_reference": false,
+      "incoming_edge_count": 3,
+      "outgoing_edge_count": 0,
+      "isolated": false
+    },
+    {
+      "node_id": "module-module-shared-security",
+      "module_id": "module-shared-security",
+      "name": "Shared Security Services",
+      "short_name": "Shared Security",
+      "module_type": "shared-service",
+      "status": "draft",
+      "parent_module_id": "module-mcfirecoal-anchor",
+      "depth": 1,
+      "missing_reference": false,
+      "incoming_edge_count": 1,
+      "outgoing_edge_count": 1,
+      "isolated": false
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "inheritance",
+      "source_module_id": "module-mcfirecoal-anchor",
+      "target_module_id": "module-product-alpha",
+      "requirement_ids": [
+        "3.1.1",
+        "3.1.2",
+        "3.1.3"
+      ],
+      "inheritance_status_counts": {
+        "source-pending": 1,
+        "stale": 2
+      },
+      "shared_service": false,
+      "requirement_count": 3,
+      "source_missing": false,
+      "target_missing": false,
+      "edge_id": "dependency-c5cd168ee8ddc25f7a28"
+    },
+    {
+      "edge_type": "inheritance",
+      "source_module_id": "module-mcfirecoal-anchor",
+      "target_module_id": "module-product-bravo",
+      "requirement_ids": [
+        "3.1.1",
+        "3.1.2",
+        "3.1.3"
+      ],
+      "inheritance_status_counts": {
+        "source-pending": 3
+      },
+      "shared_service": false,
+      "requirement_count": 3,
+      "source_missing": false,
+      "target_missing": false,
+      "edge_id": "dependency-7acb02ccd373cac5d99e"
+    },
+    {
+      "edge_type": "inheritance",
+      "source_module_id": "module-shared-security",
+      "target_module_id": "module-product-bravo",
+      "requirement_ids": [
+        "3.14.2"
+      ],
+      "inheritance_status_counts": {
+        "stale": 1
+      },
+      "shared_service": true,
+      "requirement_count": 1,
+      "source_missing": false,
+      "target_missing": false,
+      "edge_id": "dependency-8ede7ecf9c881790d556"
+    },
+    {
+      "edge_type": "parent",
+      "source_module_id": "module-mcfirecoal-anchor",
+      "target_module_id": "module-product-alpha",
+      "requirement_ids": [],
+      "inheritance_status_counts": {},
+      "shared_service": false,
+      "requirement_count": 0,
+      "source_missing": false,
+      "target_missing": false,
+      "edge_id": "dependency-12ccf1c731f99f201d57"
+    },
+    {
+      "edge_type": "parent",
+      "source_module_id": "module-mcfirecoal-anchor",
+      "target_module_id": "module-product-bravo",
+      "requirement_ids": [],
+      "inheritance_status_counts": {},
+      "shared_service": false,
+      "requirement_count": 0,
+      "source_missing": false,
+      "target_missing": false,
+      "edge_id": "dependency-81ba42bbe5b53e8a6004"
+    },
+    {
+      "edge_type": "parent",
+      "source_module_id": "module-mcfirecoal-anchor",
+      "target_module_id": "module-shared-security",
+      "requirement_ids": [],
+      "inheritance_status_counts": {},
+      "shared_service": false,
+      "requirement_count": 0,
+      "source_missing": false,
+      "target_missing": false,
+      "edge_id": "dependency-099d552f04a4d26d42ae"
+    }
+  ],
+  "cycles": [],
+  "limitations": [
+    "Derived from locally documented module and requirement records only.",
+    "Not network discovery, architecture validation, segmentation testing, assessment, readiness, risk, compliance, or certification."
+  ],
+  "snapshot_fingerprint": "0000000000000000000000000000000000000000000000000000000000000000"
+}

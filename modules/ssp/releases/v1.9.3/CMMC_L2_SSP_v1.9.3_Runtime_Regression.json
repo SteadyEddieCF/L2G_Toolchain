@@ -1,0 +1,44 @@
+{
+  "release": "v1.9.3",
+  "suite": "browser-module-dependency-regression",
+  "status": "passed",
+  "portfolioSnapshot": {
+    "modules": 4,
+    "relationships": 6,
+    "parent_relationships": 3,
+    "inheritance_relationships": 3,
+    "inherited_requirements": 7,
+    "shared_service_relationships": 1,
+    "orphan_references": 0,
+    "cycles": 0,
+    "isolated_modules": 0,
+    "fingerprint": "e816bc14e512d9c61ed5deca68f9f6023e0b64496364146b6fc1e87ffa981704"
+  },
+  "moduleSnapshot": {
+    "modules": 3,
+    "relationships": 3,
+    "parent_relationships": 1,
+    "inheritance_relationships": 2,
+    "inherited_requirements": 4,
+    "shared_service_relationships": 1,
+    "orphan_references": 0,
+    "cycles": 0,
+    "isolated_modules": 0,
+    "moduleId": "module-product-bravo"
+  },
+  "negative": {
+    "snapshotTamperRejected": true,
+    "orphanDetected": true
+  },
+  "deliveryPackage": {
+    "files": 15,
+    "dependencyArtifacts": 3
+  },
+  "exports": {
+    "json": true,
+    "csv": true,
+    "svg": true
+  },
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.9.3_Module_Dependency_Dashboard.png"
+}

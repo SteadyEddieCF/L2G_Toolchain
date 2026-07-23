@@ -1,0 +1,51 @@
+{
+  "release": "v1.9.3",
+  "application": "CMMC L2 SSP Modern Editable",
+  "status": "release-candidate",
+  "releaseDate": "2026-07-23",
+  "baseline": "v1.9.2",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.9.3.html",
+    "sha256": "19c6aae94502efcf482fd5b2f6fde2ef85d1c84a152ce8fb77b75249686af121",
+    "bytes": 1759159
+  },
+  "portfolioSchemaVersion": "1.10.0",
+  "maintenanceSnapshotVersion": "1.11",
+  "evidenceReminderSnapshotVersion": "1.12",
+  "moduleDependencySnapshotVersion": "1.13",
+  "requirementsPerModule": 110,
+  "defaultMode": "single-system",
+  "optionalMode": "modular-portfolio",
+  "capabilities": [
+    "module dependency visualization",
+    "parent hierarchy edges",
+    "aggregated inheritance edges",
+    "cycle and orphan-reference analysis",
+    "dependency JSON export",
+    "dependency edge CSV export",
+    "portable SVG graph export",
+    "dependency artifacts in delivery packages"
+  ],
+  "validation": {
+    "static": "23/23",
+    "nodes": 4,
+    "relationships": 6,
+    "inheritedRequirements": 7,
+    "browserPageErrors": 0,
+    "snapshotTamperRejected": true,
+    "orphanDetected": true,
+    "independentVerifierPassed": true
+  },
+  "deliberateExclusions": [
+    "network discovery",
+    "architecture validation",
+    "segmentation testing",
+    "assessment findings",
+    "readiness/risk/compliance scores",
+    "certification decisions",
+    "authenticated identity",
+    "digital signatures",
+    "legal custody records"
+  ],
+  "nextBoundedRelease": "v1.9.4 portfolio change calendar and review-cycle planning (suggested)"
+}
