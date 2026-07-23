@@ -1,0 +1,5 @@
+returncode=1
+--- stdout ---
+
+--- stderr ---
+Expected governed v1.9.0 parts ['part-01', 'part-02', 'part-03', 'part-04', 'part-05', 'part-06', 'part-07', 'part-08', 'part-09', 'part-10', 'part-11', 'part-12', 'part-13', 'part-14', 'part-15', 'part-16', 'part-17', 'part-18', 'part-19', 'part-20', 'part-21', 'part-22', 'part-23', 'part-24', 'part-25'], found ['part-01', 'part-02', 'part-03', 'part-04', 'part-10', 'part-11', 'part-12', 'part-13', 'part-14', 'part-15', 'part-16', 'part-17', 'part-18', 'part-19', 'part-20', 'part-21', 'part-22', 'part-23', 'part-24', 'part-25'].
