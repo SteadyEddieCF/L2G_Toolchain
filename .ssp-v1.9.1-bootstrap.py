@@ -1,5 +1,5 @@
 from __future__ import annotations
-import base64,hashlib,json,lzma,re,shutil,subprocess
+import base64,hashlib,json,lzma,shutil,subprocess
 from pathlib import Path
 REPO=Path.cwd();BOOTSTRAP=REPO/'.ssp-v1.9.1-bootstrap.py';STAGE=REPO/'.ssp-v1.9.1-payload-stage.txt';PARTS=REPO/'.ssp-v1.9.1-payload'
 EXPECTED_PAYLOAD_SHA256='51f8ac6b14c674f71b66b205e53c65268db1e9f5aaa912104a893fe99303522e'
@@ -23,15 +23,11 @@ finally:
 """
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def governed_payload():
- log=subprocess.check_output(['git','log','-10','--format=%B%x1e'],cwd=REPO,text=True);part0=''
- for message in log.split('\x1e'):
-  match=re.search(r'SSP_V191_COMMIT_PART_00_BEGIN\s*([A-Za-z0-9+/=\s]+?)\s*SSP_V191_COMMIT_PART_00_END',message,re.S)
-  if match:part0=''.join(match.group(1).split())[:15000];break
- part1=(PARTS/'part-01').read_text().strip() if (PARTS/'part-01').is_file() else ''
- part2=(PARTS/'part-02').read_text().strip() if (PARTS/'part-02').is_file() else ''
- lengths=(len(part0),len(part1),len(part2))
- if lengths!=(15000,15000,14380):raise SystemExit(f'Governed v1.9.1 payload part lengths are invalid: {lengths}')
- return base64.b64decode(part0+part1+part2,validate=True)
+ names=('part-00a','part-00b','part-01','part-02')
+ parts=[(PARTS/name).read_text().strip() if (PARTS/name).is_file() else '' for name in names]
+ lengths=tuple(map(len,parts))
+ if lengths!=(7500,7500,15000,14380):raise SystemExit(f'Governed v1.9.1 payload part lengths are invalid: {lengths}')
+ return base64.b64decode(''.join(parts),validate=True)
 def main():
  payload=governed_payload()
  actual=hashlib.sha256(payload).hexdigest()
