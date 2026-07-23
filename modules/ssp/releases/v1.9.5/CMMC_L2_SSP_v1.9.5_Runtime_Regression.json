@@ -1,0 +1,63 @@
+{
+  "release": "v1.9.5",
+  "suite": "browser-responsibility-matrix-regression",
+  "status": "passed",
+  "portfolioSnapshot": {
+    "responsibility_rows": 487,
+    "assigned": 22,
+    "unassigned": 43,
+    "multiple_assignees": 3,
+    "inherited": 18,
+    "unresolved": 399,
+    "not_applicable": 2,
+    "active_role_assignments": 3,
+    "revoked_role_assignments": 1,
+    "modules": 4,
+    "responsibility_types": {
+      "action-owner": 4,
+      "evidence-owner": 9,
+      "module-owner": 4,
+      "portfolio-owner": 1,
+      "requirement-owner": 440,
+      "review-cycle": 4,
+      "review-role": 20,
+      "supplement-owner": 5
+    },
+    "fingerprint": "40516a361be4cddbaa86de2747ee8718038ea9976018dbfdc644447adde32d0c"
+  },
+  "moduleSnapshot": {
+    "responsibility_rows": 122,
+    "assigned": 4,
+    "unassigned": 4,
+    "multiple_assignees": 1,
+    "inherited": 6,
+    "unresolved": 106,
+    "not_applicable": 1,
+    "active_role_assignments": 3,
+    "revoked_role_assignments": 1,
+    "modules": 1,
+    "responsibility_types": {
+      "action-owner": 1,
+      "evidence-owner": 3,
+      "module-owner": 1,
+      "requirement-owner": 110,
+      "review-cycle": 1,
+      "review-role": 4,
+      "supplement-owner": 2
+    },
+    "moduleId": "module-product-alpha"
+  },
+  "negative": {
+    "snapshotTamperRejected": true
+  },
+  "deliveryPackage": {
+    "files": 20,
+    "responsibilityArtifacts": 2
+  },
+  "exports": {
+    "json": true,
+    "csv": true
+  },
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.9.5_Responsibility_Matrix_Dashboard.png"
+}

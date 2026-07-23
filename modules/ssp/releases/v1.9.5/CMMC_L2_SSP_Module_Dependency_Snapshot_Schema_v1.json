@@ -1,0 +1,306 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/cmmc-l2-ssp/module-dependency-snapshot-v1.json",
+  "title": "CMMC L2 SSP Module Dependency Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_kind",
+    "package_version",
+    "generated_by",
+    "generated_at",
+    "scope",
+    "module_id",
+    "scope_label",
+    "portfolio",
+    "summary",
+    "nodes",
+    "edges",
+    "cycles",
+    "limitations",
+    "snapshot_fingerprint"
+  ],
+  "properties": {
+    "package_kind": {
+      "const": "cmmc_l2_ssp_module_dependency_snapshot_v1"
+    },
+    "package_version": {
+      "const": "1.13"
+    },
+    "generated_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "enum": [
+        "portfolio",
+        "module"
+      ]
+    },
+    "module_id": {
+      "type": "string"
+    },
+    "scope_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "portfolio": {
+      "type": "object",
+      "required": [
+        "portfolio_id",
+        "portfolio_name",
+        "portfolio_version",
+        "schema",
+        "schema_version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "portfolio_id": {
+          "type": "string"
+        },
+        "portfolio_name": {
+          "type": "string"
+        },
+        "portfolio_version": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "schema_version": {
+          "type": "string"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modules",
+        "relationships",
+        "parent_relationships",
+        "inheritance_relationships",
+        "inherited_requirements",
+        "shared_service_relationships",
+        "orphan_references",
+        "cycles",
+        "isolated_modules"
+      ],
+      "properties": {
+        "modules": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relationships": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "parent_relationships": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "inheritance_relationships": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "inherited_requirements": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "shared_service_relationships": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "orphan_references": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cycles": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "isolated_modules": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "module_id",
+          "name",
+          "short_name",
+          "module_type",
+          "status",
+          "parent_module_id",
+          "depth",
+          "missing_reference",
+          "incoming_edge_count",
+          "outgoing_edge_count",
+          "isolated"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string"
+          },
+          "module_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "short_name": {
+            "type": "string"
+          },
+          "module_type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "parent_module_id": {
+            "type": "string"
+          },
+          "depth": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "missing_reference": {
+            "type": "boolean"
+          },
+          "incoming_edge_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "outgoing_edge_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "isolated": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "edge_type",
+          "source_module_id",
+          "target_module_id",
+          "requirement_ids",
+          "inheritance_status_counts",
+          "shared_service",
+          "requirement_count",
+          "source_missing",
+          "target_missing",
+          "edge_id"
+        ],
+        "properties": {
+          "edge_type": {
+            "enum": [
+              "parent",
+              "inheritance"
+            ]
+          },
+          "source_module_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_module_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirement_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "inheritance_status_counts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "shared_service": {
+            "type": "boolean"
+          },
+          "requirement_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_missing": {
+            "type": "boolean"
+          },
+          "target_missing": {
+            "type": "boolean"
+          },
+          "edge_id": {
+            "type": "string",
+            "pattern": "^dependency-"
+          }
+        }
+      }
+    },
+    "cycles": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "snapshot_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "readiness_score"
+        ]
+      },
+      {
+        "required": [
+          "compliance_score"
+        ]
+      },
+      {
+        "required": [
+          "risk_score"
+        ]
+      },
+      {
+        "required": [
+          "assessment_score"
+        ]
+      }
+    ]
+  }
+}

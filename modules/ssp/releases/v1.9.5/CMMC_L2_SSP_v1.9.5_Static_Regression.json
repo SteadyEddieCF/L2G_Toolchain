@@ -1,0 +1,79 @@
+{
+  "release": "v1.9.5",
+  "suite": "static-responsibility-matrix-regression",
+  "status": "passed",
+  "passed": 17,
+  "total": 17,
+  "runtime_sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+  "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "checks": [
+    {
+      "name": "Version identity",
+      "status": "passed"
+    },
+    {
+      "name": "Responsibility matrix UI present",
+      "status": "passed"
+    },
+    {
+      "name": "Responsibility matrix contract present",
+      "status": "passed"
+    },
+    {
+      "name": "Responsibility types present",
+      "status": "passed"
+    },
+    {
+      "name": "Coverage states present",
+      "status": "passed"
+    },
+    {
+      "name": "Responsibility exports present",
+      "status": "passed"
+    },
+    {
+      "name": "Delivery includes responsibility artifacts",
+      "status": "passed"
+    },
+    {
+      "name": "Delivery contract remains 1.10",
+      "status": "passed"
+    },
+    {
+      "name": "Calendar contract remains 1.14",
+      "status": "passed"
+    },
+    {
+      "name": "Dependency contract remains 1.13",
+      "status": "passed"
+    },
+    {
+      "name": "Evidence reminder contract remains 1.12",
+      "status": "passed"
+    },
+    {
+      "name": "Single-System default retained",
+      "status": "passed"
+    },
+    {
+      "name": "No authentication or directory integration",
+      "status": "passed"
+    },
+    {
+      "name": "Authoritative model unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "JavaScript syntax passes",
+      "status": "passed"
+    },
+    {
+      "name": "No local workspace path",
+      "status": "passed"
+    },
+    {
+      "name": "Extracted materialization passes",
+      "status": "passed"
+    }
+  ]
+}

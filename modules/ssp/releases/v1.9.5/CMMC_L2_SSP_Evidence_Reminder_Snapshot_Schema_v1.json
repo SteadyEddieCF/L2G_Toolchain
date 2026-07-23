@@ -1,0 +1,345 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:l2g:cmmc-l2-ssp:evidence-reminder-snapshot:1.12",
+  "title": "CMMC L2 SSP Evidence Reminder Snapshot v1.12",
+  "$ref": "#/$defs/evidenceReminderSnapshot",
+  "$defs": {
+    "evidenceReminderItem": {
+      "type": "object",
+      "required": [
+        "reminder_id",
+        "evidence_id",
+        "title",
+        "module_ids",
+        "requirement_ids",
+        "owner_ids",
+        "owner_source",
+        "source_record_count",
+        "validation_date",
+        "due_date",
+        "age_days",
+        "days_until_due",
+        "age_limit_days",
+        "freshness_status",
+        "indicators",
+        "reminder_level",
+        "reasons",
+        "source_updated_at"
+      ],
+      "properties": {
+        "reminder_id": {
+          "type": "string",
+          "pattern": "^evidence-reminder-[a-f0-9]{20}$"
+        },
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "module_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "requirement_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          }
+        },
+        "owner_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "owner_source": {
+          "enum": [
+            "evidence-record",
+            "linked-requirement",
+            "none"
+          ]
+        },
+        "source_record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "validation_date": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "due_date": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "age_days": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "days_until_due": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "age_limit_days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3650
+        },
+        "freshness_status": {
+          "enum": [
+            "unresolved",
+            "invalid-date",
+            "future-date",
+            "expired",
+            "stale",
+            "date-missing",
+            "due-soon",
+            "current"
+          ]
+        },
+        "indicators": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "unresolved-reference",
+              "duplicate-evidence-id",
+              "owner-missing",
+              "owner-derived",
+              "validation-date-missing",
+              "invalid-date",
+              "future-validation-date",
+              "expired",
+              "stale",
+              "due-soon",
+              "current",
+              "unlinked-evidence"
+            ]
+          }
+        },
+        "reminder_level": {
+          "enum": [
+            "action",
+            "follow-up",
+            "information"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "source_updated_at": {
+          "type": "string",
+          "maxLength": 80
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidenceReminderSnapshot": {
+      "type": "object",
+      "required": [
+        "package_kind",
+        "package_version",
+        "generated_by",
+        "generated_at",
+        "scope",
+        "module_id",
+        "portfolio",
+        "scope_label",
+        "policy",
+        "summary",
+        "items",
+        "limitations",
+        "snapshot_fingerprint"
+      ],
+      "properties": {
+        "package_kind": {
+          "const": "cmmc_l2_ssp_evidence_reminder_snapshot_v1"
+        },
+        "package_version": {
+          "const": "1.12"
+        },
+        "generated_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "scope": {
+          "enum": [
+            "portfolio",
+            "module"
+          ]
+        },
+        "module_id": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "portfolio": {
+          "type": "object"
+        },
+        "scope_label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "policy": {
+          "type": "object",
+          "required": [
+            "as_of_date",
+            "default_max_age_days",
+            "due_soon_days"
+          ],
+          "properties": {
+            "as_of_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "default_max_age_days": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 3650
+            },
+            "due_soon_days": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 365
+            }
+          },
+          "additionalProperties": false
+        },
+        "summary": {
+          "type": "object",
+          "required": [
+            "evidence_records",
+            "reminder_records",
+            "current",
+            "due_soon",
+            "stale",
+            "expired",
+            "date_missing",
+            "future_date",
+            "unresolved_references",
+            "owner_follow_ups",
+            "duplicate_identifiers",
+            "requirements_in_scope",
+            "modules_in_scope",
+            "levels",
+            "statuses",
+            "indicators"
+          ],
+          "properties": {
+            "evidence_records": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "reminder_records": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "current": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "due_soon": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stale": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "expired": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "date_missing": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "future_date": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unresolved_references": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "owner_follow_ups": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "duplicate_identifiers": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "requirements_in_scope": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "modules_in_scope": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "levels": {
+              "type": "object"
+            },
+            "statuses": {
+              "type": "object"
+            },
+            "indicators": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": false
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 5000,
+          "items": {
+            "$ref": "#/$defs/evidenceReminderItem"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "snapshot_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
