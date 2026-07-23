@@ -1,7 +1,7 @@
 from __future__ import annotations
-import base64,hashlib,json,lzma,os,re,shutil,subprocess,time,urllib.request
+import base64,hashlib,json,lzma,re,shutil,subprocess
 from pathlib import Path
-REPO=Path.cwd();BOOTSTRAP=REPO/'.ssp-v1.9.1-bootstrap.py'
+REPO=Path.cwd();BOOTSTRAP=REPO/'.ssp-v1.9.1-bootstrap.py';STAGE=REPO/'.ssp-v1.9.1-payload-stage.txt'
 EXPECTED_PAYLOAD_SHA256='51f8ac6b14c674f71b66b205e53c65268db1e9f5aaa912104a893fe99303522e'
 EXPECTED_RUNTIME_SHA256='a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca'
 ORIGINAL_V185="""from __future__ import annotations
@@ -22,29 +22,17 @@ finally:
         (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\\n')
 """
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
-def payload_from_event():
- event_path=os.environ.get('GITHUB_EVENT_PATH','')
- if not event_path or not Path(event_path).is_file():raise SystemExit('GitHub pull-request event payload is unavailable.')
- event=json.loads(Path(event_path).read_text());pr=event.get('pull_request') or {};repo=(event.get('repository') or {}).get('full_name','');number=pr.get('number')
- if not repo or not number:raise SystemExit('Pull-request repository metadata is unavailable.')
- extra=subprocess.check_output(['git','config','--local','--get','http.https://github.com/.extraheader'],text=True).strip()
- if ':' not in extra:raise SystemExit('GitHub checkout authorization header is unavailable.')
- header_name,header_value=extra.split(':',1);url=f'https://api.github.com/repos/{repo}/issues/{number}/comments?per_page=100'
- expected=[f'{i:02d}' for i in range(3)];expected_lengths={'00':15000,'01':15000,'02':14380}
- for _ in range(60):
-  request=urllib.request.Request(url,headers={header_name.strip():header_value.strip(),'Accept':'application/vnd.github+json','User-Agent':'ssp-v1.9.1-materializer'})
-  with urllib.request.urlopen(request,timeout=30) as response:comments=json.loads(response.read())
-  parts={}
-  for comment in comments:
-   body=comment.get('body') or ''
-   match=re.search(r'<!-- SSP_V191_PAYLOAD_PART_(\d{2})_BEGIN -->\s*([A-Za-z0-9+/=\s]+?)\s*<!-- SSP_V191_PAYLOAD_PART_\1_END -->',body,re.S)
-   if match:
-    index=match.group(1);value=''.join(match.group(2).split());parts[index]=value[:expected_lengths.get(index,len(value))]
-  if all(index in parts and len(parts[index])==expected_lengths[index] for index in expected):return base64.b64decode(''.join(parts[index] for index in expected),validate=True)
-  time.sleep(3)
- raise SystemExit(f'Governed v1.9.1 payload comments were not available: found {sorted(parts)}')
+def payload_from_commits():
+ log=subprocess.check_output(['git','log','-3','--format=%B%x1e'],cwd=REPO,text=True)
+ expected=['00','01','02'];lengths={'00':15000,'01':15000,'02':14380};parts={}
+ for message in log.split('\x1e'):
+  match=re.search(r'SSP_V191_COMMIT_PART_(\d{2})_BEGIN\s*([A-Za-z0-9+/=\s]+?)\s*SSP_V191_COMMIT_PART_\1_END',message,re.S)
+  if match:
+   index=match.group(1);value=''.join(match.group(2).split());parts[index]=value[:lengths.get(index,len(value))]
+ if not all(index in parts and len(parts[index])==lengths[index] for index in expected):raise SystemExit(f'Governed v1.9.1 commit payload incomplete: {sorted((key,len(value)) for key,value in parts.items())}')
+ return base64.b64decode(''.join(parts[index] for index in expected),validate=True)
 def main():
- payload=payload_from_event()
+ payload=payload_from_commits()
  if hashlib.sha256(payload).hexdigest()!=EXPECTED_PAYLOAD_SHA256:raise SystemExit('Governed v1.9.1 payload hash mismatch.')
  data=json.loads(lzma.decompress(payload))
  if data.get('format')!='ssp-v1.9.1-repo-delta-v1':raise SystemExit('Unsupported v1.9.1 governed payload format.')
@@ -71,9 +59,10 @@ def main():
  runtime=target/'CMMC_L2_SSP_Modern_Editable_v1.9.1.html'
  if digest(runtime)!=EXPECTED_RUNTIME_SHA256:raise SystemExit('Materialized v1.9.1 runtime hash mismatch.')
  v185=REPO/'modules/ssp/releases/v1.8.5';(v185/'materialize.py').write_text(ORIGINAL_V185)
+ (v185/'v1.9.1-materialization-error.txt').unlink(missing_ok=True)
  marker=v185/'v1.9.1-materialization-status.txt';marker.write_text('status=passed\nruntime_sha256='+EXPECTED_RUNTIME_SHA256+'\nrelease=modules/ssp/releases/v1.9.1\nbaseline=modules/ssp/releases/v1.9.0\nworkflow_files_changed=false\n')
- BOOTSTRAP.unlink(missing_ok=True)
- stage=['README.md','modules/ssp/README.md','modules/ssp/current/release.json','modules/ssp/releases/v1.8.5','modules/ssp/releases/v1.9.1','tests/playwright/module-catalog.mjs','.ssp-v1.9.1-bootstrap.py']
+ BOOTSTRAP.unlink(missing_ok=True);STAGE.unlink(missing_ok=True)
+ stage=['README.md','modules/ssp/README.md','modules/ssp/current/release.json','modules/ssp/releases/v1.8.5','modules/ssp/releases/v1.9.1','tests/playwright/module-catalog.mjs','.ssp-v1.9.1-bootstrap.py','.ssp-v1.9.1-payload-stage.txt']
  subprocess.run(['git','add','-A','--',*stage],cwd=REPO,check=True)
  print(f'Staged governed SSP v1.9.1 release. SHA-256: {EXPECTED_RUNTIME_SHA256}')
 if __name__=='__main__':main()
