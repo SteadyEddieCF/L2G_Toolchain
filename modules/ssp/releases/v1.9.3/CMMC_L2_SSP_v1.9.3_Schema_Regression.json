@@ -1,0 +1,15 @@
+{
+  "release": "v1.9.3",
+  "suite": "schema-module-dependency-regression",
+  "status": "passed",
+  "validFixture": {
+    "nodes": 4,
+    "edges": 6,
+    "deliveryFiles": 15
+  },
+  "dependencyDefinitions": {
+    "validSnapshot": true,
+    "badFingerprintRejected": true,
+    "scoreFieldRejected": true
+  }
+}
