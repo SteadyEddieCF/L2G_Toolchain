@@ -6,14 +6,14 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 
 | Module | Current supplied release | Next bounded action |
 |---|---:|---|
-| L2G Control Center | v0.3.2 | v0.4 read-only action and blocker overview |
-| DocConverter-L2G | v7.9.5 | v7.9.6 OCR Review Workbench and Batch Navigation |
-| L2G Scoper | v3.11 | Complete the post-release audit gate before authorizing code changes |
+| L2G Control Center | v0.3.3 | Hold feature synchronization pending the current exact-version toolchain audit |
+| DocConverter-L2G | v7.9.5.1 | Complete the exact-version large-bundle and downstream handshake audit before promoting later candidates |
+| L2G Scoper | v3.12 | v3.13 downstream-adoption and decision-workflow validation gate, only for a demonstrated need |
 | CMMC L2 Gap Workshop Tool | v76 | v77 Evidence Ownership and Provider Follow-up |
-| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles |
-| CMMC L2 SSP Modern Editable | v1.9.5 | v1.9.6 review packet and agenda assembly (suggested) |
+| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles; future SSP review/delivery consumption remains proposed |
+| CMMC L2 SSP Modern Editable | v1.9.5 | v1.9.5 post-release toolchain integration audit; v1.9.6 feature development is frozen pending audit results |
 
-These are the latest releases supplied to the repository bootstrap on 2026-07-23. The SSP pointer advances through the governed v1.9.4 portfolio change calendar and review-cycle planning release and the v1.9.5 portfolio role coverage and responsibility matrix release. This table is not a claim that the six releases have completed one full end-to-end suite regression together.
+These versions reflect the active governed runtime catalog on protected `main` as of 2026-07-23. This table is not a claim that the exact six-module combination has completed one full end-to-end suite regression together. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
 
 ## Repository layout
 

@@ -1,8 +1,10 @@
 {
   "module": "L2G Scoper",
-  "current_supplied_version": "v3.11",
-  "release_path": "modules/scoper/releases/3.11",
+  "current_supplied_version": "v3.12",
+  "release_path": "modules/scoper/releases/v3.12",
+  "runtime_filename": "L2Scoper-v3.12.html",
+  "runtime_sha256": "2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3",
   "status": "current_supplied_release",
-  "next_action": "Complete post-release audit gate before code changes",
-  "recorded_at": "2026-07-17"
+  "next_action": "v3.13 downstream-adoption and decision-workflow validation gate",
+  "recorded_at": "2026-07-20"
 }
