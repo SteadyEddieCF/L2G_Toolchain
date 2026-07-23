@@ -1,6 +1,15 @@
+returncode=1
+--- stdout ---
+
+--- stderr ---
 Traceback (most recent call last):
-  File "/home/runner/work/L2G_Toolchain/L2G_Toolchain/modules/ssp/releases/v1.8.5/materialize.py", line 23, in <module>
-    subprocess.run([sys.executable,str(_bootstrap)],check=True)
-  File "/usr/lib/python3.12/subprocess.py", line 571, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['/usr/bin/python', '/home/runner/work/L2G_Toolchain/L2G_Toolchain/.ssp-v1.8.9-bootstrap.py']' returned non-zero exit status 1.
+  File "/home/runner/work/L2G_Toolchain/L2G_Toolchain/.ssp-v1.8.9-bootstrap.py", line 49, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/runner/work/L2G_Toolchain/L2G_Toolchain/.ssp-v1.8.9-bootstrap.py", line 15, in main
+    payload=base64.b64decode(''.join(p.read_text().strip() for p in parts),validate=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Excess data after padding
