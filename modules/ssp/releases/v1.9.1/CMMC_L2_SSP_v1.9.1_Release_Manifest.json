@@ -1,0 +1,59 @@
+{
+  "release": "v1.9.1",
+  "application": "CMMC L2 SSP Modern Editable",
+  "status": "release-candidate",
+  "releaseDate": "2026-07-23",
+  "baseline": "v1.9.0",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.9.1.html",
+    "sha256": "a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca",
+    "bytes": 1702294
+  },
+  "materialization": {
+    "release": "v1.9.1",
+    "baseline": "v1.9.0",
+    "baseline_sha256": "e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27",
+    "payload_file": "source/runtime-v1.9.0-to-v1.9.1.payload.gz.b64",
+    "payload_file_sha256": "80ded8d9a50a0d78777a1564a9f4edc0fd0f0f71fa840addf226ba907cd37be7",
+    "runtime_sha256": "a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca",
+    "status": "passed"
+  },
+  "portfolioSchemaVersion": "1.10.0",
+  "maintenanceSnapshotVersion": "1.11",
+  "requirementsPerModule": 110,
+  "defaultMode": "single-system",
+  "optionalMode": "modular-portfolio",
+  "capabilities": [
+    "portfolio maintenance dashboard",
+    "module maintenance dashboard",
+    "deterministic maintenance indicator catalog",
+    "SHA-256 maintenance snapshot fingerprint",
+    "maintenance snapshot JSON export",
+    "maintenance queue CSV export",
+    "maintenance group/search filters",
+    "independent snapshot verifier",
+    "maintenance artifacts in delivery package"
+  ],
+  "validation": {
+    "static": "22/22",
+    "modules": 4,
+    "moduleRequirements": 440,
+    "portfolioQueueRecords": 457,
+    "portfolioIndicatorInstances": 2595,
+    "invalidFixturesRejected": 18,
+    "browserPageErrors": 0,
+    "snapshotTamperRejected": true,
+    "deliveryTamperRejected": true,
+    "independentVerifierPassed": true
+  },
+  "deliberateExclusions": [
+    "implementation-effectiveness assessment",
+    "assessment findings",
+    "readiness/risk/compliance scores",
+    "certification decisions",
+    "authenticated identity",
+    "digital signatures",
+    "legal custody records"
+  ],
+  "nextBoundedRelease": "v1.9.2 evidence freshness and ownership reminders (suggested)"
+}

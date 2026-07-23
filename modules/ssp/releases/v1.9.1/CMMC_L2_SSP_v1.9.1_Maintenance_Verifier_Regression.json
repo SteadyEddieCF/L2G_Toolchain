@@ -1,0 +1,14 @@
+{
+  "release": "v1.9.1",
+  "suite": "independent-maintenance-and-delivery-verifiers",
+  "status": "passed",
+  "maintenanceSnapshotAccepted": true,
+  "maintenanceTamperRejected": true,
+  "deliveryPackageAccepted": true,
+  "deliveryTamperRejected": true,
+  "deliveryExtractedFiles": 10,
+  "maintenanceValidOutput": "VALID: 457 queue records; snapshot fingerprint 359447a35144d73c26b9960e28c979f41ddc051b8d5bc97404c0ea1b67708eb6",
+  "maintenanceInvalidOutput": "INVALID\n- maintenance snapshot fingerprint does not match",
+  "deliveryValidOutput": "VALID: 10 files; package fingerprint 030225bc7c59f5d7194e84c129722eb1dc70143996015e264c842b9b12261338\nExtracted to /tmp/tmphy6nnqan/extracted",
+  "deliveryInvalidOutput": "INVALID\n- SHA-256 mismatch: README_RECIPIENT_HANDLING.txt"
+}
