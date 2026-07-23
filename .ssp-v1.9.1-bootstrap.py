@@ -30,7 +30,7 @@ def payload_from_event():
  extra=subprocess.check_output(['git','config','--local','--get','http.https://github.com/.extraheader'],text=True).strip()
  if ':' not in extra:raise SystemExit('GitHub checkout authorization header is unavailable.')
  header_name,header_value=extra.split(':',1);url=f'https://api.github.com/repos/{repo}/issues/{number}/comments?per_page=100'
- expected=[f'{i:02d}' for i in range(3)]
+ expected=[f'{i:02d}' for i in range(3)];expected_lengths={'00':15000,'01':15000,'02':14380}
  for _ in range(60):
   request=urllib.request.Request(url,headers={header_name.strip():header_value.strip(),'Accept':'application/vnd.github+json','User-Agent':'ssp-v1.9.1-materializer'})
   with urllib.request.urlopen(request,timeout=30) as response:comments=json.loads(response.read())
@@ -38,8 +38,9 @@ def payload_from_event():
   for comment in comments:
    body=comment.get('body') or ''
    match=re.search(r'<!-- SSP_V191_PAYLOAD_PART_(\d{2})_BEGIN -->\s*([A-Za-z0-9+/=\s]+?)\s*<!-- SSP_V191_PAYLOAD_PART_\1_END -->',body,re.S)
-   if match:parts[match.group(1)]=''.join(match.group(2).split())
-  if all(index in parts for index in expected):return base64.b64decode(''.join(parts[index] for index in expected),validate=True)
+   if match:
+    index=match.group(1);value=''.join(match.group(2).split());parts[index]=value[:expected_lengths.get(index,len(value))]
+  if all(index in parts and len(parts[index])==expected_lengths[index] for index in expected):return base64.b64decode(''.join(parts[index] for index in expected),validate=True)
   time.sleep(3)
  raise SystemExit(f'Governed v1.9.1 payload comments were not available: found {sorted(parts)}')
 def main():
