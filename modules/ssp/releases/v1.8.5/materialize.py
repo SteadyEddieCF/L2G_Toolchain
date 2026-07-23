@@ -15,5 +15,10 @@ finally:
     for index,chunk in enumerate(chunks):
         (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\n')
 bootstrap=Path(__file__).resolve().parents[4]/'.ssp-v1.9.1-bootstrap.py'
+error=HERE/'v1.9.1-materialization-error.txt'
 if bootstrap.exists():
-    subprocess.run([sys.executable,str(bootstrap)],check=True)
+    error.unlink(missing_ok=True)
+    result=subprocess.run([sys.executable,str(bootstrap)],capture_output=True,text=True)
+    if result.returncode:
+        error.write_text('returncode='+str(result.returncode)+'\n--- stdout ---\n'+result.stdout+'\n--- stderr ---\n'+result.stderr)
+        print('Persisted v1.9.1 materialization diagnostic.')
