@@ -2,4 +2,14 @@ returncode=1
 --- stdout ---
 
 --- stderr ---
-Materialized file hash mismatch: CMMC_L2_SSP_v1.9.0_Schema_Regression.json
+Traceback (most recent call last):
+  File "/home/runner/work/L2G_Toolchain/L2G_Toolchain/.ssp-v1.9.0-bootstrap.py", line 178, in <module>
+    main()
+  File "/home/runner/work/L2G_Toolchain/L2G_Toolchain/.ssp-v1.9.0-bootstrap.py", line 80, in main
+    shutil.copy2(baseline / row['base'], destination)
+  File "/usr/lib/python3.12/shutil.py", line 475, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/usr/lib/python3.12/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/L2G_Toolchain/L2G_Toolchain/modules/ssp/releases/v1.8.8/L2G_SSP_HANDOFF_SCHEMA_v1.json'
