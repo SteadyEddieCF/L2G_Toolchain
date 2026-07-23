@@ -1,5 +1,0 @@
-returncode=1
---- stdout ---
-
---- stderr ---
-Materialized file hash mismatch: PACKAGE_MANIFEST_CMMC_L2_SSP_v1.9.0.md

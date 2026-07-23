@@ -1,0 +1,59 @@
+{
+  "release": "v1.9.0",
+  "application": "CMMC L2 SSP Modern Editable",
+  "status": "release-candidate",
+  "releaseDate": "2026-07-23",
+  "baseline": "v1.8.9",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.9.0.html",
+    "sha256": "e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27",
+    "bytes": 1672954
+  },
+  "materialization": {
+    "release": "v1.9.0",
+    "baseline": "v1.8.9",
+    "baseline_sha256": "1710cc9af8d167f6d5a6283ac9db2a20e8a838a2c4750a09f66edb0dcfbda3d8",
+    "payload_file": "source/runtime-v1.8.9-to-v1.9.0.patch.gz.b64",
+    "payload_file_sha256": "06e0eb353165ab25da4d24dadc52f468ef5ffcadb3c42f72361426f3e3878676",
+    "runtime_sha256": "e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27",
+    "status": "passed"
+  },
+  "portfolioSchemaVersion": "1.10.0",
+  "requirementsPerModule": 110,
+  "defaultMode": "single-system",
+  "optionalMode": "modular-portfolio",
+  "capabilities": [
+    "portfolio delivery package",
+    "module delivery package",
+    "SHA-256 file inventory",
+    "manifest and package fingerprints",
+    "active policy summary",
+    "formal review and approval summary",
+    "named baseline summary",
+    "change/decision register summary",
+    "recipient handling instructions",
+    "browser package verification",
+    "browser extracted-folder verification",
+    "independent Python verification and extraction"
+  ],
+  "validation": {
+    "static": "22/22",
+    "modules": 4,
+    "moduleRequirements": 440,
+    "invalidSchemaFixturesRejected": 16,
+    "browserPageErrors": 0,
+    "tamperedContentRejected": true,
+    "tamperedManifestRejected": true,
+    "missingExtractedFileRejected": true,
+    "independentExtractionVerified": true
+  },
+  "deliberateExclusions": [
+    "authenticated identity",
+    "digital signatures",
+    "assessment findings",
+    "readiness/compliance scores",
+    "certification decisions",
+    "legal custody records"
+  ],
+  "nextBoundedRelease": "v1.9.1 portfolio health and maintenance dashboard (suggested)"
+}
