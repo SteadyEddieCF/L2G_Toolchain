@@ -1,0 +1,260 @@
+{
+  "release": "v1.9.0",
+  "status": "passed",
+  "runtimeSha256": "e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27",
+  "requirementModelSha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "static": {
+    "release": "v1.9.0",
+    "suite": "static-delivery-package-regression",
+    "status": "passed",
+    "passed": 22,
+    "total": 22,
+    "runtime_sha256": "e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27",
+    "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+    "checks": [
+      {
+        "name": "Identity is v1.9.0",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "v1.8.9 migration namespaces retained",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "110 requirements retained",
+        "passed": true,
+        "detail": "110"
+      },
+      {
+        "name": "No duplicate IDs",
+        "passed": true,
+        "detail": "0"
+      },
+      {
+        "name": "Offline single-file runtime",
+        "passed": true,
+        "detail": "[]"
+      },
+      {
+        "name": "No telemetry",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Single-System remains default",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Portfolio schema 1.10.0",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Delivery UI exists",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Delivery functions exist",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Cryptographic inventory contract exists",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Recipient instructions included",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Operational summaries included",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Fail-closed path and tamper checks",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Foundation export version advanced",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Stable prior contracts remain",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Boundary language explicit",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "No automated assessment conclusion",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Authoritative model unchanged",
+        "passed": true,
+        "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+      },
+      {
+        "name": "JavaScript syntax passes",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "No local workspace path",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Extracted-package materialization passes",
+        "passed": true,
+        "detail": "{\"release\": \"v1.9.0\", \"baselineSha256\": \"1710cc9af8d167f6d5a6283ac9db2a20e8a838a2c4750a09f66edb0dcfbda3d8\", \"runtimeSha256\": \"e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27\", \"bytes\": 1672954, \"status\": \"passed\"}\n"
+      }
+    ]
+  },
+  "schema": {
+    "release": "v1.9.0",
+    "suite": "schema-delivery-package-regression",
+    "status": "passed",
+    "validFixture": {
+      "modules": 4,
+      "moduleRequirements": 440,
+      "deliveryFiles": 2
+    },
+    "deliveryDefinitions": {
+      "validPackage": true,
+      "unsafePathRejected": true,
+      "badHashRejectedByVerifier": true,
+      "extractedBundleVerified": true
+    },
+    "invalidFixtures": [
+      {
+        "file": "Invalid_Baseline_Event.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_CRM_Missing_Reconciliations.json",
+        "rejected": true,
+        "firstError": "'crmReconciliations' is a required property"
+      },
+      {
+        "file": "Invalid_CRM_Reconciliation_Fingerprint.json",
+        "rejected": true,
+        "firstError": "'bad-fingerprint' does not match '^fnv1a64-[0-9a-f]{16}$'"
+      },
+      {
+        "file": "Invalid_CRM_Source_Identifier.json",
+        "rejected": true,
+        "firstError": "42 is not of type 'string'"
+      },
+      {
+        "file": "Invalid_Change_Decision_Register_Entry.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Delivery_Package_Unsafe_Path_v1.9.0.json",
+        "rejected": true,
+        "firstError": "'../escape.txt' does not match '^(?!/)(?!.*(?:^|/)\\\\.\\\\.(?:/|$))(?!.*//)(?![A-Za-z]:).+$'"
+      },
+      {
+        "file": "Invalid_Exchange_History.json",
+        "rejected": true,
+        "firstError": "'bad' is not one of ['cmmc_l2_ssp_portfolio_exchange_v1', 'cmmc_l2_ssp_module_exchange_v1']"
+      },
+      {
+        "file": "Invalid_Formal_Approval_Record.json",
+        "rejected": true,
+        "firstError": "'bad' does not match '^fnv1a64-[0-9a-f]{16}$'"
+      },
+      {
+        "file": "Invalid_Impact_Field_v1.9.0.json",
+        "rejected": true,
+        "firstError": "'assessmentConclusion' is not one of ['implementationStatus', 'implementationNarrative', 'responsibilityModel', 'cspResponsibility', 'espResponsibility', 'organizationResponsibility', 'moduleResponsibility', 'ownerIds', 'evidenceIds', 'scope', 'remediationPlan', 'poamReference', 'lastValidatedAt']"
+      },
+      {
+        "file": "Invalid_Impact_Fingerprint_v1.9.0.json",
+        "rejected": true,
+        "firstError": "'sha256-not-allowed' does not match '^(?:|fnv1a64-[0-9a-f]{16})$'"
+      },
+      {
+        "file": "Invalid_Impact_Without_Rationale_v1.9.0.json",
+        "rejected": true,
+        "firstError": "'' should be non-empty"
+      },
+      {
+        "file": "Invalid_Module_Word_Queue.json",
+        "rejected": true,
+        "firstError": "'module' was expected"
+      },
+      {
+        "file": "Invalid_Named_Baseline_Record.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Policy_Activation_Fingerprint.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Policy_Profile_Weakens_Identity.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Review_Role_Assignment.json",
+        "rejected": true,
+        "firstError": "'owner' is not one of ['author', 'reviewer', 'approver', 'administrator']"
+      }
+    ]
+  },
+  "browser": {
+    "release": "v1.9.0",
+    "suite": "browser-delivery-package-regression",
+    "status": "passed",
+    "sha256KnownVector": true,
+    "portfolioPackage": {
+      "files": 8,
+      "bytes": 1147918,
+      "fingerprint": "394f267510aa2f66c8af7af1684107ab29f85a1ce64e11f8ea83da38bf56e7fb",
+      "review": "draft",
+      "baseline": null
+    },
+    "modulePackage": {
+      "moduleId": "module-product-alpha",
+      "requirements": 110
+    },
+    "negative": {
+      "tamperedContentRejected": true,
+      "tamperedManifestRejected": true,
+      "missingExtractedFileRejected": true
+    },
+    "extractedBundleVerification": true,
+    "pageErrors": [],
+    "screenshot": "CMMC_L2_SSP_v1.9.0_Delivery_Package_Workbench.png"
+  },
+  "independentVerifier": {
+    "release": "v1.9.0",
+    "suite": "independent-delivery-verifier",
+    "status": "passed",
+    "validPackageAccepted": true,
+    "tamperedPackageRejected": true,
+    "extractedFiles": 8,
+    "validOutput": "VALID: 8 files; package fingerprint 394f267510aa2f66c8af7af1684107ab29f85a1ce64e11f8ea83da38bf56e7fb\nExtracted to /tmp/tmpgs_qd1ov/extracted",
+    "invalidOutput": "INVALID\n- SHA-256 mismatch: README_RECIPIENT_HANDLING.txt"
+  }
+}

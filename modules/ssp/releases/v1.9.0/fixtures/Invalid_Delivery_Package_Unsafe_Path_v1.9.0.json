@@ -1,0 +1,67 @@
+{
+  "package_kind": "cmmc_l2_ssp_delivery_package_v1",
+  "package_version": "1.10",
+  "generated_by": "fixture",
+  "generated_at": "2026-07-23T00:00:00Z",
+  "scope": "portfolio",
+  "module_id": "",
+  "recipient": "Fixture recipient",
+  "purpose": "Regression validation",
+  "handling_instructions": "Handle locally and verify before use.\n",
+  "manifest": {
+    "manifest_kind": "cmmc_l2_ssp_delivery_manifest_v1",
+    "manifest_version": "1.10",
+    "generated_by": "fixture",
+    "generated_at": "2026-07-23T00:00:00Z",
+    "scope": "portfolio",
+    "module_id": "",
+    "portfolio": {
+      "portfolio_id": "portfolio-mcfirecoal",
+      "portfolio_name": "McFirecoal",
+      "portfolio_version": "1.0",
+      "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
+      "schema_version": "1.10.0"
+    },
+    "recipient": "Fixture recipient",
+    "purpose": "Regression validation",
+    "summaries": {},
+    "files": [
+      {
+        "path": "../escape.txt",
+        "media_type": "text/plain;charset=utf-8",
+        "bytes": 38,
+        "sha256": "b98e9719dcfcde68f1078db8900b154bdb088eac2e30a3a8b9c20139c8d4f702"
+      },
+      {
+        "path": "delivery-summary.json",
+        "media_type": "application/json",
+        "bytes": 30,
+        "sha256": "e74bbadca9f5820e9f56bbefccdc8862b7b6f4acebaccb828d081229a3e44d65"
+      }
+    ],
+    "total_files": 2,
+    "total_bytes": 68,
+    "handling_instructions_sha256": "b98e9719dcfcde68f1078db8900b154bdb088eac2e30a3a8b9c20139c8d4f702",
+    "manifest_fingerprint": "92a3fe48a2a1994b7c741f409e63d7b315f31d69324f73c7f09e3da11fb66661"
+  },
+  "files": [
+    {
+      "path": "../escape.txt",
+      "media_type": "text/plain;charset=utf-8",
+      "bytes": 38,
+      "sha256": "b98e9719dcfcde68f1078db8900b154bdb088eac2e30a3a8b9c20139c8d4f702",
+      "content_base64": "SGFuZGxlIGxvY2FsbHkgYW5kIHZlcmlmeSBiZWZvcmUgdXNlLgo="
+    },
+    {
+      "path": "delivery-summary.json",
+      "media_type": "application/json",
+      "bytes": 30,
+      "sha256": "e74bbadca9f5820e9f56bbefccdc8862b7b6f4acebaccb828d081229a3e44d65",
+      "content_base64": "eyJzdGF0dXMiOiJvcGVyYXRpb25hbC1vbmx5In0K"
+    }
+  ],
+  "limitations": [
+    "Operational only."
+  ],
+  "package_fingerprint": "138e031fdd53c6d00193b0b944dee3c041a46042be17b6abf14658b61615c4f5"
+}
