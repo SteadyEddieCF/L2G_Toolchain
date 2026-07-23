@@ -5,6 +5,7 @@ Local/offline SSP authoring and Word Review round-trip module with Workshop hand
 - Current supplied release candidate: **v1.9.5.1**
 - Current release focus: **Bounded issue #31 correction for working-data schema identity, export filenames, and v1.9.5 storage/recovery migration**
 - Next bounded action: **Independent review; v1.9.6 remains reserved and uncommitted**
+- Exact-head merge gate: **Repository validation, Playwright QA, and all applicable SSP materialization checks must complete successfully before merge.**
 
 Single-System remains the default; portfolio mode is opt-in. Every module retains exactly 110 authoritative requirements. v1.9.5.1 adds no feature, route, assessment behavior, score, or adjacent-tool change.
 
