@@ -1,0 +1,60 @@
+{
+  "release": "v1.9.5",
+  "application": "CMMC L2 SSP Modern Editable",
+  "status": "release-candidate",
+  "releaseDate": "2026-07-23",
+  "baseline": "v1.9.4",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.9.5.html",
+    "sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+    "bytes": 1821665
+  },
+  "portfolioSchemaVersion": "1.10.0",
+  "maintenanceSnapshotVersion": "1.11",
+  "evidenceReminderSnapshotVersion": "1.12",
+  "moduleDependencySnapshotVersion": "1.13",
+  "changeCalendarSnapshotVersion": "1.14",
+  "responsibilityMatrixSnapshotVersion": "1.15",
+  "requirementsPerModule": 110,
+  "defaultMode": "single-system",
+  "optionalMode": "modular-portfolio",
+  "capabilities": [
+    "portfolio and module role coverage and responsibility matrix",
+    "portfolio/module/requirement/supplement/evidence/action/review-role/review-cycle responsibility derivation",
+    "assigned, unassigned, multiple-assignee, inherited, unresolved, and not-applicable administrative states",
+    "deterministic responsibility JSON snapshot export",
+    "responsibility CSV matrix export",
+    "responsibility artifacts in delivery packages",
+    "append-only role history and segregation-of-duties indicators"
+  ],
+  "validation": {
+    "static": "17/17",
+    "responsibilityRows": 487,
+    "assigned": 22,
+    "unassigned": 43,
+    "multipleAssignees": 3,
+    "inherited": 18,
+    "unresolved": 399,
+    "notApplicable": 2,
+    "modules": 4,
+    "requirementRows": 440,
+    "deliveryFiles": 20,
+    "browserPageErrors": 0,
+    "snapshotTamperRejected": true,
+    "independentVerifierPassed": true,
+    "preservedReminderDependencyCalendarBrowserRegressions": true
+  },
+  "deliberateExclusions": [
+    "login or authentication",
+    "directory synchronization",
+    "access enforcement",
+    "personnel validation",
+    "assessment findings",
+    "readiness/risk/compliance scores",
+    "certification decisions",
+    "remote service dependency",
+    "digital signatures",
+    "legal custody records"
+  ],
+  "nextBoundedRelease": "v1.9.6 review packet and agenda assembly (suggested)"
+}

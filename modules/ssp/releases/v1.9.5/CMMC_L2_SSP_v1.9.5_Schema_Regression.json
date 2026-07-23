@@ -1,0 +1,15 @@
+{
+  "release": "v1.9.5",
+  "suite": "schema-responsibility-matrix-regression",
+  "status": "passed",
+  "validFixture": {
+    "rows": 487,
+    "deliveryFiles": 20
+  },
+  "responsibilityDefinitions": {
+    "validSnapshot": true,
+    "badFingerprintRejected": true,
+    "scoreFieldRejected": true,
+    "invalidStatusRejected": true
+  }
+}

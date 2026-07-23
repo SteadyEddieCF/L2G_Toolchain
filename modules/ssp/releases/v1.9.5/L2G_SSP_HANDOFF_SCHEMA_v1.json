@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:l2g:l2g_ssp_handoff_v1:1.0",
+  "title": "L2G Workshop to SSP Handoff v1",
+  "type": "object",
+  "required": [
+    "package_kind",
+    "package_version",
+    "generated_by",
+    "generated_at",
+    "schema_trusted",
+    "engagement",
+    "system_fields",
+    "controls",
+    "preflight",
+    "application_policy",
+    "guardrails",
+    "package_integrity"
+  ],
+  "properties": {
+    "package_kind": {
+      "const": "l2g_ssp_handoff_v1"
+    },
+    "package_version": {
+      "const": "1.0"
+    },
+    "generated_by": {
+      "type": "string",
+      "pattern": "^CMMC L2 Gap Workshop Tool"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "schema_trusted": {
+      "const": true
+    },
+    "engagement": {
+      "type": "object"
+    },
+    "lineage": {
+      "type": "object"
+    },
+    "system_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "target_token",
+          "value",
+          "source_type",
+          "confidence",
+          "confirmation_state",
+          "application_recommendation"
+        ],
+        "properties": {
+          "target_token": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]+$"
+          },
+          "value": {},
+          "source_type": {
+            "type": "string"
+          },
+          "source_ids": {
+            "type": "array"
+          },
+          "confidence": {
+            "type": "string"
+          },
+          "confirmation_state": {
+            "type": "string"
+          },
+          "application_recommendation": {
+            "type": "string"
+          },
+          "limitations": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "controls": {
+      "type": "array",
+      "minItems": 110,
+      "maxItems": 110,
+      "items": {
+        "type": "object",
+        "required": [
+          "control_id",
+          "candidate_status",
+          "implementation_statement",
+          "responsible_role",
+          "evidence_references",
+          "confirmation_state",
+          "confidence",
+          "application_recommendation"
+        ],
+        "properties": {
+          "control_id": {
+            "type": "string",
+            "pattern": "^3\\.(?:[1-9]|1[0-4])\\.\\d+$"
+          },
+          "candidate_status": {
+            "type": "string"
+          },
+          "implementation_statement": {
+            "type": "string"
+          },
+          "responsible_role": {
+            "type": "string"
+          },
+          "evidence_references": {
+            "type": "array"
+          },
+          "confirmation_state": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string"
+          },
+          "application_recommendation": {
+            "type": "string"
+          },
+          "limitations": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "preflight": {
+      "type": "object"
+    },
+    "application_policy": {
+      "type": "object"
+    },
+    "guardrails": {
+      "type": "array"
+    },
+    "package_integrity": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

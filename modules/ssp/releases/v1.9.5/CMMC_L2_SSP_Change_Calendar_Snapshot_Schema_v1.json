@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/cmmc-l2-ssp/change-calendar-snapshot-v1.json",
+  "title": "CMMC L2 SSP Portfolio Change Calendar Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_kind",
+    "package_version",
+    "generated_by",
+    "generated_at",
+    "scope",
+    "module_id",
+    "scope_label",
+    "portfolio",
+    "parameters",
+    "summary",
+    "events",
+    "limitations",
+    "snapshot_fingerprint"
+  ],
+  "properties": {
+    "package_kind": {
+      "const": "cmmc_l2_ssp_change_calendar_snapshot_v1"
+    },
+    "package_version": {
+      "const": "1.14"
+    },
+    "generated_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "enum": [
+        "portfolio",
+        "module"
+      ]
+    },
+    "module_id": {
+      "type": "string"
+    },
+    "scope_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "portfolio": {
+      "type": "object",
+      "required": [
+        "portfolio_id",
+        "portfolio_name",
+        "portfolio_version",
+        "schema",
+        "schema_version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "portfolio_id": {
+          "type": "string"
+        },
+        "portfolio_name": {
+          "type": "string"
+        },
+        "portfolio_version": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "schema_version": {
+          "type": "string"
+        }
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "as_of_date",
+        "horizon_days",
+        "default_review_cycle_days",
+        "due_soon_days"
+      ],
+      "properties": {
+        "as_of_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "horizon_days": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 730
+        },
+        "default_review_cycle_days": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 730
+        },
+        "due_soon_days": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 365
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "overdue",
+        "due_soon",
+        "upcoming",
+        "later",
+        "historical",
+        "unscheduled",
+        "event_types",
+        "modules"
+      ],
+      "properties": {
+        "events": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "overdue": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "due_soon": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "upcoming": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "later": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "historical": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unscheduled": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "event_types": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "modules": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_id",
+          "event_type",
+          "timing_kind",
+          "module_id",
+          "title",
+          "event_date",
+          "source_collection",
+          "source_id",
+          "module_name",
+          "status",
+          "days_from_as_of",
+          "in_horizon",
+          "details"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "pattern": "^calendar-"
+          },
+          "event_type": {
+            "enum": [
+              "module-review",
+              "evidence-review",
+              "action",
+              "formal-review",
+              "approval",
+              "baseline",
+              "change"
+            ]
+          },
+          "timing_kind": {
+            "enum": [
+              "due",
+              "historical"
+            ]
+          },
+          "module_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "event_date": {
+            "type": "string",
+            "pattern": "^(|\\d{4}-\\d{2}-\\d{2})$"
+          },
+          "source_collection": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "module_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "overdue",
+              "due-soon",
+              "upcoming",
+              "later",
+              "historical",
+              "unscheduled"
+            ]
+          },
+          "days_from_as_of": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "in_horizon": {
+            "type": "boolean"
+          },
+          "details": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "snapshot_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "readiness_score"
+        ]
+      },
+      {
+        "required": [
+          "compliance_score"
+        ]
+      },
+      {
+        "required": [
+          "risk_score"
+        ]
+      },
+      {
+        "required": [
+          "assessment_score"
+        ]
+      }
+    ]
+  }
+}
