@@ -4,7 +4,7 @@ export const modules = [
   { slug: 'scoper-v3.12', name: 'L2G Scoper', version: 'v3.12', path: '/modules/scoper/releases/v3.12/L2Scoper-v3.12.html', visual: false },
   { slug: 'workshop-v76', name: 'CMMC L2 Gap Workshop Tool', version: 'v76', path: '/modules/workshop/releases/v76/cmmc_l2_gap_workshop_tool_v76.html', darkStrategy: 'dark-mode' },
   { slug: 'builder-merger-v3.8', name: 'L2G Builder/Merger', version: 'v3.8', path: '/modules/builder-merger/releases/v3.8/L2G-BM_v3.8.html' },
-  { slug: 'ssp-v1.7', name: 'CMMC L2 SSP Modern Editable', version: 'v1.9.0', path: '/modules/ssp/releases/v1.9.0/CMMC_L2_SSP_Modern_Editable_v1.9.0.html', darkStrategy: 'body-dark' }
+  { slug: 'ssp-v1.7', name: 'CMMC L2 SSP Modern Editable', version: 'v1.9.1', path: '/modules/ssp/releases/v1.9.1/CMMC_L2_SSP_Modern_Editable_v1.9.1.html', darkStrategy: 'body-dark' }
 ];
 
 export async function stabilizePage(page) {

@@ -1,0 +1,31 @@
+{
+  "release": "v1.9.1",
+  "suite": "browser-maintenance-dashboard-regression",
+  "status": "passed",
+  "portfolioSnapshot": {
+    "queueRecords": 457,
+    "indicatorInstances": 2595,
+    "fingerprint": "359447a35144d73c26b9960e28c979f41ddc051b8d5bc97404c0ea1b67708eb6",
+    "openConflicts": 1
+  },
+  "moduleSnapshot": {
+    "moduleId": "module-product-alpha",
+    "requirements": 110,
+    "queueRecords": 113
+  },
+  "deliveryPackage": {
+    "files": 10,
+    "includesMaintenanceSnapshot": true,
+    "includesMaintenanceCsv": true
+  },
+  "negative": {
+    "snapshotTamperRejected": true,
+    "deliveryTamperRejected": true
+  },
+  "exports": {
+    "json": true,
+    "csv": true
+  },
+  "pageErrors": [],
+  "screenshot": "CMMC_L2_SSP_v1.9.1_Portfolio_Maintenance_Dashboard.png"
+}

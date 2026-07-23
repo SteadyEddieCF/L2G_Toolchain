@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.0",
-  "release_path": "modules/ssp/releases/v1.9.0",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.0.html",
-  "runtime_sha256": "e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27",
+  "current_supplied_version": "v1.9.1",
+  "release_path": "modules/ssp/releases/v1.9.1",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.1.html",
+  "runtime_sha256": "a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca",
   "status": "current_supplied_release_candidate",
-  "next_action": "v1.9.1 portfolio health and maintenance dashboard (suggested)",
+  "next_action": "v1.9.2 evidence freshness and ownership reminders (suggested)",
   "recorded_at": "2026-07-23",
   "operating_modes": {
     "default": "single-system",
@@ -45,6 +45,14 @@
       "delivery_package_version": "1.10",
       "delivery_manifest_kind": "cmmc_l2_ssp_delivery_manifest_v1",
       "delivery_manifest_version": "1.10",
+      "maintenance_snapshot_kind": "cmmc_l2_ssp_maintenance_snapshot_v1",
+      "maintenance_snapshot_version": "1.11",
+      "maintenance_indicator_catalog_count": 21,
+      "maintenance_dashboard_derived_read_only": true,
+      "maintenance_portfolio_scope": true,
+      "maintenance_module_scope": true,
+      "maintenance_json_export": true,
+      "maintenance_csv_export": true,
       "sha256_file_inventory": true,
       "safe_relative_paths": true,
       "extracted_bundle_verification": true,
@@ -52,6 +60,8 @@
       "authenticated_identity": false,
       "digital_signature": false,
       "assessment_conclusion": false,
+      "readiness_score": false,
+      "compliance_score": false,
       "silent_parent_overwrite": false
     }
   }

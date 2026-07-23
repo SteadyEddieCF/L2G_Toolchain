@@ -1,0 +1,121 @@
+{
+  "release": "v1.9.1",
+  "suite": "static-maintenance-dashboard-regression",
+  "status": "passed",
+  "passed": 22,
+  "total": 22,
+  "runtime_sha256": "a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca",
+  "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "checks": [
+    {
+      "name": "Identity is v1.9.1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "v1.9.0 migration namespaces retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "110 requirements retained",
+      "passed": true,
+      "detail": "110"
+    },
+    {
+      "name": "No duplicate IDs",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "Offline single-file runtime",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "No telemetry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Single-System remains default",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Persisted portfolio schema remains 1.10.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Maintenance dashboard UI exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Maintenance functions exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Maintenance standalone contract exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Deterministic indicator catalog exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Dashboard is derived and export-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Delivery packages include maintenance artifacts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Existing delivery verification remains",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Stable prior contracts remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Boundary language explicit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No readiness score property",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Authoritative model unchanged",
+      "passed": true,
+      "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+    },
+    {
+      "name": "JavaScript syntax passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No local workspace path",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Extracted-package materialization passes",
+      "passed": true,
+      "detail": "{\"release\": \"v1.9.1\", \"baselineSha256\": \"e22f7fd7d0abf1d3c1d2186d133255ee092b6dbc51f1ec5d1d6b919e62a9bb27\", \"runtimeSha256\": \"a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca\", \"bytes\": 1702294, \"status\": \"passed\"}\n"
+    }
+  ]
+}
