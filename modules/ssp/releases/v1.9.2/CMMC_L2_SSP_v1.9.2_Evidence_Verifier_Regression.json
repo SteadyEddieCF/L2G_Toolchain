@@ -1,0 +1,18 @@
+{
+  "release": "v1.9.2",
+  "suite": "independent-evidence-maintenance-and-delivery-verifiers",
+  "status": "passed",
+  "evidenceSnapshotAccepted": true,
+  "evidenceTamperRejected": true,
+  "maintenanceSnapshotAccepted": true,
+  "maintenanceTamperRejected": true,
+  "deliveryPackageAccepted": true,
+  "deliveryTamperRejected": true,
+  "deliveryExtractedFiles": 12,
+  "evidenceValidOutput": "VALID: 10 evidence records; snapshot fingerprint b96f3d3f028ccfd5810e5a5cd52cdf8bce5e47257c5e2cff5d17b064afa9af98",
+  "evidenceInvalidOutput": "INVALID\n- reminder record count does not match\n- evidence reminder snapshot fingerprint does not match",
+  "maintenanceValidOutput": "VALID: 457 queue records; snapshot fingerprint 3bae6cbfe2df1c9550f1816be325772b48ae2f852e4da83a68386d4c81223147",
+  "maintenanceInvalidOutput": "INVALID\n- maintenance snapshot fingerprint does not match",
+  "deliveryValidOutput": "VALID: 12 files; package fingerprint 272be549e251ba84042ec02e9a7fc7451dd200374a949be4401ba7429e13923a\nExtracted to /tmp/tmpqfans88c/extracted",
+  "deliveryInvalidOutput": "INVALID\n- SHA-256 mismatch: README_RECIPIENT_HANDLING.txt"
+}

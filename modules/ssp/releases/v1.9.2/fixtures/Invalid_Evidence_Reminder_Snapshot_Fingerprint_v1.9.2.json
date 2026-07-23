@@ -1,0 +1,388 @@
+{
+  "package_kind": "cmmc_l2_ssp_evidence_reminder_snapshot_v1",
+  "package_version": "1.12",
+  "generated_by": "CMMC Level 2 SSP Modern Editable v1.9.2",
+  "generated_at": "2026-07-23T12:00:00Z",
+  "scope": "portfolio",
+  "module_id": "",
+  "portfolio": {
+    "portfolio_id": "portfolio-mcfirecoal-cmmc-l2",
+    "portfolio_name": "McFirecoal CMMC Level 2 SSP Portfolio",
+    "portfolio_version": "1.3",
+    "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
+    "schema_version": "1.10.0"
+  },
+  "scope_label": "McFirecoal CMMC Level 2 SSP Portfolio",
+  "policy": {
+    "as_of_date": "2026-07-23",
+    "default_max_age_days": 90,
+    "due_soon_days": 30
+  },
+  "summary": {
+    "evidence_records": 10,
+    "reminder_records": 9,
+    "current": 3,
+    "due_soon": 1,
+    "stale": 2,
+    "expired": 1,
+    "date_missing": 1,
+    "future_date": 1,
+    "unresolved_references": 2,
+    "owner_follow_ups": 1,
+    "duplicate_identifiers": 1,
+    "requirements_in_scope": 440,
+    "modules_in_scope": 4,
+    "levels": {
+      "action": 6,
+      "follow-up": 3,
+      "information": 1
+    },
+    "statuses": {
+      "current": 3,
+      "date-missing": 1,
+      "due-soon": 1,
+      "expired": 1,
+      "future-date": 1,
+      "stale": 1,
+      "unresolved": 2
+    },
+    "indicators": {
+      "current": 3,
+      "due-soon": 1,
+      "duplicate-evidence-id": 1,
+      "expired": 1,
+      "future-validation-date": 1,
+      "owner-derived": 5,
+      "owner-missing": 1,
+      "stale": 1,
+      "unlinked-evidence": 1,
+      "unresolved-reference": 2,
+      "validation-date-missing": 1
+    }
+  },
+  "items": [
+    {
+      "reminder_id": "evidence-reminder-ef2e4e218d89c7f7be9a",
+      "evidence_id": "evidence-product-supplement",
+      "title": "evidence-product-supplement",
+      "module_ids": [
+        "module-product-alpha"
+      ],
+      "requirement_ids": [
+        "3.1.2"
+      ],
+      "owner_ids": [
+        "owner-module-mcfirecoal-anchor",
+        "owner-product-alpha"
+      ],
+      "owner_source": "linked-requirement",
+      "source_record_count": 0,
+      "validation_date": "",
+      "due_date": "",
+      "age_days": null,
+      "days_until_due": null,
+      "age_limit_days": 90,
+      "freshness_status": "unresolved",
+      "indicators": [
+        "owner-derived",
+        "unresolved-reference"
+      ],
+      "reminder_level": "action",
+      "reasons": [
+        "One or more in-scope requirements reference this evidence identifier, but no evidence record is present.",
+        "Owner identifiers were derived from linked requirements because the evidence record has no direct owner."
+      ],
+      "source_updated_at": ""
+    },
+    {
+      "reminder_id": "evidence-reminder-8c354e4cd232e37c9fcc",
+      "evidence_id": "evidence-unresolved",
+      "title": "evidence-unresolved",
+      "module_ids": [
+        "module-product-bravo"
+      ],
+      "requirement_ids": [
+        "3.6.1"
+      ],
+      "owner_ids": [
+        "owner-module-product-bravo"
+      ],
+      "owner_source": "linked-requirement",
+      "source_record_count": 0,
+      "validation_date": "",
+      "due_date": "",
+      "age_days": null,
+      "days_until_due": null,
+      "age_limit_days": 90,
+      "freshness_status": "unresolved",
+      "indicators": [
+        "owner-derived",
+        "unresolved-reference"
+      ],
+      "reminder_level": "action",
+      "reasons": [
+        "One or more in-scope requirements reference this evidence identifier, but no evidence record is present.",
+        "Owner identifiers were derived from linked requirements because the evidence record has no direct owner."
+      ],
+      "source_updated_at": ""
+    },
+    {
+      "reminder_id": "evidence-reminder-3421c5f79ae2673d2dce",
+      "evidence_id": "evidence-future",
+      "title": "Future-dated change record",
+      "module_ids": [
+        "module-product-alpha"
+      ],
+      "requirement_ids": [
+        "3.4.1"
+      ],
+      "owner_ids": [
+        "owner-product-alpha"
+      ],
+      "owner_source": "evidence-record",
+      "source_record_count": 1,
+      "validation_date": "2026-08-01",
+      "due_date": "2026-10-30",
+      "age_days": -9,
+      "days_until_due": 99,
+      "age_limit_days": 90,
+      "freshness_status": "future-date",
+      "indicators": [
+        "future-validation-date"
+      ],
+      "reminder_level": "action",
+      "reasons": [
+        "Validation date 2026-08-01 is after the as-of date."
+      ],
+      "source_updated_at": "2026-07-15T12:00:00Z"
+    },
+    {
+      "reminder_id": "evidence-reminder-4829a085693e84e6065f",
+      "evidence_id": "evidence-expired",
+      "title": "Privileged access review",
+      "module_ids": [
+        "module-shared-security"
+      ],
+      "requirement_ids": [
+        "3.3.1"
+      ],
+      "owner_ids": [
+        "owner-iam"
+      ],
+      "owner_source": "evidence-record",
+      "source_record_count": 1,
+      "validation_date": "2026-06-01",
+      "due_date": "2026-07-20",
+      "age_days": 52,
+      "days_until_due": -3,
+      "age_limit_days": 90,
+      "freshness_status": "expired",
+      "indicators": [
+        "expired"
+      ],
+      "reminder_level": "action",
+      "reasons": [
+        "Explicit due or expiration date 2026-07-20 has passed."
+      ],
+      "source_updated_at": "2026-06-01T12:00:00Z"
+    },
+    {
+      "reminder_id": "evidence-reminder-c3c821b4a7792c5e8306",
+      "evidence_id": "evidence-3-14-2",
+      "title": "Security monitoring configuration",
+      "module_ids": [
+        "module-product-bravo",
+        "module-shared-security"
+      ],
+      "requirement_ids": [
+        "3.14.2"
+      ],
+      "owner_ids": [
+        "owner-module-shared-security"
+      ],
+      "owner_source": "linked-requirement",
+      "source_record_count": 1,
+      "validation_date": "2026-01-01",
+      "due_date": "2026-04-01",
+      "age_days": 203,
+      "days_until_due": -113,
+      "age_limit_days": 90,
+      "freshness_status": "stale",
+      "indicators": [
+        "owner-derived",
+        "stale"
+      ],
+      "reminder_level": "action",
+      "reasons": [
+        "Owner identifiers were derived from linked requirements because the evidence record has no direct owner.",
+        "Evidence exceeds its 90-day review-cycle limit by 113 day(s)."
+      ],
+      "source_updated_at": "2026-01-01T12:00:00Z"
+    },
+    {
+      "reminder_id": "evidence-reminder-69522e6cf4099af072e1",
+      "evidence_id": "evidence-duplicate",
+      "title": "Duplicate incident response artifact A",
+      "module_ids": [
+        "module-mcfirecoal-anchor"
+      ],
+      "requirement_ids": [
+        "3.5.1"
+      ],
+      "owner_ids": [
+        "owner-ir"
+      ],
+      "owner_source": "evidence-record",
+      "source_record_count": 2,
+      "validation_date": "2026-07-01",
+      "due_date": "2026-09-29",
+      "age_days": 22,
+      "days_until_due": 68,
+      "age_limit_days": 90,
+      "freshness_status": "current",
+      "indicators": [
+        "current",
+        "duplicate-evidence-id"
+      ],
+      "reminder_level": "action",
+      "reasons": [
+        "2 evidence records use the same evidence identifier.",
+        "Evidence is within the review cycle through 2026-09-29."
+      ],
+      "source_updated_at": ""
+    },
+    {
+      "reminder_id": "evidence-reminder-24e6b1d2b128e8160bde",
+      "evidence_id": "evidence-missing-date",
+      "title": "Security awareness completion record",
+      "module_ids": [
+        "module-mcfirecoal-anchor"
+      ],
+      "requirement_ids": [
+        "3.2.1"
+      ],
+      "owner_ids": [
+        "owner-module-mcfirecoal-anchor"
+      ],
+      "owner_source": "linked-requirement",
+      "source_record_count": 1,
+      "validation_date": "",
+      "due_date": "",
+      "age_days": null,
+      "days_until_due": null,
+      "age_limit_days": 90,
+      "freshness_status": "date-missing",
+      "indicators": [
+        "owner-derived",
+        "validation-date-missing"
+      ],
+      "reminder_level": "follow-up",
+      "reasons": [
+        "Owner identifiers were derived from linked requirements because the evidence record has no direct owner.",
+        "No validation, review, collection, due, or expiration date is recorded."
+      ],
+      "source_updated_at": "2026-07-01T12:00:00Z"
+    },
+    {
+      "reminder_id": "evidence-reminder-64f2cee867349a5f43e6",
+      "evidence_id": "evidence-3-1-2",
+      "title": "Account provisioning sample",
+      "module_ids": [
+        "module-mcfirecoal-anchor",
+        "module-product-alpha"
+      ],
+      "requirement_ids": [
+        "3.1.2"
+      ],
+      "owner_ids": [
+        "owner-module-mcfirecoal-anchor",
+        "owner-product-alpha"
+      ],
+      "owner_source": "linked-requirement",
+      "source_record_count": 1,
+      "validation_date": "2026-05-10",
+      "due_date": "2026-08-08",
+      "age_days": 74,
+      "days_until_due": 16,
+      "age_limit_days": 90,
+      "freshness_status": "due-soon",
+      "indicators": [
+        "due-soon",
+        "owner-derived"
+      ],
+      "reminder_level": "follow-up",
+      "reasons": [
+        "Owner identifiers were derived from linked requirements because the evidence record has no direct owner.",
+        "Evidence review is due in 16 day(s), within the 30-day reminder window."
+      ],
+      "source_updated_at": "2026-05-10T12:00:00Z"
+    },
+    {
+      "reminder_id": "evidence-reminder-94d8db8fc936789dc243",
+      "evidence_id": "evidence-orphan",
+      "title": "Unlinked architecture diagram",
+      "module_ids": [
+        "module-product-bravo"
+      ],
+      "requirement_ids": [],
+      "owner_ids": [],
+      "owner_source": "none",
+      "source_record_count": 1,
+      "validation_date": "2026-07-01",
+      "due_date": "2026-12-28",
+      "age_days": 22,
+      "days_until_due": 158,
+      "age_limit_days": 180,
+      "freshness_status": "current",
+      "indicators": [
+        "current",
+        "owner-missing",
+        "unlinked-evidence"
+      ],
+      "reminder_level": "follow-up",
+      "reasons": [
+        "No evidence owner is recorded on the evidence record or linked requirements.",
+        "The evidence record is not linked to an in-scope requirement.",
+        "Evidence is within the review cycle through 2026-12-28."
+      ],
+      "source_updated_at": "2026-07-01T12:00:00Z"
+    },
+    {
+      "reminder_id": "evidence-reminder-3e1d9d1dbcee9a24ccc7",
+      "evidence_id": "evidence-3-1-1",
+      "title": "Access authorization export",
+      "module_ids": [
+        "module-mcfirecoal-anchor",
+        "module-product-alpha"
+      ],
+      "requirement_ids": [
+        "3.1.1"
+      ],
+      "owner_ids": [
+        "owner-security-operations"
+      ],
+      "owner_source": "evidence-record",
+      "source_record_count": 1,
+      "validation_date": "2026-07-10",
+      "due_date": "2026-10-08",
+      "age_days": 13,
+      "days_until_due": 77,
+      "age_limit_days": 90,
+      "freshness_status": "current",
+      "indicators": [
+        "current"
+      ],
+      "reminder_level": "information",
+      "reasons": [
+        "Evidence is within the review cycle through 2026-10-08."
+      ],
+      "source_updated_at": "2026-07-10T12:00:00Z"
+    }
+  ],
+  "limitations": [
+    "Local evidence-administration reminder artifact only.",
+    "Freshness is calculated from locally recorded dates and policy inputs; it is not a determination of evidence sufficiency, control effectiveness, assessment readiness, certification, or compliance.",
+    "No email, calendar, remote service, telemetry, or background notification is used."
+  ],
+  "snapshot_fingerprint": "0000000000000000000000000000000000000000000000000000000000000000"
+}

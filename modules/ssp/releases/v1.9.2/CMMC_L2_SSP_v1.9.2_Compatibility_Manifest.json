@@ -1,0 +1,51 @@
+{
+  "release": "v1.9.2",
+  "appVersion": "1.9.2",
+  "portfolioSchemaVersion": "1.10.0",
+  "defaultMode": "single-system",
+  "requirementsPerModule": 110,
+  "stableContracts": {
+    "sspHandoff": "1.0",
+    "sspReturn": "1.0",
+    "wordReview": "cmmc-l2-ssp-word-review-v1",
+    "portfolioExchangeExport": "1.6",
+    "portfolioExchangeImport": [
+      "1.5",
+      "1.6"
+    ],
+    "reviewRegister": "1.6",
+    "namedBaseline": "1.7",
+    "changeDecisionRegister": "1.8",
+    "policyProfile": "1.9",
+    "foundationPackage": "1.10",
+    "deliveryPackage": "1.10",
+    "deliveryManifest": "1.10",
+    "maintenanceSnapshot": "1.11",
+    "evidenceReminderSnapshot": "1.12"
+  },
+  "evidenceReminders": {
+    "derivedReadOnly": true,
+    "portfolioScope": true,
+    "moduleScope": true,
+    "asOfDatePolicy": true,
+    "defaultMaxAgeDays": 90,
+    "defaultDueSoonDays": 30,
+    "jsonExport": true,
+    "csvExport": true,
+    "sha256Fingerprint": true,
+    "independentVerifier": true,
+    "deliveryPackageIncluded": true,
+    "externalNotification": false
+  },
+  "guardrails": {
+    "persistedSchemaChange": false,
+    "governedValueOverwrite": false,
+    "evidenceSufficiencyConclusion": false,
+    "assessmentConclusion": false,
+    "readinessScore": false,
+    "complianceScore": false,
+    "authenticatedIdentity": false,
+    "digitalSignature": false,
+    "legalCustodyClaim": false
+  }
+}

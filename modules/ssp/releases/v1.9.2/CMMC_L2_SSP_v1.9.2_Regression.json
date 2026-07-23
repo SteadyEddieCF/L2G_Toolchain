@@ -1,0 +1,317 @@
+{
+  "release": "v1.9.2",
+  "status": "passed",
+  "runtimeSha256": "6b5028ce7de06d0d9dd37ea2f3f1709e1784da90f5d64be1adc760fd7e22af5d",
+  "requirementModelSha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+  "static": {
+    "release": "v1.9.2",
+    "suite": "static-evidence-reminder-regression",
+    "status": "passed",
+    "passed": 24,
+    "total": 24,
+    "runtime_sha256": "6b5028ce7de06d0d9dd37ea2f3f1709e1784da90f5d64be1adc760fd7e22af5d",
+    "requirement_model_sha256": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3",
+    "checks": [
+      {
+        "name": "Identity is v1.9.2",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "v1.9.1 migration namespaces retained",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "110 requirements retained",
+        "passed": true,
+        "detail": "110"
+      },
+      {
+        "name": "No duplicate IDs",
+        "passed": true,
+        "detail": "0"
+      },
+      {
+        "name": "Offline single-file runtime",
+        "passed": true,
+        "detail": "[]"
+      },
+      {
+        "name": "No telemetry or remote reminder service",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Single-System remains default",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Persisted portfolio schema remains 1.10.0",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Evidence reminder UI exists",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Evidence reminder functions exist",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Evidence reminder contract exists",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Deterministic freshness policy exists",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Reminder statuses and ownership paths exist",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Evidence snapshot is derived and export-only",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Delivery packages include evidence reminder artifacts",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Maintenance dashboard contract remains",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Delivery contract remains 1.10",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Stable prior contracts remain",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Boundary language explicit",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "No readiness score property",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Authoritative model unchanged",
+        "passed": true,
+        "detail": "4df2ab56d81cacf313a1b7baefb968de43eb50701c258d503e9a0e841bfb72f3"
+      },
+      {
+        "name": "JavaScript syntax passes",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "No local workspace path",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "Extracted-package materialization passes",
+        "passed": true,
+        "detail": "{\"release\": \"v1.9.2\", \"baselineSha256\": \"a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca\", \"runtimeSha256\": \"6b5028ce7de06d0d9dd37ea2f3f1709e1784da90f5d64be1adc760fd7e22af5d\", \"bytes\": 1734286, \"status\": \"passed\"}\n"
+      }
+    ]
+  },
+  "schema": {
+    "release": "v1.9.2",
+    "suite": "schema-evidence-reminder-regression",
+    "status": "passed",
+    "validFixture": {
+      "modules": 4,
+      "moduleRequirements": 440,
+      "evidenceSourceRecords": 9,
+      "evidenceReminderRecords": 10,
+      "maintenanceQueueRecords": 457,
+      "deliveryFiles": 12
+    },
+    "evidenceReminderDefinitions": {
+      "validSnapshot": true,
+      "badFingerprintRejected": true,
+      "scoreFieldRejected": true,
+      "invalidStatusRejected": true,
+      "tamperRejectedByVerifier": true
+    },
+    "deliveryDefinitions": {
+      "validPackage": true,
+      "badHashRejectedByVerifier": true
+    },
+    "invalidFixtures": [
+      {
+        "file": "Invalid_Baseline_Event.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_CRM_Missing_Reconciliations.json",
+        "rejected": true,
+        "firstError": "'crmReconciliations' is a required property"
+      },
+      {
+        "file": "Invalid_CRM_Reconciliation_Fingerprint.json",
+        "rejected": true,
+        "firstError": "'bad-fingerprint' does not match '^fnv1a64-[0-9a-f]{16}$'"
+      },
+      {
+        "file": "Invalid_CRM_Source_Identifier.json",
+        "rejected": true,
+        "firstError": "42 is not of type 'string'"
+      },
+      {
+        "file": "Invalid_Change_Decision_Register_Entry.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Delivery_Package_Unsafe_Path_v1.9.2.json",
+        "rejected": true,
+        "firstError": "'../escape.txt' does not match '^(?!/)(?!.*(?:^|/)\\\\.\\\\.(?:/|$))(?!.*//)(?![A-Za-z]:).+$'"
+      },
+      {
+        "file": "Invalid_Evidence_Reminder_Snapshot_Score_Field_v1.9.2.json",
+        "rejected": true,
+        "firstError": "Additional properties are not allowed ('readiness_score' was unexpected)"
+      },
+      {
+        "file": "Invalid_Evidence_Reminder_Snapshot_Status_v1.9.2.json",
+        "rejected": true,
+        "firstError": "'certified' is not one of ['unresolved', 'invalid-date', 'future-date', 'expired', 'stale', 'date-missing', 'due-soon', 'current']"
+      },
+      {
+        "file": "Invalid_Exchange_History.json",
+        "rejected": true,
+        "firstError": "'bad' is not one of ['cmmc_l2_ssp_portfolio_exchange_v1', 'cmmc_l2_ssp_module_exchange_v1']"
+      },
+      {
+        "file": "Invalid_Formal_Approval_Record.json",
+        "rejected": true,
+        "firstError": "'bad' does not match '^fnv1a64-[0-9a-f]{16}$'"
+      },
+      {
+        "file": "Invalid_Impact_Field_v1.9.2.json",
+        "rejected": true,
+        "firstError": "'assessmentConclusion' is not one of ['implementationStatus', 'implementationNarrative', 'responsibilityModel', 'cspResponsibility', 'espResponsibility', 'organizationResponsibility', 'moduleResponsibility', 'ownerIds', 'evidenceIds', 'scope', 'remediationPlan', 'poamReference', 'lastValidatedAt']"
+      },
+      {
+        "file": "Invalid_Impact_Fingerprint_v1.9.2.json",
+        "rejected": true,
+        "firstError": "'sha256-not-allowed' does not match '^(?:|fnv1a64-[0-9a-f]{16})$'"
+      },
+      {
+        "file": "Invalid_Impact_Without_Rationale_v1.9.2.json",
+        "rejected": true,
+        "firstError": "'' should be non-empty"
+      },
+      {
+        "file": "Invalid_Maintenance_Snapshot_Fingerprint_v1.9.2.json",
+        "rejected": true,
+        "firstError": "'bad-fingerprint' does not match '^[a-f0-9]{64}$'"
+      },
+      {
+        "file": "Invalid_Maintenance_Snapshot_Score_Field_v1.9.2.json",
+        "rejected": true,
+        "firstError": "Additional properties are not allowed ('readiness_score' was unexpected)"
+      },
+      {
+        "file": "Invalid_Module_Word_Queue.json",
+        "rejected": true,
+        "firstError": "'module' was expected"
+      },
+      {
+        "file": "Invalid_Named_Baseline_Record.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Policy_Activation_Fingerprint.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Policy_Profile_Weakens_Identity.json",
+        "rejected": true,
+        "firstError": "'schema' is a required property"
+      },
+      {
+        "file": "Invalid_Review_Role_Assignment.json",
+        "rejected": true,
+        "firstError": "'owner' is not one of ['author', 'reviewer', 'approver', 'administrator']"
+      }
+    ]
+  },
+  "browser": {
+    "release": "v1.9.2",
+    "suite": "browser-evidence-reminder-regression",
+    "status": "passed",
+    "portfolioSnapshot": {
+      "evidenceRecords": 10,
+      "reminderRecords": 9,
+      "current": 3,
+      "dueSoon": 1,
+      "stale": 2,
+      "ownerFollowUps": 1,
+      "unresolvedReferences": 2,
+      "fingerprint": "b96f3d3f028ccfd5810e5a5cd52cdf8bce5e47257c5e2cff5d17b064afa9af98"
+    },
+    "moduleSnapshot": {
+      "moduleId": "module-product-alpha",
+      "requirements": 110,
+      "evidenceRecords": 4
+    },
+    "deliveryPackage": {
+      "files": 12,
+      "includesEvidenceReminderSnapshot": true,
+      "includesEvidenceReminderCsv": true
+    },
+    "negative": {
+      "snapshotTamperRejected": true,
+      "deliveryTamperRejected": true,
+      "invalidPolicyRejected": true
+    },
+    "exports": {
+      "json": true,
+      "csv": true
+    },
+    "pageErrors": [],
+    "screenshot": "CMMC_L2_SSP_v1.9.2_Evidence_Reminder_Dashboard.png"
+  },
+  "independentVerifiers": {
+    "release": "v1.9.2",
+    "suite": "independent-evidence-maintenance-and-delivery-verifiers",
+    "status": "passed",
+    "evidenceSnapshotAccepted": true,
+    "evidenceTamperRejected": true,
+    "maintenanceSnapshotAccepted": true,
+    "maintenanceTamperRejected": true,
+    "deliveryPackageAccepted": true,
+    "deliveryTamperRejected": true,
+    "deliveryExtractedFiles": 12,
+    "evidenceValidOutput": "VALID: 10 evidence records; snapshot fingerprint b96f3d3f028ccfd5810e5a5cd52cdf8bce5e47257c5e2cff5d17b064afa9af98",
+    "evidenceInvalidOutput": "INVALID\n- reminder record count does not match\n- evidence reminder snapshot fingerprint does not match",
+    "maintenanceValidOutput": "VALID: 457 queue records; snapshot fingerprint 3bae6cbfe2df1c9550f1816be325772b48ae2f852e4da83a68386d4c81223147",
+    "maintenanceInvalidOutput": "INVALID\n- maintenance snapshot fingerprint does not match",
+    "deliveryValidOutput": "VALID: 12 files; package fingerprint 272be549e251ba84042ec02e9a7fc7451dd200374a949be4401ba7429e13923a\nExtracted to /tmp/tmpqfans88c/extracted",
+    "deliveryInvalidOutput": "INVALID\n- SHA-256 mismatch: README_RECIPIENT_HANDLING.txt"
+  }
+}

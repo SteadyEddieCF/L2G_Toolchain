@@ -1,0 +1,64 @@
+{
+  "release": "v1.9.2",
+  "application": "CMMC L2 SSP Modern Editable",
+  "status": "release-candidate",
+  "releaseDate": "2026-07-23",
+  "baseline": "v1.9.1",
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.9.2.html",
+    "sha256": "6b5028ce7de06d0d9dd37ea2f3f1709e1784da90f5d64be1adc760fd7e22af5d",
+    "bytes": 1734286
+  },
+  "materialization": {
+    "release": "v1.9.2",
+    "baseline": "v1.9.1",
+    "baseline_sha256": "a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca",
+    "payload_file": "source/runtime-v1.9.1-to-v1.9.2.payload.gz.b64",
+    "payload_file_sha256": "abf2a50caa1910c0375c29afc1c19ee8786a42661219865ea6711676926f44de",
+    "runtime_sha256": "6b5028ce7de06d0d9dd37ea2f3f1709e1784da90f5d64be1adc760fd7e22af5d",
+    "status": "passed"
+  },
+  "portfolioSchemaVersion": "1.10.0",
+  "maintenanceSnapshotVersion": "1.11",
+  "evidenceReminderSnapshotVersion": "1.12",
+  "requirementsPerModule": 110,
+  "defaultMode": "single-system",
+  "optionalMode": "modular-portfolio",
+  "capabilities": [
+    "portfolio evidence reminder center",
+    "module evidence reminder center",
+    "deterministic as-of and review-cycle policy",
+    "freshness and ownership classifications",
+    "SHA-256 evidence reminder snapshot fingerprint",
+    "evidence reminder JSON export",
+    "evidence reminder CSV export",
+    "independent evidence snapshot verifier",
+    "evidence reminder artifacts in delivery package"
+  ],
+  "validation": {
+    "static": "24/24",
+    "modules": 4,
+    "moduleRequirements": 440,
+    "sourceEvidenceRecords": 9,
+    "evidenceReminderRecords": 10,
+    "reminderRecords": 9,
+    "invalidFixturesRejected": 20,
+    "browserPageErrors": 0,
+    "snapshotTamperRejected": true,
+    "deliveryTamperRejected": true,
+    "independentVerifierPassed": true
+  },
+  "deliberateExclusions": [
+    "external email/calendar/push notifications",
+    "background monitoring",
+    "evidence-sufficiency determination",
+    "implementation-effectiveness assessment",
+    "assessment findings",
+    "readiness/risk/compliance scores",
+    "certification decisions",
+    "authenticated identity",
+    "digital signatures",
+    "legal custody records"
+  ],
+  "nextBoundedRelease": "v1.9.3 module dependency visualization and export (suggested)"
+}
