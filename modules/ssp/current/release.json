@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.5",
-  "release_path": "modules/ssp/releases/v1.9.5",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.5.html",
-  "runtime_sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+  "current_supplied_version": "v1.9.5.1",
+  "release_path": "modules/ssp/releases/v1.9.5.1",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html",
+  "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
   "status": "current_supplied_release_candidate",
-  "next_action": "v1.9.5 post-release toolchain integration audit; v1.9.6 feature development frozen pending audit results",
+  "next_action": "Independent review of bounded issue #31 correction; v1.9.6 remains reserved and uncommitted",
   "recorded_at": "2026-07-23",
   "operating_modes": {
     "default": "single-system",
@@ -64,5 +64,18 @@
       "digital_signature": false,
       "silent_parent_overwrite": false
     }
+  },
+  "working_data_schema": {
+    "id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.5.1",
+    "version": "1.9.5.1",
+    "sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36",
+    "accepts_migration_from": [
+      "1.9.5"
+    ]
+  },
+  "patch_baseline": {
+    "commit": "f5aaeab72271b2a25cc27d42eeebde95bf0c7df2",
+    "runtime_sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+    "issue": 31
   }
 }
