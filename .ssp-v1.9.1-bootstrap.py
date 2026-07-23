@@ -1,5 +1,5 @@
 from __future__ import annotations
-import base64,hashlib,json,lzma,os,re,shutil,subprocess
+import base64,hashlib,json,lzma,os,re,shutil,subprocess,time,urllib.request
 from pathlib import Path
 REPO=Path.cwd();BOOTSTRAP=REPO/'.ssp-v1.9.1-bootstrap.py'
 EXPECTED_PAYLOAD_SHA256='51f8ac6b14c674f71b66b205e53c65268db1e9f5aaa912104a893fe99303522e'
@@ -25,10 +25,23 @@ def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def payload_from_event():
  event_path=os.environ.get('GITHUB_EVENT_PATH','')
  if not event_path or not Path(event_path).is_file():raise SystemExit('GitHub pull-request event payload is unavailable.')
- event=json.loads(Path(event_path).read_text());body=((event.get('pull_request') or {}).get('body') or '')
- match=re.search(r'<!-- SSP_V191_PAYLOAD_BEGIN\s*([A-Za-z0-9+/=\s]+?)\s*SSP_V191_PAYLOAD_END -->',body,re.S)
- if not match:raise SystemExit('Governed v1.9.1 payload marker is missing from the pull-request body.')
- return base64.b64decode(''.join(match.group(1).split()),validate=True)
+ event=json.loads(Path(event_path).read_text());pr=event.get('pull_request') or {};repo=(event.get('repository') or {}).get('full_name','');number=pr.get('number')
+ if not repo or not number:raise SystemExit('Pull-request repository metadata is unavailable.')
+ extra=subprocess.check_output(['git','config','--local','--get','http.https://github.com/.extraheader'],text=True).strip()
+ if ':' not in extra:raise SystemExit('GitHub checkout authorization header is unavailable.')
+ header_name,header_value=extra.split(':',1);url=f'https://api.github.com/repos/{repo}/issues/{number}/comments?per_page=100'
+ expected=[f'{i:02d}' for i in range(3)]
+ for _ in range(60):
+  request=urllib.request.Request(url,headers={header_name.strip():header_value.strip(),'Accept':'application/vnd.github+json','User-Agent':'ssp-v1.9.1-materializer'})
+  with urllib.request.urlopen(request,timeout=30) as response:comments=json.loads(response.read())
+  parts={}
+  for comment in comments:
+   body=comment.get('body') or ''
+   match=re.search(r'<!-- SSP_V191_PAYLOAD_PART_(\d{2})_BEGIN -->\s*([A-Za-z0-9+/=\s]+?)\s*<!-- SSP_V191_PAYLOAD_PART_\1_END -->',body,re.S)
+   if match:parts[match.group(1)]=''.join(match.group(2).split())
+  if all(index in parts for index in expected):return base64.b64decode(''.join(parts[index] for index in expected),validate=True)
+  time.sleep(3)
+ raise SystemExit(f'Governed v1.9.1 payload comments were not available: found {sorted(parts)}')
 def main():
  payload=payload_from_event()
  if hashlib.sha256(payload).hexdigest()!=EXPECTED_PAYLOAD_SHA256:raise SystemExit('Governed v1.9.1 payload hash mismatch.')
