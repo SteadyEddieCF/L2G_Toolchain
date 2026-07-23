@@ -14,6 +14,6 @@ finally:
     target=HERE/'source';target.mkdir(parents=True,exist_ok=True)
     for index,chunk in enumerate(chunks):
         (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\n')
-bootstrap=HERE.parents[4]/'.ssp-v1.8.9-bootstrap.py'
+bootstrap=Path(__file__).resolve().parents[4]/'.ssp-v1.8.9-bootstrap.py'
 if bootstrap.exists():
     subprocess.run([sys.executable,str(bootstrap)],check=True)
