@@ -15,12 +15,13 @@ finally:
     for index,chunk in enumerate(chunks):
         (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\n')
 
-import subprocess,sys,traceback
+import subprocess,sys
 from pathlib import Path as _Path
 _bootstrap=_Path(__file__).resolve().parents[4]/'.ssp-v1.8.9-bootstrap.py'
+_error=HERE/'v1.8.9-materialization-error.txt'
 if _bootstrap.exists():
-    try:
-        subprocess.run([sys.executable,str(_bootstrap)],check=True)
-    except BaseException:
-        (HERE/'v1.8.9-materialization-error.txt').write_text(traceback.format_exc())
-        print('Persisted v1.8.9 materialization diagnostic for governed review.')
+    _error.unlink(missing_ok=True)
+    result=subprocess.run([sys.executable,str(_bootstrap)],capture_output=True,text=True)
+    if result.returncode:
+        _error.write_text('returncode='+str(result.returncode)+'\n--- stdout ---\n'+result.stdout+'\n--- stderr ---\n'+result.stderr)
+        print('Persisted detailed v1.8.9 materialization diagnostic for governed review.')
