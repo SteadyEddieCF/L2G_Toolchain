@@ -6,13 +6,15 @@ EXPECTED_PAYLOAD_SHA256='6cbc4fad6fc46d46771a2a1bb1365c2c4808722331dfd376447f8ca
 ORIGINAL_V185="from __future__ import annotations\nimport base64,lzma\nfrom pathlib import Path\nHERE=Path(__file__).resolve().parent\nPATTERN='materializer-v1.8.5.py.xz.b64.part-*'\npaths=sorted((HERE/'source').glob(PATTERN))\nif not paths:\n    raise SystemExit('Governed v1.8.5 materializer payload parts are missing.')\nchunks=[path.read_text().strip() for path in paths]\nsource=lzma.decompress(base64.b64decode(''.join(chunks)))\ntry:\n    exec(compile(source,__file__,'exec'))\nfinally:\n    target=HERE/'source';target.mkdir(parents=True,exist_ok=True)\n    for index,chunk in enumerate(chunks):\n        (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\\n')\n"
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def governed_payload():
- event_path=os.environ.get('GITHUB_EVENT_PATH','')
- if not event_path or not Path(event_path).is_file():raise SystemExit('GitHub pull-request event payload is unavailable.')
- event=json.loads(Path(event_path).read_text());body=((event.get('pull_request') or {}).get('body') or '')
- match=re.search(r'<!-- SSP_V192_PAYLOAD_BEGIN -->\s*([A-Za-z0-9+/=\s]+?)\s*<!-- SSP_V192_PAYLOAD_END -->',body,re.S)
- if not match:raise SystemExit('Governed v1.9.2 payload marker is missing from the pull-request body.')
- encoded=''.join(match.group(1).split())
- return base64.b64decode(encoded,validate=True)
+ log=subprocess.check_output(['git','log','-20','--format=%B%x1e'],cwd=REPO,text=True)
+ expected=[f'{i:02d}' for i in range(8)];parts={}
+ for message in log.split('\x1e'):
+  match=re.search(r'SSP_V192_COMMIT_PART_(\d{2})_BEGIN\s*([A-Za-z0-9+/=\s]+?)\s*SSP_V192_COMMIT_PART_\1_END',message,re.S)
+  if match and match.group(1) not in parts:parts[match.group(1)]=''.join(match.group(2).split())
+ if sorted(parts)!=expected:raise SystemExit(f'Governed v1.9.2 commit payload parts are missing: {sorted(parts)}')
+ lengths=[len(parts[i]) for i in expected]
+ if lengths!=[7000,7000,7000,7000,7000,7000,7000,1848]:raise SystemExit(f'Governed v1.9.2 commit payload lengths are invalid: {lengths}')
+ return base64.b64decode(''.join(parts[i] for i in expected),validate=True)
 def main():
  payload=governed_payload();actual=hashlib.sha256(payload).hexdigest()
  if actual!=EXPECTED_PAYLOAD_SHA256:raise SystemExit(f'Governed v1.9.2 payload hash mismatch: {actual}')
@@ -42,8 +44,8 @@ def main():
  if digest(runtime)!=EXPECTED_RUNTIME_SHA256:raise SystemExit('Materialized v1.9.2 runtime hash mismatch.')
  v185=REPO/'modules/ssp/releases/v1.8.5';(v185/'materialize.py').write_text(ORIGINAL_V185)
  marker=v185/'v1.9.2-materialization-status.txt';marker.write_text('status=passed\nruntime_sha256='+EXPECTED_RUNTIME_SHA256+'\nrelease=modules/ssp/releases/v1.9.2\nbaseline=modules/ssp/releases/v1.9.1\nworkflow_files_changed=false\n')
- BOOTSTRAP.unlink(missing_ok=True)
- stage=['README.md','modules/ssp/README.md','modules/ssp/current/release.json','modules/ssp/releases/v1.8.5','modules/ssp/releases/v1.9.2','tests/playwright/module-catalog.mjs','.ssp-v1.9.2-bootstrap.py']
+ BOOTSTRAP.unlink(missing_ok=True);shutil.rmtree(REPO/'.ssp-v1.9.2-commit-parts',ignore_errors=True)
+ stage=['README.md','modules/ssp/README.md','modules/ssp/current/release.json','modules/ssp/releases/v1.8.5','modules/ssp/releases/v1.9.2','tests/playwright/module-catalog.mjs','.ssp-v1.9.2-bootstrap.py','.ssp-v1.9.2-commit-parts']
  subprocess.run(['git','add','-A','--',*stage],cwd=REPO,check=True)
  print(f'Staged governed SSP v1.9.2 release. SHA-256: {EXPECTED_RUNTIME_SHA256}')
 if __name__=='__main__':main()
