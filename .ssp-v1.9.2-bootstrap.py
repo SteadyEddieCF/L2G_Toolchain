@@ -6,15 +6,12 @@ EXPECTED_PAYLOAD_SHA256='6cbc4fad6fc46d46771a2a1bb1365c2c4808722331dfd376447f8ca
 ORIGINAL_V185="from __future__ import annotations\nimport base64,lzma\nfrom pathlib import Path\nHERE=Path(__file__).resolve().parent\nPATTERN='materializer-v1.8.5.py.xz.b64.part-*'\npaths=sorted((HERE/'source').glob(PATTERN))\nif not paths:\n    raise SystemExit('Governed v1.8.5 materializer payload parts are missing.')\nchunks=[path.read_text().strip() for path in paths]\nsource=lzma.decompress(base64.b64decode(''.join(chunks)))\ntry:\n    exec(compile(source,__file__,'exec'))\nfinally:\n    target=HERE/'source';target.mkdir(parents=True,exist_ok=True)\n    for index,chunk in enumerate(chunks):\n        (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\\n')\n"
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def governed_payload():
- log=subprocess.check_output(['git','log','-20','--format=%B%x1e'],cwd=REPO,text=True)
- expected=[f'{i:02d}' for i in range(8)];parts={}
- for message in log.split('\x1e'):
-  match=re.search(r'SSP_V192_COMMIT_PART_(\d{2})_BEGIN\s*([A-Za-z0-9+/=\s]+?)\s*SSP_V192_COMMIT_PART_\1_END',message,re.S)
-  if match and match.group(1) not in parts:parts[match.group(1)]=''.join(match.group(2).split())
- if sorted(parts)!=expected:raise SystemExit(f'Governed v1.9.2 commit payload parts are missing: {sorted(parts)}')
- lengths=[len(parts[i]) for i in expected]
- if lengths!=[7000,7000,7000,7000,7000,7000,7000,1848]:raise SystemExit(f'Governed v1.9.2 commit payload lengths are invalid: {lengths}')
- return base64.b64decode(''.join(parts[i] for i in expected),validate=True)
+ part_dir=REPO/'.ssp-v1.9.2-commit-parts';expected=[f'part-{i:02d}' for i in range(8)]
+ paths=sorted(part_dir.glob('part-*'))
+ if [p.name for p in paths]!=expected:raise SystemExit(f'Governed v1.9.2 payload parts are missing: {[p.name for p in paths]}')
+ chunks=[p.read_text().strip() for p in paths];lengths=[len(x) for x in chunks]
+ if lengths!=[7000,7000,7000,7000,7000,7000,7000,1848]:raise SystemExit(f'Governed v1.9.2 payload lengths are invalid: {lengths}')
+ return base64.b64decode(''.join(chunks),validate=True)
 def main():
  payload=governed_payload();actual=hashlib.sha256(payload).hexdigest()
  if actual!=EXPECTED_PAYLOAD_SHA256:raise SystemExit(f'Governed v1.9.2 payload hash mismatch: {actual}')
