@@ -1,7 +1,7 @@
 from __future__ import annotations
 import base64,hashlib,json,lzma,re,shutil,subprocess
 from pathlib import Path
-REPO=Path.cwd();BOOTSTRAP=REPO/'.ssp-v1.9.1-bootstrap.py';STAGE=REPO/'.ssp-v1.9.1-payload-stage.txt'
+REPO=Path.cwd();BOOTSTRAP=REPO/'.ssp-v1.9.1-bootstrap.py';STAGE=REPO/'.ssp-v1.9.1-payload-stage.txt';PARTS=REPO/'.ssp-v1.9.1-payload'
 EXPECTED_PAYLOAD_SHA256='51f8ac6b14c674f71b66b205e53c65268db1e9f5aaa912104a893fe99303522e'
 EXPECTED_RUNTIME_SHA256='a1db97b7b2ad1824d51145356fe3b829dc08cb20d6580f6f6a6404b0ba41b0ca'
 ORIGINAL_V185="""from __future__ import annotations
@@ -22,18 +22,20 @@ finally:
         (target/f'materializer-v1.8.5.py.xz.b64.part-{index:02d}').write_text(chunk+'\\n')
 """
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
-def payload_from_commits():
- log=subprocess.check_output(['git','log','-3','--format=%B%x1e'],cwd=REPO,text=True)
- expected=['00','01','02'];lengths={'00':15000,'01':15000,'02':14380};parts={}
+def governed_payload():
+ log=subprocess.check_output(['git','log','-10','--format=%B%x1e'],cwd=REPO,text=True);part0=''
  for message in log.split('\x1e'):
-  match=re.search(r'SSP_V191_COMMIT_PART_(\d{2})_BEGIN\s*([A-Za-z0-9+/=\s]+?)\s*SSP_V191_COMMIT_PART_\1_END',message,re.S)
-  if match:
-   index=match.group(1);value=''.join(match.group(2).split());parts[index]=value[:lengths.get(index,len(value))]
- if not all(index in parts and len(parts[index])==lengths[index] for index in expected):raise SystemExit(f'Governed v1.9.1 commit payload incomplete: {sorted((key,len(value)) for key,value in parts.items())}')
- return base64.b64decode(''.join(parts[index] for index in expected),validate=True)
+  match=re.search(r'SSP_V191_COMMIT_PART_00_BEGIN\s*([A-Za-z0-9+/=\s]+?)\s*SSP_V191_COMMIT_PART_00_END',message,re.S)
+  if match:part0=''.join(match.group(1).split())[:15000];break
+ part1=(PARTS/'part-01').read_text().strip() if (PARTS/'part-01').is_file() else ''
+ part2=(PARTS/'part-02').read_text().strip() if (PARTS/'part-02').is_file() else ''
+ lengths=(len(part0),len(part1),len(part2))
+ if lengths!=(15000,15000,14380):raise SystemExit(f'Governed v1.9.1 payload part lengths are invalid: {lengths}')
+ return base64.b64decode(part0+part1+part2,validate=True)
 def main():
- payload=payload_from_commits()
- if hashlib.sha256(payload).hexdigest()!=EXPECTED_PAYLOAD_SHA256:raise SystemExit('Governed v1.9.1 payload hash mismatch.')
+ payload=governed_payload()
+ actual=hashlib.sha256(payload).hexdigest()
+ if actual!=EXPECTED_PAYLOAD_SHA256:raise SystemExit(f'Governed v1.9.1 payload hash mismatch: {actual}')
  data=json.loads(lzma.decompress(payload))
  if data.get('format')!='ssp-v1.9.1-repo-delta-v1':raise SystemExit('Unsupported v1.9.1 governed payload format.')
  base=REPO/data['baseline_release'];target=REPO/data['target_release']
@@ -61,8 +63,8 @@ def main():
  v185=REPO/'modules/ssp/releases/v1.8.5';(v185/'materialize.py').write_text(ORIGINAL_V185)
  (v185/'v1.9.1-materialization-error.txt').unlink(missing_ok=True)
  marker=v185/'v1.9.1-materialization-status.txt';marker.write_text('status=passed\nruntime_sha256='+EXPECTED_RUNTIME_SHA256+'\nrelease=modules/ssp/releases/v1.9.1\nbaseline=modules/ssp/releases/v1.9.0\nworkflow_files_changed=false\n')
- BOOTSTRAP.unlink(missing_ok=True);STAGE.unlink(missing_ok=True)
- stage=['README.md','modules/ssp/README.md','modules/ssp/current/release.json','modules/ssp/releases/v1.8.5','modules/ssp/releases/v1.9.1','tests/playwright/module-catalog.mjs','.ssp-v1.9.1-bootstrap.py','.ssp-v1.9.1-payload-stage.txt']
+ BOOTSTRAP.unlink(missing_ok=True);STAGE.unlink(missing_ok=True);shutil.rmtree(PARTS,ignore_errors=True)
+ stage=['README.md','modules/ssp/README.md','modules/ssp/current/release.json','modules/ssp/releases/v1.8.5','modules/ssp/releases/v1.9.1','tests/playwright/module-catalog.mjs','.ssp-v1.9.1-bootstrap.py','.ssp-v1.9.1-payload-stage.txt','.ssp-v1.9.1-payload']
  subprocess.run(['git','add','-A','--',*stage],cwd=REPO,check=True)
  print(f'Staged governed SSP v1.9.1 release. SHA-256: {EXPECTED_RUNTIME_SHA256}')
 if __name__=='__main__':main()
