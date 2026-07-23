@@ -1,0 +1,15 @@
+returncode=1
+--- stdout ---
+
+--- stderr ---
+Traceback (most recent call last):
+  File "/home/runner/work/L2G_Toolchain/L2G_Toolchain/.ssp-v1.8.9-bootstrap.py", line 63, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/runner/work/L2G_Toolchain/L2G_Toolchain/.ssp-v1.8.9-bootstrap.py", line 31, in main
+    data=json.loads(lzma.decompress(payload))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/lzma.py", line 343, in decompress
+    res = decomp.decompress(data)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+_lzma.LZMAError: Corrupt input data
