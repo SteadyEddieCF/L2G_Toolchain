@@ -1,0 +1,35 @@
+{
+  "release": "v1.9.5.1",
+  "suite": "working-data-schema-regression",
+  "status": "passed",
+  "schema": {
+    "$id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.5.1",
+    "schema": "cmmc-l2-ssp-modern-v1.9.5.1",
+    "schemaVersion": "1.9.5.1",
+    "appVersion": "1.9.5.1",
+    "sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36"
+  },
+  "actualRuntimeBackup": {
+    "fixture": "Actual_Runtime_Generated_Backup_v1.9.5.1.json",
+    "valid": true,
+    "sha256": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d"
+  },
+  "migrationBoundary": {
+    "v1.9.5BackupRequiresMigration": true,
+    "validationErrorsBeforeMigration": [
+      "'1.9.5.1' was expected",
+      "'1.9.5.1' was expected",
+      "'cmmc-l2-ssp-modern-v1.9.5.1' was expected"
+    ]
+  },
+  "requirements": {
+    "modules": 4,
+    "total": 440,
+    "perModule": [
+      110,
+      110,
+      110,
+      110
+    ]
+  }
+}

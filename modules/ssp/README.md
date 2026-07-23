@@ -1,11 +1,11 @@
 # CMMC L2 SSP Modern Editable
 
-Local SSP authoring and Word Review round-trip module with Workshop handoff/return integration.
+Local/offline SSP authoring and Word Review round-trip module with Workshop handoff/return integration.
 
-- Current supplied release candidate: **v1.9.5**
-- Current release focus: **Deterministic local portfolio and module role coverage and responsibility matrices with assigned, unassigned, multiple-assignee, inherited, unresolved, and not-applicable views; JSON/CSV export; and delivery-package inclusion**
-- Next bounded action: **v1.9.6 review packet and agenda assembly (suggested)**
+- Current supplied release candidate: **v1.9.5.1**
+- Current release focus: **Bounded issue #31 correction for working-data schema identity, export filenames, and v1.9.5 storage/recovery migration**
+- Next bounded action: **Independent review; v1.9.6 remains reserved and uncommitted**
 
-Single-System remains the default. Portfolio mode is opt-in and local-only. Every module retains exactly 110 explicit requirement records. v1.9.5 derives administrative responsibility coverage from documented portfolio, module, requirement, supplement, evidence, action, review-role, and review-cycle records. It does not authenticate people, synchronize directories, enforce access, validate personnel, create assessment findings, or produce readiness/risk/compliance scores or certification decisions.
+Single-System remains the default; portfolio mode is opt-in. Every module retains exactly 110 authoritative requirements. v1.9.5.1 adds no feature, route, assessment behavior, score, or adjacent-tool change.
 
-Preserve existing SSP and Word-reviewed values at higher precedence than imported draft candidates. Stable contracts remain: handoff/return 1.0, exchange 1.5 compatible, formal review 1.6, named baselines 1.7, consolidated register 1.8, policy profiles 1.9, delivery/foundation 1.10, maintenance 1.11, evidence reminders 1.12, module dependency snapshots 1.13, change-calendar snapshots 1.14, and responsibility-matrix snapshots 1.15.
+Stable contracts remain: handoff/return 1.0, optional audit 0.1, Word Review, exchange 1.5/1.6, formal review 1.6, baselines 1.7, register 1.8, policy 1.9, delivery/foundation 1.10, maintenance 1.11, reminders 1.12, dependency 1.13, calendar 1.14, and responsibility matrix 1.15.

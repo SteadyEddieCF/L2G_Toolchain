@@ -1,0 +1,368 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/cmmc-l2-ssp/responsibility-matrix-snapshot-v1.json",
+  "title": "CMMC L2 SSP Portfolio Role Coverage and Responsibility Matrix Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_kind",
+    "package_version",
+    "generated_by",
+    "generated_at",
+    "scope",
+    "module_id",
+    "scope_label",
+    "portfolio",
+    "summary",
+    "entries",
+    "assignment_history",
+    "limitations",
+    "snapshot_fingerprint"
+  ],
+  "properties": {
+    "package_kind": {
+      "const": "cmmc_l2_ssp_responsibility_matrix_snapshot_v1"
+    },
+    "package_version": {
+      "const": "1.15"
+    },
+    "generated_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "enum": [
+        "portfolio",
+        "module"
+      ]
+    },
+    "module_id": {
+      "type": "string"
+    },
+    "scope_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "portfolio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "portfolio_id",
+        "portfolio_name",
+        "portfolio_version",
+        "schema",
+        "schema_version"
+      ],
+      "properties": {
+        "portfolio_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "portfolio_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "portfolio_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "schema_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "responsibility_rows",
+        "assigned",
+        "unassigned",
+        "multiple_assignees",
+        "inherited",
+        "unresolved",
+        "not_applicable",
+        "active_role_assignments",
+        "revoked_role_assignments",
+        "modules",
+        "responsibility_types"
+      ],
+      "properties": {
+        "responsibility_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assigned": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unassigned": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "multiple_assignees": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "inherited": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_applicable": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active_role_assignments": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "revoked_role_assignments": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "modules": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "responsibility_types": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "responsibility_id",
+          "responsibility_type",
+          "role",
+          "coverage_status",
+          "assignment_origin",
+          "scope",
+          "module_id",
+          "module_name",
+          "requirement_id",
+          "source_collection",
+          "source_id",
+          "source_label",
+          "assignees",
+          "flags",
+          "review_cycle_days",
+          "review_anchor_date",
+          "inherited_from_module_id",
+          "details",
+          "source_fingerprint"
+        ],
+        "properties": {
+          "responsibility_id": {
+            "type": "string",
+            "pattern": "^responsibility-[0-9a-f]{24}$"
+          },
+          "responsibility_type": {
+            "enum": [
+              "portfolio-owner",
+              "module-owner",
+              "requirement-owner",
+              "supplement-owner",
+              "evidence-owner",
+              "action-owner",
+              "review-role",
+              "review-cycle"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "coverage_status": {
+            "enum": [
+              "assigned",
+              "unassigned",
+              "multiple-assignees",
+              "inherited",
+              "unresolved",
+              "not-applicable"
+            ]
+          },
+          "assignment_origin": {
+            "enum": [
+              "direct",
+              "inherited",
+              "derived",
+              "unresolved",
+              "none"
+            ]
+          },
+          "scope": {
+            "enum": [
+              "portfolio",
+              "module"
+            ]
+          },
+          "module_id": {
+            "type": "string"
+          },
+          "module_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirement_id": {
+            "type": "string"
+          },
+          "source_collection": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assignees": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "review_cycle_days": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 3650
+          },
+          "review_anchor_date": {
+            "type": "string"
+          },
+          "inherited_from_module_id": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          },
+          "source_fingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "assignment_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "assignmentId",
+          "portfolioId",
+          "moduleId",
+          "scope",
+          "person",
+          "role",
+          "status",
+          "assignedAt",
+          "assignedBy",
+          "revokedAt",
+          "revokedBy"
+        ],
+        "properties": {
+          "assignmentId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "portfolioId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "moduleId": {
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "portfolio",
+              "module"
+            ]
+          },
+          "person": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "administrator",
+              "author",
+              "reviewer",
+              "approver",
+              "observer"
+            ]
+          },
+          "status": {
+            "enum": [
+              "active",
+              "revoked"
+            ]
+          },
+          "assignedAt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assignedBy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revokedAt": {
+            "type": "string"
+          },
+          "revokedBy": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "snapshot_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "baselineCommit": "f5aaeab72271b2a25cc27d42eeebde95bf0c7df2",
+  "baselineRuntimeSha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+  "outputRuntimeSha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
+  "scope": [
+    "version/title/footer identity",
+    "working-data schema/app identity",
+    "export filenames",
+    "v1.9.5 storage/recovery migration",
+    "non-enumerable browser test hooks"
+  ],
+  "nonGoals": [
+    "feature development",
+    "contract change",
+    "adjacent tool change"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "release": "v1.9.5.1",
+  "appVersion": "1.9.5.1",
+  "baselineCommit": "f5aaeab72271b2a25cc27d42eeebde95bf0c7df2",
+  "baselineRuntimeSha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+  "runtimeSha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
+  "workingDataSchemaId": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.5.1",
+  "workingDataSchemaVersion": "1.9.5.1",
+  "portfolioSchemaVersion": "1.10.0",
+  "defaultMode": "single-system",
+  "requirementsPerModule": 110,
+  "acceptedWorkingDataMigrations": [
+    "1.9.5"
+  ],
+  "stableContracts": {
+    "sspHandoff": "1.0",
+    "sspReturn": "1.0",
+    "roundTripAudit": "0.1-read-only",
+    "wordReview": "cmmc-l2-ssp-word-review-v1",
+    "portfolioExchangeImport": [
+      "1.5",
+      "1.6"
+    ],
+    "reviewRegister": "1.6",
+    "namedBaseline": "1.7",
+    "changeDecisionRegister": "1.8",
+    "policyProfile": "1.9",
+    "foundationPackage": "1.10",
+    "deliveryPackage": "1.10",
+    "maintenanceSnapshot": "1.11",
+    "evidenceReminderSnapshot": "1.12",
+    "moduleDependencySnapshot": "1.13",
+    "changeCalendarSnapshot": "1.14",
+    "responsibilityMatrixSnapshot": "1.15"
+  },
+  "patchBoundary": {
+    "schemaIdentityCorrection": true,
+    "exportFilenameCorrection": true,
+    "v195StorageAndRecoveryMigration": true,
+    "persistedDataModelChange": false,
+    "newFeature": false,
+    "newCrossToolContract": false,
+    "adjacentToolChange": false
+  },
+  "guardrails": {
+    "governedValueOverwrite": false,
+    "assessmentFinding": false,
+    "assessmentConclusion": false,
+    "readinessScore": false,
+    "riskScore": false,
+    "complianceScore": false,
+    "certificationDecision": false,
+    "authenticatedIdentity": false,
+    "remoteRuntimeDependency": false,
+    "externalNetwork": false
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "release": "v1.9.5.1",
+  "suite": "bounded-static-regression",
+  "status": "passed",
+  "passed": 18,
+  "total": 18,
+  "baseline_runtime_sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+  "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
+  "schema_sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36",
+  "checks": [
+    {
+      "name": "Exact baseline hash",
+      "status": "passed"
+    },
+    {
+      "name": "Patch version identity",
+      "status": "passed"
+    },
+    {
+      "name": "Corrected export names",
+      "status": "passed"
+    },
+    {
+      "name": "Stale export names removed",
+      "status": "passed"
+    },
+    {
+      "name": "v1.9.5 migration accepted",
+      "status": "passed"
+    },
+    {
+      "name": "v1.9.5 storage/recovery migration accepted",
+      "status": "passed"
+    },
+    {
+      "name": "Handoff contract unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "Return contract unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "Round-trip audit remains optional",
+      "status": "passed"
+    },
+    {
+      "name": "Derived contracts unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "Word Review unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "Portfolio exchange compatibility unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "No new route or review packet",
+      "status": "passed"
+    },
+    {
+      "name": "No authentication or remote integration",
+      "status": "passed"
+    },
+    {
+      "name": "Authoritative model unchanged",
+      "status": "passed"
+    },
+    {
+      "name": "Exactly 110 requirements per module",
+      "status": "passed"
+    },
+    {
+      "name": "JavaScript syntax passed locally",
+      "status": "passed"
+    },
+    {
+      "name": "Packaged schema identity",
+      "status": "passed"
+    }
+  ]
+}

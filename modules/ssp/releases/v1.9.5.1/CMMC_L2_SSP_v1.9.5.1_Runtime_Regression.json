@@ -1,0 +1,113 @@
+{
+  "release": "v1.9.5.1",
+  "status": "passed",
+  "baselineRuntimeSha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+  "runtimeSha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
+  "schemaSha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36",
+  "backupBrowser": {
+    "release": "v1.9.5.1",
+    "suite": "actual-backup-schema-migration-browser-regression",
+    "status": "passed",
+    "baseline_runtime_sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
+    "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
+    "old_runtime_backup": {
+      "fixture": "Actual_Runtime_Generated_Backup_v1.9.5.json",
+      "schema": "cmmc-l2-ssp-modern-v1.9.5",
+      "schemaVersion": "1.9.5",
+      "appVersion": "1.9.5",
+      "observed_stale_filename": "CMMC_L2_SSP_v1.8.4_Data_Backup.json",
+      "sha256": "beecdbbb314da9ea559ff35f0dbc2385ed0ad862da55ff1d2e0adb4ae40a0285"
+    },
+    "corrected_runtime_backup": {
+      "fixture": "Actual_Runtime_Generated_Backup_v1.9.5.1.json",
+      "schema": "cmmc-l2-ssp-modern-v1.9.5.1",
+      "schemaVersion": "1.9.5.1",
+      "appVersion": "1.9.5.1",
+      "filename": "CMMC_L2_SSP_v1.9.5.1_Data_Backup.json",
+      "sha256": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d",
+      "packaged_schema_valid": true,
+      "repeat_export_byte_identical": true,
+      "import_export_byte_identical": true
+    },
+    "preservation": {
+      "fields": true,
+      "statuses": true,
+      "reviewerStatuses": true,
+      "tables": true,
+      "images": true,
+      "portfolioFoundation": true,
+      "previousAutosave": true,
+      "imageRecovery": true,
+      "portfolioRollback": true,
+      "wordReviewQueue": true,
+      "undoRedo": true
+    },
+    "exports": {
+      "backup": "v1.9.5.1",
+      "aiTemplate": "v1.9.5.1",
+      "crm": "v1.9.5.1",
+      "cleanHtml": "v1.9.5.1",
+      "internalHtml": "v1.9.5.1"
+    },
+    "pageErrors": [],
+    "externalNetworkRequests": []
+  },
+  "schema": {
+    "release": "v1.9.5.1",
+    "suite": "working-data-schema-regression",
+    "status": "passed",
+    "schema": {
+      "$id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.5.1",
+      "schema": "cmmc-l2-ssp-modern-v1.9.5.1",
+      "schemaVersion": "1.9.5.1",
+      "appVersion": "1.9.5.1",
+      "sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36"
+    },
+    "actualRuntimeBackup": {
+      "fixture": "Actual_Runtime_Generated_Backup_v1.9.5.1.json",
+      "valid": true,
+      "sha256": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d"
+    },
+    "migrationBoundary": {
+      "v1.9.5BackupRequiresMigration": true,
+      "validationErrorsBeforeMigration": [
+        "'1.9.5.1' was expected",
+        "'1.9.5.1' was expected",
+        "'cmmc-l2-ssp-modern-v1.9.5.1' was expected"
+      ]
+    },
+    "requirements": {
+      "modules": 4,
+      "total": 440,
+      "perModule": [
+        110,
+        110,
+        110,
+        110
+      ]
+    }
+  },
+  "migrationRestore": {
+    "release": "v1.9.5.1",
+    "status": "passed",
+    "source": "actual runtime-generated v1.9.5 backup",
+    "sourceSha256": "beecdbbb314da9ea559ff35f0dbc2385ed0ad862da55ff1d2e0adb4ae40a0285",
+    "resultSha256": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d",
+    "backupImport": true,
+    "restore": true,
+    "repeatExportDeterministic": true,
+    "preserved": {
+      "fields": true,
+      "statuses": true,
+      "reviewerStatuses": true,
+      "tables": true,
+      "images": true,
+      "portfolioFoundation": true,
+      "previousAutosave": true,
+      "imageRecovery": true,
+      "portfolioRollback": true,
+      "wordReviewQueue": true,
+      "undoRedo": true
+    }
+  }
+}

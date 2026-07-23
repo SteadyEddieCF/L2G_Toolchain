@@ -1,0 +1,70 @@
+{
+  "release": "v1.9.5.1",
+  "application": "CMMC L2 SSP Modern Editable",
+  "status": "release-candidate",
+  "releaseDate": "2026-07-23",
+  "issue": 31,
+  "baseline": {
+    "commit": "f5aaeab72271b2a25cc27d42eeebde95bf0c7df2",
+    "version": "v1.9.5",
+    "runtimeSha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa"
+  },
+  "runtime": {
+    "file": "CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html",
+    "sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
+    "bytes": 1823041
+  },
+  "workingDataSchema": {
+    "file": "CMMC_L2_SSP_Data_Schema_v1.9.5.1.json",
+    "sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36",
+    "id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.5.1",
+    "version": "1.9.5.1"
+  },
+  "actualBackups": {
+    "v1.9.5": {
+      "file": "complete-deliverables/fixtures/Actual_Runtime_Generated_Backup_v1.9.5.json",
+      "sha256": "beecdbbb314da9ea559ff35f0dbc2385ed0ad862da55ff1d2e0adb4ae40a0285"
+    },
+    "v1.9.5.1": {
+      "file": "complete-deliverables/fixtures/Actual_Runtime_Generated_Backup_v1.9.5.1.json",
+      "sha256": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d"
+    }
+  },
+  "unchangedContracts": [
+    "ssp-handoff-1.0",
+    "ssp-return-1.0",
+    "round-trip-audit-0.1-read-only",
+    "word-review-v1",
+    "portfolio/module-exchange-1.5/1.6",
+    "foundation/delivery-1.10",
+    "maintenance-1.11",
+    "evidence-reminder-1.12",
+    "dependency-1.13",
+    "change-calendar-1.14",
+    "responsibility-matrix-1.15"
+  ],
+  "validation": {
+    "static": "18/18",
+    "actualBackupSchema": true,
+    "repeatExportByteIdentical": true,
+    "importExportByteIdentical": true,
+    "preservedBrowserSuites": 5,
+    "independentVerifierCases": "14/14",
+    "modules": 4,
+    "requirementRows": 440,
+    "requirementsPerModule": 110,
+    "browserPageErrors": 0,
+    "externalNetworkRequests": 0
+  },
+  "nonGoals": [
+    "v1.9.6 features",
+    "review packet or agenda",
+    "responsibility follow-up queue",
+    "new cross-tool contract",
+    "Control Center registration",
+    "Workshop change",
+    "Builder/Merger change",
+    "assessment/readiness/risk/compliance behavior change"
+  ],
+  "nextAction": "Independent review of unmerged draft PR; v1.9.6 remains reserved and uncommitted."
+}

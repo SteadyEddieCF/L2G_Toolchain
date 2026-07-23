@@ -1,0 +1,15 @@
+{
+  "release": "v1.9.5.1",
+  "repositoryPolicy": "Large generated browser fixtures are supplied in the complete deliverables ZIP rather than duplicated in git history.",
+  "completeDeliverablesZipSha256": "72918ee4ef68e8ef94b5cf5608bce5791ce0558fae2ab94995eb32af2046a436",
+  "fixtures": {
+    "v1.9.5": {
+      "file": "complete-deliverables/fixtures/Actual_Runtime_Generated_Backup_v1.9.5.json",
+      "sha256": "beecdbbb314da9ea559ff35f0dbc2385ed0ad862da55ff1d2e0adb4ae40a0285"
+    },
+    "v1.9.5.1": {
+      "file": "complete-deliverables/fixtures/Actual_Runtime_Generated_Backup_v1.9.5.1.json",
+      "sha256": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d"
+    }
+  }
+}

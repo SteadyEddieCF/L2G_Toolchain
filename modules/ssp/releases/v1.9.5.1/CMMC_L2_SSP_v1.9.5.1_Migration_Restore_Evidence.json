@@ -1,0 +1,23 @@
+{
+  "release": "v1.9.5.1",
+  "status": "passed",
+  "source": "actual runtime-generated v1.9.5 backup",
+  "sourceSha256": "beecdbbb314da9ea559ff35f0dbc2385ed0ad862da55ff1d2e0adb4ae40a0285",
+  "resultSha256": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d",
+  "backupImport": true,
+  "restore": true,
+  "repeatExportDeterministic": true,
+  "preserved": {
+    "fields": true,
+    "statuses": true,
+    "reviewerStatuses": true,
+    "tables": true,
+    "images": true,
+    "portfolioFoundation": true,
+    "previousAutosave": true,
+    "imageRecovery": true,
+    "portfolioRollback": true,
+    "wordReviewQueue": true,
+    "undoRedo": true
+  }
+}
