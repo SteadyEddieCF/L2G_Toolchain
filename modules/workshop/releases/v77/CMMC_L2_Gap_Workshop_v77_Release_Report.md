@@ -49,9 +49,17 @@ No stable package version changed.
 - Page errors: 0; console errors: 0; external network requests: 0.
 - Inline JavaScript syntax: pass for 9 blocks; duplicate static IDs: 0.
 
-## Remaining repository gates
+## Repository and CI validation
 
-The draft PR must remain unmerged while GitHub runs repository validation, Playwright/axe-core, visual regression, and native Windows Chromium `file://` smoke. Direct `file://` navigation is blocked by the managed local browser environment, so the native Windows gate is not claimed locally.
+All required automated gates passed on the release branch:
+
+- repository validation;
+- Playwright runtime and axe-core QA;
+- reviewed light- and dark-mode visual regression;
+- native Windows Chromium `file://` smoke;
+- deterministic Workshop v77 materialization on Linux and Windows.
+
+The pull request remains draft and unmerged for orchestrator review, as required by issue #38.
 
 ## Non-goals preserved
 
