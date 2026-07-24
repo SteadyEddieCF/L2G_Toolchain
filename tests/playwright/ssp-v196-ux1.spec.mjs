@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import fs from 'node:fs/promises';
 
 const runtimePath = '/modules/ssp/releases/v1.9.6/CMMC_L2_SSP_Modern_Editable_v1.9.6.html';
 
@@ -50,9 +51,8 @@ test('ssp-v1.9.6 UX-1 remains presentation-only, local, and accessible', async (
   await page.locator('#exportBtn').click();
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toBe('CMMC_L2_SSP_v1.9.5.1_Data_Backup.json');
-  const exported = JSON.parse(await (await download.createReadStream()).read().then?.(() => '') ?? '{}');
   const downloadPath = await download.path();
-  const fs = await import('node:fs/promises');
+  expect(downloadPath).toBeTruthy();
   const backup = JSON.parse(await fs.readFile(downloadPath, 'utf8'));
   expect(backup.appVersion).toBe('1.9.5.1');
   expect(backup.lastExportAttempts).toBeUndefined();
