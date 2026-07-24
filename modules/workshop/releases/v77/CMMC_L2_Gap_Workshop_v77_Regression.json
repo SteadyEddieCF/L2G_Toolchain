@@ -1,0 +1,35 @@
+{
+  "release": "v77",
+  "focus": "Evidence Ownership and Provider Follow-up",
+  "runtime_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1",
+  "baseline_sha256": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a",
+  "results": {
+    "browser_regression": {"passed": 29, "failed": 0, "page_errors": 0, "console_errors": 0, "external_requests": 0},
+    "mcfirecoal_v1_2_0": {
+      "passed": 29,
+      "failed": 0,
+      "parts": [
+        {"part": 1, "entries": 43, "sha256": "d4b0f05a5ab27f683ab351ef5162901703fca6320c397052f7b3530aed67ad6a", "crc_error": null},
+        {"part": 2, "entries": 67, "sha256": "154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2", "crc_error": null},
+        {"part": 3, "entries": 53, "sha256": "52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226", "crc_error": null}
+      ]
+    },
+    "static_qa": {
+      "runtime_size_bytes": 1779417,
+      "baseline_size_bytes": 1731651,
+      "runtime_delta_bytes": 47766,
+      "inline_javascript_blocks": 9,
+      "javascript_syntax": "pass (node --check, all inline blocks)",
+      "duplicate_static_ids": [],
+      "external_script_sources": [],
+      "external_stylesheets": [],
+      "accessibility_precheck": {"new_form_controls_wrapped_by_labels": true, "new_buttons_have_text_names": true, "duplicate_ids": 0}
+    }
+  },
+  "required_pr_gates": ["repository validation", "Playwright runtime and axe-core QA", "visual regression", "Windows Chromium file:// smoke"],
+  "local_limitations": [
+    "Managed browser blocked direct file:// navigation; native Windows smoke is reserved for GitHub Actions.",
+    "axe-core package was not bundled in the local environment; static accessible-name/label precheck passed and repository axe-core remains a required PR gate."
+  ],
+  "status": "local candidate regression passed; draft PR must remain unmerged pending exact-head repository gates and orchestrator review"
+}
