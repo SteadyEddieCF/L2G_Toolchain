@@ -3,9 +3,11 @@
   "current_supplied_version": "v77",
   "release_path": "modules/workshop/releases/v77",
   "runtime_path": "modules/workshop/releases/v77/cmmc_l2_gap_workshop_tool_v77.html",
-  "status": "release_candidate_pending_orchestrator_review",
+  "status": "current_supplied_release",
   "next_action": "v78 Contract-safe Reporting and SSP/Workbook Alignment",
-  "recorded_at": "2026-07-23",
+  "recorded_at": "2026-07-24",
+  "promoted_by_pr": 39,
+  "promoted_commit": "035fe77a3a90d01bef8908229b6a8357a76adcac",
   "primary_html_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1",
   "stable_contracts": {
     "workshop_state": "1.0",
