@@ -6,14 +6,14 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 
 | Module | Current supplied release | Next bounded action |
 |---|---:|---|
-| L2G Control Center | v0.3.3 | One bounded exact-suite synchronization for SSP v1.9.5.1, registered fixture v1.2.0, and completed audit posture |
-| DocConverter-L2G | v7.9.5.1 | Hold later candidates until separately reviewed; exact-version large-bundle and downstream handshake audit passed |
-| L2G Scoper | v3.12 | v3.13 downstream-adoption and decision-workflow validation gate, only for a demonstrated need |
-| CMMC L2 Gap Workshop Tool | v76 | v77 Evidence Ownership and Provider Follow-up |
-| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles; future SSP review/delivery consumption remains proposed |
-| CMMC L2 SSP Modern Editable | v1.9.5.1 | Post-fix closeout passed; v1.9.6 remains reserved and uncommitted pending architecture authorization |
+| L2G Control Center | v0.3.4 | Defer v0.4 read-only action/blocker overview until Workshop v77 establishes the canonical action, evidence-owner, and provider-follow-up records it may observe |
+| DocConverter-L2G | v7.9.5.1 | Hold later candidates until they pass the registered McFirecoal v1.2.0 three-part regression and downstream handshakes |
+| L2G Scoper | v3.12 | Hold v3.13 unless Workshop v77 or downstream adoption demonstrates a concrete decision-workflow or package need |
+| CMMC L2 Gap Workshop Tool | v76 | v77 Evidence Ownership and Provider Follow-up — next coordinated feature release |
+| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles after an orchestrator-approved review/delivery profile contract |
+| CMMC L2 SSP Modern Editable | v1.9.5.1 | Hold v1.9.6 until Workshop ownership records and the SSP-to-Builder/Merger review/delivery profile contract are approved |
 
-The active exact-version suite completed the full toolchain audit, and SSP v1.9.5.1 subsequently passed its bounded post-fix backup/schema and Workshop v76 round-trip closeout. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
+The active exact-version suite completed the full toolchain audit, SSP v1.9.5.1 passed its bounded post-fix backup/schema and Workshop v76 round-trip closeout, and Control Center v0.3.4 synchronized the exact suite and optional Stage 5 capability metadata. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
 
 ## Repository layout
 
