@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Cross-module Playwright, axe-core, visual, and local-file regression for the L2G Toolchain.",
   "scripts": {
-    "test:qa": "playwright test tests/playwright/runtime.spec.mjs tests/playwright/accessibility.spec.mjs --project=chromium",
+    "test:qa": "playwright test tests/playwright/runtime.spec.mjs tests/playwright/accessibility.spec.mjs tests/playwright/ssp-v196-ux1.spec.mjs --project=chromium",
     "test:visual": "playwright test tests/playwright/visual.spec.mjs --project=chromium",
     "test:file": "playwright test tests/playwright/file-smoke.spec.mjs --project=chromium",
     "test:all": "playwright test --project=chromium"

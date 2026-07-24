@@ -1,0 +1,13 @@
+{
+  "release": "v1.9.6",
+  "repositoryPolicy": "Large browser backups, McFirecoal portfolio fixtures, screenshots, and generated binaries are retained in the complete deliverables ZIP rather than duplicated in git history.",
+  "completeDeliverablesZip": {
+    "filename": "CMMC_L2_SSP_v1.9.6_Complete_Deliverables.zip",
+    "sha256": "6a265c109405d1283c40aa39ede9b4dc4c1537737450f4d0a20a27ce854d88fd"
+  },
+  "fixtures": {
+    "v1.9.5RuntimeBackup": "beecdbbb314da9ea559ff35f0dbc2385ed0ad862da55ff1d2e0adb4ae40a0285",
+    "v1.9.5.1RuntimeBackup": "4f5687a7f53720bbadcd21227d33120ee68d4d8df69bdd747d6cae28da26c63d",
+    "mcfirecoalSet": "v1.2.0"
+  }
+}
