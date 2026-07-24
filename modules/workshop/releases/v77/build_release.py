@@ -29,7 +29,7 @@ patch=''.join(p.read_text(encoding='utf-8') for p in sorted(SOURCE.glob('v77_pat
 idx=text.rfind('</script>')
 if idx<0: raise SystemExit('closing script not found')
 text=text[:idx]+patch+'\n'+text[idx:]
-OUT.write_text(text,encoding='utf-8')
+OUT.write_bytes(text.encode('utf-8'))
 actual=digest(OUT)
 if OUT.stat().st_size!=OUT_SIZE or actual!=OUT_SHA:
     raise SystemExit(f'Workshop v77 verification failed: size={OUT.stat().st_size} sha256={actual}')
