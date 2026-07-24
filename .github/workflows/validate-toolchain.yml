@@ -16,5 +16,11 @@ jobs:
         run: python modules/control-center/releases/0.3.4/build_release.py
       - name: Materialize Workshop v77 runtime
         run: python modules/workshop/releases/v77/build_release.py
+      - name: Upload Workshop v77 materialization diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: workshop-v77-materialization-diagnostic
+          path: modules/workshop/releases/v77/materialization-diagnostic.json
+          if-no-files-found: error
       - name: Validate repository
         run: python scripts/validate_toolchain.py
