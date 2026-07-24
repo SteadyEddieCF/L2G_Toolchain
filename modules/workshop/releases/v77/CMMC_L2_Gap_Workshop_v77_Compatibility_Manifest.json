@@ -1,0 +1,19 @@
+{
+  "release": "v77",
+  "name": "CMMC L2 Gap Workshop Tool v77 — Evidence Ownership and Provider Follow-up",
+  "runtime": {
+    "file": "cmmc_l2_gap_workshop_tool_v77.html",
+    "size": 1754871,
+    "sha256": "808075635edee2b12e993dee0a6fbb2c05add5ce6b43acbd2d8cbb4a25cd7e7a"
+  },
+  "baseline": "v76",
+  "stable_contracts": {
+    "l2g_workshop_state_v1": "1.0",
+    "l2g_workbook_handoff_v1": "1.7",
+    "l2g_workbook_merge_v1": "1.1",
+    "l2g_ssp_handoff_v1": "1.0",
+    "l2g_ssp_return_package_v1": "1.0"
+  },
+  "adjacent_modules_modified": [],
+  "future_ssp_review_delivery_profile": false
+}
