@@ -14,6 +14,12 @@
   "external_stylesheets": [],
   "v77_surface_ids": ["v77EvidenceWorkspace", "v77OwnershipFocused"],
   "local_offline_posture": {"no_new_remote_runtime_dependency": true, "browser_regression_external_requests": 0},
-  "accessibility_precheck": {"new_form_controls_wrapped_by_labels": true, "new_buttons_have_text_names": true, "duplicate_ids": 0, "axe_core": "required GitHub Actions gate; not locally bundled"},
-  "native_file_smoke": "required GitHub Actions Windows gate; local managed browser blocked direct file:// navigation"
+  "accessibility_precheck": {"new_form_controls_wrapped_by_labels": true, "new_buttons_have_text_names": true, "duplicate_ids": 0},
+  "github_actions": {
+    "repository_validation": "pass",
+    "playwright_runtime_and_axe_core": "pass",
+    "visual_regression": "pass",
+    "windows_file_smoke": "pass",
+    "deterministic_linux_windows_materialization": "pass"
+  }
 }
