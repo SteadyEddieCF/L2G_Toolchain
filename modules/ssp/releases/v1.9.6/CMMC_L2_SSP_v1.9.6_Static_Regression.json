@@ -1,0 +1,9 @@
+{
+  "release": "v1.9.6",
+  "status": "passed",
+  "runtimeSha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
+  "requirements": 110,
+  "duplicateIds": 0,
+  "schemaIdentity": "1.9.5.1",
+  "packageIdentityPreserved": true
+}
