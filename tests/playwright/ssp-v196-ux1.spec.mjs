@@ -86,7 +86,7 @@ test('ssp-v1.9.6 UX-1 remains presentation-only, local, and accessible', async (
   }, moduleId);
   await expect(page.locator('#portfolioModal')).toBeVisible();
   await expect(page.locator('#uxReturnBar')).toBeVisible();
-  await page.locator('[data-close-portfolio]').click();
+  await page.getByRole('button', { name: 'Close', exact: true }).click();
   await expect(page.locator('#portfolioModal')).toBeHidden();
   await page.locator('#uxReturnBtn').click();
   await expect(page.locator('#uxReturnBar')).toBeHidden();
