@@ -1,15 +1,18 @@
 {
   "module": "CMMC L2 Gap Workshop Tool",
-  "current_supplied_version": "v76",
-  "release_path": "modules/workshop/releases/76",
-  "status": "current_supplied_release",
-  "next_action": "v77 Evidence Ownership and Provider Follow-up",
-  "recorded_at": "2026-07-17",
+  "current_supplied_version": "v77",
+  "release_path": "modules/workshop/releases/v77",
+  "runtime_path": "modules/workshop/releases/v77/cmmc_l2_gap_workshop_tool_v77.html",
+  "status": "release_candidate_pending_orchestrator_review",
+  "next_action": "v78 Contract-safe Reporting and SSP/Workbook Alignment",
+  "recorded_at": "2026-07-23",
+  "primary_html_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1",
   "stable_contracts": {
     "workshop_state": "1.0",
     "workbook_handoff": "1.7",
     "workbook_merge": "1.1",
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
-  }
+  },
+  "release_boundary": "Workshop-authoritative evidence ownership and provider follow-up; no evidence sufficiency, assessment, readiness, risk, compliance, certification, or scoring conclusions."
 }
