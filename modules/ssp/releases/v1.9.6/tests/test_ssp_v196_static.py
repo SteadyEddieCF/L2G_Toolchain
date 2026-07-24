@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
+from html.parser import HTMLParser
 import hashlib
 import re
 
@@ -13,15 +14,29 @@ EXPECTED_BASELINE = 'a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+class InventoryParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.ids = []
+        self.control_cards = 0
+    def handle_starttag(self, tag, attrs):
+        values = dict(attrs)
+        if values.get('id'):
+            self.ids.append(values['id'])
+        classes = (values.get('class') or '').split()
+        if 'control-card' in classes:
+            self.control_cards += 1
+
 assert digest(BASELINE) == EXPECTED_BASELINE
 assert digest(RUNTIME) == EXPECTED_RUNTIME
 text = RUNTIME.read_text(encoding='utf-8')
+parser = InventoryParser()
+parser.feed(text)
 
 assert '<title>CMMC Level 2 System Security Plan - Modern Editable v1.9.6</title>' in text
 assert '<meta content="1.9.6" name="application-version"/>' in text or '<meta name="application-version" content="1.9.6">' in text
-assert text.count('class="control-card') == 110
-ids = re.findall(r'\bid="([^"]+)"', text)
-assert len(ids) == len(set(ids))
+assert parser.control_cards == 110
+assert len(parser.ids) == len(set(parser.ids))
 
 for required in [
     'id="documentStateSummary"', 'id="documentStateDialog"',
@@ -48,7 +63,7 @@ assert 'lastExportAttempts' not in collect.group(1)
 print({
     'release': 'v1.9.6',
     'runtimeSha256': EXPECTED_RUNTIME,
-    'requirements': 110,
+    'requirements': parser.control_cards,
     'duplicateIds': 0,
     'workingDataIdentity': '1.9.5.1',
     'status': 'passed'
