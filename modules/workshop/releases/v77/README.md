@@ -9,6 +9,10 @@ Current release candidate for **Evidence Ownership and Provider Follow-up**, dev
 - Stable routes preserved: Workshop State 1.0, Workbook Handoff 1.7, Workbook Merge 1.1, SSP Handoff 1.0, SSP Return 1.0
 - Local browser regression: 29/29 passed
 - McFirecoal v1.2.0 regression: 29/29 passed across all three registered parts
-- Status: draft release candidate pending exact-head GitHub repository, Playwright/axe, visual, Windows `file://`, and orchestrator review
+- Repository validation: passed
+- Playwright runtime and axe-core QA: passed
+- Reviewed light/dark visual regression: passed
+- Native Windows Chromium `file://` smoke: passed
+- Status: draft release candidate pending orchestrator review only
 
 The complete deliverables ZIP and standalone HTML are distribution artifacts. The repository materializes the exact runtime from the governed v76 baseline and bounded v77 patch source.
