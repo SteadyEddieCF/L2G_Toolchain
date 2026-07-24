@@ -1,0 +1,17 @@
+{
+  "fixture": "McFirecoal v1.2.0",
+  "parts_required": [1, 2, 3],
+  "status": "repository_ci_required",
+  "planned_assertions": [
+    "stable IDs and deduplication across repeated imports and saves",
+    "no request or action before explicit advisor selection",
+    "client, provider, shared, contract-validation, and access-limitation paths",
+    "action and blocker linkage with undo and redo",
+    "no package mutation during preview",
+    "no unintended practice or objective changes",
+    "backward-compatible v76 state loading",
+    "deterministic export and reload",
+    "zero page errors, console errors, network requests, or local-path leakage"
+  ],
+  "claim": "No McFirecoal pass is claimed until all registered assets execute in repository CI."
+}
