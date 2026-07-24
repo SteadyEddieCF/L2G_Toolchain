@@ -14,5 +14,7 @@ jobs:
         with: {python-version: '3.12'}
       - name: Materialize Control Center v0.3.4 runtime
         run: python modules/control-center/releases/0.3.4/build_release.py
+      - name: Materialize Workshop v77 runtime
+        run: python modules/workshop/releases/v77/build_release.py
       - name: Validate repository
         run: python scripts/validate_toolchain.py
