@@ -47,6 +47,7 @@ test('ssp-v1.9.6 UX-1 remains presentation-only, local, and accessible', async (
     expect(after[key]).toEqual(before[key]);
   }
 
+  await page.locator('#exportMenu summary').click();
   const downloadPromise = page.waitForEvent('download');
   await page.locator('#exportBtn').click();
   const download = await downloadPromise;
