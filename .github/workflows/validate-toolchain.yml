@@ -18,5 +18,7 @@ jobs:
         run: python modules/workshop/releases/v77/build_release.py
       - name: Materialize SSP v1.9.6 runtime
         run: python modules/ssp/releases/v1.9.6/materialize.py
+      - name: Run SSP v1.9.6 bounded static gate
+        run: python modules/ssp/releases/v1.9.6/tests/test_ssp_v196_static.py
       - name: Validate repository
         run: python scripts/validate_toolchain.py
