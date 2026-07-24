@@ -1,6 +1,6 @@
 {
   "release": "v77",
-  "generated_at": "2026-07-23",
+  "generated_at": "2026-07-24",
   "module": "CMMC L2 Gap Workshop Tool",
   "focus": "Evidence Ownership and Provider Follow-up",
   "repository": "SteadyEddieCF/L2G_Toolchain",
@@ -15,14 +15,14 @@
     {"name": "CMMC_L2_Gap_Workshop_v77_Evidence_Ownership_Dark.png", "size_bytes": 326481, "sha256": "035101d2284999ca97f237a26b22db8de1e08768f4f43156ecc245e3dd861df7"},
     {"name": "CMMC_L2_Gap_Workshop_v77_McFirecoal_v1.2.0_Evidence_Compact.json", "size_bytes": 17135, "sha256": "dfa0c0005f6625e64c50161ab8cdb77c33acb10e8b4d3d7259cd7e6cda18ce75"},
     {"name": "CMMC_L2_Gap_Workshop_v77_McFirecoal_v1.2.0_Evidence_Full.json", "size_bytes": 34465132, "sha256": "55dea22750bc239bf80fe9059813c0a939e88858dab4cf7e8c6d66890789c2a9"},
-    {"name": "CMMC_L2_Gap_Workshop_v77_Regression.json", "size_bytes": 2962, "sha256": "71bffd274ce5da6750aaa4709dba383516414239b76c503d36938b65b23c2f7a"},
-    {"name": "CMMC_L2_Gap_Workshop_v77_Release_Report.md", "size_bytes": 4365, "sha256": "1410eb54e8950e0b7d6f6d10b88f4f67cfeaccabddbfd08bb75638efb4e86cd5"},
-    {"name": "CMMC_L2_Gap_Workshop_v77_Static_QA.json", "size_bytes": 1147, "sha256": "c490163923059336cd07e8a8dc35e5d20e8bb2f8af2613ecc5671bb27ddb5450"},
-    {"name": "README.md", "size_bytes": 1018, "sha256": "15cb4a9569c15c6a01eee445a69e4dd97f58e1637c5914d502211eb5526e1b75"},
+    {"name": "CMMC_L2_Gap_Workshop_v77_Regression.json", "size_bytes": 2226, "sha256": "bd6fefdfa822fc85292f969ccaf11640fe35da96796a69fddac242e41c590c26"},
+    {"name": "CMMC_L2_Gap_Workshop_v77_Release_Report.md", "size_bytes": 4455, "sha256": "881cf01fb514ce5fb2100fbcc1976669c46164e194b3ed62746861d6d90ee970"},
+    {"name": "CMMC_L2_Gap_Workshop_v77_Static_QA.json", "size_bytes": 1155, "sha256": "37f81e2aff097036c58dc16ac799ac43138dd29816b9d25fdd7dc904b22bab5e"},
+    {"name": "README.md", "size_bytes": 1138, "sha256": "1252b1c99bc732253157a032b3692f721c9bce475cdd766669d4753380a17c1c"},
     {"name": "cmmc_l2_gap_workshop_tool_v77.html", "size_bytes": 1779417, "sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1"},
     {"name": "l2g_responsibility_reconciliation_v1_mcfirecoal_v76_reviewed.json", "size_bytes": 646463, "sha256": "9a1ed552f534dba6521e0c0e1df5c8e0d41a19c421b137856d7e175a091ed346"},
     {"name": "workshop-v77-dark-chromium-linux.png", "size_bytes": 305187, "sha256": "0512bb4f029129ed7093d2b731a170a3759b5249d947b631cc9f5ecea0165497"},
     {"name": "workshop-v77-light-chromium-linux.png", "size_bytes": 250137, "sha256": "99b3ad3ed395b6d11cd2ff39be4fad04c548f98a6c20a2811c95029d7ad8448d"}
   ],
-  "manifest_note": "Manifest inventories all other release files; self-hash is recorded by the outer ZIP checksum."
+  "manifest_note": "Manifest inventories all other release files; self-hash is recorded by the outer ZIP checksum. Automated repository gates passed before orchestrator review."
 }
