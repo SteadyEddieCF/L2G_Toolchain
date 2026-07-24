@@ -4,7 +4,13 @@ import base64, hashlib, lzma, re
 
 ROOT = Path(__file__).resolve().parent
 BASELINE = ROOT.parent / "v1.9.5.1" / "CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html"
-PATCH_PARTS = [ROOT / "source" / name for name in ['runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part00', 'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part01', 'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part02', 'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part03']]
+PATCH_PARTS = [ROOT / "source" / name for name in [
+    'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part00',
+    'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part01',
+    'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part02',
+    'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part030',
+    'runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part031',
+]]
 OUTPUT = ROOT / "CMMC_L2_SSP_Modern_Editable_v1.9.6.html"
 EXPECTED_BASELINE = "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"
 EXPECTED_ENCODED_PATCH = "c7e85df301387d68ad31a53e6957a30a53e49ce1dedcaa72b137713f0c5f7609"
