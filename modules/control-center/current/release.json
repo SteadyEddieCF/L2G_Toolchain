@@ -1,10 +1,12 @@
 {
   "module": "L2G Control Center",
-  "current_supplied_version": "v0.3.3",
-  "release_path": "modules/control-center/releases/0.3.3",
-  "runtime_path": "modules/control-center/releases/v0.3.3/L2G_CC_v0.3.3.html",
-  "status": "current_supplied_release_control_center_regression_passed_not_full_cross_tool_validated",
+  "current_supplied_version": "v0.3.4",
+  "release_path": "modules/control-center/releases/0.3.4",
+  "runtime_path": "modules/control-center/releases/v0.3.4/L2G_CC_v0.3.4.html",
+  "status": "current_supplied_release_exact_suite_audit_and_ssp_closeout_qualified",
   "next_action": "v0.4 Read-only Action and Blocker Overview",
-  "recorded_at": "2026-07-20",
-  "primary_html_sha256": "29242ec69e3c44e52e33c2941b647eb9566ac721957d3965e67306fbeae2ccfc"
+  "recorded_at": "2026-07-23",
+  "primary_html_sha256": "9eec722499fd5f0a76249ccb6f27547d6fe6fc64059a418b136af48b8edf7a73",
+  "issue": 35,
+  "protected_main_baseline": "db5716aafb0e92b95e33141955a085c3fc9149c4"
 }

@@ -1,5 +1,5 @@
 export const modules = [
-  { slug: 'control-center-v0.3.3', name: 'L2G Control Center', version: 'v0.3.3', path: '/modules/control-center/releases/v0.3.3/L2G_CC_v0.3.3.html', darkStrategy: 'data-theme', visual: false },
+  { slug: 'control-center-v0.3.4', name: 'L2G Control Center', version: 'v0.3.4', path: '/modules/control-center/releases/v0.3.4/L2G_CC_v0.3.4.html', darkStrategy: 'data-theme', visual: false },
   { slug: 'docconverter-v7.9.5', name: 'DocConverter-L2G', version: 'v7.9.5.1', path: '/modules/docconverter/releases/7.9.5.1/DocConverter-L2G_v7.9.5.1.html' },
   { slug: 'scoper-v3.12', name: 'L2G Scoper', version: 'v3.12', path: '/modules/scoper/releases/v3.12/L2Scoper-v3.12.html', visual: false },
   { slug: 'workshop-v76', name: 'CMMC L2 Gap Workshop Tool', version: 'v76', path: '/modules/workshop/releases/v76/cmmc_l2_gap_workshop_tool_v76.html', darkStrategy: 'dark-mode' },
