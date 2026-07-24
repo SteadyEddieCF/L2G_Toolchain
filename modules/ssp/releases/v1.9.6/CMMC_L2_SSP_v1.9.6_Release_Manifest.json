@@ -1,0 +1,54 @@
+{
+  "release": "v1.9.6",
+  "title": "CMMC L2 SSP Modern Editable v1.9.6 — Editor Clarity and Document-State UX",
+  "issue": 42,
+  "generatedAt": "2026-07-24T20:02:06+00:00",
+  "runtime": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.6.html",
+    "bytes": 1856566,
+    "sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea"
+  },
+  "runtimeSourceBaseline": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html",
+    "bytes": 1823041,
+    "sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"
+  },
+  "workingDataSchema": {
+    "filename": "CMMC_L2_SSP_Data_Schema_v1.9.5.1.json",
+    "bytes": 81447,
+    "sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36"
+  },
+  "baselineCommits": {
+    "protectedMainAtStart": "035fe77a3a90d01bef8908229b6a8357a76adcac",
+    "sspRuntimeSourceMerge": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb"
+  },
+  "workingDataIdentity": {
+    "schema": "cmmc-l2-ssp-modern-v1.9.5.1",
+    "schemaVersion": "1.9.5.1",
+    "appVersion": "1.9.5.1"
+  },
+  "releaseIdentity": "1.9.6",
+  "uiPreferenceNamespace": "cmmc-l2-ssp-ui-v1.9.6",
+  "scope": [
+    "document-state summary",
+    "mode labels and descriptions",
+    "toolbar grouping",
+    "outcome-first Deliver",
+    "truthful local and export language",
+    "qualified local-governance labels",
+    "portfolio scope and module preferences",
+    "direct existing-dashboard navigation"
+  ],
+  "excluded": [
+    "UX-2",
+    "unified Needs Attention queue",
+    "review-gate profiles",
+    "staged review",
+    "Word inspection",
+    "Builder/Merger sidecar",
+    "bulk workflows",
+    "new contracts",
+    "adjacent-tool changes"
+  ],
+  "validation": "passed"
+}
