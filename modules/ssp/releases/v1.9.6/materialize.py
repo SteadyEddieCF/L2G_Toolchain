@@ -21,6 +21,10 @@ EXPECTED_OUTPUT = "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed
 def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
+def canonical_checkout_bytes(path: Path) -> bytes:
+    """Normalize checkout-only CRLF conversion; generated output is canonical LF."""
+    return path.read_bytes().replace(b'\r\n', b'\n')
+
 def require(label: str, actual: str, expected: str) -> None:
     if actual != expected:
         raise SystemExit(f"{label} SHA-256 mismatch: {actual} != {expected}")
@@ -68,9 +72,9 @@ def apply_unified_diff(source_text: str, patch_text: str) -> str:
     output.extend(source[source_index:])
     return ''.join(output)
 
-baseline_bytes = BASELINE.read_bytes()
+baseline_bytes = canonical_checkout_bytes(BASELINE)
 require('runtime-source baseline', digest(baseline_bytes), EXPECTED_BASELINE)
-encoded = b"".join(part.read_bytes() for part in PATCH_PARTS)
+encoded = b"".join(canonical_checkout_bytes(part) for part in PATCH_PARTS)
 require('encoded patch', digest(encoded), EXPECTED_ENCODED_PATCH)
 xz_bytes = base64.b64decode(encoded, validate=False)
 require('xz patch', digest(xz_bytes), EXPECTED_XZ_PATCH)
