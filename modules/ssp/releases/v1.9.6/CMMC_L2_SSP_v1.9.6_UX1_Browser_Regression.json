@@ -1,0 +1,14 @@
+{
+  "release": "v1.9.6",
+  "suite": "ux1-browser-accessibility-visual",
+  "status": "passed",
+  "runtimeSha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
+  "requirements": 110,
+  "pageErrors": [],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "screenshots": [
+    "CMMC_L2_SSP_v1.9.6_UX1_Dark_Desktop.png",
+    "CMMC_L2_SSP_v1.9.6_UX1_Constrained_768.png"
+  ]
+}
