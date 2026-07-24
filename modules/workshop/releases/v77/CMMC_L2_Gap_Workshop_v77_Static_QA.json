@@ -1,0 +1,25 @@
+{
+  "release": "v77",
+  "runtime_file": "cmmc_l2_gap_workshop_tool_v77.html",
+  "runtime_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1",
+  "runtime_size_bytes": 1779417,
+  "baseline_file": "cmmc_l2_gap_workshop_tool_v76.html",
+  "baseline_sha256": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a",
+  "baseline_size_bytes": 1731651,
+  "runtime_delta_bytes": 47766,
+  "inline_javascript_blocks": 9,
+  "javascript_syntax": "pass (node --check, all inline blocks)",
+  "duplicate_static_ids": [],
+  "external_script_sources": [],
+  "external_stylesheets": [],
+  "v77_surface_ids": ["v77EvidenceWorkspace", "v77OwnershipFocused"],
+  "local_offline_posture": {"no_new_remote_runtime_dependency": true, "browser_regression_external_requests": 0},
+  "accessibility_precheck": {"new_form_controls_wrapped_by_labels": true, "new_buttons_have_text_names": true, "duplicate_ids": 0},
+  "github_actions": {
+    "repository_validation": "pass",
+    "playwright_runtime_and_axe_core": "pass",
+    "visual_regression": "pass",
+    "windows_file_smoke": "pass",
+    "deterministic_linux_windows_materialization": "pass"
+  }
+}
