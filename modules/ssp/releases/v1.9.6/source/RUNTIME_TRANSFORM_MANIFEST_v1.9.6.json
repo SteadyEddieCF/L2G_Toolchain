@@ -9,10 +9,11 @@
     "mergeCommit": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb"
   },
   "patch": {
-    "encodedSha256": "c7e85df301387d68ad31a53e6957a30a53e49ce1dedcaa72b137713f0c5f7609",
-    "xzSha256": "119a110912150708064333e8cd84e7bfe8800f09cc3c4295b3ab425b94a71369",
+    "repositoryEncodedSha256": "f29609fb6dcc56ac446dc4cc63ec3649eb6b8b23377693dff92401a1a4de6578",
+    "decodedXzSha256": "119a110912150708064333e8cd84e7bfe8800f09cc3c4295b3ab425b94a71369",
     "uncompressedSha256": "61f850bbb016cc204a0980899ef8e3ae7f1691d2815b1056e58b6dafd35a9494",
     "uncompressedBytes": 193259,
+    "encodingNote": "Repository chunks omit one non-semantic final Base64 newline; decoded patch bytes are identical to the complete deliverables candidate.",
     "chunkFiles": [
       "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part00",
       "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part01",
