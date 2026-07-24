@@ -1,0 +1,46 @@
+{
+  "manifest_kind": "l2g_workshop_production_compatibility_v1",
+  "generated_at": "2026-07-23T23:30:00-04:00",
+  "release": {
+    "name": "CMMC L2 Gap Workshop Tool",
+    "version": "v77",
+    "focus": "Evidence Ownership and Provider Follow-up",
+    "baseline_version": "v76",
+    "baseline_sha256": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a",
+    "runtime_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1"
+  },
+  "active_exact_suite": {
+    "control_center": "v0.3.4",
+    "docconverter": "v7.9.5.1",
+    "scoper": "v3.12",
+    "workshop": "v77",
+    "builder_merger": "v3.8",
+    "ssp": "v1.9.5.1"
+  },
+  "stable_contracts": {
+    "workshop_state": {"package_kind": "l2g_workshop_state_v1", "version": "1.0", "change": "additive evidenceOwnershipV77 fields; older consumers may ignore"},
+    "workbook_handoff": {"package_kind": "l2g_workbook_handoff_v1", "enhancement": "1.7", "status": "preserved"},
+    "workbook_merge": {"package_kind": "l2g_workbook_merge_v1", "version": "1.1", "status": "preserved"},
+    "ssp_handoff": {"package_kind": "l2g_ssp_handoff_v1", "version": "1.0", "status": "preserved"},
+    "ssp_return": {"package_kind": "l2g_ssp_return_package_v1", "version": "1.0", "status": "preserved"}
+  },
+  "workshop_internal_working_export": {
+    "package_kind": "l2g_workshop_evidence_ownership_working_v1",
+    "version": "0.1",
+    "status": "advisory working export; not registered as downstream consumption contract"
+  },
+  "authority": {
+    "workshop_authoritative_for": ["practice-level facilitated conclusions", "evidence review and evidence-request decisions", "provider/responsibility discussion", "provider follow-up", "engagement gaps, actions, and blockers"],
+    "adjacent_consumers_claimed": []
+  },
+  "guardrails": {
+    "explicit_advisor_action_required": true,
+    "no_evidence_sufficiency_inference": true,
+    "no_assessment_conclusion_inference": true,
+    "no_readiness_risk_compliance_certification_scoring": true,
+    "no_remote_notifications_or_background_workflow": true,
+    "no_adjacent_tool_modifications": true
+  },
+  "catalog": {"practices": 110, "assessment_objectives": 320},
+  "next_release": "v78 contract-safe reporting and SSP/workbook alignment; separately bounded"
+}
