@@ -1,0 +1,19 @@
+{
+  "baseline": {
+    "path": "../76/cmmc_l2_gap_workshop_tool_v76.html",
+    "size_bytes": 1731651,
+    "sha256": "d9f4a3b3fff7ba18498544e3c424d2f4493e555ddc4a688ef0359069b66ac06a"
+  },
+  "output": {
+    "path": "cmmc_l2_gap_workshop_tool_v77.html",
+    "size_bytes": 1779417,
+    "sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1"
+  },
+  "patch_parts": 3,
+  "styles": "v77_styles.html",
+  "visual_baselines": {
+    "status": "reviewed binary files committed separately",
+    "light_sha256": "99b3ad3ed395b6d11cd2ff39be4fad04c548f98a6c20a2811c95029d7ad8448d",
+    "dark_sha256": "0512bb4f029129ed7093d2b731a170a3759b5249d947b631cc9f5ecea0165497"
+  }
+}
