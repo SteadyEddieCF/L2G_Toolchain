@@ -2,7 +2,7 @@
 
 Central facilitation and advisor-review module for practices, evidence, evidence requests, provider/responsibility discussion, provider follow-up, actions, blockers, workbook and SSP round trips.
 
-- Current supplied release candidate: **v77 — Evidence Ownership and Provider Follow-up**
+- Current supplied release: **v77 — Evidence Ownership and Provider Follow-up**
 - Runtime: `releases/v77/cmmc_l2_gap_workshop_tool_v77.html`
 - Next bounded action: **v78 Contract-safe Reporting and SSP/Workbook Alignment**
 
