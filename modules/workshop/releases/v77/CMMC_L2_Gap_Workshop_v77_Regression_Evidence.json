@@ -1,0 +1,37 @@
+{
+  "release": "v77",
+  "runtime_sha256": "808075635edee2b12e993dee0a6fbb2c05add5ce6b43acbd2d8cbb4a25cd7e7a",
+  "summary": {"passed": 26, "failed": 0},
+  "static": {
+    "version_identity": true,
+    "offline_csp_connect_none": true,
+    "workshop_state_1_0": true,
+    "workbook_handoff_1_7": true,
+    "workbook_merge_1_1": true,
+    "ssp_handoff_1_0": true,
+    "ssp_return_1_0": true,
+    "future_ssp_review_delivery_profile_absent": true
+  },
+  "browser_functional": {
+    "engine": "system Chromium via Playwright set_content",
+    "page_errors": 0,
+    "console_errors": 0,
+    "external_network_requests": 0,
+    "stable_ids_after_repeat_generation": true,
+    "unique_ids": true,
+    "request_before_accept_count": 0,
+    "provider_request_after_accept_count": 1,
+    "duplicate_request_count_after_repeat": 1,
+    "provider_followup_count_before_undo": 1,
+    "provider_followup_count_after_undo": 0,
+    "linked_action_count": 2
+  },
+  "remaining_repository_gates": [
+    "registered McFirecoal v1.2.0 Parts 1, 2, and 3",
+    "repository validation",
+    "Playwright and axe-core",
+    "visual regression",
+    "native Windows Chromium file:// smoke"
+  ],
+  "merge_posture": "Unmerged draft only; no merge recommendation until remaining repository gates pass."
+}
