@@ -12,8 +12,12 @@ OUT_SHA='eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1'
 OUT_SIZE=1779417
 
 def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
-if digest(BASE)!=BASE_SHA: raise SystemExit(f'Workshop v76 baseline hash mismatch: {digest(BASE)}')
-text=BASE.read_text(encoding='utf-8')
+def canonical_text(path): return path.read_text(encoding='utf-8').replace('\r\n','\n').replace('\r','\n')
+def canonical_digest(path): return hashlib.sha256(canonical_text(path).encode('utf-8')).hexdigest()
+
+base_actual=canonical_digest(BASE)
+if base_actual!=BASE_SHA: raise SystemExit(f'Workshop v76 canonical baseline hash mismatch: {base_actual}')
+text=canonical_text(BASE)
 replacements=[
  ('<title>CMMC L2 Gap Workshop Tool v76</title>','<title>CMMC L2 Gap Workshop Tool v77</title>'),
  ('<h1>CMMC L2 Gap Workshop Tool <span class="small">v76</span></h1>','<h1>CMMC L2 Gap Workshop Tool <span class="small">v77</span></h1>'),
@@ -22,10 +26,10 @@ replacements=[
 for old,new in replacements:
     if text.count(old)!=1: raise SystemExit(f'expected exactly one replacement target: {old}')
     text=text.replace(old,new,1)
-styles=(SOURCE/'v77_styles.html').read_text(encoding='utf-8')
+styles=canonical_text(SOURCE/'v77_styles.html')
 if '</head>' not in text: raise SystemExit('closing head not found')
 text=text.replace('</head>',styles+'\n</head>',1)
-patch=''.join(p.read_text(encoding='utf-8') for p in sorted(SOURCE.glob('v77_patch.part*.js')))
+patch=''.join(canonical_text(p) for p in sorted(SOURCE.glob('v77_patch.part*.js')))
 idx=text.rfind('</script>')
 if idx<0: raise SystemExit('closing script not found')
 text=text[:idx]+patch+'\n'+text[idx:]
