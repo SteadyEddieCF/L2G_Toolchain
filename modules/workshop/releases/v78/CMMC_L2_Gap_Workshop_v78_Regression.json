@@ -1,0 +1,87 @@
+{
+  "release": "v78",
+  "focus": "Contract-safe Reporting and SSP/Workbook Alignment",
+  "runtime": {
+    "size_bytes": 1814727,
+    "sha256": "e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191",
+    "baseline_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1"
+  },
+  "focused_browser_regression": {
+    "status": "pending_final_exact_head",
+    "coverage": [
+      "accepted-only reporting",
+      "candidate-only exclusion",
+      "advisor provenance retention",
+      "stable snapshot identity",
+      "repeatable generated-at metadata",
+      "client field redaction",
+      "Windows local-path redaction",
+      "file URL redaction",
+      "Linux home-path redaction",
+      "token-like sensitive-value redaction",
+      "Workbook Handoff 1.7 helper presence",
+      "SSP Handoff 1.0 helper contract metadata",
+      "helper accepted-only and ignorable posture",
+      "no confirmed downstream consumption",
+      "governed v77 record collections unchanged",
+      "append-only reporting audit history",
+      "active v78 runtime checks",
+      "zero page errors",
+      "zero console errors"
+    ]
+  },
+  "mcfirecoal_v1_2_0": {
+    "fixture_lineage": "registered three-part fixture identity preserved from Workshop v77 evidence",
+    "parts": [
+      {
+        "part": 1,
+        "entries": 43,
+        "sha256": "d4b0f05a5ab27f683ab351ef5162901703fca6320c397052f7b3530aed67ad6a"
+      },
+      {
+        "part": 2,
+        "entries": 67,
+        "sha256": "154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2"
+      },
+      {
+        "part": 3,
+        "entries": 53,
+        "sha256": "52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226"
+      }
+    ],
+    "v78_specific_adversarial_scenario": {
+      "accepted_records": 1,
+      "unaccepted_candidates": 1,
+      "requests": 1,
+      "provider_followups": 1,
+      "included_sensitive_patterns": [
+        "advisor note",
+        "validation question",
+        "source fingerprint",
+        "Windows local path",
+        "file URL",
+        "Linux home path",
+        "token-like value"
+      ],
+      "expected_result": "advisor output retains provenance; client output excludes internal-only fields and redacts paths/sensitive values; unaccepted candidate is excluded"
+    },
+    "full_six_tool_replay": "deferred to separately bounded Workshop v79; not claimed by v78"
+  },
+  "contract_checks": {
+    "workshop_state_1_0_additive": true,
+    "workbook_handoff_1_7_preserved": true,
+    "workbook_merge_1_1_preserved": true,
+    "ssp_handoff_1_0_preserved": true,
+    "ssp_return_1_0_preserved": true,
+    "new_stable_contract": false,
+    "future_ssp_review_delivery_profile_absent": true
+  },
+  "required_gates": {
+    "repository_validation": "pass_on_byte_locked_candidate",
+    "playwright_runtime_and_axe_core": "pending_final_exact_head",
+    "visual_regression": "pending_reviewed_v78_baselines",
+    "windows_chromium_file_smoke": "pass_on_byte_locked_candidate",
+    "deterministic_materialization_linux_windows": "pass"
+  },
+  "status": "draft release evidence; final exact-head statuses pending"
+}
