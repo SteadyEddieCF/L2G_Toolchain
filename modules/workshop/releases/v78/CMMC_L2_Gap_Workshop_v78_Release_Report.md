@@ -40,14 +40,14 @@ No stable package version changed.
 - No review/delivery-profile contract was introduced.
 - No claim is made that Builder/Merger or SSP consumes the optional helper.
 
-## Regression design
+## Regression results
 
-The focused browser regression verifies:
+The focused browser regression passed and verified:
 
 - accepted-only reporting and exclusion of candidate-only records;
 - stable snapshot ID and generated-at reuse;
 - advisor provenance retention;
-- client-safe field and path redaction;
+- client-safe field, sensitive-value, and local-path redaction;
 - workbook helper presence with unchanged 1.7 identity;
 - helper accepted-only/ignorable/no-consumption posture;
 - no mutation of governed v77 candidate, accepted, request, or provider-follow-up record collections;
@@ -55,7 +55,7 @@ The focused browser regression verifies:
 - active v78 runtime checks;
 - zero page and console errors in the focused scenario.
 
-The shared repository suite additionally verifies module loading, offline posture, local storage, axe-core accessibility, visual baselines, and native Windows Chromium `file://` operation.
+The shared repository suite also passed module loading/offline checks, local-storage checks, axe-core accessibility, reviewed visual regression, and native Windows Chromium `file://` operation.
 
 ## McFirecoal v1.2.0 posture
 
@@ -65,14 +65,17 @@ The release retains the registered three-part fixture identity established by v7
 - Part 2: 67 entries; SHA-256 `154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2`
 - Part 3: 53 entries; SHA-256 `52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226`
 
-v78-specific adversarial browser coverage uses accepted and unaccepted records, internal advisor content, source fingerprints, a local Windows path, a `file://` path, a Linux home path, and a token-like value to verify reporting selection and redaction. The full six-tool fixture replay remains the separately bounded v79 release and is not claimed here.
+v78-specific adversarial browser coverage used accepted and unaccepted records, internal advisor content, source fingerprints, a local Windows path, a `file://` path, a Linux home path, and a token-like value to verify reporting selection and redaction. The full six-tool fixture replay remains the separately bounded v79 release and is not claimed here.
 
-## Repository and CI status
+## Repository and CI results
 
-- Deterministic v78 materialization: passing on Linux and Windows.
-- Repository validation: passing on the byte-locked runtime.
-- Native Windows Chromium `file://` smoke: passing.
-- Focused runtime/axe and reviewed visual-baseline gates: pending final exact-head completion.
-- Draft PR: #47, unmerged for independent orchestrator review.
+All required automated gates passed on the validated v78 candidate:
 
-This report will be updated to final exact-head status before promotion.
+- deterministic v78 materialization on Linux and Windows;
+- repository validation;
+- focused Playwright runtime and axe-core QA;
+- reviewed light/dark visual regression using the unchanged v77 landing baselines with only the independently asserted version badge normalized for comparison;
+- native Windows Chromium `file://` smoke;
+- deterministic standalone and complete deliverables packaging.
+
+Draft PR #47 remains unmerged for independent orchestrator review. Issue #46 closes only when the release is promoted.
