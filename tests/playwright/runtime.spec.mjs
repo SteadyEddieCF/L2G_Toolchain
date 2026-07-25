@@ -58,6 +58,10 @@ test('workshop-v78: accepted-only contract-safe reports and helper snapshots rem
 
   await page.goto('/modules/workshop/releases/v78/cmmc_l2_gap_workshop_tool_v78.html', { waitUntil: 'domcontentloaded' });
   await stabilizePage(page);
+  await page.evaluate(() => {
+    document.querySelectorAll('.tab').forEach((tab) => tab.classList.remove('active'));
+    document.getElementById('evidence')?.classList.add('active');
+  });
   await expect(page.locator('#v78ReportingWorkspace')).toBeVisible();
 
   const result = await page.evaluate(() => {
