@@ -104,8 +104,10 @@ test('workshop-v78: accepted-only contract-safe reports and helper snapshots rem
     const client = v78BuildSnapshot('client', true);
     const workbookHelper = v78HelperSnapshot('workbook');
     const workbookPackage = l2gWorkbookHandoffPackage();
+    const reportAudience = document.getElementById('v78ReportAudience');
+    if (reportAudience) reportAudience.value = 'client';
     state.reportingV78.ui.report_audience = 'client';
-    renderAll();
+    v78RenderWorkspace();
     const allRuntimeChecks = v60RuntimeChecks();
     const scopedChecks = allRuntimeChecks.checks.filter((check) =>
       check.id === 'version' || check.id.startsWith('v78-') || check.id === 'stable-handoff-v78'
