@@ -1,0 +1,16 @@
+{
+  "baseline": {
+    "path": "../v77/cmmc_l2_gap_workshop_tool_v77.html",
+    "size_bytes": 1779417,
+    "sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1"
+  },
+  "output": {
+    "path": "cmmc_l2_gap_workshop_tool_v78.html",
+    "size_bytes": 1814727,
+    "sha256": "PENDING"
+  },
+  "patch_parts": 4,
+  "styles": "v78_styles.html",
+  "bounded_issue": 46,
+  "contract_posture": "Workshop State 1.0 additive; Workbook Handoff 1.7, Workbook Merge 1.1, SSP Handoff 1.0, and SSP Return 1.0 preserved"
+}
