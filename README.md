@@ -6,14 +6,14 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 
 | Module | Current supplied release | Next bounded action |
 |---|---:|---|
-| L2G Control Center | v0.3.4 | v0.4 read-only action/blocker overview is now eligible for a separately bounded issue after Workshop v77 promotion; no downstream consumption is claimed yet |
+| L2G Control Center | v0.3.4 | v0.4 read-only action/blocker overview is eligible for a separately bounded issue; no downstream consumption is claimed yet |
 | DocConverter-L2G | v7.9.5.1 | Hold later candidates until they pass the registered McFirecoal v1.2.0 three-part regression and downstream handshakes |
-| L2G Scoper | v3.12 | Hold v3.13 unless Workshop v77 or downstream adoption demonstrates a concrete decision-workflow or package need |
-| CMMC L2 Gap Workshop Tool | v77 | v78 Contract-safe Reporting and SSP/Workbook Alignment; separately bounded and no future review/delivery profile without approval |
-| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles after an orchestrator-approved review/delivery profile contract |
-| CMMC L2 SSP Modern Editable | v1.9.5.1 | Hold v1.9.6 until Workshop ownership records and the SSP-to-Builder/Merger review/delivery profile contract are approved |
+| L2G Scoper | v3.12 | Hold v3.13 unless downstream adoption demonstrates a concrete decision-workflow or package need |
+| CMMC L2 Gap Workshop Tool | v78 candidate | v79 Full McFirecoal Toolchain Regression after v78 promotion |
+| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles only after an orchestrator-approved review/delivery-profile contract |
+| CMMC L2 SSP Modern Editable | v1.9.5.1 | Complete the separately bounded v1.9.6 UX release sequence without treating Workshop v78 helpers as an approved delivery-profile contract |
 
-The active exact-version suite completed the full toolchain audit, SSP v1.9.5.1 passed its bounded post-fix backup/schema and Workshop v76 round-trip closeout, and Control Center v0.3.4 synchronized the exact suite and optional Stage 5 capability metadata. Workshop v77 is now the current supplied Workshop release and establishes Workshop-owned evidence-owner, evidence-request, provider-follow-up, action, and blocker records without changing stable package versions or moving authority to adjacent modules. This promotion does not by itself claim a completed new exact-version full-chain snapshot or downstream consumption of the new working records. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
+The active exact-version suite completed the prior full toolchain audit, SSP v1.9.5.1 post-fix closeout, Control Center v0.3.4 synchronization, and Workshop v77 promotion. Workshop v78 is now the bounded release candidate for accepted-only advisor/client reporting and optional additive Workbook Handoff 1.7 / SSP Handoff 1.0 helper snapshots. It preserves stable package identities, downstream reviewer control, and v77 record identifiers; it does not claim Builder/Merger or SSP consumption, authorize a review/delivery-profile contract, or establish a new exact-version full-chain snapshot. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
 
 ## Repository layout
 
