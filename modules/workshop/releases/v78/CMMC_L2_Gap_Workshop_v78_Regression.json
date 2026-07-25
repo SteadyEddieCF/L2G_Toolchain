@@ -7,7 +7,7 @@
     "baseline_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1"
   },
   "focused_browser_regression": {
-    "status": "pending_final_exact_head",
+    "status": "pass",
     "coverage": [
       "accepted-only reporting",
       "candidate-only exclusion",
@@ -50,6 +50,7 @@
       }
     ],
     "v78_specific_adversarial_scenario": {
+      "status": "pass",
       "accepted_records": 1,
       "unaccepted_candidates": 1,
       "requests": 1,
@@ -63,7 +64,7 @@
         "Linux home path",
         "token-like value"
       ],
-      "expected_result": "advisor output retains provenance; client output excludes internal-only fields and redacts paths/sensitive values; unaccepted candidate is excluded"
+      "result": "advisor output retained provenance; client output excluded internal-only fields and redacted paths/sensitive values; unaccepted candidate was excluded"
     },
     "full_six_tool_replay": "deferred to separately bounded Workshop v79; not claimed by v78"
   },
@@ -77,11 +78,12 @@
     "future_ssp_review_delivery_profile_absent": true
   },
   "required_gates": {
-    "repository_validation": "pass_on_byte_locked_candidate",
-    "playwright_runtime_and_axe_core": "pending_final_exact_head",
-    "visual_regression": "pending_reviewed_v78_baselines",
-    "windows_chromium_file_smoke": "pass_on_byte_locked_candidate",
-    "deterministic_materialization_linux_windows": "pass"
+    "repository_validation": "pass",
+    "playwright_runtime_and_axe_core": "pass",
+    "visual_regression": "pass_reusing_reviewed_unchanged_v77_landing_baselines_with_version_badge_normalized",
+    "windows_chromium_file_smoke": "pass",
+    "deterministic_materialization_linux_windows": "pass",
+    "deterministic_release_packaging": "pass"
   },
-  "status": "draft release evidence; final exact-head statuses pending"
+  "status": "validated draft release candidate pending independent orchestrator review and promotion"
 }
