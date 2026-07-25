@@ -1,0 +1,48 @@
+{
+  "release": "v78",
+  "baseline": {
+    "version": "v77",
+    "size_bytes": 1779417,
+    "sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1"
+  },
+  "runtime": {
+    "version": "v78",
+    "size_bytes": 1814727,
+    "sha256": "e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191",
+    "delta_bytes": 35310
+  },
+  "source": {
+    "patch_parts": 4,
+    "styles_file": "source/v78_styles.html",
+    "source_manifest": "source/SOURCE_MANIFEST.json",
+    "deterministic_materializer": "build_release.py",
+    "canonical_utf8_lf_output": true
+  },
+  "static_boundaries": {
+    "external_script_sources_added": 0,
+    "external_stylesheets_added": 0,
+    "remote_runtime_dependency_added": false,
+    "telemetry_added": false,
+    "new_stable_package_kind_added": false,
+    "adjacent_module_application_code_changed": false,
+    "future_ssp_review_delivery_profile_added": false
+  },
+  "accessibility_precheck": {
+    "new_form_controls_wrapped_by_labels": true,
+    "new_buttons_have_text_names": true,
+    "report_table_has_header_cells": true,
+    "print_surface_uses_semantic_table": true,
+    "light_dark_styles_present": true,
+    "constrained_viewport_rules_present": true
+  },
+  "dynamic_validation": {
+    "repository_validation": "pass_on_byte_locked_candidate",
+    "browser_javascript_parse": "pending_final_exact_head",
+    "page_errors": "pending_final_exact_head",
+    "console_errors": "pending_final_exact_head",
+    "axe_core": "pending_final_exact_head",
+    "windows_file_origin": "pass_on_byte_locked_candidate",
+    "visual_baselines": "pending_review_and_commit"
+  },
+  "status": "draft static QA; final exact-head dynamic results pending"
+}
