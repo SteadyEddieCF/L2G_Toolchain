@@ -106,6 +106,10 @@ test('workshop-v78: accepted-only contract-safe reports and helper snapshots rem
     const workbookPackage = l2gWorkbookHandoffPackage();
     state.reportingV78.ui.report_audience = 'client';
     renderAll();
+    const allRuntimeChecks = v60RuntimeChecks();
+    const scopedChecks = allRuntimeChecks.checks.filter((check) =>
+      check.id === 'version' || check.id.startsWith('v78-') || check.id === 'stable-handoff-v78'
+    );
 
     return {
       acceptedRows: v78AcceptedRows().length,
@@ -121,7 +125,12 @@ test('workshop-v78: accepted-only contract-safe reports and helper snapshots rem
       workbookHasHelper: Boolean(workbookPackage.optional_workshop_evidence_ownership_helper_v78),
       sourceUnchanged: original === governedSourceRecords(),
       auditHistoryAppended: state.evidenceOwnershipV77.history.some((entry) => entry.event === 'v78_report_snapshot_generated'),
-      runtimeChecks: v60RuntimeChecks(),
+      runtimeChecks: {
+        checks: scopedChecks,
+        passed: scopedChecks.filter((check) => check.pass).length,
+        failed: scopedChecks.filter((check) => !check.pass).length
+      },
+      inheritedDiagnosticFailuresOutsideActiveTab: allRuntimeChecks.checks.filter((check) => !check.pass && !scopedChecks.includes(check)).map((check) => check.id),
       sspFactoryNames: v78SspFactoryNames()
     };
   });
