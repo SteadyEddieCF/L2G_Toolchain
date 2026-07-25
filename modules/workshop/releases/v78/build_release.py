@@ -12,7 +12,7 @@ BASE_BUILD=BASE_DIR/'build_release.py'
 OUT=HERE/'cmmc_l2_gap_workshop_tool_v78.html'
 SOURCE=HERE/'source'
 BASE_SHA='eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1'
-OUT_SHA='PENDING'
+OUT_SHA='e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191'
 OUT_SIZE=1814727
 
 def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -41,7 +41,6 @@ if idx<0: raise SystemExit('closing script not found')
 text=text[:idx]+patch+'\n'+text[idx:]
 OUT.write_bytes(text.encode('utf-8'))
 actual=digest(OUT)
-print(f'Workshop v78 candidate: size={OUT.stat().st_size} sha256={actual}')
 if OUT.stat().st_size!=OUT_SIZE or actual!=OUT_SHA:
-    raise SystemExit(f'Workshop v78 verification pending/failure: size={OUT.stat().st_size} sha256={actual}')
+    raise SystemExit(f'Workshop v78 verification failed: size={OUT.stat().st_size} sha256={actual}')
 print(f'materialized {OUT} ({OUT_SIZE} bytes, {OUT_SHA})')
