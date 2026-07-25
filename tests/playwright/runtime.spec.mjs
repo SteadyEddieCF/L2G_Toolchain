@@ -92,7 +92,13 @@ test('workshop-v78: accepted-only contract-safe reports and helper snapshots rem
     state.reportingV78 = v78Defaults();
     renderAll();
 
-    const original = JSON.stringify(state.evidenceOwnershipV77);
+    const governedSourceRecords = () => JSON.stringify({
+      candidates: state.evidenceOwnershipV77.candidates,
+      accepted_records: state.evidenceOwnershipV77.accepted_records,
+      requests: state.evidenceOwnershipV77.requests,
+      provider_followups: state.evidenceOwnershipV77.provider_followups
+    });
+    const original = governedSourceRecords();
     const advisor1 = v78BuildSnapshot('advisor', true);
     const advisor2 = v78BuildSnapshot('advisor', true);
     const client = v78BuildSnapshot('client', true);
@@ -113,7 +119,8 @@ test('workshop-v78: accepted-only contract-safe reports and helper snapshots rem
       workbookKind: workbookPackage.package_kind,
       workbookEnhancement: workbookPackage.handoff_schema_enhancements_version || workbookPackage.contract_manifest?.contract_release,
       workbookHasHelper: Boolean(workbookPackage.optional_workshop_evidence_ownership_helper_v78),
-      sourceUnchanged: original === JSON.stringify(state.evidenceOwnershipV77),
+      sourceUnchanged: original === governedSourceRecords(),
+      auditHistoryAppended: state.evidenceOwnershipV77.history.some((entry) => entry.event === 'v78_report_snapshot_generated'),
       runtimeChecks: v60RuntimeChecks(),
       sspFactoryNames: v78SspFactoryNames()
     };
@@ -126,6 +133,7 @@ test('workshop-v78: accepted-only contract-safe reports and helper snapshots rem
   expect(result.stableSnapshotId).toBe(true);
   expect(result.stableGeneratedAt).toBe(true);
   expect(result.sourceUnchanged).toBe(true);
+  expect(result.auditHistoryAppended).toBe(true);
   expect(result.helper.accepted_only).toBe(true);
   expect(result.helper.consumer_may_ignore).toBe(true);
   expect(result.helper.downstream_consumption_confirmed).toBe(false);
