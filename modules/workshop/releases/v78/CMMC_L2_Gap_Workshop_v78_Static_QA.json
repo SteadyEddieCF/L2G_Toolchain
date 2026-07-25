@@ -36,13 +36,15 @@
     "constrained_viewport_rules_present": true
   },
   "dynamic_validation": {
-    "repository_validation": "pass_on_byte_locked_candidate",
-    "browser_javascript_parse": "pending_final_exact_head",
-    "page_errors": "pending_final_exact_head",
-    "console_errors": "pending_final_exact_head",
-    "axe_core": "pending_final_exact_head",
-    "windows_file_origin": "pass_on_byte_locked_candidate",
-    "visual_baselines": "pending_review_and_commit"
+    "repository_validation": "pass",
+    "browser_javascript_and_runtime": "pass",
+    "page_errors": 0,
+    "console_errors": 0,
+    "external_network_requests": 0,
+    "axe_core": "pass",
+    "windows_file_origin": "pass",
+    "visual_regression": "pass_reusing_reviewed_unchanged_v77_landing_baselines_with_version_badge_normalized",
+    "deterministic_release_packaging": "pass"
   },
-  "status": "draft static QA; final exact-head dynamic results pending"
+  "status": "validated draft static QA pending independent orchestrator review and promotion"
 }
