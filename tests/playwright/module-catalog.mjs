@@ -2,7 +2,7 @@ export const modules = [
   { slug: 'control-center-v0.3.4', name: 'L2G Control Center', version: 'v0.3.4', path: '/modules/control-center/releases/v0.3.4/L2G_CC_v0.3.4.html', darkStrategy: 'data-theme', visual: false },
   { slug: 'docconverter-v7.9.5', name: 'DocConverter-L2G', version: 'v7.9.5.1', path: '/modules/docconverter/releases/7.9.5.1/DocConverter-L2G_v7.9.5.1.html' },
   { slug: 'scoper-v3.12', name: 'L2G Scoper', version: 'v3.12', path: '/modules/scoper/releases/v3.12/L2Scoper-v3.12.html', visual: false },
-  { slug: 'workshop-v78', name: 'CMMC L2 Gap Workshop Tool', version: 'v78', path: '/modules/workshop/releases/v78/cmmc_l2_gap_workshop_tool_v78.html', darkStrategy: 'dark-mode' },
+  { slug: 'workshop-v78', name: 'CMMC L2 Gap Workshop Tool', version: 'v78', path: '/modules/workshop/releases/v78/cmmc_l2_gap_workshop_tool_v78.html', darkStrategy: 'dark-mode', visualBaselineSlug: 'workshop-v77', visualBaselineVersion: 'v77' },
   { slug: 'builder-merger-v3.8', name: 'L2G Builder/Merger', version: 'v3.8', path: '/modules/builder-merger/releases/v3.8/L2G-BM_v3.8.html' },
   { slug: 'ssp-v1.7', name: 'CMMC L2 SSP Modern Editable', version: 'v1.9.5.1', path: '/modules/ssp/releases/v1.9.5.1/CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html', darkStrategy: 'body-dark' }
 ];
