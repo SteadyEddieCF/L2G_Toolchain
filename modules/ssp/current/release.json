@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.8",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.8.html",
   "runtime_sha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
-  "status": "release_candidate_pending_review",
-  "next_action": "Independent review of issue #57 RG-1 candidate; RG-2 remains planned but unauthorized",
+  "status": "current_supplied_release",
+  "next_action": "RG-2 Local Staged-Review Orchestration is the next planned SSP workstream and requires a separately bounded issue and release authorization; no UX-3, Word inspection, Builder/Merger sidecar, custom profile, bulk workflow, or adjacent-tool change",
   "recorded_at": "2026-07-26",
   "operating_modes": {
     "default": "single-system",
@@ -73,6 +73,13 @@
     "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.8.json",
     "sha256": "b12a07ef838aa5777a2b68c51fb6586bf7eaee8f4d035b43765f46cf0ac5f673",
     "custom_definitions_supported": false
+  },
+  "promotion": {
+    "pull_request": 58,
+    "reviewed_head": "e53978a3decb9b71fc00978598403aa5c7c5c3da",
+    "merge_commit": "0a241e744c882a4b3f0ec7e65a3d92f9bf988e41",
+    "issue_closed": 57,
+    "verdict": "passed"
   },
   "protected_main_at_start": "f188ae65543546f16c557cbba8fa7bc813fd0de2"
 }
