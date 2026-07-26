@@ -9,7 +9,7 @@
     {"id":"control-center","version":"0.3.4","runtime_sha256":"9eec722499fd5f0a76249ccb6f27547d6fe6fc64059a418b136af48b8edf7a73"},
     {"id":"docconverter","version":"7.9.5.1","runtime_sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"},
     {"id":"scoper","version":"3.12","runtime_sha256":"2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3"},
-    {"id":"workshop","version":"79","runtime_sha256":"c9a5379af34a481d6d8f6c349d9019cc9138955e2907487894d048b8096710f1"},
+    {"id":"workshop","version":"79","runtime_sha256":"a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca"},
     {"id":"builder-merger","version":"3.8","runtime_sha256":"e63fb2225b27bce5c7f8ce1f48d68d16ab0e21f92543f2741795e3f21f5f2a6c"},
     {"id":"ssp","version":"1.9.5.1","runtime_sha256":"a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"}
   ],
