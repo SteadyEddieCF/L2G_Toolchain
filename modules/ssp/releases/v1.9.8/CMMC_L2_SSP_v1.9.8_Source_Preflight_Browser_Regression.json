@@ -1,0 +1,18 @@
+{
+  "release": "v1.9.8",
+  "suite": "source-preflight-browser-regression",
+  "status": "passed",
+  "profileId": "generic-cmmc-ssp-review-v1",
+  "profileVersion": "0.1",
+  "itemCount": 12,
+  "singleSystemRun": true,
+  "portfolioRun": true,
+  "moduleRun": true,
+  "staleFingerprintDetected": true,
+  "affectedRecordNavigation": true,
+  "conditionalTargetDate": true,
+  "workingDataDefinitionsDuplicated": false,
+  "errors": [],
+  "external": [],
+  "runtimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82"
+}

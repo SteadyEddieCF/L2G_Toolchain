@@ -1,0 +1,16 @@
+{
+  "release": "v1.9.8",
+  "suite": "backup-migration-clean-restore-determinism",
+  "status": "passed",
+  "runtimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+  "fixture": "Synthetic_SSP_v1.9.8_Working_Data_With_Source_Preflight.json",
+  "fixtureSha256": "4f214d4270208f37649baaac5c3b1fe6b1946cd56a32768cd981e17afa23d2e7",
+  "v195Migration": true,
+  "v1951Migration": true,
+  "schemaValid": true,
+  "repeatExportByteIdentical": true,
+  "cleanRestoreExportByteIdentical": true,
+  "profileDefinitionsDuplicated": false,
+  "pageErrors": [],
+  "externalRequests": []
+}

@@ -1,0 +1,20 @@
+{
+  "release": "v1.9.8",
+  "fixtureSet": "McFirecoal Toolchain Test Fixture v1.2.0",
+  "scope": "SSP-applicable clean and adversarial integration coverage",
+  "status": "passed",
+  "runtimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+  "clean": {"modules":4,"requirements":440,"requirementsPerModule":110},
+  "adversarial": {
+    "tamperedPortfolioExchangeRejected": true,
+    "malformedWordPackageRejected": true,
+    "invalidWorkshopHandoffRejected": true,
+    "unknownOptionalWorkingDataSidecarIgnored": true
+  },
+  "pageErrors": [],
+  "externalRequests": [],
+  "limitations": [
+    "The registered archive-ingestion assets are owned primarily by DocConverter and Scoper; SSP does not ingest those ZIPs directly.",
+    "SSP-applicable coverage uses synthetic portfolio, evidence, exchange, delivery, preflight, and adversarial fixtures."
+  ]
+}

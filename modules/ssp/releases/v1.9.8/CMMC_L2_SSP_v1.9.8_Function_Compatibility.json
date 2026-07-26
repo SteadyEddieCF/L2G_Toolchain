@@ -1,0 +1,19 @@
+{
+  "release": "v1.9.8",
+  "suite": "governed-function-source-compatibility",
+  "status": "passed",
+  "baselineRuntimeSha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051",
+  "runtimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+  "functionsCompared": 29,
+  "authorizedChangedFunctions": ["collectData", "migrateData", "applyData"],
+  "unexpectedChangedFunctions": [],
+  "allComparedFunctionsByteIdentical": true,
+  "preservedAreas": [
+    "Word Review parse/import",
+    "Workshop handoff and SSP return",
+    "portfolio/module exchange",
+    "formal review and local approvals",
+    "baselines and delivery",
+    "contracts 1.11 through 1.15"
+  ]
+}

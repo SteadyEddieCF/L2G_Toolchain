@@ -1,0 +1,48 @@
+{
+  "fixtureKind": "synthetic-ssp-source-preflight-run-v1",
+  "syntheticTestData": true,
+  "run": {
+    "runId": "synthetic-source-preflight-run-001",
+    "runKind": "source-preflight",
+    "profileId": "generic-cmmc-ssp-review-v1",
+    "profileVersion": "0.1",
+    "outputProfile": "source-only",
+    "scope": {
+      "kind": "single-system",
+      "portfolioId": "",
+      "moduleId": ""
+    },
+    "sourceIdentity": {
+      "appVersion": "1.9.8",
+      "schema": "cmmc-l2-ssp-modern-v1.9.8",
+      "schemaVersion": "1.9.8",
+      "documentVersion": "synthetic-1",
+      "fingerprint": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "evaluatedAt": "2026-07-26T16:00:00Z",
+    "itemResults": [
+      {"itemId":"SSP-RG-META-001","applicable":true,"applicabilityBasis":"Source-only profile","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[{"kind":"field","id":"CLIENT_NAME","moduleId":"","fieldToken":"CLIENT_NAME"}]},
+      {"itemId":"SSP-RG-META-002","applicable":true,"applicabilityBasis":"Source-only profile","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[{"kind":"field","id":"SYSTEM_NAME","moduleId":"","fieldToken":"SYSTEM_NAME"}]},
+      {"itemId":"SSP-RG-META-003","applicable":true,"applicabilityBasis":"Configured profile","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-META-004","applicable":false,"applicabilityBasis":"Source-only profile does not require a target date","result":"not-applicable","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"","notApplicableRationale":"The synthetic source-only profile does not require a target delivery date.","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-SME-002","applicable":true,"applicabilityBasis":"Source inventory","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-SME-003","applicable":true,"applicabilityBasis":"Source structure","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-SME-004","applicable":true,"applicabilityBasis":"Canonical identity fields","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-SME-006","applicable":true,"applicabilityBasis":"Document-control metadata","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-SME-007","applicable":true,"applicabilityBasis":"Canonical section and control catalog","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-QA-016","applicable":true,"applicabilityBasis":"Required practice records","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-QA-019","applicable":true,"applicabilityBasis":"Status-aware field rules","result":"pass","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"Synthetic pass.","notApplicableRationale":"","evidenceRefs":[],"affectedRecords":[]},
+      {"itemId":"SSP-RG-QA-020","applicable":false,"applicabilityBasis":"No inherited/shared implementation is claimed in this synthetic fixture","result":"not-applicable","method":"automated-source","evaluatedAt":"2026-07-26T16:00:00Z","sourceFingerprint":"0000000000000000000000000000000000000000000000000000000000000000","artifactFingerprintCurrent":true,"notes":"","notApplicableRationale":"The synthetic fixture contains no inherited or shared-service claim.","evidenceRefs":[],"affectedRecords":[]}
+    ],
+    "summary": {"total":12,"pass":10,"fail":0,"notApplicable":2,"needsHumanReview":0,"blocking":0},
+    "sourcePreflightReady": true,
+    "blockingReasons": [],
+    "guardrails": [
+      "Automated SSP source-data checks only; not a CMMC assessment or certification result.",
+      "No determination of implementation-statement accuracy, assessment-objective coverage, evidence sufficiency, readiness, risk, or compliance.",
+      "Local names, roles, reviews, approvals, initials, and signatures are not authenticated.",
+      "No Word-specific or final assembled-document QA is claimed.",
+      "Builder/Merger retains final rendering, assembly, formatting, and client-delivery packaging."
+    ]
+  }
+}

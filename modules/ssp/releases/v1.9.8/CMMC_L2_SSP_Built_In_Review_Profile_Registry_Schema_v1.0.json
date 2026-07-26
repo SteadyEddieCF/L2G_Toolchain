@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:l2g:cmmc-l2-ssp:built-in-review-profile-registry-schema:1.0",
+  "title": "CMMC L2 SSP Built-in Review Profile Registry Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "$id", "registryKind", "registryVersion", "release", "profiles"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "$id": {"type": "string"},
+    "registryKind": {"const": "cmmc-l2-ssp-built-in-review-profile-registry-v1"},
+    "registryVersion": {"const": "1.0"},
+    "release": {"const": "1.9.8"},
+    "profiles": {
+      "type": "array", "minItems": 1, "maxItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["profileId", "profileVersion", "displayName", "description", "builtIn", "customDefinitionsSupported", "stages", "supportedOutputProfiles", "items"],
+        "properties": {
+          "profileId": {"const": "generic-cmmc-ssp-review-v1"},
+          "profileVersion": {"const": "0.1"},
+          "displayName": {"type": "string"},
+          "description": {"type": "string"},
+          "builtIn": {"const": true},
+          "customDefinitionsSupported": {"const": false},
+          "stages": {
+            "type": "array", "minItems": 1, "maxItems": 1,
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["stageId", "label", "sequence", "owningTool"],
+              "properties": {
+                "stageId": {"const": "source-preflight"},
+                "label": {"type": "string"},
+                "sequence": {"const": 1},
+                "owningTool": {"const": "SSP"}
+              }
+            }
+          },
+          "supportedOutputProfiles": {
+            "type": "array", "minItems": 3, "maxItems": 3,
+            "items": {"enum": ["source-only", "internal-ssp-review", "governed-ssp-delivery"]},
+            "uniqueItems": true
+          },
+          "items": {
+            "type": "array", "minItems": 12, "maxItems": 12,
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["itemId", "stageId", "genericLabel", "primaryClassification", "primaryClassificationLabel", "supportingClassifications", "owningTool", "decisionOwnerRole", "checkMethod", "sspDataSources", "directLinkPolicy", "resultStates", "completionRequirement", "applicabilityCondition", "acceptableTerminalResults", "severity", "blockingCondition", "permittedNotApplicable", "notApplicableRationaleRequirement", "correctiveActionRequirement", "manualDispositionPolicy", "exceptionWaiverPolicy", "outputProfileApplicability"],
+              "properties": {
+                "itemId": {"type": "string", "pattern": "^SSP-RG-[A-Z]+-[0-9]{3}$"},
+                "stageId": {"const": "source-preflight"},
+                "genericLabel": {"type": "string"},
+                "primaryClassification": {"enum": ["C1", "C2", "C3", "C4", "C5", "C6"]},
+                "primaryClassificationLabel": {"type": "string"},
+                "supportingClassifications": {"type": "array", "items": {"enum": ["C1", "C2", "C3", "C4", "C5", "C6"]}, "uniqueItems": true},
+                "owningTool": {"const": "SSP"},
+                "decisionOwnerRole": {"type": "string"},
+                "checkMethod": {"type": "string"},
+                "sspDataSources": {"type": "array", "items": {"type": "string"}},
+                "directLinkPolicy": {"enum": ["yes", "partial", "no"]},
+                "resultStates": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+                "completionRequirement": {"enum": ["required", "conditional", "advisory"]},
+                "applicabilityCondition": {"type": "string"},
+                "acceptableTerminalResults": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+                "severity": {"enum": ["critical", "high", "medium", "low", "informational"]},
+                "blockingCondition": {"type": "string"},
+                "permittedNotApplicable": {"type": "boolean"},
+                "notApplicableRationaleRequirement": {"type": "string"},
+                "correctiveActionRequirement": {"type": "string"},
+                "manualDispositionPolicy": {"type": "string"},
+                "exceptionWaiverPolicy": {"type": "string"},
+                "outputProfileApplicability": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
