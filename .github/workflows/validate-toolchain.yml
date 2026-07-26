@@ -16,6 +16,10 @@ jobs:
         run: python modules/control-center/releases/0.3.4/build_release.py
       - name: Materialize Workshop v77 runtime
         run: python modules/workshop/releases/v77/build_release.py
+      - name: Materialize Workshop v78 runtime
+        run: python modules/workshop/releases/v78/build_release.py
+      - name: Materialize Workshop v79 runtime
+        run: python modules/workshop/releases/v79/build_release.py
       - name: Materialize SSP v1.9.6 runtime
         run: python modules/ssp/releases/v1.9.6/materialize.py
       - name: Run SSP v1.9.6 bounded static gate
