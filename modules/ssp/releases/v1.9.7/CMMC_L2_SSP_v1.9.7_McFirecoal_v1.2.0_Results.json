@@ -1,0 +1,29 @@
+{
+  "release": "v1.9.7",
+  "fixtureSet": "McFirecoal Toolchain Test Fixture v1.2.0",
+  "scope": "SSP-applicable clean and adversarial portfolio coverage",
+  "status": "passed",
+  "runtimeSha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051",
+  "clean": {"modules": 4, "requirements": 440, "requirementsPerModule": 110},
+  "adversarial": {
+    "tamperedPortfolioExchangeRejected": true,
+    "malformedWordPackageRejected": true,
+    "invalidWorkshopHandoffRejected": true,
+    "unknownOptionalWorkingDataSidecarIgnored": true
+  },
+  "workspace": {
+    "portfolioAndModuleScope": true,
+    "requirementDetails": true,
+    "operationsGovernanceDeliveryRouting": true,
+    "reloadPersistence": true,
+    "browserBackProtection": true,
+    "governedExportIsolation": true
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "limitations": [
+    "The registered ZIP assets exercise archive ingestion owned primarily by DocConverter and Scoper; SSP does not ingest those ZIPs directly.",
+    "The promoted Workshop-v79 suite snapshot remains historically identified with SSP v1.9.5.1 and is not silently rewritten by this release."
+  ]
+}
