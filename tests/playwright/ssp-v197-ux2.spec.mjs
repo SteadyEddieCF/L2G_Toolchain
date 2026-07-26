@@ -87,6 +87,7 @@ test('ssp-v1.9.7 UX-2 portfolio workspace remains local, presentation-only, and 
   expect(rawBytes).toBeLessThan(24576);
   const governed = await page.evaluate(() => __sspTestHooks.collectData(true));
   expect(JSON.stringify(governed)).not.toContain('cmmc-l2-ssp-workspace-ui-v1.9.7');
+  await page.evaluate(() => localStorage.setItem(__sspTestHooks.STORAGE_KEY, JSON.stringify(__sspTestHooks.collectData(true))));
 
   await page.locator('#portfolioModal .portfolio-close').click();
   await expect(page.locator('#portfolioModal')).toBeHidden();
