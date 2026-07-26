@@ -7,6 +7,7 @@
   "next_action": "Proposed v80 Regression Delta and Release Comparison",
   "recorded_at": "2026-07-26",
   "candidate_issue": 49,
+  "candidate_pr": 50,
   "previous_promoted_version": "v78",
   "previous_promoted_commit": "cc92c3e72cb989cd29b1baf44cbe5dcf44358f08",
   "primary_html_sha256": "c9a5379af34a481d6d8f6c349d9019cc9138955e2907487894d048b8096710f1",
