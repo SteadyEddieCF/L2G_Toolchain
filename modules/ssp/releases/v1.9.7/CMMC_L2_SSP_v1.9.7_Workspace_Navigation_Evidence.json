@@ -1,0 +1,21 @@
+{
+  "release": "v1.9.7",
+  "status": "passed",
+  "runtimeSha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051",
+  "workspaceViews": ["Overview", "Modules & Requirements", "Operations", "Governance", "Delivery"],
+  "operationsSubviews": ["Responsibility", "Evidence reminders", "Dependencies", "Change calendar", "Maintenance"],
+  "governanceSubviews": ["Local review records", "Locally asserted roles", "Local approval records", "Policy profiles", "Content-fingerprinted local baselines", "Impact review", "Change and decision register"],
+  "deliveryCategories": ["Portfolio/module exchange", "Word Review", "CRM", "SSP delivery package", "SSP-owned snapshots", "Verification"],
+  "navigationShape": ["targetView", "scope", "moduleId", "filters", "selectedRecordKind", "selectedRecordId", "focusTarget"],
+  "persistence": ["active view/subview", "scope/module", "filters/sort/search", "selected record", "details state", "safe scroll anchor"],
+  "verified": {
+    "requirementRecordNavigation": true,
+    "moduleScopePersistence": true,
+    "reloadRestoration": true,
+    "focusRestoration": true,
+    "browserBackProtection": true,
+    "governedExportIsolation": true,
+    "singleSystemDefault": true,
+    "portfolioAdvancedOnly": true
+  }
+}
