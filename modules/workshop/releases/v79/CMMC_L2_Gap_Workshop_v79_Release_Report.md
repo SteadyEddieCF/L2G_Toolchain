@@ -2,7 +2,9 @@
 
 **Release:** CMMC L2 Gap Workshop Tool v79 — Full McFirecoal Toolchain Regression  
 **Bounded instruction:** GitHub issue #49  
-**Protected-main baseline:** `a55a7199d34de6d8eef66712ee13db0572f4d6e8`  
+**Protected-main development baseline:** `a55a7199d34de6d8eef66712ee13db0572f4d6e8`  
+**Promoted by PR:** #50  
+**Protected-main promotion commit:** `9d23e18cdc227b8d637325ad7ae426a309a0242d`  
 **Runtime SHA-256:** `a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca`  
 **Runtime size:** `1,836,145` bytes  
 **Regression evidence fingerprint:** `sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4`
@@ -35,6 +37,6 @@ The replay reproduced a Workshop v78 mapping defect: `CM.L2-3.4.4[a]` from the g
 
 This release reports technical route success or failure only. It does not infer evidence sufficiency, authenticity, effectiveness, Met/Not Met, readiness, risk, compliance, certification, scoring, or an assessment conclusion. Adjacent-module application code was not changed. No new stable contract or future SSP review/delivery-profile contract was introduced.
 
-## Candidate suite snapshot
+## Promoted exact-suite snapshot
 
-`suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0` is eligible because every required route passed. It remains a candidate until v79 is promoted and repository metadata is reconciled.
+`suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0` is the current promoted exact-suite technical regression snapshot after PR #50. It establishes the tested six-tool version combination and route evidence only; it does not authorize new adjacent-module behavior or helper consumption.

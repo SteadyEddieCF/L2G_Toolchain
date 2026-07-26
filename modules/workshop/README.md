@@ -2,7 +2,7 @@
 
 Central facilitation and advisor-review module for practices, evidence, evidence requests, provider/responsibility discussion, provider follow-up, actions, blockers, workbook and SSP round trips.
 
-- Current supplied release candidate: **v79 — Full McFirecoal Toolchain Regression**
+- Current supplied release: **v79 — Full McFirecoal Toolchain Regression**
 - Runtime: `releases/v79/cmmc_l2_gap_workshop_tool_v79.html`
 - Previous promoted release: **v78 — Contract-safe Reporting and SSP/Workbook Alignment**
 - Next bounded action: **Proposed v80 Regression Delta and Release Comparison**

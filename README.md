@@ -6,14 +6,14 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 
 | Module | Current supplied release | Next bounded action |
 |---|---:|---|
-| L2G Control Center | v0.3.4 | v0.4 read-only action/blocker overview is eligible for a separately bounded issue; no downstream consumption is claimed yet |
-| DocConverter-L2G | v7.9.5.1 | Hold later candidates until they pass the registered McFirecoal v1.2.0 three-part regression and downstream handshakes |
-| L2G Scoper | v3.12 | Hold v3.13 unless downstream adoption demonstrates a concrete decision-workflow or package need |
-| CMMC L2 Gap Workshop Tool | v79 candidate | Proposed v80 Regression Delta and Release Comparison after v79 promotion |
-| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles only after an orchestrator-approved review/delivery-profile contract |
-| CMMC L2 SSP Modern Editable | v1.9.5.1 | Complete the separately bounded v1.9.6 UX release sequence without treating Workshop v78/v79 helpers as an approved delivery-profile contract |
+| L2G Control Center | v0.3.4 | v0.4 read-only action/blocker and regression-overview synchronization is eligible for a separately bounded issue; no downstream authority transfer |
+| DocConverter-L2G | v7.9.5.1 | No immediate release required; preserve the exact runtime and registered McFirecoal v1.2.0 handshake baseline until a concrete extraction or package defect is demonstrated |
+| L2G Scoper | v3.12 | No immediate release required; preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
+| CMMC L2 Gap Workshop Tool | v79 | Proposed v80 Regression Delta and Release Comparison as a separately bounded Workshop release |
+| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles only after a separately approved review/delivery-profile contract; Workshop v78/v79 helpers alone do not authorize implementation |
+| CMMC L2 SSP Modern Editable | v1.9.5.1 | Synchronize only after the separately bounded SSP v1.9.6 sequence is independently promoted; preserve SSP Handoff 1.0 and SSP Return 1.0 |
 
-The active exact-version suite completed the prior full toolchain audit, SSP v1.9.5.1 post-fix closeout, Control Center v0.3.4 synchronization, Workshop v77 promotion, and Workshop v78 promotion. Workshop v79 is now the bounded release candidate for the full McFirecoal v1.2.0 six-tool regression. Its candidate evidence records 10/10 required route groups passing, all three fixture ZIP identities and CRCs matching, and 320/320 workbook objectives mapping after a Workshop-only canonical objective-ID correction. The candidate snapshot remains technical route evidence only and does not authorize adjacent-module consumption, a review/delivery-profile contract, or any assessment, sufficiency, readiness, risk, compliance, certification, or scoring conclusion.
+The active exact-version suite now includes promoted Workshop v79 and the current technical regression snapshot `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. The registered McFirecoal v1.2.0 Parts 1–3 passed all 10 required route groups across Control Center v0.3.4, DocConverter-L2G v7.9.5.1, Scoper v3.12, Workshop v79, Builder/Merger v3.8, and SSP v1.9.5.1. Workshop v79 also corrected objective-ID canonicalization so the governed workbook round trip maps 320/320 objectives. This snapshot is technical route evidence only and does not authorize adjacent-module consumption, a review/delivery-profile contract, or any assessment, sufficiency, readiness, risk, compliance, certification, or scoring conclusion.
 
 ## Repository layout
 
