@@ -1,14 +1,16 @@
 {
   "module": "CMMC L2 Gap Workshop Tool",
-  "current_supplied_version": "v77",
-  "release_path": "modules/workshop/releases/v77",
-  "runtime_path": "modules/workshop/releases/v77/cmmc_l2_gap_workshop_tool_v77.html",
-  "status": "current_supplied_release",
-  "next_action": "v78 Contract-safe Reporting and SSP/Workbook Alignment",
-  "recorded_at": "2026-07-24",
-  "promoted_by_pr": 39,
-  "promoted_commit": "035fe77a3a90d01bef8908229b6a8357a76adcac",
-  "primary_html_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1",
+  "current_supplied_version": "v78",
+  "release_path": "modules/workshop/releases/v78",
+  "runtime_path": "modules/workshop/releases/v78/cmmc_l2_gap_workshop_tool_v78.html",
+  "status": "release_candidate_pending_orchestrator_review",
+  "next_action": "v79 Full McFirecoal Toolchain Regression",
+  "recorded_at": "2026-07-25",
+  "candidate_pr": 47,
+  "previous_promoted_version": "v77",
+  "previous_promoted_commit": "035fe77a3a90d01bef8908229b6a8357a76adcac",
+  "primary_html_sha256": "e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191",
+  "primary_html_size_bytes": 1814727,
   "stable_contracts": {
     "workshop_state": "1.0",
     "workbook_handoff": "1.7",
@@ -16,5 +18,5 @@
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
   },
-  "release_boundary": "Workshop-authoritative evidence ownership and provider follow-up; no evidence sufficiency, assessment, readiness, risk, compliance, certification, or scoring conclusions."
+  "release_boundary": "Workshop-authoritative accepted-only advisor/client reporting with optional additive, ignorable workbook/SSP helper snapshots; no downstream consumption, evidence sufficiency, assessment, readiness, risk, compliance, certification, or scoring conclusions."
 }

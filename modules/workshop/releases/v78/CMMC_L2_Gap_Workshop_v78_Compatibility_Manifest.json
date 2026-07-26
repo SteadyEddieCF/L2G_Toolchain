@@ -1,0 +1,67 @@
+{
+  "release": "v78",
+  "focus": "Contract-safe Reporting and SSP/Workbook Alignment",
+  "bounded_issue": 46,
+  "baseline": {
+    "version": "v77",
+    "runtime_size_bytes": 1779417,
+    "runtime_sha256": "eaed7cc745a9c963b5977b4ecca2ddd8183714afc91fefd8e3d7788dbda4f5a1",
+    "protected_main": "224dd1b7aa0de1e211bb6c838f41a3aaad683ffe"
+  },
+  "candidate": {
+    "version": "v78",
+    "runtime_size_bytes": 1814727,
+    "runtime_sha256": "e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191",
+    "status": "draft_release_candidate"
+  },
+  "capability": {
+    "accepted_only_reporting": true,
+    "advisor_report_with_provenance": true,
+    "client_safe_report": true,
+    "client_redaction": true,
+    "deterministic_snapshot_ids": true,
+    "repeatable_generated_at_for_same_snapshot": true,
+    "formats": ["html", "markdown", "json", "csv", "print"],
+    "optional_workbook_helper": true,
+    "optional_ssp_helper": true,
+    "helper_consumer_may_ignore": true,
+    "downstream_consumption_confirmed": false,
+    "new_stable_contract": false,
+    "v77_record_ids_preserved": true
+  },
+  "stable_contracts": {
+    "l2g_workshop_state_v1": "1.0 additive",
+    "l2g_workbook_handoff_v1": "1.7 stable/frozen with optional ignorable helper",
+    "l2g_workbook_merge_v1": "1.1 stable/frozen",
+    "l2g_ssp_handoff_v1": "1.0 stable with optional ignorable helper",
+    "l2g_ssp_return_package_v1": "1.0 validated"
+  },
+  "authority_boundaries": {
+    "workshop_authoritative": [
+      "accepted evidence ownership",
+      "evidence requests",
+      "provider follow-up",
+      "engagement gaps",
+      "actions",
+      "blockers",
+      "facilitated practice conclusions"
+    ],
+    "workbook_results_reviewer_controlled": true,
+    "ssp_content_and_review_history_ssp_controlled": true,
+    "builder_merger_assembly_and_delivery_controlled": true,
+    "control_center_read_only": true,
+    "reporting_inclusion_is_not_downstream_acceptance": true
+  },
+  "safeguards": {
+    "no_evidence_sufficiency_inference": true,
+    "no_authenticity_or_effectiveness_inference": true,
+    "no_automatic_assessment_conclusion": true,
+    "no_readiness_risk_compliance_certification_or_scoring": true,
+    "no_workbook_or_ssp_overwrite": true,
+    "no_remote_messages_notifications_calendar_email_or_background_workflow": true,
+    "client_outputs_exclude_advisor_notes_validation_questions_source_fingerprints_and_local_paths": true,
+    "future_ssp_review_delivery_profile_absent": true
+  },
+  "adjacent_tool_application_changes": false,
+  "adjacent_tool_release_required": false
+}
