@@ -4,7 +4,7 @@
   "repository": "SteadyEddieCF/L2G_Toolchain",
   "recorded_at": "2026-07-26",
   "protected_main_baseline": "a55a7199d34de6d8eef66712ee13db0572f4d6e8",
-  "candidate_pr": null,
+  "candidate_pr": 50,
   "modules": [
     {"id":"control-center","version":"0.3.4","runtime_sha256":"9eec722499fd5f0a76249ccb6f27547d6fe6fc64059a418b136af48b8edf7a73"},
     {"id":"docconverter","version":"7.9.5.1","runtime_sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"},
@@ -13,37 +13,10 @@
     {"id":"builder-merger","version":"3.8","runtime_sha256":"e63fb2225b27bce5c7f8ce1f48d68d16ab0e21f92543f2741795e3f21f5f2a6c"},
     {"id":"ssp","version":"1.9.5.1","runtime_sha256":"a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"}
   ],
-  "stable_routes": [
-    "l2g_intake_package_v1 1.0",
-    "l2g_scope_context_v1 1.0",
-    "l2g_meeting_context_v1 1.0",
-    "l2g_scope_return_package_v1 1.0",
-    "l2g_workshop_state_v1 1.0",
-    "l2g_workbook_handoff_v1 1.7",
-    "l2g_workbook_merge_v1 1.1",
-    "l2g_ssp_handoff_v1 1.0",
-    "l2g_ssp_return_package_v1 1.0"
-  ],
-  "fixture": {
-    "name": "McFirecoal Toolchain Test Fixture",
-    "version": "1.2.0",
-    "synthetic_only": true,
-    "parts": [
-      {"part":1,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_1_Scoping_Governance.zip","size_bytes":922013,"sha256":"d4b0f05a5ab27f683ab351ef5162901703fca6320c397052f7b3530aed67ad6a","zip_entries":43,"crc_error":null,"passed":true},
-      {"part":2,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_2_Technical_Provider_Evidence.zip","size_bytes":634113,"sha256":"154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2","zip_entries":67,"crc_error":null,"passed":true},
-      {"part":3,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_3_Adversarial_Integration.zip","size_bytes":2221699,"sha256":"52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226","zip_entries":53,"crc_error":null,"passed":true}
-    ]
-  },
+  "stable_routes": ["l2g_intake_package_v1 1.0","l2g_scope_context_v1 1.0","l2g_meeting_context_v1 1.0","l2g_scope_return_package_v1 1.0","l2g_workshop_state_v1 1.0","l2g_workbook_handoff_v1 1.7","l2g_workbook_merge_v1 1.1","l2g_ssp_handoff_v1 1.0","l2g_ssp_return_package_v1 1.0"],
+  "fixture": {"name":"McFirecoal Toolchain Test Fixture","version":"1.2.0","synthetic_only":true,"parts":[{"part":1,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_1_Scoping_Governance.zip","size_bytes":922013,"sha256":"d4b0f05a5ab27f683ab351ef5162901703fca6320c397052f7b3530aed67ad6a","zip_entries":43,"crc_error":null,"passed":true},{"part":2,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_2_Technical_Provider_Evidence.zip","size_bytes":634113,"sha256":"154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2","zip_entries":67,"crc_error":null,"passed":true},{"part":3,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_3_Adversarial_Integration.zip","size_bytes":2221699,"sha256":"52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226","zip_entries":53,"crc_error":null,"passed":true}]},
   "route_summary": {"required_routes":10,"passed":10,"failed":0,"all_required_routes_passed":true},
   "route_evidence_fingerprint": "sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4",
-  "qualification": {
-    "technical_routes_only": true,
-    "all_required_routes_passed": true,
-    "workbook_objectives_mapped": "320/320",
-    "adjacent_module_application_code_changed": false,
-    "new_stable_contract": false,
-    "future_ssp_review_delivery_profile": false,
-    "no_assessment_or_evidence_sufficiency_conclusion": true
-  },
+  "qualification": {"technical_routes_only":true,"all_required_routes_passed":true,"workbook_objectives_mapped":"320/320","adjacent_module_application_code_changed":false,"new_stable_contract":false,"future_ssp_review_delivery_profile":false,"no_assessment_or_evidence_sufficiency_conclusion":true},
   "promotion_rule": "This snapshot becomes the current exact-suite snapshot only after Workshop v79 promotion and post-promotion metadata reconciliation."
 }
