@@ -22,6 +22,15 @@ The replay reproduced a Workshop v78 mapping defect: `CM.L2-3.4.4[a]` from the g
 - Current SSP v1.9.5.1 backup identity was actively checked as schemaVersion/appVersion `1.9.5.1`.
 - Optional Workshop v78 helper fields remained ignorable and did not establish downstream consumption.
 
+## Repository validation
+
+- Deterministic Workshop v79 materialization: passed.
+- Repository validation: passed.
+- Focused Playwright runtime and axe-core QA: passed.
+- Reviewed light/dark visual regression: passed.
+- Native Windows Chromium `file://` smoke: passed.
+- Deterministic standalone HTML and complete ZIP packaging: passed.
+
 ## Safety and authority
 
 This release reports technical route success or failure only. It does not infer evidence sufficiency, authenticity, effectiveness, Met/Not Met, readiness, risk, compliance, certification, scoring, or an assessment conclusion. Adjacent-module application code was not changed. No new stable contract or future SSP review/delivery-profile contract was introduced.
