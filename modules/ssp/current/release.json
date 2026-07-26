@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.7",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.7.html",
   "runtime_sha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051",
-  "status": "release_candidate_pending_review",
-  "next_action": "Independent review of issue #54 UX-2 candidate; RG-1 remains planned but unauthorized",
+  "status": "current_supplied_release",
+  "next_action": "RG-1 Generic Source-Preflight Review is the next separately bounded SSP workstream; no RG-2 staged review, Word inspection, Builder/Merger sidecar, or adjacent-tool change",
   "recorded_at": "2026-07-26",
   "operating_modes": {
     "default": "single-system",
@@ -66,6 +66,13 @@
     "version": "v1.9.6",
     "merge_commit": "12a0c855b6d90ff4fd40418a34fc0e8431bd5df8",
     "runtime_sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea"
+  },
+  "promotion": {
+    "pull_request": 55,
+    "reviewed_head": "20e08e24b579ebdb8f980222e946d326edd694b8",
+    "merge_commit": "a3b74f585cb99ee5c7035fc3c2dfc47743b4a1cf",
+    "issue_closed": 54,
+    "verdict": "passed"
   },
   "protected_main_at_start": "5f7df0ebaea89dec470acd8032027309eef6d02f"
 }
