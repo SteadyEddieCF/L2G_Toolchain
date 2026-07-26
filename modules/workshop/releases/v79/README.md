@@ -30,4 +30,6 @@ python modules/workshop/releases/v79/build_release.py
 python modules/workshop/releases/v79/package_release.py
 ```
 
-**Status:** draft release candidate pending exact-head repository gates and independent orchestrator review.
+All required repository and browser validation gates passed on the exact candidate.
+
+**Status:** draft release candidate pending independent orchestrator review only.
