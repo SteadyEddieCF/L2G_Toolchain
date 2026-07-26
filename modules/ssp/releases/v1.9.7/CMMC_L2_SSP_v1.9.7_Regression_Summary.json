@@ -1,0 +1,51 @@
+{
+  "release": "v1.9.7",
+  "issue": 54,
+  "status": "passed",
+  "runtime": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.7.html",
+    "bytes": 1916310,
+    "sha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051"
+  },
+  "runtimeSourceBaseline": {
+    "version": "v1.9.6",
+    "sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea"
+  },
+  "workingData": {
+    "schemaVersion": "1.9.5.1",
+    "appVersion": "1.9.5.1",
+    "schemaSha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36"
+  },
+  "workspace": {
+    "primaryViews": 5,
+    "browserPreferenceNamespace": "cmmc-l2-ssp-workspace-ui-v1.9.7",
+    "observedPreferenceBytes": 560,
+    "capBytes": 24576,
+    "governedExportExcluded": true,
+    "focusRestoration": true,
+    "browserBackProtection": true,
+    "printChromeSuppressed": true
+  },
+  "requirements": {
+    "singleSystem": 110,
+    "portfolioModules": 4,
+    "portfolioTotal": 440,
+    "perModule": 110
+  },
+  "tests": {
+    "static": "passed",
+    "workspaceBrowser": "passed",
+    "backupMigrationRestore": "passed",
+    "functionCompatibility": {"status": "passed", "functionsCompared": 32, "changedFunctions": []},
+    "derivedContracts11To15": "passed",
+    "McFirecoalV120": "passed",
+    "independentVerifiers": "passed",
+    "accessibilityAndVisual": "passed"
+  },
+  "errors": {
+    "page": 0,
+    "console": 0,
+    "externalRequests": 0
+  },
+  "nonGoalsPreserved": true
+}
