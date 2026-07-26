@@ -10,7 +10,7 @@ if not BASELINE.exists():
 
 RUNTIME_PARTS = [SOURCE / f'runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part{i:02d}' for i in range(4)]
 RUNTIME_OUTPUT = ROOT / 'CMMC_L2_SSP_Modern_Editable_v1.9.8.html'
-SCHEMA_PARTS = [SOURCE / f'CMMC_L2_SSP_Data_Schema_v1.9.8.json.xz.b64.part{i:02d}' for i in range(2)]
+SCHEMA_PARTS = [SOURCE / f'schema-payload.part{i:02d}' for i in range(6)]
 SCHEMA_OUTPUT = ROOT / 'CMMC_L2_SSP_Data_Schema_v1.9.8.json'
 REGISTRY_PARTS = [SOURCE / 'CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.8.json.xz.b64.part00']
 REGISTRY_OUTPUT = ROOT / 'CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.8.json'
