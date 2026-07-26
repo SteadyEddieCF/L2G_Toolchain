@@ -1,15 +1,15 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.5.1",
-  "release_path": "modules/ssp/releases/v1.9.5.1",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html",
-  "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
-  "status": "current_supplied_release",
-  "next_action": "Post-fix closeout passed; v1.9.6 remains reserved and uncommitted pending architecture authorization",
-  "recorded_at": "2026-07-23",
+  "current_supplied_version": "v1.9.6",
+  "release_path": "modules/ssp/releases/v1.9.6",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.6.html",
+  "runtime_sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
+  "status": "release_candidate_pending_orchestrator_review",
+  "next_action": "Independent orchestrator review of issue #42 UX-1 candidate; UX-2 is planned next but not authorized",
+  "recorded_at": "2026-07-24",
   "operating_modes": {
     "default": "single-system",
-    "optional": "modular-portfolio"
+    "optional": "modular-portfolio-advanced"
   },
   "stable_contracts": {
     "ssp_handoff": "1.0",
@@ -28,27 +28,10 @@
       "evidence_reminder_snapshot_version": "1.12",
       "module_dependency_snapshot_kind": "cmmc_l2_ssp_module_dependency_snapshot_v1",
       "module_dependency_snapshot_version": "1.13",
-      "module_dependency_json_export": true,
-      "module_dependency_csv_export": true,
-      "module_dependency_svg_export": true,
-      "module_dependency_delivery_inclusion": true,
       "change_calendar_snapshot_kind": "cmmc_l2_ssp_change_calendar_snapshot_v1",
       "change_calendar_snapshot_version": "1.14",
-      "change_calendar_derived_read_only": true,
-      "change_calendar_portfolio_scope": true,
-      "change_calendar_module_scope": true,
-      "change_calendar_json_export": true,
-      "change_calendar_csv_export": true,
-      "change_calendar_ics_export": true,
-      "change_calendar_delivery_inclusion": true,
       "responsibility_matrix_snapshot_kind": "cmmc_l2_ssp_responsibility_matrix_snapshot_v1",
       "responsibility_matrix_snapshot_version": "1.15",
-      "responsibility_matrix_derived_read_only": true,
-      "responsibility_matrix_portfolio_scope": true,
-      "responsibility_matrix_module_scope": true,
-      "responsibility_matrix_json_export": true,
-      "responsibility_matrix_csv_export": true,
-      "responsibility_matrix_delivery_inclusion": true,
       "remote_scheduling": false,
       "external_notification": false,
       "regulatory_deadline_determination": false,
@@ -69,22 +52,19 @@
     "id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.5.1",
     "version": "1.9.5.1",
     "sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36",
-    "accepts_migration_from": [
-      "1.9.5"
-    ]
+    "accepts_migration_from": ["1.9.5"]
   },
-  "patch_baseline": {
-    "commit": "f5aaeab72271b2a25cc27d42eeebde95bf0c7df2",
-    "runtime_sha256": "779a62a1957077d4945627d697344bb7485185a4b079b3318e374ef4610e25fa",
-    "issue": 31
+  "release_identity": {
+    "version": "1.9.6",
+    "issue": 42,
+    "focus": "Editor Clarity and Document-State UX",
+    "ui_preference_namespace": "cmmc-l2-ssp-ui-v1.9.6",
+    "schema_change": false,
+    "package_change": false
   },
-  "post_fix_closeout": {
-    "verdict": "pass",
-    "merged_pr": 33,
+  "runtime_source_baseline": {
     "merge_commit": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb",
-    "workshop_version": "v76",
-    "workshop_round_trip": "pass",
-    "backup_schema_validation": "pass",
-    "closed_issue": 31
-  }
+    "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"
+  },
+  "protected_main_at_start": "035fe77a3a90d01bef8908229b6a8357a76adcac"
 }

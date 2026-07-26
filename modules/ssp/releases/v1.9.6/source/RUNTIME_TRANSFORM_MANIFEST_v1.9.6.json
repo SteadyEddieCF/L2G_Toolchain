@@ -1,0 +1,34 @@
+{
+  "release": "v1.9.6",
+  "issue": 42,
+  "materializationKind": "verified-unified-diff",
+  "runtimeSourceBaseline": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.5.1.html",
+    "repositoryBlobSha": "ab89b0b82a2304333b15f2cd364f254fa2ea8921",
+    "sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8",
+    "mergeCommit": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb"
+  },
+  "patch": {
+    "repositoryEncodedSha256": "f29609fb6dcc56ac446dc4cc63ec3649eb6b8b23377693dff92401a1a4de6578",
+    "decodedXzSha256": "119a110912150708064333e8cd84e7bfe8800f09cc3c4295b3ab425b94a71369",
+    "uncompressedSha256": "61f850bbb016cc204a0980899ef8e3ae7f1691d2815b1056e58b6dafd35a9494",
+    "uncompressedBytes": 193259,
+    "encodingNote": "Repository chunks omit one non-semantic final Base64 newline; decoded patch bytes are identical to the complete deliverables candidate.",
+    "chunkFiles": [
+      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part00",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part01",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part02",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part030",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part031"
+    ]
+  },
+  "output": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.6.html",
+    "sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea"
+  },
+  "workingDataIdentity": {
+    "schemaVersion": "1.9.5.1",
+    "appVersion": "1.9.5.1"
+  },
+  "releaseIdentity": "1.9.6"
+}
