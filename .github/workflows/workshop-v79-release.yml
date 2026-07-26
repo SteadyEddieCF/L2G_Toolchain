@@ -1,0 +1,31 @@
+name: Package Workshop v79
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/workshop-v79-release.yml'
+      - 'modules/workshop/releases/v79/**'
+      - 'suite/snapshots/suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package-workshop-v79:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build deterministic Workshop v79 release artifacts
+        run: python modules/workshop/releases/v79/package_release.py
+      - name: Upload standalone HTML and complete deliverables
+        uses: actions/upload-artifact@v4
+        with:
+          name: workshop-v79-release-artifacts
+          path: modules/workshop/releases/v79/dist/*
+          if-no-files-found: error
+          retention-days: 30
