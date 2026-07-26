@@ -1,0 +1,10 @@
+{
+  "release": "v1.9.8",
+  "suite": "built-in-profile-registry-schema",
+  "status": "passed",
+  "profileId": "generic-cmmc-ssp-review-v1",
+  "profileVersion": "0.1",
+  "items": 12,
+  "uniqueIds": 12,
+  "registrySha256": "b12a07ef838aa5777a2b68c51fb6586bf7eaee8f4d035b43765f46cf0ac5f673"
+}
