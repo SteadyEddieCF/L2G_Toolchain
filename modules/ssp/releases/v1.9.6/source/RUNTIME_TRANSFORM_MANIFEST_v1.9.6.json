@@ -9,15 +9,27 @@
     "mergeCommit": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb"
   },
   "patch": {
-    "encodedSha256": "34b0faf7a28facb338b6939f986fd58f1573af3f56666a50ee78ac0f848dd0be",
-    "xzSha256": "a62557fca9cf0811bc8ab604ac734772f78364cd2558d18bd41d506a26ec9713",
-    "uncompressedSha256": "61f850bbb016cc204a0980899ef8e3ae7f1691d2815b1056e58b6dafd35a9494",
-    "uncompressedBytes": 193259,
+    "sha256": "61f850bbb016cc204a0980899ef8e3ae7f1691d2815b1056e58b6dafd35a9494",
+    "bytes": 193259,
     "chunkFiles": [
-      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part00",
-      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part01",
-      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part02",
-      "runtime-v1.9.5.1-to-v1.9.6.patch.xz.b64.part03"
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part00",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part01",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part02",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part03",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part04",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part05",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part06",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part07",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part08",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part09",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part10",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part11",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part12",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part13",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part14",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part15",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part16",
+      "runtime-v1.9.5.1-to-v1.9.6.patch.part17"
     ]
   },
   "output": {
