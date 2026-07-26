@@ -4,7 +4,7 @@ import base64, hashlib, lzma, re
 
 ROOT = Path(__file__).resolve().parent
 BASELINE = ROOT.parent / 'v1.9.6' / 'CMMC_L2_SSP_Modern_Editable_v1.9.6.html'
-PAYLOAD = ROOT / 'source' / 'runtime-v1.9.6-to-v1.9.7.patch.xz.b64'
+PAYLOAD_PARTS = [ROOT / 'source' / f'runtime-v1.9.6-to-v1.9.7.patch.xz.b64.part{i:02d}' for i in range(4)]
 OUTPUT = ROOT / 'CMMC_L2_SSP_Modern_Editable_v1.9.7.html'
 EXPECTED_BASELINE = 'd86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea'
 EXPECTED_PAYLOAD = '7c85a8f0f4e9ac685f8decdd84b525182544a1fd2d3590b89d24c1c511aee4dd'
@@ -45,7 +45,7 @@ def apply_unified_diff(source_text: str, patch_text: str) -> str:
     output.extend(source[source_index:]); return ''.join(output)
 
 baseline=BASELINE.read_bytes(); require('runtime-source baseline',digest(baseline),EXPECTED_BASELINE)
-encoded=PAYLOAD.read_bytes(); require('encoded patch',digest(encoded),EXPECTED_PAYLOAD)
+encoded=b''.join(part.read_bytes() for part in PAYLOAD_PARTS); require('encoded patch',digest(encoded),EXPECTED_PAYLOAD)
 xz_bytes=base64.b64decode(encoded,validate=True); require('xz patch',digest(xz_bytes),EXPECTED_XZ)
 patch=lzma.decompress(xz_bytes); require('unified patch',digest(patch),EXPECTED_PATCH)
 runtime=apply_unified_diff(baseline.decode('utf-8'),patch.decode('utf-8')).encode('utf-8')
