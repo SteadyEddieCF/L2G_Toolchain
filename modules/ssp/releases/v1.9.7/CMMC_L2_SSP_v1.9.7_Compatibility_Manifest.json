@@ -1,0 +1,28 @@
+{
+  "release": "v1.9.7",
+  "status": "compatible",
+  "runtimeSha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051",
+  "baselineRuntimeSha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
+  "acceptsWorkingData": ["1.9.5", "1.9.5.1"],
+  "exportsWorkingData": "1.9.5.1",
+  "stableContracts": [
+    "Workshop handoff 1.0",
+    "SSP return 1.0",
+    "optional round-trip audit 0.1",
+    "Word Review",
+    "portfolio/module exchange",
+    "maintenance 1.11",
+    "evidence reminders 1.12",
+    "dependency 1.13",
+    "calendar 1.14",
+    "responsibility matrix 1.15"
+  ],
+  "schemaChange": false,
+  "portfolioFoundationSchemaChange": false,
+  "packageKindChange": false,
+  "filenameChange": false,
+  "fieldMeaningChange": false,
+  "governedFunctionsCompared": 32,
+  "changedGovernedFunctions": [],
+  "workspacePreferencesExported": false
+}
