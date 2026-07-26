@@ -1,0 +1,14 @@
+{
+  "fixtureKind": "synthetic-ssp-review-gate-configuration-v1",
+  "syntheticTestData": true,
+  "reviewGateConfiguration": {
+    "profileId": "generic-cmmc-ssp-review-v1",
+    "profileVersion": "0.1",
+    "selectedOutputProfile": "source-only",
+    "localProfileConfiguration": {
+      "sspProfileLevel": "CMMC Level 2",
+      "targetDeliveryDate": ""
+    }
+  },
+  "reviewGateRuns": []
+}
