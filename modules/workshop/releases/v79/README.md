@@ -3,8 +3,8 @@
 Draft release candidate for **Full McFirecoal Toolchain Regression**, developed from the exact promoted Workshop v78 runtime under GitHub issue #49.
 
 - Primary runtime: `cmmc_l2_gap_workshop_tool_v79.html` (deterministically materialized; not duplicated in git history)
-- Runtime size: `1,836,163` bytes
-- Runtime SHA-256: `c9a5379af34a481d6d8f6c349d9019cc9138955e2907487894d048b8096710f1`
+- Runtime size: `1,836,145` bytes
+- Runtime SHA-256: `a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca`
 - Baseline v78 SHA-256: `e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191`
 - Bounded issue: #49
 
