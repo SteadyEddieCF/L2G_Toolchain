@@ -4,9 +4,9 @@
   "release_path": "modules/ssp/releases/v1.9.6",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.6.html",
   "runtime_sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
-  "status": "release_candidate_pending_orchestrator_review",
-  "next_action": "Independent orchestrator review of issue #42 UX-1 candidate; UX-2 is planned next but not authorized",
-  "recorded_at": "2026-07-24",
+  "status": "current_supplied_release",
+  "next_action": "UX-2 portfolio workspace/navigation foundation requires a separately bounded issue and explicit authorization",
+  "recorded_at": "2026-07-26",
   "operating_modes": {
     "default": "single-system",
     "optional": "modular-portfolio-advanced"
@@ -65,6 +65,12 @@
   "runtime_source_baseline": {
     "merge_commit": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb",
     "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"
+  },
+  "promotion": {
+    "pull_request": 44,
+    "merge_commit": "12a0c855b6d90ff4fd40418a34fc0e8431bd5df8",
+    "issue_closed": 42,
+    "verdict": "passed"
   },
   "protected_main_at_start": "035fe77a3a90d01bef8908229b6a8357a76adcac"
 }
