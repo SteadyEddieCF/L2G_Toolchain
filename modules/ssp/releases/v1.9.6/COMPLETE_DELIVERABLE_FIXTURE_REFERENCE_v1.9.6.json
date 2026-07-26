@@ -1,0 +1,11 @@
+{
+  "fixtureKind": "ssp-v1.9.6-complete-deliverable-reference",
+  "release": "v1.9.6",
+  "completeDeliverablesZip": "CMMC_L2_SSP_v1.9.6_Complete_Deliverables.zip",
+  "zipSha256": "6a265c109405d1283c40aa39ede9b4dc4c1537737450f4d0a20a27ce854d88fd",
+  "standaloneRuntime": "CMMC_L2_SSP_Modern_Editable_v1.9.6.html",
+  "runtimeSha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
+  "workingDataSchema": "CMMC_L2_SSP_Data_Schema_v1.9.5.1.json",
+  "workingDataSchemaSha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36",
+  "repositoryNote": "Generated runtime and large fixtures are retained in the complete deliverables ZIP; the repository materializes the runtime deterministically from the exact v1.9.5.1 blob."
+}
