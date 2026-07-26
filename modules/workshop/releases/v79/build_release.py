@@ -8,8 +8,8 @@ BASE_BUILD=BASE_DIR/'build_release.py'
 OUT=HERE/'cmmc_l2_gap_workshop_tool_v79.html'
 SOURCE=HERE/'source'
 BASE_SHA='e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191'
-OUT_SHA='PENDING'
-OUT_SIZE=0
+OUT_SHA='a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca'
+OUT_SIZE=1836145
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def canonical_text(p):return p.read_text(encoding='utf-8').replace('\r\n','\n').replace('\r','\n')
 def canonical_digest(p):return hashlib.sha256(canonical_text(p).encode()).hexdigest()
@@ -26,4 +26,4 @@ idx=text.rfind('</script>');text=text[:idx]+patch+'\n'+text[idx:]
 OUT.write_bytes(text.encode())
 actual=digest(OUT);size=OUT.stat().st_size
 print(f'Workshop v79 candidate: size={size} sha256={actual}')
-if OUT_SHA!='PENDING' and (size!=OUT_SIZE or actual!=OUT_SHA):raise SystemExit(f'Workshop v79 verification failed: size={size} sha256={actual}')
+if size!=OUT_SIZE or actual!=OUT_SHA:raise SystemExit(f'Workshop v79 verification failed: size={size} sha256={actual}')
