@@ -1,17 +1,18 @@
 {
   "module": "CMMC L2 Gap Workshop Tool",
-  "current_supplied_version": "v78",
-  "release_path": "modules/workshop/releases/v78",
-  "runtime_path": "modules/workshop/releases/v78/cmmc_l2_gap_workshop_tool_v78.html",
-  "status": "current_supplied_release",
-  "next_action": "v79 Full McFirecoal Toolchain Regression",
+  "current_supplied_version": "v79",
+  "release_path": "modules/workshop/releases/v79",
+  "runtime_path": "modules/workshop/releases/v79/cmmc_l2_gap_workshop_tool_v79.html",
+  "status": "release_candidate_pending_orchestrator_review",
+  "next_action": "Proposed v80 Regression Delta and Release Comparison",
   "recorded_at": "2026-07-26",
-  "promoted_by_pr": 47,
-  "promoted_commit": "cc92c3e72cb989cd29b1baf44cbe5dcf44358f08",
-  "previous_promoted_version": "v77",
-  "previous_promoted_commit": "035fe77a3a90d01bef8908229b6a8357a76adcac",
-  "primary_html_sha256": "e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191",
-  "primary_html_size_bytes": 1814727,
+  "candidate_issue": 49,
+  "previous_promoted_version": "v78",
+  "previous_promoted_commit": "cc92c3e72cb989cd29b1baf44cbe5dcf44358f08",
+  "primary_html_sha256": "c9a5379af34a481d6d8f6c349d9019cc9138955e2907487894d048b8096710f1",
+  "primary_html_size_bytes": 1836163,
+  "route_evidence_fingerprint": "sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4",
+  "candidate_suite_snapshot": "suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0",
   "stable_contracts": {
     "workshop_state": "1.0",
     "workbook_handoff": "1.7",
@@ -19,5 +20,5 @@
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
   },
-  "release_boundary": "Workshop-authoritative accepted-only advisor/client reporting with optional additive, ignorable workbook/SSP helper snapshots; no downstream consumption, evidence sufficiency, assessment, readiness, risk, compliance, certification, or scoring conclusions."
+  "release_boundary": "Workshop-led technical six-tool regression with all 10 required routes passing and 320/320 workbook objectives mapped; no adjacent-module authority transfer, evidence sufficiency, assessment, readiness, risk, compliance, certification, or scoring conclusion."
 }
