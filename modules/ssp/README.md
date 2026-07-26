@@ -2,9 +2,9 @@
 
 Local/offline SSP authoring and Word Review round-trip module with Workshop handoff/return integration.
 
-- Current supplied release candidate: **v1.9.7 — Portfolio Workspace and Navigation Foundation**
-- Current release focus: **Bounded issue #54 UX-2 full-screen portfolio workspace over the unchanged v1.9.5.1 governed data model**
-- Next integrated workstream: **RG-1 Generic Source-Preflight Review — planned, not authorized and not assigned a release number**
+- Current supplied release: **v1.9.7 — Portfolio Workspace and Navigation Foundation**
+- Current release focus: **Completed bounded issue #54 UX-2 full-screen portfolio workspace over the unchanged v1.9.5.1 governed data model**
+- Next integrated workstream: **RG-1 Generic Source-Preflight Review — separately bounded; no RG-2 staged review, Word inspection, sidecar, or adjacent-tool change**
 - Exact-head merge gate: **Repository validation, Playwright QA, Windows file-origin smoke, visual regression, and all applicable SSP materialization checks must complete successfully before merge.**
 
 Single-System remains the default. Portfolio mode remains Advanced and optional. Every module retains exactly 110 authoritative requirements. v1.9.7 changes portfolio presentation and navigation only; working-data schema/app identity remains 1.9.5.1.
