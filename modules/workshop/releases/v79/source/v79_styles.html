@@ -1,0 +1,14 @@
+<style id="v79RegressionStyles">
+.v79-regression{border-color:rgba(90,163,255,.45)}
+.v79-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.v79-kpis{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:10px;margin:14px 0}
+.v79-kpis>div{border:1px solid var(--line);border-radius:14px;padding:11px;background:var(--panel2)}
+.v79-kpis span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.v79-kpis strong{font-size:22px}
+.v79-toolbar{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:10px;margin:12px 0}.v79-tablewrap{max-height:620px}
+.v79-status{display:inline-flex;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:900;border:1px solid currentColor}
+.v79-status.pass{color:var(--good)}.v79-status.fail{color:var(--bad)}.v79-status.review{color:var(--warn)}
+.v79-boundary{border-left:4px solid var(--ember);padding:11px;background:var(--panel2);border-radius:10px;margin-top:12px}
+.v79-route-detail{white-space:pre-wrap;max-width:620px;font-size:12px;color:var(--muted)}
+@media(max-width:1000px){.v79-kpis{grid-template-columns:repeat(2,minmax(120px,1fr))}.v79-toolbar{grid-template-columns:1fr}}
+@media print{body.v79-printing .hero,body.v79-printing #nav,body.v79-printing .tab>*:not(#v79RegressionWorkspace){display:none!important}body.v79-printing #evidence,body.v79-printing #v79RegressionWorkspace{display:block!important}.v79-toolbar,.v79-head .btnrow{display:none!important}.v79-tablewrap{max-height:none;overflow:visible}}
+</style>

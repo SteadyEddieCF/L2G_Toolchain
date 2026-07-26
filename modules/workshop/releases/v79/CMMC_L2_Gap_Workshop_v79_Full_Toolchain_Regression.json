@@ -1,0 +1,44 @@
+{
+  "document_kind": "workshop_v79_full_toolchain_regression_evidence",
+  "format_version": "1.0",
+  "recorded_at": "2026-07-26",
+  "release": "v79",
+  "baseline_workshop": "v79",
+  "workshop_runtime_sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
+  "exact_main_baseline": "a55a7199d34de6d8eef66712ee13db0572f4d6e8",
+  "exact_suite": [
+    {"id":"control-center","version":"0.3.4","runtime_sha256":"9eec722499fd5f0a76249ccb6f27547d6fe6fc64059a418b136af48b8edf7a73"},
+    {"id":"docconverter","version":"7.9.5.1","runtime_sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"},
+    {"id":"scoper","version":"3.12","runtime_sha256":"2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3"},
+    {"id":"workshop","version":"79","runtime_sha256":"a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca"},
+    {"id":"builder-merger","version":"3.8","runtime_sha256":"e63fb2225b27bce5c7f8ce1f48d68d16ab0e21f92543f2741795e3f21f5f2a6c"},
+    {"id":"ssp","version":"1.9.5.1","runtime_sha256":"a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"}
+  ],
+  "fixture": {
+    "name": "McFirecoal Toolchain Test Fixture",
+    "version": "1.2.0",
+    "synthetic_only": true,
+    "parts": [
+      {"part":1,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_1_Scoping_Governance.zip","size_bytes":922013,"sha256":"d4b0f05a5ab27f683ab351ef5162901703fca6320c397052f7b3530aed67ad6a","zip_entries":43,"crc_error":null,"passed":true},
+      {"part":2,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_2_Technical_Provider_Evidence.zip","size_bytes":634113,"sha256":"154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2","zip_entries":67,"crc_error":null,"passed":true},
+      {"part":3,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_3_Adversarial_Integration.zip","size_bytes":2221699,"sha256":"52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226","zip_entries":53,"crc_error":null,"passed":true}
+    ]
+  },
+  "routes": [
+    {"route_id":"fixture-integrity","status":"PASS","execution_mode":"ACTIVE_REPLAY","required":true,"owner":"Fixture Registry","details":{"parts_passed":"3/3","crc_errors":0,"all_parts_passed":true}},
+    {"route_id":"mcfirecoal-to-docconverter","status":"PASS_REVALIDATED","execution_mode":"GOVERNED_EVIDENCE_REVALIDATED","required":true,"owner":"DocConverter","details":{"runtime_sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d","runtime_unchanged":true,"main_result":"PASS","overflow_result":"PASS","combined_source_coverage":"104/104","main_source_records":91,"overflow_files":14,"package_kinds":["l2g_intake_package_v1","l2g_scope_context_v1","l2g_meeting_context_v1"],"page_errors":0,"network_requests":0}},
+    {"route_id":"docconverter-to-scoper","status":"PASS_REVALIDATED","execution_mode":"GOVERNED_EVIDENCE_REVALIDATED","required":true,"owner":"Scoper","details":{"runtime_sha256":"2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3","result":"PASS","source_documents":80,"assets":12,"providers":4,"flows":5,"semantic_hash":"bbdb620e1470633e486ab5ad39e0bab6f950f9519536d2817735df08c3ec84eb"}},
+    {"route_id":"scoper-to-workshop","status":"PASS","execution_mode":"ACTIVE_REPLAY","required":true,"owner":"Workshop","details":{"preview":{"kind":"l2g_scope_return_package_v1","version":"1.0","changes":594,"accepted":594,"docs":80,"assets":12,"providers":4,"flows":5,"governed_unchanged":true,"input_unchanged":true},"applied":{"kind":"l2g_scope_return_package_v1","docs":80,"assets":12,"providers":4,"flows":5}}},
+    {"route_id":"workshop-builder-workshop","status":"PASS","execution_mode":"ACTIVE_REPLAY","required":true,"owner":"Workshop","details":{"preview":{"kind":"l2g_workbook_merge_v1","blocking":false,"duplicate":false,"practices":110,"objectives_in_package":320,"objectives_mapped":320,"unmatched":[],"fingerprint":"fnv1a-ac6c347b","input_unchanged":true},"after_apply":{"history":1,"last_objectives":320,"objective_overlay_count":320},"undo":{"undo_snapshot_cleared":true,"objective_overlay_count":0},"corrective_action":"Canonicalized whitespace before bracketed objective suffixes so CM.L2-3.4.4[a] maps to catalog ID CM.L2-3.4.4 [a]."}},
+    {"route_id":"workshop-to-ssp","status":"PASS","execution_mode":"ACTIVE_REPLAY","required":true,"owner":"Workshop / SSP","details":{"workshop":{"kind":"l2g_ssp_handoff_v1","version":"1.0","controls":110,"helper_present":true,"repeat_fingerprint":true},"ssp":{"app_version":"1.9.5.1","backup_schema_version":"1.9.5.1","backup_app_version":"1.9.5.1","handoff_valid":true,"controls":110,"preview_rows":1330,"helper_ignored_without_error":true}}},
+    {"route_id":"ssp-to-workshop","status":"PASS","execution_mode":"ACTIVE_REPLAY","required":true,"owner":"SSP / Workshop","details":{"handoff":{"kind":"l2g_ssp_handoff_v1","version":"1.0","controls":110,"helper_present":true,"repeat_fingerprint":true},"return_preview":{"passed":true,"errors":[],"warnings":[],"rows":559},"applied":{"change_sets":1,"undo_available":true,"selected_fields":1},"undo_cleared":true,"input_unchanged":true,"audit_kind":"l2g_ssp_round_trip_audit_v1"}},
+    {"route_id":"control-center-read-only-observability","status":"PASS","execution_mode":"ACTIVE_REPLAY","required":true,"owner":"Control Center","details":{"runtime_sha256":"9eec722499fd5f0a76249ccb6f27547d6fe6fc64059a418b136af48b8edf7a73","scope":"compatible","workbook":"compatible","ssp_return":"compatible","ssp_audit":"compatible","unknown_sidecar":"review_required","tampered_fingerprint":"review_required","unknown_control":"review_required","substantive_content_modified":false}},
+    {"route_id":"builder-merger-package-and-workbook","status":"PASS_REVALIDATED","execution_mode":"GOVERNED_EVIDENCE_REVALIDATED","required":true,"owner":"Builder/Merger","details":{"runtime_sha256":"e63fb2225b27bce5c7f8ce1f48d68d16ab0e21f92543f2741795e3f21f5f2a6c","workbook_size_bytes":1566283,"workbook_sha256":"1312cf12a9aeb362b84796f934d8e767afd41f084ee15ac2c87a55f1ce49f584","merge_package_kind":"l2g_workbook_merge_v1","merge_package_version":"1.0","practice_results":110,"objective_results":320,"input_unchanged":true}},
+    {"route_id":"part-3-adversarial-integration","status":"PASS","execution_mode":"ACTIVE_REPLAY","required":true,"owner":"Workshop / Control Center","details":{"unsupported_scope_rejected":true,"unknown_scope_sidecar_rejected":true,"unknown_ssp_control_blocked":true,"unknown_ssp_sidecar_blocked":true,"control_center_unknown_sidecar":"review_required","control_center_tampered_fingerprint":"review_required","control_center_unknown_control":"review_required"}}
+  ],
+  "summary": {"required_routes":10,"passed":10,"failed":0,"all_required_routes_passed":true},
+  "telemetry": {"workshop_page_errors":[],"workshop_console_errors":[],"workshop_external_requests":[],"ssp_page_errors":[],"control_center_page_errors":[]},
+  "authority_boundary": {"technical_route_results_only":true,"no_evidence_sufficiency_inference":true,"no_assessment_conclusion":true,"no_readiness_risk_compliance_certification_or_scoring":true,"adjacent_module_application_code_changed":false},
+  "suite_snapshot_eligible": true,
+  "evidence_fingerprint": "sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4"
+}

@@ -1,0 +1,31 @@
+{
+  "release": "v79",
+  "focus": "Full McFirecoal Toolchain Regression",
+  "runtime": {
+    "size_bytes": 1836145,
+    "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
+    "baseline_v78_sha256": "e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191"
+  },
+  "stable_contracts": {
+    "workshop_state": "1.0 additive",
+    "workbook_handoff": "1.7 stable/frozen",
+    "workbook_merge": "1.1 stable/frozen",
+    "ssp_handoff": "1.0 validated",
+    "ssp_return": "1.0 validated"
+  },
+  "regression": {
+    "fixture": "McFirecoal Toolchain Test Fixture v1.2.0",
+    "required_routes": 10,
+    "passed": 10,
+    "failed": 0,
+    "evidence_fingerprint": "sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4",
+    "suite_snapshot_eligible": true
+  },
+  "compatibility_boundaries": {
+    "adjacent_module_application_code_changed": false,
+    "new_stable_contract": false,
+    "optional_helper_downstream_consumption_claimed": false,
+    "future_ssp_review_delivery_profile": false,
+    "technical_results_only": true
+  }
+}
