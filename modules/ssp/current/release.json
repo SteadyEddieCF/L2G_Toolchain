@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.7",
-  "release_path": "modules/ssp/releases/v1.9.7",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.7.html",
-  "runtime_sha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051",
-  "status": "current_supplied_release",
-  "next_action": "RG-1 Generic Source-Preflight Review is the next separately bounded SSP workstream; no RG-2 staged review, Word inspection, Builder/Merger sidecar, or adjacent-tool change",
+  "current_supplied_version": "v1.9.8",
+  "release_path": "modules/ssp/releases/v1.9.8",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.8.html",
+  "runtime_sha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+  "status": "release_candidate_pending_review",
+  "next_action": "Independent review of issue #57 RG-1 candidate; RG-2 remains planned but unauthorized",
   "recorded_at": "2026-07-26",
   "operating_modes": {
     "default": "single-system",
@@ -49,30 +49,30 @@
     }
   },
   "working_data_schema": {
-    "id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.5.1",
-    "version": "1.9.5.1",
-    "sha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36",
-    "accepts_migration_from": ["1.9.5"]
+    "id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.8",
+    "version": "1.9.8",
+    "sha256": "775284cd37f16e20e251cf77e96528347166b93fe9d815e83e61ce4786945f6c",
+    "accepts_migration_from": ["1.9.5", "1.9.5.1"]
   },
   "release_identity": {
-    "version": "1.9.7",
-    "issue": 54,
-    "focus": "Portfolio Workspace and Navigation Foundation",
-    "workspace_preference_namespace": "cmmc-l2-ssp-workspace-ui-v1.9.7",
-    "schema_change": false,
+    "version": "1.9.8",
+    "issue": 57,
+    "focus": "Generic Source-Preflight Review Profile",
+    "profile_id": "generic-cmmc-ssp-review-v1",
+    "profile_version": "0.1",
+    "profile_item_count": 12,
+    "schema_change": true,
     "package_change": false
   },
   "runtime_source_baseline": {
-    "version": "v1.9.6",
-    "merge_commit": "12a0c855b6d90ff4fd40418a34fc0e8431bd5df8",
-    "runtime_sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea"
-  },
-  "promotion": {
-    "pull_request": 55,
-    "reviewed_head": "20e08e24b579ebdb8f980222e946d326edd694b8",
+    "version": "v1.9.7",
     "merge_commit": "a3b74f585cb99ee5c7035fc3c2dfc47743b4a1cf",
-    "issue_closed": 54,
-    "verdict": "passed"
+    "runtime_sha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051"
   },
-  "protected_main_at_start": "5f7df0ebaea89dec470acd8032027309eef6d02f"
+  "built_in_profile_registry": {
+    "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.8.json",
+    "sha256": "b12a07ef838aa5777a2b68c51fb6586bf7eaee8f4d035b43765f46cf0ac5f673",
+    "custom_definitions_supported": false
+  },
+  "protected_main_at_start": "f188ae65543546f16c557cbba8fa7bc813fd0de2"
 }
