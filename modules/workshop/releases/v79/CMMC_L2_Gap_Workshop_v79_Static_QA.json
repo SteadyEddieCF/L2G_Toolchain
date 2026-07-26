@@ -26,5 +26,12 @@
     "external_requests": 0,
     "objective_rows_mapped": 320
   },
-  "repository_gates": "pending exact-head CI"
+  "repository_gates": {
+    "repository_validation": "pass",
+    "playwright_runtime_and_axe_core": "pass",
+    "visual_regression": "pass",
+    "windows_chromium_file_smoke": "pass",
+    "deterministic_packaging": "pass"
+  },
+  "status": "exact candidate gates passed; draft PR remains unmerged for orchestrator review"
 }
