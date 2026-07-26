@@ -1,0 +1,16 @@
+{
+  "release": "v1.9.8",
+  "suite": "derived-contract-and-delivery-direct-regression",
+  "status": "passed",
+  "runtimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+  "contracts": [
+    {"feature":"maintenance 1.11","packageVersion":"1.11","valid":true,"tamperRejected":true},
+    {"feature":"evidence reminders 1.12","packageVersion":"1.12","valid":true,"tamperRejected":true},
+    {"feature":"dependencies 1.13","packageVersion":"1.13","valid":true,"tamperRejected":true},
+    {"feature":"change calendar 1.14","packageVersion":"1.14","valid":true,"tamperRejected":true},
+    {"feature":"responsibility matrix 1.15","packageVersion":"1.15","valid":true,"tamperRejected":true}
+  ],
+  "deliveryPackageVerified": true,
+  "portfolioModuleExchangeVerified": true,
+  "pageErrors": []
+}
