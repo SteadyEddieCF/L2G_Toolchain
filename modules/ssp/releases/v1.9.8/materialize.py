@@ -4,7 +4,7 @@ import base64,hashlib,lzma,re
 ROOT=Path(__file__).resolve().parent
 BASELINE=ROOT.parent/'v1.9.7'/'CMMC_L2_SSP_Modern_Editable_v1.9.7.html'
 if not BASELINE.exists():BASELINE=ROOT/'source'/'CMMC_L2_SSP_Modern_Editable_v1.9.7.html'
-PARTS=[ROOT/'source'/name for name in ['runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part00']]
+PARTS=[ROOT/'source'/f'runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part{i:02d}' for i in range(4)]
 OUTPUT=ROOT/'CMMC_L2_SSP_Modern_Editable_v1.9.8.html'
 EXPECTED_BASELINE='359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051'
 EXPECTED_ENCODED='9bce98ea83a38ecf15137a711a92f3b6ee229ab245f671a7c4e27e39607dbed3'
