@@ -9,11 +9,11 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 | L2G Control Center | v0.3.4 | v0.4 read-only action/blocker overview is eligible for a separately bounded issue; no downstream consumption is claimed yet |
 | DocConverter-L2G | v7.9.5.1 | Hold later candidates until they pass the registered McFirecoal v1.2.0 three-part regression and downstream handshakes |
 | L2G Scoper | v3.12 | Hold v3.13 unless downstream adoption demonstrates a concrete decision-workflow or package need |
-| CMMC L2 Gap Workshop Tool | v78 candidate | v79 Full McFirecoal Toolchain Regression after v78 promotion |
+| CMMC L2 Gap Workshop Tool | v78 | v79 Full McFirecoal Toolchain Regression |
 | L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles only after an orchestrator-approved review/delivery-profile contract |
 | CMMC L2 SSP Modern Editable | v1.9.5.1 | Complete the separately bounded v1.9.6 UX release sequence without treating Workshop v78 helpers as an approved delivery-profile contract |
 
-The active exact-version suite completed the prior full toolchain audit, SSP v1.9.5.1 post-fix closeout, Control Center v0.3.4 synchronization, and Workshop v77 promotion. Workshop v78 is now the bounded release candidate for accepted-only advisor/client reporting and optional additive Workbook Handoff 1.7 / SSP Handoff 1.0 helper snapshots. It preserves stable package identities, downstream reviewer control, and v77 record identifiers; it does not claim Builder/Merger or SSP consumption, authorize a review/delivery-profile contract, or establish a new exact-version full-chain snapshot. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
+The active exact-version suite completed the prior full toolchain audit, SSP v1.9.5.1 post-fix closeout, Control Center v0.3.4 synchronization, Workshop v77 promotion, and Workshop v78 promotion. Workshop v78 is now the current supplied Workshop release for accepted-only advisor/client reporting and optional additive Workbook Handoff 1.7 / SSP Handoff 1.0 helper snapshots. It preserves stable package identities, downstream reviewer control, and v77 record identifiers; it does not claim Builder/Merger or SSP consumption, authorize a review/delivery-profile contract, or establish a new exact-version full-chain snapshot. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
 
 ## Repository layout
 
