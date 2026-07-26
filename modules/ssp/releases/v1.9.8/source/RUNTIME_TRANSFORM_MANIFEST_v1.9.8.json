@@ -12,7 +12,12 @@
     "xzSha256": "912e3ec9ae4e857b9f92ad890e9624fbae274bedec30e753fb1f595dbe424539",
     "uncompressedSha256": "398e73994e4c5fb10b9ac3468ce821602f18d3e6bddd412362ec0b3c5b0ad230",
     "uncompressedBytes": 104332,
-    "chunkFiles": ["runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part00"]
+    "chunkFiles": [
+      "runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part00",
+      "runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part01",
+      "runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part02",
+      "runtime-v1.9.7-to-v1.9.8.patch.xz.b64.part03"
+    ]
   },
   "output": {
     "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.8.html",
