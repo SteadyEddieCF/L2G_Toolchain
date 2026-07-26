@@ -2,7 +2,7 @@
 
 Central facilitation and advisor-review module for practices, evidence, evidence requests, provider/responsibility discussion, provider follow-up, actions, blockers, workbook and SSP round trips.
 
-- Current supplied release candidate: **v78 — Contract-safe Reporting and SSP/Workbook Alignment**
+- Current supplied release: **v78 — Contract-safe Reporting and SSP/Workbook Alignment**
 - Runtime: `releases/v78/cmmc_l2_gap_workshop_tool_v78.html`
 - Previous promoted release: **v77 — Evidence Ownership and Provider Follow-up**
 - Next bounded action: **v79 Full McFirecoal Toolchain Regression**
