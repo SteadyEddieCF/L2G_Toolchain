@@ -8,8 +8,8 @@ BASE_BUILD=BASE_DIR/'build_release.py'
 OUT=HERE/'cmmc_l2_gap_workshop_tool_v79.html'
 SOURCE=HERE/'source'
 BASE_SHA='e34723924a81208d986e734e46833c7cfef064a568007dec1ac281fc1e0a0191'
-OUT_SHA='c9a5379af34a481d6d8f6c349d9019cc9138955e2907487894d048b8096710f1'
-OUT_SIZE=1836163
+OUT_SHA='PENDING'
+OUT_SIZE=0
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def canonical_text(p):return p.read_text(encoding='utf-8').replace('\r\n','\n').replace('\r','\n')
 def canonical_digest(p):return hashlib.sha256(canonical_text(p).encode()).hexdigest()
