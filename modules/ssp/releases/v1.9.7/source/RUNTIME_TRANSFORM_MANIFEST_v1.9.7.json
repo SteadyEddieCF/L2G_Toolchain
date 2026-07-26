@@ -1,0 +1,31 @@
+{
+  "release": "v1.9.7",
+  "issue": 54,
+  "materializationKind": "verified-compressed-unified-diff",
+  "baseline": {
+    "version": "v1.9.6",
+    "path": "modules/ssp/releases/v1.9.6/CMMC_L2_SSP_Modern_Editable_v1.9.6.html",
+    "sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
+    "promotionCommit": "12a0c855b6d90ff4fd40418a34fc0e8431bd5df8"
+  },
+  "transform": {
+    "encodedSha256": "7c85a8f0f4e9ac685f8decdd84b525182544a1fd2d3590b89d24c1c511aee4dd",
+    "xzSha256": "a74218dffb310be0fb309e4de3e4936c94cb6daf9ab5ed40132afddd8565cba4",
+    "unifiedDiffSha256": "0e275488e1eca424b3e08abc687633deb6379cac7a4cbf2201c625eff7f97339",
+    "parts": [
+      "runtime-v1.9.6-to-v1.9.7.patch.xz.b64.part00",
+      "runtime-v1.9.6-to-v1.9.7.patch.xz.b64.part01",
+      "runtime-v1.9.6-to-v1.9.7.patch.xz.b64.part02",
+      "runtime-v1.9.6-to-v1.9.7.patch.xz.b64.part03"
+    ]
+  },
+  "output": {
+    "path": "modules/ssp/releases/v1.9.7/CMMC_L2_SSP_Modern_Editable_v1.9.7.html",
+    "sha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051"
+  },
+  "governedIdentity": {
+    "schemaVersion": "1.9.5.1",
+    "appVersion": "1.9.5.1",
+    "schemaSha256": "be2659f848c74e41cfbe47db642efcc3835f5d5b32dc7d3e9054991ad84a8a36"
+  }
+}
