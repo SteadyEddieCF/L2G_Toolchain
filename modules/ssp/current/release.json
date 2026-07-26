@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.6",
-  "release_path": "modules/ssp/releases/v1.9.6",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.6.html",
-  "runtime_sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea",
-  "status": "current_supplied_release",
-  "next_action": "UX-2 portfolio workspace/navigation foundation requires a separately bounded issue and explicit authorization",
+  "current_supplied_version": "v1.9.7",
+  "release_path": "modules/ssp/releases/v1.9.7",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.7.html",
+  "runtime_sha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051",
+  "status": "release_candidate_pending_review",
+  "next_action": "Independent review of issue #54 UX-2 candidate; RG-1 remains planned but unauthorized",
   "recorded_at": "2026-07-26",
   "operating_modes": {
     "default": "single-system",
@@ -55,22 +55,17 @@
     "accepts_migration_from": ["1.9.5"]
   },
   "release_identity": {
-    "version": "1.9.6",
-    "issue": 42,
-    "focus": "Editor Clarity and Document-State UX",
-    "ui_preference_namespace": "cmmc-l2-ssp-ui-v1.9.6",
+    "version": "1.9.7",
+    "issue": 54,
+    "focus": "Portfolio Workspace and Navigation Foundation",
+    "workspace_preference_namespace": "cmmc-l2-ssp-workspace-ui-v1.9.7",
     "schema_change": false,
     "package_change": false
   },
   "runtime_source_baseline": {
-    "merge_commit": "fec2396489cbe85a1a1032a9d84b80c8350aa2eb",
-    "runtime_sha256": "a291b6b1c13b6232ca73e7ed00c9fed40eccdd216ee8bda8ceb4f3dfb59599e8"
-  },
-  "promotion": {
-    "pull_request": 44,
+    "version": "v1.9.6",
     "merge_commit": "12a0c855b6d90ff4fd40418a34fc0e8431bd5df8",
-    "issue_closed": 42,
-    "verdict": "passed"
+    "runtime_sha256": "d86ae890920f7935c40e9d237766e5ac482af70907e0758bd7e7f1b8f0bed0ea"
   },
-  "protected_main_at_start": "035fe77a3a90d01bef8908229b6a8357a76adcac"
+  "protected_main_at_start": "5f7df0ebaea89dec470acd8032027309eef6d02f"
 }
