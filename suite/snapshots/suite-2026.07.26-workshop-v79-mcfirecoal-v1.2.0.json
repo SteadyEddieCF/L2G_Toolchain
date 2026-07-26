@@ -1,10 +1,11 @@
 {
   "snapshot_id": "suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0",
-  "status": "exact_six_tool_full_regression_passed_candidate_pending_workshop_v79_promotion",
+  "status": "exact_six_tool_full_regression_passed_current_after_workshop_v79_promotion",
   "repository": "SteadyEddieCF/L2G_Toolchain",
   "recorded_at": "2026-07-26",
-  "protected_main_baseline": "a55a7199d34de6d8eef66712ee13db0572f4d6e8",
-  "candidate_pr": 50,
+  "development_baseline": "a55a7199d34de6d8eef66712ee13db0572f4d6e8",
+  "promoted_by_pr": 50,
+  "promotion_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
   "modules": [
     {"id":"control-center","version":"0.3.4","runtime_sha256":"9eec722499fd5f0a76249ccb6f27547d6fe6fc64059a418b136af48b8edf7a73"},
     {"id":"docconverter","version":"7.9.5.1","runtime_sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"},
@@ -18,5 +19,5 @@
   "route_summary": {"required_routes":10,"passed":10,"failed":0,"all_required_routes_passed":true},
   "route_evidence_fingerprint": "sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4",
   "qualification": {"technical_routes_only":true,"all_required_routes_passed":true,"workbook_objectives_mapped":"320/320","adjacent_module_application_code_changed":false,"new_stable_contract":false,"future_ssp_review_delivery_profile":false,"no_assessment_or_evidence_sufficiency_conclusion":true},
-  "promotion_rule": "This snapshot becomes the current exact-suite snapshot only after Workshop v79 promotion and post-promotion metadata reconciliation."
+  "current_snapshot_boundary": "Current exact-suite technical regression snapshot after Workshop v79 promotion. It does not authorize adjacent-module helper consumption, a review/delivery-profile contract, or any assessment, sufficiency, readiness, risk, compliance, certification, or scoring conclusion."
 }
