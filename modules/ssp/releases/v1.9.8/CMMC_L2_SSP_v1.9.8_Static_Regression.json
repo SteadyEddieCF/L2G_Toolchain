@@ -1,0 +1,10 @@
+{
+  "release": "v1.9.8",
+  "suite": "static-identity-boundary",
+  "status": "passed",
+  "runtimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+  "requirements": 110,
+  "duplicateIds": 0,
+  "profileItems": 12,
+  "workingDataIdentity": "1.9.8"
+}
