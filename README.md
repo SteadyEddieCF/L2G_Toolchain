@@ -6,14 +6,14 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 
 | Module | Current supplied release | Next bounded action |
 |---|---:|---|
-| L2G Control Center | v0.3.4 | Defer v0.4 read-only action/blocker overview until Workshop v77 establishes the canonical action, evidence-owner, and provider-follow-up records it may observe |
-| DocConverter-L2G | v7.9.5.1 | Hold later candidates until they pass the registered McFirecoal v1.2.0 three-part regression and downstream handshakes |
-| L2G Scoper | v3.12 | Hold v3.13 unless Workshop v77 or downstream adoption demonstrates a concrete decision-workflow or package need |
-| CMMC L2 Gap Workshop Tool | v77 | v78 Contract-safe Reporting and SSP/Workbook Alignment; separately bounded and no future review/delivery profile without approval |
-| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles after an orchestrator-approved review/delivery profile contract |
-| CMMC L2 SSP Modern Editable | v1.9.6 | Independent orchestrator review of bounded UX-1 candidate; UX-2 is planned next but not authorized |
+| L2G Control Center | v0.3.4 | v0.4 read-only action/blocker and regression-overview synchronization is eligible for a separately bounded issue; no downstream authority transfer |
+| DocConverter-L2G | v7.9.5.1 | No immediate release required; preserve the exact runtime and registered McFirecoal v1.2.0 handshake baseline until a concrete extraction or package defect is demonstrated |
+| L2G Scoper | v3.12 | No immediate release required; preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
+| CMMC L2 Gap Workshop Tool | v79 | Proposed v80 Regression Delta and Release Comparison as a separately bounded Workshop release |
+| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles only after a separately approved review/delivery-profile contract; Workshop v78/v79 helpers alone do not authorize implementation |
+| CMMC L2 SSP Modern Editable | v1.9.6 | UX-2 portfolio workspace/navigation foundation is planned next but requires a separately bounded issue and explicit authorization |
 
-The active exact-version suite completed the full toolchain audit, SSP v1.9.5.1 passed its bounded post-fix backup/schema and Workshop v76 round-trip closeout, and Control Center v0.3.4 synchronized the exact suite and optional Stage 5 capability metadata. Workshop v77 is the current upstream Workshop baseline. SSP v1.9.6 is a bounded editor-clarity candidate that preserves all stable package identities and does not claim a completed new exact-version full-chain snapshot. Cross-tool routes remain package-based, and each module retains its own authority and release lifecycle.
+The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`, which tested Control Center v0.3.4, DocConverter-L2G v7.9.5.1, Scoper v3.12, Workshop v79, Builder/Merger v3.8, and SSP v1.9.5.1 across all 10 required route groups. SSP v1.9.6 is promoted separately as the bounded UX-1 release and preserves SSP Handoff 1.0, SSP Return 1.0, and all existing governed package identities. It does not retroactively change the version composition of the Workshop v79 snapshot or authorize adjacent-module consumption, a review/delivery-profile contract, or any assessment, sufficiency, readiness, risk, compliance, certification, or scoring conclusion.
 
 ## Repository layout
 
