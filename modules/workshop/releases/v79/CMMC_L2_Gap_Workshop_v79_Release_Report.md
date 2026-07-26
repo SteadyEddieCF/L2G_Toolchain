@@ -3,8 +3,8 @@
 **Release:** CMMC L2 Gap Workshop Tool v79 — Full McFirecoal Toolchain Regression  
 **Bounded instruction:** GitHub issue #49  
 **Protected-main baseline:** `a55a7199d34de6d8eef66712ee13db0572f4d6e8`  
-**Runtime SHA-256:** `c9a5379af34a481d6d8f6c349d9019cc9138955e2907487894d048b8096710f1`  
-**Runtime size:** `1,836,163` bytes  
+**Runtime SHA-256:** `a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca`  
+**Runtime size:** `1,836,145` bytes  
 **Regression evidence fingerprint:** `sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4`
 
 ## Result
