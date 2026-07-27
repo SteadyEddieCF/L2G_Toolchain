@@ -1,0 +1,34 @@
+{
+  "release": "v1.9.10",
+  "baselineRuntime": "v1.9.9",
+  "baselineRuntimeSha256": "4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f410679144927",
+  "runtimeOutputSha256": "a282173c4a8ea23e59d6091a5f68c09757393df2c2d18b92b72569f69310f91c",
+  "runtimePatch": {
+    "parts": [
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part00",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part01"
+    ],
+    "payloadSha256": "6e2853fb12fe20d4f9cb8b050081cff01f7a9e888bf45da25ffa14b18f53e45d",
+    "xzSha256": "d53c928a9a126fd441490231392f1fb1dd5ac42a23973fe905c7ed639c9fd3c1",
+    "encodedSha256": "3260614c203cdb81b2d5a77c2b9c4fab562e9ad50ac290b313dc9dcb1c0e4a80",
+    "bytes": 222391
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {
+      "version": "1.9.9",
+      "sha256": "2d093d34b6260822d8be2547a50c3dc5c6c3e73100c9f0fc6fcb2794a84903b1",
+      "changed": false
+    },
+    "builtInProfileRegistry": {
+      "version": "1.9.9",
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "version": "1.1",
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    },
+    "packageContractsChanged": false
+  }
+}
