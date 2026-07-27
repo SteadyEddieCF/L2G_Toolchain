@@ -34,7 +34,8 @@
   "builtInProfileRegistry": {
     "parts": [
       "registry-v1.9.9.json.xz.b64.part00",
-      "registry-v1.9.9.json.xz.b64.part01"
+      "registry-v1.9.9.json.xz.b64.part01",
+      "registry-v1.9.9.json.xz.b64.part02"
     ],
     "payloadSha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
     "xzSha256": "1fa628a5f6de78b9f7ea64b9a1ede0090527f6e2ee702da929183a4c1bb5f324",
