@@ -16,7 +16,7 @@ test('ssp-v1.9.9 RG-2 is additive, deterministic, local, and bounded',async({pag
  const afterPreview=await page.evaluate(()=>__sspTestHooks.collectData(false)); expect(governedSnapshot(afterPreview)).toBe(governedSnapshot(before));
  await page.locator('#rg2AdoptBtn').click(); await expect(page.locator('#actionModal')).toBeVisible(); await page.locator('#actionConfirmBtn').click(); await expect(page.locator('#rg2ProfileBanner')).toContainText('0.2');
  const adopted=await page.evaluate(()=>__sspTestHooks.collectData(false)); expect(adopted.reviewGateConfiguration.profileVersion).toBe('0.2'); expect(adopted.reviewGateRuns).toEqual([]);
- await expect(page.locator('#rg2Rail [data-rg2-stage]')).toHaveCount(6); await expect(page.locator('#rg2Modal .rg2-header p')).toContainText('locally asserted and unauthenticated');
+ await expect(page.locator('#rg2Rail [data-rg2-stage]')).toHaveCount(6); await expect(page.locator('#rg2Modal .rg2-header p')).toContainText('Locally asserted, unauthenticated review records');
  await page.keyboard.press('Escape'); await expect(page.locator('#rg2Modal')).toBeHidden();
  expect(pageErrors).toEqual([]); expect(consoleErrors).toEqual([]); expect(externalRequests).toEqual([]);
 });
