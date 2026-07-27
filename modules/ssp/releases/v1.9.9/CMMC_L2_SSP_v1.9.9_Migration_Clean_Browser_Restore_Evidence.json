@@ -1,0 +1,40 @@
+{
+  "release": "v1.9.9",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "passed",
+  "migrations": {
+    "1.9.5": {
+      "schema": "cmmc-l2-ssp-modern-v1.9.9",
+      "appVersion": "1.9.9",
+      "reviewStageRuns": 0,
+      "profileVersion": "0.1",
+      "v01Runs": 0,
+      "requirementsPerModule": 110
+    },
+    "1.9.5.1": {
+      "schema": "cmmc-l2-ssp-modern-v1.9.9",
+      "appVersion": "1.9.9",
+      "reviewStageRuns": 0,
+      "profileVersion": "0.1",
+      "v01Runs": 0,
+      "requirementsPerModule": 110
+    },
+    "1.9.8": {
+      "schema": "cmmc-l2-ssp-modern-v1.9.9",
+      "appVersion": "1.9.9",
+      "reviewStageRuns": 0,
+      "profileVersion": "0.1",
+      "v01Runs": 1,
+      "requirementsPerModule": 110
+    }
+  },
+  "cleanBrowserRestore": {
+    "stageRuns": 1,
+    "adoptionHistory": 1,
+    "repeatedExportEqual": true,
+    "controls": 110
+  },
+  "v01HistoricalRunExactAfterMigration": true,
+  "runtimeGeneratedBackup": "fixtures/Actual_Runtime_Generated_Backup_v1.9.9.json",
+  "runtimeGeneratedBackupSha256": "87b3cf722afe2f57761eeaf2591894f712c01d35a3715c84a67ed128e478878c"
+}

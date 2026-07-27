@@ -1,0 +1,12 @@
+{
+  "release": "v1.9.9",
+  "module": "CMMC L2 SSP Modern Editable",
+  "status": "candidate-pending-independent-review",
+  "baseline": "v1.9.8",
+  "workingDataSchema": "1.9.9",
+  "acceptedMigrationSources": ["1.9.5","1.9.5.1","1.9.8"],
+  "requirementsPerModule": 110,
+  "stableContracts": {"l2g_ssp_handoff_v1":"1.0","l2g_ssp_return_package_v1":"1.0","l2g_ssp_round_trip_audit_v1":"0.1 read-only","wordReview":"v1","portfolioExchange":"preserved","moduleExchange":"preserved","portfolioCRM":"preserved","delivery":"1.10","maintenance":"1.11","evidenceReminder":"1.12","moduleDependency":"1.13","changeCalendar":"1.14","responsibilityMatrix":"1.15"},
+  "profileCompatibility": {"profileId":"generic-cmmc-ssp-review-v1","v01Preserved":true,"v01Items":12,"v02Additive":true,"v02Items":33,"silentTranslation":false,"explicitAdoptionRequired":true},
+  "nonGoalsPreserved": ["UX-3 unified Needs Attention","Word review-copy inspection","final Word QA","Builder/Merger sidecar","custom profiles","adjacent-tool changes","assessment/readiness/risk/compliance/certification conclusions"]
+}

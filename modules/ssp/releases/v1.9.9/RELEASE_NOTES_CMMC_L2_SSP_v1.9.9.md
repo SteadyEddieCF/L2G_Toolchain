@@ -1,0 +1,3 @@
+# Release Notes — CMMC L2 SSP Modern Editable v1.9.9
+
+Adds bounded local staged-review orchestration over v1.9.8 source preflight. Profile v0.1 and historical runs remain preserved. Profile v0.2 is additive and requires explicit preview/confirmation. The new workspace supports Single-System, portfolio, and module scope; ordered stage rail; deterministic IDs; reviewer metadata; item dispositions; notes/rationale; evidence, existing-record, corrective-action, and affected-record references; local attestations; stale detection; supersession; direct navigation; return focus; and append-only stage/change history.

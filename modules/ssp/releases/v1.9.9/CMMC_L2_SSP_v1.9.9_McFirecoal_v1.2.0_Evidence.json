@@ -1,0 +1,19 @@
+{
+  "release": "v1.9.9",
+  "fixtureSet": "McFirecoal Toolchain Test Fixture v1.2.0",
+  "status": "passed",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "clean": {
+    "modules": 4,
+    "requirements": 440,
+    "requirementsPerModule": 110
+  },
+  "adversarial": {
+    "tamperedPortfolioExchangeRejected": true,
+    "malformedWordPackageRejected": true,
+    "invalidWorkshopHandoffRejected": true,
+    "unknownOptionalWorkingDataSidecarIgnored": true
+  },
+  "pageErrors": [],
+  "externalRequests": []
+}

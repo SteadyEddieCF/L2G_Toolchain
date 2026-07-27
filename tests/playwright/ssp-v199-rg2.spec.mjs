@@ -1,0 +1,24 @@
+import { test, expect } from '@playwright/test';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
+const runtime=path.resolve('modules/ssp/releases/v1.9.9/CMMC_L2_SSP_Modern_Editable_v1.9.9.html');
+test('SSP v1.9.9 Windows file origin RG-2', async ({ page }) => {
+  const pageErrors=[]; const consoleErrors=[]; const external=[];
+  page.on('pageerror',e=>pageErrors.push(String(e)));
+  page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});
+  page.on('request',r=>{if(/^https?:/i.test(r.url()))external.push(r.url());});
+  await page.goto(pathToFileURL(runtime).href,{waitUntil:'load'});
+  await expect(page).toHaveTitle(/v1\.9\.9/);
+  await expect(page.locator('[data-control-id]')).toHaveCount(110);
+  await expect(page.locator('#stagedReviewBtn')).toHaveCount(1);
+  await page.locator('#stagedReviewBtn').click();
+  await expect(page.locator('#rg2Modal')).toBeVisible();
+  await expect(page.locator('[data-rg2-stage]')).toHaveCount(6);
+  await expect(page.locator('#rg2ProfileIdentity')).toContainText('0.1');
+  await page.locator('#rg2PreviewAdoption').click();
+  await expect(page.locator('#rg2ConfirmAdoption')).toBeVisible();
+  const before=await page.evaluate(()=>window.__sspTestHooks.collectData(true));
+  expect(before.reviewGateConfiguration.profileVersion).toBe('0.1');
+  expect(before.reviewProfileAdoptionHistory).toHaveLength(0);
+  expect(pageErrors).toEqual([]); expect(consoleErrors).toEqual([]); expect(external).toEqual([]);
+});

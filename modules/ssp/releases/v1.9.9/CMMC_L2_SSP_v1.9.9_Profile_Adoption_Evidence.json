@@ -1,0 +1,16 @@
+{
+  "release": "v1.9.9",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "passed",
+  "profileId": "generic-cmmc-ssp-review-v1",
+  "v01PreservedExactly": true,
+  "v01ItemCount": 12,
+  "v02ItemCount": 33,
+  "preview": {
+    "before": {"version":"0.1","history":0},
+    "preview": {"version":"0.1","history":0,"previewText":"Profile v0.1 remains active\n\nAdopt profile 0.2 for future runs: retain 12 v0.1 source-preflight items unchanged; add 5 ordered local stages and 21 bounded manual/attestation items. Existing v0.1 runs remain unchanged and readable.\n\nConfirm v0.2 adoption"},
+    "after": {"version":"0.2","history":1},
+    "nonMutating": true
+  },
+  "historicalRunPreservation": "Supplied v1.9.8 synthetic v0.1 run was byte-for-byte equal as a JSON object after migration."
+}

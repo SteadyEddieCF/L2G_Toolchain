@@ -1,0 +1,18 @@
+{
+  "release": "v1.9.9",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "pending-independent-ci",
+  "localAttempt": {
+    "target": "Windows Chromium file://",
+    "result": "not executed",
+    "reason": "The provided Linux container blocks all Chromium navigation, including local file and loopback URLs, with ERR_BLOCKED_BY_ADMINISTRATOR."
+  },
+  "staticEvidence": {
+    "standaloneSelfContained": true,
+    "externalScriptTags": 0,
+    "externalStylesheets": 0,
+    "authoritativeControls": 110
+  },
+  "ciAsset": "tests/ssp-v199-rg2-file.spec.mjs",
+  "claim": "No native Windows file:// pass is claimed in this draft release package. The draft PR carries an executable Windows CI gate for independent review."
+}

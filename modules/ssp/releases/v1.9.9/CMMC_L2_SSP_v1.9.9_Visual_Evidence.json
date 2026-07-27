@@ -1,0 +1,10 @@
+{
+  "release": "v1.9.9",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "passed-bounded",
+  "lightScreenshot": "CMMC_L2_SSP_v1.9.9_Staged_Review_Light.png",
+  "darkConstrainedScreenshot": "CMMC_L2_SSP_v1.9.9_Staged_Review_Dark_Constrained.png",
+  "viewport": {"width":900,"height":700,"modalVisible":true,"stageButtons":6},
+  "printModalHidden": true,
+  "qualification": "Visual evidence was captured through Chromium setContent execution because this container blocks all browser navigation by administrator policy."
+}

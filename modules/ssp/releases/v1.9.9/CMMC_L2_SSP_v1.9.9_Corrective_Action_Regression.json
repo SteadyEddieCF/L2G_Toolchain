@@ -1,0 +1,31 @@
+{
+  "release": "v1.9.9",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "passed",
+  "results": {
+    "item": "SSP-RG-META-005",
+    "open": [
+      "SSP-RG-META-005: linked corrective action remains open.",
+      "SSP-RG-META-005: update the disposition to an acceptable terminal result after correction.",
+      "SSP-RG-META-005: corrective action required is not an acceptable terminal result."
+    ],
+    "closedStillPending": [
+      "SSP-RG-META-005: update the disposition to an acceptable terminal result after correction.",
+      "SSP-RG-META-005: corrective action required is not an acceptable terminal result."
+    ],
+    "resolved": [],
+    "reopened": [
+      "SSP-RG-META-005: linked corrective action remains open.",
+      "SSP-RG-META-005: update the disposition to an acceptable terminal result after correction.",
+      "SSP-RG-META-005: corrective action in progress is not an acceptable terminal result."
+    ],
+    "superseded": []
+  },
+  "assertions": {
+    "openBlocks": true,
+    "closedRequiresDispositionUpdate": true,
+    "closedAndPassProgresses": true,
+    "reopenBlocksAgain": true,
+    "supersededAndPassProgresses": true
+  }
+}

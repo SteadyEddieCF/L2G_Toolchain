@@ -1,0 +1,13 @@
+{
+  "release": "v1.9.9",
+  "suite": "RG-1-preservation",
+  "status": "passed",
+  "profileVersion": "0.1",
+  "itemCount": 12,
+  "singleSystem": true,
+  "portfolio": true,
+  "module": true,
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "pageErrors": [],
+  "externalRequests": []
+}

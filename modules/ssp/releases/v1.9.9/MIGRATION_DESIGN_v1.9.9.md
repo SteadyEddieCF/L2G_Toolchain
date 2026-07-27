@@ -1,0 +1,3 @@
+# Migration Design v1.9.9
+
+Valid v1.9.5, v1.9.5.1, and v1.9.8 working-data backups migrate to schema/app identity 1.9.9. Existing governed content, portfolio/module records, 110 authoritative requirements per module, images, tables, statuses, review/approval/baseline/Word-review/delivery records, and stable package identities are preserved. Missing `reviewStageRuns` and `reviewProfileAdoptionHistory` initialize as empty arrays. Existing `generic-cmmc-ssp-review-v1` v0.1 configuration remains v0.1 until explicit v0.2 adoption. Existing v0.1 source-preflight run objects preserve their profile version and original v1.9.8 source identity.

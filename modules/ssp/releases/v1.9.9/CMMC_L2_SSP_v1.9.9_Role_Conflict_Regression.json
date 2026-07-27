@@ -1,0 +1,7 @@
+{
+  "release": "v1.9.9",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "passed",
+  "result": "Project Director must not use the same locally asserted identifier as the Engagement Lead. This comparison does not authenticate either person.",
+  "rule": "Project Director local identifier must differ from Engagement Lead local identifier; SME equality remains permitted; no identity authentication is claimed."
+}

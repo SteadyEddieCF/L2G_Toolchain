@@ -1,0 +1,12 @@
+{
+  "release": "v1.9.9",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "passed",
+  "orderedStages": ["source-preflight","local-sme-technical-review","sme-corrective-action","independent-local-quality-review","quality-corrective-action","local-project-director-signoff"],
+  "deterministicIds": {"a":"x-294c7dd6-81eb69ce","b":"x-294c7dd6-81eb69ce","equal":true},
+  "conditionalNA": {"naItem":"SSP-RG-SME-001","naBlockers":["SSP-RG-SME-001: N/A rationale is required."],"advisoryItem":"SSP-RG-SME-005","advisoryBlockers":[]},
+  "cleanRestore": {"stageRuns":1,"adoptionHistory":1,"repeatedExportEqual":true,"controls":110},
+  "keyboardFocusRestoration": {"modalHidden":true,"activeElementId":"stagedReviewBtn"},
+  "affectedRecordNavigation": {"modalHidden":true,"returnVisible":true,"activeControl":"","returnedModalVisible":true,"returnedFocusItem":"SSP-RG-META-005"},
+  "printModalHidden": true
+}

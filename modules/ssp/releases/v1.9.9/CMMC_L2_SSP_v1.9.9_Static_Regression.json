@@ -1,0 +1,14 @@
+{
+  "release": "v1.9.9",
+  "suite": "static-schema-profile-preservation",
+  "status": "passed",
+  "runtimeSha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "schemaSha256": "3468f1f3f839a63ca4b897b25c13e449fbc33f80e85c670fea6829238c60d839",
+  "registrySha256": "d5f5277e78b052a4102e4c475706481322162b64df14c2acd08cc2d965053784",
+  "v01ExactPreservation": true,
+  "v01Items": 12,
+  "v02Items": 33,
+  "authoritativeControls": 110,
+  "selfContained": true,
+  "leakageChecksPassed": true
+}

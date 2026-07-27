@@ -1,12 +1,12 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.8",
-  "release_path": "modules/ssp/releases/v1.9.8",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.8.html",
-  "runtime_sha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
-  "status": "current_supplied_release",
-  "next_action": "RG-2 Local Staged-Review Orchestration is the next planned SSP workstream and requires a separately bounded issue and release authorization; no UX-3, Word inspection, Builder/Merger sidecar, custom profile, bulk workflow, or adjacent-tool change",
-  "recorded_at": "2026-07-26",
+  "current_supplied_version": "v1.9.9 candidate",
+  "release_path": "modules/ssp/releases/v1.9.9",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.9.html",
+  "runtime_sha256": "71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66",
+  "status": "release_candidate_pending_independent_review",
+  "next_action": "Independent orchestrator review and Windows Chromium file:// CI; keep draft and unmerged. UX-3, RG-3, Word inspection, sidecars, custom profiles, bulk workflows, and adjacent-tool changes remain unauthorized.",
+  "recorded_at": "2026-07-27",
   "operating_modes": {
     "default": "single-system",
     "optional": "modular-portfolio-advanced"
@@ -16,70 +16,46 @@
     "ssp_return": "1.0",
     "round_trip_audit": "0.1-read-only",
     "word_review": "cmmc-l2-ssp-word-review-v1",
-    "portfolio_exchange": "1.5-compatible",
-    "module_exchange": "1.5-compatible"
-  },
-  "optional_contracts": {
-    "portfolio_foundation": {
-      "schema": "cmmc-l2-ssp-portfolio-foundation-v1",
-      "schema_version": "1.10.0",
-      "requirements_per_module": 110,
-      "maintenance_snapshot_version": "1.11",
-      "evidence_reminder_snapshot_version": "1.12",
-      "module_dependency_snapshot_kind": "cmmc_l2_ssp_module_dependency_snapshot_v1",
-      "module_dependency_snapshot_version": "1.13",
-      "change_calendar_snapshot_kind": "cmmc_l2_ssp_change_calendar_snapshot_v1",
-      "change_calendar_snapshot_version": "1.14",
-      "responsibility_matrix_snapshot_kind": "cmmc_l2_ssp_responsibility_matrix_snapshot_v1",
-      "responsibility_matrix_snapshot_version": "1.15",
-      "remote_scheduling": false,
-      "external_notification": false,
-      "regulatory_deadline_determination": false,
-      "identity_authentication": false,
-      "directory_synchronization": false,
-      "access_enforcement": false,
-      "personnel_validation": false,
-      "assessment_conclusion": false,
-      "readiness_score": false,
-      "risk_score": false,
-      "compliance_score": false,
-      "authenticated_identity": false,
-      "digital_signature": false,
-      "silent_parent_overwrite": false
-    }
+    "portfolio_exchange": "preserved",
+    "module_exchange": "preserved"
   },
   "working_data_schema": {
-    "id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.8",
-    "version": "1.9.8",
-    "sha256": "775284cd37f16e20e251cf77e96528347166b93fe9d815e83e61ce4786945f6c",
-    "accepts_migration_from": ["1.9.5", "1.9.5.1"]
+    "id": "urn:l2g:cmmc-l2-ssp:data-schema:1.9.9",
+    "version": "1.9.9",
+    "sha256": "3468f1f3f839a63ca4b897b25c13e449fbc33f80e85c670fea6829238c60d839",
+    "accepts_migration_from": [
+      "1.9.5",
+      "1.9.5.1",
+      "1.9.8"
+    ]
   },
   "release_identity": {
-    "version": "1.9.8",
-    "issue": 57,
-    "focus": "Generic Source-Preflight Review Profile",
+    "version": "1.9.9",
+    "issue": 60,
+    "focus": "Local Staged-Review Orchestration",
     "profile_id": "generic-cmmc-ssp-review-v1",
-    "profile_version": "0.1",
-    "profile_item_count": 12,
+    "preserved_profile_version": "0.1",
+    "added_profile_version": "0.2",
+    "v01_item_count": 12,
+    "v02_item_count": 33,
     "schema_change": true,
     "package_change": false
   },
   "runtime_source_baseline": {
-    "version": "v1.9.7",
-    "merge_commit": "a3b74f585cb99ee5c7035fc3c2dfc47743b4a1cf",
-    "runtime_sha256": "359a6a04fceadbb64afbf3733c6984e9b4e1171b48aef067859eddc8d1708051"
+    "version": "v1.9.8",
+    "protected_main": "24c8ac51b6a9a570d9019ef068ba3b8570f022a7",
+    "promotion_merge": "0a241e744c882a4b3f0ec7e65a3d92f9bf988e41",
+    "reviewed_head": "e53978a3decb9b71fc00978598403aa5c7c5c3da",
+    "runtime_sha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82"
   },
   "built_in_profile_registry": {
-    "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.8.json",
-    "sha256": "b12a07ef838aa5777a2b68c51fb6586bf7eaee8f4d035b43765f46cf0ac5f673",
+    "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json",
+    "sha256": "d5f5277e78b052a4102e4c475706481322162b64df14c2acd08cc2d965053784",
+    "profile_versions": [
+      "0.1",
+      "0.2"
+    ],
     "custom_definitions_supported": false
   },
-  "promotion": {
-    "pull_request": 58,
-    "reviewed_head": "e53978a3decb9b71fc00978598403aa5c7c5c3da",
-    "merge_commit": "0a241e744c882a4b3f0ec7e65a3d92f9bf988e41",
-    "issue_closed": 57,
-    "verdict": "passed"
-  },
-  "protected_main_at_start": "f188ae65543546f16c557cbba8fa7bc813fd0de2"
+  "protected_main_at_start": "24c8ac51b6a9a570d9019ef068ba3b8570f022a7"
 }

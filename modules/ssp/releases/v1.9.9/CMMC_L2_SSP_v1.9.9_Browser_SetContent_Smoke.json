@@ -1,0 +1,13 @@
+{
+  "pageErrors": [],
+  "consoleErrors": [],
+  "requests": [],
+  "title": "CMMC Level 2 System Security Plan - Modern Editable v1.9.9",
+  "controls": 110,
+  "hooks": true,
+  "button": 1,
+  "visible": true,
+  "stageButtons": 6,
+  "profile": "generic-cmmc-ssp-review-v1 · 0.1",
+  "adoption": "Profile v0.1 remains active\n\nPreview is non-mutating. Explicit confirmation is required before v0.2 staged review can begin.\n\nPreview v0.2 adoption"
+}

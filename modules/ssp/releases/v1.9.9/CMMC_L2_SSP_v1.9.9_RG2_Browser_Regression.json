@@ -1,0 +1,26 @@
+{
+  "environment": "Chromium setContent execution because container policy blocks all navigations",
+  "pageErrors": [],
+  "consoleErrors": [],
+  "networkRequests": [],
+  "checks": {
+    "runtimeIdentity": {"release":"1.9.9","app":"1.9.9","schema":"cmmc-l2-ssp-modern-v1.9.9"},
+    "authoritativeControls": 110,
+    "stageOrder": ["source-preflight","local-sme-technical-review","sme-corrective-action","independent-local-quality-review","quality-corrective-action","local-project-director-signoff"],
+    "profileItemCounts": [{"version":"0.1","count":12},{"version":"0.2","count":33}],
+    "adoptionPreview": {"before":{"version":"0.1","history":0},"preview":{"version":"0.1","history":0,"previewText":"Profile v0.1 remains active\n\nAdopt profile 0.2 for future runs: retain 12 v0.1 source-preflight items unchanged; add 5 ordered local stages and 21 bounded manual/attestation items. Existing v0.1 runs remain unchanged and readable.\n\nConfirm v0.2 adoption"},"after":{"version":"0.2","history":1},"nonMutating":true},
+    "deterministicIds": {"a":"x-294c7dd6-81eb69ce","b":"x-294c7dd6-81eb69ce","equal":true},
+    "runtimeFixture": {"stageRuns":1,"adoptionHistory":1,"profileVersion":"0.2","sha256":"87b3cf722afe2f57761eeaf2591894f712c01d35a3715c84a67ed128e478878c"},
+    "roleConflict": "Project Director must not use the same locally asserted identifier as the Engagement Lead. This comparison does not authenticate either person.",
+    "staleFingerprintBlockers": ["Stage source fingerprint is stale."],
+    "dispositionPolicies": {"naItem":"SSP-RG-SME-001","naBlockers":["SSP-RG-SME-001: N/A rationale is required."],"advisoryItem":"SSP-RG-SME-005","advisoryBlockers":[]},
+    "correctiveAction": {"item":"SSP-RG-META-005","open":["SSP-RG-META-005: linked corrective action remains open.","SSP-RG-META-005: update the disposition to an acceptable terminal result after correction.","SSP-RG-META-005: corrective action required is not an acceptable terminal result."],"closedStillPending":["SSP-RG-META-005: update the disposition to an acceptable terminal result after correction.","SSP-RG-META-005: corrective action required is not an acceptable terminal result."],"resolved":[],"reopened":["SSP-RG-META-005: linked corrective action remains open.","SSP-RG-META-005: update the disposition to an acceptable terminal result after correction.","SSP-RG-META-005: corrective action in progress is not an acceptable terminal result."],"superseded":[]},
+    "migrations": {"1.9.5":{"schema":"cmmc-l2-ssp-modern-v1.9.9","appVersion":"1.9.9","reviewStageRuns":0,"profileVersion":"0.1","v01Runs":0,"requirementsPerModule":110},"1.9.5.1":{"schema":"cmmc-l2-ssp-modern-v1.9.9","appVersion":"1.9.9","reviewStageRuns":0,"profileVersion":"0.1","v01Runs":0,"requirementsPerModule":110},"1.9.8":{"schema":"cmmc-l2-ssp-modern-v1.9.9","appVersion":"1.9.9","reviewStageRuns":0,"profileVersion":"0.1","v01Runs":1,"requirementsPerModule":110}},
+    "cleanBrowserRestore": {"stageRuns":1,"adoptionHistory":1,"repeatedExportEqual":true,"controls":110},
+    "keyboardFocusRestoration": {"modalHidden":true,"activeElementId":"stagedReviewBtn"},
+    "affectedRecordNavigation": {"modalHidden":true,"returnVisible":true,"activeControl":"","returnedModalVisible":true,"returnedFocusItem":"SSP-RG-META-005"},
+    "constrainedViewport": {"width":900,"height":700,"modalVisible":true,"stageButtons":6},
+    "printModalHidden": true
+  },
+  "passed": true
+}

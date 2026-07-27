@@ -1,0 +1,19 @@
+{
+  "release": "v1.9.9",
+  "suite": "bounded-accessibility-and-keyboard",
+  "status": "passed",
+  "checks": {
+    "role": "dialog",
+    "ariaModal": "true",
+    "labelledBy": "rg2Title",
+    "unlabelled": [],
+    "emptyButtons": 0,
+    "stageButtons": 6,
+    "escapeCloses": true,
+    "focusRestored": true
+  },
+  "pageErrors": [],
+  "limitations": [
+    "This is a bounded structural/keyboard regression, not a substitute for a full assistive-technology audit."
+  ]
+}

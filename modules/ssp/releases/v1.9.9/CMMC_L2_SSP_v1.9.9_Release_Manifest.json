@@ -1,0 +1,18 @@
+{
+  "release": "CMMC L2 SSP Modern Editable v1.9.9 — Local Staged-Review Orchestration",
+  "version": "1.9.9",
+  "issue": 60,
+  "baseline": {
+    "protectedMain": "24c8ac51b6a9a570d9019ef068ba3b8570f022a7",
+    "v1.9.8RuntimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+    "v1.9.8SchemaSha256": "775284cd37f16e20e251cf77e96528347166b93fe9d815e83e61ce4786945f6c",
+    "v1.9.8RegistrySha256": "b12a07ef838aa5777a2b68c51fb6586bf7eaee8f4d035b43765f46cf0ac5f673"
+  },
+  "runtime": {"filename":"CMMC_L2_SSP_Modern_Editable_v1.9.9.html","sha256":"71767526da4bdee5944364e66ddb9c4f41a1aaf6974d28162453171c6385eb66"},
+  "workingDataSchema": {"filename":"CMMC_L2_SSP_Data_Schema_v1.9.9.json","sha256":"3468f1f3f839a63ca4b897b25c13e449fbc33f80e85c670fea6829238c60d839"},
+  "builtInRegistry": {"filename":"CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json","sha256":"d5f5277e78b052a4102e4c475706481322162b64df14c2acd08cc2d965053784","profileVersions":["0.1","0.2"],"v01ItemCount":12,"v02ItemCount":33},
+  "scope": {"rg2Only":true,"adjacentToolsChanged":false,"ux3Included":false,"wordInspectionIncluded":false,"authenticatedIdentity":false},
+  "stableContractsPreserved": ["l2g_ssp_handoff_v1 1.0","l2g_ssp_return_package_v1 1.0","l2g_ssp_round_trip_audit_v1 0.1 read-only","Word Review v1","portfolio exchange","module exchange","portfolio CRM","delivery 1.10","maintenance 1.11","evidence reminder 1.12","module dependency 1.13","change calendar 1.14","responsibility matrix 1.15"],
+  "validation": {"staticSchemaProfile":"passed","rg1Preservation":"passed","rg2BrowserSetContent":"passed","migrationRestore":"passed","mcfirecoalV120":"passed","accessibilityBounded":"passed","visualBounded":"passed","nativeWindowsFileOrigin":"pending-independent-ci"},
+  "candidateStatus": "draft-pr-pending-independent-orchestrator-review"
+}
