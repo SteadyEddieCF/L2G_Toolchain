@@ -1,0 +1,26 @@
+name: SSP v1.9.9 Materialization Diagnostics
+on:
+  pull_request:
+    paths:
+      - "modules/ssp/releases/v1.9.9/**"
+      - ".github/workflows/ssp-v199-materialization-diagnostics.yml"
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Materialize promoted SSP v1.9.8 baseline
+        run: python modules/ssp/releases/v1.9.8/materialize.py
+      - name: Record SSP v1.9.9 source identities
+        run: python modules/ssp/releases/v1.9.9/tests/diagnose_materialization.py
+      - name: Upload SSP v1.9.9 diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssp-v199-materialization-diagnostics
+          path: modules/ssp/releases/v1.9.9/materialization_diagnostics.json
+          if-no-files-found: error
