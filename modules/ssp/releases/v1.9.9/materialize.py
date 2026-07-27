@@ -18,6 +18,10 @@ EXPECTED_RUNTIME = '4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f41067914
 EXPECTED_SCHEMA = '2d093d34b6260822d8be2547a50c3dc5c6c3e73100c9f0fc6fcb2794a84903b1'
 EXPECTED_REGISTRY = '8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2'
 EXPECTED_REGISTRY_SCHEMA = 'a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f'
+REGISTRY_PREFIX = 'registry-v1.9.9.json.xz.b64'
+REGISTRY_DAMAGED_ENCODED_SHA = '7efccd7022949bf82d76d038e92ff0c4e47cf1bae290248251333b7c268652f4'
+REGISTRY_RECOVERY_POSITION = 6959
+REGISTRY_RECOVERY_CHARACTER = b'C'
 
 
 def digest(data: bytes) -> str:
@@ -44,10 +48,19 @@ def read_payload(prefix: str, expected_encoded: str, expected_xz: str, expected_
     if not parts:
         raise SystemExit(f'no payload parts for {prefix}')
     raw_encoded = b''.join(part.read_bytes() for part in parts)
-    # Contents API and checkout settings may add line-ending whitespace to text
-    # fragments. Base64 semantics ignore it, so normalize only ASCII whitespace
-    # before enforcing the canonical encoded-payload hash.
     encoded = b''.join(raw_encoded.split())
+
+    # The registry's second source fragment lost one character during the
+    # repository transfer that created the candidate branch. Repair only that
+    # exact known damaged stream, at the recovered position, then enforce the
+    # originally published canonical encoded/compressed/payload hashes below.
+    if prefix == REGISTRY_PREFIX and digest(encoded) == REGISTRY_DAMAGED_ENCODED_SHA:
+        encoded = (
+            encoded[:REGISTRY_RECOVERY_POSITION]
+            + REGISTRY_RECOVERY_CHARACTER
+            + encoded[REGISTRY_RECOVERY_POSITION:]
+        )
+
     require(prefix + ' encoded', digest(encoded), expected_encoded)
     compressed = base64.b64decode(encoded, validate=True)
     require(prefix + ' xz', digest(compressed), expected_xz)
@@ -127,7 +140,7 @@ registry_schema = read_payload(
 REGISTRY_SCHEMA_OUTPUT.write_bytes(registry_schema)
 
 registry = read_payload(
-    'registry-v1.9.9.json.xz.b64',
+    REGISTRY_PREFIX,
     '6a41e2e4f74981d0baf5cd108bf88316beeec35583ddbd413bbe5cb50124d826',
     '1fa628a5f6de78b9f7ea64b9a1ede0090527f6e2ee702da929183a4c1bb5f324',
     EXPECTED_REGISTRY,
