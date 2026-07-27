@@ -1,0 +1,14 @@
+{
+  "release": "1.9.10",
+  "focus": "UX-3 Unified Needs Attention Workspace",
+  "baseline_runtime": {"version": "1.9.9", "sha256": "4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f410679144927"},
+  "candidate_runtime_sha256": "a282173c4a8ea23e59d6091a5f68c09757393df2c2d18b92b72569f69310f91c",
+  "working_data": {"version": "1.9.9", "schema": "cmmc-l2-ssp-modern-v1.9.9", "sha256": "2d093d34b6260822d8be2547a50c3dc5c6c3e73100c9f0fc6fcb2794a84903b1", "changed": false},
+  "profile_registry": {"version": "1.9.9", "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2", "changed": false},
+  "registry_schema": {"version": "1.1", "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f", "changed": false},
+  "cross_tool_contract_changed": false,
+  "requirements_per_module": 110,
+  "operating_modes": ["single-system", "modular-portfolio-advanced"],
+  "handshake_required": false,
+  "handshake_trigger": "Any future package-kind, contract-version, adjacent-tool mutation, or RG-4 Builder/Merger Word-QA sidecar integration"
+}
