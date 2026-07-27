@@ -34,9 +34,15 @@
   "builtInProfileRegistry": {
     "parts": [
       "registry-v1.9.9.json.xz.b64.part00",
-      "registry-v1.9.9.json.xz.b64.part01",
-      "registry-v1.9.9.json.xz.b64.part02"
+      "registry-v1.9.9.json.xz.b64.part01"
     ],
+    "repositoryTransferRepair": {
+      "damagedEncodedSha256": "7efccd7022949bf82d76d038e92ff0c4e47cf1bae290248251333b7c268652f4",
+      "insertPosition": 6959,
+      "insertCharacter": "C",
+      "postRepairEncodedSha256": "6a41e2e4f74981d0baf5cd108bf88316beeec35583ddbd413bbe5cb50124d826",
+      "scope": "materialization-only exact-stream recovery"
+    },
     "payloadSha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
     "xzSha256": "1fa628a5f6de78b9f7ea64b9a1ede0090527f6e2ee702da929183a4c1bb5f324",
     "encodedSha256": "6a41e2e4f74981d0baf5cd108bf88316beeec35583ddbd413bbe5cb50124d826",
