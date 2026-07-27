@@ -1,0 +1,78 @@
+{
+  "release": "v1.9.9",
+  "suite": "bounded-rg2-release-evidence-summary",
+  "status": "passed",
+  "note": "Full JSON evidence and visual screenshots are included in the complete release ZIP; this repository summary records exact evidence hashes and outcomes.",
+  "evidence": [
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Accessibility_Visual_Regression.json",
+      "sha256": "97edb909e2f9c323cfe73b837483c9c8916df025be29cd95d8337e5bc61959cb",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Core_Runtime_Regression.json",
+      "sha256": "1670709eec9d49c343d4429e2c1368b6dd16a64e5513f555925389d9a4729ed0",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Corrective_Action_Regression.json",
+      "sha256": "6c823d5a27cfcc0b4e73e10a684132b44f3925fbe8796ba1becfca8f9bd7b104",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_McFirecoal_v1.2.0_Evidence.json",
+      "sha256": "ddb8ea864bf70b0df0782bb9f8ab2d8278c15b38d31eee76e6de324896c8081a",
+      "status": "passed"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Migration_Clean_Browser_Restore.json",
+      "sha256": "76b0d7e2da8c6b2f6801abbae15b30d08751b7b5c026a85cded9d1dbe2150b16",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Migration_Scope_Regression.json",
+      "sha256": "3be06f37e7a61207ae7b24aece9664ba15bdb30e956ccba63f8db043cec06ad4",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Profile_Adoption_Preservation_Regression.json",
+      "sha256": "461b7b126061ce43ae6a640de01f2202cb1e44575e8165631afdd2ad869d9891",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Profile_Preservation_Regression.json",
+      "sha256": "eceae2273495fcae9295d9847d9bc31e25f43cc05f677d742614bd347470ef0f",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Role_Conflict_Regression.json",
+      "sha256": "4560de702af145b94c0987ed36334164f95d850f3e29203798c544f31b39931f",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Schema_Registry_Validation.json",
+      "sha256": "c1e37d7910da5334e8acf681710c5bc0d0874fd0d85405abb3b034b74b16dc0c",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Stage_Progression_Regression.json",
+      "sha256": "9a592a37d6d3af85e0f6e1a3ebea063adef16b55baf91ab2e560588fa241714d",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Stale_Fingerprint_Regression.json",
+      "sha256": "7aca3a9f7fdebf04c712d6353c2ffd2b8d2e7c95bd7ab86ed712408f03b0d9d5",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Static_Offline_Security_Regression.json",
+      "sha256": "48636f8a0ef1840d1590655a53c150f9d64f7d283fbf4cbe66caca6a7ba155b8",
+      "status": "PASS"
+    },
+    {
+      "filename": "CMMC_L2_SSP_v1.9.9_Windows_File_Evidence.json",
+      "sha256": "573779eb17d2443a7db956769ba874e249a844fb3b24e454fc07845abc964212",
+      "status": "CONDITIONALLY-PASSED"
+    }
+  ]
+}
