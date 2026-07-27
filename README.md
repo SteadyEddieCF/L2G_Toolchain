@@ -11,9 +11,9 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 | L2G Scoper | v3.12 | No immediate release required; preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
 | CMMC L2 Gap Workshop Tool | v79 | Proposed v80 Regression Delta and Release Comparison as a separately bounded Workshop release |
 | L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles only after a separately approved review/delivery-profile contract; Workshop v78/v79 helpers alone do not authorize implementation |
-| CMMC L2 SSP Modern Editable | v1.9.10 candidate | Independent review of issue #64 UX-3 Unified Needs Attention Workspace; RG-3 Word-review-copy inspection and RG-4 Builder/Merger Word-QA sidecar remain separately bounded |
+| CMMC L2 SSP Modern Editable | v1.9.10 | RG-3 preliminary SSP Word-review-copy inspection is the next separately bounded SSP workstream; RG-4 Builder/Merger Word-QA sidecar requires a handshake contract |
 
-The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. SSP v1.9.10 is an SSP-only candidate over promoted v1.9.9. It adds a runtime-derived Unified Needs Attention workspace without changing the v1.9.9 working-data schema, review-profile registry, package kinds, cross-tool contracts, or adjacent modules. Queue counts are administrative authoring/review indicators and do not claim readiness, risk, compliance, assessment, certification, evidence sufficiency, or scoring.
+The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. SSP v1.9.10 is the current supplied SSP release. It adds a runtime-derived Unified Needs Attention workspace without changing the v1.9.9 working-data schema, review-profile registry, package kinds, cross-tool contracts, or adjacent modules. Queue counts are administrative authoring/review indicators and do not claim readiness, risk, compliance, assessment, certification, evidence sufficiency, or scoring.
 
 ## Repository layout
 
