@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.10",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.10.html",
   "runtime_sha256": "a282173c4a8ea23e59d6091a5f68c09757393df2c2d18b92b72569f69310f91c",
-  "status": "release_candidate_pending_review",
-  "next_action": "Independent review of issue #64 UX-3 candidate; do not begin RG-3 Word-review-copy inspection or RG-4 Builder/Merger Word-QA sidecar until separately authorized, and require a handshake release before any new cross-tool contract or package change",
+  "status": "current_supplied_release",
+  "next_action": "RG-3 preliminary SSP Word-review-copy inspection is the next separately bounded SSP workstream and may remain SSP-only if no contract changes are required; RG-4 Builder/Merger final Word-QA sidecar requires a separately authorized handshake release",
   "recorded_at": "2026-07-27",
   "operating_modes": {"default": "single-system", "optional": "modular-portfolio-advanced"},
   "stable_contracts": {
@@ -64,7 +64,7 @@
   "runtime_source_baseline": {
     "version": "v1.9.9",
     "merge_commit": "30a85976071b3f8668b67f72baab5171b5f12408",
-    "reviewed_head": "30f7eb9207bc4a0f770b9ed0ec2fe3ebf1587578",
+    "reviewed_head": "30f7eb9207bc9b71fc00978598403aa5c7c5c3da",
     "runtime_sha256": "4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f410679144927"
   },
   "built_in_profile_registry": {
@@ -73,6 +73,19 @@
     "registry_schema": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json",
     "custom_definitions_supported": false,
     "changed_in_release": false
+  },
+  "promotion": {
+    "pull_request": 65,
+    "reviewed_head": "1a905905e2181d99fb90ba01a3512411de44ae24",
+    "merge_commit": "444b650541ac7c8647f571282ec7e6187dba6fea",
+    "issue_closed": 64,
+    "verdict": "passed",
+    "validation": {
+      "repository": "passed",
+      "playwright_runtime_and_axe": "passed",
+      "visual_regression": "passed",
+      "windows_file_origin": "passed"
+    }
   },
   "protected_main_at_start": "558755c07bd2d38fc1406cbf1b61f1d0fe42d386"
 }
