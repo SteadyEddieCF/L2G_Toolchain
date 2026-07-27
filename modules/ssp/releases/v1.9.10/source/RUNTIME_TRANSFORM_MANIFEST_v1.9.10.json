@@ -6,7 +6,14 @@
   "runtimePatch": {
     "parts": [
       "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part00",
-      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part01"
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part01",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part02",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part03",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part04",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part05",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part06",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part07",
+      "runtime-v1.9.9-to-v1.9.10.patch.xz.b64.part08"
     ],
     "payloadSha256": "6e2853fb12fe20d4f9cb8b050081cff01f7a9e888bf45da25ffa14b18f53e45d",
     "xzSha256": "d53c928a9a126fd441490231392f1fb1dd5ac42a23973fe905c7ed639c9fd3c1",
