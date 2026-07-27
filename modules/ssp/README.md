@@ -2,10 +2,10 @@
 
 Local/offline SSP authoring and Word Review round-trip module with Workshop handoff/return integration.
 
-- Current release candidate: **v1.9.10 — Unified Needs Attention Workspace**
+- Current supplied release: **v1.9.10 — Unified Needs Attention Workspace**
 - Current release focus: **Issue #64 UX-3 runtime-derived SSP-owned attention queue over exact promoted v1.9.9**
-- Independent review gate: **Keep PR #65 draft and unmerged until repository validation, Playwright runtime/axe, visual regression, Windows file-origin smoke, and v1.9.10 materialization checks pass.**
-- Next bounded work after promotion: **RG-3 preliminary SSP Word-review-copy inspection. RG-4 Builder/Merger final Word-QA sidecar requires a separately authorized handshake contract.**
+- Promotion gate: **Repository validation, Playwright runtime/axe, visual regression, and Windows Chromium file-origin smoke passed on reviewed head `1a905905e2181d99fb90ba01a3512411de44ae24`.**
+- Next bounded work: **RG-3 preliminary SSP Word-review-copy inspection. RG-4 Builder/Merger final Word-QA sidecar requires a separately authorized handshake contract.**
 
 Single-System remains the default. Portfolio mode remains Advanced and optional. Every module retains exactly 110 authoritative requirements. v1.9.10 preserves built-in profile v0.1 and v0.2, all staged-review records, the v1.9.9 working-data schema, and existing package contracts. The Needs Attention queue is derived presentation state and is not included in governed backups.
 
