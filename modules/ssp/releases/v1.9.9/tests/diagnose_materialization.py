@@ -112,6 +112,36 @@ for name, spec in ASSETS.items():
         entry['error'] = f'{type(exc).__name__}: {exc}'
     report['assets'][name] = entry
 
+# Recover the single omitted Base64 character from the two original registry
+# fragments by matching the already-published canonical encoded SHA-256.
+registry_original = b''.join((SOURCE / f'registry-v1.9.9.json.xz.b64.part{i:02d}').read_bytes() for i in range(2))
+registry_original = b''.join(registry_original.split())
+target_registry_sha = ASSETS['registry']['expected_encoded']
+alphabet = b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+recovery = None
+preferred_positions = [5000, len(registry_original) - 1, len(registry_original)]
+checked = set()
+for position in preferred_positions + list(range(len(registry_original) + 1)):
+    if position in checked:
+        continue
+    checked.add(position)
+    prefix = registry_original[:position]
+    suffix = registry_original[position:]
+    for character in alphabet:
+        candidate = prefix + bytes([character]) + suffix
+        if sha(candidate) == target_registry_sha:
+            recovery = {
+                'position': position,
+                'character': chr(character),
+                'damaged_length': len(registry_original),
+                'recovered_length': len(candidate),
+                'encoded_sha256': target_registry_sha,
+            }
+            break
+    if recovery:
+        break
+report['registry_recovery'] = recovery
+
 if BASELINE.exists() and runtime_patch is not None:
     try:
         runtime = apply_unified_diff(BASELINE.read_text(encoding='utf-8'), runtime_patch.decode('utf-8')).encode('utf-8')
@@ -146,6 +176,7 @@ print(json.dumps({
         'payload_sha256': item.get('payload_sha256'),
         'error': item.get('error'),
     } for name, item in report['assets'].items()},
+    'registry_recovery': report['registry_recovery'],
     'runtime_output': report.get('runtime_output'),
     'materializer': report['materializer'],
 }, separators=(',', ':')))
