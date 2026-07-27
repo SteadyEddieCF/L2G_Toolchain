@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 const runtimePath='/modules/ssp/releases/v1.9.9/CMMC_L2_SSP_Modern_Editable_v1.9.9.html';
+const governedSnapshot=data=>{const copy=structuredClone(data);delete copy.savedAt;return JSON.stringify(copy);};
 test('ssp-v1.9.9 RG-2 is additive, deterministic, local, and bounded',async({page})=>{
  const pageErrors=[],consoleErrors=[],externalRequests=[];
  page.on('pageerror',e=>pageErrors.push(String(e))); page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});
@@ -10,9 +11,9 @@ test('ssp-v1.9.9 RG-2 is additive, deterministic, local, and bounded',async({pag
  expect(profiles.map(p=>p.profileVersion)).toEqual(['0.1','0.2']); expect(profiles[0].items).toHaveLength(12); expect(profiles[1].items).toHaveLength(35); expect(profiles[1].items.slice(0,12)).toEqual(profiles[0].items);
  const migration=await page.evaluate(()=>{const old=__sspTestHooks.collectData(false);old.schema='cmmc-l2-ssp-modern-v1.9.8';old.schemaVersion='1.9.8';old.appVersion='1.9.8';delete old.reviewStageRuns;delete old.reviewCorrectiveActions;return __sspTestHooks.migrateData(old);});
  expect(migration.data.schemaVersion).toBe('1.9.9'); expect(migration.data.reviewGateConfiguration.profileVersion).toBe('0.1'); expect(migration.data.reviewStageRuns).toEqual([]); expect(migration.data.reviewCorrectiveActions).toEqual([]);
- await page.evaluate(d=>__sspTestHooks.applyData(d),migration.data); const before=await page.evaluate(()=>JSON.stringify(__sspTestHooks.collectData(false)));
+ await page.evaluate(d=>__sspTestHooks.applyData(d),migration.data); const before=await page.evaluate(()=>__sspTestHooks.collectData(false));
  await page.locator('#reviewWorkspaceBtn').click(); await expect(page.locator('#rg2Modal')).toBeVisible(); await expect(page.locator('#rg2ProfileBanner')).toContainText('no data mutation');
- const afterPreview=await page.evaluate(()=>JSON.stringify(__sspTestHooks.collectData(false))); expect(afterPreview).toBe(before);
+ const afterPreview=await page.evaluate(()=>__sspTestHooks.collectData(false)); expect(governedSnapshot(afterPreview)).toBe(governedSnapshot(before));
  await page.locator('#rg2AdoptBtn').click(); await expect(page.locator('#actionModal')).toBeVisible(); await page.locator('#actionConfirmBtn').click(); await expect(page.locator('#rg2ProfileBanner')).toContainText('0.2');
  const adopted=await page.evaluate(()=>__sspTestHooks.collectData(false)); expect(adopted.reviewGateConfiguration.profileVersion).toBe('0.2'); expect(adopted.reviewGateRuns).toEqual([]);
  await expect(page.locator('#rg2Rail [data-rg2-stage]')).toHaveCount(6); await expect(page.locator('#rg2Modal .rg2-header p')).toContainText('locally asserted and unauthenticated');
