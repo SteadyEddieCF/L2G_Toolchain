@@ -1,0 +1,67 @@
+{
+  "release": "v1.9.9",
+  "title": "CMMC L2 SSP Modern Editable v1.9.9 — Local Staged-Review Orchestration",
+  "issue": 60,
+  "generatedAt": "2026-07-27T03:03:47Z",
+  "protectedMainAtStart": "24c8ac51b6a9a570d9019ef068ba3b8570f022a7",
+  "runtimeSourceBaseline": {
+    "version": "v1.9.8",
+    "promotionMerge": "0a241e744c882a4b3f0ec7e65a3d92f9bf988e41",
+    "reviewedHead": "e53978a3decb9b71fc00978598403aa5c7c5c3da",
+    "sha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82"
+  },
+  "runtime": {
+    "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.9.html",
+    "bytes": 2100000,
+    "sha256": "4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f410679144927"
+  },
+  "workingDataSchema": {
+    "filename": "CMMC_L2_SSP_Data_Schema_v1.9.9.json",
+    "bytes": 106808,
+    "sha256": "2d093d34b6260822d8be2547a50c3dc5c6c3e73100c9f0fc6fcb2794a84903b1",
+    "schemaVersion": "1.9.9"
+  },
+  "builtInProfileRegistry": {
+    "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json",
+    "bytes": 120507,
+    "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+    "schema": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json",
+    "schemaSha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+    "profileId": "generic-cmmc-ssp-review-v1",
+    "versions": [
+      "0.1",
+      "0.2"
+    ],
+    "itemCounts": [
+      12,
+      35
+    ],
+    "v01ExactPreserved": true
+  },
+  "actualRuntimeBackup": {
+    "filename": "fixtures/Actual_Runtime_Generated_Backup_v1.9.9.json",
+    "bytes": 361922,
+    "sha256": "0270266b1defe11e576412f37d0e2565f171dd986ffdea8257306e14b7ec5546",
+    "stages": 5,
+    "correctiveActions": 2
+  },
+  "scope": [
+    "RG-2 local staged-review orchestration",
+    "explicit v0.2 adoption",
+    "deterministic IDs and append-only history",
+    "source/artifact staleness",
+    "Single-System, portfolio, and module scope",
+    "affected-record navigation and focus restoration"
+  ],
+  "excluded": [
+    "UX-3 unified Needs Attention",
+    "Word QA",
+    "Builder/Merger sidecar",
+    "custom profiles",
+    "new cross-tool contract",
+    "adjacent-tool changes",
+    "assessment/readiness/risk/compliance/certification conclusions"
+  ],
+  "validation": "PASS",
+  "windowsFileAcceptance": "independent confirmation required due managed browser policy"
+}

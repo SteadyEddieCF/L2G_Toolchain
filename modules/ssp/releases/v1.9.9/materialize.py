@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import base64, hashlib, lzma, re
+ROOT=Path(__file__).resolve().parent
+SOURCE=ROOT/'source'
+BASELINE=ROOT.parent/'v1.9.8'/'CMMC_L2_SSP_Modern_Editable_v1.9.8.html'
+RUNTIME_OUTPUT=ROOT/'CMMC_L2_SSP_Modern_Editable_v1.9.9.html'
+SCHEMA_OUTPUT=ROOT/'CMMC_L2_SSP_Data_Schema_v1.9.9.json'
+REGISTRY_OUTPUT=ROOT/'CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json'
+REGISTRY_SCHEMA_OUTPUT=ROOT/'CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json'
+EXPECTED_BASELINE='04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82'
+EXPECTED_PATCH='a41b4fe181a605cff13db925665763e632d21e17f3d691189e6d57f38bd93c53'
+EXPECTED_RUNTIME='4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f410679144927'
+EXPECTED_SCHEMA='2d093d34b6260822d8be2547a50c3dc5c6c3e73100c9f0fc6fcb2794a84903b1'
+EXPECTED_REGISTRY='8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2'
+EXPECTED_REGISTRY_SCHEMA='a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f'
+def digest(data): return hashlib.sha256(data).hexdigest()
+def require(label,actual,expected):
+    if actual!=expected: raise SystemExit(f"{label} SHA-256 mismatch: {actual} != {expected}")
+def read_payload(prefix,expected_encoded,expected_xz,expected_payload):
+    parts=sorted(SOURCE.glob(prefix+'.part*'))
+    if not parts: raise SystemExit(f'no payload parts for {prefix}')
+    encoded=b''.join(p.read_bytes() for p in parts)
+    require(prefix+' encoded',digest(encoded),expected_encoded)
+    xz=base64.b64decode(encoded,validate=True)
+    require(prefix+' xz',digest(xz),expected_xz)
+    data=lzma.decompress(xz)
+    require(prefix+' payload',digest(data),expected_payload)
+    return data
+def apply_unified_diff(source_text,patch_text):
+    source=source_text.splitlines(keepends=True); patch=patch_text.splitlines(keepends=True)
+    output=[]; source_index=0; index=0
+    while index<len(patch) and not patch[index].startswith('@@ '): index+=1
+    while index<len(patch):
+        m=re.match(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@',patch[index])
+        if not m: raise SystemExit('invalid patch hunk')
+        old_start=int(m.group(1))-1; output.extend(source[source_index:old_start]); source_index=old_start; index+=1
+        while index<len(patch) and not patch[index].startswith('@@ '):
+            line=patch[index]
+            if line.startswith(r'\ No newline at end of file'): index+=1; continue
+            marker,content=line[:1],line[1:]
+            if marker==' ':
+                if source_index>=len(source) or source[source_index]!=content: raise SystemExit('patch context mismatch')
+                output.append(content); source_index+=1
+            elif marker=='-':
+                if source_index>=len(source) or source[source_index]!=content: raise SystemExit('patch removal mismatch')
+                source_index+=1
+            elif marker=='+': output.append(content)
+            else: raise SystemExit('invalid patch marker')
+            index+=1
+    output.extend(source[source_index:]); return ''.join(output)
+baseline=BASELINE.read_bytes(); require('runtime-source baseline',digest(baseline),EXPECTED_BASELINE)
+patch=read_payload('runtime-v1.9.8-to-v1.9.9.patch.xz.b64','aec597bb8e2ef524889ff13e5c17d412fb1a775eb650a51320cd715da054e7cf','5095caefb59c0c9335a694cc98c458ee1c82bbbae2516e219cd724ca04a93e98',EXPECTED_PATCH)
+runtime=apply_unified_diff(baseline.decode(),patch.decode()).encode(); require('materialized runtime',digest(runtime),EXPECTED_RUNTIME); RUNTIME_OUTPUT.write_bytes(runtime)
+schema=read_payload('schema-v1.9.9.json.xz.b64','602b6f8f789b4f3dd9c9c047d20b88c9869fe2e3c99d97bad6c7b2127713cb6b','69ebc37b72e4958f19659096514866283705d5a186498bc055969379686381a5',EXPECTED_SCHEMA); SCHEMA_OUTPUT.write_bytes(schema)
+registry_schema=read_payload('registry-schema-v1.1.json.xz.b64','272eeda41aecb64a8b2394c7cf5041073626a563ce7ef729671e8edb9ba682d1','b7ff61c775c507d4e53d28554efb9aabbe669945e3821f01005e50f956dec1c0',EXPECTED_REGISTRY_SCHEMA); REGISTRY_SCHEMA_OUTPUT.write_bytes(registry_schema)
+registry=read_payload('registry-v1.9.9.json.xz.b64','6a41e2e4f74981d0baf5cd108bf88316beeec35583ddbd413bbe5cb50124d826','1fa628a5f6de78b9f7ea64b9a1ede0090527f6e2ee702da929183a4c1bb5f324',EXPECTED_REGISTRY); REGISTRY_OUTPUT.write_bytes(registry)
+print(f'materialized {RUNTIME_OUTPUT.name} {EXPECTED_RUNTIME}')
+print(f'materialized {SCHEMA_OUTPUT.name} {EXPECTED_SCHEMA}')
+print(f'materialized {REGISTRY_OUTPUT.name} {EXPECTED_REGISTRY}')
+print(f'materialized {REGISTRY_SCHEMA_OUTPUT.name} {EXPECTED_REGISTRY_SCHEMA}')

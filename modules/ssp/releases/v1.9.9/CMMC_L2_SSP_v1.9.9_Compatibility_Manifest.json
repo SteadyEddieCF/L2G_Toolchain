@@ -1,0 +1,97 @@
+{
+  "release": "v1.9.9",
+  "title": "CMMC L2 SSP Modern Editable v1.9.9 — Local Staged-Review Orchestration",
+  "generatedAt": "2026-07-27T03:03:47Z",
+  "baseline": {
+    "protectedMain": "24c8ac51b6a9a570d9019ef068ba3b8570f022a7",
+    "promotionMerge": "0a241e744c882a4b3f0ec7e65a3d92f9bf988e41",
+    "reviewedHead": "e53978a3decb9b71fc00978598403aa5c7c5c3da"
+  },
+  "toolScope": {
+    "changed": [
+      "CMMC L2 SSP Modern Editable"
+    ],
+    "unchanged": [
+      "Control Center v0.3.4",
+      "DocConverter-L2G v7.9.5.1",
+      "Scoper v3.12",
+      "Workshop v79",
+      "Builder/Merger v3.8"
+    ]
+  },
+  "contracts": [
+    {
+      "name": "l2g_ssp_handoff_v1",
+      "version": "1.0",
+      "status": "unchanged"
+    },
+    {
+      "name": "l2g_ssp_return_package_v1",
+      "version": "1.0",
+      "status": "unchanged"
+    },
+    {
+      "name": "l2g_ssp_round_trip_audit_v1",
+      "version": "0.1",
+      "status": "unchanged/read-only"
+    },
+    {
+      "name": "Word Review",
+      "version": "v1",
+      "status": "unchanged"
+    },
+    {
+      "name": "portfolio exchange",
+      "version": "existing",
+      "status": "unchanged"
+    },
+    {
+      "name": "module exchange",
+      "version": "existing",
+      "status": "unchanged"
+    },
+    {
+      "name": "portfolio CRM",
+      "version": "existing",
+      "status": "unchanged"
+    },
+    {
+      "name": "delivery",
+      "version": "1.10",
+      "status": "unchanged"
+    },
+    {
+      "name": "maintenance",
+      "version": "1.11",
+      "status": "unchanged"
+    },
+    {
+      "name": "evidence reminder",
+      "version": "1.12",
+      "status": "unchanged"
+    },
+    {
+      "name": "module dependency",
+      "version": "1.13",
+      "status": "unchanged"
+    },
+    {
+      "name": "change calendar",
+      "version": "1.14",
+      "status": "unchanged"
+    },
+    {
+      "name": "responsibility matrix",
+      "version": "1.15",
+      "status": "unchanged"
+    }
+  ],
+  "migrationSources": [
+    "1.9.5",
+    "1.9.5.1",
+    "1.9.8"
+  ],
+  "authoritativeRequirementsPerModule": 110,
+  "newCrossToolContract": false,
+  "validation": "PASS"
+}

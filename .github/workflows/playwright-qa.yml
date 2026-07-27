@@ -34,6 +34,8 @@ jobs:
         run: python modules/ssp/releases/v1.9.7/materialize.py
       - name: Materialize SSP v1.9.8 runtime, schema, and profile registry
         run: python modules/ssp/releases/v1.9.8/materialize.py
+      - name: Materialize SSP v1.9.9 runtime, schema, and profile registry
+        run: python modules/ssp/releases/v1.9.9/materialize.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - name: Run runtime and axe-core tests
@@ -72,6 +74,8 @@ jobs:
         run: python modules/ssp/releases/v1.9.7/materialize.py
       - name: Materialize SSP v1.9.8 runtime, schema, and profile registry
         run: python modules/ssp/releases/v1.9.8/materialize.py
+      - name: Materialize SSP v1.9.9 runtime, schema, and profile registry
+        run: python modules/ssp/releases/v1.9.9/materialize.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - name: Compare visual baselines
@@ -110,6 +114,8 @@ jobs:
         run: python modules/ssp/releases/v1.9.7/materialize.py
       - name: Materialize SSP v1.9.8 runtime, schema, and profile registry
         run: python modules/ssp/releases/v1.9.8/materialize.py
+      - name: Materialize SSP v1.9.9 runtime, schema, and profile registry
+        run: python modules/ssp/releases/v1.9.9/materialize.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install chromium
       - name: Run Windows file-origin smoke tests

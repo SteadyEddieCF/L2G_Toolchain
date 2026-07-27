@@ -1,0 +1,54 @@
+{
+  "release": "v1.9.9",
+  "baselineRuntime": "v1.9.8",
+  "baselineRuntimeSha256": "04cb0c327e746a7f1db0c652b18638a795f388317be67413ac5706296e299c82",
+  "runtimeOutputSha256": "4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f410679144927",
+  "runtimePatch": {
+    "parts": [
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part00",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part01",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part02",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part03",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part04",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part05",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part06",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part07",
+      "runtime-v1.9.8-to-v1.9.9.patch.xz.b64.part08"
+    ],
+    "payloadSha256": "a41b4fe181a605cff13db925665763e632d21e17f3d691189e6d57f38bd93c53",
+    "xzSha256": "5095caefb59c0c9335a694cc98c458ee1c82bbbae2516e219cd724ca04a93e98",
+    "encodedSha256": "aec597bb8e2ef524889ff13e5c17d412fb1a775eb650a51320cd715da054e7cf",
+    "bytes": 239266
+  },
+  "workingDataSchema": {
+    "parts": [
+      "schema-v1.9.9.json.xz.b64.part00",
+      "schema-v1.9.9.json.xz.b64.part01",
+      "schema-v1.9.9.json.xz.b64.part02"
+    ],
+    "payloadSha256": "2d093d34b6260822d8be2547a50c3dc5c6c3e73100c9f0fc6fcb2794a84903b1",
+    "xzSha256": "69ebc37b72e4958f19659096514866283705d5a186498bc055969379686381a5",
+    "encodedSha256": "602b6f8f789b4f3dd9c9c047d20b88c9869fe2e3c99d97bad6c7b2127713cb6b",
+    "bytes": 106808
+  },
+  "builtInProfileRegistry": {
+    "parts": [
+      "registry-v1.9.9.json.xz.b64.part00",
+      "registry-v1.9.9.json.xz.b64.part01"
+    ],
+    "payloadSha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+    "xzSha256": "1fa628a5f6de78b9f7ea64b9a1ede0090527f6e2ee702da929183a4c1bb5f324",
+    "encodedSha256": "6a41e2e4f74981d0baf5cd108bf88316beeec35583ddbd413bbe5cb50124d826",
+    "bytes": 120507
+  },
+  "registrySchemaSha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+  "builtInProfileRegistrySchema": {
+    "parts": [
+      "registry-schema-v1.1.json.xz.b64.part00"
+    ],
+    "payloadSha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+    "xzSha256": "b7ff61c775c507d4e53d28554efb9aabbe669945e3821f01005e50f956dec1c0",
+    "encodedSha256": "272eeda41aecb64a8b2394c7cf5041073626a563ce7ef729671e8edb9ba682d1",
+    "bytes": 22706
+  }
+}
