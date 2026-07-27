@@ -2,10 +2,10 @@
 
 Local/offline SSP authoring and Word Review round-trip module with Workshop handoff/return integration.
 
-- Current supplied release candidate: **v1.9.9 — Local Staged-Review Orchestration**
-- Current release focus: **Bounded issue #60 RG-2 local SME, Quality, corrective-action, and Project Director stages over the exact promoted v1.9.8 source-preflight baseline**
-- Independent review gate: **Keep the v1.9.9 PR draft and unmerged; do not begin UX-3, RG-3, Word inspection, sidecar, custom profile, bulk workflow, or adjacent-tool work**
-- Exact-head merge gate: **Repository validation, Playwright QA, Windows file-origin smoke, visual regression, and all applicable SSP materialization checks must complete successfully before merge.**
+- Current supplied release: **v1.9.9 — Local Staged-Review Orchestration**
+- Current release focus: **Completed issue #60 RG-2 local SME, Quality, corrective-action, and Project Director stages over the exact promoted v1.9.8 source-preflight baseline**
+- Next integrated workstream: **UX-3 SSP-owned unified Needs Attention integration — planned and separately bounded; do not begin RG-3 Word inspection, RG-4 sidecar, custom profile, bulk workflow, or adjacent-tool work without separate authorization**
+- Exact-head merge gate: **Repository validation, Playwright QA, Windows file-origin smoke, visual regression, and all applicable SSP materialization checks completed successfully before promotion.**
 
 Single-System remains the default. Portfolio mode remains Advanced and optional. Every module retains exactly 110 authoritative requirements. v1.9.9 preserves built-in profile v0.1 and its 12 source-preflight meanings and adds an explicitly adopted v0.2 profile with 23 bounded RG-2 items across five local human-review/corrective/sign-off stages.
 
