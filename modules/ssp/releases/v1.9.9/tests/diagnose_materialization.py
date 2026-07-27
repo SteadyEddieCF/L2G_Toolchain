@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import base64, hashlib, json, lzma, re
+import base64, hashlib, json, lzma, re, subprocess, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'source'
@@ -123,6 +123,19 @@ if BASELINE.exists() and runtime_patch is not None:
     except Exception as exc:
         report['runtime_output'] = {'error': f'{type(exc).__name__}: {exc}'}
 
+materializer = subprocess.run(
+    [sys.executable, str(ROOT / 'materialize.py')],
+    cwd=ROOT,
+    text=True,
+    capture_output=True,
+    check=False,
+)
+report['materializer'] = {
+    'returncode': materializer.returncode,
+    'stdout': materializer.stdout,
+    'stderr': materializer.stderr,
+}
+
 OUT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
 print(json.dumps({
     'baseline': report['baseline'],
@@ -134,4 +147,5 @@ print(json.dumps({
         'error': item.get('error'),
     } for name, item in report['assets'].items()},
     'runtime_output': report.get('runtime_output'),
+    'materializer': report['materializer'],
 }, separators=(',', ':')))
