@@ -1,0 +1,15 @@
+{
+  "release": "v1.9.10",
+  "local_execution": {
+    "runtime_sha256": "a282173c4a8ea23e59d6091a5f68c09757393df2c2d18b92b72569f69310f91c",
+    "control_cards": 110,
+    "page_errors": 0,
+    "console_errors": 0,
+    "external_requests": 0,
+    "deterministic_item_ids": "passed",
+    "governed_data_non_mutation": "passed",
+    "rg1_rg2_corrective_action_synthetic_cases": "passed",
+    "dark_constrained_smoke": "passed"
+  },
+  "independent_ci": "pending on draft PR exact head"
+}
