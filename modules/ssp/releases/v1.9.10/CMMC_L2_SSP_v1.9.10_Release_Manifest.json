@@ -1,0 +1,13 @@
+{
+  "module": "CMMC L2 SSP Modern Editable",
+  "release": "v1.9.10",
+  "issue": 64,
+  "runtime": "CMMC_L2_SSP_Modern_Editable_v1.9.10.html",
+  "runtime_sha256": "a282173c4a8ea23e59d6091a5f68c09757393df2c2d18b92b72569f69310f91c",
+  "baseline_runtime_sha256": "4df58dd45c369fd2c3ec6e49e81fa8887f80859dddd4fbd9b00f410679144927",
+  "materialization": "runtime-only hash-verified unified-diff payload",
+  "schema_change": false,
+  "profile_registry_change": false,
+  "package_contract_change": false,
+  "status": "release_candidate_pending_independent_review"
+}
