@@ -2,10 +2,10 @@
 
 Local/offline SSP authoring and Word Review round-trip module with Workshop handoff/return integration.
 
-- Current release candidate: **v1.9.11 — Preliminary Word-Review-Copy Inspection**
-- Current release focus: **Issue #67 RG-3 exact-artifact preliminary inspection evidence over promoted v1.9.10**
-- Independent review gate: **Keep PR #68 draft and unmerged until repository validation, Playwright runtime/axe, visual regression, Windows file-origin smoke, and v1.9.11 materialization checks pass.**
-- Next bounded work after promotion: **RG-4 Builder/Merger final Word-QA sidecar, requiring a separately authorized SSP/Builder-Merger handshake release.**
+- Current supplied release: **v1.9.11 — Preliminary Word-Review-Copy Inspection**
+- Current release focus: **Completed issue #67 RG-3 exact-artifact preliminary inspection evidence over promoted v1.9.10**
+- Promotion gate: **PR #68 passed repository validation, Playwright runtime/axe, visual regression, Windows file-origin smoke, and v1.9.11 materialization/static checks before merge.**
+- Next bounded work: **RG-4 Builder/Merger final Word-QA sidecar. This is the mandatory SSP/Builder-Merger handshake release and must not begin until the joint contract is separately authorized.**
 
 Single-System remains the default. Portfolio mode remains Advanced and optional. Every module retains exactly 110 authoritative requirements. v1.9.11 preserves built-in profile v0.1 and v0.2 and existing package contracts. Its additive schema change retains SSP-owned preliminary inspection evidence bound to exact artifact and source fingerprints.
 
