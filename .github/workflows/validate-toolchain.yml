@@ -40,5 +40,15 @@ jobs:
         run: python modules/ssp/releases/v1.9.10/materialize.py
       - name: Run SSP v1.9.10 bounded static gate
         run: python modules/ssp/releases/v1.9.10/tests/test_ssp_v1910_static.py
+      - name: Upload exact promoted SSP v1.9.10 baseline for RG-3 development
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssp-v1910-promoted-baseline-rg3
+          path: |
+            modules/ssp/releases/v1.9.10/CMMC_L2_SSP_Modern_Editable_v1.9.10.html
+            modules/ssp/releases/v1.9.9/CMMC_L2_SSP_Data_Schema_v1.9.9.json
+            modules/ssp/releases/v1.9.9/CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json
+            modules/ssp/releases/v1.9.9/CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json
+          if-no-files-found: error
       - name: Validate repository
         run: python scripts/validate_toolchain.py
