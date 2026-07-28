@@ -58,4 +58,21 @@ jobs:
       - run: python modules/ssp/releases/v1.9.9/materialize.py
       - run: python modules/ssp/releases/v1.9.10/materialize.py
       - run: python modules/ssp/releases/v1.9.11/materialize.py
-      - run: python modules/ssp/releases/v1.9.11/tests/test_ssp_v1911_static.py
+      - name: Capture bounded static output
+        shell: bash
+        run: |
+          set +e
+          python modules/ssp/releases/v1.9.11/tests/test_ssp_v1911_static.py > v1911-static.log 2>&1
+          echo $? > v1911-static.exit
+          set -e
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssp-v1911-static-diagnostic
+          path: |
+            v1911-static.log
+            v1911-static.exit
+          if-no-files-found: error
+      - name: Enforce diagnostic result
+        shell: bash
+        run: test "$(cat v1911-static.exit)" = "0"
