@@ -1,0 +1,44 @@
+{
+  "release": "v1.9.12",
+  "issue": 70,
+  "focus": "Compact Responsive Workspace Chrome",
+  "protectedMainAtAuthorization": "a2b721bb97b2d3d1c182c0711158cfae02c6b349",
+  "baselineRuntime": "v1.9.11",
+  "baselineRuntimeSha256": "4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6",
+  "runtimeOutputSha256": "1980bcff89633b13d20e17ba8862bda660afdaf06c0afd2f1e968a9b26eb0a6c",
+  "workingDataSchemaSha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+  "builtInProfileRegistrySha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+  "registrySchemaSha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+  "runtimePatch": {
+    "parts": [
+      "runtime-v1.9.11-to-v1.9.12.patch.xz.b64.part00",
+      "runtime-v1.9.11-to-v1.9.12.patch.xz.b64.part01",
+      "runtime-v1.9.11-to-v1.9.12.patch.xz.b64.part02"
+    ],
+    "payloadSha256": "2102bd8c13fa684259c9f3f8a1d95289e46b2c2acf32be35667028482e768005",
+    "xzSha256": "358fd21c4fce49b1b337ae88fcebda2e39b2fcb2f5852d4fd5253e5a4b2aaae1",
+    "encodedSha256": "7c4dfacbc7f8ce2a4d249a805848b9caf2eec2fe93dc0b5941844724e6375f2e",
+    "bytes": 49633,
+    "compressedBytes": 10788,
+    "encodedBytes": 14384
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {
+      "version": "1.9.11",
+      "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+      "changed": false
+    },
+    "builtInProfileRegistry": {
+      "version": "1.9.9",
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "version": "1.1",
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    },
+    "packageContractsChanged": false,
+    "crossToolHandshakeRequired": false
+  }
+}
