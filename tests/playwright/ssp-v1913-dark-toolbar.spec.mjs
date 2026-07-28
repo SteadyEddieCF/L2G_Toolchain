@@ -9,7 +9,20 @@ const viewports = [
   { width: 1920, height: 1080 }
 ];
 
-const rgb = (value) => (value || '').replace(/\s+/g, '');
+const color = (value) => {
+  const normalized = (value || '').trim().toLowerCase();
+  const hex = normalized.match(/^#([0-9a-f]{6})$/i);
+  if (hex) {
+    const raw = hex[1];
+    return `rgb(${parseInt(raw.slice(0, 2), 16)},${parseInt(raw.slice(2, 4), 16)},${parseInt(raw.slice(4, 6), 16)})`;
+  }
+  const shortHex = normalized.match(/^#([0-9a-f]{3})$/i);
+  if (shortHex) {
+    const raw = shortHex[1].split('').map((digit) => digit + digit).join('');
+    return `rgb(${parseInt(raw.slice(0, 2), 16)},${parseInt(raw.slice(2, 4), 16)},${parseInt(raw.slice(4, 6), 16)})`;
+  }
+  return normalized.replace(/\s+/g, '');
+};
 
 test('SSP v1.9.13 fixes dark workspaces and aligns compact chrome without governed changes', async ({ page }, testInfo) => {
   const pageErrors = [];
@@ -88,11 +101,11 @@ test('SSP v1.9.13 fixes dark workspaces and aligns compact chrome without govern
       ink: body.getPropertyValue('--ink').trim()
     };
   });
-  expect(rgb(reviewTheme.cardBackground)).not.toBe('rgb(255,255,255)');
-  expect(rgb(reviewTheme.cardBackground)).toBe(rgb(reviewTheme.paper));
-  expect(rgb(reviewTheme.headerBackground)).toBe(rgb(reviewTheme.panel));
-  expect(rgb(reviewTheme.cardColor)).toBe(rgb(reviewTheme.ink));
-  expect(rgb(reviewTheme.controlBackground)).not.toBe('rgb(255,255,255)');
+  expect(color(reviewTheme.cardBackground)).not.toBe('rgb(255,255,255)');
+  expect(color(reviewTheme.cardBackground)).toBe(color(reviewTheme.paper));
+  expect(color(reviewTheme.headerBackground)).toBe(color(reviewTheme.panel));
+  expect(color(reviewTheme.cardColor)).toBe(color(reviewTheme.ink));
+  expect(color(reviewTheme.controlBackground)).not.toBe('rgb(255,255,255)');
   await page.screenshot({ path: testInfo.outputPath('ssp-v1913-review-dark.png'), fullPage: false });
   await page.locator('[data-close-rg2]').last().click();
   await expect(page.locator('#rg2Modal')).toBeHidden();
@@ -117,11 +130,11 @@ test('SSP v1.9.13 fixes dark workspaces and aligns compact chrome without govern
       ink: body.getPropertyValue('--ink').trim()
     };
   });
-  expect(rgb(attentionTheme.cardBackground)).not.toBe('rgb(255,255,255)');
-  expect(rgb(attentionTheme.cardBackground)).toBe(rgb(attentionTheme.paper));
-  expect(rgb(attentionTheme.headerBackground)).toBe(rgb(attentionTheme.panel));
-  expect(rgb(attentionTheme.cardColor)).toBe(rgb(attentionTheme.ink));
-  expect(rgb(attentionTheme.controlBackground)).not.toBe('rgb(255,255,255)');
+  expect(color(attentionTheme.cardBackground)).not.toBe('rgb(255,255,255)');
+  expect(color(attentionTheme.cardBackground)).toBe(color(attentionTheme.paper));
+  expect(color(attentionTheme.headerBackground)).toBe(color(attentionTheme.panel));
+  expect(color(attentionTheme.cardColor)).toBe(color(attentionTheme.ink));
+  expect(color(attentionTheme.controlBackground)).not.toBe('rgb(255,255,255)');
   await page.screenshot({ path: testInfo.outputPath('ssp-v1913-needs-attention-dark.png'), fullPage: false });
   await page.locator('[data-close-ux3]').last().click();
   await expect(page.locator('#ux3NeedsAttentionModal')).toBeHidden();
