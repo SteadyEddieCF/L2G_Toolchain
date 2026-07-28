@@ -9,7 +9,7 @@ python modules/ssp/releases/v1.9.12/materialize.py
 python modules/ssp/releases/v1.9.12/tests/test_ssp_v1912_static.py
 ```
 
-Expected runtime SHA-256: `1980bcff89633b13d20e17ba8862bda660afdaf06c0afd2f1e968a9b26eb0a6c`.
+Expected runtime SHA-256: `34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31`.
 
 The working-data schema remains v1.9.11 SHA-256 `7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251`. The built-in profile registry, registry schema, package routes, and all cross-tool contracts are unchanged.
 
