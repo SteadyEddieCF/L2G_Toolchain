@@ -3,7 +3,7 @@
   "current_supplied_version": "v1.9.12",
   "release_path": "modules/ssp/releases/v1.9.12",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.12.html",
-  "runtime_sha256": "1980bcff89633b13d20e17ba8862bda660afdaf06c0afd2f1e968a9b26eb0a6c",
+  "runtime_sha256": "34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31",
   "status": "release_candidate_pending_review",
   "next_action": "Independent review of issue #70 compact responsive workspace chrome; RG-4 Builder/Merger final Word-QA sidecar remains the next separately authorized handshake release",
   "recorded_at": "2026-07-28",
