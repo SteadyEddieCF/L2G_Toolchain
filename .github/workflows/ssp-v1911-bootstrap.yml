@@ -53,3 +53,4 @@ jobs:
             modules/ssp/releases/v1.9.9/CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json
             modules/ssp/releases/v1.9.9/CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json
           if-no-files-found: error
+# trigger: issue-67
