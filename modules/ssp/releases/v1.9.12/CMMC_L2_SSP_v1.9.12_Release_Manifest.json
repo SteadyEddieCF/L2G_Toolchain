@@ -10,7 +10,7 @@
   "artifacts": {
     "runtime": {
       "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.12.html",
-      "sha256": "1980bcff89633b13d20e17ba8862bda660afdaf06c0afd2f1e968a9b26eb0a6c"
+      "sha256": "34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31"
     },
     "workingDataSchema": {
       "version": "1.9.11",
