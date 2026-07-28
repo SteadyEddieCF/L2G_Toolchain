@@ -10,10 +10,10 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 | DocConverter-L2G | v7.9.5.1 | No immediate release required; preserve the exact runtime and registered McFirecoal v1.2.0 handshake baseline until a concrete extraction or package defect is demonstrated |
 | L2G Scoper | v3.12 | No immediate release required; preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
 | CMMC L2 Gap Workshop Tool | v79 | Proposed v80 Regression Delta and Release Comparison as a separately bounded Workshop release |
-| L2G Builder/Merger | v3.8 | v3.9 Advisor and Client Delivery Profiles only after a separately approved review/delivery-profile contract; Workshop v78/v79 helpers alone do not authorize implementation |
-| CMMC L2 SSP Modern Editable | v1.9.11 candidate | Independent review of issue #67 RG-3 preliminary Word-review-copy inspection; RG-4 Builder/Merger final Word-QA sidecar requires the next SSP/Builder-Merger handshake release |
+| L2G Builder/Merger | v3.8 | RG-4 final Word-QA sidecar must begin as a separately authorized SSP/Builder-Merger handshake release; no sidecar contract exists yet |
+| CMMC L2 SSP Modern Editable | v1.9.11 | RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a joint SSP/Builder-Merger handshake release before implementation |
 
-The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. SSP v1.9.11 is an SSP-only candidate over promoted v1.9.10. It adds append-only preliminary inspection evidence for exact SSP Word Review DOCX artifacts and does not introduce a Builder/Merger sidecar, new package route, or cross-tool contract. Inspection findings do not claim final Word QA, client-release approval, technical accuracy, evidence sufficiency, readiness, risk, compliance, assessment, certification, or scoring.
+The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. SSP v1.9.11 is the promoted SSP-only RG-3 release over v1.9.10. It adds append-only preliminary inspection evidence for exact SSP Word Review DOCX artifacts without introducing a Builder/Merger sidecar, new package route, or cross-tool contract. Inspection findings do not claim final Word QA, client-release approval, technical accuracy, evidence sufficiency, readiness, risk, compliance, assessment, certification, or scoring.
 
 ## Repository layout
 
