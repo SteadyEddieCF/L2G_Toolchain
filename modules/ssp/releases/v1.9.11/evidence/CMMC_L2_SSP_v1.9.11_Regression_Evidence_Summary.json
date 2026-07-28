@@ -1,0 +1,26 @@
+{
+  "release": "1.9.11",
+  "candidateRuntimeSha256": "4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6",
+  "schemaSha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+  "localRegression": {
+    "status": "passed",
+    "checks": [
+      "hash known-vector",
+      "real DOCX generation",
+      "artifact hash parity",
+      "preview non-mutation",
+      "explicit confirmation",
+      "deterministic IDs",
+      "supersession",
+      "stale detection",
+      "Needs Attention integration",
+      "comment/revision counts",
+      "malformed comments qualification",
+      "unsafe package rejection",
+      "restore",
+      "dark/constrained viewport",
+      "zero captured errors/requests"
+    ]
+  },
+  "independentCi": "pending exact final PR head"
+}
