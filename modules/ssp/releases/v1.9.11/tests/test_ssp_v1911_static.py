@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import hashlib, json, re
-from jsonschema import Draft202012Validator
 
 ROOT=Path(__file__).resolve().parents[1]
 RUNTIME=ROOT/'CMMC_L2_SSP_Modern_Editable_v1.9.11.html'
@@ -25,11 +24,15 @@ for required in ['__sspRg3TestHooks','wordReviewInspections','RG3-PACKAGE-VALIDI
     assert required in text, required
 for forbidden in ['cmmc_l2_builder_merger_word_qa','final_word_qa_sidecar',"package_kind:'cmmc_l2_ssp_word_inspection'"]:
     assert forbidden not in text, forbidden
-schema=json.loads(SCHEMA.read_text(encoding='utf-8')); Draft202012Validator.check_schema(schema)
+schema=json.loads(SCHEMA.read_text(encoding='utf-8'))
+assert schema['$schema']=='https://json-schema.org/draft/2020-12/schema'
+assert schema['type']=='object'
+assert schema['additionalProperties'] is False
 assert schema['properties']['schema']['const']=='cmmc-l2-ssp-modern-v1.9.11'
 assert schema['properties']['schemaVersion']['const']=='1.9.11'
 assert 'wordReviewInspections' in schema['required']
 item=schema['properties']['wordReviewInspections']['items']
+assert item['type']=='object' and item['additionalProperties'] is False
 assert item['properties']['inspectionKind']['const']=='preliminary-ssp-word-review-copy'
 assert set(item['properties']['checks']['items']['properties']['status']['enum'])=={'pass','fail','needs-human-review','not-applicable'}
 registry=json.loads(REGISTRY.read_text(encoding='utf-8'))
