@@ -1,0 +1,19 @@
+{
+  "release": "1.9.11",
+  "acceptedMigrationFrom": [
+    "1.9.5",
+    "1.9.5.1",
+    "1.9.8",
+    "1.9.9",
+    "1.9.10"
+  ],
+  "requirementsPerModule": 110,
+  "builtInProfiles": {
+    "0.1": 12,
+    "0.2": 35,
+    "changed": false
+  },
+  "stableContractsChanged": false,
+  "adjacentModulesChanged": false,
+  "finalWordQaSatisfied": false
+}
