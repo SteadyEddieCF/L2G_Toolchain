@@ -48,5 +48,9 @@ jobs:
         run: python modules/ssp/releases/v1.9.12/materialize.py
       - name: Run SSP v1.9.12 bounded static gate
         run: python modules/ssp/releases/v1.9.12/tests/test_ssp_v1912_static.py
+      - name: Materialize SSP v1.9.13 runtime
+        run: python modules/ssp/releases/v1.9.13/materialize.py
+      - name: Run SSP v1.9.13 bounded static gate
+        run: python modules/ssp/releases/v1.9.13/tests/test_ssp_v1913_static.py
       - name: Validate repository
         run: python scripts/validate_toolchain.py

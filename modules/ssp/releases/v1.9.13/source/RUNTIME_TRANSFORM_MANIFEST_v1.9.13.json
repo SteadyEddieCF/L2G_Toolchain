@@ -1,0 +1,28 @@
+{
+  "release": "v1.9.13",
+  "issue": 73,
+  "focus": "Dark-Mode Review Workspace and Toolbar Polish",
+  "protectedMainAtAuthorization": "33f2c54344e8a285b44fa684ac189556d96ab098",
+  "baselineRuntime": "v1.9.12",
+  "baselineRuntimeSha256": "34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31",
+  "runtimeOutputSha256": "1b36a7c2664df97ae468ef85ea1ac0d8ddcf8426433e8a7e5a12ef603836a3da",
+  "workingDataSchemaSha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+  "builtInProfileRegistrySha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+  "registrySchemaSha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+  "runtimePatch": {
+    "parts": ["runtime-v1.9.12-to-v1.9.13.patch.xz.b64.part00"],
+    "payloadSha256": "f5063f7e2fe824dd7a24dc0ece623210240e64230a4ddbcdd21d4664cc0a6978",
+    "xzSha256": "1fa95099588042eebbac29fe1d466a7439c33bcbe7f20d6d1ecaa52168bbff07",
+    "encodedSha256": "fc28d1e7821593b15e5d5b8af9e820d86bc9b96c69c9b487da8056e9484e03af",
+    "bytes": 18889,
+    "compressedBytes": 5232,
+    "encodedBytes": 6976
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {"version":"1.9.11","sha256":"7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251","changed":false},
+    "builtInProfileRegistry": {"version":"1.9.9","sha256":"8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2","changed":false},
+    "registrySchema": {"version":"1.1","sha256":"a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f","changed":false},
+    "packageContractsChanged": false,
+    "crossToolHandshakeRequired": false
+  }
+}

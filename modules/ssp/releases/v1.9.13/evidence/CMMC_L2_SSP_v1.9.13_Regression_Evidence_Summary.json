@@ -1,0 +1,12 @@
+{
+  "release":"v1.9.13",
+  "localVerification":"passed",
+  "viewports":{
+    "1366x768":{"primaryControlHeight":42,"stateControlHeight":34,"documentTop":205.515625,"autosaveChipClipped":false},
+    "1440x900":{"primaryControlHeight":42,"stateControlHeight":34,"documentTop":205.515625,"autosaveChipClipped":false},
+    "1668x1030":{"primaryControlHeight":42,"stateControlHeight":34,"documentTop":213.515625,"autosaveChipClipped":false},
+    "1920x1080":{"primaryControlHeight":42,"stateControlHeight":34,"documentTop":213.515625,"autosaveChipClipped":false}
+  },
+  "darkMode":{"rg2CardSurface":"rgb(21, 35, 43)","ux3CardSurface":"rgb(21, 35, 43)","text":"rgb(237, 245, 247)"},
+  "errors":[],"externalRequests":[],"authoritativeRequirements":110
+}

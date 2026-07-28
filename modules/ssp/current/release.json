@@ -1,16 +1,13 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.12",
-  "release_path": "modules/ssp/releases/v1.9.12",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.12.html",
-  "runtime_sha256": "34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31",
-  "status": "current_supplied_release",
-  "next_action": "RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a separately authorized joint SSP/Builder-Merger handshake release before implementation",
+  "current_supplied_version": "v1.9.13",
+  "release_path": "modules/ssp/releases/v1.9.13",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.13.html",
+  "runtime_sha256": "1b36a7c2664df97ae468ef85ea1ac0d8ddcf8426433e8a7e5a12ef603836a3da",
+  "status": "release_candidate_pending_review",
+  "next_action": "Independent review of issue #73 dark-mode Review/Needs Attention and compact toolbar correction; RG-4 Builder/Merger final Word-QA sidecar remains the next separately authorized handshake release",
   "recorded_at": "2026-07-28",
-  "operating_modes": {
-    "default": "single-system",
-    "optional": "modular-portfolio-advanced"
-  },
+  "operating_modes": {"default": "single-system", "optional": "modular-portfolio-advanced"},
   "stable_contracts": {
     "ssp_handoff": "1.0",
     "ssp_return": "1.0",
@@ -53,18 +50,12 @@
     "version": "1.9.11",
     "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
     "changed_in_release": false,
-    "accepts_migration_from": [
-      "1.9.5",
-      "1.9.5.1",
-      "1.9.8",
-      "1.9.9",
-      "1.9.10"
-    ]
+    "accepts_migration_from": ["1.9.5", "1.9.5.1", "1.9.8", "1.9.9", "1.9.10"]
   },
   "release_identity": {
-    "version": "1.9.12",
-    "issue": 70,
-    "focus": "Compact Responsive Workspace Chrome",
+    "version": "1.9.13",
+    "issue": 73,
+    "focus": "Dark-Mode Review Workspace and Toolbar Polish",
     "schema_change": false,
     "profile_registry_change": false,
     "package_change": false,
@@ -73,10 +64,10 @@
     "final_word_qa_satisfied": false
   },
   "runtime_source_baseline": {
-    "version": "v1.9.11",
-    "merge_commit": "b070a6a7bd6909b4633964e0b5d0b307ef509a81",
-    "reviewed_head": "276ded41fcde9ebca0990cc1aad56fe816f7a285",
-    "runtime_sha256": "4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6"
+    "version": "v1.9.12",
+    "merge_commit": "4eca43aab9e61106eae1ad8b8e1188edd30724e9",
+    "reviewed_head": "540a88049b173e331a944b8a0959a3bb9dd9c48e",
+    "runtime_sha256": "34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31"
   },
   "built_in_profile_registry": {
     "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json",
@@ -87,24 +78,11 @@
     "changed_in_release": false
   },
   "baseline_promotion": {
-    "pull_request": 68,
-    "reviewed_head": "276ded41fcde9ebca0990cc1aad56fe816f7a285",
-    "merge_commit": "b070a6a7bd6909b4633964e0b5d0b307ef509a81",
-    "issue_closed": 67,
-    "verdict": "passed"
-  },
-  "promotion": {
     "pull_request": 71,
     "reviewed_head": "540a88049b173e331a944b8a0959a3bb9dd9c48e",
     "merge_commit": "4eca43aab9e61106eae1ad8b8e1188edd30724e9",
     "issue_closed": 70,
-    "verdict": "passed",
-    "validation": {
-      "repository": "passed",
-      "playwright_runtime_and_axe": "passed",
-      "visual_regression": "passed",
-      "windows_file_origin": "passed"
-    }
+    "verdict": "passed"
   },
-  "protected_main_at_start": "a2b721bb97b2d3d1c182c0711158cfae02c6b349"
+  "protected_main_at_start": "33f2c54344e8a285b44fa684ac189556d96ab098"
 }
