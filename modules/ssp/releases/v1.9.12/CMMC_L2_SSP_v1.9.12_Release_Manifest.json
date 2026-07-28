@@ -1,0 +1,34 @@
+{
+  "module": "CMMC L2 SSP Modern Editable",
+  "version": "1.9.12",
+  "issue": 70,
+  "focus": "Compact Responsive Workspace Chrome",
+  "baseline": {
+    "version": "1.9.11",
+    "sha256": "4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6"
+  },
+  "artifacts": {
+    "runtime": {
+      "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.12.html",
+      "sha256": "1980bcff89633b13d20e17ba8862bda660afdaf06c0afd2f1e968a9b26eb0a6c"
+    },
+    "workingDataSchema": {
+      "version": "1.9.11",
+      "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+      "changed": false
+    },
+    "builtInProfileRegistry": {
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    }
+  },
+  "schemaChange": false,
+  "packageChange": false,
+  "crossToolContractChange": false,
+  "handshakeRequired": false,
+  "nextHandshake": "RG-4 Builder/Merger final Word-QA sidecar"
+}
