@@ -28,7 +28,9 @@
   "schemaPayload": {
     "parts": [
       "schema-v1.9.11.json.xz.b64.part00",
-      "schema-v1.9.11.json.xz.b64.part01"
+      "schema-v1.9.11.json.xz.b64.part01",
+      "schema-v1.9.11.json.xz.b64.part02",
+      "schema-v1.9.11.json.xz.b64.part03"
     ],
     "payloadSha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
     "xzSha256": "e2fa3e08921bd8a1b6ac849fe36fb59c6861cff815ca69748e2e7edcddcdc6ee",
