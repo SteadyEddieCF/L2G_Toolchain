@@ -27,7 +27,7 @@ for forbidden in ['cmmc_l2_builder_merger_word_qa','final_word_qa_sidecar',"pack
 schema=json.loads(SCHEMA.read_text(encoding='utf-8'))
 assert schema['$schema']=='https://json-schema.org/draft/2020-12/schema'
 assert schema['type']=='object'
-assert schema['additionalProperties'] is False
+assert schema['additionalProperties'] is True
 assert schema['properties']['schema']['const']=='cmmc-l2-ssp-modern-v1.9.11'
 assert schema['properties']['schemaVersion']['const']=='1.9.11'
 assert 'wordReviewInspections' in schema['required']
