@@ -1,0 +1,34 @@
+{
+  "module": "CMMC L2 SSP Modern Editable",
+  "version": "1.9.11",
+  "issue": 67,
+  "focus": "Preliminary Word-Review-Copy Inspection",
+  "baseline": {
+    "version": "1.9.10",
+    "sha256": "a282173c4a8ea23e59d6091a5f68c09757393df2c2d18b92b72569f69310f91c"
+  },
+  "artifacts": {
+    "runtime": {
+      "filename": "CMMC_L2_SSP_Modern_Editable_v1.9.11.html",
+      "sha256": "4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6"
+    },
+    "workingDataSchema": {
+      "filename": "CMMC_L2_SSP_Data_Schema_v1.9.11.json",
+      "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251"
+    },
+    "builtInProfileRegistry": {
+      "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json",
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json",
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    }
+  },
+  "schemaChange": true,
+  "packageChange": false,
+  "crossToolContractChange": false,
+  "handshakeRequired": false
+}
