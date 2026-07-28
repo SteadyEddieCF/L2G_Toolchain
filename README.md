@@ -11,9 +11,9 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 | L2G Scoper | v3.12 | No immediate release required; preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
 | CMMC L2 Gap Workshop Tool | v79 | Proposed v80 Regression Delta and Release Comparison as a separately bounded Workshop release |
 | L2G Builder/Merger | v3.8 | RG-4 final Word-QA sidecar must begin as a separately authorized SSP/Builder-Merger handshake release; no sidecar contract exists yet |
-| CMMC L2 SSP Modern Editable | v1.9.12 candidate | Independent review of issue #70 compact responsive workspace chrome; RG-4 remains the next mandatory SSP/Builder-Merger handshake release after promotion |
+| CMMC L2 SSP Modern Editable | v1.9.12 | RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a joint SSP/Builder-Merger handshake release before implementation |
 
-The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. SSP v1.9.12 is an SSP-only UX candidate over promoted v1.9.11. It reduces persistent laptop-height application chrome while retaining the v1.9.11 working-data schema, profiles, Word Review behavior, preliminary inspection evidence, package routes, and all cross-tool contracts. It introduces no Builder/Merger sidecar and makes no readiness, compliance, assessment, certification, final Word-QA, or client-release conclusion.
+The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. SSP v1.9.12 is the promoted SSP-only compact responsive workspace release over v1.9.11. It reduces persistent laptop-height application chrome while retaining the v1.9.11 working-data schema, profiles, Word Review behavior, preliminary inspection evidence, package routes, and all cross-tool contracts. It introduces no Builder/Merger sidecar and makes no readiness, compliance, assessment, certification, final Word-QA, or client-release conclusion.
 
 ## Repository layout
 
