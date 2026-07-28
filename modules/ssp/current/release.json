@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.12",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.12.html",
   "runtime_sha256": "34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31",
-  "status": "release_candidate_pending_review",
-  "next_action": "Independent review of issue #70 compact responsive workspace chrome; RG-4 Builder/Merger final Word-QA sidecar remains the next separately authorized handshake release",
+  "status": "current_supplied_release",
+  "next_action": "RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a separately authorized joint SSP/Builder-Merger handshake release before implementation",
   "recorded_at": "2026-07-28",
   "operating_modes": {
     "default": "single-system",
@@ -92,6 +92,19 @@
     "merge_commit": "b070a6a7bd6909b4633964e0b5d0b307ef509a81",
     "issue_closed": 67,
     "verdict": "passed"
+  },
+  "promotion": {
+    "pull_request": 71,
+    "reviewed_head": "540a88049b173e331a944b8a0959a3bb9dd9c48e",
+    "merge_commit": "4eca43aab9e61106eae1ad8b8e1188edd30724e9",
+    "issue_closed": 70,
+    "verdict": "passed",
+    "validation": {
+      "repository": "passed",
+      "playwright_runtime_and_axe": "passed",
+      "visual_regression": "passed",
+      "windows_file_origin": "passed"
+    }
   },
   "protected_main_at_start": "a2b721bb97b2d3d1c182c0711158cfae02c6b349"
 }
