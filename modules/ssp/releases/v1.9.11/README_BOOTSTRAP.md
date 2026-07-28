@@ -1,0 +1,1 @@
+This directory is being developed under a separately bounded RG-3 release. The exact promoted v1.9.10 runtime is reconstructed and hash-verified before implementation. Temporary bootstrap files will be replaced by the final release package before review.
