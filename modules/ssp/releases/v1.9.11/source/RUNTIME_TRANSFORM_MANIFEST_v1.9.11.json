@@ -12,7 +12,11 @@
   "runtimePatch": {
     "parts": [
       "runtime-v1.9.10-to-v1.9.11.patch.xz.b64.part00",
-      "runtime-v1.9.10-to-v1.9.11.patch.xz.b64.part01"
+      "runtime-v1.9.10-to-v1.9.11.patch.xz.b64.part01",
+      "runtime-v1.9.10-to-v1.9.11.patch.xz.b64.part02",
+      "runtime-v1.9.10-to-v1.9.11.patch.xz.b64.part03",
+      "runtime-v1.9.10-to-v1.9.11.patch.xz.b64.part04",
+      "runtime-v1.9.10-to-v1.9.11.patch.xz.b64.part05"
     ],
     "payloadSha256": "8476230dfab171917c48071a754d136cd8fecb49527fc27eea6628a7c501770f",
     "xzSha256": "2d18e7bb691f4160ff3d43639d90aef08ab49539755fcf79fe6f0539a15d5121",
@@ -23,7 +27,8 @@
   },
   "schemaPayload": {
     "parts": [
-      "schema-v1.9.11.json.xz.b64.part00"
+      "schema-v1.9.11.json.xz.b64.part00",
+      "schema-v1.9.11.json.xz.b64.part01"
     ],
     "payloadSha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
     "xzSha256": "e2fa3e08921bd8a1b6ac849fe36fb59c6861cff815ca69748e2e7edcddcdc6ee",
