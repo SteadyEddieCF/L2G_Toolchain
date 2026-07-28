@@ -29,7 +29,7 @@ The Single-System state strip remained one row at 46 px in these checks.
 ## Compatibility
 
 - Baseline runtime SHA-256: `4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6`.
-- Candidate runtime SHA-256: `1980bcff89633b13d20e17ba8862bda660afdaf06c0afd2f1e968a9b26eb0a6c`.
+- Candidate runtime SHA-256: `34252e7a02e6122700cd2cc845ce53fafdfe42b6bad55ae4b28035914e802d31`.
 - Working-data schema remains v1.9.11 SHA-256 `7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251`.
 - Built-in profile registry and registry schema are byte-identical.
 - Exactly 110 authoritative requirements remain present.
