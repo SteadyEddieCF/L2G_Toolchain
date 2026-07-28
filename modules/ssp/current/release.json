@@ -1,13 +1,16 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.11",
-  "release_path": "modules/ssp/releases/v1.9.11",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.11.html",
-  "runtime_sha256": "4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6",
-  "status": "current_supplied_release",
-  "next_action": "RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a separately authorized SSP/Builder-Merger handshake release before implementation",
+  "current_supplied_version": "v1.9.12",
+  "release_path": "modules/ssp/releases/v1.9.12",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.12.html",
+  "runtime_sha256": "1980bcff89633b13d20e17ba8862bda660afdaf06c0afd2f1e968a9b26eb0a6c",
+  "status": "release_candidate_pending_review",
+  "next_action": "Independent review of issue #70 compact responsive workspace chrome; RG-4 Builder/Merger final Word-QA sidecar remains the next separately authorized handshake release",
   "recorded_at": "2026-07-28",
-  "operating_modes": {"default": "single-system", "optional": "modular-portfolio-advanced"},
+  "operating_modes": {
+    "default": "single-system",
+    "optional": "modular-portfolio-advanced"
+  },
   "stable_contracts": {
     "ssp_handoff": "1.0",
     "ssp_return": "1.0",
@@ -49,45 +52,46 @@
     "id": "urn:l2g:cmmc-l2-ssp:working-data:1.9.11",
     "version": "1.9.11",
     "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
-    "accepts_migration_from": ["1.9.5", "1.9.5.1", "1.9.8", "1.9.9", "1.9.10"]
+    "changed_in_release": false,
+    "accepts_migration_from": [
+      "1.9.5",
+      "1.9.5.1",
+      "1.9.8",
+      "1.9.9",
+      "1.9.10"
+    ]
   },
   "release_identity": {
-    "version": "1.9.11",
-    "issue": 67,
-    "focus": "Preliminary Word-Review-Copy Inspection",
-    "inspection_kind": "preliminary-ssp-word-review-copy",
-    "schema_change": true,
-    "schema_change_scope": "additive SSP-owned inspection evidence",
+    "version": "1.9.12",
+    "issue": 70,
+    "focus": "Compact Responsive Workspace Chrome",
+    "schema_change": false,
+    "profile_registry_change": false,
     "package_change": false,
     "cross_tool_contract_change": false,
     "handshake_required": false,
     "final_word_qa_satisfied": false
   },
   "runtime_source_baseline": {
-    "version": "v1.9.10",
-    "merge_commit": "444b650541ac7c8647f571282ec7e6187dba6fea",
-    "reviewed_head": "1a905905e2181d99fb90ba01a3512411de44ae24",
-    "runtime_sha256": "a282173c4a8ea23e59d6091a5f68c09757393df2c2d18b92b72569f69310f91c"
+    "version": "v1.9.11",
+    "merge_commit": "b070a6a7bd6909b4633964e0b5d0b307ef509a81",
+    "reviewed_head": "276ded41fcde9ebca0990cc1aad56fe816f7a285",
+    "runtime_sha256": "4e2db5ccf4a520519a0f6845d36ec7f543febf3b45b9a9934cf48ce4d61bc3f6"
   },
   "built_in_profile_registry": {
     "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json",
     "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
     "registry_schema": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json",
+    "registry_schema_sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
     "custom_definitions_supported": false,
     "changed_in_release": false
   },
-  "promotion": {
+  "baseline_promotion": {
     "pull_request": 68,
     "reviewed_head": "276ded41fcde9ebca0990cc1aad56fe816f7a285",
     "merge_commit": "b070a6a7bd6909b4633964e0b5d0b307ef509a81",
     "issue_closed": 67,
-    "verdict": "passed",
-    "validation": {
-      "repository": "passed",
-      "playwright_runtime_and_axe": "passed",
-      "visual_regression": "passed",
-      "windows_file_origin": "passed"
-    }
+    "verdict": "passed"
   },
-  "protected_main_at_start": "f08daa8a7b8923a6656064d6158ece62df943292"
+  "protected_main_at_start": "a2b721bb97b2d3d1c182c0711158cfae02c6b349"
 }
