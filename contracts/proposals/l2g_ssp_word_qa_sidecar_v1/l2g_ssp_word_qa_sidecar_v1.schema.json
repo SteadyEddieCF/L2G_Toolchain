@@ -1,0 +1,454 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0",
+  "title": "L2G SSP Word QA Sidecar v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_kind",
+    "package_version",
+    "schema_uri",
+    "sidecar_id",
+    "created_at",
+    "producer",
+    "consumer",
+    "scope",
+    "source",
+    "artifact",
+    "qa_profile",
+    "checks",
+    "aggregate",
+    "operator_assertions",
+    "lineage",
+    "authority",
+    "package_fingerprint"
+  ],
+  "properties": {
+    "package_kind": {
+      "const": "l2g_ssp_word_qa_sidecar_v1"
+    },
+    "package_version": {
+      "const": "1.0"
+    },
+    "schema_uri": {
+      "const": "urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0"
+    },
+    "sidecar_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "producer": {
+      "$ref": "#/$defs/producer"
+    },
+    "consumer": {
+      "$ref": "#/$defs/consumer"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "artifact": {
+      "$ref": "#/$defs/artifact"
+    },
+    "qa_profile": {
+      "$ref": "#/$defs/qa_profile"
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "items": {
+        "$ref": "#/$defs/check"
+      }
+    },
+    "aggregate": {
+      "$ref": "#/$defs/aggregate"
+    },
+    "operator_assertions": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "$ref": "#/$defs/assertion"
+      }
+    },
+    "lineage": {
+      "$ref": "#/$defs/lineage"
+    },
+    "authority": {
+      "$ref": "#/$defs/authority"
+    },
+    "package_fingerprint": {
+      "$ref": "#/$defs/hash"
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tool",
+        "version",
+        "instance_id"
+      ],
+      "properties": {
+        "tool": {
+          "const": "builder-merger"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "instance_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      }
+    },
+    "consumer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tool",
+        "minimum_version"
+      ],
+      "properties": {
+        "tool": {
+          "const": "ssp"
+        },
+        "minimum_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "portfolio_id",
+        "module_id"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "single-system",
+            "portfolio-module"
+          ]
+        },
+        "portfolio_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "module_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ssp_release_version",
+        "working_data_schema_version",
+        "document_version",
+        "review_package_id",
+        "source_ssp_fingerprint",
+        "source_snapshot_sha256",
+        "word_export_manifest_sha256"
+      ],
+      "properties": {
+        "ssp_release_version": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "working_data_schema_version": {
+          "const": "1.9.11"
+        },
+        "document_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "review_package_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180
+        },
+        "source_ssp_fingerprint": {
+          "$ref": "#/$defs/hash"
+        },
+        "source_snapshot_sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "word_export_manifest_sha256": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file_name",
+        "media_type",
+        "sha256",
+        "size_bytes"
+      ],
+      "properties": {
+        "file_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180,
+          "pattern": "^[^/\\\\]+\\.docx$"
+        },
+        "media_type": {
+          "const": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        "sha256": {
+          "$ref": "#/$defs/hash"
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1073741824
+        }
+      }
+    },
+    "qa_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "const": "l2g-builder-merger-final-word-qa-v1"
+        },
+        "version": {
+          "const": "1.0"
+        },
+        "sha256": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check_id",
+        "classification",
+        "result",
+        "severity",
+        "summary",
+        "evidence_refs"
+      ],
+      "properties": {
+        "check_id": {
+          "type": "string",
+          "pattern": "^WQA-[A-Z0-9-]{2,60}$"
+        },
+        "classification": {
+          "enum": [
+            "automated",
+            "human"
+          ]
+        },
+        "result": {
+          "enum": [
+            "pass",
+            "fail",
+            "needs-human-review",
+            "not-applicable"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "blocking",
+            "advisory"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "evidence_refs": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "maxLength": 500
+          }
+        }
+      }
+    },
+    "aggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "pass",
+        "fail",
+        "needs_human_review",
+        "not_applicable"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "qa_complete",
+            "qa_blocked",
+            "qa_incomplete"
+          ]
+        },
+        "pass": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fail": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "needs_human_review": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_applicable": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check_id",
+        "local_id",
+        "display_name",
+        "asserted_at",
+        "locally_asserted",
+        "authenticated",
+        "digital_signature"
+      ],
+      "properties": {
+        "check_id": {
+          "type": "string"
+        },
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "asserted_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "locally_asserted": {
+          "const": true
+        },
+        "authenticated": {
+          "const": false
+        },
+        "digital_signature": {
+          "const": false
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lineage_key",
+        "attempt_number",
+        "supersedes_sidecar_id"
+      ],
+      "properties": {
+        "lineage_key": {
+          "$ref": "#/$defs/hash"
+        },
+        "attempt_number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "supersedes_sidecar_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "final_word_qa_evidence_only",
+        "cmmc_readiness",
+        "compliance",
+        "assessment",
+        "certification",
+        "scoring",
+        "client_release_approval",
+        "authenticated_identity",
+        "digital_signature"
+      ],
+      "properties": {
+        "final_word_qa_evidence_only": {
+          "const": true
+        },
+        "cmmc_readiness": {
+          "const": false
+        },
+        "compliance": {
+          "const": false
+        },
+        "assessment": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "scoring": {
+          "const": false
+        },
+        "client_release_approval": {
+          "const": false
+        },
+        "authenticated_identity": {
+          "const": false
+        },
+        "digital_signature": {
+          "const": false
+        }
+      }
+    }
+  }
+}
