@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.16",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.16.html",
   "runtime_sha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
-  "status": "release_candidate_pending_review",
-  "next_action": "Independent review of issue #87 Review Workspace compact-header parity; after promotion and reconciliation, stop implementation and prepare the separately reviewed RG-4 SSP/Builder-Merger handshake plan",
+  "status": "current_supplied_release",
+  "next_action": "Stop SSP implementation and prepare the separately reviewed RG-4 SSP/Builder-Merger final Word-QA sidecar handshake-planning package",
   "recorded_at": "2026-07-29",
   "operating_modes": {
     "default": "single-system",
@@ -92,6 +92,20 @@
     "merge_commit": "0045dfd52ccf9e5a4bb7576b9d4b5d5d065091f4",
     "issue_closed": 79,
     "verdict": "passed"
+  },
+  "promotion": {
+    "pull_request": 88,
+    "reviewed_head": "a748a9ef2650d4196710300874d6218337e4ff2f",
+    "merge_commit": "db7a45d7250661dd19dbb83d93c2bdcdfc4218bf",
+    "issue_closed": 87,
+    "verdict": "passed",
+    "validation": {
+      "repository": "passed",
+      "exact_materialization_and_static": "passed",
+      "playwright_runtime_and_axe": "passed",
+      "visual_regression": "passed",
+      "windows_file_origin": "passed"
+    }
   },
   "protected_main_at_start": "e46d88ca16a8591cb2877f2101115d83af4f03ac"
 }
