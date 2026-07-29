@@ -1,0 +1,37 @@
+{
+  "release": "1.9.15",
+  "issue": 79,
+  "focus": "Needs Attention Work-Area Compaction",
+  "baselineRuntime": "CMMC_L2_SSP_Modern_Editable_v1.9.14.html",
+  "baselineRuntimeSha256": "8edd518e9b34b36c2d4795890e54412a12724ee54d758f97574f64764578d45e",
+  "runtimeOutput": "CMMC_L2_SSP_Modern_Editable_v1.9.15.html",
+  "runtimeOutputSha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361",
+  "patchSha256": "d14e3601765614ae7a20e1844c48fd26ca78759980914a4bb1c60fb2eba67aab",
+  "compressedPatchSha256": "e88a155d0f02cde0da21a6f11d545ecf65e4b27c4ba08c86a025026379d3b356",
+  "encodedPatchSha256": "0414bdd914babede5d29c1bb5491343ee0a4192cb41e601134908ff078211d08",
+  "governedArtifacts": {
+    "workingDataSchema": {
+      "version": "1.9.11",
+      "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+      "changed": false
+    },
+    "builtInProfileRegistry": {
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    },
+    "packageContractsChanged": false,
+    "crossToolHandshakeRequired": false
+  },
+  "changes": [
+    "adaptive collapsible Needs Attention tools panel",
+    "laptop-height default collapse",
+    "session-only manual density preference",
+    "single-row desktop filters",
+    "compact count summary cells",
+    "single-line laptop header explanation"
+  ]
+}
