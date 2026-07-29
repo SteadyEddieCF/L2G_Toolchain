@@ -1,0 +1,28 @@
+{
+  "release": "1.9.16",
+  "issue": 87,
+  "focus": "Review Workspace Compact Header Parity",
+  "baselineRuntime": "CMMC_L2_SSP_Modern_Editable_v1.9.15.html",
+  "baselineRuntimeSha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361",
+  "runtimeOutput": "CMMC_L2_SSP_Modern_Editable_v1.9.16.html",
+  "runtimeOutputSha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+  "patchSha256": "ce4609552ee0c8cb29b500e4a741734ea25abe2fcabe4de5bd99183b5f58a8ce",
+  "compressedPatchSha256": "fc50b1cb3a213effea588102d6e87e6277536567368c4ce6d99050f66248c0aa",
+  "encodedPatchSha256": "49c2ac9d777516870ccf17766cf3da00c2b2ef895c007e2345e74ae2aa244883",
+  "governedArtifacts": {
+    "workingDataSchema": {"version": "1.9.11", "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251", "changed": false},
+    "builtInProfileRegistry": {"sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2", "changed": false},
+    "registrySchema": {"sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f", "changed": false},
+    "packageContractsChanged": false,
+    "crossToolHandshakeRequired": false
+  },
+  "changes": [
+    "accessible Review setup & summary toggle",
+    "laptop-height default collapse",
+    "tall-desktop default expansion",
+    "session-only manual preference",
+    "always-visible compact profile/scope/output/adoption/progression summary",
+    "reclaimed staged-review work area",
+    "hidden decorative setup scrollbar with retained scrolling"
+  ]
+}
