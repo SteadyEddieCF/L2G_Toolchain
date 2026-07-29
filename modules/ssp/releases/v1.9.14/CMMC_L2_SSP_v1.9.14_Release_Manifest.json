@@ -1,0 +1,24 @@
+{
+  "module": "CMMC L2 SSP Modern Editable",
+  "version": "1.9.14",
+  "issue": 76,
+  "focus": "Command Surface and Modal Chrome Consolidation",
+  "baseline": {
+    "version": "1.9.13",
+    "runtimeSha256": "1b36a7c2664df97ae468ef85ea1ac0d8ddcf8426433e8a7e5a12ef603836a3da",
+    "promotionMerge": "56c9800af4b84fcc4720ef33937b30533131a8c5",
+    "reviewedHead": "26a0697da3da63aa04cb4e2270ba1c96dd52b5ba"
+  },
+  "candidate": {
+    "runtimeFilename": "CMMC_L2_SSP_Modern_Editable_v1.9.14.html",
+    "runtimeSha256": "8edd518e9b34b36c2d4795890e54412a12724ee54d758f97574f64764578d45e"
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {"version":"1.9.11","sha256":"7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251","changed":false},
+    "builtInProfileRegistry": {"sha256":"8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2","changed":false},
+    "registrySchema": {"sha256":"a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f","changed":false},
+    "packageContractsChanged": false,
+    "crossToolHandshakeRequired": false
+  },
+  "authoritativeRequirements": 110
+}

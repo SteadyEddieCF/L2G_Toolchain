@@ -1,0 +1,28 @@
+{
+  "release": "v1.9.14",
+  "issue": 76,
+  "focus": "Command Surface and Modal Chrome Consolidation",
+  "protectedMainAtAuthorization": "0d73512826d34d87705acfd46abb492a6f2ac761",
+  "baselineRuntime": "v1.9.13",
+  "baselineRuntimeSha256": "1b36a7c2664df97ae468ef85ea1ac0d8ddcf8426433e8a7e5a12ef603836a3da",
+  "runtimeOutputSha256": "8edd518e9b34b36c2d4795890e54412a12724ee54d758f97574f64764578d45e",
+  "workingDataSchemaSha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+  "builtInProfileRegistrySha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+  "registrySchemaSha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+  "runtimePatch": {
+    "parts": ["runtime-v1.9.13-to-v1.9.14.patch.xz.b64.part00"],
+    "payloadSha256": "31be903030bfc6af084f0a8f2ca59dc9830893472ed2e0f3fe14c3bfb77587d3",
+    "xzSha256": "0d47a8c776ad1adc0bd1f4b5e04c7df25c1e9851fe3fc5c22e268ff61aa8623d",
+    "encodedSha256": "97e63b22444ef1581c5ad7f50d8f4aa310762dbd624c24825bd73cf2108d075d",
+    "bytes": 65306,
+    "compressedBytes": 12488,
+    "encodedBytes": 16652
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {"version":"1.9.11","sha256":"7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251","changed":false},
+    "builtInProfileRegistry": {"version":"1.9.9","sha256":"8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2","changed":false},
+    "registrySchema": {"version":"1.1","sha256":"a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f","changed":false},
+    "packageContractsChanged": false,
+    "crossToolHandshakeRequired": false
+  }
+}
