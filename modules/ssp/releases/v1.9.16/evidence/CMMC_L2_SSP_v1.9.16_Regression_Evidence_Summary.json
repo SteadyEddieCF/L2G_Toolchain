@@ -1,0 +1,17 @@
+{
+  "release": "v1.9.16",
+  "localVerification": "passed",
+  "runtimeSha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+  "viewports": {
+    "1366x768": {"defaultExpanded": false, "headerHeight": 51, "summaryHeight": 45, "bodyHeight": 597.6},
+    "1440x900": {"defaultExpanded": false, "headerHeight": 51, "summaryHeight": 45, "bodyHeight": 727.0},
+    "1536x864": {"defaultExpanded": false, "headerHeight": 51, "summaryHeight": 45, "bodyHeight": 691.7},
+    "1668x1030": {"defaultExpanded": true, "headerHeight": 75, "summaryHeight": 45, "bodyHeight": 524.0},
+    "1920x1080": {"defaultExpanded": true, "headerHeight": 75, "summaryHeight": 45, "bodyHeight": 524.0}
+  },
+  "governedDataMutationFromToggle": false,
+  "authoritativeRequirements": 110,
+  "errors": [],
+  "consoleErrors": [],
+  "externalRequests": []
+}
