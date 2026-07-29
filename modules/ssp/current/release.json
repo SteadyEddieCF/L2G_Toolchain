@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.15",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.15.html",
   "runtime_sha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361",
-  "status": "release_candidate_pending_review",
-  "next_action": "Independent review of issue #79 Needs Attention work-area compaction; RG-4 Builder/Merger final Word-QA sidecar remains the next separately authorized handshake release",
+  "status": "current_supplied_release",
+  "next_action": "RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a separately authorized joint SSP/Builder-Merger handshake release before implementation",
   "recorded_at": "2026-07-29",
   "operating_modes": {
     "default": "single-system",
@@ -92,6 +92,19 @@
     "merge_commit": "ac74613bed30c38dec2f554d028396fe54be7432",
     "issue_closed": 76,
     "verdict": "passed"
+  },
+  "promotion": {
+    "pull_request": 80,
+    "reviewed_head": "19efc8ba7c0e3d3b8d210d65e0404fab5501f065",
+    "merge_commit": "0045dfd52ccf9e5a4bb7576b9d4b5d5d065091f4",
+    "issue_closed": 79,
+    "verdict": "passed",
+    "validation": {
+      "repository": "passed",
+      "playwright_runtime_and_axe": "passed",
+      "visual_regression": "passed",
+      "windows_file_origin": "passed"
+    }
   },
   "protected_main_at_start": "8bd247a97c93ae223ffa272f83414e4055aa1892"
 }
