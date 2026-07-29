@@ -2,10 +2,10 @@
 
 Local/offline SSP authoring and Word Review round-trip module with Workshop handoff/return integration.
 
-- Current release candidate: **v1.9.14 — Command Surface and Modal Chrome Consolidation**
-- Current release focus: **Issue #76 command placement, modal-header compaction, decorative scrollbar suppression, × close controls, and Deliver/State details theming over promoted v1.9.13**
-- Independent review gate: **Keep the v1.9.14 PR draft and unmerged until repository validation, Playwright runtime/axe, visual regression, Windows file-origin smoke, and exact materialization/static checks pass.**
-- Next bounded work after promotion: **RG-4 Builder/Merger final Word-QA sidecar. This is the mandatory SSP/Builder-Merger handshake release and must not begin until its joint contract is separately authorized.**
+- Current supplied release: **v1.9.14 — Command Surface and Modal Chrome Consolidation**
+- Current release focus: **Completed issue #76 command placement, modal-header compaction, decorative scrollbar suppression, × close controls, and Deliver/State details theming over promoted v1.9.13**
+- Promotion gate: **PR #77 passed repository validation, Playwright runtime/axe, visual regression, Windows file-origin smoke, and exact v1.9.14 materialization/static checks before merge.**
+- Next bounded work: **RG-4 Builder/Merger final Word-QA sidecar. This is the mandatory SSP/Builder-Merger handshake release and must not begin until its joint contract is separately authorized.**
 
 Single-System remains the default. Portfolio mode remains Advanced and optional. Every module retains exactly 110 authoritative requirements. v1.9.14 retains the v1.9.11 working-data schema, built-in profile v0.1/v0.2, RG-1/RG-2/UX-3/RG-3 evidence, Word Review behavior, and all existing package contracts. The release changes only SSP presentation and responsive interaction behavior.
 

@@ -4,8 +4,8 @@
   "release_path": "modules/ssp/releases/v1.9.14",
   "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.14.html",
   "runtime_sha256": "8edd518e9b34b36c2d4795890e54412a12724ee54d758f97574f64764578d45e",
-  "status": "release_candidate_pending_review",
-  "next_action": "Independent review of issue #76 command-surface and modal-chrome consolidation; RG-4 Builder/Merger final Word-QA sidecar remains the next separately authorized handshake release",
+  "status": "current_supplied_release",
+  "next_action": "RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a separately authorized joint SSP/Builder-Merger handshake release before implementation",
   "recorded_at": "2026-07-29",
   "operating_modes": {"default": "single-system", "optional": "modular-portfolio-advanced"},
   "stable_contracts": {
@@ -83,6 +83,19 @@
     "merge_commit": "56c9800af4b84fcc4720ef33937b30533131a8c5",
     "issue_closed": 73,
     "verdict": "passed"
+  },
+  "promotion": {
+    "pull_request": 77,
+    "reviewed_head": "72c432840f5b706f0f5f592fac5d26f089687206",
+    "merge_commit": "ac74613bed30c38dec2f554d028396fe54be7432",
+    "issue_closed": 76,
+    "verdict": "passed",
+    "validation": {
+      "repository": "passed",
+      "playwright_runtime_and_axe": "passed",
+      "visual_regression": "passed",
+      "windows_file_origin": "passed"
+    }
   },
   "protected_main_at_start": "0d73512826d34d87705acfd46abb492a6f2ac761"
 }
