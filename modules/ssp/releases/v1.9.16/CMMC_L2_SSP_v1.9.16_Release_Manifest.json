@@ -1,0 +1,34 @@
+{
+  "module": "CMMC L2 SSP Modern Editable",
+  "version": "1.9.16",
+  "issue": 87,
+  "focus": "Review Workspace Compact Header Parity",
+  "baseline": {
+    "version": "1.9.15",
+    "runtimeSha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361",
+    "promotionMerge": "0045dfd52ccf9e5a4bb7576b9d4b5d5d065091f4",
+    "reviewedHead": "19efc8ba7c0e3d3b8d210d65e0404fab5501f065"
+  },
+  "candidate": {
+    "runtimeFilename": "CMMC_L2_SSP_Modern_Editable_v1.9.16.html",
+    "runtimeSha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765"
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {
+      "version": "1.9.11",
+      "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+      "changed": false
+    },
+    "builtInProfileRegistry": {
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    },
+    "packageContractsChanged": false,
+    "crossToolHandshakeRequired": false
+  },
+  "authoritativeRequirements": 110
+}
