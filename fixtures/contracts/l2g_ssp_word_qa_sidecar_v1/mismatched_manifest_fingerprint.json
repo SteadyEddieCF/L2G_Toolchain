@@ -1,1 +1,131 @@
-{"package_kind":"l2g_ssp_word_qa_sidecar_v1","package_version":"1.0","schema_uri":"urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0","sidecar_id":"sha256:6f8528ea600fc08b7824faebb9b3bd469235bb5270d672afd3277d3145c84020","created_at":"2026-07-29T20:00:00Z","producer":{"tool":"builder-merger","version":"3.10.0-proposed","instance_id":"local-browser"},"consumer":{"tool":"ssp","minimum_version":"1.9.17-proposed"},"scope":{"mode":"single-system","portfolio_id":null,"module_id":"single-system"},"source":{"ssp_release_version":"1.9.16","working_data_schema_version":"1.9.11","document_version":"1.0","review_package_id":"mcfirecoal-ssp-review-001","source_ssp_fingerprint":"21689ee161b77417332ba6361d668fb26db82ef5fc2fce15775a64e028ddefae","source_snapshot_sha256":"e46027ccf39492c0ff458f8c7722b5a8f55e555f04c691578e8589bddbe6f08c","word_export_manifest_sha256":"be5d906768659363f57d88952b4b32aaf4f88682c021ec2eae0547c2e9ab2c6b"},"artifact":{"file_name":"McFirecoal_SSP_Final.docx","media_type":"application/vnd.openxmlformats-officedocument.wordprocessingml.document","sha256":"6ed0cf702da844eb2f92e62e21347f448f0d4a67d04eff6f2e300ed023717fad","size_bytes":482193},"qa_profile":{"id":"l2g-builder-merger-final-word-qa-v1","version":"1.0","sha256":"6f15f71c55eae48158fdf15cbf65f939359f1073534087a76bfa84c7839bcde7"},"checks":[{"check_id":"WQA-PACKAGE-OPEN","classification":"automated","result":"pass","severity":"blocking","summary":"DOCX package opens and required Open XML parts are readable.","evidence_refs":["docx:[Content_Types].xml","docx:word/document.xml"]},{"check_id":"WQA-SOURCE-IDENTITY","classification":"automated","result":"pass","severity":"blocking","summary":"Embedded SSP export identity reconciles with the sidecar source block.","evidence_refs":["manifest:source_ssp_fingerprint","manifest:review_package_id"]},{"check_id":"WQA-UNRESOLVED-TOKENS","classification":"automated","result":"pass","severity":"blocking","summary":"No governed unresolved placeholder tokens were detected.","evidence_refs":["scan:unresolved-token-count=0"]},{"check_id":"WQA-COMMENTS-REVISIONS","classification":"automated","result":"pass","severity":"blocking","summary":"No unresolved comments or tracked revisions remain in the final artifact.","evidence_refs":["scan:comments=0","scan:revisions=0"]},{"check_id":"WQA-LAYOUT-HUMAN","classification":"human","result":"pass","severity":"blocking","summary":"Locally asserted visual review confirmed headings, tables, page breaks, headers, footers, and numbering are usable.","evidence_refs":["operator:visual-review"]}],"aggregate":{"state":"qa_complete","pass":5,"fail":0,"needs_human_review":0,"not_applicable":0},"operator_assertions":[{"check_id":"WQA-LAYOUT-HUMAN","local_id":"reviewer-local-01","display_name":"Local QA Reviewer","asserted_at":"2026-07-29T19:59:00Z","locally_asserted":true,"authenticated":false,"digital_signature":false}],"lineage":{"lineage_key":"db13f770a5de45f6b01e01e161bb64d341bdfe0e4ac207bbe7cb836d688bed9b","attempt_number":1,"supersedes_sidecar_id":null},"authority":{"final_word_qa_evidence_only":true,"cmmc_readiness":false,"compliance":false,"assessment":false,"certification":false,"scoring":false,"client_release_approval":false,"authenticated_identity":false,"digital_signature":false},"package_fingerprint":"da2ab681e9f617525691c0f350e4d5812fdd71d8029ab9ea80a84758024d2225"}
+{
+  "package_kind": "l2g_ssp_word_qa_sidecar_v1",
+  "package_version": "1.0",
+  "schema_uri": "urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0",
+  "sidecar_id": "sha256:6f8528ea600fc08b7824faebb9b3bd469235bb5270d672afd3277d3145c84020",
+  "created_at": "2026-07-29T20:00:00Z",
+  "producer": {
+    "tool": "builder-merger",
+    "version": "3.10.0-proposed",
+    "instance_id": "local-browser"
+  },
+  "consumer": {
+    "tool": "ssp",
+    "minimum_version": "1.9.17-proposed"
+  },
+  "scope": {
+    "mode": "single-system",
+    "portfolio_id": null,
+    "module_id": "single-system"
+  },
+  "source": {
+    "ssp_release_version": "1.9.16",
+    "working_data_schema_version": "1.9.11",
+    "document_version": "1.0",
+    "review_package_id": "mcfirecoal-ssp-review-001",
+    "source_ssp_fingerprint": "21689ee161b77417332ba6361d668fb26db82ef5fc2fce15775a64e028ddefae",
+    "source_snapshot_sha256": "e46027ccf39492c0ff458f8c7722b5a8f55e555f04c691578e8589bddbe6f08c",
+    "word_export_manifest_sha256": "be5d906768659363f57d88952b4b32aaf4f88682c021ec2eae0547c2e9ab2c6b"
+  },
+  "artifact": {
+    "file_name": "McFirecoal_SSP_Final.docx",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "sha256": "6ed0cf702da844eb2f92e62e21347f448f0d4a67d04eff6f2e300ed023717fad",
+    "size_bytes": 482193
+  },
+  "qa_profile": {
+    "id": "l2g-builder-merger-final-word-qa-v1",
+    "version": "1.0",
+    "sha256": "6f15f71c55eae48158fdf15cbf65f939359f1073534087a76bfa84c7839bcde7"
+  },
+  "checks": [
+    {
+      "check_id": "WQA-PACKAGE-OPEN",
+      "classification": "automated",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "DOCX package opens and required Open XML parts are readable.",
+      "evidence_refs": [
+        "docx:[Content_Types].xml",
+        "docx:word/document.xml"
+      ]
+    },
+    {
+      "check_id": "WQA-SOURCE-IDENTITY",
+      "classification": "automated",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "Embedded SSP export identity reconciles with the sidecar source block.",
+      "evidence_refs": [
+        "manifest:source_ssp_fingerprint",
+        "manifest:review_package_id"
+      ]
+    },
+    {
+      "check_id": "WQA-UNRESOLVED-TOKENS",
+      "classification": "automated",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "No governed unresolved placeholder tokens were detected.",
+      "evidence_refs": [
+        "scan:unresolved-token-count=0"
+      ]
+    },
+    {
+      "check_id": "WQA-COMMENTS-REVISIONS",
+      "classification": "automated",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "No unresolved comments or tracked revisions remain in the final artifact.",
+      "evidence_refs": [
+        "scan:comments=0",
+        "scan:revisions=0"
+      ]
+    },
+    {
+      "check_id": "WQA-LAYOUT-HUMAN",
+      "classification": "human",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "Locally asserted visual review confirmed headings, tables, page breaks, headers, footers, and numbering are usable.",
+      "evidence_refs": [
+        "operator:visual-review"
+      ]
+    }
+  ],
+  "aggregate": {
+    "state": "qa_complete",
+    "pass": 5,
+    "fail": 0,
+    "needs_human_review": 0,
+    "not_applicable": 0
+  },
+  "operator_assertions": [
+    {
+      "check_id": "WQA-LAYOUT-HUMAN",
+      "local_id": "reviewer-local-01",
+      "display_name": "Local QA Reviewer",
+      "asserted_at": "2026-07-29T19:59:00Z",
+      "locally_asserted": true,
+      "authenticated": false,
+      "digital_signature": false
+    }
+  ],
+  "lineage": {
+    "lineage_key": "db13f770a5de45f6b01e01e161bb64d341bdfe0e4ac207bbe7cb836d688bed9b",
+    "attempt_number": 1,
+    "supersedes_sidecar_id": null
+  },
+  "authority": {
+    "final_word_qa_evidence_only": true,
+    "cmmc_readiness": false,
+    "compliance": false,
+    "assessment": false,
+    "certification": false,
+    "scoring": false,
+    "client_release_approval": false,
+    "authenticated_identity": false,
+    "digital_signature": false
+  },
+  "package_fingerprint": "da2ab681e9f617525691c0f350e4d5812fdd71d8029ab9ea80a84758024d2225"
+}
