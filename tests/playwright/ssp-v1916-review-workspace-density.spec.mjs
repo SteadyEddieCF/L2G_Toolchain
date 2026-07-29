@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 const path = '/modules/ssp/releases/v1.9.16/CMMC_L2_SSP_Modern_Editable_v1.9.16.html';
 const captureErrors = (page) => {
@@ -62,4 +63,13 @@ test('SSP v1.9.16 preserves explicit adoption, keyboard focus, themes, print sup
   await page.keyboard.press('Escape'); await expect(page.locator('#rg2Modal')).toBeHidden(); await expect(page.locator('#reviewWorkspaceBtn')).toBeFocused();
   await page.evaluate(()=>document.body.classList.remove('dark')); await openReview(page); await expect(page.locator('#rg2Modal')).toBeVisible();
   expect(errors.externalRequests).toEqual([]); expect(errors.pageErrors).toEqual([]); expect(errors.consoleErrors).toEqual([]);
+});
+
+test('SSP v1.9.16 Review Workspace passes bounded axe-core scan', async ({ page }, testInfo) => {
+  await page.setViewportSize({width:1440,height:900}); await page.goto(path,{waitUntil:'domcontentloaded'}); await openReview(page);
+  await page.locator('#rg2SetupToggle').click();
+  const results=await new AxeBuilder({page}).include('#rg2Modal').withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa']).analyze();
+  await testInfo.attach('ssp-v1916-review-axe.json',{body:Buffer.from(JSON.stringify(results,null,2)),contentType:'application/json'});
+  const critical=results.violations.filter(v=>v.impact==='critical');
+  expect(critical,JSON.stringify(critical,null,2)).toEqual([]);
 });
