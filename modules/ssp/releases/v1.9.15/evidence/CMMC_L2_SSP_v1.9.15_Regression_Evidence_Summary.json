@@ -1,0 +1,107 @@
+{
+  "release": "v1.9.15",
+  "localVerification": "passed",
+  "runtimeSha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361",
+  "measurements": {
+    "1366x768": {
+      "expanded": "false",
+      "toggleText": "Filters & queue summary · 2 visible · 1 high",
+      "headerHeight": 51.0625,
+      "bodyHeight": 699.5625,
+      "cardHeight": 752.625,
+      "panelVisible": false,
+      "panelHeight": 0,
+      "contentScrollbarWidth": "none",
+      "controlsScrollWidth": 0,
+      "controlsClientWidth": 0,
+      "release": "1.9.15",
+      "app": "1.9.15",
+      "schema": "cmmc-l2-ssp-modern-v1.9.11",
+      "controls": 110,
+      "expandedMetrics": {
+        "expanded": "true",
+        "panelHeight": 130.25,
+        "filterRows": [96,96,96,96,96,96],
+        "statHeight": 34,
+        "bodyHeight": 569.3125
+      },
+      "manualOverridePersisted": "false"
+    },
+    "1440x900": {
+      "expanded": "false",
+      "toggleText": "Filters & queue summary · 2 visible · 1 high",
+      "headerHeight": 51.0625,
+      "bodyHeight": 828.9375,
+      "cardHeight": 882,
+      "panelVisible": false,
+      "panelHeight": 0,
+      "contentScrollbarWidth": "none",
+      "controlsScrollWidth": 0,
+      "controlsClientWidth": 0,
+      "release": "1.9.15",
+      "app": "1.9.15",
+      "schema": "cmmc-l2-ssp-modern-v1.9.11",
+      "controls": 110,
+      "expandedMetrics": {
+        "expanded": "true",
+        "panelHeight": 130.25,
+        "filterRows": [96,96,96,96,96,96],
+        "statHeight": 34,
+        "bodyHeight": 698.6875
+      },
+      "manualOverridePersisted": "false"
+    },
+    "1668x1030": {
+      "expanded": "true",
+      "toggleText": "Hide filters & queue summary",
+      "headerHeight": 89.375,
+      "bodyHeight": 718.375,
+      "cardHeight": 940,
+      "panelVisible": true,
+      "panelHeight": 130.25,
+      "contentScrollbarWidth": "none",
+      "controlsScrollWidth": 1538,
+      "controlsClientWidth": 1538,
+      "release": "1.9.15",
+      "app": "1.9.15",
+      "schema": "cmmc-l2-ssp-modern-v1.9.11",
+      "controls": 110,
+      "expandedMetrics": {
+        "expanded": "false",
+        "panelHeight": 0,
+        "filterRows": [0,0,0,0,0,0],
+        "statHeight": 0,
+        "bodyHeight": 848.625
+      },
+      "manualOverridePersisted": "true"
+    },
+    "1920x1080": {
+      "expanded": "true",
+      "toggleText": "Hide filters & queue summary",
+      "headerHeight": 89.375,
+      "bodyHeight": 718.375,
+      "cardHeight": 940,
+      "panelVisible": true,
+      "panelHeight": 130.25,
+      "contentScrollbarWidth": "none",
+      "controlsScrollWidth": 1538,
+      "controlsClientWidth": 1538,
+      "release": "1.9.15",
+      "app": "1.9.15",
+      "schema": "cmmc-l2-ssp-modern-v1.9.11",
+      "controls": 110,
+      "expandedMetrics": {
+        "expanded": "false",
+        "panelHeight": 0,
+        "filterRows": [0,0,0,0,0,0],
+        "statHeight": 0,
+        "bodyHeight": 848.625
+      },
+      "manualOverridePersisted": "true"
+    }
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "authoritativeRequirements": 110
+}
