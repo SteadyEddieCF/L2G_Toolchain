@@ -1,11 +1,11 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.15",
-  "release_path": "modules/ssp/releases/v1.9.15",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.15.html",
-  "runtime_sha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361",
-  "status": "current_supplied_release",
-  "next_action": "RG-4 Builder/Merger final Word-QA sidecar is the next SSP workstream and requires a separately authorized joint SSP/Builder-Merger handshake release before implementation",
+  "current_supplied_version": "v1.9.16",
+  "release_path": "modules/ssp/releases/v1.9.16",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.16.html",
+  "runtime_sha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+  "status": "release_candidate_pending_review",
+  "next_action": "Independent review of issue #87 Review Workspace compact-header parity; after promotion and reconciliation, stop implementation and prepare the separately reviewed RG-4 SSP/Builder-Merger handshake plan",
   "recorded_at": "2026-07-29",
   "operating_modes": {
     "default": "single-system",
@@ -62,9 +62,9 @@
     ]
   },
   "release_identity": {
-    "version": "1.9.15",
-    "issue": 79,
-    "focus": "Needs Attention Work-Area Compaction",
+    "version": "1.9.16",
+    "issue": 87,
+    "focus": "Review Workspace Compact Header Parity",
     "schema_change": false,
     "profile_registry_change": false,
     "package_change": false,
@@ -73,10 +73,10 @@
     "final_word_qa_satisfied": false
   },
   "runtime_source_baseline": {
-    "version": "v1.9.14",
-    "merge_commit": "ac74613bed30c38dec2f554d028396fe54be7432",
-    "reviewed_head": "72c432840f5b706f0f5f592fac5d26f089687206",
-    "runtime_sha256": "8edd518e9b34b36c2d4795890e54412a12724ee54d758f97574f64764578d45e"
+    "version": "v1.9.15",
+    "merge_commit": "0045dfd52ccf9e5a4bb7576b9d4b5d5d065091f4",
+    "reviewed_head": "19efc8ba7c0e3d3b8d210d65e0404fab5501f065",
+    "runtime_sha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361"
   },
   "built_in_profile_registry": {
     "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json",
@@ -87,24 +87,11 @@
     "changed_in_release": false
   },
   "baseline_promotion": {
-    "pull_request": 77,
-    "reviewed_head": "72c432840f5b706f0f5f592fac5d26f089687206",
-    "merge_commit": "ac74613bed30c38dec2f554d028396fe54be7432",
-    "issue_closed": 76,
-    "verdict": "passed"
-  },
-  "promotion": {
     "pull_request": 80,
     "reviewed_head": "19efc8ba7c0e3d3b8d210d65e0404fab5501f065",
     "merge_commit": "0045dfd52ccf9e5a4bb7576b9d4b5d5d065091f4",
     "issue_closed": 79,
-    "verdict": "passed",
-    "validation": {
-      "repository": "passed",
-      "playwright_runtime_and_axe": "passed",
-      "visual_regression": "passed",
-      "windows_file_origin": "passed"
-    }
+    "verdict": "passed"
   },
-  "protected_main_at_start": "8bd247a97c93ae223ffa272f83414e4055aa1892"
+  "protected_main_at_start": "e46d88ca16a8591cb2877f2101115d83af4f03ac"
 }
