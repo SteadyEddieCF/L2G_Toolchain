@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import base64, hashlib, lzma, re, subprocess, sys
+ROOT=Path(__file__).resolve().parent
+SOURCE=ROOT/'source'
+BASELINE_ROOT=ROOT.parent/'v1.9.13'
+BASELINE=BASELINE_ROOT/'CMMC_L2_SSP_Modern_Editable_v1.9.13.html'
+BASELINE_MATERIALIZER=BASELINE_ROOT/'materialize.py'
+OUTPUT=ROOT/'CMMC_L2_SSP_Modern_Editable_v1.9.14.html'
+SCHEMA=ROOT.parent/'v1.9.11'/'CMMC_L2_SSP_Data_Schema_v1.9.11.json'
+REGISTRY=ROOT.parent/'v1.9.9'/'CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json'
+REGISTRY_SCHEMA=ROOT.parent/'v1.9.9'/'CMMC_L2_SSP_Built_In_Review_Profile_Registry_Schema_v1.1.json'
+EXPECTED_BASELINE='1b36a7c2664df97ae468ef85ea1ac0d8ddcf8426433e8a7e5a12ef603836a3da'
+EXPECTED_PATCH='31be903030bfc6af084f0a8f2ca59dc9830893472ed2e0f3fe14c3bfb77587d3'
+EXPECTED_RUNTIME='8edd518e9b34b36c2d4795890e54412a12724ee54d758f97574f64764578d45e'
+EXPECTED_SCHEMA='7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251'
+EXPECTED_REGISTRY='8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2'
+EXPECTED_REGISTRY_SCHEMA='a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f'
+EXPECTED_ENCODED='97e63b22444ef1581c5ad7f50d8f4aa310762dbd624c24825bd73cf2108d075d'
+EXPECTED_XZ='0d47a8c776ad1adc0bd1f4b5e04c7df25c1e9851fe3fc5c22e268ff61aa8623d'
+def sha(data): return hashlib.sha256(data).hexdigest()
+def require(label,actual,expected):
+    if actual!=expected: raise SystemExit(f'{label} SHA-256 mismatch: {actual} != {expected}')
+def ensure_baseline():
+    if not BASELINE.exists(): subprocess.run([sys.executable,str(BASELINE_MATERIALIZER)],check=True)
+    require('baseline',sha(BASELINE.read_bytes()),EXPECTED_BASELINE)
+    require('schema',sha(SCHEMA.read_bytes()),EXPECTED_SCHEMA)
+    require('registry',sha(REGISTRY.read_bytes()),EXPECTED_REGISTRY)
+    require('registry schema',sha(REGISTRY_SCHEMA.read_bytes()),EXPECTED_REGISTRY_SCHEMA)
+def apply_unified_diff(source_text,patch_text):
+    source=source_text.splitlines(keepends=True);patch=patch_text.splitlines(keepends=True);out=[];source_i=0;i=0
+    while i<len(patch) and not patch[i].startswith('@@ '): i+=1
+    while i<len(patch):
+        m=re.match(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@',patch[i])
+        if not m: raise SystemExit('invalid patch hunk')
+        old_start=int(m.group(1))-1;out.extend(source[source_i:old_start]);source_i=old_start;i+=1
+        while i<len(patch) and not patch[i].startswith('@@ '):
+            line=patch[i]
+            if line.startswith('\\ No newline at end of file'): i+=1;continue
+            marker,content=line[:1],line[1:]
+            if marker==' ':
+                if source_i>=len(source) or source[source_i]!=content: raise SystemExit('patch context mismatch')
+                out.append(content);source_i+=1
+            elif marker=='-':
+                if source_i>=len(source) or source[source_i]!=content: raise SystemExit('patch removal mismatch')
+                source_i+=1
+            elif marker=='+': out.append(content)
+            else: raise SystemExit('invalid patch marker')
+            i+=1
+    out.extend(source[source_i:]);return ''.join(out)
+ensure_baseline()
+encoded=b''.join(b''.join(p.read_bytes().split()) for p in sorted(SOURCE.glob('runtime-v1.9.13-to-v1.9.14.patch.xz.b64.part*')))
+require('encoded patch',sha(encoded),EXPECTED_ENCODED)
+compressed=base64.b64decode(encoded,validate=True);require('compressed patch',sha(compressed),EXPECTED_XZ)
+patch=lzma.decompress(compressed);require('patch',sha(patch),EXPECTED_PATCH)
+runtime=apply_unified_diff(BASELINE.read_text(encoding='utf-8'),patch.decode('utf-8')).encode('utf-8')
+require('materialized runtime',sha(runtime),EXPECTED_RUNTIME)
+OUTPUT.write_bytes(runtime)
+print(f'materialized {OUTPUT.name} {EXPECTED_RUNTIME}')
+print(f'verified unchanged schema {EXPECTED_SCHEMA}')
+print(f'verified unchanged registry {EXPECTED_REGISTRY}')

@@ -1,0 +1,21 @@
+{
+  "release": "v1.9.14",
+  "runtimeSha256": "8edd518e9b34b36c2d4795890e54412a12724ee54d758f97574f64764578d45e",
+  "viewports": {
+    "1366x768": {"rightGap":10,"horizontalOverflow":0,"undoRedoVisible":true,"importExportIconSize":42},
+    "1440x900": {"rightGap":10,"horizontalOverflow":0,"undoRedoVisible":true,"importExportIconSize":42},
+    "1536x864": {"rightGap":10,"horizontalOverflow":0,"undoRedoVisible":true,"importExportIconSize":42},
+    "1668x1030": {"rightGap":10,"horizontalOverflow":0,"undoRedoVisible":true,"importExportIconSize":42},
+    "1920x1080": {"rightGap":10,"horizontalOverflow":0,"undoRedoVisible":true,"importExportIconSize":42}
+  },
+  "modals": {
+    "review": {"headerHeight":88.515625,"scrollbarWidth":"none","closeSize":36},
+    "needsAttention": {"headerHeight":104.546875,"scrollbarWidth":"none","closeSize":36},
+    "stateDetails": {"headerHeight":88.515625,"bodyClientHeight":500,"bodyScrollHeight":500,"scrollbarWidth":"none","closeSize":36},
+    "deliver": {"headerHeight":88.515625,"bodyClientHeight":380,"bodyScrollHeight":380,"scrollbarWidth":"none","closeSize":36,"focusedClose":true}
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "authoritativeRequirements": 110
+}
