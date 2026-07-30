@@ -82,7 +82,10 @@ def main() -> int:
             raise SystemExit(f'v3.8 baseline not found: {base}')
         base_bytes = base.read_bytes()
         if sha256_bytes(base_bytes) != BASE_SHA256:
-            raise SystemExit('v3.8 baseline hash mismatch')
+            normalized = base_bytes.replace(b'\r\n', b'\n')
+            if sha256_bytes(normalized) != BASE_SHA256:
+                raise SystemExit('v3.8 baseline hash mismatch')
+            base_bytes = normalized
         patch_parts = sorted((script_dir / 'source').glob('patch.*'))
         if not patch_parts:
             raise SystemExit('materializer patch parts are missing')
