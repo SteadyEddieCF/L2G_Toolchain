@@ -1,0 +1,101 @@
+{
+  "release": "L2G Builder/Merger v3.10",
+  "route": "RG-4 SSP Final Word-QA Sidecar Producer",
+  "contract": {
+    "package_kind": "l2g_ssp_word_qa_sidecar_v1",
+    "package_version": "1.0",
+    "schema_sha256": "3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34",
+    "qa_profile_sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c",
+    "lineage_key": "c444c55ee315723ad301455775f2aafb8824895331a8714007c987db2eba5354"
+  },
+  "fixture_bundle": {
+    "size_bytes": 265094,
+    "sha256": "9456f0b04c53d53cb229db566d15dab9ce0105359dba2eaf5a55529b92f16a47",
+    "fixture_validator": "pass"
+  },
+  "sidecars": [
+    {
+      "file": "l2g_ssp_word_qa_sidecar_v1_current_attempt1.json",
+      "state": "qa_complete",
+      "schema_errors": [],
+      "semantic_errors": [],
+      "sha256": "31ad14f35cd2c242a1e0589b33245b34770cd262059772ec59510224ada699cf",
+      "sidecar_id": "sha256:d20ed8de7c04f13e31dbf6e752b8119d761edbccf11f1df9f875d9bb6e320648",
+      "package_fingerprint": "3106ff057745dbefb48c9fc68527008efab884f9d66195b4ab6aaff38ca02971"
+    },
+    {
+      "file": "l2g_ssp_word_qa_sidecar_v1_changed_source_attempt2.json",
+      "state": "qa_complete",
+      "schema_errors": [],
+      "semantic_errors": [],
+      "sha256": "2bb7c44c45fcc8dfee0a06097d5baeacbb8dad08e8561d4e9cacead80fb9ca95",
+      "sidecar_id": "sha256:a6a682842d6c8add2ed6f9a9734bedef7b0b683db83955bac41bc8be53afda22",
+      "package_fingerprint": "3a9d2fb8c3546b5234613f89fc6fb40a836a278fc812666d95b794824220aa7f"
+    },
+    {
+      "file": "l2g_ssp_word_qa_sidecar_v1_qa_incomplete.json",
+      "state": "qa_incomplete",
+      "schema_errors": [],
+      "semantic_errors": [],
+      "sha256": "ce0bbe0d52eea412ec8820f00ea859f65dd4c78ea963e8b762dd8ec8a6a79490",
+      "sidecar_id": "sha256:30c98de64dd58edfbbdb2c8b93bc6fe43126d44710db209f404647451cbd0d82",
+      "package_fingerprint": "81b66c6208e7c0d36b47e1d95ca52b3db8c81149b4e53b23bc8f97d7c774a23b"
+    },
+    {
+      "file": "l2g_ssp_word_qa_sidecar_v1_qa_blocked.json",
+      "state": "qa_blocked",
+      "schema_errors": [],
+      "semantic_errors": [],
+      "sha256": "4c4e9eb02cbc203d98d9412c7e4641f78a2396a18a1f8c12bd5438608799d5f8",
+      "sidecar_id": "sha256:678cb9ea2645012d2bd460982f863e3ebbe7e232d3ec4a3a904a11dc149ebe24",
+      "package_fingerprint": "90fd35b9d621cf1f319c54f94be76a938934614e9a922f998eb64ec375751d82"
+    }
+  ],
+  "deterministic_repeat": {
+    "identical_bytes": true,
+    "sha256": "31ad14f35cd2c242a1e0589b33245b34770cd262059772ec59510224ada699cf",
+    "sidecar_id": "sha256:d20ed8de7c04f13e31dbf6e752b8119d761edbccf11f1df9f875d9bb6e320648",
+    "package_fingerprint": "3106ff057745dbefb48c9fc68527008efab884f9d66195b4ab6aaff38ca02971"
+  },
+  "real_clock_behavior": {
+    "different_seconds_produce_different_ids": true,
+    "first_sidecar_id": "sha256:9f484ccd5a58b97f7e03a5203b06a0da312540e7e5c1831bb8fb18d30d7446cc",
+    "second_sidecar_id": "sha256:26e25876100b3f7f3174fb04615e2771684e79679563332d34ed898df5b71d26"
+  },
+  "negative_tests": {
+    "duplicate_key_rejected": true,
+    "semantic_rejections": {
+      "aggregate_mismatch": ["sidecar-id", "package-fingerprint", "aggregate"],
+      "profile_order": ["profile-order", "sidecar-id", "package-fingerprint"],
+      "lineage_mismatch": ["lineage", "sidecar-id", "package-fingerprint"],
+      "source_snapshot_mismatch": ["sidecar-id", "package-fingerprint", "source-snapshot"]
+    },
+    "malformed_open_xml_rejected": true,
+    "path_traversal_rejected": true,
+    "artifact_mismatch_detected": true,
+    "manifest_mismatch_detected": true
+  },
+  "existing_routes": {
+    "workbook_handoff_1_7": "preserved",
+    "workbook_merge_1_1": "preserved; runtime metadata corrected from pre-existing v3.8 value 1.0 to registry value 1.1",
+    "builder_decision_plan_1_0": "preserved",
+    "external_csv": "preserved"
+  },
+  "authority": {
+    "route_validated": false,
+    "source_currency_determined": false,
+    "acceptance_determined": false,
+    "supersession_determined": false
+  },
+  "runtime": {
+    "file": "L2G-BM_v3.10.html",
+    "size_bytes": 775189,
+    "sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17"
+  },
+  "browser_execution": {
+    "exact_html_bytes_via_set_content": "pass",
+    "native_windows_chromium_file_url": "not_executed_in_managed_container; navigation blocked by administrator policy",
+    "axe_core": "delegated_to_repository_playwright_ci; local package unavailable",
+    "page_errors": 0
+  }
+}
