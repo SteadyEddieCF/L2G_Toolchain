@@ -1,0 +1,35 @@
+{
+  "registration_kind": "rg4_ssp_word_export_fixture_attachment_v1",
+  "attachment_file_name": "rg4_ssp_word_export_fixtures_v1(1).zip",
+  "attachment_sha256": "9456f0b04c53d53cb229db566d15dab9ce0105359dba2eaf5a55529b92f16a47",
+  "attachment_size_bytes": 265094,
+  "independent_validation": {
+    "status": "passed",
+    "all_declared_hashes_reconciled": true,
+    "docx_open_xml_valid": true,
+    "embedded_manifests_match_companions": true,
+    "external_relationships_found": false,
+    "active_content_found": false,
+    "controlled_governed_source_diff_count": 1,
+    "controlled_governed_source_diff_path": "/source/fields/token:SYSTEM_PURPOSE_AND_FUNCTION"
+  },
+  "current": {
+    "docx_file_name": "ssp_current.docx",
+    "docx_sha256": "3a124539c41057f88591c06076b21590d30ccf5eea55b078bf4531cedf005642",
+    "docx_size_bytes": 79843,
+    "word_export_manifest_sha256": "3d44ac9f6fca71f07e34a50f4cd4be838b3e897b43b565afbd5fe3f13359181e",
+    "source_ssp_fingerprint": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "source_snapshot_sha256": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "review_package_id": "SSP-REV-20260730-133000-4FZZ"
+  },
+  "changed_source": {
+    "docx_file_name": "ssp_changed_source.docx",
+    "docx_sha256": "36d86ce025183757050f9157b9bbed59e752d0a24fa7480884962e3d37090c7a",
+    "docx_size_bytes": 80037,
+    "word_export_manifest_sha256": "fd2c553716ed1a99cf39f8ac1fee7b0417a6fb0f7519097544b411b8c842b6eb",
+    "source_ssp_fingerprint": "c4320e890630b90830b9c0d71b7ea35e0803e6a74cb4f6a86e1f54a73e90eaeb",
+    "source_snapshot_sha256": "c4320e890630b90830b9c0d71b7ea35e0803e6a74cb4f6a86e1f54a73e90eaeb",
+    "review_package_id": "SSP-REV-20260730-133500-4FZZ"
+  },
+  "transport_rule": "The exact ZIP attachment is mandatory input to Builder/Merger issue #92 and must match this SHA-256 before use. The repository registration is not a substitute for hashing the supplied bytes."
+}
