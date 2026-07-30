@@ -1,0 +1,95 @@
+     <div class="eyebrow">Local/offline L2G workbook loop</div>
+-    <h1>L2G Builder/Merger <span class="small">L2G-BM v3.8</span></h1>
+-    <p>A local/offline bridge for the full workbook loop: <strong>Workshop Handoff → generated or existing workbook → Workbook Merge return</strong>. v3.8 adds a persistent exception-resolution ledger, decision-plan import/export, an optional unresolved-decision execution gate, downloadable governance ZIP packs, and an embedded rolling release roadmap while preserving the v3.7 compatibility and three-stage diff model. Build mode uses the embedded L2G Builder Template v2 when no template is uploaded; Merge mode returns reviewed workbook results through <code>l2g_workbook_merge_v1.json</code>; External CSV mode remains a literal CSV-to-XLSX path.</p>
++    <h1>L2G Builder/Merger <span class="small">L2G-BM v3.10</span></h1>
++    <p>A local/offline bridge for the full workbook loop: <strong>Workshop Handoff → generated or existing workbook → Workbook Merge return</strong>. v3.10 adds the bounded RG-4 SSP Final Word-QA Sidecar producer while preserving the v3.8 exception-resolution ledger, compatibility governance, decision-plan workflow, and three-stage workbook diff. Build mode uses the embedded L2G Builder Template v2 when no template is uploaded; Merge mode returns reviewed workbook results through <code>l2g_workbook_merge_v1.json</code>; External CSV mode remains a literal CSV-to-XLSX path.</p>
+     <div class="callout"><strong>Safety guardrail:</strong> Build mode adds workshop context only and does not auto-mark practices/objectives as Met, Not Met, Fully Implemented, Evidence Sufficient, Objective Validated, Workbook Validated, Assessment Ready, Final CMMC Status, or Final Score. Merge mode exports workbook-derived status because the source is the reviewed Gap Analysis Workbook.</div>
+-    <div class="mode-select" role="tablist" aria-label="Builder/Merger mode">
+-      <button id="modeBuildBtn" class="active" type="button" role="tab" aria-selected="true" onclick="switchMode('build')">Build Workbook</button>
+-      <button id="modeMergeBtn" type="button" role="tab" aria-selected="false" onclick="switchMode('merge')">Merge Workbook</button>
+-      <button id="modeExternalCsvBtn" type="button" role="tab" aria-selected="false" onclick="switchMode('externalCsv')">Create from External CSV</button>
++    <div class="mode-select">
++      <div class="mode-tabs" role="tablist" aria-label="Builder/Merger mode">
++        <button id="modeBuildBtn" class="active" type="button" role="tab" aria-selected="true" aria-controls="buildModePanel" onclick="switchMode('build')">Build Workbook</button>
++        <button id="modeMergeBtn" type="button" role="tab" aria-selected="false" aria-controls="mergeModePanel" onclick="switchMode('merge')">Merge Workbook</button>
++        <button id="modeExternalCsvBtn" type="button" role="tab" aria-selected="false" aria-controls="externalCsvModePanel" onclick="switchMode('externalCsv')">Create from External CSV</button>
++        <button id="modeWordQaBtn" type="button" role="tab" aria-selected="false" aria-controls="wordQaModePanel" onclick="switchMode('wordQa')">SSP Final Word-QA</button>
++      </div>
++      <button id="wordQaThemeBtn" type="button" aria-pressed="false">Light theme</button>
+       <button id="clearBtn" class="clear" type="button">Clear local session</button>
+     </div>
+     <div id="status" class="status">Ready. Files stay in this browser process and are not transmitted.</div>
+@@ -5837,13 +5959,13 @@
+         <section class="card span-6">
+           <h2><span class="step-label">1</span>Upload blank/template workbook <span class="muted">(optional)</span></h2>
+           <p class="muted">Upload a client-specific template when needed, or leave this blank to use the embedded <strong>L2G Builder Template v2</strong>. L2G-BM preserves existing sheets and formulas, writes short official workbook notes only, populates L2G Advisor Review for concise review/report findings, uses L2G Detail Register for long source detail and traceability, and populates an existing JSON Import tab when present.</p>
+-          <input id="workbookFile" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
++          <input id="workbookFile" type="file" aria-label="Blank or template Gap Analysis workbook" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+           <p id="workbookSummary" class="muted">No workbook loaded. If you upload a Workbook Handoff without a template, the embedded L2G Builder Template v2 will be used.</p>
+         </section>
+         <section class="card span-6">
+           <h2><span class="step-label">2</span>Upload Workbook Handoff</h2>
+           <p class="muted">Primary input: <code>l2g_workbook_handoff_v1.json</code> from CMMC L2 Gap Workshop Tool v46-v54 or later. Also accepts older state JSON, CRM practice records JSON, and legacy Workbook Handoff XML.</p>
+-          <input id="handoffFile" type="file" accept=".json,.xml,.txt,application/json,text/xml">
++          <input id="handoffFile" type="file" aria-label="Workbook Handoff package" accept=".json,.xml,.txt,application/json,text/xml">
+           <p id="handoffSummary" class="muted">No handoff package loaded.</p>
+         </section>
+ 
+@@ -6086,9 +6208,97 @@
+         </section>
+       </div>
+     </section>
++    <section id="wordQaModePanel" class="mode-panel" role="tabpanel" aria-labelledby="modeWordQaBtn">
++      <div class="grid">
++        <section class="card section-head">
++          <h2>SSP Final Word-QA Sidecar</h2>
++          <p class="muted">Bounded RG-4 producer for one exact SSP-generated DOCX. The source document is inspected without modification. This route emits final Word-QA evidence only and does not determine source currency, readiness, compliance, assessment, certification, scoring, technical accuracy, evidence sufficiency, or client-release approval.</p>
++          <div class="wqa-flow" aria-label="Word QA workflow">
++            <div><strong>1. Select DOCX</strong>Read exact local bytes.</div>
++            <div><strong>2. Inspect package</strong>Validate Open XML and source identity.</div>
++            <div><strong>3. Complete layout review</strong>Record one local unauthenticated assertion.</div>
++            <div><strong>4. Preview sidecar</strong>Reconcile checks, aggregate, lineage, and hashes.</div>
++            <div><strong>5. Export JSON</strong>Download one contract 1.0 sidecar.</div>
++          </div>
++        </section>
++
++        <section class="card span-6">
++          <h2><span class="step-label">1</span>Select SSP-generated DOCX</h2>
++          <input id="wordQaDocxFile" aria-label="Select SSP-generated DOCX" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
++          <p id="wordQaFileSummary" class="muted">No DOCX loaded.</p>
++          <div class="btnrow">
++            <button id="wordQaInspectBtn" class="primary" disabled>Inspect exact DOCX</button>
++            <button id="wordQaResetBtn" disabled>Clear Word-QA route</button>
++          </div>
++        </section>
++
++        <section class="card span-6">
++          <h2><span class="step-label">2</span>Attempt and deterministic-output controls</h2>
++          <div class="wqa-grid">
++            <label>Attempt number<input id="wordQaAttempt" type="number" min="1" max="1000000" value="1"></label>
++            <label>Producer instance ID<input id="wordQaInstance" value="local-browser" maxlength="100"></label>
++            <label class="full">Immediately preceding sidecar ID<input id="wordQaSupersedes" placeholder="Required for attempt 2 or higher: sha256:…" maxlength="71"></label>
++            <label>Created at (optional fixed UTC test clock)<input id="wordQaCreatedAt" placeholder="YYYY-MM-DDTHH:MM:SSZ"></label>
++            <label>Consumer minimum version<input id="wordQaConsumerVersion" value="1.9.17-proposed" maxlength="40"></label>
++          </div>
++          <p class="muted">Leave Created at blank for the real local clock normalized to UTC seconds. A fixed clock supports deterministic repeat testing. Attempt 1 requires no preceding sidecar ID; higher attempts require the immediately preceding sidecar ID from the same lineage.</p>
++        </section>
++
++        <section class="card">
++          <h2>Automated inspection results</h2>
++          <div id="wordQaMetrics" class="wqa-results"><div class="wqa-metric"><span>State</span><strong>Not run</strong></div></div>
++          <div id="wordQaInspectionMessage" aria-live="polite" class="muted" style="margin:10px 0">Select a DOCX and run inspection.</div>
++          <div id="wordQaChecksTable" class="tablewrap"><p class="muted" style="padding:12px">The five frozen checks will appear here in contract order.</p></div>
++        </section>
++
++        <section class="card">
++          <h2>Artifact and embedded-manifest identity</h2>
++          <div id="wordQaIdentity" class="wqa-identity"><p class="muted">No identity data available.</p></div>
++        </section>
++
++        <section class="card span-8">
++          <h2><span class="step-label">3</span>Required local layout review</h2>
++          <p class="muted">Open the exact DOCX in Microsoft Word or the approved local Word-review environment. Complete every review item. This is a local, unauthenticated, unsigned assertion and is not approval authority.</p>
++          <div class="wqa-checklist" id="wordQaHumanChecklist">
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="headings"><span><strong>Headings</strong>Hierarchy, labels, and visible section structure are usable.</span></label>
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="tables"><span><strong>Tables</strong>Tables are readable, aligned, and do not hide material content.</span></label>
