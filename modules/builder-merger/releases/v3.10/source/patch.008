@@ -1,0 +1,41 @@
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="pagination"><span><strong>Pagination</strong>Page flow and page numbering are usable.</span></label>
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="page-breaks"><span><strong>Page breaks</strong>Breaks do not split content in a materially confusing way.</span></label>
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="headers-footers"><span><strong>Headers and footers</strong>Header/footer content is present and usable where expected.</span></label>
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="numbering"><span><strong>Numbering</strong>Section, list, table, and figure numbering is coherent.</span></label>
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="placeholder-residue"><span><strong>Visible placeholder residue</strong>No visible protected placeholder or replacement residue remains.</span></label>
++            <label class="wqa-checkline"><input type="checkbox" data-wqa-human="delivery-usability"><span><strong>Overall delivery usability</strong>The document is usable as a local Word review artifact.</span></label>
++          </div>
++          <label class="wqa-checkline"><input id="wordQaHumanComplete" type="checkbox"><span><strong>I completed the full local layout review for this exact DOCX.</strong>This assertion is local only, unauthenticated, unsigned, and does not approve the document for release.</span></label>
++        </section>
++
++        <section class="card span-4">
++          <h2>Local reviewer label</h2>
++          <div class="wqa-grid">
++            <label>Local reviewer ID<input id="wordQaReviewerId" maxlength="120" placeholder="Example: reviewer-local-01"></label>
++            <label>Display name<input id="wordQaReviewerName" maxlength="160" placeholder="Example: Local QA Reviewer"></label>
++            <label class="full">Asserted at (optional fixed UTC test clock)<input id="wordQaAssertedAt" placeholder="YYYY-MM-DDTHH:MM:SSZ"></label>
++          </div>
++          <div class="wqa-local-label" style="margin-top:10px"><strong>Always recorded by contract:</strong><br>locally_asserted = true<br>authenticated = false<br>digital_signature = false</div>
++        </section>
++
++        <section class="card">
++          <h2><span class="step-label">4</span>Sidecar preview and export</h2>
++          <div class="btnrow">
++            <button id="wordQaPreviewBtn" class="primary" disabled>Generate sidecar preview</button>
++            <button id="wordQaDownloadBtn" disabled>Download l2g_ssp_word_qa_sidecar_v1.json</button>
++            <button id="wordQaReportBtn" disabled>Download Word-QA report</button>
++            <button id="wordQaPrintBtn" disabled>Print local review summary</button>
++          </div>
++          <div id="wordQaExportMessage" aria-live="polite" class="muted" style="margin-top:10px">Inspection must reconcile an embedded SSP Word-export manifest before a sidecar can be generated.</div>
++          <pre id="wordQaJsonPreview" class="wqa-json">No sidecar generated.</pre>
++        </section>
++      </div>
++    </section>
++
+   </main>
+ 
+-  <p class="footer">L2G-BM v3.8. Local XLSX package editing, external CSV-to-workbook creation, exception-resolution decisions, governance ZIP generation, and workbook extraction use embedded JSZip and browser File APIs only. No remote resources are loaded.</p>
++  <p class="footer">L2G-BM v3.10. Local XLSX workflows and the RG-4 SSP Final Word-QA sidecar producer use embedded JSZip and browser File APIs only. Exact source DOCX bytes remain unchanged. No remote resources are loaded.</p>
+ </div>
+ </body>
+ </html>
