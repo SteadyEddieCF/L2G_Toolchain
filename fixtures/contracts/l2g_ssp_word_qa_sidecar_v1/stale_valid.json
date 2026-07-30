@@ -2,8 +2,8 @@
   "package_kind": "l2g_ssp_word_qa_sidecar_v1",
   "package_version": "1.0",
   "schema_uri": "urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0",
-  "sidecar_id": "sha256:3e4617011b16d2859d05761f2de75dc95b8ffd2fd7fcdf802b54380afed8844c",
-  "created_at": "2026-07-29T20:00:00Z",
+  "sidecar_id": "sha256:f6928d1cdcf385140880f1ef023407c0e72cfc755664f9a1184e73421029e5b4",
+  "created_at": "2026-07-30T14:00:00Z",
   "producer": {
     "tool": "builder-merger",
     "version": "3.10.0-proposed",
@@ -22,21 +22,21 @@
     "ssp_release_version": "1.9.16",
     "working_data_schema_version": "1.9.11",
     "document_version": "1.0",
-    "review_package_id": "mcfirecoal-ssp-review-001",
-    "source_ssp_fingerprint": "3783788a05c89fb1aaf75fdf08f3cd2f7e9402104983da38f5836fa6e9dce56c",
-    "source_snapshot_sha256": "347783cc8627cb2cd8b4d125f4716a4b4ecad5e80cd9e7cd6ee9524d78fd2b49",
-    "word_export_manifest_sha256": "487fbe5ea170b188d23940add5704644d4285b26628f91918a8e225861512c79"
+    "review_package_id": "SSP-REV-20260730-133000-4FZZ",
+    "source_ssp_fingerprint": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "source_snapshot_sha256": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "word_export_manifest_sha256": "3d44ac9f6fca71f07e34a50f4cd4be838b3e897b43b565afbd5fe3f13359181e"
   },
   "artifact": {
-    "file_name": "McFirecoal_SSP_Final.docx",
+    "file_name": "ssp_current.docx",
     "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "sha256": "6ed0cf702da844eb2f92e62e21347f448f0d4a67d04eff6f2e300ed023717fad",
-    "size_bytes": 482193
+    "sha256": "3a124539c41057f88591c06076b21590d30ccf5eea55b078bf4531cedf005642",
+    "size_bytes": 79843
   },
   "qa_profile": {
     "id": "l2g-builder-merger-final-word-qa-v1",
     "version": "1.0",
-    "sha256": "6f15f71c55eae48158fdf15cbf65f939359f1073534087a76bfa84c7839bcde7"
+    "sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
   },
   "checks": [
     {
@@ -57,8 +57,9 @@
       "severity": "blocking",
       "summary": "Embedded SSP export identity reconciles with the sidecar source block.",
       "evidence_refs": [
-        "manifest:source_ssp_fingerprint",
-        "manifest:review_package_id"
+        "manifest:sourceFingerprint",
+        "manifest:reviewPackageId",
+        "manifest:documentVersion"
       ]
     },
     {
@@ -103,17 +104,17 @@
   "operator_assertions": [
     {
       "check_id": "WQA-LAYOUT-HUMAN",
-      "local_id": "reviewer-local-01",
+      "local_id": "rg4-fixture-reviewer",
       "display_name": "Local QA Reviewer",
-      "asserted_at": "2026-07-29T19:59:00Z",
+      "asserted_at": "2026-07-30T13:59:00Z",
       "locally_asserted": true,
       "authenticated": false,
       "digital_signature": false
     }
   ],
   "lineage": {
-    "lineage_key": "db13f770a5de45f6b01e01e161bb64d341bdfe0e4ac207bbe7cb836d688bed9b",
-    "attempt_number": 2,
+    "lineage_key": "c444c55ee315723ad301455775f2aafb8824895331a8714007c987db2eba5354",
+    "attempt_number": 1,
     "supersedes_sidecar_id": null
   },
   "authority": {
@@ -127,5 +128,5 @@
     "authenticated_identity": false,
     "digital_signature": false
   },
-  "package_fingerprint": "a274db9550479c92fed7e3b96d555237d2bbed49ff4515a49b382ca143e77e7f"
+  "package_fingerprint": "efa77f233197f0330f2828dc9b31befff4d55d31a0d5fea99d86730b93facf11"
 }

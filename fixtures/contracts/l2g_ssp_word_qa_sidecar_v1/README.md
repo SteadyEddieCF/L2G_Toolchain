@@ -1,14 +1,17 @@
-# RG-4 Proposal Fixtures
+# RG-4 contract fixtures
 
-| Fixture | Schema expectation | Paired artifact/source expectation | Consumer outcome |
-|---|---|---|---|
-| `clean_current.json` | pass | exact and current | eligible for explicit current acceptance |
-| `stale_valid.json` | pass | internally valid; source differs from current SSP | explicit stale-evidence path only |
-| `malformed_missing_version.json` | fail | not evaluated | reject |
-| `mismatched_artifact_hash.json` | pass | paired DOCX bytes do not match declared hash | reject |
-| `mismatched_manifest_fingerprint.json` | pass | embedded/export manifest differs | reject |
-| `adversarial_reject.json` | fail | path traversal and extra authority property | reject without rendering/execution |
-| `adversarial_inert_text_valid.json` | pass | exact otherwise; HTML-like text is untrusted | inert rendering only |
-| `retry_superseding_current.json` | pass | same lineage, higher attempt, exact current source | eligible to supersede only after explicit acceptance |
+This directory contains sidecar vectors and the verified real SSP v1.9.16 Word-export bundle used to freeze issue #91.
 
-The declared DOCX and manifest hashes are synthetic planning values. Before Builder/Merger issue #92 begins, SSP v1.9.16 must produce de-identified deterministic DOCX/manifest fixtures whose exact bytes match their declared SHA-256 and size. Required identities include review-package, document, runtime, schema, profile, output, scope/module, source SSP fingerprint, governed-source snapshot hash, and embedded/export manifest hash. Include a clean/current export, a controlled source-revision export, generation instructions, reproducibility notes, and SHA256SUMS.
+- Mandatory binary attachment: `rg4_ssp_word_export_fixtures_v1(1).zip`
+- Repository registration: `real_artifacts/verified_binary_registration.json`
+- Bundle SHA-256: `9456f0b04c53d53cb229db566d15dab9ce0105359dba2eaf5a55529b92f16a47`
+- Current DOCX SHA-256: `3a124539c41057f88591c06076b21590d30ccf5eea55b078bf4531cedf005642`
+- Changed-source DOCX SHA-256: `36d86ce025183757050f9157b9bbed59e752d0a24fa7480884962e3d37090c7a`
+- Scenario definitions: `scenario_matrix.json`
+- Contract validator: `scripts/rg4/validate_rg4_contract_proposal.py`
+
+`clean_current.json` and `stale_valid.json` intentionally contain the same structurally valid sidecar. Currency is an SSP-local comparison: the former is evaluated against the current source snapshot and the latter against the changed-source snapshot. `retry_superseding_current.json` uses the changed-source DOCX as attempt 2 in the same frozen lineage.
+
+Mismatch vectors maintain internally consistent sidecar IDs and package fingerprints but fail exact artifact or manifest pairing. Semantic-reject vectors exercise rules that JSON Schema cannot express. `duplicate_key_reject.json` must be rejected during parsing.
+
+The bundle and sidecars contain de-identified fixture data only. They do not claim compliance, readiness, assessment, certification, scoring, authenticated identity, digital signature, or final client approval.

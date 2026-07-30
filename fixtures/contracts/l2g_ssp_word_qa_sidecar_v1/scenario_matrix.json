@@ -1,0 +1,99 @@
+{
+  "bundle_zip": {
+    "attachment_file_name": "rg4_ssp_word_export_fixtures_v1(1).zip",
+    "registration_path": "real_artifacts/verified_binary_registration.json",
+    "sha256": "9456f0b04c53d53cb229db566d15dab9ce0105359dba2eaf5a55529b92f16a47",
+    "size_bytes": 265094,
+    "binary_required_for_implementation": true
+  },
+  "profile": {
+    "path": "../../../contracts/proposals/l2g_ssp_word_qa_sidecar_v1/l2g-builder-merger-final-word-qa-v1.profile.json",
+    "sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
+  },
+  "scenarios": [
+    {
+      "sidecar": "clean_current.json",
+      "paired_fixture": "current",
+      "consumer_source_fixture": "current",
+      "expected_structure": "valid",
+      "expected_pairing": "valid",
+      "expected_currency": "current"
+    },
+    {
+      "sidecar": "stale_valid.json",
+      "paired_fixture": "current",
+      "consumer_source_fixture": "changed_source",
+      "expected_structure": "valid",
+      "expected_pairing": "valid",
+      "expected_currency": "stale"
+    },
+    {
+      "sidecar": "retry_superseding_current.json",
+      "paired_fixture": "changed_source",
+      "consumer_source_fixture": "changed_source",
+      "expected_structure": "valid",
+      "expected_pairing": "valid",
+      "expected_currency": "current",
+      "expected_supersedes": "clean_current.json"
+    },
+    {
+      "sidecar": "mismatched_artifact_hash.json",
+      "paired_fixture": "current",
+      "consumer_source_fixture": "current",
+      "expected_structure": "valid",
+      "expected_pairing": "reject-artifact-hash"
+    },
+    {
+      "sidecar": "mismatched_manifest_fingerprint.json",
+      "paired_fixture": "current",
+      "consumer_source_fixture": "current",
+      "expected_structure": "valid",
+      "expected_pairing": "reject-manifest-hash"
+    },
+    {
+      "sidecar": "adversarial_inert_text_valid.json",
+      "paired_fixture": "current",
+      "consumer_source_fixture": "current",
+      "expected_structure": "valid",
+      "expected_pairing": "valid",
+      "expected_currency": "current",
+      "expected_rendering": "inert-text"
+    },
+    {
+      "sidecar": "adversarial_reject.json",
+      "expected_structure": "reject"
+    },
+    {
+      "sidecar": "malformed_missing_version.json",
+      "expected_structure": "reject"
+    },
+    {
+      "sidecar": "duplicate_key_reject.json",
+      "expected_structure": "reject-duplicate-key"
+    },
+    {
+      "sidecar": "aggregate_mismatch_reject.json",
+      "expected_structure": "reject-semantic"
+    },
+    {
+      "sidecar": "profile_order_reject.json",
+      "expected_structure": "reject-semantic"
+    },
+    {
+      "sidecar": "lineage_mismatch_reject.json",
+      "expected_structure": "reject-semantic"
+    },
+    {
+      "sidecar": "timestamp_order_reject.json",
+      "expected_structure": "reject-semantic"
+    },
+    {
+      "sidecar": "scope_invalid_reject.json",
+      "expected_structure": "reject-semantic"
+    },
+    {
+      "sidecar": "source_snapshot_mismatch_reject.json",
+      "expected_structure": "reject-semantic"
+    }
+  ]
+}
