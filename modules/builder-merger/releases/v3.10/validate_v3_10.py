@@ -51,7 +51,11 @@ def main() -> int:
         temp = ROOT / f".validate_script_{index}.js"
         temp.write_text(script, "utf-8")
         try:
-            run = subprocess.run(["node", "--check", str(temp)], capture_output=True, text=True)
+            run = subprocess.run(
+                ["node", "-e", "new Function(require('fs').readFileSync(process.argv[1], 'utf8'))", str(temp)],
+                capture_output=True,
+                text=True,
+            )
             if run.returncode:
                 errors.append(f"JavaScript syntax failed for block {index}: {run.stderr.strip()}")
         finally:
