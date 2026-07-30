@@ -12,8 +12,15 @@
 - Schema URI: `urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0`
 - Producer: Builder/Merger
 - Consumer: SSP
-- Transport: one exact local DOCX paired with one JSON sidecar; no network dependency
+- Transport: one exact local SSP DOCX paired with one JSON sidecar; no network dependency
 - Proposed schema SHA-256: `3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34`
+- Frozen QA-profile SHA-256: `9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c`
+
+## Contract freeze
+
+The issue #91 implementation contract is frozen for Builder/Merger #92. Exact derivations, timestamp rules, semantic invariants, retry behavior, and the ordered profile are in `deterministic_derivations.md`. The strict schema is unchanged. The route remains proposal-only until exact Builder/Merger and SSP candidate heads pass joint promotion gates.
+
+The verified SSP fixture bundle is registered by `fixtures/contracts/l2g_ssp_word_qa_sidecar_v1/real_artifacts/verified_binary_registration.json` with mandatory attachment SHA-256 `9456f0b04c53d53cb229db566d15dab9ce0105359dba2eaf5a55529b92f16a47`. It contains real deterministic SSP v1.9.16 current and changed-source DOCX exports, embedded/companion manifests, governed-source snapshots, source identities, metadata, checksums, and reproducibility tooling.
 
 ## Authority
 
@@ -23,24 +30,16 @@ The sidecar is evidence only. It cannot establish CMMC readiness, compliance, as
 
 ## Acceptance and rejection
 
-The SSP consumer must parse with duplicate-key rejection; enforce exact kind/version and strict schema; recompute the canonical package fingerprint; require and hash the exact paired DOCX; reconcile its embedded/export manifest, review-package ID, source fingerprint, source snapshot, document identity, and QA-profile identity; and recompute the current governed SSP source fingerprint for the exact scope. Preview and acceptance remain separate. Imported strings are inert text. Preview, rejection, and acceptance must not mutate authored SSP content, RG-2 state, review dispositions, profile selection, sign-off, Workshop-owned records, or another package route.
-
-Reject malformed or duplicate-key JSON, unsupported versions, missing or extra governed properties, invalid hashes, package-fingerprint mismatch, missing/mismatched DOCX bytes, conflicting manifest/source/profile identity, path traversal, duplicate check IDs, unreconciled aggregate counts, invalid assertion linkage, inconsistent retry/supersession lineage, or forbidden authority claims.
+The SSP consumer rejects duplicate keys; enforces exact kind/version and strict schema; recomputes the profile hash, lineage key, sidecar ID, and package fingerprint; hashes the exact paired DOCX; reconciles its embedded/export manifest and source identity; and recomputes the current governed SSP source fingerprint for the exact scope. Preview and acceptance remain separate. Imported strings are inert text. Preview, rejection, and acceptance must not mutate authored SSP content, RG-2 state, review dispositions, profile selection, sign-off, Workshop-owned records, or another package route.
 
 ## Currency, retry, idempotency, and history
 
-Producer QA aggregate (`qa_complete`, `qa_blocked`, `qa_incomplete`) is separate from SSP-local currency (`current`, `stale`, `superseded`) and structural validity. An internally valid historical package may be recorded as stale only after explicit acknowledgement. Identical package fingerprints are idempotent duplicates. Retries retain a stable lineage key and increment attempt number. A blocked or incomplete retry does not erase prior history. Only explicit acceptance of a higher current attempt may supersede an earlier current record. Accepted history remains append-only.
+Producer QA aggregate (`qa_complete`, `qa_blocked`, `qa_incomplete`) is separate from SSP-local currency (`current`, `stale`, `superseded`) and structural validity. A valid historical package may be recorded as stale only after explicit acknowledgement. Identical package fingerprints are idempotent duplicates. Attempts retain the frozen lineage key. Only explicit acceptance of a higher-attempt, `qa_complete`, current package may supersede an earlier accepted-current record. Accepted history remains append-only.
 
 ## Migration and compatibility
 
 This is a new optional route. Existing SSP working data, RG-1/RG-2/UX-3/RG-3, Word Review, Workshop SSP handoff/return, Builder/Merger Workbook Handoff 1.7, Workbook Merge 1.1, Builder Decision Plan 1.0, and every adjacent-module runtime remain unchanged. Historical RG-3 records are not converted into RG-4 evidence. The Workshop-v79 historical suite snapshot is not rewritten.
 
-## Required pre-implementation resolution
-
-The proposal is not frozen for #92 or #93 until #91 records exact definitions for: (1) deterministic `sidecar_id`; (2) deterministic `lineage.lineage_key`; (3) the canonical ordered `l2g-builder-merger-final-word-qa-v1` profile represented by `qa_profile.sha256`; (4) timestamp normalization and deterministic-output expectations; and (5) semantic checks that JSON Schema cannot express.
-
-The supplied JSON vectors use synthetic DOCX identities. SSP v1.9.16 must first produce a deterministic, de-identified real DOCX/manifest fixture bundle with exact bytes, hashes, source identities, a controlled source revision, SHA256SUMS, and reproducibility notes. No SSP runtime or schema change is authorized by that fixture task.
-
 ## Promotion
 
-The registry entry remains `proposal` until exact Builder/Merger and SSP candidate heads jointly pass strict schema/duplicate-key checks; canonical fingerprints; paired DOCX and manifest/source reconciliation; clean/current, stale, malformed, downgrade, mismatch, retry, supersession, duplicate, path-traversal, and injected-text cases; no governed-data mutation; authority checks; no-network operation; accessibility/keyboard/focus/themes/print; native Windows Chromium `file://`; zero page/console errors; repository validation; exact materialization; and regression of all existing routes.
+The registry entry remains `proposal` until exact Builder/Merger and SSP candidate heads jointly pass strict schema/duplicate-key checks; canonical identities; paired DOCX and manifest/source reconciliation; clean/current, stale, malformed, downgrade, mismatch, retry, supersession, duplicate, path-traversal, and injected-text cases; no governed-data mutation; authority checks; no-network operation; accessibility/keyboard/focus/themes/print; native Windows Chromium `file://`; zero page/console errors; repository validation; exact materialization; and regression of all existing routes.
