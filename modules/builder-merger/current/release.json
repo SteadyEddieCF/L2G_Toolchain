@@ -1,10 +1,26 @@
 {
   "module": "L2G Builder/Merger",
   "current_supplied_version": "v3.8",
-  "release_path": "modules/builder-merger/releases/3.8",
+  "release_path": "modules/builder-merger/releases/v3.8",
   "status": "current_supplied_release",
-  "next_action": "v3.9 Advisor and Client Delivery Profiles",
-  "recorded_at": "2026-07-17",
+  "next_action": "Review stacked v3.10 RG-4 SSP Final Word-QA Sidecar Producer candidate; v3.9 remains reserved",
+  "recorded_at": "2026-07-30",
+  "candidate": {
+    "version": "v3.10",
+    "release_path": "modules/builder-merger/releases/v3.10",
+    "runtime_path": "modules/builder-merger/releases/v3.10/L2G-BM_v3.10.html",
+    "runtime_sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17",
+    "status": "candidate_unvalidated",
+    "route_stability": "proposal",
+    "branch": "release/builder-merger-v3.10-rg4-word-qa-producer",
+    "initial_pr_base": "contracts/rg4-ssp-word-qa-sidecar-v1",
+    "contract_head": "cb5c41abf015d7eee095b10fabe2fc0059473e89",
+    "package_kind": "l2g_ssp_word_qa_sidecar_v1",
+    "package_version": "1.0"
+  },
+  "reserved_versions": {
+    "v3.9": "Advisor and Client Delivery Profiles"
+  },
   "stable_contracts": {
     "workbook_handoff": "1.7",
     "workbook_merge": "1.1",
