@@ -1,0 +1,65 @@
++function wqaRenderChecks(){const ins=state.wordQa.inspection;if(!ins)return;const checks=[...ins.checks.slice(0,4),wqaHumanCheck()],agg=wqaAggregate(checks);wqaEl('wordQaMetrics').innerHTML=[['State',agg.state],['Passed',agg.pass],['Failed',agg.fail],['Needs human',agg.needs_human_review],['Artifact bytes',ins.size_bytes]].map(([l,v])=>`<div class="wqa-metric"><span>${wqaEsc(l)}</span><strong class="${agg.state==='qa_complete'?'wqa-state-complete':agg.state==='qa_blocked'?'wqa-state-blocked':'wqa-state-incomplete'}">${wqaEsc(v)}</strong></div>`).join('');wqaEl('wordQaChecksTable').innerHTML=`<table class="wqa-table"><thead><tr><th>Check</th><th>Class</th><th>Severity</th><th>Result</th><th>Summary</th><th>Evidence</th></tr></thead><tbody>${checks.map(c=>`<tr><td>${wqaEsc(c.check_id)}</td><td>${wqaEsc(c.classification)}</td><td>${wqaEsc(c.severity)}</td><td class="${c.result==='pass'?'wqa-result-pass':c.result==='fail'?'wqa-result-fail':'wqa-result-human'}">${wqaEsc(c.result)}</td><td>${wqaEsc(c.summary)}</td><td>${c.evidence_refs.map(x=>`<code>${wqaEsc(x)}</code>`).join('<br>')}</td></tr>`).join('')}</tbody></table>`;const can=!!ins.manifest;wqaEl('wordQaPreviewBtn').disabled=!can;wqaEl('wordQaExportMessage').className=agg.state==='qa_blocked'?'wqa-block':agg.state==='qa_complete'?'wqa-pass':'wqa-warning';wqaEl('wordQaExportMessage').textContent=can?(agg.state==='qa_blocked'?'Blocking QA conditions are present. A qa_blocked sidecar may be exported when source identity is available.':agg.state==='qa_complete'?'All frozen checks currently pass. Generate the preview to calculate exact identities.':'Automated checks pass, but the required local human assertion remains incomplete.'):'A readable embedded SSP Word-export manifest is required before sidecar generation.';}
++function wqaRenderIdentity(){const i=state.wordQa.inspection;if(!i)return;const m=i.manifest||{},items=[['File name',i.file_name],['DOCX SHA-256',i.artifact_sha256],['Size bytes',i.size_bytes],['Manifest SHA-256',i.manifest_sha256||'Unavailable'],['SSP release',m.runtimeRelease||'Unavailable'],['Working schema',m.schema||'Unavailable'],['Document version',m.documentVersion||'Unavailable'],['Review-package ID',m.reviewPackageId||'Unavailable'],['Source SSP fingerprint',m.sourceFingerprint||'Unavailable'],['Review scope',m.reviewScope||'Unavailable'],['Requirement records',i.requirement_count],['Source reconciliation',i.source_reconciled?'Reconciled':'Not reconciled']];wqaEl('wordQaIdentity').innerHTML=items.map(([l,v])=>`<div><span>${wqaEsc(l)}</span><code>${wqaEsc(v)}</code></div>`).join('');}
++function wqaRenderPreview(sidecar){wqaEl('wordQaJsonPreview').textContent=JSON.stringify(sidecar,null,2);wqaEl('wordQaDownloadBtn').disabled=false;wqaEl('wordQaReportBtn').disabled=false;wqaEl('wordQaPrintBtn').disabled=false;}
++function wqaDownload(text,type,name){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
++function wqaReport(s){return `# L2G Builder/Merger v3.10 SSP Final Word-QA Report
++
++Generated: ${s.created_at}
++
++## Authority boundary
++
++This report records final Word-QA evidence only. It does not determine source currency, readiness, compliance, assessment, certification, scoring, technical accuracy, evidence sufficiency, or client-release approval.
++
++## Artifact
++
++- File: ${s.artifact.file_name}
++- Size: ${s.artifact.size_bytes}
++- SHA-256: ${s.artifact.sha256}
++- Embedded manifest SHA-256: ${s.source.word_export_manifest_sha256}
++- Source fingerprint declared by SSP: ${s.source.source_ssp_fingerprint}
++- Review-package ID: ${s.source.review_package_id}
++
++## Result
++
++- Aggregate state: ${s.aggregate.state}
++- Pass: ${s.aggregate.pass}
++- Fail: ${s.aggregate.fail}
++- Needs human review: ${s.aggregate.needs_human_review}
++- Sidecar ID: ${s.sidecar_id}
++- Package fingerprint: ${s.package_fingerprint}
++- Lineage key: ${s.lineage.lineage_key}
++- Attempt: ${s.lineage.attempt_number}
++- Immediately preceding sidecar: ${s.lineage.supersedes_sidecar_id||'None'}
++
++## Frozen checks
++
++${s.checks.map(c=>`### ${c.check_id}
++- Classification: ${c.classification}
++- Severity: ${c.severity}
++- Result: ${c.result}
++- Summary: ${c.summary}
++- Evidence: ${c.evidence_refs.join('; ')}`).join('\n\n')}
++
++## Local assertion
++
++${s.operator_assertions.length?`Local reviewer ID: ${s.operator_assertions[0].local_id}
++Display name: ${s.operator_assertions[0].display_name}
++Asserted at: ${s.operator_assertions[0].asserted_at}
++Locally asserted: true
++Authenticated: false
++Digital signature: false`:'No completed local human assertion is present.'}
++`;}
++async function wqaHandleInspect(){const f=state.wordQa.file;if(!f)return;wqaEl('wordQaInspectBtn').disabled=true;wqaEl('wordQaInspectionMessage').className='muted';wqaEl('wordQaInspectionMessage').textContent='Inspecting exact local DOCX bytes…';try{const ins=await wqaInspect(f);state.wordQa.buffer=await f.arrayBuffer();state.wordQa.zip=ins.zip||null;state.wordQa.inspection=ins;state.wordQa.sidecar=null;wqaRenderChecks();wqaRenderIdentity();wqaEl('wordQaInspectionMessage').className=ins.checks.some(c=>c.result==='fail')?'wqa-block':'wqa-pass';wqaEl('wordQaInspectionMessage').textContent=`Inspection complete. Artifact SHA-256 ${ins.artifact_sha256}. Source DOCX was not modified.`;wqaEl('wordQaJsonPreview').textContent='Inspection complete. Generate a sidecar preview after reviewing the human-check status.';}catch(e){console.error(e);wqaEl('wordQaInspectionMessage').className='wqa-block';wqaEl('wordQaInspectionMessage').textContent='Inspection failed: '+String(e.message||e);}finally{wqaEl('wordQaInspectBtn').disabled=false;}}
++async function wqaHandlePreview(){try{const s=await wqaBuildSidecar();state.wordQa.sidecar=s;wqaRenderChecks();wqaRenderPreview(s);}catch(e){console.error(e);wqaEl('wordQaExportMessage').className='wqa-block';wqaEl('wordQaExportMessage').textContent=String(e.message||e);}}
++function wqaReset(preserveFileInput=false){state.wordQa={file:null,buffer:null,zip:null,inspection:null,sidecar:null,manifestBytes:null,manifest:null};if(!preserveFileInput)wqaEl('wordQaDocxFile').value='';wqaEl('wordQaFileSummary').textContent='No DOCX loaded.';wqaEl('wordQaInspectBtn').disabled=true;wqaEl('wordQaResetBtn').disabled=true;wqaEl('wordQaPreviewBtn').disabled=true;wqaEl('wordQaDownloadBtn').disabled=true;wqaEl('wordQaReportBtn').disabled=true;wqaEl('wordQaPrintBtn').disabled=true;wqaEl('wordQaMetrics').innerHTML='<div class="wqa-metric"><span>State</span><strong>Not run</strong></div>';wqaEl('wordQaChecksTable').innerHTML='<p class="muted" style="padding:12px">The five frozen checks will appear here in contract order.</p>';wqaEl('wordQaIdentity').innerHTML='<p class="muted">No identity data available.</p>';wqaEl('wordQaJsonPreview').textContent='No sidecar generated.';wqaEl('wordQaInspectionMessage').className='muted';wqaEl('wordQaInspectionMessage').textContent='Select a DOCX and run inspection.';wqaEl('wordQaExportMessage').className='muted';wqaEl('wordQaExportMessage').textContent='Inspection must reconcile an embedded SSP Word-export manifest before a sidecar can be generated.';document.querySelectorAll('[data-wqa-human],#wordQaHumanComplete').forEach(x=>x.checked=false);}
++const wqaPriorSwitchMode=switchMode;switchMode=function(mode){if(mode!=='wordQa')return wqaPriorSwitchMode(mode);const panels={build:wqaEl('buildModePanel'),merge:wqaEl('mergeModePanel'),externalCsv:wqaEl('externalCsvModePanel'),wordQa:wqaEl('wordQaModePanel')},buttons={build:wqaEl('modeBuildBtn'),merge:wqaEl('modeMergeBtn'),externalCsv:wqaEl('modeExternalCsvBtn'),wordQa:wqaEl('modeWordQaBtn')};Object.entries(panels).forEach(([k,p])=>p?.classList.toggle('active',k==='wordQa'));Object.entries(buttons).forEach(([k,b])=>{if(b){b.classList.toggle('active',k==='wordQa');b.setAttribute('aria-selected',k==='wordQa'?'true':'false')}});showStatus('SSP Final Word-QA mode selected. Select one exact SSP-generated DOCX; processing remains local and the source document is not modified.','info');};
++function wqaInit(){const file=wqaEl('wordQaDocxFile');if(!file)return;file.addEventListener('change',e=>{const f=e.target.files?.[0]||null;wqaReset(true);if(f){state.wordQa.file=f;wqaEl('wordQaFileSummary').textContent=`Selected ${f.name} (${f.size.toLocaleString()} bytes). Exact identity will be calculated during inspection.`;wqaEl('wordQaInspectBtn').disabled=false;wqaEl('wordQaResetBtn').disabled=false;}});wqaEl('wordQaInspectBtn').addEventListener('click',wqaHandleInspect);wqaEl('wordQaResetBtn').addEventListener('click',wqaReset);wqaEl('wordQaPreviewBtn').addEventListener('click',wqaHandlePreview);wqaEl('wordQaDownloadBtn').addEventListener('click',()=>{const s=state.wordQa.sidecar;if(s)wqaDownload(JSON.stringify(s,null,2),'application/json','l2g_ssp_word_qa_sidecar_v1.json')});wqaEl('wordQaReportBtn').addEventListener('click',()=>{const s=state.wordQa.sidecar;if(s)wqaDownload(wqaReport(s),'text/markdown','L2G-BM_v3.10_SSP_Word_QA_Report.md')});wqaEl('wordQaPrintBtn').addEventListener('click',()=>window.print());document.querySelectorAll('[data-wqa-human],#wordQaHumanComplete,#wordQaReviewerId,#wordQaReviewerName').forEach(x=>x.addEventListener('input',()=>{if(state.wordQa.inspection){state.wordQa.sidecar=null;wqaEl('wordQaDownloadBtn').disabled=true;wqaEl('wordQaReportBtn').disabled=true;wqaRenderChecks();}}));}
++document.addEventListener('DOMContentLoaded',wqaInit);
++function wqaToggleTheme(){const light=document.body.classList.toggle('wqa-light-theme'),b=wqaEl('wordQaThemeBtn');if(b){b.textContent=light?'Dark theme':'Light theme';b.setAttribute('aria-pressed',light?'true':'false');}}
++document.addEventListener('DOMContentLoaded',()=>wqaEl('wordQaThemeBtn')?.addEventListener('click',wqaToggleTheme));
++
++</script>
+ </head>
+ <body>
+ <div class="app">
+   <section class="hero">
