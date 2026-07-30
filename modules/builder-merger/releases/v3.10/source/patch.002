@@ -1,0 +1,78 @@
+   v37RenderCompatibility('mergeCompatibilityPanel',c,identities);v37RenderExceptionSummary('mergeExceptionSummary',c.exceptions);v37RenderExceptionTable('mergeExceptionTable',c.exceptions,state.mergeExceptionFilter);v37RenderDiff('mergeDiffTable','mergeDiffSummary',diff[state.mergeDiffStage]||[],state.mergeDiffSearch,state.mergeDiffStage);
+   const all=[...diff.stage1,...diff.stage2,...diff.stage3],summary={stage_1_rows:diff.stage1.length,stage_2_rows:diff.stage2.length,stage_3_rows:diff.stage3.length,reviewer_changes:diff.stage2.filter(r=>!['unchanged','generated text unchanged'].includes(r.change_type)).length,return_fields_included:diff.stage3.filter(r=>/^included/.test(r.disposition)).length,generated_text_ignored:diff.stage3.filter(r=>/ignored/i.test(r.disposition)).length};
+   state.mergeCompatibilityReport=v37ExceptionMarkdown('L2G Builder/Merger v3.8 Merge Compatibility and Exception Report',c,identities);state.mergeDiffReport=v37DiffMarkdown('L2G Builder/Merger v3.8 Three-Stage Diff Report — Workbook Merge',all,summary);
+@@ -5624,19 +5624,48 @@
+ });
+ 
+ const V38_ROADMAP = [
+-  {version:'v3.9',title:'Advisor and Client Delivery Profiles',summary:'One-click advisor, client-review, and client-delivery workbook profiles with explicit visible/hidden sheet rules and a delivery checklist.'},
+-  {version:'v4.0',title:'Selective Workbook Merge Return',summary:'Field-level inclusion controls for the Workbook Merge return, with return-package impact preview and a reviewer approval checkpoint.'},
+-  {version:'v4.1',title:'Template Profile Manager',summary:'Recognized template fingerprints, guided header/sheet mapping, saved local template profiles, and safer custom-template onboarding.'},
+-  {version:'v4.2',title:'Workbook Integrity Repair Center',summary:'Focused repair options for broken validations, stale table parts, hidden-sheet drift, formula anomalies, and unsupported workbook structures.'},
+-  {version:'v4.3',title:'CMMC Effort Report Handoff',summary:'A stable Builder/Merger report-support package for the future overall CMMC effort report tool, without creating final assessment conclusions.'},
+-  {version:'v4.4',title:'Embedded Compatibility Matrix',summary:'Local cross-version support matrix for Workshop handoffs, templates, run manifests, merge packages, and additive contract fields.'},
+-  {version:'v4.5',title:'Workbook Action and Ownership Register',summary:'Extract reviewer-created actions, owners, dependencies, due dates, and report-use decisions into a bounded workbook-derived return section.'},
+-  {version:'v4.6',title:'Multi-Workbook Batch Workspace',summary:'Process multiple handoff/workbook pairs locally with per-engagement isolation, aggregate exception summaries, and no cross-client data mixing.'},
+-  {version:'v4.7',title:'Expanded Offline Deliverable Portfolio',summary:'Configurable XLSX, JSON, CSV, review-guide, and report-support outputs with a single governed export manifest.'},
+-  {version:'v4.8',title:'Production Hardening and Accessibility',summary:'Performance, keyboard operation, screen-reader labeling, large-workbook stress tests, recovery paths, and long-term contract stabilization.'}
+-];
++  {version:'v3.11',title:'Word-QA Review Package',summary:'Bundle the exact DOCX, sidecar, local review report, and deterministic identity manifest into one governed local ZIP without changing SSP authority.'},
++  {version:'v3.12',title:'Advisor and Client Delivery Profiles',summary:'One-click advisor, client-review, and client-delivery workbook profiles with explicit visible/hidden sheet rules and a delivery checklist.'},
++  {version:'v3.13',title:'Selective Workbook Merge Return',summary:'Field-level inclusion controls for the Workbook Merge return, with return-package impact preview and a reviewer approval checkpoint.'},
++  {version:'v3.14',title:'Template Profile Manager',summary:'Recognized template fingerprints, guided header/sheet mapping, saved local template profiles, and safer custom-template onboarding.'},
++  {version:'v3.15',title:'Workbook Integrity Repair Center',summary:'Explicit-copy repair options for broken validations, stale table parts, hidden-sheet drift, formula anomalies, and unsupported workbook structures.'},
++  {version:'v3.16',title:'CMMC Effort Report Handoff',summary:'A stable Builder/Merger report-support package for the future overall CMMC effort report tool without creating final assessment conclusions.'},
++  {version:'v3.17',title:'Embedded Compatibility Matrix',summary:'Local cross-version support matrix for Workshop handoffs, templates, run manifests, merge packages, decision plans, and SSP Word-QA sidecars.'},
++  {version:'v3.18',title:'Workbook Action and Ownership Register',summary:'Extract reviewer-created actions, owners, dependencies, due dates, and report-use decisions into a bounded workbook-derived return section.'},
++  {version:'v3.19',title:'Expanded Offline Deliverable Portfolio',summary:'Configurable XLSX, JSON, CSV, Word-QA, review-guide, and report-support outputs with a governed export manifest.'},
++  {version:'v3.20',title:'Production Hardening and Accessibility',summary:'Performance, keyboard operation, screen-reader labeling, constrained-viewport testing, recovery paths, and long-term contract stabilization.'}
++]
+ function v38RoadmapMarkdown(){
+-  return `# L2G Builder/Merger Rolling Release Roadmap\n\nUpdated: ${nowIso()}\nCurrent release: L2G-BM v3.8\n\nThis roadmap is maintained with every Builder/Merger release. It is directional and may be reordered when compatibility or workbook-integrity issues require a targeted synchronization release.\n\n## Current release\n\n### v3.8 — Exception Resolution Ledger and Governance Pack\n- Persistent per-exception resolution choices and operator notes.\n- Import/export of l2g_builder_decision_plan_v1.json.\n- Optional unresolved-decision execution gate.\n- Build and Merge governance ZIP packs.\n- Embedded rolling roadmap.\n\n## Next 10 releases\n\n${V38_ROADMAP.map((r,i)=>`${i+1}. **${r.version} — ${r.title}**\n   - ${r.summary}`).join('\n')}\n\n## Standing guardrails\n\n- L2G Builder/Merger remains local/offline and client-data safe.\n- Stable package kinds remain backward compatible unless a coordinated contract release explicitly changes them.\n- Workshop draft data does not create Met, Not Met, evidence-sufficiency, assessment-ready, score, or final CMMC conclusions.\n- Reviewer-authored workbook content wins by default when conflicts exist.\n- Formula, validation, formatting, hidden-sheet, and source-lineage preservation remain release gates.\n`;
++  return `# L2G Builder/Merger Rolling Release Roadmap
++
++Updated: ${nowIso()}
++Current release: L2G-BM v3.10
++
++This roadmap is maintained with every Builder/Merger release. v3.9 remains reserved and was not consumed by the targeted RG-4 synchronization release.
++
++## Current release
++
++### v3.10 — RG-4 SSP Final Word-QA Sidecar Producer
++- Exact local DOCX hashing and Open XML inspection.
++- Embedded SSP Word-export manifest extraction and reconciliation.
++- Frozen four automated checks plus one required local human layout review.
++- Deterministic lineage, sidecar ID, and package fingerprint derivation.
++- qa_complete, qa_incomplete, and qa_blocked contract states.
++- Existing Workbook Build, Workbook Merge, decision-plan, and External CSV routes preserved.
++
++## Next 10 releases
++
++${V38_ROADMAP.map((r,i)=>`${i+1}. **${r.version} — ${r.title}**
++   - ${r.summary}`).join('\n')}
++
++## Standing guardrails
++
++- L2G Builder/Merger remains local/offline and client-data safe.
++- The SSP Word-QA sidecar is evidence only and does not determine source currency, readiness, compliance, assessment, certification, scoring, evidence sufficiency, technical accuracy, or client-release approval.
++- Stable package kinds remain backward compatible unless a coordinated contract release explicitly changes them.
++- Reviewer-authored workbook content wins by default when conflicts exist.
++- Formula, validation, formatting, hidden-sheet, and source-lineage preservation remain release gates.
++`;
+ }
+ function v38FieldKey(scope,recordId,field){return `${scope}|field|${normalizeHeader(recordId||'')}|${normalizeHeader(field||'')}`;}
+ function v38ExceptionKey(scope,row){
+@@ -5745,7 +5774,7 @@
+   zip.file('l2g_builder_decision_plan_v1.json',JSON.stringify(v38DecisionPlanObject(scope),null,2));
+   if(isBuild&&state.buildRunManifest)zip.file('l2g_builder_run_manifest_v1.json',JSON.stringify(state.buildRunManifest,null,2));
+   if(!isBuild&&state.extractPlan?.packageObj)zip.file('l2g_workbook_merge_v1_preview.json',JSON.stringify(state.extractPlan.packageObj,null,2));
+-  zip.file('L2G-BM_Release_Roadmap_v3.8.md',v38RoadmapMarkdown());
++  zip.file('L2G-BM_Release_Roadmap_v3.10.md',v38RoadmapMarkdown());
+   zip.file('governance_summary.json',JSON.stringify({builder_merger_version:L2G_BM_VERSION,scope,generated_at:nowIso(),compatibility:isBuild?state.buildCompatibility?.status:state.mergeCompatibility?.status,resolution_summary:v38ResolutionStats(scope,exceptions),guardrails:{local_offline_only:true,reviewer_status_controlled:true,final_conclusions_not_inferred:true}},null,2));
+   const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});downloadBlob(blob,`L2G-BM_v3.8_${prefix}_Governance_Pack.zip`);
+ }
+@@ -5780,7 +5809,7 @@
+ };
+ 
+ const v38OriginalBuildRunManifest=v37BuildRunManifest;
+-v37BuildRunManifest=function(plan,profile,compatibility,stageRows){const m=v38OriginalBuildRunManifest(plan,profile,compatibility,stageRows);m.decision_plan_summary={operator_name:state.v38OperatorName||'',decisions:Object.values(state.v38Resolutions).filter(d=>d.scope==='build').length,execution_gate_enabled:!!state.v38GateBuild};m.release_roadmap_current='v3.8';return m;};
