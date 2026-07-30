@@ -2,8 +2,8 @@
   "package_kind": "l2g_ssp_word_qa_sidecar_v1",
   "package_version": "1.0",
   "schema_uri": "urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0",
-  "sidecar_id": "sha256:6f8528ea600fc08b7824faebb9b3bd469235bb5270d672afd3277d3145c84020",
-  "created_at": "2026-07-29T20:00:00Z",
+  "sidecar_id": "sha256:2381765e4e134a123261c064ed6b554f59a093186f5b2653f930e36167604151",
+  "created_at": "2026-07-30T14:00:00Z",
   "producer": {
     "tool": "builder-merger",
     "version": "3.10.0-proposed",
@@ -22,21 +22,21 @@
     "ssp_release_version": "1.9.16",
     "working_data_schema_version": "1.9.11",
     "document_version": "1.0",
-    "review_package_id": "mcfirecoal-ssp-review-001",
-    "source_ssp_fingerprint": "21689ee161b77417332ba6361d668fb26db82ef5fc2fce15775a64e028ddefae",
-    "source_snapshot_sha256": "e46027ccf39492c0ff458f8c7722b5a8f55e555f04c691578e8589bddbe6f08c",
-    "word_export_manifest_sha256": "487fbe5ea170b188d23940add5704644d4285b26628f91918a8e225861512c79"
+    "review_package_id": "SSP-REV-20260730-133000-4FZZ",
+    "source_ssp_fingerprint": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "source_snapshot_sha256": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "word_export_manifest_sha256": "3d44ac9f6fca71f07e34a50f4cd4be838b3e897b43b565afbd5fe3f13359181e"
   },
   "artifact": {
     "file_name": "../../escape.docx",
     "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "sha256": "6ed0cf702da844eb2f92e62e21347f448f0d4a67d04eff6f2e300ed023717fad",
-    "size_bytes": 482193
+    "sha256": "3a124539c41057f88591c06076b21590d30ccf5eea55b078bf4531cedf005642",
+    "size_bytes": 79843
   },
   "qa_profile": {
     "id": "l2g-builder-merger-final-word-qa-v1",
     "version": "1.0",
-    "sha256": "6f15f71c55eae48158fdf15cbf65f939359f1073534087a76bfa84c7839bcde7"
+    "sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
   },
   "checks": [
     {
@@ -44,7 +44,7 @@
       "classification": "automated",
       "result": "pass",
       "severity": "blocking",
-      "summary": "<script>window.location=\"https://evil.invalid\"</script>",
+      "summary": "DOCX package opens and required Open XML parts are readable.",
       "evidence_refs": [
         "docx:[Content_Types].xml",
         "docx:word/document.xml"
@@ -57,8 +57,9 @@
       "severity": "blocking",
       "summary": "Embedded SSP export identity reconciles with the sidecar source block.",
       "evidence_refs": [
-        "manifest:source_ssp_fingerprint",
-        "manifest:review_package_id"
+        "manifest:sourceFingerprint",
+        "manifest:reviewPackageId",
+        "manifest:documentVersion"
       ]
     },
     {
@@ -103,16 +104,16 @@
   "operator_assertions": [
     {
       "check_id": "WQA-LAYOUT-HUMAN",
-      "local_id": "reviewer-local-01",
+      "local_id": "rg4-fixture-reviewer",
       "display_name": "Local QA Reviewer",
-      "asserted_at": "2026-07-29T19:59:00Z",
+      "asserted_at": "2026-07-30T13:59:00Z",
       "locally_asserted": true,
       "authenticated": false,
       "digital_signature": false
     }
   ],
   "lineage": {
-    "lineage_key": "db13f770a5de45f6b01e01e161bb64d341bdfe0e4ac207bbe7cb836d688bed9b",
+    "lineage_key": "c444c55ee315723ad301455775f2aafb8824895331a8714007c987db2eba5354",
     "attempt_number": 1,
     "supersedes_sidecar_id": null
   },
@@ -127,6 +128,6 @@
     "authenticated_identity": false,
     "digital_signature": false
   },
-  "package_fingerprint": "1992fb6266619fda66e4da585a41b57a51b477287c91add1449c4ff75806188a",
+  "package_fingerprint": "439329f33d930a3fe95b9a8902834ed21cb8edc81f9159784cb7ccb34f0ce4a3",
   "unexpected_authority": "approve-client-release"
 }
