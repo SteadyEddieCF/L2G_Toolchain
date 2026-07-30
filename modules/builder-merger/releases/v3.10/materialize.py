@@ -60,7 +60,7 @@ def apply_unified_patch(original: str, patch_text: str) -> str:
 
 
 def default_base(script_dir: Path) -> Path:
-    return script_dir.parent.parent / 'v3.8' / 'L2G-BM_v3.8.html'
+    return script_dir.parent / 'v3.8' / 'L2G-BM_v3.8.html'
 
 
 def main() -> int:
