@@ -56,7 +56,8 @@ def main() -> int:
     if summary["promotion_eligible"] is not False:
         failures.append("validation summary must remain promotion-blocked")
     blocker_ids = {item["id"] for item in summary["promotion_blockers"]}
-    if blocker_ids != {"WKS-RG4-001", "WKS-RG4-002", "WKS-RG4-003", "WKS-RG4-004", "RG4-ROUNDTRIP-005"}:
+    expected_blockers = {"WKS-RG4-001", "WKS-RG4-002", "WKS-RG4-003", "WKS-RG4-004", "WKS-RG4-005", "RG4-ROUNDTRIP-006"}
+    if blocker_ids != expected_blockers:
         failures.append(f"unexpected blocker inventory: {sorted(blocker_ids)}")
     comparison = json.loads((EVIDENCE / "RG4_BEFORE_AFTER_COMPARISON.json").read_text(encoding="utf-8"))
     if comparison["handoff"]["contract_identity_conforms"]:
