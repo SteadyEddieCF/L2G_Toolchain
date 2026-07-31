@@ -43,6 +43,11 @@ jobs:
         with:
           name: ssp-rg4-history-harness-evidence
           path: |
+            .github/workflows/ssp-rg4-history-harness.yml
+            package.json
+            tests/playwright/ssp-rg4-history-harness-fixture.mjs
+            tests/playwright/ssp-rg4-history-harness.spec.mjs
+            tests/playwright/ssp-rg4-history-file-smoke.spec.mjs
             test-results/playwright-report
             test-results/playwright-results.json
             test-results/playwright
