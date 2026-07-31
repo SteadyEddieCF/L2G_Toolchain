@@ -1,0 +1,75 @@
+{
+  "document_kind": "rg4_workshop_owned_sha256_inventory",
+  "generated_artifacts": {
+    "generated_workbook": {
+      "file": "RG4_BuilderMerger_v3.10_Generated_Workbook.xlsx",
+      "sha256": "53836fd615dfdde88ac5510516b97e13c351fe88d29a2ca94a1a8c4b3012c43a",
+      "size_bytes": 260769
+    },
+    "ssp_return_1_0": {
+      "file": "RG4_SSP_v1.9.17_Return_1.0.json",
+      "sha256": "e372018fb3e77c225065b574f93ef28e212fa78b9b3f73842a44ad1ed960ae9c",
+      "size_bytes": 70180
+    },
+    "workbook_merge_1_1": {
+      "file": "RG4_BuilderMerger_v3.10_Workbook_Merge_1.1.json",
+      "sha256": "e17a5c6a971f9f8c7ae388c3205ff4888b7cee4decd7026d4544447793dec899",
+      "size_bytes": 677449
+    },
+    "workshop_handoff_expected_1_7_actual_1_0": {
+      "file": "RG4_Workshop_v79_Workbook_Handoff_1.7.json",
+      "sha256": "99c63ca4b617a479e5634bb7ad64f74e10d4d4b43ca747e698c134c545012ec2",
+      "size_bytes": 1902424
+    },
+    "workshop_ssp_handoff_1_0": {
+      "file": "RG4_Workshop_v79_SSP_Handoff_1.0.json",
+      "sha256": "81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947",
+      "size_bytes": 160234
+    }
+  },
+  "protected_main": "8804efcfd7b190117aea76ef48929b2c171dbc70",
+  "recorded_at": "2026-07-31T18:15:00.000Z",
+  "runtimes": {
+    "builder_merger_v3_10": {
+      "merge_commit": "71d8101f7a50da0f351c981da513cff8390e7173",
+      "path": "modules/builder-merger/releases/v3.10/L2G-BM_v3.10.html",
+      "sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17",
+      "size_bytes": 775189
+    },
+    "ssp_v1_9_17": {
+      "authoritative_requirements": 110,
+      "merge_commit": "95aae59cf4543994721f895a0faacef87e90edf0",
+      "path": "modules/ssp/releases/v1.9.17/CMMC_L2_SSP_Modern_Editable_v1.9.17.html",
+      "sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+      "size_bytes": 2266611,
+      "working_data_schema": "1.9.11"
+    },
+    "workshop_v79": {
+      "path": "modules/workshop/releases/v79/cmmc_l2_gap_workshop_tool_v79.html",
+      "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
+      "size_bytes": 1836145
+    }
+  },
+  "uploaded_packages": {
+    "builder_merger": {
+      "crc_error": null,
+      "entries": 75,
+      "filename": "L2G-BM_v3.10_Deliverables(2).zip",
+      "manifest_metadata_posture": "stale pre-promotion candidate metadata; runtime bytes exact",
+      "runtime_reconciled": true,
+      "sha256": "0c92f1a4d79d67f1a96c09ed89fe40fb0b11baa4f24bcacb5dc3e244dd725cd2",
+      "size_bytes": 1919723,
+      "traversal_entries": []
+    },
+    "ssp": {
+      "crc_error": null,
+      "entries": 44,
+      "filename": "CMMC_L2_SSP_v1.9.17_Complete_Deliverables(2).zip",
+      "manifest_metadata_posture": "stale pre-promotion candidate metadata; runtime bytes exact",
+      "runtime_reconciled": true,
+      "sha256": "747d2705a5de5d5599fe9b8f473c500a346a1d8462106cfcac9caa4021807377",
+      "size_bytes": 1508540,
+      "traversal_entries": []
+    }
+  }
+}
