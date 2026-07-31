@@ -115,6 +115,10 @@ export async function seedWorkshopV79(page) {
 }
 
 export async function setFixedClock(page, fixed = '2026-07-31T18:15:00.000Z') {
+  const isSsp = await page.evaluate(() => /\/modules\/ssp\//.test(location.pathname));
+  if (isSsp) {
+    await page.waitForFunction(() => Boolean(window.__sspRg4TestHooks?.setHistory), null, { timeout: 30000 });
+  }
   await page.evaluate((iso) => {
     const NativeDate = window.Date;
     const fixedMs = NativeDate.parse(iso);
@@ -152,6 +156,7 @@ export async function setFixedClock(page, fixed = '2026-07-31T18:15:00.000Z') {
             },
             source: {
               releaseVersion: '1.9.17',
+              workingDataSchemaVersion: '1.9.11',
               documentVersion: '1',
               reviewPackageId: 'rg4-review-package',
               sourceFingerprint: 'd'.repeat(64),
