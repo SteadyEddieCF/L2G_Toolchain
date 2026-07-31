@@ -11,7 +11,18 @@ function capture(page){
   page.on('request',request=>{const url=request.url();if(/^https?:/i.test(url)&&!url.startsWith('http://127.0.0.1:4173/'))result.externalRequests.push(url);});
   return result;
 }
-async function open(page){await page.goto(RUNTIME,{waitUntil:'domcontentloaded'});await stabilizePage(page);}
+async function open(page){
+  await page.goto(RUNTIME,{waitUntil:'domcontentloaded'});
+  await stabilizePage(page);
+  await page.evaluate(()=>{
+    window.governedSnapshot=()=>JSON.stringify({
+      practices:state.practices,objectives:state.objectiveReviews,decisions:state.decisions,
+      actions:state.actionRegister,ownership:state.evidenceOwnershipV77,merge:state.workbookMergeV57,
+      sspHandoff:state.sspHandoffGovernanceV70,sspReturn:state.sspReturnGovernanceV71,
+      filters:state.filters,selectedPractice:state.selectedPractice
+    });
+  });
+}
 async function buildValidPackage(page){return page.evaluate(()=>({
   package_kind:'l2g_workbook_merge_v1',package_version:'1.1',schema_trusted:true,
   generated_by:'L2G Builder/Merger v3.10',generated_at:'2026-07-31T22:00:00.000Z',tool_family:'L2G_Builder_Merger',content_trust_level:'reviewed_workbook_output',
@@ -20,13 +31,6 @@ async function buildValidPackage(page){return page.evaluate(()=>({
   evidence_results:[],gap_results:[],advisor_review_results:[],warnings:[],
   workbook_source:{workbook_file_name:'RG4_Synthetic_Workbook.xlsx',practice_rows_detected:110,practices_matched_to_handoff:110,objective_rows_detected:320,sheets:12,formulas:222}
 }));}
-
-const governedSnapshot=()=>JSON.stringify({
-  practices:state.practices,objectives:state.objectiveReviews,decisions:state.decisions,
-  actions:state.actionRegister,ownership:state.evidenceOwnershipV77,merge:state.workbookMergeV57,
-  sspHandoff:state.sspHandoffGovernanceV70,sspReturn:state.sspReturnGovernanceV71,
-  filters:state.filters,selectedPractice:state.selectedPractice
-});
 
 test.describe.configure({mode:'serial'});
 
