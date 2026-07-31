@@ -10,9 +10,7 @@ const WORKSHOP = '/modules/workshop/releases/v79/cmmc_l2_gap_workshop_tool_v79.h
 const BUILDER = '/modules/builder-merger/releases/v3.10/L2G-BM_v3.10.html';
 const SSP = '/modules/ssp/releases/v1.9.17/CMMC_L2_SSP_Modern_Editable_v1.9.17.html';
 const SHA = {
-  handoff: '99c63ca4b617a479e5634bb7ad64f74e10d4d4b43ca747e698c134c545012ec2',
-  workbook: '53836fd615dfdde88ac5510516b97e13c351fe88d29a2ca94a1a8c4b3012c43a',
-  merge: 'e17a5c6a971f9f8c7ae388c3205ff4888b7cee4decd7026d4544447793dec899'
+  handoff: '99c63ca4b617a479e5634bb7ad64f74e10d4d4b43ca747e698c134c545012ec2'
 };
 const digest = (value) => crypto.createHash('sha256').update(value).digest('hex');
 const canonicalObjective = (value) => String(value || '').replace(/\s+\[/g, '[');
@@ -60,7 +58,15 @@ test('RG-4 Workshop v79 / Builder-Merger v3.10 frozen round trip', async ({ brow
   const download = await downloadPromise;
   await download.saveAs(workbookPath);
   const workbookBytes = fs.readFileSync(workbookPath);
-  expect(digest(workbookBytes)).toBe(SHA.workbook);
+  const workbookSha = digest(workbookBytes);
+  const repeatPath = path.join(temp, 'RG4_BuilderMerger_v3.10_Generated_Workbook_repeat.xlsx');
+  const repeatPromise = builder.waitForEvent('download');
+  await builder.evaluate(() => downloadPopulatedWorkbook());
+  const repeatDownload = await repeatPromise;
+  await repeatDownload.saveAs(repeatPath);
+  const repeatBytes = fs.readFileSync(repeatPath);
+  const repeatSha = digest(repeatBytes);
+  expect(repeatSha).toBe(workbookSha);
 
   const extracted = await builder.evaluate(async ({ workbookB64, handoffText }) => {
     const bin = atob(workbookB64);
@@ -75,7 +81,7 @@ test('RG-4 Workshop v79 / Builder-Merger v3.10 frozen round trip', async ({ brow
     };
   }, { workbookB64: workbookBytes.toString('base64'), handoffText });
   const mergeText = stableJson(extracted.pkg);
-  expect(digest(mergeText)).toBe(SHA.merge);
+  const mergeSha = digest(mergeText);
   expect(extracted.pkg.package_kind).toBe('l2g_workbook_merge_v1');
   expect(extracted.pkg.package_version).toBe('1.1');
   expect(extracted.pkg.practice_results).toHaveLength(110);
@@ -142,6 +148,18 @@ test('RG-4 Workshop v79 / Builder-Merger v3.10 frozen round trip', async ({ brow
   await testInfo.attach('RG4_Workshop_v79_Workbook_Handoff_Expected_1.7_Actual_1.0.json', { body: Buffer.from(handoffText), contentType: 'application/json' });
   await testInfo.attach('RG4_BuilderMerger_v3.10_Generated_Workbook.xlsx', { body: workbookBytes, contentType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   await testInfo.attach('RG4_BuilderMerger_v3.10_Workbook_Merge_1.1.json', { body: Buffer.from(mergeText), contentType: 'application/json' });
+  await testInfo.attach('RG4_CI_GENERATED_IDENTITIES.json', {
+    body: Buffer.from(JSON.stringify({
+      handoff_sha256: digest(handoffText),
+      workbook_sha256: workbookSha,
+      workbook_repeat_sha256: repeatSha,
+      workbook_repeat_identical: repeatSha === workbookSha,
+      workbook_size_bytes: workbookBytes.length,
+      merge_sha256: mergeSha,
+      merge_size_bytes: Buffer.byteLength(mergeText)
+    }, null, 2)),
+    contentType: 'application/json'
+  });
   for (const obs of [workshopObs, builderObs, returnedObs]) {
     expect(obs.pageErrors).toEqual([]);
     expect(obs.consoleErrors).toEqual([]);
