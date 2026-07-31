@@ -8,7 +8,7 @@
   "recorded_at": "2026-07-31",
   "bounded_issue": 105,
   "candidate_branch": "release/workshop-v79.1-strict-workbook-validation",
-  "candidate_pr": null,
+  "candidate_pr": 112,
   "previous_promoted_version": "v79",
   "previous_promoted_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
   "primary_html_sha256": "361a29613d85a42eb404aabbaec061fb815dbd347d90dc41c089e8024cc95dc1",
