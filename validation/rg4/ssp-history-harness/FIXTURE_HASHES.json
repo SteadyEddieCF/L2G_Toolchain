@@ -17,8 +17,10 @@
     },
     {
       "path": "validation/rg4/ssp-history-harness/fixtures/unsupported_synthetic_history_seed.json",
-      "size_bytes": 378,
-      "sha256": "73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780",
+      "size_bytes_lf": 378,
+      "sha256_lf": "73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780",
+      "sha256_windows_crlf": "0771ce296d1b8654ed91df922f7b990be4468716eb5bb0a677a2f0c0777cbd61",
+      "canonical_json_sha256": "538cfb95f7c704179d01887ba261f954754447bb9eb301ac4aa6cff682bc5652",
       "expected_normalized_history_count": 0,
       "missing_required_identity": "packageFingerprint or sidecar.package_fingerprint"
     }
