@@ -25,10 +25,11 @@ jobs:
         with: {node-version: '22', cache: npm}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Materialize SSP v1.9.16 runtime
-        run: python modules/ssp/releases/v1.9.16/materialize.py
-      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
-        run: python modules/ssp/releases/v1.9.17/materialize.py
+      - name: Materialize SSP v1.9.6 through v1.9.17
+        run: |
+          for version in v1.9.6 v1.9.7 v1.9.8 v1.9.9 v1.9.10 v1.9.11 v1.9.12 v1.9.13 v1.9.14 v1.9.15 v1.9.16 v1.9.17; do
+            python "modules/ssp/releases/${version}/materialize.py"
+          done
       - name: Install JavaScript dependencies
         run: npm ci --no-audit --no-fund
       - name: Install Chromium
