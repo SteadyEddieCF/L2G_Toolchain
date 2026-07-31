@@ -1,0 +1,29 @@
+{
+  "document_kind": "ssp_rg4_history_harness_fixture_hashes",
+  "format_version": "1.0",
+  "fixtures": [
+    {
+      "path": "validation/rg4/ssp-history-harness/fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64",
+      "encoded_size_bytes": 8597,
+      "encoded_sha256": "418831516693aa0eb469fe571a75ff03ff5add091a1fe3ebbbeda978d3a7457e",
+      "decoded_size_bytes": 160234,
+      "decoded_sha256": "81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947",
+      "identity": {
+        "package_kind": "l2g_ssp_handoff_v1",
+        "package_version": "1.0",
+        "control_count": 110
+      }
+    },
+    {
+      "path": "validation/rg4/ssp-history-harness/fixtures/unsupported_synthetic_history_seed.json",
+      "size_bytes": 378,
+      "sha256": "73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780",
+      "expected_normalized_history_count": 0,
+      "missing_required_identity": "packageFingerprint or sidecar.package_fingerprint"
+    }
+  ],
+  "runtime_generated_pair": {
+    "generation": "deterministic SSP v1.9.16 Word export plus runtime-adapted frozen v1.9.17 sidecar",
+    "exact_hashes": "recorded by focused and shared Playwright artifacts for each execution environment"
+  }
+}
