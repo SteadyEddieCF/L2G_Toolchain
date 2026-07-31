@@ -1,0 +1,26 @@
+{
+  "console_errors": 0,
+  "document_kind": "rg4_workshop_ssp_route_regression",
+  "network_requests": 0,
+  "page_errors": 0,
+  "ssp_to_workshop": {
+    "controls": 110,
+    "package_kind": "l2g_ssp_return_package_v1",
+    "package_version": "1.0",
+    "rg4_evidence_history_in_return_package": false,
+    "sha256": "e372018fb3e77c225065b574f93ef28e212fa78b9b3f73842a44ad1ed960ae9c",
+    "workshop_preview_errors": [],
+    "workshop_preview_nonmutating": true
+  },
+  "workshop_to_ssp": {
+    "controls": 110,
+    "package_kind": "l2g_ssp_handoff_v1",
+    "package_version": "1.0",
+    "rg4_history_records_after": 1,
+    "rg4_history_records_before": 1,
+    "rg4_history_unchanged": true,
+    "sha256": "81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947",
+    "ssp_rows_built": 1330,
+    "ssp_validated": true
+  }
+}
