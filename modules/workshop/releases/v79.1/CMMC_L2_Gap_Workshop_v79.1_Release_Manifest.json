@@ -2,6 +2,7 @@
   "release": "v79.1",
   "module": "CMMC L2 Gap Workshop Tool",
   "issue": 105,
+  "draft_pull_request": 112,
   "status": "draft_candidate",
   "baseline_commit": "3be4153c45cb6534954592a6e4ff1cfda87c8bb4",
   "runtime": {
