@@ -1,5 +1,6 @@
 {
   "evidence_kind": "workshop_v79_1_candidate_validation",
+  "implementation_test_head": "615fa0516debea4af39c3273f00924e2e8b94a51",
   "runtime": {
     "sha256": "361a29613d85a42eb404aabbaec061fb815dbd347d90dc41c089e8024cc95dc1",
     "size_bytes": 1852954,
@@ -58,11 +59,29 @@
     },
     "rg4_sidecar_copied_to_workshop": false
   },
-  "local_browser": {
+  "browser_security": {
     "external_requests": 0,
     "page_errors": 0,
-    "unexpected_console_errors": 0
+    "unexpected_console_errors": 0,
+    "default_theme_axe": "passed",
+    "light_visual": "passed",
+    "dark_visual": "passed",
+    "constrained_viewport_print_keyboard_focus": "passed",
+    "windows_chromium_file_origin": "passed"
   },
-  "ci_status": "pending exact branch head",
+  "ci": {
+    "status": "candidate_local_and_shared_gates_passed",
+    "candidate_workflow_run": 30671641092,
+    "candidate_jobs": {
+      "static_and_materialization": 91290422909,
+      "runtime_axe_and_routes": 91290422865,
+      "visual_regression": 91290422882,
+      "windows_file_origin": 91290422942,
+      "deterministic_package": 91290422860
+    },
+    "shared_validation_run": 30671641118,
+    "shared_playwright_run": 30671641100
+  },
+  "promotion_eligible": false,
   "builder_v3_10_1_dependency": "pending issue #106 exact candidate"
 }

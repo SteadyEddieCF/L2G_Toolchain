@@ -3,8 +3,8 @@
   "current_supplied_version": "v79.1",
   "release_path": "modules/workshop/releases/v79.1",
   "runtime_path": "modules/workshop/releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html",
-  "status": "release_candidate_pending_independent_review_and_builder_v3_10_1_round_trip",
-  "next_action": "Proposed v80 Regression Delta and Release Comparison remains preserved after v79.1 promotion",
+  "status": "validated_release_candidate_pending_builder_v3_10_1_round_trip_and_independent_review",
+  "next_action": "Complete exact Builder/Merger v3.10.1 lossless action/ownership round trip under issue #106; preserve proposed v80 Regression Delta and Release Comparison",
   "recorded_at": "2026-07-31",
   "bounded_issue": 105,
   "candidate_branch": "release/workshop-v79.1-strict-workbook-validation",
@@ -17,6 +17,13 @@
     "version": "v79",
     "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
     "size_bytes": 1836145
+  },
+  "validation": {
+    "implementation_test_head": "615fa0516debea4af39c3273f00924e2e8b94a51",
+    "candidate_workflow_run": 30671641092,
+    "shared_validation_run": 30671641118,
+    "shared_playwright_run": 30671641100,
+    "result": "passed"
   },
   "stable_contracts": {
     "workshop_state": "1.0",
@@ -32,5 +39,6 @@
     "required_gate": "exact lossless action and ownership candidate round trip",
     "blocks_issue_105_closure": true
   },
+  "promotion_eligible": false,
   "release_boundary": "Strict package validation and Handoff producer self-reconciliation only; no adjacent runtime, registry, historical snapshot, authority, readiness, compliance, assessment, certification, scoring, evidence-sufficiency, or client-release change."
 }
