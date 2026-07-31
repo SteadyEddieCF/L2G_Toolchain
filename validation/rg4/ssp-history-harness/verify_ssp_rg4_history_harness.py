@@ -9,10 +9,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 HARNESS = ROOT / "validation/rg4/ssp-history-harness"
-EXPECTED = {
-    "fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64": "da47a88949edb82997d0a1d9a1cddd875bc8fa8be60aea19fd1a884749229505",
-    "fixtures/unsupported_synthetic_history_seed.json": "73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780",
-}
+FIXTURES = HARNESS / "fixtures"
+UNSUPPORTED_EXPECTED = "73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780"
+HANDOFF_ENCODED_EXPECTED = "6a56bbebce04e7da659447c4d22ad2515894b106c46df8456b0d7f08a0ef0247"
+HANDOFF_DECODED_EXPECTED = "81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947"
 CANONICAL_IDS = [
     "WKS-RG4-001",
     "WKS-RG4-002",
@@ -23,8 +23,8 @@ CANONICAL_IDS = [
 ]
 
 
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def sha256_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
 
 
 def require(condition: bool, message: str) -> None:
@@ -32,21 +32,23 @@ def require(condition: bool, message: str) -> None:
         raise SystemExit(message)
 
 
-for relative, expected in EXPECTED.items():
-    path = HARNESS / relative
-    require(path.is_file(), f"missing fixture: {relative}")
-    require(sha256(path) == expected, f"fixture SHA-256 mismatch: {relative}")
-
-encoded_handoff = (HARNESS / "fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64").read_bytes()
-handoff_bytes = gzip.decompress(base64.b64decode(b"".join(encoded_handoff.split()), validate=True))
-require(hashlib.sha256(handoff_bytes).hexdigest() == "81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947", "decoded Handoff SHA-256 mismatch")
+parts = sorted(FIXTURES.glob("RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64.part*"))
+require(len(parts) == 5, f"expected 5 Workshop Handoff fixture parts, observed {len(parts)}")
+encoded_handoff = b"".join(b"".join(path.read_bytes().split()) for path in parts)
+require(len(encoded_handoff) == 8596, "combined base64 size mismatch")
+require(sha256_bytes(encoded_handoff) == HANDOFF_ENCODED_EXPECTED, "combined base64 SHA-256 mismatch")
+handoff_bytes = gzip.decompress(base64.b64decode(encoded_handoff, validate=True))
+require(sha256_bytes(handoff_bytes) == HANDOFF_DECODED_EXPECTED, "decoded Handoff SHA-256 mismatch")
 require(len(handoff_bytes) == 160234, "decoded Handoff size mismatch")
 handoff = json.loads(handoff_bytes)
 require(handoff.get("package_kind") == "l2g_ssp_handoff_v1", "unexpected Handoff package kind")
 require(handoff.get("package_version") == "1.0", "unexpected Handoff package version")
 require(len(handoff.get("controls", [])) == 110, "Handoff must contain exactly 110 controls")
 
-unsupported = json.loads((HARNESS / "fixtures/unsupported_synthetic_history_seed.json").read_text(encoding="utf-8"))
+unsupported_path = FIXTURES / "unsupported_synthetic_history_seed.json"
+require(unsupported_path.is_file(), "missing unsupported synthetic history fixture")
+require(sha256_bytes(unsupported_path.read_bytes()) == UNSUPPORTED_EXPECTED, "unsupported fixture SHA-256 mismatch")
+unsupported = json.loads(unsupported_path.read_text(encoding="utf-8"))
 require(not unsupported.get("packageFingerprint"), "unsupported seed unexpectedly has packageFingerprint")
 require(not (unsupported.get("sidecar") or {}).get("package_fingerprint"), "unsupported seed unexpectedly has nested package fingerprint")
 
@@ -75,6 +77,6 @@ require("ssp-rg4-history-file-smoke.spec.mjs" in scripts.get("test:file", ""), "
 require("ssp-rg4-history-harness.spec.mjs" in scripts.get("test:rg4-history", ""), "focused Playwright registration missing")
 
 print("SSP RG-4 history harness static validation passed")
-print("verified fixtures:")
-for relative, expected in EXPECTED.items():
-    print(f"  {expected}  {relative}")
+print(f"  {HANDOFF_ENCODED_EXPECTED}  combined Workshop Handoff base64")
+print(f"  {HANDOFF_DECODED_EXPECTED}  decoded Workshop Handoff JSON")
+print(f"  {UNSUPPORTED_EXPECTED}  unsupported synthetic history seed")
