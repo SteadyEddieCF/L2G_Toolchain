@@ -1,0 +1,50 @@
+name: SSP RG-4 History Harness
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ssp-rg4-history-harness.yml'
+      - 'package.json'
+      - 'tests/playwright/ssp-rg4-history-harness-fixture.mjs'
+      - 'tests/playwright/ssp-rg4-history-harness.spec.mjs'
+      - 'tests/playwright/ssp-rg4-history-file-smoke.spec.mjs'
+      - 'validation/rg4/ssp-history-harness/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-playwright:
+    name: focused-playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Materialize SSP v1.9.16 runtime
+        run: python modules/ssp/releases/v1.9.16/materialize.py
+      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
+        run: python modules/ssp/releases/v1.9.17/materialize.py
+      - name: Install JavaScript dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run focused SSP RG-4 history reconciliation
+        run: npm run test:rg4-history
+      - name: Verify fixtures, blocker IDs, identities, and registration
+        run: python validation/rg4/ssp-history-harness/verify_ssp_rg4_history_harness.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssp-rg4-history-harness-evidence
+          path: |
+            test-results/playwright-report
+            test-results/playwright-results.json
+            test-results/playwright
+            validation/rg4/ssp-history-harness
+          if-no-files-found: error
+          retention-days: 30
