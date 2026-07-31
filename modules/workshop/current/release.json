@@ -1,26 +1,36 @@
 {
   "module": "CMMC L2 Gap Workshop Tool",
-  "current_supplied_version": "v79",
-  "release_path": "modules/workshop/releases/v79",
-  "runtime_path": "modules/workshop/releases/v79/cmmc_l2_gap_workshop_tool_v79.html",
-  "status": "current_supplied_release",
-  "next_action": "Proposed v80 Regression Delta and Release Comparison",
-  "recorded_at": "2026-07-26",
-  "promoted_issue": 49,
-  "promoted_by_pr": 50,
-  "promoted_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
-  "previous_promoted_version": "v78",
-  "previous_promoted_commit": "cc92c3e72cb989cd29b1baf44cbe5dcf44358f08",
-  "primary_html_sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
-  "primary_html_size_bytes": 1836145,
-  "route_evidence_fingerprint": "sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4",
-  "current_suite_snapshot": "suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0",
+  "current_supplied_version": "v79.1",
+  "release_path": "modules/workshop/releases/v79.1",
+  "runtime_path": "modules/workshop/releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html",
+  "status": "release_candidate_pending_independent_review_and_builder_v3_10_1_round_trip",
+  "next_action": "Proposed v80 Regression Delta and Release Comparison remains preserved after v79.1 promotion",
+  "recorded_at": "2026-07-31",
+  "bounded_issue": 105,
+  "candidate_branch": "release/workshop-v79.1-strict-workbook-validation",
+  "candidate_pr": null,
+  "previous_promoted_version": "v79",
+  "previous_promoted_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
+  "primary_html_sha256": "361a29613d85a42eb404aabbaec061fb815dbd347d90dc41c089e8024cc95dc1",
+  "primary_html_size_bytes": 1852954,
+  "baseline": {
+    "version": "v79",
+    "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
+    "size_bytes": 1836145
+  },
   "stable_contracts": {
     "workshop_state": "1.0",
-    "workbook_handoff": "1.7",
+    "workbook_handoff": {"contract_release": "1.7", "wire_package_version": "1.0"},
     "workbook_merge": "1.1",
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
   },
-  "release_boundary": "Workshop-led technical six-tool regression with all 10 required routes passing and 320/320 workbook objectives mapped; no adjacent-module authority transfer, evidence sufficiency, assessment, readiness, risk, compliance, certification, or scoring conclusion."
+  "corrective_scope": ["WKS-RG4-001 producer self-reconciliation", "WKS-RG4-002", "WKS-RG4-003", "WKS-RG4-004", "WKS-RG4-005"],
+  "unresolved_dependency": {
+    "issue": 106,
+    "release": "Builder/Merger v3.10.1",
+    "required_gate": "exact lossless action and ownership candidate round trip",
+    "blocks_issue_105_closure": true
+  },
+  "release_boundary": "Strict package validation and Handoff producer self-reconciliation only; no adjacent runtime, registry, historical snapshot, authority, readiness, compliance, assessment, certification, scoring, evidence-sufficiency, or client-release change."
 }
