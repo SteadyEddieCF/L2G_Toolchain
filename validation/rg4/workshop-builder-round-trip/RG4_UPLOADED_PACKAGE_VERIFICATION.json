@@ -1,0 +1,28 @@
+{
+  "document_kind": "rg4_uploaded_deliverables_verification",
+  "protected_main": "8804efcfd7b190117aea76ef48929b2c171dbc70",
+  "packages": {
+    "builder_merger_v3_10": {
+      "uploaded_filename": "L2G-BM_v3.10_Deliverables(2).zip",
+      "zip_size_bytes": 1919723,
+      "zip_sha256": "0c92f1a4d79d67f1a96c09ed89fe40fb0b11baa4f24bcacb5dc3e244dd725cd2",
+      "zip_entries": 75,
+      "crc_error": null,
+      "path_traversal_entries": [],
+      "embedded_runtime_sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17",
+      "matches_promoted_repository_runtime": true,
+      "metadata_note": "Bundled manifest retains pre-promotion candidate wording; exact runtime bytes reconcile."
+    },
+    "ssp_v1_9_17": {
+      "uploaded_filename": "CMMC_L2_SSP_v1.9.17_Complete_Deliverables(2).zip",
+      "zip_size_bytes": 1508540,
+      "zip_sha256": "747d2705a5de5d5599fe9b8f473c500a346a1d8462106cfcac9caa4021807377",
+      "zip_entries": 44,
+      "crc_error": null,
+      "path_traversal_entries": [],
+      "embedded_runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+      "matches_promoted_repository_runtime": true,
+      "metadata_note": "Bundled manifest retains pre-promotion candidate wording; exact runtime bytes reconcile."
+    }
+  }
+}
