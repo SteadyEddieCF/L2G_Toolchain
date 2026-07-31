@@ -1,0 +1,51 @@
+{
+  "evidence_kind": "rg4_ssp_consumer_rejection_and_adversarial_v1",
+  "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+  "valid_noncomplete_states": {
+    "qa_incomplete": {
+      "structural_validity": "valid",
+      "producer_qa": "qa_incomplete",
+      "acceptance_kind": "recorded-incomplete",
+      "superseded_prior_complete_record": false
+    },
+    "qa_blocked": {
+      "structural_validity": "valid",
+      "producer_qa": "qa_blocked",
+      "acceptance_kind": "recorded-blocked",
+      "superseded_prior_complete_record": false
+    }
+  },
+  "rejected_cases": {
+    "mismatched_docx": true,
+    "mismatched_manifest": true,
+    "source_snapshot_mismatch": true,
+    "profile_order_mismatch": true,
+    "aggregate_mismatch": true,
+    "lineage_mismatch": true,
+    "timestamp_order_mismatch": true,
+    "invalid_scope": true,
+    "duplicate_json_keys": true,
+    "unknown_version": true,
+    "extra_properties": true,
+    "malformed_open_xml": true,
+    "path_traversal": true
+  },
+  "inert_text": {
+    "script_like_input_rendered_as_text": true,
+    "script_elements_created": 0,
+    "image_elements_created": 0,
+    "execution_marker": 0
+  },
+  "non_mutation": {
+    "rejected_imports_mutated_governed_data": false,
+    "preview_mutated_history": false,
+    "authored_ssp_changed": false,
+    "rg2_state_changed": false,
+    "rg3_state_changed": false
+  },
+  "runtime_observations": {
+    "page_errors": 0,
+    "console_errors": 0,
+    "external_requests": 0
+  }
+}

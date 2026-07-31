@@ -50,6 +50,8 @@ jobs:
         run: python modules/ssp/releases/v1.9.15/materialize.py
       - name: Materialize SSP v1.9.16 runtime
         run: python modules/ssp/releases/v1.9.16/materialize.py
+      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
+        run: python modules/ssp/releases/v1.9.17/materialize.py
       - name: Materialize Builder/Merger v3.10 runtime
         run: python modules/builder-merger/releases/v3.10/materialize.py
       - name: Validate Builder/Merger v3.10 candidate
@@ -108,6 +110,8 @@ jobs:
         run: python modules/ssp/releases/v1.9.15/materialize.py
       - name: Materialize SSP v1.9.16 runtime
         run: python modules/ssp/releases/v1.9.16/materialize.py
+      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
+        run: python modules/ssp/releases/v1.9.17/materialize.py
       - name: Materialize Builder/Merger v3.10 runtime
         run: python modules/builder-merger/releases/v3.10/materialize.py
       - run: npm ci --no-audit --no-fund
@@ -164,6 +168,8 @@ jobs:
         run: python modules/ssp/releases/v1.9.15/materialize.py
       - name: Materialize SSP v1.9.16 runtime
         run: python modules/ssp/releases/v1.9.16/materialize.py
+      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
+        run: python modules/ssp/releases/v1.9.17/materialize.py
       - name: Materialize Builder/Merger v3.10 runtime
         run: python modules/builder-merger/releases/v3.10/materialize.py
       - run: npm ci --no-audit --no-fund

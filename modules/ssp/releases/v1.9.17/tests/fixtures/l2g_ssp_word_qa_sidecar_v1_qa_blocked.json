@@ -1,0 +1,136 @@
+{
+  "package_kind": "l2g_ssp_word_qa_sidecar_v1",
+  "package_version": "1.0",
+  "schema_uri": "urn:l2g:contracts:l2g_ssp_word_qa_sidecar_v1:1.0",
+  "sidecar_id": "sha256:678cb9ea2645012d2bd460982f863e3ebbe7e232d3ec4a3a904a11dc149ebe24",
+  "created_at": "2026-07-30T18:30:00Z",
+  "producer": {
+    "tool": "builder-merger",
+    "version": "3.10.0",
+    "instance_id": "local-browser"
+  },
+  "consumer": {
+    "tool": "ssp",
+    "minimum_version": "1.9.17-proposed"
+  },
+  "scope": {
+    "mode": "single-system",
+    "portfolio_id": null,
+    "module_id": "single-system"
+  },
+  "source": {
+    "ssp_release_version": "1.9.16",
+    "working_data_schema_version": "1.9.11",
+    "document_version": "1.0",
+    "review_package_id": "SSP-REV-20260730-133000-4FZZ",
+    "source_ssp_fingerprint": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "source_snapshot_sha256": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+    "word_export_manifest_sha256": "3d44ac9f6fca71f07e34a50f4cd4be838b3e897b43b565afbd5fe3f13359181e"
+  },
+  "artifact": {
+    "file_name": "ssp_current_with_unresolved_token.docx",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "sha256": "93165e9527bf69caf055a4069ab4b3400c3e0706e3748e2f86c6f72311bece38",
+    "size_bytes": 79880
+  },
+  "qa_profile": {
+    "id": "l2g-builder-merger-final-word-qa-v1",
+    "version": "1.0",
+    "sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
+  },
+  "checks": [
+    {
+      "check_id": "WQA-PACKAGE-OPEN",
+      "classification": "automated",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "DOCX package opens and required Open XML parts are readable.",
+      "evidence_refs": [
+        "artifact:sha256=93165e9527bf69caf055a4069ab4b3400c3e0706e3748e2f86c6f72311bece38",
+        "artifact:size_bytes=79880",
+        "scan:missing-required-parts=0",
+        "scan:malformed-xml=0",
+        "scan:path-traversal=0",
+        "scan:broken-relationships=0",
+        "scan:external-relationships=0",
+        "scan:active-content=0"
+      ]
+    },
+    {
+      "check_id": "WQA-SOURCE-IDENTITY",
+      "classification": "automated",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "Embedded SSP export identity reconciles with the sidecar source and single-system scope.",
+      "evidence_refs": [
+        "manifest:sha256=3d44ac9f6fca71f07e34a50f4cd4be838b3e897b43b565afbd5fe3f13359181e",
+        "manifest:runtimeRelease=1.9.16",
+        "manifest:documentVersion=1.0",
+        "manifest:reviewPackageId=SSP-REV-20260730-133000-4FZZ",
+        "manifest:sourceFingerprint=84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c",
+        "manifest:reviewScope=single-system",
+        "manifest:schema=cmmc-l2-ssp-modern-v1.9.11",
+        "manifest:requirement-count=110",
+        "reconciliation:errors=0"
+      ]
+    },
+    {
+      "check_id": "WQA-UNRESOLVED-TOKENS",
+      "classification": "automated",
+      "result": "fail",
+      "severity": "blocking",
+      "summary": "One or more governed placeholder or replacement-token patterns remain in the Word XML.",
+      "evidence_refs": [
+        "scan:unresolved-token-count=1",
+        "token:1={{UNRESOLVED_SSP_TOKEN}}"
+      ]
+    },
+    {
+      "check_id": "WQA-COMMENTS-REVISIONS",
+      "classification": "automated",
+      "result": "pass",
+      "severity": "blocking",
+      "summary": "No unresolved comments, tracked revisions, move markup, or pending field-update artifacts remain.",
+      "evidence_refs": [
+        "scan:comments=0",
+        "scan:revisions=0",
+        "scan:field-update-artifacts=0"
+      ]
+    },
+    {
+      "check_id": "WQA-LAYOUT-HUMAN",
+      "classification": "human",
+      "result": "needs-human-review",
+      "severity": "blocking",
+      "summary": "Required local layout review remains incomplete or its local reviewer labels are missing.",
+      "evidence_refs": [
+        "operator:visual-review-required"
+      ]
+    }
+  ],
+  "aggregate": {
+    "state": "qa_blocked",
+    "pass": 3,
+    "fail": 1,
+    "needs_human_review": 1,
+    "not_applicable": 0
+  },
+  "operator_assertions": [],
+  "lineage": {
+    "lineage_key": "c444c55ee315723ad301455775f2aafb8824895331a8714007c987db2eba5354",
+    "attempt_number": 1,
+    "supersedes_sidecar_id": null
+  },
+  "authority": {
+    "final_word_qa_evidence_only": true,
+    "cmmc_readiness": false,
+    "compliance": false,
+    "assessment": false,
+    "certification": false,
+    "scoring": false,
+    "client_release_approval": false,
+    "authenticated_identity": false,
+    "digital_signature": false
+  },
+  "package_fingerprint": "90fd35b9d621cf1f319c54f94be76a938934614e9a922f998eb64ec375751d82"
+}

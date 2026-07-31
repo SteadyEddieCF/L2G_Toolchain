@@ -10,10 +10,10 @@ Private monorepo for the independently versioned, local/offline CMMC L2G modules
 | DocConverter-L2G | v7.9.5.1 | No immediate release required; preserve the exact runtime and registered McFirecoal v1.2.0 handshake baseline until a concrete extraction or package defect is demonstrated |
 | L2G Scoper | v3.12 | No immediate release required; preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
 | CMMC L2 Gap Workshop Tool | v79 | Proposed v80 Regression Delta and Release Comparison as a separately bounded Workshop release |
-| L2G Builder/Merger | v3.8 | RG-4 final Word-QA sidecar must begin as a separately authorized SSP/Builder-Merger handshake release; no sidecar contract exists yet |
-| CMMC L2 SSP Modern Editable | v1.9.16 | Stop SSP implementation and prepare the separately reviewed RG-4 SSP ↔ Builder/Merger final Word-QA sidecar handshake-planning package |
+| L2G Builder/Merger | v3.8 | Review stacked v3.10 RG-4 SSP Final Word-QA Sidecar Producer candidate; v3.9 remains reserved for Advisor and Client Delivery Profiles |
+| CMMC L2 SSP Modern Editable | v1.9.16 | Review stacked v1.9.17 RG-4 Final Word-QA Sidecar Consumer and Evidence History candidate against proposal contract head `cb5c41abf015d7eee095b10fabe2fc0059473e89` |
 
-The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`. SSP v1.9.16 is the promoted SSP-only Review Workspace compact-header parity release over v1.9.15. It gives Review Workspace substantially more laptop-height stage and work area by adaptively collapsing setup, authority, profile, identity, and artifact controls while retaining a compact always-visible profile/scope/output/adoption/progression summary and a session-aware toggle. It retains the v1.9.11 working-data schema, review profiles, staged-review semantics, Word Review behavior, package routes, and all cross-tool contracts. It introduces no Builder/Merger sidecar and makes no readiness, compliance, assessment, certification, final Word-QA, or client-release conclusion.
+The promoted exact-version technical regression snapshot remains `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0`; it is not rewritten by the RG-4 candidates. SSP v1.9.17 is an unmerged SSP-only consumer candidate over promoted v1.9.16. It validates one exact Builder/Merger sidecar and paired SSP DOCX, independently derives current/stale state, requires explicit local acceptance or stale acknowledgement, and preserves append-only local evidence and supersession history. It retains the v1.9.11 working-data schema, exactly 110 requirements, existing review behavior, and all adjacent module runtimes. The new route remains `proposal` pending exact-head joint promotion and makes no readiness, compliance, assessment, certification, scoring, technical-accuracy, evidence-sufficiency, authenticated-identity, digital-signature, or client-release conclusion.
 
 ## Repository layout
 
@@ -25,4 +25,4 @@ The promoted exact-version technical regression snapshot remains `suite-2026.07.
 - `scripts/` — validation and packaging helpers
 - `.github/workflows/` — pull-request validation
 
-The canonical runtime remains local HTML. ZIPs, screenshots, workbooks, DOCX/PPTX files, and other generated binaries normally belong in GitHub Releases or Actions artifacts rather than repeated in git history.
+The canonical runtime remains local HTML. ZIPs, screenshots, workbooks, DOCX/PPTX files, and other generated binaries normally belong in GitHub Releases or Actions artifacts rather than repeated in git history. Exact Builder/Merger sidecars are committed as small JSON fixtures; exact SSP Word artifacts are deterministically regenerated from promoted v1.9.16 during browser tests and verified against their frozen byte lengths and SHA-256 identities.

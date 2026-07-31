@@ -1,0 +1,47 @@
+{
+  "release": "1.9.17",
+  "issue": 93,
+  "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+  "runtime_size_bytes": 2266611,
+  "baseline_runtime_sha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+  "working_data_schema_version": "1.9.11",
+  "authoritative_requirements": 110,
+  "contract": {
+    "package_kind": "l2g_ssp_word_qa_sidecar_v1",
+    "version": "1.0",
+    "status": "proposal",
+    "head": "cb5c41abf015d7eee095b10fabe2fc0059473e89",
+    "schema_sha256": "3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34",
+    "qa_profile_sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
+  },
+  "builder_candidate": {
+    "version": "3.10",
+    "head": "bdb03e47cb92656a2965f5fd867ff3ef770650d6",
+    "runtime_sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17"
+  },
+  "local_results": {
+    "current_attempt1_valid_current": true,
+    "preview_non_mutating": true,
+    "explicit_acceptance_append_count": 1,
+    "duplicate_idempotent": true,
+    "accepted_record_transitions_to_stale_after_controlled_source_change": true,
+    "attempt2_valid_current": true,
+    "attempt1_superseded_after_attempt2_acceptance": true,
+    "incomplete_non_superseding": true,
+    "blocked_non_superseding": true,
+    "backup_restore_preserved_history": true,
+    "reload_preserved_history": true,
+    "injected_text_inert": true,
+    "page_errors": 0,
+    "console_errors": 0,
+    "external_requests": 0
+  },
+  "governed_artifacts": {
+    "schema_changed": false,
+    "profile_registry_changed": false,
+    "registry_schema_changed": false,
+    "adjacent_runtime_changed": false,
+    "contract_registry_status": "proposal"
+  },
+  "ci_status": "pending_exact_draft_pr_head"
+}
