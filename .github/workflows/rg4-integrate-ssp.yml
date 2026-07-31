@@ -1,0 +1,44 @@
+name: RG-4 Integrate SSP v1.9.17
+
+on:
+  push:
+    branches:
+      - integration/ssp-v1.9.17-rg4-main
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rebuild reviewed SSP candidate on promoted main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin main
+          git fetch origin release/ssp-v1.9.17-rg4-word-qa-consumer:refs/remotes/origin/ssp-source
+
+          SOURCE=refs/remotes/origin/ssp-source
+          CONTRACT=cb5c41abf015d7eee095b10fabe2fc0059473e89
+          EXPECTED_OLD=23dcca66254423cf8d7733242b5df87cb8a7fc26
+          TARGET=release/ssp-v1.9.17-rg4-word-qa-consumer
+
+          test "$(git rev-parse "$SOURCE")" = "$EXPECTED_OLD"
+          mapfile -t FILES < <(git diff --name-only "$CONTRACT" "$SOURCE")
+          test "${#FILES[@]}" -eq 38
+
+          git reset --hard origin/main
+          for file in "${FILES[@]}"; do
+            git checkout "$SOURCE" -- "$file"
+          done
+
+          git add -A
+          git commit -m "Rebase SSP v1.9.17 RG-4 consumer onto promoted Builder/Merger main"
+          git push --force-with-lease="refs/heads/${TARGET}:${EXPECTED_OLD}" origin "HEAD:refs/heads/${TARGET}"
