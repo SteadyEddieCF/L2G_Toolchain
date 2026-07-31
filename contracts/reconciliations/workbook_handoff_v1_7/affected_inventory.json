@@ -1,0 +1,136 @@
+{
+  "document_kind": "workbook_handoff_identity_affected_inventory",
+  "format_version": "1.0",
+  "baseline_commit": "8804efcfd7b190117aea76ef48929b2c171dbc70",
+  "decision": "wire_package_1.0_contract_release_1.7",
+  "entries": [
+    {
+      "path": "contracts/registry.json",
+      "category": "normative registry",
+      "observed": "version 1.7; stable-frozen",
+      "treatment": "retain 1.7 as contract release; later add explicit wire package version 1.0 and version semantics"
+    },
+    {
+      "path": "README.md",
+      "category": "current repository documentation",
+      "observed": "Workbook Handoff 1.7",
+      "treatment": "later clarify two-level version model"
+    },
+    {
+      "path": "modules/workshop/README.md",
+      "category": "current module documentation",
+      "observed": "stable route Workbook Handoff 1.7",
+      "treatment": "later clarify contract release 1.7 / wire 1.0"
+    },
+    {
+      "path": "modules/workshop/current/release.json",
+      "category": "current pointer",
+      "observed": "stable_contracts.workbook_handoff = 1.7",
+      "treatment": "later add explicit wire_package_version; preserve current release identity"
+    },
+    {
+      "path": "modules/workshop/releases/v79/README.md",
+      "category": "release documentation",
+      "observed": "Workbook Handoff 1.7 stable boundary",
+      "treatment": "historical release file remains immutable; annotate only in new reconciliation documentation"
+    },
+    {
+      "path": "modules/workshop/releases/v79/CMMC_L2_Gap_Workshop_v79_Compatibility_Manifest.json",
+      "category": "release compatibility evidence",
+      "observed": "workbook_handoff = 1.7 stable/frozen",
+      "treatment": "historical bytes immutable"
+    },
+    {
+      "path": "modules/workshop/releases/v79/CMMC_L2_Gap_Workshop_v79_Full_Toolchain_Regression.json",
+      "category": "historical regression evidence",
+      "observed": "Handoff 1.7 label; prior Builder package records older wire behavior",
+      "treatment": "do not rewrite; supersede only with a new named suite snapshot after issue #101 passes"
+    },
+    {
+      "path": "modules/workshop/releases/v79/source/SOURCE_MANIFEST.json",
+      "category": "release source manifest",
+      "observed": "contract posture preserves Handoff 1.7",
+      "treatment": "historical bytes immutable"
+    },
+    {
+      "path": "modules/workshop/releases/v78/source/SOURCE_MANIFEST.json",
+      "category": "release source manifest",
+      "observed": "contract posture preserves Handoff 1.7",
+      "treatment": "historical bytes immutable"
+    },
+    {
+      "path": "modules/workshop/releases/v78/source/v78_patch.part00.js",
+      "category": "producer overlay source",
+      "observed": "V78_RELEASE says Handoff 1.7; wrapper preserves inherited package factory",
+      "treatment": "evidence that 1.7 is a schema/contract release, not a changed wire package version"
+    },
+    {
+      "path": "modules/workshop/releases/v77/source/v77_patch.part00.js",
+      "category": "producer overlay source",
+      "observed": "V77_RELEASE says Handoff 1.7",
+      "treatment": "historical source immutable"
+    },
+    {
+      "path": "modules/builder-merger/README.md",
+      "category": "current module documentation",
+      "observed": "preserve Workshop Handoff 1.7",
+      "treatment": "later clarify two-level version model"
+    },
+    {
+      "path": "modules/builder-merger/current/release.json",
+      "category": "current pointer",
+      "observed": "stable_contracts.workbook_handoff = 1.7",
+      "treatment": "later add explicit wire_package_version and contract_release semantics"
+    },
+    {
+      "path": "modules/builder-merger/releases/v3.10/L2G-BM_v3.10_Compatibility_Report.md",
+      "category": "release report",
+      "observed": "required Handoff version 1.7",
+      "treatment": "historical report immutable; new v3.10.1 report must clarify encoding"
+    },
+    {
+      "path": "modules/builder-merger/releases/v3.10/L2G-BM_v3.10_Release_Notes.md",
+      "category": "release report",
+      "observed": "Workshop Handoff version 1.7",
+      "treatment": "historical report immutable"
+    },
+    {
+      "path": "modules/builder-merger/releases/v3.10/L2G-BM_v3.10.html",
+      "category": "materialized consumer runtime",
+      "observed": "captures package_version but compatibility decision uses handoff_schema_enhancements_version; unknown/newer enhancement is warning-only",
+      "treatment": "v3.10.1 must enforce exact canonical identity and bounded legacy versions"
+    },
+    {
+      "path": "tests/playwright/rg4-workshop-builder-round-trip.spec.mjs",
+      "category": "draft PR #103 test",
+      "observed": "asserts top-level package_version 1.0 and enhancement 1.7",
+      "treatment": "retain after harness/blocker-ID corrections"
+    },
+    {
+      "path": "validation/rg4/workshop-builder-round-trip/RG4_VALIDATION_SUMMARY.json",
+      "category": "draft PR #103 evidence",
+      "observed": "records WKS-RG4-001 ambiguity",
+      "treatment": "evidence-only; use canonical blocker map"
+    },
+    {
+      "path": "external:RG4_Workshop_v79_Workbook_Handoff_1.7.json",
+      "category": "exact generated artifact",
+      "observed": "package_version 1.0; enhancement 1.7; embedded contract_release 1.7; required identity package_version 1.0",
+      "size_bytes": 1902424,
+      "sha256": "99c63ca4b617a479e5634bb7ad64f74e10d4d4b43ca747e698c134c545012ec2",
+      "treatment": "primary wire-format evidence; preserve exact bytes"
+    },
+    {
+      "path": "suite/snapshots/suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0.json",
+      "category": "historical suite snapshot",
+      "observed": "labels Handoff 1.7 and records the then-current route results",
+      "treatment": "immutable; do not rewrite"
+    },
+    {
+      "path": "issues/101,104,105,106,107 and PR/103",
+      "category": "governance records",
+      "observed": "promotion block and corrective ownership",
+      "treatment": "update with decision and dependency order"
+    }
+  ]
+}

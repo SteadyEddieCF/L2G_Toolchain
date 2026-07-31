@@ -1,0 +1,17 @@
+{
+  "contract_manifest": {
+    "contract_name": "l2g_workbook_handoff_v1",
+    "contract_release": "1.7",
+    "required_package_identity": {
+      "package_kind": "l2g_workbook_handoff_v1",
+      "package_version": "1.0"
+    }
+  },
+  "handoff_schema_enhancements_version": "1.7",
+  "package_integrity": {
+    "contract_release": "1.7"
+  },
+  "package_kind": "l2g_workbook_handoff_v1",
+  "package_version": "1.7",
+  "schema_trusted": true
+}

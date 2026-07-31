@@ -1,0 +1,92 @@
+{
+  "document_kind": "workbook_handoff_identity_compatibility_matrix",
+  "format_version": "1.0",
+  "canonical": {
+    "package_kind": "l2g_workbook_handoff_v1",
+    "wire_package_version": "1.0",
+    "contract_release": "1.7",
+    "enhancement_version": "1.7"
+  },
+  "dispositions": [
+    {
+      "input": "kind correct; package 1.0; enhancement 1.7; internals reconcile",
+      "builder_v3_8": "accepts with newer-enhancement warning",
+      "builder_v3_10": "accepts with newer-enhancement warning",
+      "builder_v3_10_1": "accept trusted current",
+      "workshop_v79_1_export": "emit canonical",
+      "status": "canonical current"
+    },
+    {
+      "input": "kind correct; package 1.0; recognized legacy enhancement 1.0-1.6",
+      "builder_v3_8": "legacy behavior varies",
+      "builder_v3_10": "accepts within/additive compatibility path",
+      "builder_v3_10_1": "accept only if exact legacy release is enumerated; warning; not current",
+      "workshop_v79_1_export": "never emit",
+      "status": "bounded legacy"
+    },
+    {
+      "input": "kind correct; package 1.0; enhancement missing",
+      "builder_v3_8": "treated legacy/unspecified",
+      "builder_v3_10": "treated legacy/unspecified",
+      "builder_v3_10_1": "reject as current; optional explicitly enumerated legacy path only",
+      "workshop_v79_1_export": "never emit",
+      "status": "unsupported unless exact legacy rule exists"
+    },
+    {
+      "input": "kind correct; package 1.7; enhancement 1.7",
+      "builder_v3_8": "not strictly checked",
+      "builder_v3_10": "not strictly checked",
+      "builder_v3_10_1": "reject conflicting wire encoding",
+      "workshop_v79_1_export": "never emit",
+      "status": "invalid"
+    },
+    {
+      "input": "kind correct; unknown package version",
+      "builder_v3_8": "not strictly checked",
+      "builder_v3_10": "not strictly checked",
+      "builder_v3_10_1": "reject",
+      "workshop_v79_1_export": "never emit",
+      "status": "invalid"
+    },
+    {
+      "input": "kind correct; package 1.0; enhancement greater than 1.7",
+      "builder_v3_8": "warning-only additive path",
+      "builder_v3_10": "warning-only additive path",
+      "builder_v3_10_1": "reject until coordinated support exists",
+      "workshop_v79_1_export": "never emit",
+      "status": "unsupported future release"
+    },
+    {
+      "input": "kind missing or incorrect",
+      "builder_v3_8": "legacy recognition may occur",
+      "builder_v3_10": "legacy recognition may occur",
+      "builder_v3_10_1": "reject current path; only explicitly typed legacy packages allowed",
+      "workshop_v79_1_export": "never emit",
+      "status": "invalid current identity"
+    },
+    {
+      "input": "duplicate JSON keys",
+      "builder_v3_8": "normal JSON last-value behavior possible",
+      "builder_v3_10": "normal JSON last-value behavior possible",
+      "builder_v3_10_1": "reject before parse",
+      "workshop_v79_1_export": "self-check prevents emission",
+      "status": "invalid"
+    },
+    {
+      "input": "top-level and embedded identity disagree",
+      "builder_v3_8": "not fully reconciled",
+      "builder_v3_10": "not fully reconciled",
+      "builder_v3_10_1": "reject",
+      "workshop_v79_1_export": "self-check prevents emission",
+      "status": "invalid"
+    },
+    {
+      "input": "unknown top-level field under claimed frozen release 1.7",
+      "builder_v3_8": "informational preserve/ignore",
+      "builder_v3_10": "informational preserve/ignore",
+      "builder_v3_10_1": "block trusted execution unless field is declared by the 1.7 schema/extension mechanism",
+      "workshop_v79_1_export": "emit only declared fields",
+      "status": "invalid trusted-current package"
+    }
+  ]
+}
