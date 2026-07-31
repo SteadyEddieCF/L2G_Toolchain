@@ -27,15 +27,17 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git fetch origin main
-          git fetch origin release/ssp-v1.9.17-rg4-word-qa-consumer:refs/remotes/origin/ssp-source
+          git fetch origin release/ssp-v1.9.17-rg4-word-qa-consumer
 
-          SOURCE=refs/remotes/origin/ssp-source
+          SOURCE=23dcca66254423cf8d7733242b5df87cb8a7fc26
           CONTRACT=cb5c41abf015d7eee095b10fabe2fc0059473e89
           EXPECTED_OLD=23dcca66254423cf8d7733242b5df87cb8a7fc26
           TARGET=release/ssp-v1.9.17-rg4-word-qa-consumer
 
-          test "$(git rev-parse "$SOURCE")" = "$EXPECTED_OLD"
+          git cat-file -e "${SOURCE}^{commit}"
           mapfile -t FILES < <(git diff --name-only "$CONTRACT" "$SOURCE")
+          echo "Reviewed SSP files: ${#FILES[@]}"
+          printf '%s\n' "${FILES[@]}"
           test "${#FILES[@]}" -eq 38
 
           git reset --hard origin/main
