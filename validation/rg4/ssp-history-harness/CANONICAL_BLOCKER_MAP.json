@@ -1,0 +1,33 @@
+{
+  "document_kind": "rg4_canonical_blocker_id_map",
+  "format_version": "1.0",
+  "governing_issue": 107,
+  "source_governance_baseline": "3be4153c45cb6534954592a6e4ff1cfda87c8bb4",
+  "blockers": [
+    {
+      "id": "WKS-RG4-001",
+      "condition": "Workbook Handoff contract identity mismatch"
+    },
+    {
+      "id": "WKS-RG4-002",
+      "condition": "unknown Workbook Merge version accepted"
+    },
+    {
+      "id": "WKS-RG4-003",
+      "condition": "unknown top-level Workbook Merge property accepted"
+    },
+    {
+      "id": "WKS-RG4-004",
+      "condition": "duplicate JSON keys accepted"
+    },
+    {
+      "id": "WKS-RG4-005",
+      "condition": "duplicated or mismatched practice identity accepted"
+    },
+    {
+      "id": "RG4-ROUNDTRIP-006",
+      "condition": "action and ownership preservation failure"
+    }
+  ],
+  "legacy_inconsistent_numbering_reused": false
+}
