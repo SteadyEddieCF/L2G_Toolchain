@@ -1,0 +1,9 @@
+import { test, expect } from '@playwright/test';
+import crypto from 'node:crypto';
+import { stabilizePage, applyDarkMode } from './module-catalog.mjs';
+
+const BASE='/modules/workshop/releases/v79/cmmc_l2_gap_workshop_tool_v79.html';
+const CANDIDATE='/modules/workshop/releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html';
+const digest=buffer=>crypto.createHash('sha256').update(buffer).digest('hex');
+async function normalizedScreenshot(page,url,dark=false){await page.goto(url,{waitUntil:'domcontentloaded'});await stabilizePage(page);if(dark)await applyDarkMode(page,'dark-mode');await page.evaluate(()=>{document.querySelectorAll('.hero h1 .small').forEach(node=>{node.textContent='v79';});});await page.waitForTimeout(50);return page.screenshot({fullPage:false,animations:'disabled',caret:'hide'});}
+for(const dark of [false,true])test(`Workshop v79.1 ${dark?'dark':'light'} landing remains visually equivalent to v79`,async({browser},testInfo)=>{const baselinePage=await browser.newPage({viewport:{width:1280,height:720}});const candidatePage=await browser.newPage({viewport:{width:1280,height:720}});const baseline=await normalizedScreenshot(baselinePage,BASE,dark);const candidate=await normalizedScreenshot(candidatePage,CANDIDATE,dark);expect(digest(candidate)).toBe(digest(baseline));await testInfo.attach(`workshop-v791-${dark?'dark':'light'}.png`,{body:candidate,contentType:'image/png'});await baselinePage.close();await candidatePage.close();});
