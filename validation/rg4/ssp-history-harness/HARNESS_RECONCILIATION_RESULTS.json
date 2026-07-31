@@ -1,0 +1,26 @@
+{
+  "document_kind": "ssp_rg4_history_harness_reconciliation_results",
+  "format_version": "1.0",
+  "governing_issue": 107,
+  "baseline_commit": "3be4153c45cb6534954592a6e4ff1cfda87c8bb4",
+  "branch": "validation/ssp-rg4-history-harness",
+  "draft_pr": null,
+  "exact_head": null,
+  "status": "candidate_pending_ci",
+  "runtime_modified": false,
+  "schema_modified": false,
+  "current_pointer_modified": false,
+  "contract_registry_modified": false,
+  "historical_snapshot_modified": false,
+  "supported_workflow_product_defect_found": false,
+  "root_cause": "The prior directly injected seed lacked packageFingerprint and sidecar.package_fingerprint, so rg4NormalizeHistory removed it after canonical normalization.",
+  "test_results": {
+    "focused_playwright": {"status": "pending", "run_id": null},
+    "shared_playwright_qa": {"status": "pending", "run_id": null},
+    "native_windows_file_origin": {"status": "pending", "run_id": null},
+    "static_validation": {"status": "pending", "run_id": null}
+  },
+  "route_status": "proposal",
+  "suite_snapshot_created": false,
+  "promotion_performed": false
+}
