@@ -93,13 +93,15 @@ test('Workshop v79.1 self-reconciles Handoff 1.7 and preserves SSP Handoff 1.0',
   expect(observed.externalRequests).toEqual([]);expect(observed.pageErrors).toEqual([]);expect(observed.consoleErrors).toEqual([]);
 });
 
-test('Workshop v79.1 retains v79 workspace, themes, print, constrained viewport, keyboard focus, and axe',async({page})=>{
+test('Workshop v79.1 retains v79 workspace, axe, themes, print, constrained viewport, and keyboard focus',async({page})=>{
   const observed=capture(page);await page.setViewportSize({width:980,height:720});await open(page);
+  const accessibility=await new AxeBuilder({page}).analyze();
+  expect(accessibility.violations.filter(v=>['critical','serious'].includes(v.impact))).toEqual([]);
   await page.emulateMedia({media:'print'});expect(await page.evaluate(()=>matchMedia('print').matches)).toBe(true);
-  await page.emulateMedia({media:'screen'});await page.evaluate(()=>{document.documentElement.classList.add('dark-mode');document.body.classList.add('dark-mode');});
+  await page.emulateMedia({media:'screen'});
+  await page.evaluate(()=>{document.documentElement.classList.add('dark-mode');document.body.classList.add('dark-mode');});
   expect(await page.evaluate(()=>document.documentElement.classList.contains('dark-mode'))).toBe(true);
   await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.activeElement?.tagName||'BODY')).not.toBe('BODY');
   expect(await page.locator('#v79RegressionWorkspace').count()).toBe(1);expect(await page.locator('#v791IdentityNotice').count()).toBe(1);
-  const accessibility=await new AxeBuilder({page}).analyze();expect(accessibility.violations.filter(v=>['critical','serious'].includes(v.impact))).toEqual([]);
   expect(observed.externalRequests).toEqual([]);expect(observed.pageErrors).toEqual([]);expect(observed.consoleErrors).toEqual([]);
 });
