@@ -1,0 +1,78 @@
+{
+  "builder_import": {
+    "embedded_template_used": true,
+    "network_requests": 0,
+    "practice_rows": 110,
+    "recognized": true,
+    "unmatched_practices": 0
+  },
+  "document_kind": "rg4_workshop_builder_before_after_comparison",
+  "handoff": {
+    "actions": 1,
+    "actual_package_version": "1.0",
+    "contract_identity_conforms": false,
+    "decisions": 1,
+    "enhancement_version": "1.7",
+    "objective_ids": 320,
+    "ownership_records": 1,
+    "package_kind": "l2g_workbook_handoff_v1",
+    "practice_ids": 110,
+    "registry_expected_version": "1.7",
+    "source_documents": 2
+  },
+  "merge": {
+    "apply_history_records": 1,
+    "canonical_objective_id_sets_equal": true,
+    "document_default_fields_normalized_during_apply": true,
+    "document_semantic_content_unchanged": true,
+    "exact_reimport_duplicate_blocked": true,
+    "objective_results": 320,
+    "package_kind": "l2g_workbook_merge_v1",
+    "package_version": "1.1",
+    "practice_id_sets_equal": true,
+    "practice_results": 110,
+    "preview_substantive_state_unchanged": true,
+    "raw_objective_id_deltas": {
+      "handoff_only": ["CM.L2-3.4.4 [a]"],
+      "merge_only": ["CM.L2-3.4.4[a]"]
+    },
+    "raw_objective_id_sets_equal": false,
+    "unrelated_records_unchanged": {
+      "actions": true,
+      "decisions": true,
+      "ownership": true,
+      "provider_followups": true,
+      "requests": true,
+      "ssp_return_governance": true
+    }
+  },
+  "protected_main": "8804efcfd7b190117aea76ef48929b2c171dbc70",
+  "workbook": {
+    "action_owner_due_date_blocker_present": false,
+    "conditional_formats_after": 5,
+    "conditional_formats_before": 5,
+    "crc_error": null,
+    "data_validation_rules_after": 7,
+    "data_validation_rules_before": 0,
+    "decision_statement_present": true,
+    "deterministic_repeat_identical": true,
+    "exact_action_id_present": false,
+    "exact_ownership_id_present": false,
+    "formula_cells_after": 222,
+    "formula_cells_before": 222,
+    "formula_mismatches": 0,
+    "generated_sheets": 12,
+    "inert_literal_present": true,
+    "merge_cells_after": 15,
+    "merge_cells_before": 15,
+    "original_validation_rules_missing": 0,
+    "ownership_access_limitation_present": false,
+    "path_traversal_entries": [],
+    "provider_responsibility_text_present": true,
+    "sha256": "53836fd615dfdde88ac5510516b97e13c351fe88d29a2ca94a1a8c4b3012c43a",
+    "styles_preserved": true,
+    "styles_xml_sha256_after": "ecec4fa822ab7114324708697bc307d7a21cf84e0274bd4a51950c714409f658",
+    "styles_xml_sha256_before": "ecec4fa822ab7114324708697bc307d7a21cf84e0274bd4a51950c714409f658",
+    "template_sheets": 9
+  }
+}
