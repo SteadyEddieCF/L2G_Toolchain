@@ -126,6 +126,70 @@ export async function setFixedClock(page, fixed = '2026-07-31T18:15:00.000Z') {
     }
     window.Date = FixedDate;
     Math.random = () => 0.123456789;
+
+    if (window.__sspRg4TestHooks?.setHistory && !window.__RG4_HISTORY_FIXTURE_WRAPPED__) {
+      const originalSetHistory = window.__sspRg4TestHooks.setHistory;
+      window.__sspRg4TestHooks.setHistory = (records) => {
+        const normalized = (Array.isArray(records) ? records : []).map((record) => {
+          if (!record || record.packageFingerprint || !record.evidence_id) return record;
+          return {
+            packageFingerprint: 'a'.repeat(64),
+            sidecarId: record.sidecar_id || `sha256:${'a'.repeat(64)}`,
+            sidecarCreatedAt: record.recorded_at || iso,
+            producerQaState: record.review_status || 'qa_complete',
+            currencyAtAcceptance: 'current',
+            acceptanceKind: 'accepted-current',
+            acceptedAt: record.recorded_at || iso,
+            localAcceptance: {
+              localId: record.evidence_id,
+              displayName: record.local_display_name || 'Synthetic RG-4 evidence history record'
+            },
+            artifact: {
+              fileName: 'synthetic-rg4.docx',
+              sha256: record.source_docx_sha256 || 'b'.repeat(64),
+              sizeBytes: 1,
+              manifestSha256: 'c'.repeat(64)
+            },
+            source: {
+              releaseVersion: '1.9.17',
+              documentVersion: '1',
+              reviewPackageId: 'rg4-review-package',
+              sourceFingerprint: 'd'.repeat(64),
+              sourceSnapshotSha256: 'e'.repeat(64)
+            },
+            scope: { mode: 'single-system' },
+            sidecar: {
+              package_fingerprint: 'a'.repeat(64),
+              sidecar_id: record.sidecar_id || `sha256:${'a'.repeat(64)}`,
+              created_at: record.recorded_at || iso,
+              lineage: {
+                lineage_key: 'rg4-validation-lineage',
+                attempt_number: 1,
+                supersedes_sidecar_id: ''
+              },
+              aggregate: { state: record.review_status || 'qa_complete' },
+              artifact: {
+                file_name: 'synthetic-rg4.docx',
+                sha256: record.source_docx_sha256 || 'b'.repeat(64),
+                size_bytes: 1
+              },
+              source: {
+                word_export_manifest_sha256: 'c'.repeat(64),
+                ssp_release_version: '1.9.17',
+                working_data_schema_version: '1.9.11',
+                document_version: '1',
+                review_package_id: 'rg4-review-package',
+                source_ssp_fingerprint: 'd'.repeat(64),
+                source_snapshot_sha256: 'e'.repeat(64)
+              },
+              scope: { mode: 'single-system' }
+            }
+          };
+        });
+        return originalSetHistory(normalized);
+      };
+      window.__RG4_HISTORY_FIXTURE_WRAPPED__ = true;
+    }
   }, fixed);
 }
 
