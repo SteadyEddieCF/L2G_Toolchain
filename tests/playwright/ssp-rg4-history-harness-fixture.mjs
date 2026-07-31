@@ -22,7 +22,7 @@ export const UNSUPPORTED_SYNTHETIC_HISTORY_PATH = path.resolve(
   process.cwd(),
   'validation/rg4/ssp-history-harness/fixtures/unsupported_synthetic_history_seed.json',
 );
-export const EXPECTED_WORKSHOP_HANDOFF_ENCODED_SHA256 = '418831516693aa0eb469fe571a75ff03ff5add091a1fe3ebbbeda978d3a7457e';
+export const EXPECTED_WORKSHOP_HANDOFF_ENCODED_SHA256 = 'da47a88949edb82997d0a1d9a1cddd875bc8fa8be60aea19fd1a884749229505';
 export const EXPECTED_WORKSHOP_HANDOFF_SHA256 = '81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947';
 export const EXPECTED_UNSUPPORTED_SEED_SHA256 = '73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780';
 export const EXPECTED_RG4_PROFILE_SHA256 = '9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c';
