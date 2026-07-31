@@ -19,6 +19,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v4
@@ -29,6 +30,28 @@ jobs:
         run: python modules/builder-merger/releases/v3.10/materialize.py
       - name: Validate Builder/Merger v3.10 runtime
         run: python modules/builder-merger/releases/v3.10/validate_v3_10.py
+      - name: Materialize SSP v1.9.6 runtime
+        run: python modules/ssp/releases/v1.9.6/materialize.py
+      - name: Materialize SSP v1.9.7 runtime
+        run: python modules/ssp/releases/v1.9.7/materialize.py
+      - name: Materialize SSP v1.9.8 runtime and schema
+        run: python modules/ssp/releases/v1.9.8/materialize.py
+      - name: Materialize SSP v1.9.9 runtime and schema
+        run: python modules/ssp/releases/v1.9.9/materialize.py
+      - name: Materialize SSP v1.9.10 runtime
+        run: python modules/ssp/releases/v1.9.10/materialize.py
+      - name: Materialize SSP v1.9.11 runtime and schema
+        run: python modules/ssp/releases/v1.9.11/materialize.py
+      - name: Materialize SSP v1.9.12 runtime
+        run: python modules/ssp/releases/v1.9.12/materialize.py
+      - name: Materialize SSP v1.9.13 runtime
+        run: python modules/ssp/releases/v1.9.13/materialize.py
+      - name: Materialize SSP v1.9.14 runtime
+        run: python modules/ssp/releases/v1.9.14/materialize.py
+      - name: Materialize SSP v1.9.15 runtime
+        run: python modules/ssp/releases/v1.9.15/materialize.py
+      - name: Materialize SSP v1.9.16 runtime
+        run: python modules/ssp/releases/v1.9.16/materialize.py
       - name: Materialize SSP v1.9.17 runtime and RG-4 inputs
         run: python modules/ssp/releases/v1.9.17/materialize.py
       - name: Run bounded static evidence gate
