@@ -1,0 +1,30 @@
+{
+  "builder_merger": {
+    "console_errors": 0,
+    "external_network_requests": 0,
+    "generated_workbook_crc_error": null,
+    "page_errors": 0,
+    "path_traversal_entries": []
+  },
+  "document_kind": "rg4_workshop_builder_browser_security_results",
+  "local_execution_mode": "Playwright Chromium set_content because this sandbox blocks local file:// navigation; native Windows file:// delegated to repository CI",
+  "shared_repository_gates": {
+    "constrained_viewport": "pending PR CI",
+    "keyboard_focus": "pending PR CI",
+    "light_dark": "pending PR CI",
+    "print": "pending PR CI",
+    "runtime_and_axe": "pending PR CI",
+    "windows_file_origin": "pending PR CI"
+  },
+  "ssp": {
+    "console_errors": 0,
+    "external_network_requests": 0,
+    "page_errors": 0
+  },
+  "workshop": {
+    "console_errors": 0,
+    "external_network_requests": 0,
+    "injected_text_executed": false,
+    "page_errors": 0
+  }
+}
