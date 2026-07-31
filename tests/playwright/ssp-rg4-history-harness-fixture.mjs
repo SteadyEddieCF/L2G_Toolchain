@@ -10,10 +10,11 @@ import {
 
 export const SSP_RUNTIME_HTTP = '/modules/ssp/releases/v1.9.17/CMMC_L2_SSP_Modern_Editable_v1.9.17.html';
 export const SSP_RUNTIME_RELATIVE = 'modules/ssp/releases/v1.9.17/CMMC_L2_SSP_Modern_Editable_v1.9.17.html';
-export const WORKSHOP_HANDOFF_ENCODED_PATH = path.resolve(
+export const WORKSHOP_HANDOFF_FIXTURE_DIR = path.resolve(
   process.cwd(),
-  'validation/rg4/ssp-history-harness/fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64',
+  'validation/rg4/ssp-history-harness/fixtures',
 );
+export const WORKSHOP_HANDOFF_PART_PREFIX = 'RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64.part';
 export const WORKSHOP_HANDOFF_PATH = path.resolve(
   process.cwd(),
   'test-results/ssp-rg4-history-fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json',
@@ -22,7 +23,8 @@ export const UNSUPPORTED_SYNTHETIC_HISTORY_PATH = path.resolve(
   process.cwd(),
   'validation/rg4/ssp-history-harness/fixtures/unsupported_synthetic_history_seed.json',
 );
-export const EXPECTED_WORKSHOP_HANDOFF_ENCODED_SHA256 = 'da47a88949edb82997d0a1d9a1cddd875bc8fa8be60aea19fd1a884749229505';
+export const EXPECTED_WORKSHOP_HANDOFF_PART_COUNT = 5;
+export const EXPECTED_WORKSHOP_HANDOFF_ENCODED_SHA256 = '6a56bbebce04e7da659447c4d22ad2515894b106c46df8456b0d7f08a0ef0247';
 export const EXPECTED_WORKSHOP_HANDOFF_SHA256 = '81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947';
 export const EXPECTED_UNSUPPORTED_SEED_SHA256 = '73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780';
 export const EXPECTED_RG4_PROFILE_SHA256 = '9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c';
@@ -31,26 +33,49 @@ export const sha256Bytes = (value) => crypto.createHash('sha256').update(value).
 export const sha256Json = (value) => sha256Bytes(Buffer.from(JSON.stringify(value)));
 export const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
+export function workshopHandoffParts() {
+  const parts = fs.readdirSync(WORKSHOP_HANDOFF_FIXTURE_DIR)
+    .filter((name) => name.startsWith(WORKSHOP_HANDOFF_PART_PREFIX))
+    .sort()
+    .map((name) => path.join(WORKSHOP_HANDOFF_FIXTURE_DIR, name));
+  if (parts.length !== EXPECTED_WORKSHOP_HANDOFF_PART_COUNT) {
+    throw new Error(`Expected ${EXPECTED_WORKSHOP_HANDOFF_PART_COUNT} Workshop Handoff parts, observed ${parts.length}.`);
+  }
+  return parts;
+}
+
 export function materializeWorkshopHandoffFixture() {
-  const encoded = fs.readFileSync(WORKSHOP_HANDOFF_ENCODED_PATH);
+  const encoded = Buffer.from(
+    workshopHandoffParts()
+      .map((part) => fs.readFileSync(part, 'ascii').replace(/\s+/g, ''))
+      .join(''),
+    'ascii',
+  );
   const encodedSha256 = sha256Bytes(encoded);
   if (encodedSha256 !== EXPECTED_WORKSHOP_HANDOFF_ENCODED_SHA256) {
     throw new Error(`Encoded Workshop Handoff fixture hash mismatch: ${encodedSha256}`);
   }
-  const workshop = zlib.gunzipSync(Buffer.from(encoded.toString('ascii').replace(/\s+/g, ''), 'base64'));
+  const workshop = zlib.gunzipSync(Buffer.from(encoded.toString('ascii'), 'base64'));
   const workshopSha256 = sha256Bytes(workshop);
   if (workshopSha256 !== EXPECTED_WORKSHOP_HANDOFF_SHA256) {
     throw new Error(`Workshop Handoff fixture hash mismatch: ${workshopSha256}`);
   }
   fs.mkdirSync(path.dirname(WORKSHOP_HANDOFF_PATH), { recursive: true });
   fs.writeFileSync(WORKSHOP_HANDOFF_PATH, workshop);
-  return { path: WORKSHOP_HANDOFF_PATH, encodedSha256, workshopSha256, sizeBytes: workshop.length };
+  return {
+    path: WORKSHOP_HANDOFF_PATH,
+    parts: workshopHandoffParts().map((part) => path.basename(part)),
+    encodedSha256,
+    workshopSha256,
+    sizeBytes: workshop.length,
+  };
 }
 
 export function verifyStaticFixtureHashes() {
   const workshop = materializeWorkshopHandoffFixture();
   const unsupported = fs.readFileSync(UNSUPPORTED_SYNTHETIC_HISTORY_PATH);
   const actual = {
+    workshopHandoffParts: workshop.parts,
     workshopHandoffEncoded: workshop.encodedSha256,
     workshopHandoff: workshop.workshopSha256,
     workshopHandoffSizeBytes: workshop.sizeBytes,
