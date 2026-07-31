@@ -1,0 +1,64 @@
+{
+  "branch": "validation/rg4-workshop-builder-round-trip",
+  "document_kind": "rg4_workshop_owned_validation_summary",
+  "governing_issue": 101,
+  "historical_snapshot_modified": false,
+  "orchestrator_note": "Do not promote l2g_ssp_word_qa_sidecar_v1. Corrective changes require separately bounded owning-module work and a rerun of this validation.",
+  "passing_results": {
+    "builder_package_runtime_reconciled": true,
+    "exact_reimport_blocked": true,
+    "formulas_preserved": "222/222",
+    "generated_workbook_deterministic": true,
+    "injected_text_inert": true,
+    "objective_ids_after_canonicalization": "320/320",
+    "practice_ids": "110/110",
+    "rg4_history_remains_ssp_owned": true,
+    "ssp_package_runtime_reconciled": true,
+    "ssp_workshop_return": "1.0 preview accepted",
+    "styles_preserved": true,
+    "workbook_merge_version": "1.1",
+    "workshop_apply_local_governed": true,
+    "workshop_preview_nonmutating": true,
+    "workshop_ssp_handoff": "1.0 accepted",
+    "workshop_to_builder_import": true,
+    "zero_local_network_page_console_errors": true
+  },
+  "promotion_blockers": [
+    {
+      "condition": "Exact Workshop v79 Workbook Handoff declares package_version 1.0 while frozen registry and RG-4 gate require 1.7; enhancement field separately declares 1.7.",
+      "id": "WKS-RG4-001",
+      "owner": "Workshop"
+    },
+    {
+      "condition": "Workbook Merge parser accepts unknown package_version values as trusted/nonblocking.",
+      "id": "WKS-RG4-002",
+      "owner": "Workshop"
+    },
+    {
+      "condition": "Workbook Merge parser accepts unknown top-level properties.",
+      "id": "WKS-RG4-003",
+      "owner": "Workshop"
+    },
+    {
+      "condition": "Workbook Merge parser does not explicitly reject duplicate JSON keys when the final parsed value is valid.",
+      "id": "WKS-RG4-004",
+      "owner": "Workshop"
+    },
+    {
+      "condition": "Workbook Merge preview accepts a duplicated/mismatched practice identity as trusted and nonblocking rather than failing closed.",
+      "id": "WKS-RG4-005",
+      "owner": "Workshop"
+    },
+    {
+      "condition": "The generated workbook preserves provider/responsibility text and decisions but omits exact action/ownership IDs and action owner/due-date/blocker/access-limitation fields required by issue #101. Existing v78 helper metadata still says downstream consumption is unconfirmed and consumer may ignore.",
+      "id": "RG4-ROUNDTRIP-006",
+      "owner": "Joint Workshop/Builder contract governance"
+    }
+  ],
+  "promotion_eligible": false,
+  "protected_main": "8804efcfd7b190117aea76ef48929b2c171dbc70",
+  "registry_modified": false,
+  "runtime_modified": false,
+  "sidecar_stability": "proposal",
+  "validation_status": "completed_with_promotion_blockers"
+}
