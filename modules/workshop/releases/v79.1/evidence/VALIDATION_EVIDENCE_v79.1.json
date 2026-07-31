@@ -1,0 +1,68 @@
+{
+  "evidence_kind": "workshop_v79_1_candidate_validation",
+  "runtime": {
+    "sha256": "361a29613d85a42eb404aabbaec061fb815dbd347d90dc41c089e8024cc95dc1",
+    "size_bytes": 1852954,
+    "baseline_sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca"
+  },
+  "strict_merge": {
+    "valid_merge_1_1": {
+      "trusted": true,
+      "blocking": false,
+      "practice_ids": 110,
+      "objective_ids": 320
+    },
+    "preview_non_mutating": true,
+    "explicit_apply": {
+      "practice_overlays": 110,
+      "objective_overlays": 320,
+      "history_entries": 1
+    },
+    "duplicate_reimport_blocked": true,
+    "undo_restored_governed_state": true,
+    "rejected_non_mutating_cases": [
+      "unknown version",
+      "downgraded version",
+      "missing version",
+      "incorrect package kind",
+      "unknown top-level property",
+      "duplicate top-level key",
+      "duplicate nested key",
+      "duplicate practice ID",
+      "conflicting practice rows",
+      "duplicate objective ID",
+      "mismatched practice/objective identity",
+      "malformed JSON"
+    ],
+    "imported_strings_inert": true
+  },
+  "handoff_identity": {
+    "package_kind": "l2g_workbook_handoff_v1",
+    "wire_package_version": "1.0",
+    "schema_enhancements_version": "1.7",
+    "contract_release": "1.7",
+    "fingerprint_repeat_identical": true,
+    "label": "Workbook Handoff contract release 1.7 — wire package version 1.0"
+  },
+  "workshop_ssp_regression": {
+    "workshop_to_ssp": {
+      "package_kind": "l2g_ssp_handoff_v1",
+      "package_version": "1.0",
+      "controls": 110
+    },
+    "ssp_to_workshop": {
+      "package_kind": "l2g_ssp_return_package_v1",
+      "package_version": "1.0",
+      "controls": 110,
+      "preview_non_mutating": true
+    },
+    "rg4_sidecar_copied_to_workshop": false
+  },
+  "local_browser": {
+    "external_requests": 0,
+    "page_errors": 0,
+    "unexpected_console_errors": 0
+  },
+  "ci_status": "pending exact branch head",
+  "builder_v3_10_1_dependency": "pending issue #106 exact candidate"
+}
