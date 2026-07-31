@@ -1,0 +1,54 @@
+{
+  "release": "1.9.17",
+  "issue": 93,
+  "focus": "Final Word-QA Sidecar Consumer and Evidence History",
+  "baselineRuntime": "CMMC_L2_SSP_Modern_Editable_v1.9.16.html",
+  "baselineRuntimeSha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+  "runtimeOutput": "CMMC_L2_SSP_Modern_Editable_v1.9.17.html",
+  "runtimeOutputSha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+  "runtimeOutputSizeBytes": 2266611,
+  "patchSha256": "5242041dbb1aa7211ae3ad4e803a6981262378e4a9c0c2b0c28461c8ee91a370",
+  "compressedPatchSha256": "6b6772c30b05b6aa92070fd42fbfb46df4c6760806bb3eadf8b6e68373554072",
+  "encodedPatchSha256": "ba0c9f945e48d02a2e4866deb6cf1ef5479c805367778f5bdf11d7a4dfaf89fb",
+  "wordFixtureStrategy": {
+    "mode": "deterministic-browser-regeneration",
+    "sourceRuntimeVersion": "1.9.16",
+    "sourceRuntimeSha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+    "helperPath": "tests/playwright/ssp-rg4-fixture-helper.mjs",
+    "exactCurrentDocxSha256": "3a124539c41057f88591c06076b21590d30ccf5eea55b078bf4531cedf005642",
+    "exactChangedDocxSha256": "36d86ce025183757050f9157b9bbed59e752d0a24fa7480884962e3d37090c7a",
+    "exactBlockedDocxSha256": "93165e9527bf69caf055a4069ab4b3400c3e0706e3748e2f86c6f72311bece38",
+    "networkRequired": false
+  },
+  "contract": {
+    "packageKind": "l2g_ssp_word_qa_sidecar_v1",
+    "version": "1.0",
+    "status": "proposal",
+    "head": "cb5c41abf015d7eee095b10fabe2fc0059473e89",
+    "schemaSha256": "3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34",
+    "qaProfileSha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
+  },
+  "builderCandidate": {
+    "version": "3.10",
+    "head": "bdb03e47cb92656a2965f5fd867ff3ef770650d6",
+    "runtimeSha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17"
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {
+      "version": "1.9.11",
+      "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+      "changed": false
+    },
+    "builtInProfileRegistry": {
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    },
+    "contractRegistryRouteStatus": "proposal",
+    "adjacentToolRuntimeChanges": false
+  },
+  "authoritativeRequirements": 110
+}

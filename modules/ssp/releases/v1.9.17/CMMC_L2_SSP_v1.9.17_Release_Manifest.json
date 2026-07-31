@@ -1,0 +1,59 @@
+{
+  "module": "CMMC L2 SSP Modern Editable",
+  "version": "1.9.17",
+  "issue": 93,
+  "focus": "Final Word-QA Sidecar Consumer and Evidence History",
+  "status": "candidate_unvalidated",
+  "baseline": {
+    "version": "1.9.16",
+    "runtimeSha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+    "promotionMerge": "db7a45d7250661dd19dbb83d93c2bdcdfc4218bf",
+    "reviewedHead": "a748a9ef2650d4196710300874d6218337e4ff2f"
+  },
+  "candidate": {
+    "runtimeFilename": "CMMC_L2_SSP_Modern_Editable_v1.9.17.html",
+    "runtimeSizeBytes": 2266611,
+    "runtimeSha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b"
+  },
+  "contract": {
+    "packageKind": "l2g_ssp_word_qa_sidecar_v1",
+    "packageVersion": "1.0",
+    "registryStability": "proposal",
+    "contractHead": "cb5c41abf015d7eee095b10fabe2fc0059473e89",
+    "schemaPath": "contracts/proposals/l2g_ssp_word_qa_sidecar_v1/l2g_ssp_word_qa_sidecar_v1.schema.json",
+    "schemaSha256": "3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34",
+    "qaProfilePath": "contracts/proposals/l2g_ssp_word_qa_sidecar_v1/l2g-builder-merger-final-word-qa-v1.profile.json",
+    "qaProfileSha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
+  },
+  "builderMergerCandidate": {
+    "version": "3.10",
+    "head": "bdb03e47cb92656a2965f5fd867ff3ef770650d6",
+    "runtimeSha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17"
+  },
+  "governedArtifacts": {
+    "workingDataSchema": {
+      "version": "1.9.11",
+      "sha256": "7d1ed6c95415360ad5f805cf103e3c777fd9ef52dc1e4bedecbb2cf30c223251",
+      "changed": false
+    },
+    "builtInProfileRegistry": {
+      "sha256": "8deb8917615046f9b85ed34f7c5fac061f6756e44cbd6a8677e935487bfedfc2",
+      "changed": false
+    },
+    "registrySchema": {
+      "sha256": "a0ca7d06d5811c73015f79ac2f763efe6534c791bd02e48d77a71dfe075ae67f",
+      "changed": false
+    },
+    "authoritativeRequirements": 110,
+    "adjacentToolRuntimeChanges": false
+  },
+  "authority": {
+    "sspOwnsValidationCurrencyAcceptanceHistorySupersession": true,
+    "builderMergerOwnsArtifactInspectionAndSidecarProduction": true,
+    "authenticatedIdentity": false,
+    "digitalSignature": false,
+    "complianceConclusion": false,
+    "readinessConclusion": false,
+    "clientReleaseApproval": false
+  }
+}

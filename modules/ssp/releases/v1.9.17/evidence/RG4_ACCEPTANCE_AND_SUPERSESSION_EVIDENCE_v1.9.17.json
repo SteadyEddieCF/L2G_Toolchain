@@ -1,0 +1,51 @@
+{
+  "evidence_kind": "rg4_ssp_consumer_acceptance_and_supersession_v1",
+  "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+  "current_attempt_1": {
+    "structural_validity": "valid",
+    "producer_qa": "qa_complete",
+    "ssp_currency_at_preview": "current",
+    "preview_mutated_history": false,
+    "explicit_acceptance_appended": 1,
+    "package_fingerprint": "3106ff057745dbefb48c9fc68527008efab884f9d66195b4ab6aaff38ca02971",
+    "sidecar_id": "sha256:d20ed8de7c04f13e31dbf6e752b8119d761edbccf11f1df9f875d9bb6e320648",
+    "evidence_record_id": "rg4-evidence-3106ff057745dbefb48c9fc68527008efab884f9d66195b4ab6aaff38ca02971",
+    "artifact_sha256": "3a124539c41057f88591c06076b21590d30ccf5eea55b078bf4531cedf005642",
+    "source_fingerprint": "84e151b810224ea2f3a6a6121bc0d168b44f68641f749c0846258e2ebea90c8c"
+  },
+  "duplicate": {
+    "same_package_fingerprint": true,
+    "idempotent": true,
+    "history_count_after_reimport": 1
+  },
+  "controlled_source_change": {
+    "path": "/source/fields/token:SYSTEM_PURPOSE_AND_FUNCTION",
+    "prior_record_displayed": "stale",
+    "prior_record_preserved": true,
+    "new_current_source_fingerprint": "c4320e890630b90830b9c0d71b7ea35e0803e6a74cb4f6a86e1f54a73e90eaeb"
+  },
+  "changed_source_attempt_2": {
+    "structural_validity": "valid",
+    "producer_qa": "qa_complete",
+    "ssp_currency_at_preview": "current",
+    "attempt_number": 2,
+    "lineage_key": "c444c55ee315723ad301455775f2aafb8824895331a8714007c987db2eba5354",
+    "supersedes_sidecar_id": "sha256:d20ed8de7c04f13e31dbf6e752b8119d761edbccf11f1df9f875d9bb6e320648",
+    "package_fingerprint": "3a9d2fb8c3546b5234613f89fc6fb40a836a278fc812666d95b794824220aa7f",
+    "sidecar_id": "sha256:a6a682842d6c8add2ed6f9a9734bedef7b0b683db83955bac41bc8be53afda22",
+    "artifact_sha256": "36d86ce025183757050f9157b9bbed59e752d0a24fa7480884962e3d37090c7a",
+    "accepted_explicitly": true,
+    "derived_history_currency": ["superseded", "current"]
+  },
+  "backup_restore": {
+    "history_count": 2,
+    "restored_identically": true,
+    "repeated_export_history_identical": true
+  },
+  "local_authority": {
+    "locally_asserted": true,
+    "authenticated": false,
+    "digital_signature": false,
+    "client_release_approval": false
+  }
+}
