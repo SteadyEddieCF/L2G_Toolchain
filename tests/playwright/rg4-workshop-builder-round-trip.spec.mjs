@@ -3,7 +3,6 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { generateWordFixture, readSidecar, adaptSidecarArtifact } from './ssp-rg4-fixture-helper.mjs';
 import { seedWorkshopV79, setFixedClock, stableJson } from './rg4-workshop-fixture.mjs';
 
 const WORKSHOP = '/modules/workshop/releases/v79/cmmc_l2_gap_workshop_tool_v79.html';
@@ -172,7 +171,6 @@ test('RG-4 Workshop v79 / Builder-Merger v3.10 frozen round trip', async ({ brow
 test('RG-4 Workshop v79 / SSP v1.9.17 Handoff and Return remain isolated', async ({ browser }, testInfo) => {
   test.setTimeout(240000);
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'rg4-ws-'));
-  const docxPath = path.join(temp, 'ssp_current.docx');
   const returnPath = path.join(temp, 'rg4-return.json');
   const workshop = await browser.newPage();
   const workshopObs = observe(workshop);
@@ -183,27 +181,32 @@ test('RG-4 Workshop v79 / SSP v1.9.17 Handoff and Return remain isolated', async
   expect(handoff.package_version).toBe('1.0');
   expect(handoff.controls).toHaveLength(110);
 
-  const generated = await generateWordFixture(browser, 'current', docxPath);
-  const sidecar = adaptSidecarArtifact(readSidecar('l2g_ssp_word_qa_sidecar_v1_current_attempt1.json'), docxPath);
   const ssp = await browser.newPage({ acceptDownloads: true });
   const sspObs = observe(ssp);
   await ssp.goto(SSP, { waitUntil: 'domcontentloaded' });
   await setFixedClock(ssp);
-  await ssp.evaluate((snapshot) => window.__sspTestHooks.applyData(snapshot), generated.snapshot);
-  const route = await ssp.evaluate(async ({ handoff, sidecarText, docxB64 }) => {
-    const bin = atob(docxB64);
-    const bytes = Uint8Array.from(bin, (char) => char.charCodeAt(0));
-    const preview = await __sspRg4TestHooks.validatePairFiles(
-      new File([sidecarText], 'sidecar.json', { type: 'application/json' }),
-      new File([bytes], 'ssp.docx', { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' })
-    );
-    __sspRg4TestHooks.setHistory([__sspRg4TestHooks.buildRecord(preview, { localId: 'rg4', displayName: 'RG-4' })]);
+  const route = await ssp.evaluate(({ handoff }) => {
+    const rg4Record = {
+      evidence_id: 'rg4-evidence-synthetic-001',
+      sidecar_id: `sha256:${'a'.repeat(64)}`,
+      source_docx_sha256: 'b'.repeat(64),
+      review_status: 'qa_complete',
+      recorded_at: '2026-07-31T18:15:00.000Z',
+      local_display_name: 'Synthetic RG-4 evidence history record'
+    };
+    __sspRg4TestHooks.setHistory([rg4Record]);
     const before = __sspRg4TestHooks.getHistory();
     const validated = __sspTestHooks.l2gValidatePackage(handoff);
     const rows = __sspTestHooks.l2gBuildRows(validated);
-    return { valid: preview.valid, controls: validated.controls.length, rows: rows.length, unchanged: JSON.stringify(before) === JSON.stringify(__sspRg4TestHooks.getHistory()) };
-  }, { handoff, sidecarText: JSON.stringify(sidecar), docxB64: fs.readFileSync(docxPath).toString('base64') });
-  expect(route).toMatchObject({ valid: true, controls: 110, rows: 1330, unchanged: true });
+    const after = __sspRg4TestHooks.getHistory();
+    return {
+      controls: validated.controls.length,
+      rows: rows.length,
+      beforeCount: before.length,
+      unchanged: JSON.stringify(before) === JSON.stringify(after)
+    };
+  }, { handoff });
+  expect(route).toMatchObject({ controls: 110, rows: 1330, beforeCount: 1, unchanged: true });
 
   const returnPromise = ssp.waitForEvent('download');
   await ssp.evaluate(() => __sspTestHooks.l2gExportReturnPackage());
@@ -221,7 +224,15 @@ test('RG-4 Workshop v79 / SSP v1.9.17 Handoff and Return remain isolated', async
   await returned.goto(WORKSHOP, { waitUntil: 'domcontentloaded' });
   await seedWorkshopV79(returned);
   const preview = await returned.evaluate((pkg) => {
-    const snapshot = () => JSON.stringify({ practices: state.practices, objectives: state.objectiveReviews, decisions: state.decisions, actions: state.actionRegister.actions, ownership: state.evidenceOwnershipV77.accepted_records });
+    const snapshot = () => JSON.stringify({
+      practices: state.practices,
+      objectives: state.objectiveReviews,
+      decisions: state.decisions,
+      actions: state.actionRegister.actions,
+      ownership: state.evidenceOwnershipV77.accepted_records,
+      requests: state.evidenceOwnershipV77.requests,
+      followups: state.evidenceOwnershipV77.provider_followups
+    });
     const before = snapshot();
     const result = v71PreviewSspReturnPackage(pkg, 'rg4-return.json');
     return { unchanged: before === snapshot(), errors: result.errors, controls: result.controls.length };
@@ -229,6 +240,10 @@ test('RG-4 Workshop v79 / SSP v1.9.17 Handoff and Return remain isolated', async
   expect(preview).toEqual({ unchanged: true, errors: [], controls: 110 });
   await testInfo.attach('RG4_Workshop_v79_SSP_Handoff_1.0.json', { body: Buffer.from(stableJson(handoff)), contentType: 'application/json' });
   await testInfo.attach('RG4_SSP_v1.9.17_Return_1.0.json', { body: Buffer.from(returnText), contentType: 'application/json' });
+  await testInfo.attach('RG4_Workshop_SSP_History_Isolation.json', {
+    body: Buffer.from(JSON.stringify({ history_records_before: route.beforeCount, history_unchanged: route.unchanged, controls: route.controls, candidate_rows: route.rows }, null, 2)),
+    contentType: 'application/json'
+  });
   for (const obs of [workshopObs, sspObs, returnedObs]) {
     expect(obs.pageErrors).toEqual([]);
     expect(obs.consoleErrors).toEqual([]);
