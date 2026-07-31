@@ -53,7 +53,7 @@ test('RG-4 Workshop v79 / Builder-Merger v3.10 frozen round trip', async ({ brow
     await handleHandoffFile(new File([text], 'rg4-handoff.json', { type: 'application/json' }));
   }, handoffText);
   expect(await builder.evaluate(() => state.handoff.rows.length)).toBe(110);
-  expect(await builder.evaluate(() => state.mergePlan.unmatchedPractices)).toEqual([]);
+  expect(await builder.evaluate(() => state.mergePlan?.unmatchedPractices || [])).toEqual([]);
 
   const downloadPromise = builder.waitForEvent('download');
   await builder.evaluate(() => downloadPopulatedWorkbook());
