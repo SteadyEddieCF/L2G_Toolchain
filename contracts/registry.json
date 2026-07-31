@@ -1,7 +1,7 @@
 {
   "registry_version": "1.1",
   "status": "foundation",
-  "updated_at": "2026-07-17",
+  "updated_at": "2026-07-29",
   "contracts": [
     {"package_kind":"l2g_intake_package_v1","version":"1.0","producer":"docconverter","consumers":["workshop"],"stability":"stable"},
     {"package_kind":"l2g_scope_context_v1","version":"1.0","producer":"docconverter","consumers":["scoper","workshop"],"stability":"stable"},
@@ -19,6 +19,7 @@
     {"package_kind":"l2g_ssp_round_trip_audit_v1","version":"0.1","producer":"workshop","consumers":["control-center","ssp"],"stability":"optional-read-only"},
     {"package_kind":"l2g_responsibility_overlay_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"foundation-draft"},
     {"package_kind":"l2g_responsibility_overlay_pack_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"advisory-preview"},
-    {"package_kind":"l2g_responsibility_reconciliation_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"advisory-working"}
+    {"package_kind":"l2g_responsibility_reconciliation_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"advisory-working"},
+    {"package_kind":"l2g_ssp_word_qa_sidecar_v1","version":"1.0","producer":"builder-merger","consumers":["ssp"],"stability":"proposal"}
   ]
 }

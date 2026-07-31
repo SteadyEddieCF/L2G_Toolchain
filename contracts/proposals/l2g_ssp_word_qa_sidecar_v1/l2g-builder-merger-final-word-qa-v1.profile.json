@@ -1,0 +1,48 @@
+{
+  "id": "l2g-builder-merger-final-word-qa-v1",
+  "version": "1.0",
+  "canonicalization": "utf8-json-sort-keys-arrays-preserve-order-no-whitespace-v1",
+  "checks": [
+    {
+      "check_id": "WQA-PACKAGE-OPEN",
+      "classification": "automated",
+      "severity": "blocking",
+      "required": true,
+      "allow_not_applicable": false,
+      "description": "The DOCX is a readable Open XML package and all required package parts parse successfully."
+    },
+    {
+      "check_id": "WQA-SOURCE-IDENTITY",
+      "classification": "automated",
+      "severity": "blocking",
+      "required": true,
+      "allow_not_applicable": false,
+      "description": "The embedded SSP Word-export manifest reconciles with the sidecar source, scope, and exact artifact identity."
+    },
+    {
+      "check_id": "WQA-UNRESOLVED-TOKENS",
+      "classification": "automated",
+      "severity": "blocking",
+      "required": true,
+      "allow_not_applicable": false,
+      "description": "No governed unresolved SSP placeholders, replacement tokens, or protected template markers remain."
+    },
+    {
+      "check_id": "WQA-COMMENTS-REVISIONS",
+      "classification": "automated",
+      "severity": "blocking",
+      "required": true,
+      "allow_not_applicable": false,
+      "description": "No unresolved Word comments, tracked insertions/deletions, move revisions, or pending field-update artifacts remain."
+    },
+    {
+      "check_id": "WQA-LAYOUT-HUMAN",
+      "classification": "human",
+      "severity": "blocking",
+      "required": true,
+      "allow_not_applicable": false,
+      "description": "A local unauthenticated reviewer visually inspects headings, tables, pagination, headers, footers, numbering, and overall usability."
+    }
+  ],
+  "sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
+}
