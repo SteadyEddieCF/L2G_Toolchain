@@ -1,0 +1,50 @@
+{
+  "module": "L2G Builder/Merger",
+  "version": "v3.10",
+  "release_name": "RG-4 SSP Final Word-QA Sidecar Producer",
+  "status": "candidate_unvalidated",
+  "route_stability": "proposal",
+  "recorded_at": "2026-07-30",
+  "baseline_version": "v3.8",
+  "reserved_version_note": "v3.9 remains reserved for Advisor and Client Delivery Profiles",
+  "runtime": {
+    "path": "modules/builder-merger/releases/v3.10/L2G-BM_v3.10.html",
+    "file_name": "L2G-BM_v3.10.html",
+    "size_bytes": 775189,
+    "sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17"
+  },
+  "source_contract": {
+    "branch": "contracts/rg4-ssp-word-qa-sidecar-v1",
+    "head": "cb5c41abf015d7eee095b10fabe2fc0059473e89",
+    "schema_path": "contracts/proposals/l2g_ssp_word_qa_sidecar_v1/l2g_ssp_word_qa_sidecar_v1.schema.json",
+    "schema_sha256": "3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34",
+    "qa_profile_path": "contracts/proposals/l2g_ssp_word_qa_sidecar_v1/l2g-builder-merger-final-word-qa-v1.profile.json",
+    "qa_profile_sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c"
+  },
+  "new_route": {
+    "package_kind": "l2g_ssp_word_qa_sidecar_v1",
+    "package_version": "1.0",
+    "producer": "builder-merger",
+    "consumer": "ssp",
+    "validated": false
+  },
+  "stable_routes": {
+    "workbook_handoff": "1.7",
+    "workbook_merge": "1.1",
+    "builder_decision_plan": "1.0 optional",
+    "external_csv": "preserved"
+  },
+  "authority": {
+    "final_word_qa_evidence_only": true,
+    "determines_source_currency": false,
+    "determines_acceptance": false,
+    "determines_supersession": false,
+    "determines_compliance": false,
+    "determines_readiness": false,
+    "determines_scoring": false
+  },
+  "implementation_branch": "release/builder-merger-v3.10-rg4-word-qa-producer",
+  "initial_pr_base": "contracts/rg4-ssp-word-qa-sidecar-v1",
+  "pr_status": "draft_unmerged",
+  "roadmap_file": "L2G-BM_Release_Roadmap_v3.10.md"
+}
