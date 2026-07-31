@@ -26,7 +26,11 @@ export const UNSUPPORTED_SYNTHETIC_HISTORY_PATH = path.resolve(
 export const EXPECTED_WORKSHOP_HANDOFF_PART_COUNT = 5;
 export const EXPECTED_WORKSHOP_HANDOFF_ENCODED_SHA256 = '6a56bbebce04e7da659447c4d22ad2515894b106c46df8456b0d7f08a0ef0247';
 export const EXPECTED_WORKSHOP_HANDOFF_SHA256 = '81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947';
-export const EXPECTED_UNSUPPORTED_SEED_SHA256 = '73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780';
+export const EXPECTED_UNSUPPORTED_SEED_SHA256 = Object.freeze([
+  '73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780',
+  '0771ce296d1b8654ed91df922f7b990be4468716eb5bb0a677a2f0c0777cbd61',
+]);
+export const EXPECTED_UNSUPPORTED_SEED_CANONICAL_SHA256 = '538cfb95f7c704179d01887ba261f954754447bb9eb301ac4aa6cff682bc5652';
 export const EXPECTED_RG4_PROFILE_SHA256 = '9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c';
 
 export const sha256Bytes = (value) => crypto.createHash('sha256').update(value).digest('hex');
@@ -73,16 +77,21 @@ export function materializeWorkshopHandoffFixture() {
 
 export function verifyStaticFixtureHashes() {
   const workshop = materializeWorkshopHandoffFixture();
-  const unsupported = fs.readFileSync(UNSUPPORTED_SYNTHETIC_HISTORY_PATH);
+  const unsupportedBytes = fs.readFileSync(UNSUPPORTED_SYNTHETIC_HISTORY_PATH);
+  const unsupported = JSON.parse(unsupportedBytes.toString('utf8'));
   const actual = {
     workshopHandoffParts: workshop.parts,
     workshopHandoffEncoded: workshop.encodedSha256,
     workshopHandoff: workshop.workshopSha256,
     workshopHandoffSizeBytes: workshop.sizeBytes,
-    unsupportedSeed: sha256Bytes(unsupported),
+    unsupportedSeed: sha256Bytes(unsupportedBytes),
+    unsupportedSeedCanonical: sha256Json(unsupported),
   };
-  if (actual.unsupportedSeed !== EXPECTED_UNSUPPORTED_SEED_SHA256) {
+  if (!EXPECTED_UNSUPPORTED_SEED_SHA256.includes(actual.unsupportedSeed)) {
     throw new Error(`Unsupported history seed hash mismatch: ${actual.unsupportedSeed}`);
+  }
+  if (actual.unsupportedSeedCanonical !== EXPECTED_UNSUPPORTED_SEED_CANONICAL_SHA256) {
+    throw new Error(`Unsupported history seed canonical hash mismatch: ${actual.unsupportedSeedCanonical}`);
   }
   return actual;
 }
