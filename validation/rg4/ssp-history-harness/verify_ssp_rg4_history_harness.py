@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 HARNESS = ROOT / "validation/rg4/ssp-history-harness"
 EXPECTED = {
-    "fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64": "418831516693aa0eb469fe571a75ff03ff5add091a1fe3ebbbeda978d3a7457e",
+    "fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64": "da47a88949edb82997d0a1d9a1cddd875bc8fa8be60aea19fd1a884749229505",
     "fixtures/unsupported_synthetic_history_seed.json": "73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780",
 }
 CANONICAL_IDS = [
