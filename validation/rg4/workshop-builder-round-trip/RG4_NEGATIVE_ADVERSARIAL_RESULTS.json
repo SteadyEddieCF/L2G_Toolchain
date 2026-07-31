@@ -1,0 +1,43 @@
+{
+  "document_kind": "rg4_workshop_merge_negative_adversarial_results",
+  "passing_safeguards": [
+    "Malformed JSON rejected",
+    "Wrong package kind blocked",
+    "Injected text rendered inert",
+    "Exact duplicate applied package blocked",
+    "Generated workbook ZIP CRC and path-traversal checks passed"
+  ],
+  "promotion_blockers": [
+    {
+      "id": "WKS-RG4-002",
+      "condition": "Unknown Workbook Merge package versions are accepted as trusted and nonblocking.",
+      "observed": {"package_version":"2.0","trusted":true,"blocking":false}
+    },
+    {
+      "id": "WKS-RG4-003",
+      "condition": "Unknown top-level properties are accepted as trusted and nonblocking.",
+      "observed": {"unexpected_property":"x","trusted":true,"blocking":false}
+    },
+    {
+      "id": "WKS-RG4-004",
+      "condition": "Duplicate JSON keys are not explicitly rejected when the final value is otherwise valid.",
+      "observed": {"duplicate_package_version_last_value":"1.1","blocking":false}
+    },
+    {
+      "id": "WKS-RG4-005",
+      "condition": "A duplicated or mismatched practice identity is accepted as trusted and nonblocking.",
+      "observed": {"duplicate_incoming_practice_id":true,"trusted":true,"blocking":false}
+    }
+  ],
+  "inert_rendering": {
+    "input": "<img src=x onerror=\"window.__RG4_INJECTED__=true\">",
+    "executed": false,
+    "rendered_as_text": true
+  },
+  "authority": {
+    "runtime_modified": false,
+    "registry_modified": false,
+    "sidecar_stability": "proposal",
+    "promotion_eligible": false
+  }
+}
