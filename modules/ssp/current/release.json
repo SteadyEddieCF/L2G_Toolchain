@@ -1,12 +1,13 @@
 {
   "module": "CMMC L2 SSP Modern Editable",
-  "current_supplied_version": "v1.9.16",
-  "release_path": "modules/ssp/releases/v1.9.16",
-  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.16.html",
-  "runtime_sha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765",
+  "current_supplied_version": "v1.9.17",
+  "release_path": "modules/ssp/releases/v1.9.17",
+  "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.17.html",
+  "runtime_size_bytes": 2266611,
+  "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
   "status": "current_supplied_release",
-  "next_action": "Review stacked SSP v1.9.17 RG-4 Final Word-QA Sidecar Consumer candidate against frozen proposal contract head cb5c41abf015d7eee095b10fabe2fc0059473e89; do not promote the route until exact joint gates pass",
-  "recorded_at": "2026-07-30",
+  "next_action": "Complete issue #101 merged-main RG-4 joint validation, six-tool regression, suite snapshot, and registry promotion decision",
+  "recorded_at": "2026-07-31",
   "operating_modes": {
     "default": "single-system",
     "optional": "modular-portfolio-advanced"
@@ -55,7 +56,9 @@
       "schema_sha256": "3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34",
       "qa_profile_sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c",
       "producer": "builder-merger",
+      "producer_release": "v3.10",
       "consumer": "ssp",
+      "consumer_release": "v1.9.17",
       "validated": false
     }
   },
@@ -73,21 +76,22 @@
     ]
   },
   "release_identity": {
-    "version": "1.9.16",
-    "issue": 87,
-    "focus": "Review Workspace Compact Header Parity",
+    "version": "1.9.17",
+    "issue": 93,
+    "focus": "Final Word-QA Sidecar Consumer and Evidence History",
     "schema_change": false,
     "profile_registry_change": false,
-    "package_change": false,
-    "cross_tool_contract_change": false,
-    "handshake_required": false,
+    "package_change": true,
+    "cross_tool_contract_change": true,
+    "handshake_required": true,
+    "final_word_qa_evidence_supported": true,
     "final_word_qa_satisfied": false
   },
   "runtime_source_baseline": {
-    "version": "v1.9.15",
-    "merge_commit": "0045dfd52ccf9e5a4bb7576b9d4b5d5d065091f4",
-    "reviewed_head": "19efc8ba7c0e3d3b8d210d65e0404fab5501f065",
-    "runtime_sha256": "5e3a628556fc63db777fbef813eee8df9e2d8a1405a81bd87c058012503f2361"
+    "version": "v1.9.16",
+    "merge_commit": "db7a45d7250661dd19dbb83d93c2bdcdfc4218bf",
+    "reviewed_head": "a748a9ef2650d4196710300874d6218337e4ff2f",
+    "runtime_sha256": "f463f01d8b24ec3865467261659f8e90222b23bb9875282e665f04bec778a765"
   },
   "built_in_profile_registry": {
     "filename": "CMMC_L2_SSP_Built_In_Review_Profile_Registry_v1.9.9.json",
@@ -97,43 +101,20 @@
     "custom_definitions_supported": false,
     "changed_in_release": false
   },
-  "baseline_promotion": {
-    "pull_request": 80,
-    "reviewed_head": "19efc8ba7c0e3d3b8d210d65e0404fab5501f065",
-    "merge_commit": "0045dfd52ccf9e5a4bb7576b9d4b5d5d065091f4",
-    "issue_closed": 79,
-    "verdict": "passed"
-  },
   "promotion": {
-    "pull_request": 88,
-    "reviewed_head": "a748a9ef2650d4196710300874d6218337e4ff2f",
-    "merge_commit": "db7a45d7250661dd19dbb83d93c2bdcdfc4218bf",
-    "issue_closed": 87,
+    "pull_request": 99,
+    "reviewed_head": "17e487e2c6434b988ef1cda57e3f57c15b70b93d",
+    "merge_commit": "95aae59cf4543994721f895a0faacef87e90edf0",
+    "issue_closed": 93,
     "verdict": "passed",
     "validation": {
       "repository": "passed",
       "exact_materialization_and_static": "passed",
+      "builder_merger_joint_runtime": "passed",
       "playwright_runtime_and_axe": "passed",
       "visual_regression": "passed",
-      "windows_file_origin": "passed"
+      "windows_file_origin": "passed",
+      "independent_exact_artifact_handshake": "passed"
     }
-  },
-  "candidate": {
-    "version": "v1.9.17",
-    "issue": 93,
-    "release_path": "modules/ssp/releases/v1.9.17",
-    "runtime_filename": "CMMC_L2_SSP_Modern_Editable_v1.9.17.html",
-    "runtime_size_bytes": 2266611,
-    "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
-    "status": "candidate_unvalidated",
-    "implementation_branch": "release/ssp-v1.9.17-rg4-word-qa-consumer",
-    "initial_pr_base": "contracts/rg4-ssp-word-qa-sidecar-v1",
-    "contract_head": "cb5c41abf015d7eee095b10fabe2fc0059473e89",
-    "builder_merger_candidate_head": "bdb03e47cb92656a2965f5fd867ff3ef770650d6",
-    "schema_change": false,
-    "profile_registry_change": false,
-    "adjacent_runtime_change": false,
-    "contract_registry_stability": "proposal"
-  },
-  "protected_main_at_start": "dbe33032ad3ba843e7bb4536c82ee1fd0893dbea"
+  }
 }
