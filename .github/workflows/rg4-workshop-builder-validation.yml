@@ -1,0 +1,49 @@
+name: RG-4 Workshop Builder Validation
+
+on:
+  pull_request:
+    paths:
+      - 'tests/playwright/rg4-workshop-*'
+      - 'validation/rg4/workshop-builder-round-trip/**'
+      - '.github/workflows/rg4-workshop-builder-validation.yml'
+      - 'package.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rg4-workshop-builder:
+    name: rg4-workshop-builder-round-trip
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - name: Materialize Workshop v79 runtime
+        run: python modules/workshop/releases/v79/build_release.py
+      - name: Materialize Builder/Merger v3.10 runtime
+        run: python modules/builder-merger/releases/v3.10/materialize.py
+      - name: Validate Builder/Merger v3.10 runtime
+        run: python modules/builder-merger/releases/v3.10/validate_v3_10.py
+      - name: Materialize SSP v1.9.17 runtime and RG-4 inputs
+        run: python modules/ssp/releases/v1.9.17/materialize.py
+      - name: Run bounded static evidence gate
+        run: python validation/rg4/workshop-builder-round-trip/verify_rg4_workshop_builder.py
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Run focused Workshop Builder and Workshop SSP routes
+        run: npx playwright test tests/playwright/rg4-workshop-builder-round-trip.spec.mjs --project=chromium
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rg4-workshop-builder-regression-evidence
+          path: |
+            test-results/playwright-report
+            test-results/playwright-results.json
+            test-results/playwright
+          if-no-files-found: warn
+          retention-days: 30
