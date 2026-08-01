@@ -2,8 +2,8 @@
 
 ## Corrected candidate identity
 
-- Runtime SHA-256: `2845b634fb4302a7637f4e47ead49adaf20f7f71b3ca32f937c9b64f549622a4`
-- Runtime size: `1883583` bytes
+- Runtime SHA-256: `1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2`
+- Runtime size: `1885465` bytes
 - Reconciled protected main: `69785ecd38f4d00345f27ca13e934dd0f688a1bf`
 - Draft PR: #112
 
@@ -14,7 +14,7 @@
 - valid package without the optional extension;
 - preview and rejection non-mutation;
 - explicit apply, deterministic duplicate re-import, and undo;
-- exact operational-record byte preservation during reconciliation;
+- exact operational-record byte preservation through the inherited queued v59 render cycle;
 - script/path-like strings remain inert;
 - extracted-package materialization reproduces exact runtime bytes without repository sibling files.
 

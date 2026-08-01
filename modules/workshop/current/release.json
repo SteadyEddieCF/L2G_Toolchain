@@ -12,8 +12,8 @@
   "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
   "previous_promoted_version": "v79",
   "previous_promoted_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
-  "primary_html_sha256": "2845b634fb4302a7637f4e47ead49adaf20f7f71b3ca32f937c9b64f549622a4",
-  "primary_html_size_bytes": 1883583,
+  "primary_html_sha256": "1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2",
+  "primary_html_size_bytes": 1885465,
   "baseline": {
     "version": "v79",
     "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
@@ -34,6 +34,7 @@
   "corrective_scope": [
     "strict Workbook Merge 1.1 package validation",
     "nested governance-preservation validation and non-mutating reconciliation",
+    "exact pre-preview operational-state preservation through queued render cycles",
     "Workbook Handoff 1.7 producer self-reconciliation",
     "self-contained deterministic materialization"
   ],

@@ -10,6 +10,7 @@
   },
   "source": [
     "source/v79_1_corrected_patch.js.gz.b64",
+    "source/v79_1_nonmutation_fix.js",
     "source/v79_baseline.html (complete deliverables ZIP only; repository fallback releases/v79)"
   ],
   "scope": [
@@ -18,7 +19,8 @@
     "version 1.1 fail-closed enforcement",
     "practice/objective identity reconciliation",
     "Handoff 1.7 producer self-reconciliation",
-    "optional nested governance-preservation validation and non-mutating reconciliation"
+    "optional nested governance-preservation validation and non-mutating reconciliation",
+    "exact pre-preview operational-state preservation through queued render cycles"
   ],
   "boundaries": {
     "builder_merger_v3_10_1_exact_round_trip": "pending exact corrected PR #113 candidate",
@@ -29,8 +31,8 @@
   },
   "candidate_runtime": {
     "path": "cmmc_l2_gap_workshop_tool_v79.1.html",
-    "size_bytes": 1883583,
-    "sha256": "2845b634fb4302a7637f4e47ead49adaf20f7f71b3ca32f937c9b64f549622a4"
+    "size_bytes": 1885465,
+    "sha256": "1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2"
   },
   "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
   "previous_reviewed_head": "44fa69aab6efd33082f56f0b2be10c3b6e49051a",
@@ -38,7 +40,11 @@
   "corrected_patch": {
     "decoded_size_bytes": 47431,
     "decoded_sha256": "89369d79c12773e65291e18b7d30cdc7809686d8772bdc84c34fbd157a5fffde",
-    "encoding": "deterministic gzip mtime=0, base64",
-    "supersedes_repository_source_for_materialization": "source/v79_1_patch.js from previous reviewed head"
+    "encoding": "deterministic gzip mtime=0, base64"
+  },
+  "nonmutation_fix": {
+    "size_bytes": 1881,
+    "sha256": "6eeb7a2dd501434a1f9247248ec97b352b6cd0e9e7ab959af4b5d7c9b2a55a87",
+    "purpose": "preserve exact pre-preview operational state through inherited queued render normalization"
   }
 }

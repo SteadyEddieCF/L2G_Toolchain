@@ -9,11 +9,13 @@ REPOSITORY_BASE_DIR=HERE.parent/'v79'
 REPOSITORY_BASE=REPOSITORY_BASE_DIR/'cmmc_l2_gap_workshop_tool_v79.html'
 REPOSITORY_BASE_BUILD=REPOSITORY_BASE_DIR/'build_release.py'
 PATCH_ARCHIVE=SOURCE/'v79_1_corrected_patch.js.gz.b64'
+NONMUTATION_FIX=SOURCE/'v79_1_nonmutation_fix.js'
 OUT=HERE/'cmmc_l2_gap_workshop_tool_v79.1.html'
 MANIFEST=SOURCE/'SOURCE_MANIFEST.json'
 BASE_SHA='a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca'
 BASE_SIZE=1_836_145
 PATCH_SHA='89369d79c12773e65291e18b7d30cdc7809686d8772bdc84c34fbd157a5fffde'
+NONMUTATION_FIX_SHA='6eeb7a2dd501434a1f9247248ec97b352b6cd0e9e7ab959af4b5d7c9b2a55a87'
 def sha(data): return hashlib.sha256(data).hexdigest()
 def load_baseline():
     if LOCAL_BASE.exists():
@@ -36,6 +38,11 @@ def load_patch():
     if sha(data)!=PATCH_SHA:
         raise SystemExit(f'Corrected patch SHA mismatch: {sha(data)}')
     return data.decode('utf-8').replace('\r\n','\n').replace('\r','\n')
+def load_nonmutation_fix():
+    data=NONMUTATION_FIX.read_bytes()
+    if sha(data)!=NONMUTATION_FIX_SHA:
+        raise SystemExit(f'Non-mutation fix SHA mismatch: {sha(data)}')
+    return data.decode('utf-8').replace('\r\n','\n').replace('\r','\n')
 text=load_baseline().decode('utf-8').replace('\r\n','\n').replace('\r','\n')
 for old,new in [
     ('<title>CMMC L2 Gap Workshop Tool v79</title>','<title>CMMC L2 Gap Workshop Tool v79.1</title>'),
@@ -48,7 +55,7 @@ for old,new in [
 index=text.rfind('</script>')
 if index<0:
     raise SystemExit('Workshop v79 closing script was not found')
-output=(text[:index]+load_patch()+'\n'+text[index:]).encode('utf-8')
+output=(text[:index]+load_patch()+'\n'+load_nonmutation_fix()+'\n'+text[index:]).encode('utf-8')
 OUT.write_bytes(output)
 actual,size=sha(output),len(output)
 expected=json.loads(MANIFEST.read_text())['candidate_runtime']

@@ -8,8 +8,8 @@
   "previous_reviewed_head": "44fa69aab6efd33082f56f0b2be10c3b6e49051a",
   "runtime": {
     "filename": "cmmc_l2_gap_workshop_tool_v79.1.html",
-    "size_bytes": 1883583,
-    "sha256": "2845b634fb4302a7637f4e47ead49adaf20f7f71b3ca32f937c9b64f549622a4"
+    "size_bytes": 1885465,
+    "sha256": "1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2"
   },
   "baseline_runtime": {
     "version": "v79",
@@ -22,21 +22,19 @@
     "extension_path": "workbook_source.workshop_governance_preservation_v1",
     "top_level_extension_rejected": true,
     "schema_version": "1.0",
-    "reconciliation_assertion_only": true
+    "reconciliation_assertion_only": true,
+    "queued_render_operational_mutation_blocked": true
   },
   "contracts": {
     "workshop_state": "1.0",
-    "workbook_handoff": {
-      "contract_release": "1.7",
-      "wire_package_version": "1.0",
-      "enhancement_version": "1.7"
-    },
+    "workbook_handoff": {"contract_release": "1.7", "wire_package_version": "1.0", "enhancement_version": "1.7"},
     "workbook_merge": "1.1",
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
   },
   "validation": {
     "local_contract_matrix": "passed",
+    "local_queued_render_nonmutation": "passed",
     "portable_materializer": "passed",
     "exact_head_ci": "pending"
   },
