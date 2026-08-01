@@ -10,6 +10,7 @@
   },
   "source": [
     "source/v79_1_corrected_patch.js.gz.b64",
+    "source/v79_1_candidate_id_normalization.json",
     "source/v79_1_nonmutation_fix.js",
     "source/v79_baseline.html (complete deliverables ZIP only; repository fallback releases/v79)"
   ],
@@ -20,10 +21,11 @@
     "practice/objective identity reconciliation",
     "Handoff 1.7 producer self-reconciliation",
     "optional nested governance-preservation validation and non-mutating reconciliation",
-    "exact pre-preview operational-state preservation through queued render cycles"
+    "exact pre-preview operational-state preservation through queued render cycles",
+    "missing candidate-ID normalization without ownership-ID inference"
   ],
   "boundaries": {
-    "builder_merger_v3_10_1_exact_round_trip": "pending exact corrected PR #113 candidate",
+    "builder_merger_v3_10_1_exact_round_trip": "exact PR #113 Merge 1.1 fixture embedded and jointly validated",
     "planned_v80": "preserved",
     "adjacent_runtime_changes": false,
     "registry_change": false,
@@ -32,7 +34,7 @@
   "candidate_runtime": {
     "path": "cmmc_l2_gap_workshop_tool_v79.1.html",
     "size_bytes": 1885465,
-    "sha256": "1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2"
+    "sha256": "b6bd63c104faeb031f9561f24aaf6a8fb7b928df2f11c821391ca57131d6e52b"
   },
   "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
   "previous_reviewed_head": "44fa69aab6efd33082f56f0b2be10c3b6e49051a",
@@ -46,5 +48,22 @@
     "size_bytes": 1881,
     "sha256": "6eeb7a2dd501434a1f9247248ec97b352b6cd0e9e7ab959af4b5d7c9b2a55a87",
     "purpose": "preserve exact pre-preview operational state through inherited queued render normalization"
+  },
+  "exact_builder_candidate": {
+    "pull_request": 113,
+    "head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "runtime_size_bytes": 832972,
+    "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+    "merge_fixture_path": "tests/fixtures/builder_v3_10_1_pr113_exact_merge.json",
+    "merge_size_bytes": 683940,
+    "merge_sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af",
+    "preservation_fingerprint": "2862751b637cf97797e72c74a256f0ba45904f03b7e8076f20a0c67ef2c3fafb"
+  },
+  "candidate_id_normalization": {
+    "path": "source/v79_1_candidate_id_normalization.json",
+    "target_function": "v791CurrentOwnershipRecords",
+    "missing_candidate_id_result": "",
+    "ownership_record_id_inference": false,
+    "sha256": "a31338ff4f84ebaa71b8ca45a547260694033c4b0ab1941a77e308ef281bc759"
   }
 }

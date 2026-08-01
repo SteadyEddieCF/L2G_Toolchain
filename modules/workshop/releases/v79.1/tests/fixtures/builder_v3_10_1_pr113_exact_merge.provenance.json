@@ -1,0 +1,24 @@
+{
+  "fixture": "builder_v3_10_1_pr113_exact_merge.json",
+  "source_repository": "SteadyEddieCF/L2G_Toolchain",
+  "source_pull_request": 113,
+  "source_head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+  "source_workflow_run": 30679432233,
+  "source_actions_artifact_id": 8811712583,
+  "source_attachment": "v3101-merge.json",
+  "builder_runtime": {
+    "size_bytes": 832972,
+    "sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93"
+  },
+  "merge": {
+    "size_bytes": 683940,
+    "sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af"
+  },
+  "preservation_fingerprint": "2862751b637cf97797e72c74a256f0ba45904f03b7e8076f20a0c67ef2c3fafb",
+  "record_counts": {
+    "actions": 1,
+    "evidence_ownership_records": 1,
+    "requests": 0,
+    "provider_followups": 0
+  }
+}

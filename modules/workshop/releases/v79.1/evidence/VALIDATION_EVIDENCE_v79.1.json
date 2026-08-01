@@ -3,14 +3,14 @@
   "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
   "previous_reviewed_head": "44fa69aab6efd33082f56f0b2be10c3b6e49051a",
   "runtime": {
-    "sha256": "1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2",
+    "sha256": "b6bd63c104faeb031f9561f24aaf6a8fb7b928df2f11c821391ca57131d6e52b",
     "size_bytes": 1885465,
     "baseline_sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca"
   },
   "portable_materializer": {
     "embedded_verified_baseline": true,
     "clean_directory_rebuild": "passed",
-    "clean_zip_extraction_rebuild": "pending exact-head package build"
+    "clean_zip_extraction_rebuild": "passed locally"
   },
   "strict_merge": {
     "version_1_1_only": true,
@@ -30,10 +30,24 @@
     "deterministic_discrepancies": true,
     "automatic_operational_mutation": false,
     "queued_render_operational_nonmutation": "passed locally",
-    "local_fixture_matrix": "passed"
+    "local_fixture_matrix": "passed",
+    "missing_candidate_id_preserved_empty": true,
+    "ownership_record_id_not_inferred_as_candidate_id": true,
+    "explicit_candidate_id_requires_exact_current_match": true,
+    "exact_builder_pr113_merge_fixture_sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af",
+    "exact_builder_pr113_preservation_fingerprint": "2862751b637cf97797e72c74a256f0ba45904f03b7e8076f20a0c67ef2c3fafb",
+    "exact_three_way_joint_fixture": "passed locally"
   },
   "fixture_sha256_source": "tests/fixtures/FIXTURE_SHA256.json",
-  "ci": {"status":"pending corrected exact branch head"},
+  "ci": {
+    "status": "pending final exact branch head"
+  },
   "promotion_eligible": false,
-  "builder_v3_10_1_dependency": "pending exact corrected PR #113 candidate; no joint-compatibility claim from local simulation"
+  "builder_v3_10_1_dependency": {
+    "head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+    "merge_sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af",
+    "joint_fixture_status": "passed locally",
+    "remaining": "exact-head CI and independent review"
+  }
 }

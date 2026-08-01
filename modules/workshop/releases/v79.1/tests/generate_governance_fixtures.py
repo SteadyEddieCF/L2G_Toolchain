@@ -12,6 +12,10 @@ FIXTURES.mkdir(parents=True, exist_ok=True)
 EXT = "workshop_governance_preservation_v1"
 SOURCE_FP = "sha256:" + "a" * 64
 
+EXACT_BUILDER_MERGE = FIXTURES / "builder_v3_10_1_pr113_exact_merge.json"
+EXACT_BUILDER_MERGE_SIZE = 683_940
+EXACT_BUILDER_MERGE_SHA256 = "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af"
+
 
 def canonical(value) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
@@ -55,6 +59,17 @@ linkage=copy.deepcopy(base);linkage["workbook_source"][EXT]["source_package_iden
 malformed=copy.deepcopy(base);malformed["workbook_source"][EXT]["actions"][0]["unexpected"]=True;finish(malformed["workbook_source"][EXT]);write("malformed_extension.json",malformed)
 adversarial=copy.deepcopy(base);adv=adversarial["workbook_source"][EXT]["actions"][0];adv["source_record"]["description"]='<script>window.__V791_INJECTED__=true</script> ../../etc/passwd C:\\Windows\\System32';adv["workbook_record"]["description"]=adv["source_record"]["description"];adv["source_record_fingerprint"]=digest(adv["source_record"]);adv["workbook_record_fingerprint"]=digest(adv["workbook_record"]);finish(adversarial["workbook_source"][EXT]);write("adversarial_inert_strings.json",adversarial)
 raw=json.dumps(base,separators=(",",":"),ensure_ascii=False).replace('"schema_version":"1.0"','"schema_version":"1.0","schema_version":"1.0"',1);write_text_lf(FIXTURES/"duplicate_key_extension.json.txt",raw+"\n")
+if not EXACT_BUILDER_MERGE.is_file():
+    raise SystemExit(
+        "Exact Builder/Merger PR #113 Merge fixture missing. "
+        "Run tests/materialize_exact_builder_pr113_fixture.py first."
+    )
+exact_builder_bytes = EXACT_BUILDER_MERGE.read_bytes()
+if len(exact_builder_bytes) != EXACT_BUILDER_MERGE_SIZE:
+    raise SystemExit(f"Exact Builder/Merger PR #113 fixture size mismatch: {len(exact_builder_bytes)}")
+if hashlib.sha256(exact_builder_bytes).hexdigest() != EXACT_BUILDER_MERGE_SHA256:
+    raise SystemExit("Exact Builder/Merger PR #113 fixture SHA-256 mismatch")
+
 for path in sorted(FIXTURES.glob("*")):
     if path.name=="FIXTURE_SHA256.json" or not path.is_file(): continue
     write_text_lf(path,path.read_text(encoding="utf-8"))

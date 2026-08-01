@@ -3,13 +3,13 @@
   "module": "CMMC L2 Gap Workshop Tool",
   "issue": 105,
   "draft_pull_request": 112,
-  "status": "corrected_draft_candidate_pending_exact_head_ci_and_builder_v3_10_1_joint_round_trip",
+  "status": "final_candidate_id_normalization_corrected_draft_pending_exact_head_ci_and_independent_review",
   "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
   "previous_reviewed_head": "44fa69aab6efd33082f56f0b2be10c3b6e49051a",
   "runtime": {
     "filename": "cmmc_l2_gap_workshop_tool_v79.1.html",
     "size_bytes": 1885465,
-    "sha256": "1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2"
+    "sha256": "b6bd63c104faeb031f9561f24aaf6a8fb7b928df2f11c821391ca57131d6e52b"
   },
   "baseline_runtime": {
     "version": "v79",
@@ -23,11 +23,17 @@
     "top_level_extension_rejected": true,
     "schema_version": "1.0",
     "reconciliation_assertion_only": true,
-    "queued_render_operational_mutation_blocked": true
+    "queued_render_operational_mutation_blocked": true,
+    "missing_candidate_id_preserved_empty": true,
+    "ownership_record_id_not_used_as_candidate_id": true
   },
   "contracts": {
     "workshop_state": "1.0",
-    "workbook_handoff": {"contract_release": "1.7", "wire_package_version": "1.0", "enhancement_version": "1.7"},
+    "workbook_handoff": {
+      "contract_release": "1.7",
+      "wire_package_version": "1.0",
+      "enhancement_version": "1.7"
+    },
     "workbook_merge": "1.1",
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
@@ -36,13 +42,19 @@
     "local_contract_matrix": "passed",
     "local_queued_render_nonmutation": "passed",
     "portable_materializer": "passed",
-    "exact_head_ci": "pending"
+    "exact_head_ci": "pending",
+    "exact_builder_pr113_merge_fixture": "passed",
+    "candidate_id_normalization": "passed"
   },
   "dependency": {
     "issue": 106,
     "pull_request": 113,
-    "builder_merger_candidate": "pending exact corrected head",
-    "blocks_issue_closure": true
+    "head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "builder_runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+    "exact_merge_sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af",
+    "preservation_fingerprint": "2862751b637cf97797e72c74a256f0ba45904f03b7e8076f20a0c67ef2c3fafb",
+    "joint_fixture_validation": "passed locally; exact-head browser CI pending",
+    "remaining_blocker": "independent review and exact-head CI only"
   },
   "promotion_eligible": false,
   "preserved_next_release": "v80 Regression Delta and Release Comparison",

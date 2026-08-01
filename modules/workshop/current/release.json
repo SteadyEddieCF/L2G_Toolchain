@@ -3,16 +3,16 @@
   "current_supplied_version": "v79.1",
   "release_path": "modules/workshop/releases/v79.1",
   "runtime_path": "modules/workshop/releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html",
-  "status": "corrected_draft_candidate_pending_exact_head_ci_and_builder_v3_10_1_joint_round_trip",
-  "next_action": "Complete exact corrected Workshop v79.1 and Builder/Merger v3.10.1 candidate-to-candidate round trip; preserve proposed v80 Regression Delta and Release Comparison",
-  "recorded_at": "2026-07-31",
+  "status": "final_candidate_id_normalization_corrected_draft_pending_exact_head_ci_and_independent_review",
+  "next_action": "Complete final exact-head CI and independent review for PR #112; keep draft and preserve proposed v80 Regression Delta and Release Comparison",
+  "recorded_at": "2026-08-01",
   "bounded_issue": 105,
   "candidate_branch": "release/workshop-v79.1-strict-workbook-validation",
   "candidate_pr": 112,
   "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
   "previous_promoted_version": "v79",
   "previous_promoted_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
-  "primary_html_sha256": "1fa1e186269b45110240b7ca39eaf6f40bb2ec55b8c496aaf01dfe6a65032ee2",
+  "primary_html_sha256": "b6bd63c104faeb031f9561f24aaf6a8fb7b928df2f11c821391ca57131d6e52b",
   "primary_html_size_bytes": 1885465,
   "baseline": {
     "version": "v79",
@@ -21,7 +21,11 @@
   },
   "stable_contracts": {
     "workshop_state": "1.0",
-    "workbook_handoff": {"contract_release": "1.7", "wire_package_version": "1.0", "enhancement_version": "1.7"},
+    "workbook_handoff": {
+      "contract_release": "1.7",
+      "wire_package_version": "1.0",
+      "enhancement_version": "1.7"
+    },
     "workbook_merge": "1.1",
     "workbook_merge_governance_preservation": {
       "schema_version": "1.0",
@@ -34,16 +38,20 @@
   "corrective_scope": [
     "strict Workbook Merge 1.1 package validation",
     "nested governance-preservation validation and non-mutating reconciliation",
+    "missing candidate-ID preservation without ownership-ID inference",
     "exact pre-preview operational-state preservation through queued render cycles",
     "Workbook Handoff 1.7 producer self-reconciliation",
     "self-contained deterministic materialization"
   ],
-  "unresolved_dependency": {
-    "issue": 106,
-    "release": "Builder/Merger v3.10.1",
-    "required_gate": "exact corrected candidate-to-candidate round trip",
-    "blocks_issue_105_closure": true
+  "exact_builder_candidate": {
+    "pull_request": 113,
+    "head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+    "merge_sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af",
+    "joint_fixture_status": "passed locally; exact-head CI pending",
+    "preservation_fingerprint": "2862751b637cf97797e72c74a256f0ba45904f03b7e8076f20a0c67ef2c3fafb"
   },
+  "remaining_blocker": "exact-head CI and independent review; no Builder/Merger code change required",
   "promotion_eligible": false,
-  "release_boundary": "Strict package validation, non-mutating nested governance reconciliation, Handoff producer self-reconciliation, and portable delivery correction only; no adjacent runtime, registry, historical snapshot, authority, readiness, compliance, assessment, certification, scoring, evidence-sufficiency, or client-release change."
+  "release_boundary": "Strict package validation, non-mutating nested governance reconciliation, missing candidate-ID normalization, Handoff producer self-reconciliation, and portable delivery correction only; no adjacent runtime, registry, historical snapshot, authority, readiness, compliance, assessment, certification, scoring, evidence-sufficiency, or client-release change."
 }

@@ -10,6 +10,7 @@ REPOSITORY_BASE=REPOSITORY_BASE_DIR/'cmmc_l2_gap_workshop_tool_v79.html'
 REPOSITORY_BASE_BUILD=REPOSITORY_BASE_DIR/'build_release.py'
 PATCH_ARCHIVE=SOURCE/'v79_1_corrected_patch.js.gz.b64'
 NONMUTATION_FIX=SOURCE/'v79_1_nonmutation_fix.js'
+CANDIDATE_ID_NORMALIZATION=SOURCE/'v79_1_candidate_id_normalization.json'
 OUT=HERE/'cmmc_l2_gap_workshop_tool_v79.1.html'
 MANIFEST=SOURCE/'SOURCE_MANIFEST.json'
 BASE_SHA='a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca'
@@ -38,7 +39,13 @@ def load_patch():
         raise SystemExit(f'Corrected patch appliance decode failed: {exc}') from exc
     if sha(data)!=PATCH_SHA:
         raise SystemExit(f'Corrected patch SHA mismatch: {sha(data)}')
-    return data.decode('utf-8').replace('\r\n','\n').replace('\r','\n')
+    text=data.decode('utf-8').replace('\r\n','\n').replace('\r','\n')
+    rule=json.loads(CANDIDATE_ID_NORMALIZATION.read_text(encoding='utf-8'))
+    old,new=rule['old'],rule['new']
+    expected=int(rule.get('expected_replacement_count',1))
+    if text.count(old)!=expected:
+        raise SystemExit(f'Candidate-ID normalization target mismatch: expected {expected}, found {text.count(old)}')
+    return text.replace(old,new,expected)
 def load_nonmutation_fix():
     text=canonical_text(NONMUTATION_FIX)
     data=text.encode('utf-8')
