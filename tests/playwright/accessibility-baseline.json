@@ -1,8 +1,8 @@
 {
-  "baseline_version": "1.3",
+  "baseline_version": "1.4",
   "policy": "Only exact known critical findings are tolerated. New critical rules or targets fail CI.",
-  "updated_for": "Builder/Merger v3.10 candidate tablist and file-input labeling corrections; no approved critical accessibility exceptions.",
+  "updated_for": "Builder/Merger v3.10.1 nested Workshop preservation extension correction; no approved critical accessibility exceptions.",
   "modules": {
-    "builder-merger-v3.10": []
+    "builder-merger-v3.10.1": []
   }
 }

@@ -1,0 +1,36 @@
+{
+  "module": "L2G Builder/Merger",
+  "version": "v3.10.1",
+  "title": "Workshop Action and Ownership Preservation",
+  "issue": 106,
+  "pull_request": 113,
+  "status": "draft_corrective_candidate",
+  "baseline_commit": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
+  "parent_release": "v3.10",
+  "parent_runtime_sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17",
+  "runtime_file": "L2G-BM_v3.10.1.html",
+  "runtime_sha256": "b45e0d41df20920be383fc6aa4a88e8f25feb9c564296c0e14b8c81a64bb115f",
+  "runtime_size_bytes": 832484,
+  "materializer": "materialize.py",
+  "validator": "validate_v3_10_1.py",
+  "workbook_merge": {
+    "package_kind": "l2g_workbook_merge_v1",
+    "package_version": "1.1",
+    "extension_path": "workbook_source.workshop_governance_preservation_v1",
+    "extension_schema_version": "1.0",
+    "fingerprint_algorithm": "SHA-256 canonical JSON"
+  },
+  "workbook_handoff": {
+    "package_kind": "l2g_workbook_handoff_v1",
+    "wire_package_version": "1.0",
+    "contract_release": "1.7",
+    "enhancement_version": "1.7"
+  },
+  "boundaries": {
+    "adjacent_runtime_change": false,
+    "registry_change": false,
+    "suite_snapshot": false,
+    "rg4_route_promotion": false
+  },
+  "joint_test": "pending corrected Workshop v79.1 exact candidate and Orchestrator route"
+}
