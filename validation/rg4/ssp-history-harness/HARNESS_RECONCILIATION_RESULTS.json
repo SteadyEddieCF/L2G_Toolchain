@@ -1,0 +1,95 @@
+{
+  "document_kind": "ssp_rg4_history_harness_reconciliation_results",
+  "format_version": "1.1",
+  "governing_issue": 107,
+  "baseline_commit": "3be4153c45cb6534954592a6e4ff1cfda87c8bb4",
+  "branch": "validation/ssp-rg4-history-harness",
+  "draft_pr": 111,
+  "validation_snapshot_head": "d8485314011a0bce754ca48c859717a374513609",
+  "status": "validated_tests_and_fixtures_only",
+  "ssp_release": "1.9.17",
+  "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+  "working_data_schema": "1.9.11",
+  "authoritative_requirements": 110,
+  "runtime_modified": false,
+  "schema_modified": false,
+  "current_pointer_modified": false,
+  "contract_registry_modified": false,
+  "historical_snapshot_modified": false,
+  "adjacent_tool_runtime_modified": false,
+  "supported_workflow_product_defect_found": false,
+  "root_cause": "The prior directly injected seed lacked packageFingerprint and sidecar.package_fingerprint, so rg4NormalizeHistory removed it after canonical normalization. Direct state and local-storage injection are unsupported record-creation paths.",
+  "supported_creation_path": "Exact l2g_ssp_word_qa_sidecar_v1 JSON plus paired DOCX, successful non-mutating preview, local reviewer labels, explicit acknowledgement, and acceptance.",
+  "test_results": {
+    "focused_playwright": {
+      "status": "success",
+      "workflow": "SSP RG-4 History Harness",
+      "run_id": 30671550413,
+      "job_id": 91290146420,
+      "tests_passed": 8,
+      "artifact_id": 8808976791,
+      "artifact_sha256": "2efd851101555e44648a1c0e4a50437b67154f69fb3103038024b17c534f111a"
+    },
+    "shared_playwright_qa": {
+      "status": "success",
+      "workflow": "Playwright QA",
+      "run_id": 30671550439,
+      "job_id": 91290146728,
+      "tests_passed": 40,
+      "artifact_id": 8809006830,
+      "artifact_sha256": "8fa6502aadd10436b1dbf7df7bd8e89794207c9f0148c1df318f2d4f7353158a"
+    },
+    "visual_regression": {
+      "status": "success",
+      "workflow": "Playwright QA",
+      "run_id": 30671550439,
+      "job_id": 91290146724
+    },
+    "native_windows_file_origin": {
+      "status": "success",
+      "workflow": "Playwright QA",
+      "run_id": 30671550439,
+      "job_id": 91290146743,
+      "tests_passed": 9,
+      "artifact_id": 8808969168,
+      "artifact_sha256": "9608ac10dc76ec3dcda7559d53ff8d269e4b882c88d19b59a503062b55536863"
+    },
+    "static_validation": {
+      "status": "success",
+      "workflow": "Validate L2G Toolchain",
+      "run_id": 30671550412
+    }
+  },
+  "evidence_results": {
+    "unsupported_synthetic_history": {
+      "direct_normalized_count": 0,
+      "backup_restore_count": 0,
+      "local_storage_injected_count": 1,
+      "local_storage_restored_count": 0
+    },
+    "populated_history": {
+      "before_count": 1,
+      "after_count": 1,
+      "record_sha256": "e3b543ece2a8f4bd503c2c8d28cb21013234b0de55d2662bf9428290d9ccce28",
+      "workshop_handoff_controls": 110,
+      "workshop_candidate_rows": 1330,
+      "ssp_return_leakage_findings": 0
+    },
+    "empty_history": {
+      "before_count": 0,
+      "after_count": 0,
+      "ssp_return_leakage_findings": 0
+    },
+    "supported_stale_acknowledgement": {
+      "acceptance_kind": "acknowledged-stale",
+      "producer_qa_state": "qa_complete",
+      "derived_currency": "stale",
+      "supersession_claimed": false
+    }
+  },
+  "route_status": "proposal",
+  "suite_snapshot_created": false,
+  "promotion_performed": false,
+  "draft_pr_unmerged": true,
+  "note": "A later report-only or CI-packaging commit may advance the PR head; final exact-head CI and PR identity are recorded in the PR body and external orchestrator handoff without changing product code."
+}

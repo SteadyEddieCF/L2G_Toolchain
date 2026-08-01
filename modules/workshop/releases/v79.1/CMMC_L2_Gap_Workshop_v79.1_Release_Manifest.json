@@ -3,45 +3,47 @@
   "module": "CMMC L2 Gap Workshop Tool",
   "issue": 105,
   "draft_pull_request": 112,
-  "status": "validated_draft_candidate_pending_builder_v3_10_1_round_trip_and_independent_review",
-  "baseline_commit": "3be4153c45cb6534954592a6e4ff1cfda87c8bb4",
+  "status": "corrected_draft_candidate_pending_exact_head_ci_and_builder_v3_10_1_joint_round_trip",
+  "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
+  "previous_reviewed_head": "44fa69aab6efd33082f56f0b2be10c3b6e49051a",
   "runtime": {
     "filename": "cmmc_l2_gap_workshop_tool_v79.1.html",
-    "size_bytes": 1852954,
-    "sha256": "361a29613d85a42eb404aabbaec061fb815dbd347d90dc41c089e8024cc95dc1"
+    "size_bytes": 1883583,
+    "sha256": "2845b634fb4302a7637f4e47ead49adaf20f7f71b3ca32f937c9b64f549622a4"
   },
   "baseline_runtime": {
     "version": "v79",
     "size_bytes": 1836145,
-    "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca"
+    "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
+    "embedded_in_package": true
+  },
+  "governance": {
+    "path": "contracts/reconciliations/workbook_merge_v1_1_governance_preservation/",
+    "extension_path": "workbook_source.workshop_governance_preservation_v1",
+    "top_level_extension_rejected": true,
+    "schema_version": "1.0",
+    "reconciliation_assertion_only": true
   },
   "contracts": {
     "workshop_state": "1.0",
     "workbook_handoff": {
       "contract_release": "1.7",
-      "wire_package_version": "1.0"
+      "wire_package_version": "1.0",
+      "enhancement_version": "1.7"
     },
     "workbook_merge": "1.1",
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
   },
-  "corrective_scope": [
-    "WKS-RG4-001 producer self-reconciliation",
-    "WKS-RG4-002",
-    "WKS-RG4-003",
-    "WKS-RG4-004",
-    "WKS-RG4-005"
-  ],
   "validation": {
-    "implementation_test_head": "615fa0516debea4af39c3273f00924e2e8b94a51",
-    "candidate_workflow_run": 30671641092,
-    "shared_validation_run": 30671641118,
-    "shared_playwright_run": 30671641100,
-    "result": "passed"
+    "local_contract_matrix": "passed",
+    "portable_materializer": "passed",
+    "exact_head_ci": "pending"
   },
   "dependency": {
     "issue": 106,
-    "builder_merger_candidate": "pending",
+    "pull_request": 113,
+    "builder_merger_candidate": "pending exact corrected head",
     "blocks_issue_closure": true
   },
   "promotion_eligible": false,

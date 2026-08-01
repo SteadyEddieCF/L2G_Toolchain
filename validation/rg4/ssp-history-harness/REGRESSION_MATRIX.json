@@ -1,0 +1,82 @@
+{
+  "document_kind": "ssp_rg4_history_harness_regression_matrix",
+  "format_version": "1.0",
+  "ssp_release": "1.9.17",
+  "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
+  "working_data_schema": "1.9.11",
+  "authoritative_requirements": 110,
+  "tests": [
+    {
+      "requirement": "current acceptance",
+      "test": "existing SSP v1.9.17 consumer regression plus supported populated-history isolation",
+      "expected": "accepted-current canonical record"
+    },
+    {
+      "requirement": "stale acknowledgement",
+      "test": "dedicated supported stale exact-pair acknowledgement",
+      "expected": "acknowledged-stale without supersession"
+    },
+    {
+      "requirement": "blocked and incomplete handling",
+      "test": "existing SSP v1.9.17 consumer regression",
+      "expected": "recorded-blocked and recorded-incomplete; neither treated as completed nor superseding"
+    },
+    {
+      "requirement": "retry and supersession",
+      "test": "existing SSP v1.9.17 attempt-2 lineage regression",
+      "expected": "prior current attempt derives superseded only after current higher attempt acceptance"
+    },
+    {
+      "requirement": "duplicate and idempotency",
+      "test": "existing exact-pair re-import regression",
+      "expected": "one history record; duplicate preview; no second append"
+    },
+    {
+      "requirement": "backup and restore",
+      "test": "existing consumer regression plus populated-history isolation",
+      "expected": "exact canonical record restored"
+    },
+    {
+      "requirement": "reload persistence",
+      "test": "existing consumer regression plus populated-history and Windows file-origin isolation",
+      "expected": "exact canonical record persists"
+    },
+    {
+      "requirement": "Workshop Handoff isolation",
+      "test": "populated and empty history previews",
+      "expected": "1 to 1 exact and 0 to 0; 110 controls; 1330 candidate rows"
+    },
+    {
+      "requirement": "SSP Return isolation",
+      "test": "populated, empty, and Windows file-origin return exports",
+      "expected": "no RG-4 history keys, sidecar kind, sidecar ID, package fingerprint, or evidence record ID"
+    },
+    {
+      "requirement": "unsupported synthetic-history normalization",
+      "test": "direct hook, backup apply, and browser-local storage restore",
+      "expected": "unsupported seed normalizes to zero"
+    },
+    {
+      "requirement": "authored and governed SSP state isolation",
+      "test": "deep snapshot before and after Workshop preview",
+      "expected": "unchanged"
+    },
+    {
+      "requirement": "RG-2, RG-3, review profile, and sign-off isolation",
+      "test": "explicit substate comparisons",
+      "expected": "unchanged"
+    },
+    {
+      "requirement": "Workshop-owned data not absorbed into RG-4 history",
+      "test": "history serialization checks",
+      "expected": "no handoff kind, action ID, or Workshop organization content"
+    },
+    {
+      "requirement": "offline/browser safety",
+      "test": "focused, shared, and native Windows file-origin observers",
+      "expected": "zero network requests, page errors, and unexpected console errors"
+    }
+  ],
+  "existing_ssp_v1_9_17_consumer_tests_preserved": true,
+  "supported_workflow_product_defect_found": false
+}

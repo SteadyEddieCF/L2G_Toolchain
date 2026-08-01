@@ -1,107 +1,19 @@
 import { test, expect } from '@playwright/test';
-import { stabilizePage } from './module-catalog.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
 import AxeBuilder from '@axe-core/playwright';
+import { stabilizePage } from './module-catalog.mjs';
 
 const RUNTIME='/modules/workshop/releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html';
-
-function capture(page){
-  const result={pageErrors:[],consoleErrors:[],externalRequests:[]};
-  page.on('pageerror',error=>result.pageErrors.push(String(error)));
-  page.on('console',message=>{if(message.type()==='error')result.consoleErrors.push(message.text());});
-  page.on('request',request=>{const url=request.url();if(/^https?:/i.test(url)&&!url.startsWith('http://127.0.0.1:4173/'))result.externalRequests.push(url);});
-  return result;
-}
-async function open(page){
-  await page.goto(RUNTIME,{waitUntil:'domcontentloaded'});
-  await stabilizePage(page);
-  await page.evaluate(()=>{
-    window.governedSnapshot=()=>JSON.stringify({
-      practices:state.practices,objectives:state.objectiveReviews,decisions:state.decisions,
-      actions:state.actionRegister,ownership:state.evidenceOwnershipV77,merge:state.workbookMergeV57,
-      sspHandoff:state.sspHandoffGovernanceV70,sspReturn:state.sspReturnGovernanceV71,
-      filters:state.filters,selectedPractice:state.selectedPractice
-    });
-  });
-}
-async function buildValidPackage(page){return page.evaluate(()=>({
-  package_kind:'l2g_workbook_merge_v1',package_version:'1.1',schema_trusted:true,
-  generated_by:'L2G Builder/Merger v3.10',generated_at:'2026-07-31T22:00:00.000Z',tool_family:'L2G_Builder_Merger',content_trust_level:'reviewed_workbook_output',
-  practice_results:PRACTICES.map((practice,index)=>({Practice_ID:practice.id,Implementation_Status:index%3===0?'Implemented':'Partially Implemented',Gap_Notes:`Synthetic finding ${practice.id}`,Remediation_POAM_Notes:`Synthetic recommendation ${practice.id}`,Reviewer_Notes:index===0?'<script>window.__V791_INJECTED__=true</script> ../../etc/passwd C:\\Windows\\System32':`Synthetic note ${practice.id}`,Source_Sheet:'CMMC Assessment',Source_Row:index+2})),
-  objective_results:V54_OBJECTIVES.map((objective,index)=>({Practice_ID:v57PracticeId(objective.practice_id),Objective_ID:String(objective.objective_id).replace(/\s+\[/g,'['),Assessment_Result:index%4===0?'Not Met':'Met',Evidence_Reviewed:`RG4-EVID-${String(index+1).padStart(3,'0')}`,Gap_Notes:index%4===0?`Synthetic objective gap ${objective.objective_id}`:'',Remediation_POAM_Notes:index%4===0?`Synthetic objective recommendation ${objective.objective_id}`:'',Reviewer_Notes:`Synthetic objective note ${objective.objective_id}`,Source_Sheet:'CMMC Assessment',Source_Row:index+2})),
-  evidence_results:[],gap_results:[],advisor_review_results:[],warnings:[],
-  workbook_source:{workbook_file_name:'RG4_Synthetic_Workbook.xlsx',practice_rows_detected:110,practices_matched_to_handoff:110,objective_rows_detected:320,sheets:12,formulas:222}
-}));}
-
+const FIXTURE_DIR=path.resolve('modules/workshop/releases/v79.1/tests/fixtures');
+const read=name=>JSON.parse(fs.readFileSync(path.join(FIXTURE_DIR,name),'utf8'));
+const readText=name=>fs.readFileSync(path.join(FIXTURE_DIR,name),'utf8');
+function observe(page){const result={external:[],errors:[],console:[]};page.on('request',r=>{const u=r.url();if(/^https?:/i.test(u)&&!u.startsWith('http://127.0.0.1:4173/'))result.external.push(u);});page.on('pageerror',e=>result.errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')result.console.push(m.text());});return result;}
+async function open(page){await page.goto(RUNTIME,{waitUntil:'domcontentloaded'});await stabilizePage(page);await page.evaluate(()=>{window.__v791WholeSnapshot=()=>JSON.stringify({practices:state.practices,objectives:state.objectiveReviews,notes:Object.fromEntries(Object.entries(state.practices).map(([k,v])=>[k,v.notes])),decisions:state.decisions,gaps:state.gaps,recommendations:state.recommendations,actions:state.actionRegister,blockers:state.blockers,ownership:state.evidenceOwnershipV77,merge:state.workbookMergeV57,sspHandoff:state.sspHandoffGovernanceV70,sspReturn:state.sspReturnGovernanceV71,filters:state.filters,selectedPractice:state.selectedPractice});});}
+async function fullMerge(page,fixture){return page.evaluate(pkg=>{pkg=structuredClone(pkg);pkg.practice_results=PRACTICES.map((p,i)=>({Practice_ID:p.id,Implementation_Status:i%3?'Partially Implemented':'Implemented',Gap_Notes:`Finding ${p.id}`,Remediation_POAM_Notes:`Recommendation ${p.id}`,Reviewer_Notes:i===0?'<script>window.__V791_INJECTED__=true</script> ../../etc/passwd C:\\Windows\\System32':`Note ${p.id}`,Source_Sheet:'CMMC Assessment',Source_Row:i+2}));pkg.objective_results=V54_OBJECTIVES.map((o,i)=>({Practice_ID:v57PracticeId(o.practice_id),Objective_ID:String(o.objective_id).replace(/\s+\[/g,'['),Assessment_Result:i%4?'Met':'Not Met',Evidence_Reviewed:`RG4-EVID-${String(i+1).padStart(3,'0')}`,Gap_Notes:i%4?'':`Objective gap ${o.objective_id}`,Remediation_POAM_Notes:i%4?'':`Objective recommendation ${o.objective_id}`,Reviewer_Notes:`Objective note ${o.objective_id}`,Source_Sheet:'CMMC Assessment',Source_Row:i+2}));pkg.workbook_source={...(pkg.workbook_source||{}),practice_rows_detected:110,practices_matched_to_handoff:110,objective_rows_detected:320,sheets:17,formulas:222};return pkg;},fixture);}
+async function seedCurrent(page,pkg,{missing=false}={}){await page.evaluate(({pkg,missing})=>{const ext=pkg.workbook_source.workshop_governance_preservation_v1,record=n=>structuredClone(ext[n][0].source_record);state.actionRegister={...(state.actionRegister||{}),actions:missing?[]:[record('actions')]};const ownership=record('evidence_ownership_records'),request=record('requests'),followup=record('provider_followups');state.evidenceOwnershipV77={...(state.evidenceOwnershipV77||{}),accepted_records:[ownership],candidates:[structuredClone(ownership)],requests:[request],provider_followups:[followup],history:[],undo_stack:[],redo_stack:[],ui:{current_candidate_id:'',search:'',queue:'all',state:'all',audience:'all'}};state.workbookGovernanceV68={...(state.workbookGovernanceV68||{}),handoff_exports:[{canonical_sha256:ext.source_package_identity.canonical_fingerprint,exported_at:'2026-08-01T00:30:00.000Z'}]};},{pkg,missing});}
 test.describe.configure({mode:'serial'});
-
-test('Workshop v79.1 accepts Merge 1.1, preserves preview, applies locally, blocks duplicate, and undoes',async({page},testInfo)=>{
-  const observed=capture(page);page.on('dialog',dialog=>dialog.accept());await open(page);const pkg=await buildValidPackage(page);
-  const previewResult=await page.evaluate(value=>{const before=governedSnapshot();const preview=v57PreviewMergeText(JSON.stringify(value),'valid-merge-1.1.json');return{before,after:governedSnapshot(),preview:{blocking:preview.blocking,trusted:preview.trusted,practiceCount:preview.practice_results.length,objectiveCount:preview.objective_results.length,validationErrors:preview.validation_errors}};},pkg);
-  expect(previewResult.preview).toEqual({blocking:false,trusted:true,practiceCount:110,objectiveCount:320,validationErrors:[]});
-  expect(previewResult.after).toBe(previewResult.before);
-  await page.evaluate(()=>v57ApplyPendingMerge());
-  await expect.poll(()=>page.evaluate(()=>state.workbookMergeV57.history.length)).toBe(1);
-  expect(await page.evaluate(()=>Object.keys(state.workbookMergeV57.practice_results).length)).toBe(110);
-  expect(await page.evaluate(()=>Object.keys(state.workbookMergeV57.objective_results).length)).toBe(320);
-  const appliedSnapshot=await page.evaluate(()=>governedSnapshot());
-  const duplicate=await page.evaluate(value=>{const p=v57PreviewMergeText(JSON.stringify(value),'repeat.json');return{duplicate:p.duplicate,blocking:p.blocking};},pkg);
-  expect(duplicate).toEqual({duplicate:true,blocking:false});
-  await page.evaluate(()=>v57UndoLastMerge());
-  await expect.poll(()=>page.evaluate(()=>state.workbookMergeV57.history.length)).toBe(0);
-  expect(await page.evaluate(()=>state.workbookMergeV57.undo_snapshot)).toBeNull();
-  expect(await page.evaluate(()=>window.__V791_INJECTED__||false)).toBe(false);
-  await testInfo.attach('workshop-v791-before-after.json',{body:Buffer.from(JSON.stringify({before:previewResult.before,afterPreview:previewResult.after,afterApply:appliedSnapshot},null,2)),contentType:'application/json'});
-  expect(observed.externalRequests).toEqual([]);expect(observed.pageErrors).toEqual([]);expect(observed.consoleErrors).toEqual([]);
-});
-
-test('Workshop v79.1 fails closed for version, shape, duplicate-key, and identity defects without mutation',async({page},testInfo)=>{
-  const observed=capture(page);await open(page);const pkg=await buildValidPackage(page);
-  const results=await page.evaluate(value=>{
-    const runObject=(name,mutate)=>{const candidate=structuredClone(value);mutate(candidate);const before=governedSnapshot();const preview=v57PreviewMergeText(JSON.stringify(candidate),`${name}.json`);return{name,blocking:preview.blocking,trusted:preview.trusted,errors:preview.validation_errors||[],unchanged:before===governedSnapshot()};};
-    const runText=(name,text)=>{const before=governedSnapshot();const preview=v57PreviewMergeText(text,`${name}.json`);return{name,blocking:preview.blocking,trusted:preview.trusted,errors:preview.validation_errors||[],unchanged:before===governedSnapshot()};};
-    const cases=[
-      runObject('unknown-version',x=>x.package_version='2.0'),runObject('downgraded-version',x=>x.package_version='1.0'),runObject('missing-version',x=>delete x.package_version),runObject('wrong-kind',x=>x.package_kind='wrong_kind'),runObject('unknown-top-level',x=>x.undeclared=true),
-      runObject('duplicate-practice-id',x=>x.practice_results[x.practice_results.length-1]=structuredClone(x.practice_results[0])),runObject('conflicting-practice-row',x=>x.practice_results.push({...x.practice_results[0],Reviewer_Notes:'conflict'})),runObject('duplicate-objective-id',x=>x.objective_results[x.objective_results.length-1]=structuredClone(x.objective_results[0])),runObject('mismatched-practice-objective',x=>x.objective_results[0].Practice_ID=x.practice_results[1].Practice_ID),runText('malformed-json','{"package_kind":')
-    ];
-    const raw=JSON.stringify(value);
-    cases.push(runText('duplicate-key-top-level',raw.replace('"package_version":"1.1"','"package_version":"2.0","package_version":"1.1"')));
-    cases.push(runText('duplicate-key-nested',raw.replace('"Practice_ID":','"Practice_ID":"BAD","Practice_ID":')));
-    return cases;
-  },pkg);
-  for(const result of results){expect(result.blocking,result.name).toBe(true);expect(result.trusted,result.name).toBe(false);expect(result.unchanged,result.name).toBe(true);}
-  expect(results.find(x=>x.name==='duplicate-key-top-level').errors.join(' ')).toMatch(/duplicate object key/i);
-  expect(results.find(x=>x.name==='duplicate-key-nested').errors.join(' ')).toMatch(/duplicate object key/i);
-  expect(results.find(x=>x.name==='unknown-top-level').errors.join(' ')).toMatch(/unknown top-level/i);
-  await testInfo.attach('workshop-v791-negative-results.json',{body:Buffer.from(JSON.stringify(results,null,2)),contentType:'application/json'});
-  expect(observed.externalRequests).toEqual([]);expect(observed.pageErrors).toEqual([]);expect(observed.consoleErrors).toEqual([]);
-});
-
-test('Workshop v79.1 self-reconciles Handoff 1.7 and preserves SSP Handoff 1.0',async({page},testInfo)=>{
-  const observed=capture(page);await open(page);
-  const result=await page.evaluate(()=>{
-    state.setup={...state.setup,orgName:'RG4 Synthetic Organization',systemName:'RG4 Synthetic System',envName:'RG4 Validation Enclave'};
-    const a=l2gWorkbookHandoffPackage(),b=l2gWorkbookHandoffPackage(),identity=v791ValidateHandoffIdentity(a),sspHandoff=v70SspHandoffPackage();
-    return{identity,handoff:{kind:a.package_kind,version:a.package_version,enhancements:a.handoff_schema_enhancements_version,contract:a.contract_manifest.contract_release,required:a.contract_manifest.required_package_identity,integrity:a.package_integrity.contract_release,fp:a.package_integrity.canonical_fingerprint,repeat:b.package_integrity.canonical_fingerprint,label:a.contract_manifest.identity_label},sspHandoff:{kind:sspHandoff.package_kind,version:sspHandoff.package_version,controls:sspHandoff.controls.length},checks:v60RuntimeChecks().checks.filter(c=>c.id==='version'||c.id.startsWith('v791-'))};
-  });
-  expect(result.identity.valid).toBe(true);
-  expect(result.handoff).toMatchObject({kind:'l2g_workbook_handoff_v1',version:'1.0',enhancements:'1.7',contract:'1.7',required:{package_kind:'l2g_workbook_handoff_v1',package_version:'1.0',schema_trusted:true},integrity:'1.7',label:'Workbook Handoff contract release 1.7 — wire package version 1.0'});
-  expect(result.handoff.repeat).toBe(result.handoff.fp);
-  expect(result.sspHandoff).toEqual({kind:'l2g_ssp_handoff_v1',version:'1.0',controls:110});
-  expect(result.checks.filter(c=>!c.pass)).toEqual([]);
-  await expect(page.locator('#v791IdentityNotice')).toContainText('Workbook Handoff contract release 1.7');
-  await testInfo.attach('workshop-v791-handoff-identity.json',{body:Buffer.from(JSON.stringify(result,null,2)),contentType:'application/json'});
-  expect(observed.externalRequests).toEqual([]);expect(observed.pageErrors).toEqual([]);expect(observed.consoleErrors).toEqual([]);
-});
-
-test('Workshop v79.1 retains v79 workspace, axe, themes, print, constrained viewport, and keyboard focus',async({page})=>{
-  const observed=capture(page);await page.setViewportSize({width:980,height:720});await open(page);
-  const accessibility=await new AxeBuilder({page}).analyze();
-  expect(accessibility.violations.filter(v=>['critical','serious'].includes(v.impact))).toEqual([]);
-  await page.emulateMedia({media:'print'});expect(await page.evaluate(()=>matchMedia('print').matches)).toBe(true);
-  await page.emulateMedia({media:'screen'});
-  await page.evaluate(()=>{document.documentElement.classList.add('dark-mode');document.body.classList.add('dark-mode');});
-  expect(await page.evaluate(()=>document.documentElement.classList.contains('dark-mode'))).toBe(true);
-  await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.activeElement?.tagName||'BODY')).not.toBe('BODY');
-  expect(await page.locator('#v79RegressionWorkspace').count()).toBe(1);expect(await page.locator('#v791IdentityNotice').count()).toBe(1);
-  expect(observed.externalRequests).toEqual([]);expect(observed.pageErrors).toEqual([]);expect(observed.consoleErrors).toEqual([]);
-});
+test('canonical nested extension reconciles exact current records without operational mutation; apply, duplicate, and undo remain governed',async({page},testInfo)=>{test.setTimeout(120000);const seen=observe(page);page.on('dialog',d=>d.accept());await open(page);const pkg=await fullMerge(page,read('canonical_nested_extension.json'));await seedCurrent(page,pkg);const preview=await page.evaluate(value=>{const before=window.__v791WholeSnapshot();const result=v57PreviewMergeText(JSON.stringify(value),'canonical-nested.json');return{blocking:result.blocking,trusted:result.trusted,status:result.governance_reconciliation.status,discrepancies:result.governance_reconciliation.discrepancies,practiceCount:result.practice_results.length,objectiveCount:result.objective_results.length,unchanged:before===window.__v791WholeSnapshot(),operational:__workshopV791TestHooks.operationalSnapshot()};},pkg);expect(preview).toMatchObject({blocking:false,trusted:true,status:'trusted-current',practiceCount:110,objectiveCount:320,unchanged:true});expect(preview.discrepancies).toEqual([]);const operationalBefore=preview.operational;await page.evaluate(()=>v57ApplyPendingMerge());expect(await page.evaluate(()=>state.workbookMergeV57.history.length)).toBe(1);expect(await page.evaluate(()=>Object.keys(state.workbookMergeV57.practice_results).length)).toBe(110);expect(await page.evaluate(()=>Object.keys(state.workbookMergeV57.objective_results).length)).toBe(320);expect(await page.evaluate(()=>__workshopV791TestHooks.operationalSnapshot())).toBe(operationalBefore);expect(await page.evaluate(()=>state.workbookMergeV57.history[0].governance_reconciliation)).toMatchObject({status:'exact_non_mutating_round_trip',discrepancy_count:0,operational_records_mutated:false});const duplicate=await page.evaluate(value=>{const before=window.__v791WholeSnapshot();const result=v57PreviewMergeText(JSON.stringify(value),'duplicate.json');return{duplicate:result.duplicate,blocking:result.blocking,trusted:result.trusted,unchanged:before===window.__v791WholeSnapshot()};},pkg);expect(duplicate).toEqual({duplicate:true,blocking:false,trusted:true,unchanged:true});await page.evaluate(()=>v57UndoLastMerge());expect(await page.evaluate(()=>state.workbookMergeV57.history.length)).toBe(0);expect(await page.evaluate(()=>state.workbookMergeV57.undo_snapshot)).toBeNull();expect(await page.evaluate(()=>window.__V791_INJECTED__||false)).toBe(false);await testInfo.attach('canonical-reconciliation-result.json',{body:Buffer.from(JSON.stringify(preview,null,2)),contentType:'application/json'});expect(seen.external).toEqual([]);expect(seen.errors).toEqual([]);expect(seen.console).toEqual([]);});
+test('nested-extension mismatch, missing, duplicate, count, fingerprint, linkage, malformed, and top-level fixtures fail closed and remain non-mutating',async({page},testInfo)=>{const seen=observe(page);await open(page);const canonical=read('canonical_nested_extension.json');await seedCurrent(page,canonical);const cases=['top_level_extension_invalid.json','governed_field_mismatch.json','missing_current_record.json','duplicate_stable_id.json','incorrect_count.json','incorrect_record_fingerprint.json','incorrect_preservation_fingerprint.json','incorrect_source_handoff_linkage.json','malformed_extension.json'];const results=[];for(const name of cases){const pkg=await fullMerge(page,read(name));const result=await page.evaluate(({pkg,name})=>{const before=window.__v791WholeSnapshot();const preview=v57PreviewMergeText(JSON.stringify(pkg),name);return{name,blocking:preview.blocking,trusted:preview.trusted,errors:preview.validation_errors,discrepancies:preview.governance_reconciliation?.discrepancies||[],unchanged:before===window.__v791WholeSnapshot()};},{pkg,name});results.push(result);}for(const result of results){expect(result.blocking,result.name).toBe(true);expect(result.trusted,result.name).toBe(false);expect(result.unchanged,result.name).toBe(true);}expect(results.find(x=>x.name==='governed_field_mismatch.json').discrepancies[0]).toEqual(expect.objectContaining({record_type:'actions',record_id:'action-rg4-001',field:'owner',comparison_source:'source_record_vs_workbook_record'}));expect(results.find(x=>x.name==='missing_current_record.json').discrepancies[0]).toEqual(expect.objectContaining({record_type:'actions',field:'$record',observed_value:'missing',comparison_source:'source_record_vs_current_workshop'}));await testInfo.attach('negative-reconciliation-results.json',{body:Buffer.from(JSON.stringify(results,null,2)),contentType:'application/json'});expect(seen.external).toEqual([]);expect(seen.errors).toEqual([]);expect(seen.console).toEqual([]);});
+test('duplicate-key extension and existing strict Merge defects fail closed; package without extension remains supported',async({page})=>{const seen=observe(page);await open(page);const canonical=read('canonical_nested_extension.json');await seedCurrent(page,canonical);const raw=readText('duplicate_key_extension.json.txt');const duplicateKey=await page.evaluate(text=>{const before=window.__v791WholeSnapshot();const p=v57PreviewMergeText(text,'duplicate-key-extension.json');return{blocking:p.blocking,trusted:p.trusted,errors:p.validation_errors,unchanged:before===window.__v791WholeSnapshot()};},raw);expect(duplicateKey.blocking).toBe(true);expect(duplicateKey.trusted).toBe(false);expect(duplicateKey.errors.join(' ')).toMatch(/duplicate object key/i);expect(duplicateKey.unchanged).toBe(true);const noExtension=await fullMerge(page,read('package_without_extension.json'));const positive=await page.evaluate(pkg=>{const before=window.__v791WholeSnapshot();const p=v57PreviewMergeText(JSON.stringify(pkg),'no-extension.json');return{blocking:p.blocking,trusted:p.trusted,present:p.governance_reconciliation.present,unchanged:before===window.__v791WholeSnapshot()};},noExtension);expect(positive).toEqual({blocking:false,trusted:true,present:false,unchanged:true});const negatives=await page.evaluate(pkg=>{const snap=()=>window.__v791WholeSnapshot();const run=(name,mutate)=>{const c=structuredClone(pkg);mutate(c);const before=snap(),p=v57PreviewMergeText(JSON.stringify(c),name);return{name,blocking:p.blocking,trusted:p.trusted,unchanged:before===snap()};};return[run('unknown-version',c=>c.package_version='2.0'),run('missing-version',c=>delete c.package_version),run('wrong-kind',c=>c.package_kind='wrong'),run('unknown-top-level',c=>c.workshop_governance_preservation_v1={}),run('duplicate-practice',c=>c.practice_results.push(structuredClone(c.practice_results[0]))),run('duplicate-objective',c=>c.objective_results.push(structuredClone(c.objective_results[0]))),run('mismatched-parent',c=>c.objective_results[0].Practice_ID=c.practice_results[1].Practice_ID)];},noExtension);for(const result of negatives){expect(result.blocking,result.name).toBe(true);expect(result.trusted,result.name).toBe(false);expect(result.unchanged,result.name).toBe(true);}expect(seen.external).toEqual([]);expect(seen.errors).toEqual([]);expect(seen.console).toEqual([]);});
+test('runtime retains v79 workspace, light/dark, print, constrained viewport, keyboard focus, and default-theme axe',async({page})=>{const seen=observe(page);await page.setViewportSize({width:980,height:720});await open(page);const axe=await new AxeBuilder({page}).analyze();expect(axe.violations.filter(v=>['critical','serious'].includes(v.impact))).toEqual([]);await page.emulateMedia({media:'print'});expect(await page.evaluate(()=>matchMedia('print').matches)).toBe(true);await page.emulateMedia({media:'screen'});await page.evaluate(()=>{document.documentElement.classList.add('dark-mode');document.body.classList.add('dark-mode');});expect(await page.evaluate(()=>document.documentElement.classList.contains('dark-mode'))).toBe(true);await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.activeElement?.tagName||'BODY')).not.toBe('BODY');expect(await page.locator('#v79RegressionWorkspace').count()).toBe(1);expect(await page.locator('#v791IdentityNotice').count()).toBe(1);expect(seen.external).toEqual([]);expect(seen.errors).toEqual([]);expect(seen.console).toEqual([]);});

@@ -2,15 +2,14 @@
 
 Central facilitation and advisor-review module for practices, evidence, evidence requests, provider/responsibility discussion, provider follow-up, actions, blockers, workbook and SSP round trips.
 
-- Draft corrective candidate: **v79.1 — Strict Workbook Merge Validation**
-- Candidate runtime: `releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html`
-- Current promoted baseline: **v79 — Full McFirecoal Toolchain Regression**
-- Next planned feature workstream: **v80 Regression Delta and Release Comparison** (preserved)
+- Current promoted release: **v79 — Full McFirecoal Toolchain Regression**
+- Current draft corrective candidate: **v79.1 — Strict Workbook Merge Validation**, issue #105 / PR #112
+- Candidate runtime source: `releases/v79.1/`
+- Previous promoted release: **v78 — Contract-safe Reporting and SSP/Workbook Alignment**
+- Next separately bounded action: **Proposed v80 Regression Delta and Release Comparison**
 
-v79.1 is narrowly bounded to issue #105. It rejects unsupported Workbook Merge versions, unknown top-level fields, duplicate JSON keys, duplicate/conflicting practice and objective identities, and mismatched parent relationships before trusted preview or apply. Rejected packages do not mutate governed Workshop state.
+Stable routes remain Workshop State 1.0, Workbook Handoff contract release 1.7 with wire package version 1.0, Workbook Merge 1.1, SSP Handoff 1.0, and SSP Return 1.0.
 
-Workbook Handoff remains **contract release 1.7 — wire package version 1.0**. v79.1 self-reconciles its top-level identity, embedded contract manifest, package-integrity release, and final canonical fingerprint before export.
+The v79.1 candidate preserves the frozen Workbook Merge top-level shape and adds no new operational authority. It validates the optional governance-preservation assertion only at `workbook_source.workshop_governance_preservation_v1`. Exact source, workbook-preserved, and current Workshop records must agree; missing, duplicate, mismatched, malformed, or incorrectly fingerprinted assertions block apply. The assertion never creates, restores, overwrites, closes, reopens, or deletes actions, evidence-ownership records, requests, or provider follow-up.
 
-Stable routes remain Workshop State 1.0, Workbook Handoff 1.7/wire 1.0, Workbook Merge 1.1, SSP Handoff 1.0, and SSP Return 1.0. No adjacent module runtime, registry, historical suite snapshot, or RG-4 sidecar status changes are included.
-
-Final issue #105 closure remains dependent on the exact Builder/Merger v3.10.1 candidate round trip from issue #106.
+Workshop remains authoritative for facilitated practice conclusions, evidence review and evidence requests, provider/responsibility discussion, provider follow-up, engagement gaps, actions, blockers, and accepted evidence-ownership records. Candidate and technical route results must not be interpreted as evidence sufficiency, readiness, risk, compliance, certification, scoring, or final assessment conclusions.
