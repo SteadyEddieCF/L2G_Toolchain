@@ -5,6 +5,7 @@ import base64
 import hashlib
 import json
 import os
+import urllib.error
 import urllib.request
 import zipfile
 from io import BytesIO
@@ -17,6 +18,11 @@ SOURCE_HEAD = "bbc8d3bea308a1655567780bea002bc8ef834d8a"
 EXPECTED_SIZE = 683_940
 EXPECTED_SHA256 = "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af"
 OUT = Path(__file__).resolve().parent / "fixtures" / "builder_v3_10_1_pr113_exact_merge.json"
+
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
 
 def find_attachment(value):
@@ -35,10 +41,7 @@ def find_attachment(value):
     return None
 
 
-def main() -> None:
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    if not token:
-        raise SystemExit("GITHUB_TOKEN or GH_TOKEN is required to retrieve the exact PR #113 artifact")
+def download_artifact(token: str) -> bytes:
     request = urllib.request.Request(
         f"https://api.github.com/repos/{REPOSITORY}/actions/artifacts/{ARTIFACT_ID}/zip",
         headers={
@@ -48,8 +51,27 @@ def main() -> None:
             "User-Agent": "workshop-v79.1-exact-builder-fixture",
         },
     )
-    with urllib.request.urlopen(request) as response:
-        archive = response.read()
+    opener = urllib.request.build_opener(NoRedirect)
+    try:
+        opener.open(request)
+    except urllib.error.HTTPError as exc:
+        if exc.code not in (301, 302, 303, 307, 308):
+            raise
+        location = exc.headers.get("Location")
+        if not location:
+            raise SystemExit("GitHub artifact redirect did not include a Location header")
+    else:
+        raise SystemExit("GitHub artifact endpoint did not return the expected redirect")
+    # Fetch the signed storage URL without forwarding the GitHub Authorization header.
+    with urllib.request.urlopen(location) as response:
+        return response.read()
+
+
+def main() -> None:
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not token:
+        raise SystemExit("GITHUB_TOKEN or GH_TOKEN is required to retrieve the exact PR #113 artifact")
+    archive = download_artifact(token)
     with zipfile.ZipFile(BytesIO(archive)) as zf:
         report = json.loads(zf.read("playwright-results.json"))
     encoded = find_attachment(report)
@@ -58,24 +80,17 @@ def main() -> None:
     payload = base64.b64decode(encoded, validate=True)
     actual = hashlib.sha256(payload).hexdigest()
     if len(payload) != EXPECTED_SIZE or actual != EXPECTED_SHA256:
-        raise SystemExit(
-            f"Exact PR #113 Merge identity mismatch: size={len(payload)} sha256={actual}"
-        )
+        raise SystemExit(f"Exact PR #113 Merge identity mismatch: size={len(payload)} sha256={actual}")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_bytes(payload)
-    print(
-        json.dumps(
-            {
-                "source_run": SOURCE_RUN,
-                "source_head": SOURCE_HEAD,
-                "artifact_id": ARTIFACT_ID,
-                "output": str(OUT),
-                "size_bytes": len(payload),
-                "sha256": actual,
-            },
-            indent=2,
-        )
-    )
+    print(json.dumps({
+        "source_run": SOURCE_RUN,
+        "source_head": SOURCE_HEAD,
+        "artifact_id": ARTIFACT_ID,
+        "output": str(OUT),
+        "size_bytes": len(payload),
+        "sha256": actual,
+    }, indent=2))
 
 
 if __name__ == "__main__":
