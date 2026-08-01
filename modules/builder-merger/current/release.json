@@ -3,11 +3,11 @@
   "current_supplied_version": "v3.10.1",
   "release_path": "modules/builder-merger/releases/v3.10.1",
   "runtime_path": "modules/builder-merger/releases/v3.10.1/L2G-BM_v3.10.1.html",
-  "runtime_sha256": "b45e0d41df20920be383fc6aa4a88e8f25feb9c564296c0e14b8c81a64bb115f",
-  "runtime_size_bytes": 832484,
+  "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+  "runtime_size_bytes": 832972,
   "status": "draft_corrective_candidate",
   "next_action": "Run the exact corrected Workshop v79.1 to Builder/Merger v3.10.1 to Workshop v79.1 Orchestrator route before merge",
-  "recorded_at": "2026-07-31",
+  "recorded_at": "2026-08-01",
   "release_identity": {
     "version": "v3.10.1",
     "issue": 106,
@@ -42,6 +42,7 @@
       "path": "workbook_source.workshop_governance_preservation_v1",
       "schema_version": "1.0",
       "fingerprint": "SHA-256 canonical JSON",
+      "source_fingerprint_workbook_metadata": true,
       "stability": "merged governance under issue #114"
     },
     "rg4_word_qa_sidecar": {

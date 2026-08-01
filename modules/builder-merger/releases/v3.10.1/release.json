@@ -9,8 +9,8 @@
   "parent_release": "v3.10",
   "parent_runtime_sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17",
   "runtime_file": "L2G-BM_v3.10.1.html",
-  "runtime_sha256": "b45e0d41df20920be383fc6aa4a88e8f25feb9c564296c0e14b8c81a64bb115f",
-  "runtime_size_bytes": 832484,
+  "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+  "runtime_size_bytes": 832972,
   "materializer": "materialize.py",
   "validator": "validate_v3_10_1.py",
   "workbook_merge": {
@@ -18,7 +18,8 @@
     "package_version": "1.1",
     "extension_path": "workbook_source.workshop_governance_preservation_v1",
     "extension_schema_version": "1.0",
-    "fingerprint_algorithm": "SHA-256 canonical JSON"
+    "fingerprint_algorithm": "SHA-256 canonical JSON",
+    "source_fingerprint_persisted_in_workbook": true
   },
   "workbook_handoff": {
     "package_kind": "l2g_workbook_handoff_v1",
