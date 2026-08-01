@@ -1,0 +1,8 @@
+{
+  "evidence_id": "rg4-evidence-synthetic-001",
+  "sidecar_id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_docx_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "review_status": "qa_complete",
+  "recorded_at": "2026-07-31T18:15:00.000Z",
+  "local_display_name": "Synthetic RG-4 evidence history record"
+}

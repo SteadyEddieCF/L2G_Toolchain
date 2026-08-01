@@ -1,0 +1,32 @@
+{
+  "document_kind": "ssp_rg4_history_harness_fixture_hashes",
+  "format_version": "1.0",
+  "fixtures": [
+    {
+      "path_pattern": "validation/rg4/ssp-history-harness/fixtures/RG4_Workshop_v79_SSP_Handoff_1.0.json.gz.b64.part*",
+      "part_count": 5,
+      "combined_base64_size_bytes": 8596,
+      "combined_base64_sha256": "6a56bbebce04e7da659447c4d22ad2515894b106c46df8456b0d7f08a0ef0247",
+      "decoded_size_bytes": 160234,
+      "decoded_sha256": "81ca3171e14e3f2ff8caed17b70a031f50e0bcd3c75a69cb5367e221bb073947",
+      "identity": {
+        "package_kind": "l2g_ssp_handoff_v1",
+        "package_version": "1.0",
+        "control_count": 110
+      }
+    },
+    {
+      "path": "validation/rg4/ssp-history-harness/fixtures/unsupported_synthetic_history_seed.json",
+      "size_bytes_lf": 378,
+      "sha256_lf": "73121ab9a8160c84f28aeff2b8d61969392b7c2eac1a83d8de5966595f48d780",
+      "sha256_windows_crlf": "0771ce296d1b8654ed91df922f7b990be4468716eb5bb0a677a2f0c0777cbd61",
+      "canonical_json_sha256": "538cfb95f7c704179d01887ba261f954754447bb9eb301ac4aa6cff682bc5652",
+      "expected_normalized_history_count": 0,
+      "missing_required_identity": "packageFingerprint or sidecar.package_fingerprint"
+    }
+  ],
+  "runtime_generated_pair": {
+    "generation": "deterministic SSP v1.9.16 Word export plus runtime-adapted frozen v1.9.17 sidecar",
+    "exact_hashes": "recorded by focused and shared Playwright artifacts for each execution environment"
+  }
+}
