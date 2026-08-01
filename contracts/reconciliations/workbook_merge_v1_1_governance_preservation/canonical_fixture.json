@@ -1,0 +1,83 @@
+{
+  "package_kind": "l2g_workbook_merge_v1",
+  "package_version": "1.1",
+  "workbook_source": {
+    "filename": "CMMC_L2_Gap_Analysis_Workbook_L2G_Populated.xlsx",
+    "workshop_governance_preservation_v1": {
+      "schema_version": "1.0",
+      "source_package_identity": {
+        "package_kind": "l2g_workbook_handoff_v1",
+        "package_version": "1.0",
+        "contract_release": "1.7",
+        "enhancement_version": "1.7",
+        "canonical_fingerprint": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "record_counts": {
+        "actions": 1,
+        "evidence_ownership_records": 0,
+        "requests": 0,
+        "provider_followups": 0
+      },
+      "actions": [
+        {
+          "record_id": "action-rg4-001",
+          "source_record": {
+            "action_id": "action-rg4-001",
+            "title": "Obtain tenant evidence",
+            "description": "Collect the client tenant export.",
+            "action_type": "evidence-request",
+            "priority": "high",
+            "status": "open",
+            "owner": "Synthetic Evidence Owner",
+            "supporting_owner": "",
+            "provider": "Synthetic Provider",
+            "due_date": "2026-09-30",
+            "blocker_id": "blocker-rg4-001",
+            "related_practices": ["AC.L2-3.1.1"],
+            "related_objectives": [],
+            "dependencies": [],
+            "related_references": [],
+            "evidence_request_id": "",
+            "source_type": "workshop_action",
+            "source_id": "action-rg4-001",
+            "source_key": "action-rg4-001",
+            "source_label": "Obtain tenant evidence"
+          },
+          "workbook_record": {
+            "action_id": "action-rg4-001",
+            "title": "Obtain tenant evidence",
+            "description": "Collect the client tenant export.",
+            "action_type": "evidence-request",
+            "priority": "high",
+            "status": "open",
+            "owner": "Synthetic Evidence Owner",
+            "supporting_owner": "",
+            "provider": "Synthetic Provider",
+            "due_date": "2026-09-30",
+            "blocker_id": "blocker-rg4-001",
+            "related_practices": ["AC.L2-3.1.1"],
+            "related_objectives": [],
+            "dependencies": [],
+            "related_references": [],
+            "evidence_request_id": "",
+            "source_type": "workshop_action",
+            "source_id": "action-rg4-001",
+            "source_key": "action-rg4-001",
+            "source_label": "Obtain tenant evidence"
+          },
+          "source_record_fingerprint": "a451063b22e174282d72fca9232abe86f977388bac71dcd074d62f9a8f8163bd",
+          "workbook_record_fingerprint": "a451063b22e174282d72fca9232abe86f977388bac71dcd074d62f9a8f8163bd"
+        }
+      ],
+      "evidence_ownership_records": [],
+      "requests": [],
+      "provider_followups": [],
+      "guardrails": {
+        "reconciliation_assertion_only": true,
+        "no_automatic_create_update_delete": true,
+        "missing_or_mismatch_blocks_trusted_apply": true
+      },
+      "preservation_fingerprint": "aa2d89d01082428ac3d32b291529b89287e9cfac8d09c4ca3bf9197eea09b78d"
+    }
+  }
+}
