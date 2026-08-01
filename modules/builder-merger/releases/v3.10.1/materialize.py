@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Materialize the exact L2G Builder/Merger v3.10.1 runtime from v3.10, the reviewed v3.10.1 patch, and the issue #114 correction."""
+"""Materialize the exact L2G Builder/Merger v3.10.1 runtime from v3.10, the reviewed v3.10.1 patch, and the issue #114 corrections."""
 from __future__ import annotations
 import argparse, hashlib, json, re, subprocess, sys
 from pathlib import Path
 BASE_SHA256='96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17'
 PREVIOUS_SHA256='689f88cf4cc4e5acbd2d31850f99ffeec76c01d7f296c273e9b9a24fcd9b1f34'
+PRIMARY_CORRECTED_SHA256='b45e0d41df20920be383fc6aa4a88e8f25feb9c564296c0e14b8c81a64bb115f'
 OUTPUT_SHA256='2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93'
 OUTPUT_SIZE=832972
 OUTPUT_NAME='L2G-BM_v3.10.1.html'
@@ -50,10 +51,13 @@ def main()->int:
   if not reviewed:raise SystemExit('reviewed v3.10.1 patch parts missing')
   previous=apply_patch(base_bytes.decode('utf-8'),''.join(p.read_text('utf-8') for p in reviewed)).encode('utf-8')
   if sha(previous)!=PREVIOUS_SHA256:raise SystemExit(f'previous candidate identity mismatch: {sha(previous)}')
-  corrections=sorted(source.glob('workbook_merge_governance_correction.patch.*'))
-  if not corrections:raise SystemExit('issue #114 correction patch parts missing')
-  correction_text=''.join(p.read_text('utf-8') for p in corrections)
-  data=apply_patch(previous.decode('utf-8'),correction_text).encode('utf-8');out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(data)
+  primary=sorted(p for p in source.glob('workbook_merge_governance_correction.patch.*') if p.name!='workbook_merge_governance_correction.patch.011')
+  linkage=source/'workbook_merge_governance_correction.patch.011'
+  if not primary:raise SystemExit('primary issue #114 correction patch parts missing')
+  if not linkage.is_file():raise SystemExit('source-Handoff linkage correction patch missing')
+  primary_corrected=apply_patch(previous.decode('utf-8'),''.join(p.read_text('utf-8') for p in primary)).encode('utf-8')
+  if sha(primary_corrected)!=PRIMARY_CORRECTED_SHA256:raise SystemExit(f'primary corrected candidate identity mismatch: {sha(primary_corrected)}')
+  data=apply_patch(primary_corrected.decode('utf-8'),linkage.read_text('utf-8')).encode('utf-8');out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(data)
  actual=sha(data)
  if len(data)!=OUTPUT_SIZE or actual!=OUTPUT_SHA256:raise SystemExit(f'materialized runtime identity mismatch: size={len(data)} sha256={actual}')
  r={'runtime':str(out),'size_bytes':len(data),'sha256':actual,'status':'verified'};print(json.dumps(r,indent=2) if a.json else f'verified {OUTPUT_NAME} {actual}');return 0
