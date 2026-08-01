@@ -4,9 +4,10 @@ import base64,gzip,hashlib,json,subprocess,sys
 HERE=Path(__file__).resolve().parents[1];RUNTIME=HERE/'cmmc_l2_gap_workshop_tool_v79.1.html';PATCH_ARCHIVE=HERE/'source/v79_1_corrected_patch.js.gz.b64';NONMUTATION_FIX=HERE/'source/v79_1_nonmutation_fix.js';MANIFEST=json.loads((HERE/'source/SOURCE_MANIFEST.json').read_text());FIXTURES=HERE/'tests/fixtures'
 subprocess.run([sys.executable,str(HERE/'tests/generate_governance_fixtures.py')],check=True)
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def canonical_bytes(path):return path.read_text(encoding='utf-8').replace('\r\n','\n').replace('\r','\n').encode('utf-8')
 assert RUNTIME.stat().st_size==MANIFEST['candidate_runtime']['size_bytes'];assert digest(RUNTIME)==MANIFEST['candidate_runtime']['sha256']
 patch_bytes=gzip.decompress(base64.b64decode(''.join(PATCH_ARCHIVE.read_text().split()),validate=True));assert hashlib.sha256(patch_bytes).hexdigest()=='89369d79c12773e65291e18b7d30cdc7809686d8772bdc84c34fbd157a5fffde';patch=patch_bytes.decode()
-assert NONMUTATION_FIX.stat().st_size==1881 and digest(NONMUTATION_FIX)=='6eeb7a2dd501434a1f9247248ec97b352b6cd0e9e7ab959af4b5d7c9b2a55a87'
+fix_bytes=canonical_bytes(NONMUTATION_FIX);assert len(fix_bytes)==1881 and hashlib.sha256(fix_bytes).hexdigest()=='6eeb7a2dd501434a1f9247248ec97b352b6cd0e9e7ab959af4b5d7c9b2a55a87'
 text=RUNTIME.read_text()
 for token in ['const CRM_TOOL_VERSION = "v79.1";','Workbook Handoff contract release 1.7 — wire package version 1.0','function v791JsonParser','function v791ValidateGovernanceExtension','workbook_source.workshop_governance_preservation_v1','package_version must be exactly 1.1','Unknown top-level properties are not allowed','source_record_vs_current_workshop','no_automatic_create_update_delete','exact_non_mutating_round_trip','v791ProtectedRenderOperationalState','_v791_operational_snapshot']:assert token in text,token
 assert '"workshop_governance_preservation_v1"' not in patch.split('const V791_MERGE_TOP_LEVEL',1)[1].split(']);',1)[0]

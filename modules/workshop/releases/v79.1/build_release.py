@@ -17,6 +17,7 @@ BASE_SIZE=1_836_145
 PATCH_SHA='89369d79c12773e65291e18b7d30cdc7809686d8772bdc84c34fbd157a5fffde'
 NONMUTATION_FIX_SHA='6eeb7a2dd501434a1f9247248ec97b352b6cd0e9e7ab959af4b5d7c9b2a55a87'
 def sha(data): return hashlib.sha256(data).hexdigest()
+def canonical_text(path): return path.read_text(encoding='utf-8').replace('\r\n','\n').replace('\r','\n')
 def load_baseline():
     if LOCAL_BASE.exists():
         path=LOCAL_BASE
@@ -39,10 +40,11 @@ def load_patch():
         raise SystemExit(f'Corrected patch SHA mismatch: {sha(data)}')
     return data.decode('utf-8').replace('\r\n','\n').replace('\r','\n')
 def load_nonmutation_fix():
-    data=NONMUTATION_FIX.read_bytes()
+    text=canonical_text(NONMUTATION_FIX)
+    data=text.encode('utf-8')
     if sha(data)!=NONMUTATION_FIX_SHA:
-        raise SystemExit(f'Non-mutation fix SHA mismatch: {sha(data)}')
-    return data.decode('utf-8').replace('\r\n','\n').replace('\r','\n')
+        raise SystemExit(f'Non-mutation fix canonical SHA mismatch: {sha(data)}')
+    return text
 text=load_baseline().decode('utf-8').replace('\r\n','\n').replace('\r','\n')
 for old,new in [
     ('<title>CMMC L2 Gap Workshop Tool v79</title>','<title>CMMC L2 Gap Workshop Tool v79.1</title>'),
