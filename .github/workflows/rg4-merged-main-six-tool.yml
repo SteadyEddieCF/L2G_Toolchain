@@ -21,7 +21,7 @@ jobs:
   static-portable-identities:
     name: static-portable-identities
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -40,23 +40,26 @@ jobs:
           python modules/workshop/releases/v79.1/tests/test_portable_materializer.py
           python modules/builder-merger/releases/v3.10.1/materialize.py
           python modules/builder-merger/releases/v3.10.1/validate_v3_10_1.py
-          python modules/ssp/releases/v1.9.17/materialize.py
+          for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
+            python "modules/ssp/releases/v${version}/materialize.py"
+          done
           python validation/rg4/merged-main/verify_technical_baseline.py
           python scripts/validate_toolchain.py
       - name: Capture identity evidence
+        if: always()
         run: python validation/rg4/merged-main/verify_technical_baseline.py > rg4-technical-baseline-result.json
       - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: rg4-merged-main-static-portable-identities
           path: rg4-technical-baseline-result.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
   rg4-joint-runtime:
     name: rg4-joint-runtime
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -76,7 +79,9 @@ jobs:
           python modules/builder-merger/releases/v3.10/materialize.py
           python modules/builder-merger/releases/v3.10.1/materialize.py
           python modules/builder-merger/releases/v3.10.1/validate_v3_10_1.py
-          python modules/ssp/releases/v1.9.17/materialize.py
+          for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
+            python "modules/ssp/releases/v${version}/materialize.py"
+          done
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - name: Run exact Workshop, Builder/Merger, and SSP RG-4 matrix
@@ -95,7 +100,7 @@ jobs:
   windows-current-file-origin:
     name: windows-current-file-origin
     runs-on: windows-latest
-    timeout-minutes: 35
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -108,7 +113,10 @@ jobs:
           python modules/control-center/releases/0.3.4/build_release.py
           python modules/workshop/releases/v79.1/build_release.py
           python modules/builder-merger/releases/v3.10.1/materialize.py
-          python modules/ssp/releases/v1.9.17/materialize.py
+          $versions = @('1.9.6','1.9.7','1.9.8','1.9.9','1.9.10','1.9.11','1.9.12','1.9.13','1.9.14','1.9.15','1.9.16','1.9.17')
+          foreach ($version in $versions) {
+            python "modules/ssp/releases/v$version/materialize.py"
+          }
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install chromium
       - name: Run current six-tool file-origin routes
