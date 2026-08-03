@@ -1,0 +1,80 @@
+from __future__ import annotations
+
+import base64
+import hashlib
+import json
+import shutil
+import subprocess
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+BUILD = ROOT / "build"
+DIST = ROOT / "dist"
+RELEASE = json.loads((ROOT / "release" / "release.json").read_text())
+REGISTRY = json.loads((ROOT / "contracts" / "registry.json").read_text())
+
+
+def normalize(text: str) -> str:
+    return text.replace("\r\n", "\n").replace("\r", "\n").rstrip() + "\n"
+
+
+def sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def main() -> None:
+    BUILD.mkdir(exist_ok=True)
+    DIST.mkdir(exist_ok=True)
+    subprocess.run(["tsc", "-p", "tsconfig.build.json"], cwd=ROOT, check=True)
+    js = normalize((BUILD / "app.js").read_text())
+    css = normalize((ROOT / "src" / "styles.css").read_text())
+    release_json = json.dumps(RELEASE, sort_keys=True, separators=(",", ":")).replace("<", "\\u003c")
+    registry_json = json.dumps(REGISTRY, sort_keys=True, separators=(",", ":")).replace("<", "\\u003c")
+    script = normalize(
+        f"window.__L2G_RELEASE__=Object.freeze({release_json});\n"
+        f"window.__L2G_CONTRACT_REGISTRY__=Object.freeze({registry_json});\n"
+        f"{js}"
+    )
+    script_hash = base64.b64encode(hashlib.sha256(script.encode()).digest()).decode()
+    style_hash = base64.b64encode(hashlib.sha256(css.encode()).digest()).decode()
+    csp = (
+        "default-src 'none'; "
+        f"script-src 'sha256-{script_hash}'; "
+        f"style-src 'sha256-{style_hash}'; "
+        "connect-src 'none'; img-src data:; font-src 'none'; object-src 'none'; "
+        "frame-src 'none'; child-src blob:; worker-src blob:; form-action 'none'; "
+        "base-uri 'none'; media-src 'none'"
+    )
+    html = normalize((ROOT / "src" / "template.html").read_text())
+    html = html.replace("__CSP__", csp).replace("__CSS__", css).replace("__JS__", script)
+    artifact = DIST / RELEASE["artifact_name"]
+    artifact.write_text(html, newline="\n")
+    manifest = {
+        "kind": "l2g_integrated_suite_release_v1",
+        "application": RELEASE["application"],
+        "version": RELEASE["version"],
+        "artifact": artifact.name,
+        "sha256": sha256(artifact.read_bytes()),
+        "size": artifact.stat().st_size,
+        "envelope_kind": RELEASE["envelope_kind"],
+        "project_kind": RELEASE["project_kind"],
+        "content_security_policy": csp,
+        "product_runtime_compatibility_baseline": RELEASE["product_runtime_compatibility_baseline"],
+        "synthetic_only": True,
+        "runtime_network_dependencies": 0,
+    }
+    (DIST / "release-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    output = ROOT / "releases" / "v0.2.0"
+    shutil.rmtree(output, ignore_errors=True)
+    output.mkdir(parents=True)
+    shutil.copy2(artifact, output / artifact.name)
+    shutil.copy2(DIST / "release-manifest.json", output / "release-manifest.json")
+    shutil.copy2(ROOT / "release" / "RELEASE_NOTES_v0.2.0.md", output / "RELEASE_NOTES.md")
+    names = [artifact.name, "release-manifest.json", "RELEASE_NOTES.md"]
+    checksums = [f"{sha256((output / name).read_bytes())}  {name}" for name in sorted(names)]
+    (output / "SHA256SUMS.txt").write_text("\n".join(checksums) + "\n")
+    print(json.dumps(manifest, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()
