@@ -2,32 +2,36 @@
 
 ## Status
 
-Proposed planning baseline. This document does not authorize production-module modification, contract promotion, current-pointer changes, or legacy retirement.
+Proposed planning baseline, reconciled after completion of the corrective and merged-main validation sequence. This document does not authorize production-module modification, standalone retirement, or production/client/CUI use.
 
 ## Verified repository baseline
 
-Branch creation baseline:
+Original planning-branch baseline:
 
 `69785ecd38f4d00345f27ca13e934dd0f688a1bf`
 
-Current promoted module pointers at that baseline:
+The correction and validation sequence subsequently completed:
+
+- Builder/Merger v3.10.1 — PR #113, merge `d3cd223befb3aa1b53b2feea291b9f38b8d2645e`;
+- Workshop v79.1 — PR #112, merge `e14ed000e490040182b529d7e2b3bc7155c03287`;
+- exact current six-tool RG-4 validation, metadata reconciliation, additive snapshot, and registry promotion — PR #118, final reviewed head `e976c072315a101b974e1af0b996e3d4c2c056d7`, merge `85d6e783a250b373cd4b9ea356e4c341336f9259`;
+- issue #101 — closed completed;
+- superseded evidence PR #103 — closed without merge.
+
+Current promoted module pointers at the candidate implementation baseline:
 
 | Module | Current supplied release |
 |---|---:|
 | L2G Control Center | v0.3.4 |
 | DocConverter-L2G | v7.9.5.1 |
 | L2G Scoper | v3.12 |
-| CMMC L2 Gap Workshop Tool | v79 |
-| L2G Builder/Merger | v3.10 |
+| CMMC L2 Gap Workshop Tool | v79.1 |
+| L2G Builder/Merger | v3.10.1 |
 | CMMC L2 SSP Modern Editable | v1.9.17 |
 
-The open correction stack remains:
+The authoritative exact-suite technical snapshot is `suite-2026.08.03-rg4-validated-mcfirecoal-v1.2.0`. The earlier `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0` snapshot remains immutable.
 
-- PR #112 — Workshop v79.1 Strict Workbook Merge Validation;
-- PR #113 — Builder/Merger v3.10.1 Workshop Action and Ownership Preservation;
-- issue #101 — merged-main RG-4 validation, six-tool regression, new suite snapshot, and registry-promotion decision.
-
-The first integrated implementation baseline must be recorded only after that sequence is completed or explicitly deferred.
+Commit `85d6e783a250b373cd4b9ea356e4c341336f9259` is the candidate Milestone 0 implementation baseline. It should be recorded as the foundation baseline only after this planning PR is promoted and issue #117 records the remaining prerequisite decisions, especially repository visibility/exposure posture and acceptance or explicit revision of the proposed ADR set.
 
 ## Assessment
 
@@ -187,9 +191,9 @@ Shared packages must not be created by blindly copying apparently duplicate code
 
 ## Migration sequence
 
-1. Freeze the exact current suite baseline after the open correction sequence.
+1. Use exact candidate foundation baseline `85d6e783a250b373cd4b9ea356e4c341336f9259` after this planning PR and issue #117 prerequisites are resolved.
 2. Complete the six-module feature inventory and ownership classification.
-3. Record architecture decisions.
+3. Accept, revise, or explicitly defer the architecture ADRs.
 4. Create the TypeScript workspace and empty integrated application shell.
 5. Implement project open, save, backup, integrity, recovery, Undo, Redo, and history.
 6. Implement Engagement, Overview, Pre-Engagement, Reviews & Actions, and empty domain shells.
@@ -273,4 +277,4 @@ The integrated suite must not automatically create or imply:
 
 ## Recommendation
 
-Proceed only with the Integrated Foundation milestone until its project-lifecycle, authority-transition, security, accessibility, and file-origin acceptance criteria pass. Production module migration should begin in a later, separately reviewed milestone.
+Proceed only with the Integrated Foundation milestone after issue #117 records the remaining prerequisite decisions. Production module migration should begin in a later, separately reviewed milestone after the project-lifecycle, authority-transition, security, accessibility, and file-origin acceptance criteria pass.
