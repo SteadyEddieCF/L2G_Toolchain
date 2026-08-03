@@ -18,6 +18,8 @@
     "src/zip.ts",
     "src/project.ts",
     "src/store.ts",
+    "src/app-utils.ts",
+    "src/app-core.ts",
     "src/app.ts"
   ]
 }
