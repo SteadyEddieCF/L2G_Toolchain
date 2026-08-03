@@ -7,58 +7,52 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
 
 jobs:
   playwright-qa:
     name: playwright-qa
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '22', cache: npm}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Materialize Control Center v0.3.4 runtime
+      - name: Materialize Control Center v0.3.4
         run: python modules/control-center/releases/0.3.4/build_release.py
-      - name: Materialize Workshop v77 runtime
-        run: python modules/workshop/releases/v77/build_release.py
-      - name: Materialize Workshop v78 runtime
-        run: python modules/workshop/releases/v78/build_release.py
-      - name: Materialize Workshop v79 runtime
-        run: python modules/workshop/releases/v79/build_release.py
-      - name: Materialize SSP v1.9.6 runtime
-        run: python modules/ssp/releases/v1.9.6/materialize.py
-      - name: Materialize SSP v1.9.7 runtime
-        run: python modules/ssp/releases/v1.9.7/materialize.py
-      - name: Materialize SSP v1.9.8 runtime, schema, and profile registry
-        run: python modules/ssp/releases/v1.9.8/materialize.py
-      - name: Materialize SSP v1.9.9 runtime, schema, and profile registry
-        run: python modules/ssp/releases/v1.9.9/materialize.py
-      - name: Materialize SSP v1.9.10 runtime
-        run: python modules/ssp/releases/v1.9.10/materialize.py
-      - name: Materialize SSP v1.9.11 runtime and schema
-        run: python modules/ssp/releases/v1.9.11/materialize.py
-      - name: Materialize SSP v1.9.12 runtime
-        run: python modules/ssp/releases/v1.9.12/materialize.py
-      - name: Materialize SSP v1.9.13 runtime
-        run: python modules/ssp/releases/v1.9.13/materialize.py
-      - name: Materialize SSP v1.9.14 runtime
-        run: python modules/ssp/releases/v1.9.14/materialize.py
-      - name: Materialize SSP v1.9.15 runtime
-        run: python modules/ssp/releases/v1.9.15/materialize.py
-      - name: Materialize SSP v1.9.16 runtime
-        run: python modules/ssp/releases/v1.9.16/materialize.py
-      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
-        run: python modules/ssp/releases/v1.9.17/materialize.py
-      - name: Materialize Builder/Merger v3.10 runtime
-        run: python modules/builder-merger/releases/v3.10/materialize.py
-      - name: Validate Builder/Merger v3.10 candidate
-        run: python modules/builder-merger/releases/v3.10/validate_v3_10.py
+      - name: Materialize Workshop legacy baselines
+        shell: bash
+        run: |
+          python modules/workshop/releases/v77/build_release.py
+          python modules/workshop/releases/v78/build_release.py
+          python modules/workshop/releases/v79/build_release.py
+      - name: Materialize exact Builder/Merger v3.10.1 Merge fixture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
+      - name: Materialize Workshop v79.1
+        shell: bash
+        run: |
+          python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
+          python modules/workshop/releases/v79.1/build_release.py
+      - name: Materialize SSP v1.9.6 through v1.9.17
+        shell: bash
+        run: |
+          for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
+            python "modules/ssp/releases/v${version}/materialize.py"
+          done
+      - name: Materialize Builder/Merger baselines and current release
+        shell: bash
+        run: |
+          python modules/builder-merger/releases/v3.10/materialize.py
+          python modules/builder-merger/releases/v3.10.1/materialize.py
+          python modules/builder-merger/releases/v3.10.1/validate_v3_10_1.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
-      - name: Run runtime and axe-core tests
+      - name: Run current six-tool runtime, axe-core, and governed-route tests
         run: npm run test:qa
       - if: always()
         uses: actions/upload-artifact@v4
@@ -70,53 +64,30 @@ jobs:
             test-results/playwright
           if-no-files-found: warn
           retention-days: 30
+
   visual-regression:
     name: visual-regression
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '22', cache: npm}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Materialize Control Center v0.3.4 runtime
-        run: python modules/control-center/releases/0.3.4/build_release.py
-      - name: Materialize Workshop v77 runtime
-        run: python modules/workshop/releases/v77/build_release.py
-      - name: Materialize Workshop v78 runtime
-        run: python modules/workshop/releases/v78/build_release.py
-      - name: Materialize Workshop v79 runtime
-        run: python modules/workshop/releases/v79/build_release.py
-      - name: Materialize SSP v1.9.6 runtime
-        run: python modules/ssp/releases/v1.9.6/materialize.py
-      - name: Materialize SSP v1.9.7 runtime
-        run: python modules/ssp/releases/v1.9.7/materialize.py
-      - name: Materialize SSP v1.9.8 runtime, schema, and profile registry
-        run: python modules/ssp/releases/v1.9.8/materialize.py
-      - name: Materialize SSP v1.9.9 runtime, schema, and profile registry
-        run: python modules/ssp/releases/v1.9.9/materialize.py
-      - name: Materialize SSP v1.9.10 runtime
-        run: python modules/ssp/releases/v1.9.10/materialize.py
-      - name: Materialize SSP v1.9.11 runtime and schema
-        run: python modules/ssp/releases/v1.9.11/materialize.py
-      - name: Materialize SSP v1.9.12 runtime
-        run: python modules/ssp/releases/v1.9.12/materialize.py
-      - name: Materialize SSP v1.9.13 runtime
-        run: python modules/ssp/releases/v1.9.13/materialize.py
-      - name: Materialize SSP v1.9.14 runtime
-        run: python modules/ssp/releases/v1.9.14/materialize.py
-      - name: Materialize SSP v1.9.15 runtime
-        run: python modules/ssp/releases/v1.9.15/materialize.py
-      - name: Materialize SSP v1.9.16 runtime
-        run: python modules/ssp/releases/v1.9.16/materialize.py
-      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
-        run: python modules/ssp/releases/v1.9.17/materialize.py
-      - name: Materialize Builder/Merger v3.10 runtime
-        run: python modules/builder-merger/releases/v3.10/materialize.py
+      - name: Materialize current visual runtimes
+        shell: bash
+        run: |
+          python modules/control-center/releases/0.3.4/build_release.py
+          python modules/workshop/releases/v77/build_release.py
+          python modules/workshop/releases/v79.1/build_release.py
+          for version in 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
+            python "modules/ssp/releases/v${version}/materialize.py"
+          done
+          python modules/builder-merger/releases/v3.10.1/materialize.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
-      - name: Compare visual baselines
+      - name: Compare current visual baselines
         run: npm run test:visual
       - if: always()
         uses: actions/upload-artifact@v4
@@ -128,53 +99,27 @@ jobs:
             test-results/playwright
           if-no-files-found: warn
           retention-days: 30
+
   windows-file-smoke:
     name: windows-file-smoke
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '22', cache: npm}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Materialize Control Center v0.3.4 runtime
-        run: python modules/control-center/releases/0.3.4/build_release.py
-      - name: Materialize Workshop v77 runtime
-        run: python modules/workshop/releases/v77/build_release.py
-      - name: Materialize Workshop v78 runtime
-        run: python modules/workshop/releases/v78/build_release.py
-      - name: Materialize Workshop v79 runtime
-        run: python modules/workshop/releases/v79/build_release.py
-      - name: Materialize SSP v1.9.6 runtime
-        run: python modules/ssp/releases/v1.9.6/materialize.py
-      - name: Materialize SSP v1.9.7 runtime
-        run: python modules/ssp/releases/v1.9.7/materialize.py
-      - name: Materialize SSP v1.9.8 runtime, schema, and profile registry
-        run: python modules/ssp/releases/v1.9.8/materialize.py
-      - name: Materialize SSP v1.9.9 runtime, schema, and profile registry
-        run: python modules/ssp/releases/v1.9.9/materialize.py
-      - name: Materialize SSP v1.9.10 runtime
-        run: python modules/ssp/releases/v1.9.10/materialize.py
-      - name: Materialize SSP v1.9.11 runtime and schema
-        run: python modules/ssp/releases/v1.9.11/materialize.py
-      - name: Materialize SSP v1.9.12 runtime
-        run: python modules/ssp/releases/v1.9.12/materialize.py
-      - name: Materialize SSP v1.9.13 runtime
-        run: python modules/ssp/releases/v1.9.13/materialize.py
-      - name: Materialize SSP v1.9.14 runtime
-        run: python modules/ssp/releases/v1.9.14/materialize.py
-      - name: Materialize SSP v1.9.15 runtime
-        run: python modules/ssp/releases/v1.9.15/materialize.py
-      - name: Materialize SSP v1.9.16 runtime
-        run: python modules/ssp/releases/v1.9.16/materialize.py
-      - name: Materialize SSP v1.9.17 runtime and RG-4 test inputs
-        run: python modules/ssp/releases/v1.9.17/materialize.py
-      - name: Materialize Builder/Merger v3.10 runtime
-        run: python modules/builder-merger/releases/v3.10/materialize.py
+      - name: Materialize current portable runtimes
+        shell: pwsh
+        run: |
+          python modules/control-center/releases/0.3.4/build_release.py
+          python modules/workshop/releases/v79.1/build_release.py
+          python modules/ssp/releases/v1.9.17/materialize.py
+          python modules/builder-merger/releases/v3.10.1/materialize.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install chromium
-      - name: Run Windows file-origin smoke tests
+      - name: Run native Windows file-origin smoke tests
         run: npm run test:file
       - if: always()
         uses: actions/upload-artifact@v4
