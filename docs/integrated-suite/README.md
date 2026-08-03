@@ -32,6 +32,15 @@ The corrective issues #104 through #107 are closed. Issue #101 now owns the clea
 - `L2G_Integrated_Suite_Decision_Risk_Register_v1.md`
 - `L2G_Integrated_Suite_Milestone_0_Acceptance_v1.md`
 
+## Proposed architecture decisions
+
+- `docs/architecture/adr/ADR-0001-integrated-suite-modular-monolith.md`
+- `docs/architecture/adr/ADR-0002-l2g-project-container.md`
+- `docs/architecture/adr/ADR-0003-ui-framework-and-spfx-host-boundary.md`
+- `docs/architecture/adr/ADR-0004-portable-browser-support.md`
+- `docs/architecture/adr/ADR-0005-project-encryption-posture.md`
+- `docs/architecture/adr/ADR-0006-project-persistence-history-and-recovery.md`
+
 ## Governing principles
 
 1. One deployable application does not mean one tangled codebase.
