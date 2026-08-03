@@ -5,18 +5,23 @@ This directory contains the first durable architecture, migration, UX-governance
 ## Status
 
 - Planning only.
-- No production module runtime is changed.
-- No current module pointer, contract-registry status, suite snapshot, or release identity is changed.
+- No production module runtime is changed by this planning branch.
+- No contract-registry status, suite snapshot, or release identity is changed by this planning branch.
 - The existing standalone tools remain authoritative during migration.
 - The integrated suite must evolve inside this monorepo unless a demonstrated technical constraint requires otherwise.
 
-## Baseline
+## Baseline and subsequent reconciliation
 
 This planning branch was created from protected `main` at:
 
 `69785ecd38f4d00345f27ca13e934dd0f688a1bf`
 
-At branch creation, the corrective Workshop v79.1 and Builder/Merger v3.10.1 pull requests remained open and draft as PRs #112 and #113. Their eventual disposition and the issue #101 registry-promotion sequence remain prerequisites for freezing the first implementation baseline.
+After branch creation, the corrective releases were independently reviewed and promoted:
+
+- Builder/Merger v3.10.1 — PR #113, merge commit `d3cd223befb3aa1b53b2feea291b9f38b8d2645e`;
+- Workshop v79.1 — PR #112, merge commit `e14ed000e490040182b529d7e2b3bc7155c03287`.
+
+The corrective issues #104 through #107 are closed. Issue #101 now owns the clean merged-main six-tool regression, metadata reconciliation, additive suite snapshot, and RG-4 registry-promotion decision. Draft PR #118 performs that validation. The exact Milestone 0 implementation baseline must not be frozen until issue #101 has a recorded disposition and the remaining security/architecture prerequisites are recorded.
 
 ## Documents
 
