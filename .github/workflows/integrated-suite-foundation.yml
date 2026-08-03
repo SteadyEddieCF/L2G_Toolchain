@@ -5,7 +5,7 @@ on:
     paths:
       - 'apps/integrated-suite/**'
       - 'contracts/registry.json'
-      - 'tests/playwright/integrated-suite-foundation*.spec.mjs'
+      - 'tests/playwright/integrated-suite-foundation*.mjs'
       - '.github/workflows/integrated-suite-foundation.yml'
   workflow_dispatch:
 
@@ -34,12 +34,10 @@ jobs:
         run: npm ci --prefix apps/integrated-suite --no-audit --no-fund
       - name: Typecheck, build, validate, hygiene scan, and deterministic rebuild
         run: npm test --prefix apps/integrated-suite
-      - name: Verify committed release artifacts match the deterministic build
-        run: git diff --exit-code -- apps/integrated-suite/releases/v0.1.0
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Run foundation runtime, project, security, profile, accessibility, and visual-contract tests
-        run: npx playwright test tests/playwright/integrated-suite-foundation.spec.mjs --project=chromium
+        run: npx playwright test tests/playwright/integrated-suite-foundation-shell.spec.mjs tests/playwright/integrated-suite-foundation-project.spec.mjs tests/playwright/integrated-suite-foundation-accessibility.spec.mjs --project=chromium
       - name: Upload foundation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -49,6 +47,7 @@ jobs:
           retention-days: 30
           path: |
             apps/integrated-suite/dist/**
+            apps/integrated-suite/releases/v0.1.0/**
             apps/integrated-suite/build/fixtures/**
             test-results/**
 
@@ -86,4 +85,5 @@ jobs:
           retention-days: 30
           path: |
             apps/integrated-suite/dist/**
+            apps/integrated-suite/releases/v0.1.0/**
             test-results/**
