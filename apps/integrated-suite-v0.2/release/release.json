@@ -1,0 +1,9 @@
+{
+  "application": "L2G Integrated Suite",
+  "version": "0.2.0",
+  "artifact_name": "L2G_Integrated_Suite_Encrypted_Project_v0.2.0.html",
+  "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
+  "synthetic_only": true,
+  "envelope_kind": "l2g_encrypted_project_v1",
+  "project_kind": "l2g_project_v1"
+}
