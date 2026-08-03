@@ -68,7 +68,7 @@ jobs:
   visual-regression:
     name: visual-regression
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -81,7 +81,7 @@ jobs:
           python modules/control-center/releases/0.3.4/build_release.py
           python modules/workshop/releases/v77/build_release.py
           python modules/workshop/releases/v79.1/build_release.py
-          for version in 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
+          for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
             python "modules/ssp/releases/v${version}/materialize.py"
           done
           python modules/builder-merger/releases/v3.10.1/materialize.py
@@ -103,7 +103,7 @@ jobs:
   windows-file-smoke:
     name: windows-file-smoke
     runs-on: windows-latest
-    timeout-minutes: 35
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -115,7 +115,10 @@ jobs:
         run: |
           python modules/control-center/releases/0.3.4/build_release.py
           python modules/workshop/releases/v79.1/build_release.py
-          python modules/ssp/releases/v1.9.17/materialize.py
+          $versions = @('1.9.6','1.9.7','1.9.8','1.9.9','1.9.10','1.9.11','1.9.12','1.9.13','1.9.14','1.9.15','1.9.16','1.9.17')
+          foreach ($version in $versions) {
+            python "modules/ssp/releases/v$version/materialize.py"
+          }
           python modules/builder-merger/releases/v3.10.1/materialize.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install chromium
