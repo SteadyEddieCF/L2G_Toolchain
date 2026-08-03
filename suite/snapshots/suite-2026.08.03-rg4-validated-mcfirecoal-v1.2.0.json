@@ -1,0 +1,109 @@
+{
+  "snapshot_id": "suite-2026.08.03-rg4-validated-mcfirecoal-v1.2.0",
+  "status": "exact_six_tool_rg4_validation_passed",
+  "repository": "SteadyEddieCF/L2G_Toolchain",
+  "recorded_at": "2026-08-03",
+  "technical_baseline": "e14ed000e490040182b529d7e2b3bc7155c03287",
+  "validation_issue": 101,
+  "validation_pr": 118,
+  "validation_evidence_head": "3b74f16526f70de7d5972ee461189ff4fb9bb302",
+  "modules": [
+    {"id":"control-center","version":"0.3.4","runtime_sha256":"9eec722499fd5f0a76249ccb6f27547d6fe6fc64059a418b136af48b8edf7a73"},
+    {"id":"docconverter","version":"7.9.5.1","runtime_sha256":"df64d0912b43d69d5eda256188458c3d32f9aa679c49ed43f6ddf4cb64b9c17d"},
+    {"id":"scoper","version":"3.12","runtime_sha256":"2adf329557fb2df4699e13bb572bcde762667292700200f8edeae0dd6ade7ef3"},
+    {"id":"workshop","version":"79.1","runtime_sha256":"b6bd63c104faeb031f9561f24aaf6a8fb7b928df2f11c821391ca57131d6e52b"},
+    {"id":"builder-merger","version":"3.10.1","runtime_sha256":"2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93"},
+    {"id":"ssp","version":"1.9.17","runtime_sha256":"bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b"}
+  ],
+  "contract_routes": [
+    {"package_kind":"l2g_intake_package_v1","version":"1.0","stability":"stable"},
+    {"package_kind":"l2g_scope_context_v1","version":"1.0","stability":"stable"},
+    {"package_kind":"l2g_meeting_context_v1","version":"1.0","stability":"stable"},
+    {"package_kind":"l2g_scope_return_package_v1","version":"1.0","stability":"stable"},
+    {"package_kind":"l2g_workshop_state_v1","version":"1.0","stability":"stable"},
+    {"package_kind":"l2g_workbook_handoff_v1","registry_version":"1.7","wire_package_version":"1.0","enhancement_version":"1.7","stability":"stable-frozen"},
+    {"package_kind":"l2g_workbook_merge_v1","version":"1.1","stability":"stable-frozen"},
+    {"package_kind":"l2g_ssp_handoff_v1","version":"1.0","stability":"validated"},
+    {"package_kind":"l2g_ssp_return_package_v1","version":"1.0","stability":"validated"},
+    {"package_kind":"l2g_ssp_word_qa_sidecar_v1","version":"1.0","stability":"validated"}
+  ],
+  "fixture": {
+    "name": "McFirecoal Toolchain Test Fixture",
+    "version": "1.2.0",
+    "synthetic_only": true,
+    "parts": [
+      {"part":1,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_1_Scoping_Governance.zip","size_bytes":922013,"sha256":"d4b0f05a5ab27f683ab351ef5162901703fca6320c397052f7b3530aed67ad6a","zip_entries":43},
+      {"part":2,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_2_Technical_Provider_Evidence.zip","size_bytes":634113,"sha256":"154132abf67681857ba4aaf356910ef78f0d3e6bc497b9315c2b4d0814dcf8a2","zip_entries":67},
+      {"part":3,"filename":"McFirecoal_Toolchain_Test_Fixture_v1.2.0_Part_3_Adversarial_Integration.zip","size_bytes":2221699,"sha256":"52ed2172705b840e86fc9ee592dfaf1d9d9fc7b8e457c95674eb9b747cab5226","zip_entries":53}
+    ]
+  },
+  "validation_groups": {
+    "required": 7,
+    "passed": 7,
+    "failed": 0,
+    "all_required_passed": true,
+    "groups": [
+      "static-portable-identities",
+      "current-six-tool-runtime-and-axe",
+      "workshop-v79.1-builder-v3.10.1-workshop-v79.1-round-trip",
+      "builder-v3.10.1-ssp-v1.9.17-rg4-matrix",
+      "ssp-rg4-history-and-workshop-isolation",
+      "visual-regression",
+      "native-windows-file-origin"
+    ]
+  },
+  "workbook_regression": {
+    "practices": "110/110",
+    "objectives": "320/320",
+    "formulas": "222/222",
+    "merge_package_version": "1.1",
+    "governance_preservation_path": "workbook_source.workshop_governance_preservation_v1",
+    "non_mutating_preview": true,
+    "exact_duplicate_reimport_blocked": true
+  },
+  "rg4_validation": {
+    "package_kind": "l2g_ssp_word_qa_sidecar_v1",
+    "version": "1.0",
+    "producer": "builder-merger v3.10.1",
+    "consumer": "ssp v1.9.17",
+    "current": "passed",
+    "stale": "passed",
+    "blocked": "passed",
+    "incomplete": "passed",
+    "duplicate": "passed",
+    "retry": "passed",
+    "supersession": "passed",
+    "history_persistence": "passed",
+    "workshop_authority_isolation": "passed"
+  },
+  "phase_1_evidence": {
+    "focused_workflow_run": 30840723722,
+    "focused_artifacts": [
+      {"id":8866645293,"name":"rg4-merged-main-static-portable-identities","sha256":"ae0eabecad3398efce4ed35b2031a6dc13882d3c2c865bc4003fd416f0c0887b"},
+      {"id":8866704982,"name":"rg4-merged-main-joint-runtime","sha256":"1791a323816e70eec3039e9de188791e03723d0c68278748c4f34efe3fcf7d41"},
+      {"id":8866680747,"name":"rg4-merged-main-windows-file-origin","sha256":"75aebdb33a6b1d3f6326c580c97f9c0af13390eb702a35f024a7ee21001ac085"}
+    ],
+    "shared_playwright_run": 30840723846,
+    "shared_artifacts": [
+      {"id":8866767934,"name":"playwright-qa-report","sha256":"80475f25975d90bba169d2ef9532e8e79089f092ceb38ca1dbedcb0f47576fa6"},
+      {"id":8866702508,"name":"visual-regression-report","sha256":"d253d9b36fc5c0f1722e5a8b9c1e6b0e39b9b0b3ea188b472ecf4e6daeedae1c"},
+      {"id":8866698861,"name":"windows-file-smoke-report","sha256":"9e5aada1b608bf065ee4fe6274eb947d2932b24aa715319ac444e0fc14e3d0c9"}
+    ],
+    "ssp_history_workflow_run": 30840723823
+  },
+  "historical_snapshot_preservation": {
+    "snapshot_id": "suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0",
+    "sha256": "c47fcdd8e8ac82d5d13d1e588ea48955415b7cc91485eb2925a994394c8356d6",
+    "immutable": true
+  },
+  "qualification": {
+    "technical_routes_only": true,
+    "synthetic_only": true,
+    "zero_runtime_network_required": true,
+    "no_assessment_or_evidence_sufficiency_conclusion": true,
+    "no_readiness_risk_compliance_certification_or_scoring_conclusion": true,
+    "no_authenticated_identity_or_digital_signature_conclusion": true,
+    "no_client_approval_or_release_conclusion": true
+  },
+  "promotion_boundary": "This record becomes a registered current exact-suite technical snapshot only if PR #118 merges after every final-head workflow passes. It does not rewrite the prior Workshop v79 snapshot or establish any assessment, sufficiency, readiness, risk, compliance, certification, scoring, technical-accuracy, identity, signature, approval, or client-release conclusion."
+}
