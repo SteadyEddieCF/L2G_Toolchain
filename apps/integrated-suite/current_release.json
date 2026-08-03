@@ -3,7 +3,7 @@
   "status": "release-candidate",
   "version": "0.1.0",
   "artifact": "apps/integrated-suite/releases/v0.1.0/L2G_Integrated_Suite_Foundation_v0.1.0.html",
-  "sha256": "767247e85f2dab91b72d4a0e9d87985cec0dfc6c5464bb8482f0a214590c0e05",
+  "sha256": "67a69e026d789901dcfe0bf8aecb574d1ae5a9647b225db18099f5cb43e89e15",
   "project_kind": "l2g_project_v1",
   "governing_issue": 117,
   "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
