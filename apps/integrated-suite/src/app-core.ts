@@ -75,8 +75,8 @@ namespace L2G {
               </header>
               ${this.renderWorkspace(workspace.id, advisor)}
             </main>
-            <aside class="${inspectorClass}" aria-label="Context inspector" aria-hidden="${!state.inspector_open}">
-              <div class="inspector-header"><strong>Context inspector</strong><div><button id="pin-inspector" class="icon-button" aria-pressed="${state.inspector_pinned}" title="Pin inspector">⌖</button><button id="close-inspector" class="icon-button" aria-label="Close inspector">×</button></div></div>
+            <aside class="${inspectorClass}" aria-label="Context inspector" aria-hidden="${!state.inspector_open}" ${state.inspector_open ? "" : "inert"}>
+              <div class="inspector-header"><strong>Context inspector</strong><div><button id="pin-inspector" class="icon-button" aria-pressed="${state.inspector_pinned}" title="Pin inspector" ${state.inspector_open ? "" : "disabled"}>⌖</button><button id="close-inspector" class="icon-button" aria-label="Close inspector" ${state.inspector_open ? "" : "disabled"}>×</button></div></div>
               ${this.renderInspector()}
             </aside>
           </div>
