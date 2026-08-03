@@ -54,9 +54,23 @@ def main() -> None:
         fail("Generated release manifest does not match the deterministic dist manifest.")
     if (release_dir / "sbom.spdx.json").read_bytes() != (DIST / "sbom.spdx.json").read_bytes():
         fail("Generated SBOM does not match the deterministic dist SBOM.")
+
     pointer = json.loads((APP_ROOT / "current_release.json").read_text())
-    if pointer["version"] != RELEASE["version"] or pointer["sha256"] != manifest["sha256"]:
-        fail("Current release candidate pointer does not match the deterministic artifact.")
+    if pointer.get("status") != "current":
+        fail("Integrated Suite current pointer is not marked current.")
+    if pointer.get("version") == RELEASE["version"]:
+        if pointer.get("sha256") != manifest["sha256"]:
+            fail("Current v0.1 release pointer does not match the deterministic artifact.")
+    else:
+        # v0.1 remains an immutable historical release after a later Integrated Suite
+        # version is promoted. Its own deterministic artifact, release manifest, SBOM,
+        # checksums, and fixtures are validated above without falsely requiring v0.1
+        # to remain the global current pointer.
+        if pointer.get("product_runtime_compatibility_baseline") != RELEASE["product_runtime_compatibility_baseline"]:
+            fail("Later Integrated Suite pointer changed the governed product/runtime compatibility baseline.")
+        if not isinstance(pointer.get("sha256"), str) or not re.fullmatch(r"[0-9a-f]{64}", pointer["sha256"]):
+            fail("Later Integrated Suite pointer has an invalid artifact identity.")
+
     checksums = {}
     for line in (release_dir / "SHA256SUMS.txt").read_text().splitlines():
         digest, name = line.split("  ", 1)
@@ -80,7 +94,7 @@ def main() -> None:
             payload = archive.read(record["path"])
             if record["size"] != len(payload) or record["sha256"] != hashlib.sha256(payload).hexdigest():
                 fail(f"Fixture integrity mismatch: {record['path']}")
-    print(json.dumps({"validated": True, "artifact": artifact.name, "sha256": manifest["sha256"]}))
+    print(json.dumps({"validated": True, "artifact": artifact.name, "sha256": manifest["sha256"], "current_pointer_version": pointer.get("version")}))
 
 
 if __name__ == "__main__":

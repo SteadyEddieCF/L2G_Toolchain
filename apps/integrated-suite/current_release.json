@@ -1,32 +1,33 @@
 {
   "kind": "l2g_integrated_suite_current_release_v1",
   "status": "current",
-  "version": "0.1.0",
-  "artifact": "apps/integrated-suite/releases/v0.1.0/L2G_Integrated_Suite_Foundation_v0.1.0.html",
-  "sha256": "67a69e026d789901dcfe0bf8aecb574d1ae5a9647b225db18099f5cb43e89e15",
+  "version": "0.2.0",
+  "artifact": "apps/integrated-suite-v0.2/releases/v0.2.0/L2G_Integrated_Suite_Encrypted_Project_v0.2.0.html",
+  "sha256": "84526756161fa44bc2dcaebe791a2ea1b73c06341c7563e34693aa6b7231af86",
   "project_kind": "l2g_project_v1",
-  "governing_issue": 117,
-  "promotion_pr": 122,
-  "validated_candidate_head": "d1d20dbdf27095b29e3c5595259fe3f2a538663c",
+  "envelope_kind": "l2g_encrypted_project_v1",
+  "governing_issue": 123,
+  "promotion_pr": 127,
+  "validated_candidate_head": "fb431939815eacffda198030c0d63c5b4ccc4f59",
+  "fixed_vector_sha256": "e23492e6012f710b2eba94801fa2f863ab20d94f8e65f8e66d2267eeaa7a8d66",
   "validation_runs": {
-    "integrated_foundation": 30848680626,
-    "playwright_qa": 30848679456,
-    "rg4_merged_main": 30848680574,
-    "ssp_rg4_history": 30848680461,
-    "repository_validation": 30848680629
+    "integrated_suite_v02": 30862444620,
+    "playwright_qa": 30862444611,
+    "rg4_merged_main": 30862444632,
+    "repository_validation": 30862444608
   },
   "release_artifacts": {
     "linux": {
-      "id": 8869750960,
-      "digest": "sha256:cbeb2c915139b76ab9413cb37fc92aabf1674e6a4b72cf9b5b71af148849613b"
+      "id": 8874847192,
+      "digest": "sha256:66d0624a098c44657fab645a9afbfdd6d17d47ed72524586ef67cc42b355c318"
     },
     "windows_file_origin": {
-      "id": 8869750970,
-      "digest": "sha256:fdd944c3f5ace0785d9976a3fd2bde509685a60837e79c52d2744c8191566361"
+      "id": 8874856252,
+      "digest": "sha256:cb678436cadef3b5c3a8ffc1104ef00e6146bb8ef20b9ed5524a642e9f51145c"
     }
   },
   "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
-  "implementation_branch_baseline": "e4c756f489e0e4ab6f8f7fabf3eba849c32716ee",
+  "implementation_branch_baseline": "6b35e955e854d3ba5507a7a97f8f9bdaa1cdacec",
   "synthetic_only": true,
   "production_data_authorized": false
 }

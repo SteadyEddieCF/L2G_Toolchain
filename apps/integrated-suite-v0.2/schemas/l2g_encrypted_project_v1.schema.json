@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l2g.local/schemas/l2g_encrypted_project_v1.schema.json",
+  "title": "L2G Encrypted Project Envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "version", "purpose", "cipher", "kdf", "inner", "application"],
+  "properties": {
+    "kind": {"const": "l2g_encrypted_project_v1"},
+    "version": {"const": "1.0"},
+    "purpose": {"enum": ["portable-project", "browser-recovery"]},
+    "cipher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "key_bits", "tag_bits", "iv_b64"],
+      "properties": {
+        "name": {"const": "AES-GCM"},
+        "key_bits": {"const": 256},
+        "tag_bits": {"const": 128},
+        "iv_b64": {"type": "string", "pattern": "^[A-Za-z0-9+/]{16}$"}
+      }
+    },
+    "kdf": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "hash", "iterations", "salt_b64"],
+      "properties": {
+        "name": {"const": "PBKDF2"},
+        "hash": {"const": "SHA-256"},
+        "iterations": {"const": 600000},
+        "salt_b64": {"type": "string", "pattern": "^[A-Za-z0-9+/]{22}==$"}
+      }
+    },
+    "inner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["media_type", "project_kind", "schema_version", "plaintext_bytes", "plaintext_sha256"],
+      "properties": {
+        "media_type": {"const": "application/vnd.l2g.project+zip"},
+        "project_kind": {"const": "l2g_project_v1"},
+        "schema_version": {"const": "1.0"},
+        "plaintext_bytes": {"type": "integer", "minimum": 1, "maximum": 12582912},
+        "plaintext_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"const": "L2G Integrated Suite"},
+        "version": {"type": "string"}
+      }
+    }
+  }
+}
