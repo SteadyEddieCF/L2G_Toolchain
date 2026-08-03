@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -22,10 +23,18 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def compile_typescript() -> None:
+    local = ROOT / "node_modules" / ".bin" / ("tsc.cmd" if os.name == "nt" else "tsc")
+    compiler = str(local) if local.exists() else shutil.which("tsc")
+    if not compiler:
+        raise SystemExit("TypeScript compiler is unavailable. Run npm ci in apps/integrated-suite-v0.2.")
+    subprocess.run([compiler, "-p", str(ROOT / "tsconfig.build.json")], cwd=ROOT, check=True)
+
+
 def main() -> None:
     BUILD.mkdir(exist_ok=True)
     DIST.mkdir(exist_ok=True)
-    subprocess.run(["tsc", "-p", "tsconfig.build.json"], cwd=ROOT, check=True)
+    compile_typescript()
     js = normalize((BUILD / "app.js").read_text())
     css = normalize((ROOT / "src" / "styles.css").read_text())
     release_json = json.dumps(RELEASE, sort_keys=True, separators=(",", ":")).replace("<", "\\u003c")
