@@ -1,11 +1,30 @@
 {
   "kind": "l2g_integrated_suite_current_release_v1",
-  "status": "release-candidate",
+  "status": "current",
   "version": "0.1.0",
   "artifact": "apps/integrated-suite/releases/v0.1.0/L2G_Integrated_Suite_Foundation_v0.1.0.html",
   "sha256": "67a69e026d789901dcfe0bf8aecb574d1ae5a9647b225db18099f5cb43e89e15",
   "project_kind": "l2g_project_v1",
   "governing_issue": 117,
+  "promotion_pr": 122,
+  "validated_candidate_head": "d1d20dbdf27095b29e3c5595259fe3f2a538663c",
+  "validation_runs": {
+    "integrated_foundation": 30848680626,
+    "playwright_qa": 30848679456,
+    "rg4_merged_main": 30848680574,
+    "ssp_rg4_history": 30848680461,
+    "repository_validation": 30848680629
+  },
+  "release_artifacts": {
+    "linux": {
+      "id": 8869750960,
+      "digest": "sha256:cbeb2c915139b76ab9413cb37fc92aabf1674e6a4b72cf9b5b71af148849613b"
+    },
+    "windows_file_origin": {
+      "id": 8869750970,
+      "digest": "sha256:fdd944c3f5ace0785d9976a3fd2bde509685a60837e79c52d2744c8191566361"
+    }
+  },
   "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
   "implementation_branch_baseline": "e4c756f489e0e4ab6f8f7fabf3eba849c32716ee",
   "synthetic_only": true,
