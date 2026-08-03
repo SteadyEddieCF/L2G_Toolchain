@@ -2,9 +2,9 @@ from pathlib import Path
 import hashlib, json, re
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = json.loads((ROOT / "release" / "release.json").read_text())
+RELEASE = json.loads((ROOT / "release" / "release.json").read_text(encoding="utf-8"))
 ARTIFACT = ROOT / "dist" / RELEASE["artifact_name"]
-HTML = ARTIFACT.read_text()
+HTML = ARTIFACT.read_text(encoding="utf-8")
 
 checks = [
     ("single app root", HTML.count('id="app"') == 1),
@@ -19,7 +19,7 @@ checks = [
 failed = [name for name, ok in checks if not ok]
 if failed:
     raise SystemExit("Validation failed: " + ", ".join(failed))
-manifest = json.loads((ROOT / "dist" / "release-manifest.json").read_text())
+manifest = json.loads((ROOT / "dist" / "release-manifest.json").read_text(encoding="utf-8"))
 actual = hashlib.sha256(ARTIFACT.read_bytes()).hexdigest()
 assert manifest["sha256"] == actual
 print(json.dumps({"sha256": actual, "size": ARTIFACT.stat().st_size, "checks": len(checks)}))
