@@ -176,23 +176,38 @@ namespace L2G {
 
   export function validateProjectDocument(document: ProjectDocument): void {
     if (!isRecord(document) || !isRecord(document.manifest) || !isRecord(document.state)) throw new Error("Project document is invalid.");
-    if (document.manifest.kind !== "l2g_project_v1" || document.manifest.schema_version !== "1.0") throw new Error("Unsupported project kind or schema version.");
-    if (document.manifest.encryption_mode !== "none-synthetic-foundation-only") throw new Error("Unsupported encryption mode for this foundation release.");
-    if (!isSafeId(document.manifest.project_id, "project")) throw new Error("Project identifier is invalid.");
-    if (!isIso(document.manifest.created_at) || !isIso(document.manifest.updated_at)) throw new Error("Project timestamps are invalid.");
-    validateEngagement(document.state.engagement);
-    validateReviewsActions(document.state.reviews_actions);
-    if (!Array.isArray(document.history) || document.history.length === 0) throw new Error("Project history is missing.");
-    for (const event of document.history) validateHistoryEvent(event);
+    const manifest = document.manifest;
+    if (manifest.kind !== "l2g_project_v1" || manifest.schema_version !== "1.0") throw new Error("Unsupported project kind or schema version.");
+    if (manifest.encryption_mode !== "none-synthetic-foundation-only" || manifest.evidence_policy !== "reference-only") throw new Error("Unsupported project safety posture for this foundation release.");
+    if (!isSafeId(manifest.project_id, "project")) throw new Error("Project identifier is invalid.");
+    if (!isIso(manifest.created_at) || !isIso(manifest.updated_at)) throw new Error("Project timestamps are invalid.");
+    if (!isRecord(manifest.application) || manifest.application.name !== "L2G Integrated Suite Foundation" || manifest.application.version !== window.__L2G_RELEASE__.version || manifest.application.product_runtime_compatibility_baseline !== window.__L2G_RELEASE__.product_runtime_compatibility_baseline) throw new Error("Project application identity is unsupported.");
+    const expectedDomains = [
+      { path: "domains/engagement.json", schema: "engagement_v1", authority: "Engagement" },
+      { path: "domains/reviews-actions.json", schema: "reviews_actions_v1", authority: "Reviews & Actions" }
+    ];
+    if (!Array.isArray(manifest.domain_index) || stableStringify(manifest.domain_index, 0) !== stableStringify(expectedDomains, 0)) throw new Error("Project domain index is unsupported.");
+    validateState(document.state);
+    if (!Array.isArray(document.history) || document.history.length === 0 || document.history.length > 5000) throw new Error("Project history is missing or exceeds the foundation limit.");
+    const eventIds = new Set<string>();
+    for (const event of document.history) {
+      validateHistoryEvent(event);
+      if (eventIds.has(event.event_id)) throw new Error("History event identifier is duplicated.");
+      eventIds.add(event.event_id);
+    }
     if (!Array.isArray(document.checkpoints) || document.checkpoints.length > 20) throw new Error("Checkpoint collection is invalid.");
+    const checkpointIds = new Set<string>();
     for (const checkpoint of document.checkpoints) {
-      if (!isSafeId(checkpoint.checkpoint_id, "checkpoint") || typeof checkpoint.name !== "string" || !isIso(checkpoint.created_at)) throw new Error("Checkpoint is invalid.");
+      if (!isSafeId(checkpoint.checkpoint_id, "checkpoint") || checkpointIds.has(checkpoint.checkpoint_id) || typeof checkpoint.name !== "string" || checkpoint.name.length > 120 || !isIso(checkpoint.created_at)) throw new Error("Checkpoint is invalid or duplicated.");
+      checkpointIds.add(checkpoint.checkpoint_id);
       validateState(checkpoint.state);
     }
-    validateState(document.state);
   }
 
   function validateState(state: ProjectState): void {
+    if (!isRecord(state)) throw new Error("Project state is invalid.");
+    validateEngagement(state.engagement);
+    validateReviewsActions(state.reviews_actions);
     if (!["advisor", "client", "reviewer"].includes(state.profile)) throw new Error("Presentation profile is invalid.");
     const workspaces: WorkspaceId[] = ["overview", "pre-engagement", "evidence", "scope", "practice-review", "ssp", "deliverables", "reviews-actions"];
     if (!workspaces.includes(state.active_workspace)) throw new Error("Active workspace is invalid.");
@@ -224,16 +239,22 @@ namespace L2G {
   function validateReviewsActions(record: ReviewsActionsRecord): void {
     if (!isRecord(record) || record.schema_version !== "reviews_actions_v1" || !Array.isArray(record.examples) || record.examples.length > 50) throw new Error("Reviews & Actions record is invalid.");
     const ids = new Set<string>();
+    const lifecycle = ["Draft", "Proposed", "Confirmed", "Approved", "Superseded"];
+    const reviewStates = ["Not requested", "Assigned", "In review", "Changes requested", "Approved", "Closed"];
+    const operationalStates = ["Open", "Waiting", "Blocked", "Done", "Cancelled"];
+    const visibility = ["Advisor-only", "Client-safe", "Approved for client presentation"];
     for (const item of record.examples) {
-      if (!isSafeId(item.id, "review") || ids.has(item.id)) throw new Error("Review example identifier is invalid or duplicated.");
+      if (!isRecord(item) || !isSafeId(item.id, "review") || ids.has(item.id)) throw new Error("Review example identifier is invalid or duplicated.");
       ids.add(item.id);
-      if (typeof item.title !== "string" || item.title.length > 240 || typeof item.rationale !== "string" || item.rationale.length > 2000) throw new Error("Review example content is invalid.");
+      if (typeof item.title !== "string" || item.title.length > 240 || typeof item.rationale !== "string" || item.rationale.length > 2000 || typeof item.source_domain !== "string" || item.source_domain.length > 100 || typeof item.target_domain !== "string" || item.target_domain.length > 100) throw new Error("Review example content is invalid.");
+      if (!lifecycle.includes(item.lifecycle) || !reviewStates.includes(item.review_state) || !operationalStates.includes(item.operational_state) || !visibility.includes(item.visibility)) throw new Error("Review example state is invalid.");
     }
   }
 
   function validateHistoryEvent(event: HistoryEvent): void {
     if (!isRecord(event) || !isSafeId(event.event_id, "event") || !isSafeId(event.transaction_id, "txn") || !isIso(event.timestamp)) throw new Error("History event is invalid.");
-    if (typeof event.action !== "string" || typeof event.object_type !== "string" || typeof event.object_id !== "string" || typeof event.summary !== "string") throw new Error("History event content is invalid.");
+    if (!["advisor", "client", "reviewer"].includes(event.profile) || typeof event.action !== "string" || event.action.length > 120 || typeof event.object_type !== "string" || event.object_type.length > 120 || typeof event.object_id !== "string" || event.object_id.length > 160 || typeof event.summary !== "string" || event.summary.length > 500) throw new Error("History event content is invalid.");
+    if (event.reverses_event_id !== undefined && !isSafeId(event.reverses_event_id, "event")) throw new Error("History reversal link is invalid.");
   }
 
   function isSafeId(value: unknown, prefix: string): value is string {
