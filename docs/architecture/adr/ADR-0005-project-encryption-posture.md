@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed safety boundary. Cryptographic design remains unresolved.
+Accepted historical safety boundary. The v0.2.0 cryptographic design is resolved by ADR-0007. Production/client/FCI/CUI use remains unauthorized.
 
 ## Date
 
@@ -14,61 +14,49 @@ The proposed `.l2g` project normally excludes original evidence files but can co
 
 A ZIP container with integrity hashes is not encryption. Browser-local recovery can also retain sensitive content outside the exported project file.
 
-The repository is currently reported as public and all current validation fixtures are synthetic. The product must not create an implied production-CUI authorization before encryption, key handling, recovery, browser storage, and failure behavior are designed and independently reviewed.
+The repository is public and all current validation fixtures are synthetic. The product must not create an implied production-CUI authorization before encryption, key handling, recovery, browser storage, failure behavior, and operational use are independently reviewed.
 
-## Proposed decision
+## Decision
 
-1. Milestone 0 is synthetic-data-only and must carry no claim of production-CUI suitability.
-2. The conceptual project manifest reserves an explicit encryption descriptor and format capability, but Milestone 0 does not invent or silently deploy an unreviewed encryption scheme.
-3. Before any real client or CUI project use, a dedicated cryptographic ADR and implementation must define:
-   - encrypted envelope and authenticated metadata boundaries;
-   - approved algorithms and parameter profiles;
-   - passphrase or key-source handling;
-   - key derivation and memory-hardness requirements;
-   - nonce generation and uniqueness;
-   - recovery limitations and forgotten-key behavior;
-   - browser-local recovery encryption;
-   - backup and copy semantics;
-   - versioning and migration;
-   - corruption and tamper behavior;
-   - independent security testing.
-4. Integrity hashes remain required whether or not a project is encrypted.
+1. Milestone 0 and v0.1.0 are synthetic-data-only and carry no claim of production-CUI suitability.
+2. The project manifest reserves an explicit encryption descriptor and format capability.
+3. ADR-0007 defines the v0.2.0 encrypted envelope, authenticated metadata, approved algorithm profile, passphrase handling, key derivation, nonce generation, browser-local encrypted recovery, lock behavior, versioning, corruption behavior, and security tests.
+4. Integrity hashes remain required inside the canonical project whether or not the outer project is encrypted.
 5. The application must never log, commit, upload, or include project secrets or decrypted client content in CI evidence.
-6. The application must make the project protection state visible and must not label an unencrypted project as protected.
-7. If an encrypted project is open, decrypted content remains memory-only except for an explicitly designed encrypted recovery store.
-8. No password recovery promise may be made unless a governed recovery mechanism actually exists.
-
-## Recommended production posture for later review
-
-The security ADR should evaluate encrypted projects as the default whenever extracted client content is stored, with an explicit synthetic/demo mode for unencrypted projects. This recommendation is not a frozen algorithm or key-management decision.
+6. The application must make the project protection state visible and must not label an unencrypted or not-yet-keyed project as protected.
+7. Decrypted content remains memory-only except for the explicitly encrypted recovery design in ADR-0007.
+8. No password recovery promise may be made; v0.2.0 has no reset, escrow, or recovery mechanism.
+9. Passing v0.2.0 cryptographic tests does not itself authorize production, client, FCI, or CUI data.
 
 ## Consequences
 
 ### Positive
 
-- Prevents accidental production claims based only on ZIP packaging and hashes.
-- Creates a clear security gate before client data enters the integrated format.
-- Keeps Milestone 0 focused on format, integrity, recovery behavior, and architecture.
+- Prevented accidental production claims based only on ZIP packaging and hashes.
+- Created a clear security gate before substantive domain migration.
+- Allowed Milestone 0 to focus on format, integrity, recovery behavior, and architecture.
+- Provides an auditable progression from unresolved posture to the concrete ADR-0007 design.
 
 ### Negative
 
-- Milestone 0 cannot be used for real client data.
-- Encryption implementation and independent review become a later release dependency.
-- Recovery and usability tradeoffs remain unresolved.
+- v0.1.0 cannot be used for real client data.
+- v0.2.0 remains synthetic-only pending implementation review and later authorization.
+- Browser and endpoint limitations remain material even with encryption.
 
 ## Acceptance evidence
 
-Before production-data authorization:
+Before any production-data authorization:
 
-- accepted cryptographic ADR;
-- threat model and misuse cases;
-- deterministic format tests excluding secret material;
-- wrong-key, tamper, truncation, replay, migration, and corruption tests;
+- accepted ADR-0007;
+- v0.2.0 threat model and misuse cases;
+- fixed cryptographic vectors and runtime nondeterminism tests;
+- wrong-key, tamper, truncation, replay, migration, corruption, and denial-of-service tests;
 - encrypted IndexedDB recovery tests;
 - memory and error-message review;
+- exact-head Linux and Windows `file://` evidence;
 - independent security review;
-- explicit product qualification language.
+- explicit product qualification language and operational approval.
 
 ## Non-decisions
 
-This ADR does not select AES, ChaCha20, Argon2, PBKDF2, WebAuthn, a cloud key service, a password manager integration, or a recovery escrow design.
+This ADR and ADR-0007 do not authorize production/client/FCI/CUI use, cloud synchronization, multi-user access control, hardware-backed keys, key escrow, original evidence embedding, or standalone module retirement.
