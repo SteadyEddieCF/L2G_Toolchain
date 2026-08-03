@@ -2,7 +2,7 @@
 
 ## Status
 
-Initial planning register. Decisions marked `Proposed` require explicit review before implementation. Risks remain open until evidence of closure is recorded.
+Initial planning register with post-assessment reconciliation through 2026-08-03. Decisions marked `Proposed` require explicit review before implementation. Risks remain open until evidence of closure is recorded.
 
 ## Decision register
 
@@ -18,7 +18,7 @@ Initial planning register. Decisions marked `Proposed` require explicit review b
 | D-008 | Keep Single-System as the default SSP experience and portfolio mode Advanced | Proposed | SSP migration | Existing SSP posture is preserved |
 | D-009 | Treat Advisor, Client, and Reviewer as presentation and workflow profiles in the offline edition, not security roles | Proposed | Shell implementation | External distribution uses curated exports |
 | D-010 | Separate package wire version, schema identity, contract release, stability, producer, and consumer | Proposed | Compatibility package | Required to represent Workbook Handoff correctly |
-| D-011 | Defer production module migration until Workshop/Builder corrective sequence is resolved or explicitly deferred | Proposed | Baseline freeze | PRs #112 and #113 and issue #101 remain relevant |
+| D-011 | Freeze the first implementation baseline only after the promoted Workshop v79.1 and Builder/Merger v3.10.1 releases pass the complete issue #101 merged-main validation and receive an explicit registry/snapshot disposition | Partially satisfied | Baseline freeze | PRs #112 and #113 are merged; issue #101 is active in draft PR #118 |
 | D-012 | Determine project encryption through a dedicated security ADR before production-CUI suitability is claimed | Proposed | Production project use | Extracted text may contain CUI even without original files |
 
 ## Unresolved architecture questions
@@ -72,7 +72,7 @@ Define path ordering, timestamps, compression settings, normalization, and hash 
 | ID | Risk | Status | Impact | Initial treatment | Closure evidence |
 |---|---|---|---|---|---|
 | R-001 | GitHub currently reports the repository visibility as `public`, while prior planning described a private monorepo | Open — verified | Potential disclosure of source, fixtures, generated artifacts, or future client/CUI material | Confirm intent; review history, Actions artifacts, Releases, screenshots, and branch content; change visibility if appropriate | Repository-setting decision and completed exposure review |
-| R-002 | Workshop v79.1 and Builder/Merger v3.10.1 remain open draft corrections | Open — verified | Integrated adapters could be built against a moving or defective contract boundary | Do not freeze implementation baseline until merged or explicitly deferred | Recorded baseline commit and issue #101 disposition |
+| R-002 | The correction stack was moving while the integrated baseline was being planned | Mitigated — final validation pending | Integrated adapters could be built against an unqualified contract boundary | Workshop v79.1 and Builder/Merger v3.10.1 are merged; complete issue #101 on current merged main before freezing Milestone 0 | PR #118 final exact-head evidence, issue #101 disposition, and recorded baseline commit |
 | R-003 | Numerous temporary and accidental release branches remain | Open — verified | Baseline confusion and review mistakes | Preserve evidence, identify PR-backed branches, then remove obsolete branches | Reviewed branch inventory and cleanup record |
 | R-004 | Contract identity terminology overloads `version` | Open — verified | Incorrect compatibility or migration decisions | Implement multi-part contract identity | Contract-identity schema and tests |
 | R-005 | `.l2g` may store extracted CUI without encryption | Open | Data exposure at rest | Complete security ADR before production-CUI use | Approved encryption decision and adversarial tests |
@@ -91,8 +91,8 @@ Define path ordering, timestamps, compression settings, normalization, and hash 
 ## Immediate governance actions
 
 1. Review repository visibility and exposure posture.
-2. Complete or explicitly defer the current Workshop/Builder correction stack.
-3. Freeze the exact implementation baseline commit.
+2. Complete issue #101 and draft PR #118 on the exact current merged-main suite.
+3. Freeze the exact Milestone 0 implementation baseline commit only after issue #101 disposition.
 4. Perform Releases and Actions asset inventory.
 5. Review and clean obsolete branches after preserving required evidence.
 6. Approve or revise decisions D-001 through D-012.
