@@ -1,0 +1,13 @@
+{
+  "kind": "l2g_integrated_suite_current_release_v1",
+  "status": "release-candidate",
+  "version": "0.1.0",
+  "artifact": "apps/integrated-suite/releases/v0.1.0/L2G_Integrated_Suite_Foundation_v0.1.0.html",
+  "sha256": "f21f665df5212296f7b6e220b16d47d7a50734cf1eaae2cd50bf5c00300ec71e",
+  "project_kind": "l2g_project_v1",
+  "governing_issue": 117,
+  "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
+  "implementation_branch_baseline": "e4c756f489e0e4ab6f8f7fabf3eba849c32716ee",
+  "synthetic_only": true,
+  "production_data_authorized": false
+}

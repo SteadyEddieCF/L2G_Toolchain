@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l2g.local/schemas/reviews_actions_v1.schema.json",
+  "title": "L2G Foundation Reviews and Actions v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "examples"],
+  "properties": {
+    "schema_version": {"const": "reviews_actions_v1"},
+    "examples": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "source_domain", "target_domain", "lifecycle", "review_state", "operational_state", "visibility", "rationale"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^review_[A-Za-z0-9_-]+$", "maxLength": 128},
+          "title": {"type": "string", "maxLength": 240},
+          "source_domain": {"type": "string", "maxLength": 100},
+          "target_domain": {"type": "string", "maxLength": 100},
+          "lifecycle": {"enum": ["Draft", "Proposed", "Confirmed", "Approved", "Superseded"]},
+          "review_state": {"enum": ["Not requested", "Assigned", "In review", "Changes requested", "Approved", "Closed"]},
+          "operational_state": {"enum": ["Open", "Waiting", "Blocked", "Done", "Cancelled"]},
+          "visibility": {"enum": ["Advisor-only", "Client-safe", "Approved for client presentation"]},
+          "rationale": {"type": "string", "maxLength": 2000}
+        }
+      }
+    }
+  }
+}

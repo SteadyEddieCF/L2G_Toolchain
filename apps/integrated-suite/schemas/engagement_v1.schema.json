@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l2g.local/schemas/engagement_v1.schema.json",
+  "title": "L2G Foundation Engagement v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "engagement_id", "engagement_name", "client_name", "system_name", "phase", "objectives", "participants"],
+  "properties": {
+    "schema_version": {"const": "engagement_v1"},
+    "engagement_id": {"type": "string", "pattern": "^engagement_[A-Za-z0-9_-]+$", "maxLength": 128},
+    "engagement_name": {"type": "string", "maxLength": 160},
+    "client_name": {"type": "string", "maxLength": 160},
+    "system_name": {"type": "string", "maxLength": 160},
+    "phase": {"type": "string", "maxLength": 80},
+    "objectives": {"type": "string", "maxLength": 4000},
+    "participants": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "role", "organization", "visibility"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^participant_[A-Za-z0-9_-]+$", "maxLength": 128},
+          "name": {"type": "string", "maxLength": 160},
+          "role": {"type": "string", "maxLength": 160},
+          "organization": {"type": "string", "maxLength": 160},
+          "visibility": {"enum": ["advisor-only", "client-safe"]}
+        }
+      }
+    }
+  }
+}

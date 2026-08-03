@@ -1,0 +1,11 @@
+{
+  "application": "L2G Integrated Suite Foundation",
+  "version": "0.1.0",
+  "artifact_name": "L2G_Integrated_Suite_Foundation_v0.1.0.html",
+  "project_kind": "l2g_project_v1",
+  "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
+  "implementation_branch_baseline": "e4c756f489e0e4ab6f8f7fabf3eba849c32716ee",
+  "release_date": "2026-08-03",
+  "production_data_authorized": false,
+  "synthetic_only": true
+}

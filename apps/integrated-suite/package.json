@@ -1,0 +1,19 @@
+{
+  "name": "@l2g/integrated-suite-foundation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Additive TypeScript foundation for the offline L2G Integrated Suite.",
+  "scripts": {
+    "clean": "python scripts/clean.py",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "compile": "tsc -p tsconfig.build.json",
+    "build": "python scripts/build.py",
+    "validate": "python scripts/validate_foundation.py",
+    "test:determinism": "python scripts/check_determinism.py",
+    "test": "npm run typecheck && npm run build && npm run validate && npm run validate:hygiene && npm run test:determinism",
+    "validate:hygiene": "python scripts/validate_public_hygiene.py"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}

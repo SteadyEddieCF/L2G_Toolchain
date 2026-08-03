@@ -1,0 +1,12 @@
+{
+  "kind": "synthetic_l2g_foundation_seed_v1",
+  "engagement_name": "McFirecoal Synthetic Foundation Engagement",
+  "client_name": "McFirecoal Synthetic Client",
+  "system_name": "Integrated Suite Foundation System",
+  "participants": [
+    {"name": "Avery Advisor", "role": "Synthetic Advisor", "visibility": "advisor-only"},
+    {"name": "Casey Client", "role": "Synthetic System Owner", "visibility": "client-safe"}
+  ],
+  "contains_client_data": false,
+  "contains_fci_or_cui": false
+}
