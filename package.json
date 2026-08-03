@@ -10,6 +10,8 @@
     "test:file": "python modules/builder-merger/releases/v3.10.1/materialize.py && playwright test tests/playwright/file-smoke.spec.mjs tests/playwright/workshop-v791-file-smoke.spec.mjs tests/playwright/builder-merger-v3101-file.spec.mjs tests/playwright/ssp-rg4-history-file-smoke.spec.mjs --project=chromium",
     "test:rg4-history": "playwright test tests/playwright/ssp-v1917-rg4-word-qa-consumer.spec.mjs tests/playwright/ssp-rg4-history-harness.spec.mjs --project=chromium",
     "test:rg4-merged-main": "playwright test tests/playwright/builder-merger-v3101-word-qa.spec.mjs tests/playwright/builder-merger-v3101-workshop-preservation.spec.mjs tests/playwright/builder-merger-v3101-rich-preservation.spec.mjs tests/playwright/workshop-v791-strict-merge.spec.mjs tests/playwright/workshop-v791-ssp-route.spec.mjs tests/playwright/ssp-v1917-rg4-word-qa-consumer.spec.mjs tests/playwright/ssp-rg4-history-harness.spec.mjs --project=chromium",
+    "test:integrated-foundation": "npm test --prefix apps/integrated-suite && playwright test tests/playwright/integrated-suite-foundation-shell.spec.mjs tests/playwright/integrated-suite-foundation-project.spec.mjs tests/playwright/integrated-suite-foundation-accessibility.spec.mjs --project=chromium",
+    "test:integrated-foundation:file": "npm test --prefix apps/integrated-suite && playwright test tests/playwright/integrated-suite-foundation-file.spec.mjs --project=chromium",
     "test:all": "playwright test --project=chromium"
   },
   "devDependencies": {

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l2g.local/schemas/l2g_project_v1.schema.json",
+  "title": "L2G Project Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "schema_version", "project_id", "created_at", "updated_at", "application", "evidence_policy", "encryption_mode", "domain_index"],
+  "properties": {
+    "kind": {"const": "l2g_project_v1"},
+    "schema_version": {"const": "1.0"},
+    "project_id": {"type": "string", "pattern": "^project_[A-Za-z0-9_-]+$", "maxLength": 128},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "application": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "product_runtime_compatibility_baseline"],
+      "properties": {
+        "name": {"const": "L2G Integrated Suite Foundation"},
+        "version": {"type": "string"},
+        "product_runtime_compatibility_baseline": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "evidence_policy": {"const": "reference-only"},
+    "encryption_mode": {"const": "none-synthetic-foundation-only"},
+    "domain_index": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "schema", "authority"],
+        "properties": {
+          "path": {"type": "string"},
+          "schema": {"type": "string"},
+          "authority": {"type": "string"}
+        }
+      }
+    }
+  }
+}

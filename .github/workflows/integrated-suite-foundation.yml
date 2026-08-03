@@ -1,0 +1,89 @@
+name: Integrated Suite Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'apps/integrated-suite/**'
+      - 'contracts/registry.json'
+      - 'tests/playwright/integrated-suite-foundation*.mjs'
+      - '.github/workflows/integrated-suite-foundation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  foundation-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/integrated-suite/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root QA dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install locked foundation build dependency
+        run: npm ci --prefix apps/integrated-suite --no-audit --no-fund
+      - name: Typecheck, build, validate, hygiene scan, and deterministic rebuild
+        run: npm test --prefix apps/integrated-suite
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run foundation runtime, project, security, profile, accessibility, and visual-contract tests
+        run: npx playwright test tests/playwright/integrated-suite-foundation-shell.spec.mjs tests/playwright/integrated-suite-foundation-project.spec.mjs tests/playwright/integrated-suite-foundation-accessibility.spec.mjs --project=chromium
+      - name: Upload foundation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-foundation-linux
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            apps/integrated-suite/dist/**
+            apps/integrated-suite/releases/v0.1.0/**
+            apps/integrated-suite/build/fixtures/**
+            test-results/**
+
+  foundation-windows-file-origin:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/integrated-suite/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root QA dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install locked foundation build dependency
+        run: npm ci --prefix apps/integrated-suite --no-audit --no-fund
+      - name: Build and validate deterministic foundation
+        run: npm test --prefix apps/integrated-suite
+      - name: Install Chromium
+        run: npx playwright install chromium
+      - name: Run native Windows file-origin foundation smoke
+        run: npx playwright test tests/playwright/integrated-suite-foundation-file.spec.mjs --project=chromium
+      - name: Upload Windows file-origin evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-foundation-windows-file-origin
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            apps/integrated-suite/dist/**
+            apps/integrated-suite/releases/v0.1.0/**
+            test-results/**

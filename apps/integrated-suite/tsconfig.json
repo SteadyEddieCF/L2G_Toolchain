@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "none",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
+  },
+  "files": [
+    "src/types.ts",
+    "src/security.ts",
+    "src/zip.ts",
+    "src/project.ts",
+    "src/store.ts",
+    "src/app-utils.ts",
+    "src/app-core.ts",
+    "src/app.ts"
+  ]
+}
