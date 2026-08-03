@@ -1,0 +1,3 @@
+ .small')?.replaceChildren(document.createTextNode('L2G-BM v3.10.1'));const p=document.querySelector('header p');if(p)p.innerHTML='A local/offline bridge for the full workbook loop: <strong>Workshop Handoff → generated or existing workbook → Workbook Merge return</strong>. v3.10.1 adds strict Workbook Handoff contract-release 1.7 / wire-package 1.0 validation and lossless Workshop action/evidence-ownership preservation while retaining Build, Merge 1.1, External CSV, Decision Plan, and RG-4 Word-QA routes.';});
+ </script>
+ 

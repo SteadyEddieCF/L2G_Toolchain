@@ -1,0 +1,59 @@
+--- L2G-BM_v3.10.html
++++ L2G-BM_v3.10.1.html
+@@ -4,7 +4,7 @@
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: blob:; connect-src 'none'; img-src 'self' data: blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none';">
+-<title>L2G Builder/Merger v3.10</title>
++<title>L2G Builder/Merger v3.10.1</title>
+ <style>
+ :root{--bg:#000000;--panel:#080808;--panel2:#111111;--ink:#fffde7;--muted:#c7c29a;--line:#3f3a10;--brand:#fff200;--good:#d7ff5f;--warn:#fff200;--bad:#ff8f8f;--blue:#faff9a;}
+ *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}.app{max-width:1380px;margin:0 auto;padding:20px}.hero{border:1px solid var(--line);border-radius:22px;padding:24px;background:linear-gradient(135deg,#000000 0%,#080808 58%,#2b2900 100%);box-shadow:0 10px 32px rgba(255,242,0,.10)}.eyebrow{color:var(--brand);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:12px}.hero h1{margin:.2rem 0 .5rem;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em}.hero p{margin:0;max-width:105ch;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:14px}.card{grid-column:span 12;border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:16px}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.card h2{margin:0 0 8px}.muted,.small{color:var(--muted);font-size:13px}.callout{border-left:4px solid var(--brand);background:#1f1d00;color:#fff78a;border-radius:12px;padding:12px;margin-top:12px}input[type=file]{display:block;margin:10px 0;padding:10px;border:1px dashed var(--line);border-radius:12px;width:100%;background:var(--panel2);color:var(--ink)}button{border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:800}button.primary{background:var(--brand);border-color:var(--brand);color:#000000;box-shadow:0 0 14px rgba(255,242,0,.25)}button:disabled{opacity:.45;cursor:not-allowed}.btnrow{display:flex;gap:8px;flex-wrap:wrap}.status{margin-top:12px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--blue);white-space:pre-wrap}.status.good{color:var(--good);border-color:#7fbf00}.status.bad{color:var(--bad);border-color:#b91c1c}.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}.kpi{border:1px solid var(--line);border-radius:14px;background:var(--panel2);padding:12px}.kpi div{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}.kpi strong{font-size:24px}pre{white-space:pre-wrap;overflow:auto;max-height:460px;background:#000000;color:#fffde7;border:1px solid var(--line);border-radius:14px;padding:14px}table{width:100%;border-collapse:collapse;min-width:980px}th,td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top;font-size:13px}th{position:sticky;top:0;background:#090900;color:#fff200}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:14px}code{background:var(--panel2);padding:2px 5px;border-radius:6px}.footer{color:var(--muted);font-size:12px;margin:16px 0 0}@media(max-width:1000px){.span-4,.span-6{grid-column:span 12}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@@ -5112,7 +5112,7 @@
+ <script>
+ 'use strict';
+ /* v3.8 compatibility, exception handling, and three-stage diff governance. */
+-const L2G_BM_VERSION = 'v3.8';
++const L2G_BM_VERSION = 'v3.10.1';
+ Object.assign(state, {
+   handoffRaw:null, compareHandoffRaw:null,
+   buildWorkbookProfile:null, reviewWorkbookProfile:null, templateWorkbookProfile:null,
+@@ -5639,7 +5639,7 @@
+   return `# L2G Builder/Merger Rolling Release Roadmap
+ 
+ Updated: ${nowIso()}
+-Current release: L2G-BM v3.10
++Current release: L2G-BM v3.10.1
+ 
+ This roadmap is maintained with every Builder/Merger release. v3.9 remains reserved and was not consumed by the targeted RG-4 synchronization release.
+ 
+@@ -5774,7 +5774,7 @@
+   zip.file('l2g_builder_decision_plan_v1.json',JSON.stringify(v38DecisionPlanObject(scope),null,2));
+   if(isBuild&&state.buildRunManifest)zip.file('l2g_builder_run_manifest_v1.json',JSON.stringify(state.buildRunManifest,null,2));
+   if(!isBuild&&state.extractPlan?.packageObj)zip.file('l2g_workbook_merge_v1_preview.json',JSON.stringify(state.extractPlan.packageObj,null,2));
+-  zip.file('L2G-BM_Release_Roadmap_v3.10.md',v38RoadmapMarkdown());
++  zip.file('L2G-BM_Release_Roadmap_v3.10.1.md',v38RoadmapMarkdown());
+   zip.file('governance_summary.json',JSON.stringify({builder_merger_version:L2G_BM_VERSION,scope,generated_at:nowIso(),compatibility:isBuild?state.buildCompatibility?.status:state.mergeCompatibility?.status,resolution_summary:v38ResolutionStats(scope,exceptions),guardrails:{local_offline_only:true,reviewer_status_controlled:true,final_conclusions_not_inferred:true}},null,2));
+   const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}});downloadBlob(blob,`L2G-BM_v3.8_${prefix}_Governance_Pack.zip`);
+ }
+@@ -5809,7 +5809,7 @@
+ };
+ 
+ const v38OriginalBuildRunManifest=v37BuildRunManifest;
+-v37BuildRunManifest=function(plan,profile,compatibility,stageRows){const m=v38OriginalBuildRunManifest(plan,profile,compatibility,stageRows);m.decision_plan_summary={operator_name:state.v38OperatorName||'',decisions:Object.values(state.v38Resolutions).filter(d=>d.scope==='build').length,execution_gate_enabled:!!state.v38GateBuild};m.release_roadmap_current='v3.10';return m;};
++v37BuildRunManifest=function(plan,profile,compatibility,stageRows){const m=v38OriginalBuildRunManifest(plan,profile,compatibility,stageRows);m.decision_plan_summary={operator_name:state.v38OperatorName||'',decisions:Object.values(state.v38Resolutions).filter(d=>d.scope==='build').length,execution_gate_enabled:!!state.v38GateBuild};m.release_roadmap_current='v3.10.1';return m;};
+ const v38OriginalRefreshBuild=v37RefreshBuildGovernance;
+ v37RefreshBuildGovernance=function(){v38OriginalRefreshBuild();v38Workspace('build');v38ApplyExecutionGate('build');};
+ const v38OriginalRefreshMerge=v37RefreshMergeGovernance;
+@@ -5817,7 +5817,7 @@
+ const v38OriginalClearAll=clearAll;
+ clearAll=function(){v38OriginalClearAll();Object.assign(state,{v38Resolutions:{},v38OperatorName:'',v38PlanNote:'',v38ImportedPlanName:'',v38GateBuild:false,v38GateMerge:false});['v38BuildResolutionWorkspace','v38MergeResolutionWorkspace'].forEach(id=>$(id)?.remove());};
+ 
+-function v38InsertRoadmap(){if($('v38RoadmapSection'))return;const main=document.querySelector('main');if(!main)return;const section=document.createElement('section');section.id='v38RoadmapSection';section.className='card v38-roadmap';section.innerHTML=`<div class="v38-roadmap-head"><div><h2>Rolling Builder/Merger release roadmap</h2><p class="muted">Updated with every release. The next 10 entries stay within the Builder/Merger boundary and may be reordered for urgent compatibility or workbook-integrity synchronization.</p></div><button type="button" id="v38DownloadRoadmap">Download roadmap</button></div><div class="v38-roadmap-grid"><div class="v38-roadmap-item v38-roadmap-current"><strong>Current — v3.10</strong><p>RG-4 SSP Final Word-QA sidecar producer plus preserved v3.8 compatibility, exception, decision-plan, and three-stage diff governance.</p></div>${V38_ROADMAP.map(r=>`<div class="v38-roadmap-item"><strong>${escapeHtmlText(r.version)} — ${escapeHtmlText(r.title)}</strong><p>${escapeHtmlText(r.summary)}</p></div>`).join('')}</div>`;main.appendChild(section);$('v38DownloadRoadmap').addEventListener('click',()=>v37DownloadText(v38RoadmapMarkdown(),'text/markdown','L2G-BM_Release_Roadmap_v3.10.md'));}
++function v38InsertRoadmap(){if($('v38RoadmapSection'))return;const main=document.querySelector('main');if(!main)return;const section=document.createElement('section');section.id='v38RoadmapSection';section.className='card v38-roadmap';section.innerHTML=`<div class="v38-roadmap-head"><div><h2>Rolling Builder/Merger release roadmap</h2><p class="muted">Updated with every release. The next 10 entries stay within the Builder/Merger boundary and may be reordered for urgent compatibility or workbook-integrity synchronization.</p></div><button type="button" id="v38DownloadRoadmap">Download roadmap</button></div><div class="v38-roadmap-grid"><div class="v38-roadmap-item v38-roadmap-current"><strong>Current — v3.10.1</strong><p>RG-4 SSP Final Word-QA sidecar producer plus preserved v3.8 compatibility, exception, decision-plan, and three-stage diff governance.</p></div>${V38_ROADMAP.map(r=>`<div class="v38-roadmap-item"><strong>${escapeHtmlText(r.version)} — ${escapeHtmlText(r.title)}</strong><p>${escapeHtmlText(r.summary)}</p></div>`).join('')}</div>`;main.appendChild(section);$('v38DownloadRoadmap').addEventListener('click',()=>v37DownloadText(v38RoadmapMarkdown(),'text/markdown','L2G-BM_Release_Roadmap_v3.10.1.md'));}
+ 
+ document.addEventListener('DOMContentLoaded',()=>{v38Workspace('build');v38Workspace('merge');v38InsertRoadmap();});
+ </script>
+@@ -5894,18 +5894,18 @@
+ function wqaHumanCheck(){const h=wqaHumanReady();return wqaCheck('WQA-LAYOUT-HUMAN',h.ready?'pass':'needs-human-review',h.ready?'Locally asserted visual review confirmed headings, tables, pagination, page breaks, headers, footers, numbering, visible placeholder residue, and overall delivery usability.':'Required local layout review remains incomplete or its local reviewer labels are missing.',h.ready?['operator:visual-review','review:headings','review:tables','review:pagination','review:page-breaks','review:headers-footers','review:numbering','review:visible-placeholder-residue','review:delivery-usability']:['operator:visual-review-required']);}
+ function wqaAggregate(checks){const a={state:'qa_incomplete',pass:0,fail:0,needs_human_review:0,not_applicable:0};for(const c of checks){if(c.result==='pass')a.pass++;else if(c.result==='fail')a.fail++;else if(c.result==='needs-human-review')a.needs_human_review++;else a.not_applicable++;}a.state=a.fail?'qa_blocked':(a.needs_human_review?'qa_incomplete':'qa_complete');return a;}

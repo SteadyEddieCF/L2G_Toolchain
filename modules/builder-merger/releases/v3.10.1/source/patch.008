@@ -1,0 +1,6 @@
++if(typeof v38RoadmapMarkdown==='function'){const v3101BaseRoadmap=v38RoadmapMarkdown;v38RoadmapMarkdown=function(){return v3101BaseRoadmap().replace(/Current release: L2G-BM v3\.10(?!\.1)/g,'Current release: L2G-BM v3.10.1')+`\n\n## Corrective release v3.10.1\n\nStrict Workbook Handoff contract-release 1.7 / wire-package 1.0 validation; duplicate-key-safe parsing; exact identity, shape, fingerprint, practice/objective, and source-lineage checks; and lossless Workshop action/evidence-ownership preservation through visible workbook helper sheets and Workbook Merge 1.1. Builder/Merger v3.9 remains reserved for Advisor and Client Delivery Profiles.\n`;};}
++document.addEventListener('DOMContentLoaded',()=>{document.querySelector('h1 .small')?.replaceChildren(document.createTextNode('L2G-BM v3.10.1'));const p=document.querySelector('header p');if(p)p.innerHTML='A local/offline bridge for the full workbook loop: <strong>Workshop Handoff → generated or existing workbook → Workbook Merge return</strong>. v3.10.1 adds strict Workbook Handoff contract-release 1.7 / wire-package 1.0 validation and lossless Workshop action/evidence-ownership preservation while retaining Build, Merge 1.1, External CSV, Decision Plan, and RG-4 Word-QA routes.';});
++</script>
++
+ </body>
+ </html>

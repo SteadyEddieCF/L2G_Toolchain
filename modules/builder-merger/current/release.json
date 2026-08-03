@@ -1,45 +1,50 @@
 {
   "module": "L2G Builder/Merger",
-  "current_supplied_version": "v3.10",
-  "release_path": "modules/builder-merger/releases/v3.10",
-  "runtime_path": "modules/builder-merger/releases/v3.10/L2G-BM_v3.10.html",
-  "runtime_sha256": "96ecb1caee5f7ba278c3b46c666d703423e2db40cac22f8431e70485e5d76a17",
-  "status": "current_supplied_release",
-  "next_action": "Complete issue #101 merged-main RG-4 joint validation, six-tool regression, suite snapshot, and registry promotion decision",
-  "recorded_at": "2026-07-31",
+  "current_supplied_version": "v3.10.1",
+  "release_path": "modules/builder-merger/releases/v3.10.1",
+  "runtime_path": "modules/builder-merger/releases/v3.10.1/L2G-BM_v3.10.1.html",
+  "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+  "runtime_size_bytes": 832972,
+  "status": "draft_corrective_candidate",
+  "next_action": "Run the exact corrected Workshop v79.1 to Builder/Merger v3.10.1 to Workshop v79.1 Orchestrator route before merge",
+  "recorded_at": "2026-08-01",
   "release_identity": {
-    "version": "v3.10",
-    "issue": 92,
-    "focus": "SSP Final Word-QA Sidecar Producer",
-    "package_kind": "l2g_ssp_word_qa_sidecar_v1",
-    "package_version": "1.0",
-    "route_stability": "proposal",
+    "version": "v3.10.1",
+    "issue": 106,
+    "pull_request": 113,
+    "focus": "Workshop Action and Ownership Preservation",
+    "baseline_commit": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
+    "workbook_merge_package_kind": "l2g_workbook_merge_v1",
+    "workbook_merge_package_version": "1.1",
+    "preservation_extension_path": "workbook_source.workshop_governance_preservation_v1",
+    "preservation_extension_schema": "1.0",
     "adjacent_runtime_change": false
   },
-  "promotion": {
-    "pull_request": 95,
-    "reviewed_head": "bdb03e47cb92656a2965f5fd867ff3ef770650d6",
-    "merge_commit": "71d8101f7a50da0f351c981da513cff8390e7173",
-    "issue_closed": 92,
-    "verdict": "passed",
-    "validation": {
-      "repository": "passed",
-      "exact_materialization": "passed",
-      "runtime_and_axe": "passed",
-      "visual_regression": "passed",
-      "windows_file_origin": "passed",
-      "independent_sidecar_reproduction": "passed"
-    }
+  "candidate_validation": {
+    "repository": "pending_exact_head",
+    "runtime_and_axe": "pending_exact_head",
+    "visual_regression": "pending_exact_head",
+    "windows_file_origin": "pending_exact_head",
+    "portable_delivery": "passed_local",
+    "preservation_extension": "passed_local",
+    "joint_workshop_round_trip": "pending_orchestrator"
   },
   "reserved_versions": {
     "v3.9": "Advisor and Client Delivery Profiles"
   },
   "stable_contracts": {
-    "workbook_handoff": "1.7",
-    "workbook_merge": "1.1",
+    "workbook_handoff": "1.7 with wire package version 1.0",
+    "workbook_merge": "1.1 with frozen top-level shape",
     "builder_decision_plan": "1.0 optional"
   },
   "optional_contracts": {
+    "workbook_merge_governance_preservation": {
+      "path": "workbook_source.workshop_governance_preservation_v1",
+      "schema_version": "1.0",
+      "fingerprint": "SHA-256 canonical JSON",
+      "source_fingerprint_workbook_metadata": true,
+      "stability": "merged governance under issue #114"
+    },
     "rg4_word_qa_sidecar": {
       "package_kind": "l2g_ssp_word_qa_sidecar_v1",
       "package_version": "1.0",
