@@ -1,0 +1,7 @@
+{
+  "purpose": "Preserve missing evidence-ownership candidate_id as empty without inferring ownership_record_id",
+  "target_function": "v791CurrentOwnershipRecords",
+  "old": "ownership_record_id:id,candidate_id:live.candidate_id||acceptedRecord.candidate_id||id,",
+  "new": "ownership_record_id:id,candidate_id:live.candidate_id||acceptedRecord.candidate_id||\"\",",
+  "expected_replacement_count": 1
+}

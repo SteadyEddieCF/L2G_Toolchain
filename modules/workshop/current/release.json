@@ -1,26 +1,57 @@
 {
   "module": "CMMC L2 Gap Workshop Tool",
-  "current_supplied_version": "v79",
-  "release_path": "modules/workshop/releases/v79",
-  "runtime_path": "modules/workshop/releases/v79/cmmc_l2_gap_workshop_tool_v79.html",
-  "status": "current_supplied_release",
-  "next_action": "Proposed v80 Regression Delta and Release Comparison",
-  "recorded_at": "2026-07-26",
-  "promoted_issue": 49,
-  "promoted_by_pr": 50,
-  "promoted_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
-  "previous_promoted_version": "v78",
-  "previous_promoted_commit": "cc92c3e72cb989cd29b1baf44cbe5dcf44358f08",
-  "primary_html_sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
-  "primary_html_size_bytes": 1836145,
-  "route_evidence_fingerprint": "sha256-c6e013d78e72c1db0b3861bf250bb4d503f709f2733cb6fb75e69329f5943fb4",
-  "current_suite_snapshot": "suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0",
+  "current_supplied_version": "v79.1",
+  "release_path": "modules/workshop/releases/v79.1",
+  "runtime_path": "modules/workshop/releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html",
+  "status": "final_candidate_id_normalization_corrected_draft_pending_exact_head_ci_and_independent_review",
+  "next_action": "Complete final exact-head CI and independent review for PR #112; keep draft and preserve proposed v80 Regression Delta and Release Comparison",
+  "recorded_at": "2026-08-01",
+  "bounded_issue": 105,
+  "candidate_branch": "release/workshop-v79.1-strict-workbook-validation",
+  "candidate_pr": 112,
+  "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
+  "previous_promoted_version": "v79",
+  "previous_promoted_commit": "9d23e18cdc227b8d637325ad7ae426a309a0242d",
+  "primary_html_sha256": "b6bd63c104faeb031f9561f24aaf6a8fb7b928df2f11c821391ca57131d6e52b",
+  "primary_html_size_bytes": 1885465,
+  "baseline": {
+    "version": "v79",
+    "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
+    "size_bytes": 1836145
+  },
   "stable_contracts": {
     "workshop_state": "1.0",
-    "workbook_handoff": "1.7",
+    "workbook_handoff": {
+      "contract_release": "1.7",
+      "wire_package_version": "1.0",
+      "enhancement_version": "1.7"
+    },
     "workbook_merge": "1.1",
+    "workbook_merge_governance_preservation": {
+      "schema_version": "1.0",
+      "path": "workbook_source.workshop_governance_preservation_v1",
+      "top_level_property_rejected": true
+    },
     "ssp_handoff": "1.0",
     "ssp_return": "1.0"
   },
-  "release_boundary": "Workshop-led technical six-tool regression with all 10 required routes passing and 320/320 workbook objectives mapped; no adjacent-module authority transfer, evidence sufficiency, assessment, readiness, risk, compliance, certification, or scoring conclusion."
+  "corrective_scope": [
+    "strict Workbook Merge 1.1 package validation",
+    "nested governance-preservation validation and non-mutating reconciliation",
+    "missing candidate-ID preservation without ownership-ID inference",
+    "exact pre-preview operational-state preservation through queued render cycles",
+    "Workbook Handoff 1.7 producer self-reconciliation",
+    "self-contained deterministic materialization"
+  ],
+  "exact_builder_candidate": {
+    "pull_request": 113,
+    "head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+    "merge_sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af",
+    "joint_fixture_status": "passed locally; exact-head CI pending",
+    "preservation_fingerprint": "2862751b637cf97797e72c74a256f0ba45904f03b7e8076f20a0c67ef2c3fafb"
+  },
+  "remaining_blocker": "exact-head CI and independent review; no Builder/Merger code change required",
+  "promotion_eligible": false,
+  "release_boundary": "Strict package validation, non-mutating nested governance reconciliation, missing candidate-ID normalization, Handoff producer self-reconciliation, and portable delivery correction only; no adjacent runtime, registry, historical snapshot, authority, readiness, compliance, assessment, certification, scoring, evidence-sufficiency, or client-release change."
 }

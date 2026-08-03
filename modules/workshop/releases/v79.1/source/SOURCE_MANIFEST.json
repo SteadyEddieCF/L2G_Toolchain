@@ -1,0 +1,69 @@
+{
+  "release": "v79.1",
+  "bounded_issue": 105,
+  "baseline": {
+    "version": "v79",
+    "path": "source/v79_baseline.html (included in complete deliverables ZIP; repository fallback releases/v79)",
+    "size_bytes": 1836145,
+    "sha256": "a1f63944d0573587e2a5b7826f72befa16f6d89b849f3129f7f6dbb080da54ca",
+    "embedded_encoding": "exact UTF-8 HTML in deliverables ZIP"
+  },
+  "source": [
+    "source/v79_1_corrected_patch.js.gz.b64",
+    "source/v79_1_candidate_id_normalization.json",
+    "source/v79_1_nonmutation_fix.js",
+    "source/v79_baseline.html (complete deliverables ZIP only; repository fallback releases/v79)"
+  ],
+  "scope": [
+    "strict duplicate-key-safe Workbook Merge parsing",
+    "frozen top-level allowlist",
+    "version 1.1 fail-closed enforcement",
+    "practice/objective identity reconciliation",
+    "Handoff 1.7 producer self-reconciliation",
+    "optional nested governance-preservation validation and non-mutating reconciliation",
+    "exact pre-preview operational-state preservation through queued render cycles",
+    "missing candidate-ID normalization without ownership-ID inference"
+  ],
+  "boundaries": {
+    "builder_merger_v3_10_1_exact_round_trip": "exact PR #113 Merge 1.1 fixture embedded and jointly validated",
+    "planned_v80": "preserved",
+    "adjacent_runtime_changes": false,
+    "registry_change": false,
+    "historical_snapshot_change": false
+  },
+  "candidate_runtime": {
+    "path": "cmmc_l2_gap_workshop_tool_v79.1.html",
+    "size_bytes": 1885465,
+    "sha256": "b6bd63c104faeb031f9561f24aaf6a8fb7b928df2f11c821391ca57131d6e52b"
+  },
+  "reconciled_protected_main": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
+  "previous_reviewed_head": "44fa69aab6efd33082f56f0b2be10c3b6e49051a",
+  "governance_source": "contracts/reconciliations/workbook_merge_v1_1_governance_preservation/",
+  "corrected_patch": {
+    "decoded_size_bytes": 47431,
+    "decoded_sha256": "89369d79c12773e65291e18b7d30cdc7809686d8772bdc84c34fbd157a5fffde",
+    "encoding": "deterministic gzip mtime=0, base64"
+  },
+  "nonmutation_fix": {
+    "size_bytes": 1881,
+    "sha256": "6eeb7a2dd501434a1f9247248ec97b352b6cd0e9e7ab959af4b5d7c9b2a55a87",
+    "purpose": "preserve exact pre-preview operational state through inherited queued render normalization"
+  },
+  "exact_builder_candidate": {
+    "pull_request": 113,
+    "head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "runtime_size_bytes": 832972,
+    "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
+    "merge_fixture_path": "tests/fixtures/builder_v3_10_1_pr113_exact_merge.json",
+    "merge_size_bytes": 683940,
+    "merge_sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af",
+    "preservation_fingerprint": "2862751b637cf97797e72c74a256f0ba45904f03b7e8076f20a0c67ef2c3fafb"
+  },
+  "candidate_id_normalization": {
+    "path": "source/v79_1_candidate_id_normalization.json",
+    "target_function": "v791CurrentOwnershipRecords",
+    "missing_candidate_id_result": "",
+    "ownership_record_id_inference": false,
+    "sha256": "a31338ff4f84ebaa71b8ca45a547260694033c4b0ab1941a77e308ef281bc759"
+  }
+}

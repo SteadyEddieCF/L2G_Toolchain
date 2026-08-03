@@ -1,0 +1,66 @@
+{
+  "adversarial_inert_strings.json": {
+    "size_bytes": 11130,
+    "sha256": "521d732844ca4d1cb1f42e38aab649c681b2ae8f1073d5f4d7aa5b4b435dc03e"
+  },
+  "builder_v3_10_1_pr113_exact_merge.json": {
+    "size_bytes": 683940,
+    "sha256": "efde24c5a0c401c8e1ef9075eb751675359e0dd09419de7a9dae0a34c69c02af"
+  },
+  "builder_v3_10_1_pr113_exact_merge.provenance.json": {
+    "size_bytes": 814,
+    "sha256": "cc20cf00359b619464612e0d973f2f5a936d0ba3714c0658fc1296db51ac8ec7"
+  },
+  "canonical_nested_extension.json": {
+    "size_bytes": 11072,
+    "sha256": "9476f2107e045c385d77d76982f77a032ef998ad7022875de562b575ba34e831"
+  },
+  "duplicate_key_extension.json.txt": {
+    "size_bytes": 7707,
+    "sha256": "ce423244e7dc7a8dd3abe572a649e3f2fbc29f9a4472067ea238fcb034ab827c"
+  },
+  "duplicate_stable_id.json": {
+    "size_bytes": 13165,
+    "sha256": "23001a9bead4339d8d79f19dc987b64b57c5c6c9b3f00b79ac5d17d689a08a73"
+  },
+  "governed_field_mismatch.json": {
+    "size_bytes": 11063,
+    "sha256": "0854c0fdbd034c87414566217d9d82f689cf1bdd3784c079dcd3218ac7476f1d"
+  },
+  "incorrect_count.json": {
+    "size_bytes": 11072,
+    "sha256": "91f60e83955f37b2638e4999381d9b54a3d1dba82bd498b1da8b0195c34101ad"
+  },
+  "incorrect_preservation_fingerprint.json": {
+    "size_bytes": 11072,
+    "sha256": "e8a2760580820b73dce3bd9f98a8d3872b742c4f8025f84ba3c32867f660dc74"
+  },
+  "incorrect_record_fingerprint.json": {
+    "size_bytes": 11072,
+    "sha256": "aa5f73cd3da1851dffd2b19a7f34effaa7c680b988efba3c7427cf038db44082"
+  },
+  "incorrect_source_handoff_linkage.json": {
+    "size_bytes": 11072,
+    "sha256": "fcacc43a854a6ce66c011a0f11ed559fe557ba6f01dad19d94f11fa3abef9cd7"
+  },
+  "malformed_extension.json": {
+    "size_bytes": 11102,
+    "sha256": "c60fd7fccc87a0b9e51f68b564627863091e61b83f207d90173a13e08264ad9f"
+  },
+  "missing_current_record.json": {
+    "size_bytes": 11084,
+    "sha256": "bbb75708d426b2154b37a10739dbdbaa07bd5f9a282b6cc5535e75fddac1934a"
+  },
+  "package_without_extension.json": {
+    "size_bytes": 750,
+    "sha256": "80093c0de07d273da5f9c742b622ee234815a801fbb9e063bf389d6a22828222"
+  },
+  "top_level_extension_invalid.json": {
+    "size_bytes": 10568,
+    "sha256": "409aecc49da5b10983bb0deff3990ba940faf852a4429e08df1ad84d99e78ae3"
+  },
+  "workbook_merge_scenario_matrix.json": {
+    "size_bytes": 4856,
+    "sha256": "ec854d9f8b85d0282097c4c21ec4b6e417a2a85efee1584d86eb847ab0ca2fce"
+  }
+}

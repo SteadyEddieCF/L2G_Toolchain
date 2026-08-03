@@ -1,0 +1,131 @@
+name: Workshop v79.1 Candidate Validation
+on:
+  pull_request:
+    paths:
+      - 'modules/workshop/releases/v79.1/**'
+      - 'modules/workshop/current/release.json'
+      - 'modules/workshop/README.md'
+      - 'README.md'
+      - 'tests/playwright/workshop-v791-*.spec.mjs'
+      - '.github/workflows/workshop-v79-1-validation.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  static-and-portable-materialization:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Materialize exact Builder/Merger PR #113 Merge fixture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
+      - run: python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
+      - run: python modules/workshop/releases/v79.1/build_release.py
+      - run: python modules/workshop/releases/v79.1/tests/test_workshop_v791_static.py
+      - run: python modules/workshop/releases/v79.1/tests/test_portable_materializer.py
+      - run: python contracts/reconciliations/workbook_merge_v1_1_governance_preservation/validate_extension_fixtures.py
+      - run: python scripts/validate_toolchain.py
+  runtime-axe-and-routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - name: Materialize exact Builder/Merger PR #113 Merge fixture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
+      - run: python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
+      - run: python modules/workshop/releases/v79.1/build_release.py
+      - name: Materialize SSP v1.9.6 through v1.9.17
+        shell: bash
+        run: |
+          for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do python "modules/ssp/releases/v${version}/materialize.py"; done
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test tests/playwright/workshop-v791-strict-merge.spec.mjs tests/playwright/workshop-v791-ssp-route.spec.mjs --project=chromium
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workshop-v79-1-runtime-axe-route-evidence
+          path: |
+            test-results/playwright-report
+            test-results/playwright-results.json
+            test-results/playwright
+          if-no-files-found: warn
+          retention-days: 30
+  visual-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - name: Materialize exact Builder/Merger PR #113 Merge fixture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
+      - run: python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
+      - run: python modules/workshop/releases/v79.1/build_release.py
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test tests/playwright/workshop-v791-visual.spec.mjs --project=chromium
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workshop-v79-1-visual-evidence
+          path: test-results
+          retention-days: 30
+  windows-file-origin:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - name: Materialize exact Builder/Merger PR #113 Merge fixture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
+      - run: python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
+      - run: python modules/workshop/releases/v79.1/build_release.py
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install chromium
+      - run: npx playwright test tests/playwright/workshop-v791-file-smoke.spec.mjs --project=chromium
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workshop-v79-1-windows-file-evidence
+          path: test-results
+          retention-days: 30
+  deterministic-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Materialize exact Builder/Merger PR #113 Merge fixture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
+      - run: python modules/workshop/releases/v79.1/package_release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CMMC_L2_Gap_Workshop_v79.1_Complete_Deliverables
+          path: |
+            modules/workshop/releases/v79.1/cmmc_l2_gap_workshop_tool_v79.1.html
+            modules/workshop/releases/v79.1/dist/CMMC_L2_Gap_Workshop_v79.1_Complete_Deliverables.zip
+            modules/workshop/releases/v79.1/dist/FILE_INVENTORY.json
+            modules/workshop/releases/v79.1/dist/SHA256SUMS.txt
+          retention-days: 30
