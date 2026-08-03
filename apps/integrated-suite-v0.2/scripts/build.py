@@ -11,8 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / "build"
 DIST = ROOT / "dist"
-RELEASE = json.loads((ROOT / "release" / "release.json").read_text())
-REGISTRY = json.loads((ROOT / "contracts" / "registry.json").read_text())
+RELEASE = json.loads((ROOT / "release" / "release.json").read_text(encoding="utf-8"))
+REGISTRY = json.loads((ROOT / "contracts" / "registry.json").read_text(encoding="utf-8"))
 
 
 def normalize(text: str) -> str:
@@ -35,8 +35,8 @@ def main() -> None:
     BUILD.mkdir(exist_ok=True)
     DIST.mkdir(exist_ok=True)
     compile_typescript()
-    js = normalize((BUILD / "app.js").read_text())
-    css = normalize((ROOT / "src" / "styles.css").read_text())
+    js = normalize((BUILD / "app.js").read_text(encoding="utf-8"))
+    css = normalize((ROOT / "src" / "styles.css").read_text(encoding="utf-8"))
     release_json = json.dumps(RELEASE, sort_keys=True, separators=(",", ":")).replace("<", "\\u003c")
     registry_json = json.dumps(REGISTRY, sort_keys=True, separators=(",", ":")).replace("<", "\\u003c")
     script = normalize(
@@ -44,8 +44,8 @@ def main() -> None:
         f"window.__L2G_CONTRACT_REGISTRY__=Object.freeze({registry_json});\n"
         f"{js}"
     )
-    script_hash = base64.b64encode(hashlib.sha256(script.encode()).digest()).decode()
-    style_hash = base64.b64encode(hashlib.sha256(css.encode()).digest()).decode()
+    script_hash = base64.b64encode(hashlib.sha256(script.encode("utf-8")).digest()).decode("ascii")
+    style_hash = base64.b64encode(hashlib.sha256(css.encode("utf-8")).digest()).decode("ascii")
     csp = (
         "default-src 'none'; "
         f"script-src 'sha256-{script_hash}'; "
@@ -54,10 +54,10 @@ def main() -> None:
         "frame-src 'none'; child-src blob:; worker-src blob:; form-action 'none'; "
         "base-uri 'none'; media-src 'none'"
     )
-    html = normalize((ROOT / "src" / "template.html").read_text())
+    html = normalize((ROOT / "src" / "template.html").read_text(encoding="utf-8"))
     html = html.replace("__CSP__", csp).replace("__CSS__", css).replace("__JS__", script)
     artifact = DIST / RELEASE["artifact_name"]
-    artifact.write_text(html, newline="\n")
+    artifact.write_text(html, encoding="utf-8", newline="\n")
     manifest = {
         "kind": "l2g_integrated_suite_release_v1",
         "application": RELEASE["application"],
@@ -72,7 +72,7 @@ def main() -> None:
         "synthetic_only": True,
         "runtime_network_dependencies": 0,
     }
-    (DIST / "release-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    (DIST / "release-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     output = ROOT / "releases" / "v0.2.0"
     shutil.rmtree(output, ignore_errors=True)
     output.mkdir(parents=True)
@@ -81,7 +81,7 @@ def main() -> None:
     shutil.copy2(ROOT / "release" / "RELEASE_NOTES_v0.2.0.md", output / "RELEASE_NOTES.md")
     names = [artifact.name, "release-manifest.json", "RELEASE_NOTES.md"]
     checksums = [f"{sha256((output / name).read_bytes())}  {name}" for name in sorted(names)]
-    (output / "SHA256SUMS.txt").write_text("\n".join(checksums) + "\n")
+    (output / "SHA256SUMS.txt").write_text("\n".join(checksums) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(manifest, sort_keys=True))
 
 
