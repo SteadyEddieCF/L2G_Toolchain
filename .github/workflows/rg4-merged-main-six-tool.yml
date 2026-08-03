@@ -1,9 +1,16 @@
-name: Playwright QA
+name: RG-4 Merged-Main Six-Tool Validation
 
 on:
   pull_request:
-  push:
-    branches: [main]
+    paths:
+      - '.github/workflows/rg4-merged-main-six-tool.yml'
+      - '.github/workflows/playwright-qa.yml'
+      - 'package.json'
+      - 'contracts/registry.json'
+      - 'modules/**/current/release.json'
+      - 'suite/snapshots/**'
+      - 'tests/playwright/**'
+      - 'validation/rg4/merged-main/**'
   workflow_dispatch:
 
 permissions:
@@ -11,88 +18,78 @@ permissions:
   contents: read
 
 jobs:
-  playwright-qa:
-    name: playwright-qa
+  static-portable-identities:
+    name: static-portable-identities
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: '22', cache: npm}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - name: Materialize Control Center v0.3.4
-        run: python modules/control-center/releases/0.3.4/build_release.py
-      - name: Materialize Workshop legacy baselines
-        shell: bash
-        run: |
-          python modules/workshop/releases/v77/build_release.py
-          python modules/workshop/releases/v78/build_release.py
-          python modules/workshop/releases/v79/build_release.py
       - name: Materialize exact Builder/Merger v3.10.1 Merge fixture
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
-      - name: Materialize Workshop v79.1
-        shell: bash
-        run: |
-          python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
-          python modules/workshop/releases/v79.1/build_release.py
-      - name: Materialize SSP v1.9.6 through v1.9.17
-        shell: bash
-        run: |
-          for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
-            python "modules/ssp/releases/v${version}/materialize.py"
-          done
-      - name: Materialize Builder/Merger baselines and current release
-        shell: bash
-        run: |
-          python modules/builder-merger/releases/v3.10/materialize.py
-          python modules/builder-merger/releases/v3.10.1/materialize.py
-          python modules/builder-merger/releases/v3.10.1/validate_v3_10_1.py
-      - run: npm ci --no-audit --no-fund
-      - run: npx playwright install --with-deps chromium
-      - name: Run current six-tool runtime, axe-core, and governed-route tests
-        run: npm run test:qa
-      - if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-qa-report
-          path: |
-            test-results/playwright-report
-            test-results/playwright-results.json
-            test-results/playwright
-          if-no-files-found: warn
-          retention-days: 30
-
-  visual-regression:
-    name: visual-regression
-    runs-on: ubuntu-latest
-    timeout-minutes: 40
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: '22', cache: npm}
-      - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - name: Materialize current visual runtimes
+      - name: Materialize and verify current releases
         shell: bash
         run: |
           python modules/control-center/releases/0.3.4/build_release.py
-          python modules/workshop/releases/v77/build_release.py
+          python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
           python modules/workshop/releases/v79.1/build_release.py
+          python modules/workshop/releases/v79.1/tests/test_workshop_v791_static.py
+          python modules/workshop/releases/v79.1/tests/test_portable_materializer.py
+          python modules/builder-merger/releases/v3.10.1/materialize.py
+          python modules/builder-merger/releases/v3.10.1/validate_v3_10_1.py
           for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
             python "modules/ssp/releases/v${version}/materialize.py"
           done
-          python modules/builder-merger/releases/v3.10.1/materialize.py
-      - run: npm ci --no-audit --no-fund
-      - run: npx playwright install --with-deps chromium
-      - name: Compare current visual baselines
-        run: npm run test:visual
+          python validation/rg4/merged-main/verify_technical_baseline.py
+          python scripts/validate_toolchain.py
+      - name: Capture identity evidence
+        if: always()
+        run: python validation/rg4/merged-main/verify_technical_baseline.py > rg4-technical-baseline-result.json
       - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: visual-regression-report
+          name: rg4-merged-main-static-portable-identities
+          path: rg4-technical-baseline-result.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  rg4-joint-runtime:
+    name: rg4-joint-runtime
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - name: Materialize exact Builder/Merger v3.10.1 Merge fixture
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python modules/workshop/releases/v79.1/tests/materialize_exact_builder_pr113_fixture.py
+      - name: Materialize governed route runtimes
+        shell: bash
+        run: |
+          python modules/workshop/releases/v79/build_release.py
+          python modules/workshop/releases/v79.1/tests/generate_governance_fixtures.py
+          python modules/workshop/releases/v79.1/build_release.py
+          python modules/builder-merger/releases/v3.10/materialize.py
+          python modules/builder-merger/releases/v3.10.1/materialize.py
+          python modules/builder-merger/releases/v3.10.1/validate_v3_10_1.py
+          for version in 1.9.6 1.9.7 1.9.8 1.9.9 1.9.10 1.9.11 1.9.12 1.9.13 1.9.14 1.9.15 1.9.16 1.9.17; do
+            python "modules/ssp/releases/v${version}/materialize.py"
+          done
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Run exact Workshop, Builder/Merger, and SSP RG-4 matrix
+        run: npm run test:rg4-merged-main
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rg4-merged-main-joint-runtime
           path: |
             test-results/playwright-report
             test-results/playwright-results.json
@@ -100,34 +97,34 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-  windows-file-smoke:
-    name: windows-file-smoke
+  windows-current-file-origin:
+    name: windows-current-file-origin
     runs-on: windows-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: '22', cache: npm}
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
       - name: Materialize current portable runtimes
         shell: pwsh
         run: |
           python modules/control-center/releases/0.3.4/build_release.py
           python modules/workshop/releases/v79.1/build_release.py
+          python modules/builder-merger/releases/v3.10.1/materialize.py
           $versions = @('1.9.6','1.9.7','1.9.8','1.9.9','1.9.10','1.9.11','1.9.12','1.9.13','1.9.14','1.9.15','1.9.16','1.9.17')
           foreach ($version in $versions) {
             python "modules/ssp/releases/v$version/materialize.py"
           }
-          python modules/builder-merger/releases/v3.10.1/materialize.py
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install chromium
-      - name: Run native Windows file-origin smoke tests
+      - name: Run current six-tool file-origin routes
         run: npm run test:file
       - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: windows-file-smoke-report
+          name: rg4-merged-main-windows-file-origin
           path: |
             test-results/playwright-report
             test-results/playwright-results.json

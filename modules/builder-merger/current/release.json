@@ -5,29 +5,38 @@
   "runtime_path": "modules/builder-merger/releases/v3.10.1/L2G-BM_v3.10.1.html",
   "runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
   "runtime_size_bytes": 832972,
-  "status": "draft_corrective_candidate",
-  "next_action": "Run the exact corrected Workshop v79.1 to Builder/Merger v3.10.1 to Workshop v79.1 Orchestrator route before merge",
-  "recorded_at": "2026-08-01",
+  "status": "current_supplied_release",
+  "next_action": "Complete issue #101 final merged-main snapshot and RG-4 registry reconciliation; retain v3.9 as reserved for Advisor and Client Delivery Profiles",
+  "recorded_at": "2026-08-03",
   "release_identity": {
     "version": "v3.10.1",
     "issue": 106,
     "pull_request": 113,
     "focus": "Workshop Action and Ownership Preservation",
-    "baseline_commit": "69785ecd38f4d00345f27ca13e934dd0f688a1bf",
+    "reviewed_head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "merge_commit": "d3cd223befb3aa1b53b2feea291b9f38b8d2645e",
     "workbook_merge_package_kind": "l2g_workbook_merge_v1",
     "workbook_merge_package_version": "1.1",
     "preservation_extension_path": "workbook_source.workshop_governance_preservation_v1",
     "preservation_extension_schema": "1.0",
     "adjacent_runtime_change": false
   },
-  "candidate_validation": {
-    "repository": "pending_exact_head",
-    "runtime_and_axe": "pending_exact_head",
-    "visual_regression": "pending_exact_head",
-    "windows_file_origin": "pending_exact_head",
-    "portable_delivery": "passed_local",
-    "preservation_extension": "passed_local",
-    "joint_workshop_round_trip": "pending_orchestrator"
+  "promotion": {
+    "issue": 106,
+    "pull_request": 113,
+    "reviewed_head": "bbc8d3bea308a1655567780bea002bc8ef834d8a",
+    "merge_commit": "d3cd223befb3aa1b53b2feea291b9f38b8d2645e",
+    "verdict": "passed",
+    "validation": {
+      "repository": "passed",
+      "runtime_and_axe": "passed",
+      "visual_regression": "passed",
+      "windows_file_origin": "passed",
+      "portable_delivery": "passed",
+      "preservation_extension": "passed",
+      "exact_workshop_v79_1_round_trip": "passed",
+      "ssp_history_isolation": "passed"
+    }
   },
   "reserved_versions": {
     "v3.9": "Advisor and Client Delivery Profiles"
@@ -43,15 +52,26 @@
       "schema_version": "1.0",
       "fingerprint": "SHA-256 canonical JSON",
       "source_fingerprint_workbook_metadata": true,
-      "stability": "merged governance under issue #114"
+      "stability": "validated with Workshop v79.1"
     },
     "rg4_word_qa_sidecar": {
       "package_kind": "l2g_ssp_word_qa_sidecar_v1",
       "package_version": "1.0",
       "producer": "builder-merger",
+      "producer_release": "v3.10.1",
       "consumer": "ssp",
-      "stability": "proposal",
-      "validated": false
+      "consumer_release": "v1.9.17",
+      "stability": "validated",
+      "validated": true,
+      "validation_issue": 101,
+      "validation_pr": 118,
+      "validation_evidence_head": "3b74f16526f70de7d5972ee461189ff4fb9bb302"
     }
+  },
+  "issue_101_validation": {
+    "phase_1_evidence_head": "3b74f16526f70de7d5972ee461189ff4fb9bb302",
+    "focused_workflow_run": 30840723722,
+    "shared_playwright_run": 30840723846,
+    "verdict": "passed_pending_final_promotion_head"
   }
 }

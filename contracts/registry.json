@@ -1,7 +1,7 @@
 {
   "registry_version": "1.1",
   "status": "foundation",
-  "updated_at": "2026-07-29",
+  "updated_at": "2026-08-03",
   "contracts": [
     {"package_kind":"l2g_intake_package_v1","version":"1.0","producer":"docconverter","consumers":["workshop"],"stability":"stable"},
     {"package_kind":"l2g_scope_context_v1","version":"1.0","producer":"docconverter","consumers":["scoper","workshop"],"stability":"stable"},
@@ -20,6 +20,6 @@
     {"package_kind":"l2g_responsibility_overlay_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"foundation-draft"},
     {"package_kind":"l2g_responsibility_overlay_pack_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"advisory-preview"},
     {"package_kind":"l2g_responsibility_reconciliation_v1","version":"0.1","producer":"workshop","consumers":["advisor","control-center"],"stability":"advisory-working"},
-    {"package_kind":"l2g_ssp_word_qa_sidecar_v1","version":"1.0","producer":"builder-merger","consumers":["ssp"],"stability":"proposal"}
+    {"package_kind":"l2g_ssp_word_qa_sidecar_v1","version":"1.0","producer":"builder-merger","consumers":["ssp"],"stability":"validated","validation_issue":101,"validation_pr":118,"validation_evidence_head":"3b74f16526f70de7d5972ee461189ff4fb9bb302"}
   ]
 }

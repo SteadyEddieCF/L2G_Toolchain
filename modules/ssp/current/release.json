@@ -6,8 +6,8 @@
   "runtime_size_bytes": 2266611,
   "runtime_sha256": "bfd9d10a780809ba259406f0770641da6a40ac2d8a6d1e372b070d6f5273351b",
   "status": "current_supplied_release",
-  "next_action": "Complete issue #101 merged-main RG-4 joint validation, six-tool regression, suite snapshot, and registry promotion decision",
-  "recorded_at": "2026-07-31",
+  "next_action": "Complete issue #101 final promotion-head validation and register the current six-tool RG-4 snapshot while preserving working-data schema v1.9.11 and exactly 110 requirements",
+  "recorded_at": "2026-08-03",
   "operating_modes": {
     "default": "single-system",
     "optional": "modular-portfolio-advanced"
@@ -51,15 +51,21 @@
     "rg4_word_qa_sidecar": {
       "package_kind": "l2g_ssp_word_qa_sidecar_v1",
       "package_version": "1.0",
-      "stability": "proposal",
+      "stability": "validated",
       "contract_head": "cb5c41abf015d7eee095b10fabe2fc0059473e89",
       "schema_sha256": "3af01051c670ae088f4d6bbcbe1513808415bb5198002d62131a2095515f3c34",
       "qa_profile_sha256": "9aec3fd144e9f8ccfefdd3dd1ba5605ec0364127459f8cbded71904cf02b789c",
       "producer": "builder-merger",
-      "producer_release": "v3.10",
+      "producer_release": "v3.10.1",
+      "producer_runtime_sha256": "2879ee0a933b74c9f27b3c94c0034eafd06f13bc0a8e2d52ba064467b19bfd93",
       "consumer": "ssp",
       "consumer_release": "v1.9.17",
-      "validated": false
+      "validated": true,
+      "validation_issue": 101,
+      "validation_pr": 118,
+      "validation_evidence_head": "3b74f16526f70de7d5972ee461189ff4fb9bb302",
+      "focused_workflow_run": 30840723722,
+      "shared_playwright_run": 30840723846
     }
   },
   "working_data_schema": {
@@ -116,5 +122,12 @@
       "windows_file_origin": "passed",
       "independent_exact_artifact_handshake": "passed"
     }
+  },
+  "issue_101_validation": {
+    "phase_1_evidence_head": "3b74f16526f70de7d5972ee461189ff4fb9bb302",
+    "focused_workflow_run": 30840723722,
+    "shared_playwright_run": 30840723846,
+    "ssp_history_workflow_run": 30840723823,
+    "verdict": "passed_pending_final_promotion_head"
   }
 }
