@@ -36,12 +36,12 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Install locked v0.5 build dependency
         run: npm ci --prefix apps/integrated-suite-v0.5 --no-audit --no-fund
-      - name: Typecheck, build, validate, run domain, persistence, migration, crypto, and determinism tests
+      - name: Typecheck, build, validate, run domain, adapter, persistence, migration, crypto, and determinism tests
         run: npm test --prefix apps/integrated-suite-v0.5
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
-      - name: Run v0.5 intake, Interview Mode, Client disclosure, recovery, responsive, and accessibility tests
-        run: npx playwright test tests/playwright/integrated-suite-v05.spec.mjs --project=chromium
+      - name: Run v0.5 workflow, adapter, disclosure, recovery, responsive, and accessibility tests
+        run: npx playwright test tests/playwright/integrated-suite-v05.spec.mjs tests/playwright/integrated-suite-v05-import.spec.mjs --project=chromium
       - name: Upload v0.5 Linux candidate evidence
         if: always()
         uses: actions/upload-artifact@v4
