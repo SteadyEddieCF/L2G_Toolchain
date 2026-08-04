@@ -7,11 +7,12 @@ ROOT = Path(__file__).resolve().parents[1]
 RELEASE = json.loads((ROOT / "release" / "release.json").read_text(encoding="utf-8"))
 ARTIFACT = ROOT / "dist" / RELEASE["artifact_name"]
 HTML = ARTIFACT.read_text(encoding="utf-8")
+WORKER_CHUNK_POST = bool(re.search(r"worker\.postMessage\(\{\s*id,\s*file,\s*chunkSize:\s*(?:1048576|1024\s*\*\s*1024)\s*\}\)", HTML))
 
 checks = [
     ("single app root", HTML.count('id="app"') == 1),
     ("CSP blocks network", "default-src 'none'" in HTML and "connect-src 'none'" in HTML),
-    ("blob worker bounded", "worker-src blob:" in HTML and "new Worker" in HTML and bool(re.search(r"chunkSize\s*[:=]\s*1048576", HTML))),
+    ("blob worker bounded", "worker-src blob:" in HTML and "new Worker" in HTML and WORKER_CHUNK_POST),
     ("AES-GCM present", "AES-GCM" in HTML),
     ("PBKDF2 profile", "600000" in HTML and "PBKDF2" in HTML),
     ("encrypted recovery", "l2g_encrypted_recovery_v1" in HTML),
