@@ -5,7 +5,7 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable", "WebWorker"],
     "strict": true,
     "noImplicitOverride": true,
-    "noUncheckedIndexedAccess": false,
+    "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "useDefineForClassFields": true,
     "skipLibCheck": true,

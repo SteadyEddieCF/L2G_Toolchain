@@ -122,7 +122,7 @@ namespace L2G {
     try { engagement = isRecord(engagementRaw) && engagementRaw.schema_kind === "l2g_engagement_v1" ? engagementRaw as unknown as EngagementDomain : migrateLegacyEngagement(engagementRaw, raw.created_at || fallback); }
     catch { return null; }
     const evidenceRaw = stateRaw.evidence; const evidence = isRecord(evidenceRaw) && evidenceRaw.schema_kind === "l2g_evidence_index_v1" ? evidenceRaw as unknown as EvidenceDomain : deepClone(emptyEvidence);
-    const reviews = isRecord(stateRaw.reviews_actions) ? stateRaw.reviews_actions as unknown as ReviewsActionsRecord : { schema_version: "reviews_actions_v1", examples: [] };
+    const reviews: ReviewsActionsRecord = isRecord(stateRaw.reviews_actions) ? stateRaw.reviews_actions as unknown as ReviewsActionsRecord : { schema_version: "reviews_actions_v1", examples: [] };
     return { checkpoint_id: safeTypedId(raw.checkpoint_id,"checkpoint") ? raw.checkpoint_id : `checkpoint_migrated_${index + 1}`, name: sanitizePlainText(raw.name,120), created_at: isIsoDateTime(raw.created_at) ? raw.created_at : fallback, state: { engagement, evidence, reviews_actions: reviews, profile: "advisor", active_workspace: "overview", inspector_open: false, inspector_pinned: false, rail_collapsed: false } };
   }
 

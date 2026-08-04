@@ -150,6 +150,12 @@ namespace L2G {
     const prior = requireEvidenceSource(domain, priorId);
     if (!prior.fingerprint || prior.fingerprint.sha256 === staged.sha256) throw new Error("A revision requires changed source bytes.");
     const cleanRationale = sanitizePlainText(rationale, 8000); if (!cleanRationale.trim()) throw new Error("Revision rationale is required.");
+    if (supersede && prior.duplicate_group_ref) {
+      const group = domain.duplicate_groups.find(item => item.duplicate_group_id === prior.duplicate_group_ref);
+      const member = group?.members.find(item => item.source_ref === prior.evidence_id);
+      const otherActive = group?.members.some(item => item.source_ref !== prior.evidence_id && item.disposition !== "excluded" && domain.sources.some(source => source.evidence_id === item.source_ref && source.lifecycle === "active"));
+      if (group?.state === "resolved" && member?.disposition === "primary" && otherActive) throw new Error("Select and review a replacement duplicate-group primary before superseding this source.");
+    }
     const timestamp = nowIso();
     const revision: EvidenceSourceRecord = {
       evidence_id: newId("evidence"), display_label: sanitizePlainText(staged.display_label || `${prior.display_label} revision`, 300), client_label: sanitizePlainText(staged.client_label, 300), original_name: sanitizeEvidenceFilename(staged.original_name), collection_label: sanitizePlainText(staged.collection_label || prior.collection_label, 300),
@@ -274,7 +280,7 @@ namespace L2G {
       const sourceId = newId("evidence"); sourceByLegacyId.set(legacyId, sourceId);
       const source: EvidenceSourceRecord = {
         evidence_id: sourceId, display_label: sanitizePlainText(name.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " "), 300), client_label: "", original_name: sanitizeEvidenceFilename(name), collection_label: `Imported from ${sanitizeEvidenceFilename(selectedName)}`,
-        origin_kind: "legacy-package-record", media_type: firstText(raw, ["media_type","mime_type","type"]) || "application/octet-stream", extension: (/\.[A-Za-z0-9]{1,16}$/.exec(name)?.[0] ?? "").toLowerCase(),
+        origin_kind: validDigest ? "legacy-package-record" : "external-reference", media_type: firstText(raw, ["media_type","mime_type","type"]) || "application/octet-stream", extension: (/\.[A-Za-z0-9]{1,16}$/.exec(name)?.[0] ?? "").toLowerCase(),
         size_bytes: validDigest ? safeInteger(raw.size_bytes, 0) : 0, last_modified_ms: safeInteger(raw.last_modified_ms, 0), fingerprint: validDigest ? { algorithm: "SHA-256", sha256: validDigest } : null,
         lifecycle: "active", processing_state: "complete", review_state: validDigest ? "unreviewed" : "needs-attention", trust_state: validDigest ? "not-evaluated" : "exception-open", visibility: "advisor-only", tags: ["synthetic-import"],
         supersedes_source_ref: null, superseded_by_source_ref: null, duplicate_group_ref: null,
