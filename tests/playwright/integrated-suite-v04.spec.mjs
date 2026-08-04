@@ -107,7 +107,9 @@ test("requires explicit duplicate disposition and target-owned candidate publica
   const after = await page.evaluate(() => window.__L2G_TEST__.store.document.state.engagement.identity.delivery_context);
   expect(after).toBe(before);
   await page.getByRole("button", { name: /Reviews & Actions/ }).click();
-  await expect(page.getByRole("heading", { name: "Engagement candidate" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Engagement candidate" })).toHaveCount(2);
+  const published = await page.evaluate(() => window.__L2G_TEST__.store.document.state.engagement.candidates.some(item => item.source_kind === "evidence-index" && item.state === "candidate"));
+  expect(published).toBe(true);
 });
 
 test("previews and atomically applies a recognized synthetic package", async ({ page }) => {
@@ -129,6 +131,7 @@ test("previews and atomically applies a recognized synthetic package", async ({ 
 
 test("creates encrypted save, locks, and restores encrypted recovery", async ({ page }) => {
   await openV04(page);
+  await page.evaluate(() => Object.defineProperty(window, "showSaveFilePicker", { value: undefined, configurable: true }));
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Save encrypted" }).click();
   await enterPassphrase(page, "Protect project", syntheticPassphrase, true);
