@@ -30,6 +30,7 @@
     "src/recovery.ts",
     "src/hash-worker.ts",
     "src/v05-workspaces.ts",
+    "src/v05-authority-ui.ts",
     "src/app.ts"
   ]
 }
