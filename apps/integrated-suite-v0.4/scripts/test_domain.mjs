@@ -68,7 +68,7 @@ const duplicateCreated = L.registerStagedSources(document.state.evidence, [dupli
 assert.ok(duplicateCreated.duplicate_group_ref);
 const duplicateGroup = document.state.evidence.duplicate_groups.find(group => group.duplicate_group_id === duplicateCreated.duplicate_group_ref);
 assert.ok(duplicateGroup);
-const dispositions = Object.fromEntries(duplicateGroup.members.map((member, index) => [member.source_ref, index === 0 ? "primary" : "duplicate"]));
+const dispositions = Object.fromEntries(duplicateGroup.members.map(member => [member.source_ref, member.source_ref === created[0].evidence_id ? "primary" : "duplicate"]));
 L.setDuplicateGroupDisposition(document.state.evidence, duplicateGroup.duplicate_group_id, dispositions, "Explicit synthetic duplicate disposition.", "advisor");
 assert.equal(duplicateGroup.state, "resolved");
 const revisionStaged = L.createStagedSource(fakeFile2, hash2, document.state.evidence);
