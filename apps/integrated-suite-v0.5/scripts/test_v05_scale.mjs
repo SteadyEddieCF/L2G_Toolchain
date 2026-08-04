@@ -41,7 +41,7 @@ const baseItem = instrument.items[0];
 
 const scaleItems = Array.from({ length: 500 }, (_, index) => ({
   ...structuredClone(baseItem),
-  item_id: L.newId("intake_item"),
+  item_id: index === 0 ? baseItem.item_id : L.newId("intake_item"),
   section_ref: section.section_id,
   order: index + 1,
   prompt: `Synthetic bounded intake question ${String(index + 1).padStart(3, "0")}`,
@@ -128,21 +128,6 @@ interviews.sessions = Array.from({ length: 25 }, (_, index) => ({
 }));
 interviews.session_questions = [];
 interviews.participant_statements = [];
-interviews.advisor_notes = Array.from({ length: 200 }, (_, index) => ({
-  advisor_note_id: L.newId("advisor_note"),
-  session_ref: interviews.sessions[index % interviews.sessions.length].session_id,
-  session_question_ref: L.newId("session_question"),
-  kind: "observation",
-  title: `Synthetic internal note ${index + 1}`,
-  text: `Synthetic Advisor-only scale detail ${index + 1}.`,
-  visibility: "advisor-only",
-  lifecycle: "active",
-  provenance: L.createV05Provenance("synthetic-scale", `note-${index + 1}`, L.nowIso(), "advisor"),
-  created_at: L.nowIso(),
-  updated_at: L.nowIso()
-}));
-// Notes require valid session-question references; keep the volume test focused on
-// instruments, questions, plans, and sessions while testing note filtering separately.
 interviews.advisor_notes = [];
 
 L.validateProjectDocument(document, true);
