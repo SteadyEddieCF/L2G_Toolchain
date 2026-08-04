@@ -63,7 +63,7 @@ A file name is not a durable identity. A successful hash comparison proves only 
 24. User-selected files are processed locally. File bytes are read in bounded slices by a cancellable Web Worker using a bundled incremental SHA-256 implementation; source bytes are not copied into project state, browser recovery, history, logs, screenshots, or CI artifacts.
 25. The portable baseline uses ordinary browser file selection and the File API. Optional browser save APIs remain capability enhancements and are not required for evidence relinking.
 26. The implementation must reject a single source larger than 2 GiB and a selection batch larger than 500 files before hashing begins. These limits are a v0.4 safety baseline, not a claim that every permitted batch will be convenient on every endpoint.
-27. Hashing progress, cancellation, failure, and retry are visible. Cancelling or failing a hash operation leaves governed state unchanged.
+27. Hashing progress, cancellation, failure, and retry are visible. Cancelling, failing, or rejecting a staged hash operation before an explicit commit leaves governed state, history, and persistent receipts unchanged.
 28. Registering selected material is a two-step command: hash and stage first, then explicitly add accepted source records after duplicate and metadata review.
 
 ### Relink Evidence and revisions
@@ -74,7 +74,7 @@ A file name is not a durable identity. A successful hash comparison proves only 
 32. Session associations are cleared on project lock, reload, project close, failed unlock, or explicit unlink.
 33. A hash mismatch never replaces the selected source record. The permitted choices are Cancel, create a new revision source, or associate the bytes with another existing exact-hash source.
 34. Creating a new revision creates a new `evidence_id`, preserves the prior record, and adds a `revision-of` relationship plus supersession links when the user explicitly chooses to supersede the prior version.
-35. Relink and revision actions preserve attempted metadata, resulting hash, decision, rationale, timestamp, profile label, and source references in verification receipts and history.
+35. Completed, explicitly confirmed relink and revision decisions preserve selected metadata, resulting hash, decision, rationale, timestamp, profile label, and source references in verification receipts and history. A cancelled mismatch or worker error remains transient and writes no governed record.
 36. No passphrase, key, original bytes, absolute path, or persistent file handle appears in a verification receipt.
 
 ### Duplicate detection and disposition
@@ -102,7 +102,7 @@ A file name is not a durable identity. A successful hash comparison proves only 
 51. The Evidence search index is rebuilt in browser memory on project open, unlock, profile change, and governed Evidence mutation.
 52. The search index is built only after profile filtering. Hidden records never contribute terms, counts, suggestions, snippets, empty states, prior-query completion, or inspector content.
 53. The index is not stored in `.l2g`, IndexedDB recovery, localStorage, history, or telemetry. Search queries and result selections are not persisted.
-54. Searchable inputs are approved display labels, client labels where applicable, tags, bounded derived summaries, flat structured fields, source-location labels, relationship labels, and status terms visible to the active profile.
+54. Advisor and Reviewer search may index visible display labels, original names, client labels, tags, bounded derived summaries, flat structured fields, source-location labels, relationship labels, and visible status terms. Client search indexes only explicit client labels plus separately client-visible tags, bounded derived content, location labels, relationship labels, and approved status terms; Advisor display labels are not a Client fallback.
 55. Raw original filenames, parser diagnostics, provenance, internal rationale, exception details, and candidate proposals are excluded from Client search.
 56. Results return references to profile-safe projections, not mutable Evidence authority objects.
 
@@ -123,7 +123,7 @@ A file name is not a durable identity. A successful hash comparison proves only 
 66. The adapter records an immutable import receipt containing package identity, package SHA-256, size, selected source name, registry version, warnings, normalized candidate references, and disposition. Package bytes are not retained.
 67. Imported document metadata, locations, derived summaries, structured fields, questions, diagrams, security-evidence records, or meeting segments remain candidates until the Advisor explicitly applies the import preview.
 68. Adapters preserve source document identifiers and source locations when valid, but integrated Evidence IDs are separately generated and linked through provenance.
-69. Unknown fields, unsupported versions, missing source traceability, invalid identifiers, oversized content, ambiguous source references, and malformed packages are rejected or routed to the Exception & Trust Queue without partial mutation.
+69. Unknown fields, unsupported versions, missing source traceability, invalid identifiers, oversized content, ambiguous source references, and malformed packages are rejected or routed to the Exception & Trust Queue without partial mutation. An Advisor may explicitly apply a reviewed valid subset; that selected subset commits atomically and the receipt records excluded/rejected rows.
 70. Adapters do not infer scope boundaries, provider responsibility, practice conclusions, evidence sufficiency, SSP narratives, or client approval.
 71. Stable legacy packages and standalone runtimes are not changed by v0.4.
 
