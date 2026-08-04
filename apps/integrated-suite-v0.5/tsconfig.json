@@ -21,6 +21,7 @@
     "src/evidence.ts",
     "src/pre-engagement.ts",
     "src/interviews.ts",
+    "src/v05-targets.ts",
     "src/v05-project-types.ts",
     "src/project.ts",
     "../integrated-suite-v0.3/src/encryption.ts",
