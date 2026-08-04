@@ -1,27 +1,46 @@
-# L2G Integrated Suite v0.4.0 — Evidence Catalog Core
+# L2G Integrated Suite v0.5.0 — Pre-Engagement and Interview Sessions
 
-This additive source tree implements ADR-0009 and the reviewed `l2g_evidence_index_v1` contract while preserving the v0.3 Engagement authority and v0.2 encrypted-project safety foundation.
+## Status
 
-## Build and test
+Additive implementation work under issue #133 and ADR-0010. This directory is not the current supplied release until the complete v0.5 acceptance matrix passes and the current pointer is separately promoted.
 
-```bash
-npm ci
-npm test
-```
+The implementation remains synthetic-only and does not authorize production, client, FCI, or CUI data.
 
-The deterministic build produces one portable HTML under `dist/` and a release package under `releases/v0.4.0/`.
+## Exact baseline
 
-## Included
+The directory was seeded from the exact promoted v0.4 source blobs after the v0.5 design gate merged at `cca2acef47dd4427eb1cd8620f56c42ff15f786b`.
 
-- canonical reference-only Evidence source records and exact SHA-256 byte identity;
-- cancellable bounded-slice local hashing;
-- staged atomic registration, exact relink, revisions, duplicate disposition, locations, bounded derived records, relationships, and receipts;
-- transient profile-filtered search and Client non-disclosure;
-- target-owned Engagement candidate publication;
-- strict stable-package preview/apply adapters;
-- encrypted save/open/recovery, lock, history, checkpoints, Undo, Redo, and v0.3 migration;
-- restrictive CSP, zero runtime network dependencies, deterministic build, and synthetic validation.
+Unchanged v0.4 encryption, recovery, Engagement, Evidence, hashing, CSS, template, build, and validation files were copied by Git blob identity rather than reconstructed. This preserves the promoted baseline while v0.5 changes remain additive and reviewable.
 
-## Qualification
+## Implemented domain foundation
 
-Synthetic data only. Original evidence stays outside the project. Hash equality is not authenticity or evidence sufficiency. Presentation profiles are not security roles. This release does not authorize production, client, FCI, or CUI data and does not establish readiness, compliance, implementation, risk, scoring, certification, or Met/Not Met.
+Current implementation work includes:
+
+- shared strict v0.5 plain-text, identifier, timestamp, enum, provenance, reference, scalar-field, limit, visibility, and frozen-projection primitives;
+- canonical `l2g_pre_engagement_v1` pure domain with requests, versioned instruments, immutable assignment snapshots, submissions, typed responses, response-origin enforcement, exceptions/conflicts, factual completeness, candidates, receipts, profile-safe projections, and deterministic next work;
+- canonical `l2g_interview_sessions_v1` pure domain with versioned questions, immutable plan snapshots, one-active-session enforcement, session questions, participant statements, Advisor-only notes, exact-version confirmations, summaries, follow-ups, parking-lot records, candidates, receipts, profile-safe projections, and deterministic next work;
+- explicit Start, navigate, Pause, Resume, Complete, Cancel, statement, Advisor-note, confirmation, and candidate commands;
+- adversarial domain tests for origin confusion, immutable snapshot mismatch, Advisor-note leakage, one-active-session enforcement, pause/resume, exact-version confirmation, imported-context attribution, frozen projections, and source-domain candidate non-acceptance.
+
+## Not yet promoted or complete
+
+The current implementation branch still requires:
+
+- JSON schemas and schema fixtures;
+- project-state integration and v0.1-v0.4 migration into empty v0.5 domains;
+- exact archive serialization/integrity coverage for both new domain files;
+- checkpoint/history wiring for session lifecycle and candidate transitions;
+- Engagement/Evidence target-owned candidate adapters;
+- strict intake/meeting/questionnaire preview/apply adapters;
+- Pre-Engagement, Session Planner, Interview Mode, Client Presentation Mode, and post-session UI;
+- responsive, accessibility, leakage, recovery, migration, malformed-input, scale, deterministic-build, Linux, native Windows `file://`, and complete suite non-regression evidence;
+- deterministic release package, SBOM, validation report, SHA identity, release notes, and current-pointer promotion.
+
+## Safety boundaries
+
+- Original evidence remains external to the project.
+- Imported content never becomes a client answer or live participant statement automatically.
+- Raw Advisor notes remain exactly Advisor-only and are excluded before Client projection, count, search, render, inspector, focus, and accessibility-tree construction.
+- Client confirmations are locally asserted exact-version facilitation records, not authenticated identity, electronic signatures, or broad client approval.
+- Agenda progress and Intake Completeness are factual work indicators, not readiness, compliance, risk, evidence-sufficiency, certification, scoring, implementation, or Met/Not Met conclusions.
+- Audio/video capture, microphone/camera access, speech-to-text, automated transcription, meeting bots, AI-generated answers/summaries, hidden scoring, automatic question acceptance, and automatic assessment conclusions are excluded.
