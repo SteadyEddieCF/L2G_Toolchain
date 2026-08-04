@@ -1,0 +1,59 @@
+name: Integrated Suite Pre-Engagement and Interview v0.5
+
+on:
+  pull_request:
+    paths:
+      - 'apps/integrated-suite-v0.5/**'
+      - 'apps/integrated-suite-v0.2/src/util.ts'
+      - 'apps/integrated-suite-v0.2/src/zip.ts'
+      - 'apps/integrated-suite-v0.2/contracts/registry.json'
+      - 'apps/integrated-suite-v0.3/src/encryption.ts'
+      - '.github/workflows/integrated-suite-v05.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v05-domain-foundation-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/integrated-suite-v0.5/package-lock.json
+      - name: Install locked v0.5 TypeScript dependency
+        run: npm ci --prefix apps/integrated-suite-v0.5 --no-audit --no-fund
+      - name: Strict TypeScript check
+        run: npm run typecheck --prefix apps/integrated-suite-v0.5
+      - name: Compile isolated domain harness
+        run: npx --prefix apps/integrated-suite-v0.5 tsc -p apps/integrated-suite-v0.5/tsconfig.domain-test.json
+      - name: Run inherited v0.4 non-regression domain tests
+        run: node apps/integrated-suite-v0.5/scripts/test_domain.mjs
+      - name: Run v0.5 Pre-Engagement and Interview domain tests
+        run: node apps/integrated-suite-v0.5/scripts/test_v05_domains.mjs
+
+  v05-domain-foundation-windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/integrated-suite-v0.5/package-lock.json
+      - name: Install locked v0.5 TypeScript dependency
+        run: npm ci --prefix apps/integrated-suite-v0.5 --no-audit --no-fund
+      - name: Strict TypeScript check on Windows
+        run: npm run typecheck --prefix apps/integrated-suite-v0.5
+      - name: Compile isolated domain harness on Windows
+        run: npx --prefix apps/integrated-suite-v0.5 tsc -p apps/integrated-suite-v0.5/tsconfig.domain-test.json
+      - name: Run inherited and v0.5 domain tests on Windows
+        shell: pwsh
+        run: |
+          node apps/integrated-suite-v0.5/scripts/test_domain.mjs
+          node apps/integrated-suite-v0.5/scripts/test_v05_domains.mjs
