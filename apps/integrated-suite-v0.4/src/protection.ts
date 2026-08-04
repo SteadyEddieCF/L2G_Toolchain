@@ -1,5 +1,6 @@
 namespace L2G {
   const PROTECTED_OUTER_PATHS = ["ciphertext.bin", "envelope.json"];
+  const GENERIC_UNLOCK_ERROR = "The passphrase is incorrect or the encrypted content was modified.";
 
   export async function deriveProjectKeys(passphrase: string): Promise<SessionProtection> {
     return { baseKey: await importPassphrase(passphrase) };
@@ -28,7 +29,12 @@ namespace L2G {
   ): Promise<{ document: ProjectDocument; legacy: boolean; metadata: EnvelopeMetadata }> {
     if (!protection.baseKey) throw new Error("The encrypted session is not unlocked.");
     if (bytes.length > ENCRYPTED_LIMITS.maxOuterBytes) throw new Error("Encrypted project exceeds the supported size limit.");
-    const entries = readStoredZip(bytes);
+    let entries: ZipEntry[];
+    try {
+      entries = readStoredZip(bytes);
+    } catch {
+      throw new Error(GENERIC_UNLOCK_ERROR);
+    }
     const entryMap = new Map(entries.map(entry => [entry.path, entry.data] as const));
     const paths = [...entryMap.keys()].sort();
     if (paths.length !== PROTECTED_OUTER_PATHS.length || paths.some((path, index) => path !== PROTECTED_OUTER_PATHS[index])) {
@@ -51,10 +57,10 @@ namespace L2G {
         ciphertext.slice().buffer
       ));
     } catch {
-      throw new Error("The passphrase is incorrect or the encrypted content was modified.");
+      throw new Error(GENERIC_UNLOCK_ERROR);
     }
     if (plaintext.length !== metadata.inner.plaintext_bytes || await sha256Hex(plaintext) !== metadata.inner.plaintext_sha256) {
-      throw new Error("The passphrase is incorrect or the encrypted content was modified.");
+      throw new Error(GENERIC_UNLOCK_ERROR);
     }
     const result = await deserializeInnerProject(plaintext, allowLegacy);
     rememberPurposeKey(protection, expectedPurpose, key, salt);
