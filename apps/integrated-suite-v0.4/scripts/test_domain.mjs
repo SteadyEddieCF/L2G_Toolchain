@@ -73,6 +73,9 @@ L.setDuplicateGroupDisposition(document.state.evidence, duplicateGroup.duplicate
 assert.equal(duplicateGroup.state, "resolved");
 const revisionStaged = L.createStagedSource(fakeFile2, hash2, document.state.evidence);
 revisionStaged.display_label = "Synthetic Evidence One Revision";
+assert.throws(() => L.createEvidenceRevision(document.state.evidence, created[0].evidence_id, revisionStaged, true, "Changed synthetic bytes retained as a new revision.", "advisor"), /replacement duplicate-group primary/i);
+const replacementDispositions = Object.fromEntries(duplicateGroup.members.map(member => [member.source_ref, member.source_ref === duplicateCreated.evidence_id ? "primary" : "duplicate"]));
+L.setDuplicateGroupDisposition(document.state.evidence, duplicateGroup.duplicate_group_id, replacementDispositions, "Selected a reviewed replacement primary before revising the prior source.", "advisor");
 const revision = L.createEvidenceRevision(document.state.evidence, created[0].evidence_id, revisionStaged, true, "Changed synthetic bytes retained as a new revision.", "advisor");
 assert.equal(created[0].lifecycle, "superseded");
 assert.equal(revision.supersedes_source_ref, created[0].evidence_id);
@@ -142,10 +145,13 @@ assert.notDeepEqual(encryptedA, encryptedB);
 assert.equal(new TextDecoder().decode(encryptedA).includes("Synthetic Evidence One"), false);
 const decrypted = await L.decryptProjectBytes(encryptedA, await L.deriveProjectKeys(passphrase), "portable-project", true);
 assert.equal(decrypted.document.state.evidence.sources.length, document.state.evidence.sources.length);
-await assert.rejects(() => L.decryptProjectBytes(encryptedA, await L.deriveProjectKeys("wrong-passphrase"), "portable-project", true), /Unable to unlock/);
+const wrongKeys = await L.deriveProjectKeys("wrong-passphrase");
+await assert.rejects(() => L.decryptProjectBytes(encryptedA, wrongKeys, "portable-project", true), /passphrase is incorrect|modified/i);
 const tampered = encryptedA.slice(); tampered[tampered.length - 1] ^= 1;
-await assert.rejects(() => L.decryptProjectBytes(tampered, await L.deriveProjectKeys(passphrase), "portable-project", true), /Unable to unlock|unsupported|invalid|mismatch/i);
-await assert.rejects(() => L.decryptProjectBytes(encryptedA, await L.deriveProjectKeys(passphrase), "browser-recovery", false), /Unable to unlock|purpose/i);
+const tamperKeys = await L.deriveProjectKeys(passphrase);
+await assert.rejects(() => L.decryptProjectBytes(tampered, tamperKeys, "portable-project", true), /incorrect|modified|unsupported|invalid|mismatch|zip/i);
+const replayKeys = await L.deriveProjectKeys(passphrase);
+await assert.rejects(() => L.decryptProjectBytes(encryptedA, replayKeys, "browser-recovery", false), /purpose|unsupported/i);
 L.clearSessionProtection(keys);
 
 const malformed = structuredClone(document);
