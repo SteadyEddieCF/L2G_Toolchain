@@ -24,6 +24,7 @@ This roadmap records the current Integrated Suite release and the bounded sequen
 - current standalone module releases remain authoritative and independently distributable
 - governed standalone product/runtime compatibility baseline: `85d6e783a250b373cd4b9ea356e4c341336f9259`
 - next bounded release: v0.5.0 issue #133, Pre-Engagement and Interview Sessions
+- v0.5 implementation authority begins only after the ADR-0010 design package is reviewed and merged
 
 ## Promoted release history
 
@@ -39,7 +40,7 @@ This roadmap records the current Integrated Suite release and the bounded sequen
 | Sequence | Release | Working title | Primary outcome | Authority and safety boundary | Status |
 |---:|---|---|---|---|---|
 | 1 | **v0.4.0** | Evidence Catalog Core | Reference-only source records, SHA-256 identity, relink, exact duplicates, revisions, source locations, bounded derived summaries, transient search, candidate mappings, and stable package adapters | Evidence owns source identity/provenance; originals remain external; no automatic Scope/Practice/SSP or sufficiency conclusions | **Current — merged by PR #132** |
-| 2 | **v0.5.0** | Pre-Engagement and Interview Sessions | Intake requests, questionnaires, inventories, meeting/session records, Interview Mode, attendees, questions, responses, notes, follow-ups, and candidate outputs | Pre-Engagement and Interview records retain their authority; outputs remain candidates until owning domains explicitly accept them | **Design gate — issue #133** |
+| 2 | **v0.5.0** | Pre-Engagement and Interview Sessions | Intake requests, questionnaires, inventories, immutable assignments, submissions/responses, meeting/session records, Interview Mode, attendees, questions, statements, notes, confirmations, summaries, follow-ups, and candidate outputs | Pre-Engagement and Interview Sessions are separate authorities; outputs remain candidates until owning domains explicitly accept them | **Design gate — issue #133 / ADR-0010 package proposed** |
 | 3 | **v0.6.0** | Scope Vertical Slice | Proposed boundary, systems, assets, providers, data flows, assumptions, decisions, diagrams, and legacy Scoper compatibility | Scope owns authoritative scope records; Evidence and interviews may propose but not directly mutate Scope | Planned |
 | 4 | **v0.7.0** | Practice Review Vertical Slice | Facilitated practice review, evidence requests, gaps, recommendations, actions, blockers, responsibility discussion, provider follow-up, and Workshop compatibility | Practice Review owns facilitated conclusions; no automated Met/Not Met, readiness, compliance, or certification claim | Planned |
 | 5 | **v0.8.0** | SSP Vertical Slice | Governed SSP narratives, inheritance, baselines, conflicts, Needs Attention, review history, and SSP handoff/return compatibility | SSP owns governed SSP content; linked inputs cannot silently overwrite narratives | Planned |
@@ -53,15 +54,28 @@ This roadmap records the current Integrated Suite release and the bounded sequen
 
 Issue #133 requires the following records to merge before implementation begins:
 
-- an architecture decision for Pre-Engagement and Interview Session authority;
-- field-level contracts for intake, questionnaire/inventory, question-plan, session, response/note, follow-up, and candidate records;
-- an Interview Mode UX prototype/usability handoff reconciled against actual advisor workflows;
-- profile-safe raw-note versus approved-client-summary presentation rules;
-- compatibility-adapter rules for recognized meeting, intake, and questionnaire packages;
-- a v0.5 threat model covering sensitive notes, interrupted sessions, stale question plans, misleading summaries, and accidental Client-view disclosure;
-- an exact synthetic acceptance matrix covering preparation, facilitation, pause/resume, candidate publication, target non-mutation, migration, accessibility, and local `file://` operation.
+- `docs/architecture/adr/ADR-0010-pre-engagement-and-interview-sessions.md`;
+- `docs/integrated-suite/L2G_Pre_Engagement_v1_Contract_v1.md`;
+- `docs/integrated-suite/L2G_Interview_Sessions_v1_Contract_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.5.0_Pre_Engagement_Interview_UX_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.5.0_Threat_Model_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.5.0_Acceptance_v1.md`;
+- reconciled planning README, decision/risk register, and rolling roadmap.
 
-The v0.5 design must preserve Engagement and Evidence authority, keep imported context low-authority until explicit review, distinguish direct participant statements from advisor observations and summaries, and exclude audio/video recording, automated transcription, AI-generated answers, scoring, and assessment conclusions.
+The design package makes these bounded decisions:
+
+1. Pre-Engagement and Interview Sessions are separate governed domain documents at `domains/pre-engagement.json` and `domains/interview-sessions.json`.
+2. Engagement remains authoritative for participants/organizations and planning identity; Evidence remains authoritative for source identity/provenance.
+3. Intake responses, imported context, participant statements, advisor notes, confirmations, and summaries are different record types and cannot silently replace one another.
+4. Raw advisor notes remain Advisor-only in v0.5 and are removed before Client rendering, counting, search, inspector, focus restoration, or accessibility-tree construction.
+5. Instruments, assignments, questions, and session plans use immutable version/snapshot rules; stale plans require explicit review.
+6. At most one Interview session may be In progress or Paused. Start, Pause, and End create named checkpoints; Pause preserves valid drafts without publishing or approving them.
+7. Client confirmations are locally asserted facilitation records bound to an exact statement/summary version, not authenticated identity or electronic signatures.
+8. Source-domain candidate creation never mutates target accepted state. Engagement/Evidence decisions remain target-owned; future target candidates remain queued.
+9. `l2g_intake_package_v1`, `l2g_meeting_context_v1`, and relevant current questionnaire/context content enter through strict low-authority preview/apply adapters. `l2g_scope_context_v1` may inform question preparation but remains non-authoritative for Scope.
+10. The first Interview implementation uses one local application with profile-sensitive presentation. Optional second-display/window behavior remains deferred.
+11. Microphone/camera capture, recording, speech-to-text, automated transcription, AI-generated answers, automatic suggestions entering the agenda, hidden scoring, and automatic assessment conclusions are excluded.
+12. v0.5 remains synthetic-only and must pass exact-head Linux and native Windows `file://`, accessibility, profile-leakage, interrupted-session recovery, migration, zero-network, deterministic-build, public-hygiene, registered-route, and standalone non-regression gates.
 
 ## Release-wide acceptance pattern
 
@@ -91,7 +105,10 @@ Every release must have:
 - Original evidence remains reference-only by default. Embedding evidence requires a separately approved security and size model.
 - A hash match proves byte equality only; it does not prove authenticity, relevance, currency, or sufficiency.
 - Presentation profiles do not create access control or a safe client distribution artifact. Client distribution requires curated export.
-- Interview notes and responses must preserve statement type and provenance; summaries cannot silently replace raw source records.
+- Intake answers, interview statements, advisor notes, confirmations, and summaries must preserve record type, source, version, and provenance.
+- A facilitator summary cannot silently replace raw statements or notes.
+- Imported meeting context is not direct participant testimony.
+- Paused-session recovery cannot create a second active session or duplicate captured drafts.
 - No release may infer readiness, compliance, certification, evidence sufficiency, scoring, risk, implementation, or Met/Not Met without an explicitly approved domain rule and human decision.
 
 ## Rolling-roadmap maintenance

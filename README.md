@@ -6,7 +6,7 @@ Monorepo for independently versioned, local/offline CMMC L2G modules, package co
 
 | Product or module | Current supplied release | Next bounded action |
 |---|---:|---|
-| **L2G Integrated Suite** | **v0.4.0** | v0.5.0 Pre-Engagement and Interview Sessions design is governed by issue #133; implementation requires accepted domain contracts, Interview Mode UX, threat model, and exact acceptance matrix |
+| **L2G Integrated Suite** | **v0.4.0** | Review and merge the v0.5.0 Pre-Engagement and Interview Sessions ADR-0010 design package under issue #133; no implementation begins before that design gate merges |
 | L2G Control Center | v0.3.4 | v0.4 read-only action/blocker and regression-overview synchronization remains eligible for a separately bounded issue; no downstream authority transfer |
 | DocConverter-L2G | v7.9.5.1 | Preserve the exact runtime and registered McFirecoal v1.2.0 handshake baseline until a concrete extraction or package defect is demonstrated |
 | L2G Scoper | v3.12 | Preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
@@ -30,13 +30,15 @@ L2G Integrated Suite v0.4.0 Evidence Catalog Core was promoted by PR #132 and me
 - current data boundary: synthetic-only; not authorized for production, client, FCI, or CUI data
 - current pointer: `apps/integrated-suite/current_release.json`
 - rolling roadmap: `docs/integrated-suite/L2G_Integrated_Suite_Rolling_10_Release_Roadmap_v1.md`
-- next design gate: issue #133, v0.5.0 Pre-Engagement and Interview Sessions
+- next design gate: issue #133 and ADR-0010, v0.5.0 Pre-Engagement and Interview Sessions
 
 The current Integrated Suite provides the shared shell and eight workflow workspaces; Advisor, Client, and Reviewer presentation profiles; encrypted portable projects and encrypted browser recovery; command history, Undo/Redo, checkpoints, and lock/unlock; canonical Engagement identity and planning records; canonical reference-only Evidence source identity, fingerprints, relink, revisions, duplicate disposition, source locations, bounded derived records, target-owned candidates, profile-filtered transient search, and reviewed stable-package adapters; restrictive CSP; deterministic build; SBOM; and adversarial project validation.
 
-Original evidence remains outside the `.l2g` project. SHA-256 establishes byte equality only, browser file associations remain session-only, changed bytes create new source revisions, and imported or interview-derived information cannot silently mutate another domain. Existing standalone module releases remain authoritative and independently distributable.
+The v0.5 design package proposes separate `l2g_pre_engagement_v1` and `l2g_interview_sessions_v1` authorities. It preserves immutable intake/question/session snapshots, separates participant statements from advisor notes and summaries, keeps raw advisor notes out of Client projections, checkpoints live-session Start/Pause/End, and requires target-owned candidate decisions. The design package changes no runtime source, schema JSON, current pointer, stable package contract, or standalone module until it is reviewed and merged.
 
-No current Integrated Suite release authorizes production, client, FCI, or CUI data or establishes readiness, compliance, assessment, certification, scoring, risk, evidence sufficiency, implementation, or Met/Not Met conclusions. Presentation profiles remain non-security modes and are not safe client-distribution artifacts.
+Original evidence remains outside the `.l2g` project. SHA-256 establishes byte equality only, browser file associations remain session-only, changed bytes create new source revisions, and imported, intake, or interview-derived information cannot silently mutate another domain. Existing standalone module releases remain authoritative and independently distributable.
+
+No current Integrated Suite release authorizes production, client, FCI, or CUI data or establishes readiness, compliance, assessment, certification, scoring, risk, evidence sufficiency, implementation, or Met/Not Met conclusions. Presentation profiles remain non-security modes and are not safe client-distribution artifacts. Client confirmations planned for v0.5 are locally asserted facilitation records, not authenticated identity or electronic signatures.
 
 ## Current contract and suite baseline
 
