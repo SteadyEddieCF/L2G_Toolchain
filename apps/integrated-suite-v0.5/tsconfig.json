@@ -32,6 +32,7 @@
     "src/v05-workspaces.ts",
     "src/v05-authority-ui.ts",
     "src/v05-import-ui.ts",
+    "src/v05-labels.ts",
     "src/app.ts"
   ]
 }
