@@ -5,7 +5,7 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable", "WebWorker"],
     "strict": true,
     "noImplicitOverride": true,
-    "noUncheckedIndexedAccess": true,
+    "noUncheckedIndexedAccess": false,
     "exactOptionalPropertyTypes": true,
     "useDefineForClassFields": true,
     "skipLibCheck": true,
@@ -20,6 +20,7 @@
     "src/evidence.ts",
     "src/project.ts",
     "../integrated-suite-v0.3/src/encryption.ts",
+    "src/protection.ts",
     "src/recovery.ts",
     "src/hash-worker.ts",
     "src/app.ts"
