@@ -7,9 +7,10 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "python scripts/build.py",
     "validate": "python scripts/validate.py",
-    "test:domain": "tsc -p tsconfig.domain-test.json && node scripts/test_domain.mjs && node scripts/test_v05_domains.mjs && node scripts/test_v05_adapters.mjs && node scripts/test_v05_targets.mjs && node scripts/test_v05_project.mjs",
+    "test:domain": "tsc -p tsconfig.domain-test.json && node scripts/test_domain.mjs && node scripts/test_v05_domains.mjs && node scripts/test_v05_adapters.mjs && node scripts/test_v05_targets.mjs && node scripts/test_v05_project.mjs && node scripts/test_v05_scale.mjs && node scripts/test_v05_migration_fixture.mjs",
+    "test:hygiene": "python scripts/check_public_hygiene.py",
     "test:determinism": "python scripts/check_determinism.py",
-    "test": "npm run typecheck && npm run build && npm run validate && npm run test:domain && npm run test:determinism"
+    "test": "npm run typecheck && npm run build && npm run validate && npm run test:domain && npm run test:hygiene && npm run test:determinism"
   },
   "devDependencies": {
     "typescript": "5.8.3"
