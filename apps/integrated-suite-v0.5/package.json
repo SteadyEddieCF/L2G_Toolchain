@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "python scripts/build.py",
     "validate": "python scripts/validate.py",
-    "test:domain": "tsc -p tsconfig.domain-test.json && node scripts/test_domain.mjs && node scripts/test_v05_domains.mjs && node scripts/test_v05_targets.mjs && node scripts/test_v05_project.mjs",
+    "test:domain": "tsc -p tsconfig.domain-test.json && node scripts/test_domain.mjs && node scripts/test_v05_domains.mjs && node scripts/test_v05_adapters.mjs && node scripts/test_v05_targets.mjs && node scripts/test_v05_project.mjs",
     "test:determinism": "python scripts/check_determinism.py",
     "test": "npm run typecheck && npm run build && npm run validate && npm run test:domain && npm run test:determinism"
   },
