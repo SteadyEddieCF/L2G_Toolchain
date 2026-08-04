@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
 BUILD = ROOT / "build"
 DIST = ROOT / "dist"
-RELEASE_DIR = ROOT / "releases" / "v0.4.0"
+RELEASE_DIR = ROOT / "releases" / "v0.5.0"
 RELEASE = json.loads((ROOT / "release" / "release.json").read_text(encoding="utf-8"))
 REGISTRY = json.loads((REPO / "apps" / "integrated-suite-v0.2" / "contracts" / "registry.json").read_text(encoding="utf-8"))
 
@@ -21,7 +21,7 @@ def compile_typescript() -> None:
     local = ROOT / "node_modules" / ".bin" / ("tsc.cmd" if os.name == "nt" else "tsc")
     compiler = str(local) if local.exists() else shutil.which("tsc")
     if not compiler:
-        raise SystemExit("TypeScript compiler is unavailable. Run npm ci in apps/integrated-suite-v0.4.")
+        raise SystemExit("TypeScript compiler is unavailable. Run npm ci in apps/integrated-suite-v0.5.")
     subprocess.run([compiler, "-p", str(ROOT / "tsconfig.build.json")], cwd=ROOT, check=True)
 
 
@@ -38,7 +38,11 @@ release_json = json.dumps(RELEASE, ensure_ascii=False, sort_keys=True, separator
 registry_json = json.dumps(REGISTRY, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 bootstrap = f"window.__L2G_RELEASE__={release_json};window.__L2G_CONTRACT_REGISTRY__={registry_json};"
 
-sha_b64 = lambda value: base64.b64encode(hashlib.sha256(value.encode("utf-8")).digest()).decode("ascii")
+
+def sha_b64(value: str) -> str:
+    return base64.b64encode(hashlib.sha256(value.encode("utf-8")).digest()).decode("ascii")
+
+
 csp = "; ".join([
     "default-src 'none'",
     f"script-src 'sha256-{sha_b64(bootstrap)}' 'sha256-{sha_b64(script)}'",
@@ -56,7 +60,10 @@ csp = "; ".join([
 ])
 
 html = template.replace("__L2G_STYLE__", style).replace("__L2G_CSP__", csp)
-html = html.replace("window.__L2G_RELEASE__=__L2G_RELEASE_JSON__;window.__L2G_CONTRACT_REGISTRY__=__L2G_REGISTRY_JSON__;", bootstrap)
+html = html.replace(
+    "window.__L2G_RELEASE__=__L2G_RELEASE_JSON__;window.__L2G_CONTRACT_REGISTRY__=__L2G_REGISTRY_JSON__;",
+    bootstrap,
+)
 html = html.replace("__L2G_SCRIPT__", script)
 placeholder_tokens = ["__L2G_STYLE__", "__L2G_CSP__", "__L2G_RELEASE_JSON__", "__L2G_REGISTRY_JSON__", "__L2G_SCRIPT__"]
 remaining = [token for token in placeholder_tokens if token in html]
@@ -80,6 +87,10 @@ manifest = {
     "engagement_schema_version": RELEASE["engagement_schema_version"],
     "evidence_schema_kind": RELEASE["evidence_schema_kind"],
     "evidence_schema_version": RELEASE["evidence_schema_version"],
+    "pre_engagement_schema_kind": RELEASE["pre_engagement_schema_kind"],
+    "pre_engagement_schema_version": RELEASE["pre_engagement_schema_version"],
+    "interview_schema_kind": RELEASE["interview_schema_kind"],
+    "interview_schema_version": RELEASE["interview_schema_version"],
     "product_runtime_compatibility_baseline": RELEASE["product_runtime_compatibility_baseline"],
     "runtime_network_dependencies": 0,
     "synthetic_only": True,
@@ -88,28 +99,63 @@ manifest = {
         "apps/integrated-suite-v0.2/src/util.ts",
         "apps/integrated-suite-v0.2/src/zip.ts",
         "apps/integrated-suite-v0.3/src/encryption.ts",
+        "apps/integrated-suite-v0.4/src/engagement.ts",
+        "apps/integrated-suite-v0.4/src/evidence.ts",
     ],
 }
 (DIST / "release-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-schema = ROOT / "schemas" / "l2g_evidence_index_v1.schema.json"
+schema_files = [
+    REPO / "apps" / "integrated-suite-v0.4" / "schemas" / "l2g_evidence_index_v1.schema.json",
+    ROOT / "schemas" / "l2g_pre_engagement_v1.schema.json",
+    ROOT / "schemas" / "l2g_interview_sessions_v1.schema.json",
+]
+for schema in schema_files:
+    if not schema.is_file():
+        raise SystemExit(f"Required release schema is missing: {schema}")
+    shutil.copy2(schema, DIST / schema.name)
+
 sbom = {
     "spdxVersion": "SPDX-2.3",
     "dataLicense": "CC0-1.0",
     "SPDXID": "SPDXRef-DOCUMENT",
-    "name": "L2G Integrated Suite Evidence Catalog v0.4.0",
-    "documentNamespace": f"https://l2g.local/spdx/integrated-suite-v0.4.0/{sha}",
+    "name": "L2G Integrated Suite Pre-Engagement and Interview Sessions v0.5.0",
+    "documentNamespace": f"https://l2g.local/spdx/integrated-suite-v0.5.0/{sha}",
     "creationInfo": {"created": "2026-08-04T00:00:00Z", "creators": ["Tool: deterministic-build.py"]},
     "packages": [
-        {"name": "L2G Integrated Suite", "SPDXID": "SPDXRef-Package-L2G", "versionInfo": "0.4.0", "downloadLocation": "NOASSERTION", "filesAnalyzed": True, "checksums": [{"algorithm": "SHA256", "checksumValue": sha}], "licenseConcluded": "NOASSERTION", "licenseDeclared": "NOASSERTION", "copyrightText": "NOASSERTION"},
-        {"name": "TypeScript", "SPDXID": "SPDXRef-Package-TypeScript", "versionInfo": "5.8.3", "downloadLocation": "https://registry.npmjs.org/typescript/-/typescript-5.8.3.tgz", "filesAnalyzed": False, "licenseConcluded": "Apache-2.0", "licenseDeclared": "Apache-2.0", "copyrightText": "NOASSERTION"},
+        {
+            "name": "L2G Integrated Suite",
+            "SPDXID": "SPDXRef-Package-L2G",
+            "versionInfo": "0.5.0",
+            "downloadLocation": "NOASSERTION",
+            "filesAnalyzed": True,
+            "checksums": [{"algorithm": "SHA256", "checksumValue": sha}],
+            "licenseConcluded": "NOASSERTION",
+            "licenseDeclared": "NOASSERTION",
+            "copyrightText": "NOASSERTION",
+        },
+        {
+            "name": "TypeScript",
+            "SPDXID": "SPDXRef-Package-TypeScript",
+            "versionInfo": "5.8.3",
+            "downloadLocation": "https://registry.npmjs.org/typescript/-/typescript-5.8.3.tgz",
+            "filesAnalyzed": False,
+            "licenseConcluded": "Apache-2.0",
+            "licenseDeclared": "Apache-2.0",
+            "copyrightText": "NOASSERTION",
+        },
     ],
-    "relationships": [{"spdxElementId": "SPDXRef-DOCUMENT", "relationshipType": "DESCRIBES", "relatedSpdxElement": "SPDXRef-Package-L2G"}],
+    "relationships": [
+        {
+            "spdxElementId": "SPDXRef-DOCUMENT",
+            "relationshipType": "DESCRIBES",
+            "relatedSpdxElement": "SPDXRef-Package-L2G",
+        }
+    ],
 }
 (DIST / "sbom.spdx.json").write_text(json.dumps(sbom, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-notes = (ROOT / "release" / "RELEASE_NOTES_v0.4.0.md").read_text(encoding="utf-8")
+notes = (ROOT / "release" / "RELEASE_NOTES_v0.5.0.md").read_text(encoding="utf-8")
 (DIST / "RELEASE_NOTES.md").write_text(notes, encoding="utf-8")
-shutil.copy2(schema, DIST / schema.name)
 
 for file in sorted(DIST.iterdir()):
     shutil.copy2(file, RELEASE_DIR / file.name)
