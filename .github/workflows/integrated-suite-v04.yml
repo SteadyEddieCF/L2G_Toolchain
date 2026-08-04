@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'apps/integrated-suite-v0.4/**'
+      - 'apps/integrated-suite/current_release.json'
       - 'apps/integrated-suite-v0.2/src/util.ts'
       - 'apps/integrated-suite-v0.2/src/zip.ts'
       - 'apps/integrated-suite-v0.2/contracts/registry.json'
