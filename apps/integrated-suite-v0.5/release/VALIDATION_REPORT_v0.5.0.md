@@ -17,7 +17,7 @@
 ## Deterministic release artifact
 
 - Artifact: `L2G_Integrated_Suite_Pre_Engagement_Interview_v0.5.0.html`
-- SHA-256: `0383b4799b7fb0dfe9fcabaec80bcfec4d2b1594bd2762e9438c0c3ff1f6fb44`
+- SHA-256: `03838726fabb81e43a1e567f8c72680513b5e3d95609f656a6301b906963b1f3`
 - Size: `464765` bytes
 
 The portable HTML, release manifest, exact schemas, SPDX SBOM, release notes, and SHA-256 set rebuilt deterministically to the same identities on the validated candidate head. Runtime project encryption remained intentionally nondeterministic through fresh salt and IV generation. Synthetic encrypted fixtures generated during validation are run evidence rather than reusable production secrets or fixed ciphertext vectors.
@@ -37,13 +37,13 @@ All inherited SSP materializers triggered for the candidate head also passed.
 
 ### Linux candidate evidence
 
-- Artifact ID: `8911948471`
-- Workflow artifact digest: `sha256:b818d5265681d16f81492c48ce35c75d070a421af407daa3c91e50041e95dcca`
+- Artifact ID: `8911204137`
+- Workflow artifact digest: `sha256:b0682a15526bad21f046708a9860ec090ebf8db091f83d1a9b1407250ada4737`
 
 ### Windows native file-origin evidence
 
-- Artifact ID: `8911962293`
-- Workflow artifact digest: `sha256:8254e0ee4e1993508e531f13a915593b83415e2bdb79c96c454b6338019b0380`
+- Artifact ID: `8911202835`
+- Workflow artifact digest: `sha256:1dd350515850b08d071fce0c31c0bab3add9d44bf223341dc90958844a0ac860`
 
 ## Validated behaviors
 
