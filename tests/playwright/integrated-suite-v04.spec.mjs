@@ -108,7 +108,7 @@ test("requires explicit duplicate disposition and target-owned candidate publica
   expect(after).toBe(before);
   await page.getByRole("button", { name: /Reviews & Actions/ }).click();
   await expect(page.getByRole("heading", { name: "Engagement candidate" })).toHaveCount(2);
-  const published = await page.evaluate(() => window.__L2G_TEST__.store.document.state.engagement.candidates.some(item => item.source_kind === "evidence-index" && item.state === "candidate"));
+  const published = await page.evaluate(() => window.__L2G_TEST__.store.document.state.engagement.candidates.some(item => item.source_kind === "evidence-candidate-mapping" && item.state === "candidate"));
   expect(published).toBe(true);
 });
 
