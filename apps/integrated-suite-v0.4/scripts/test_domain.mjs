@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const REPO = path.resolve(ROOT, "../..");
-globalThis.crypto = crypto.webcrypto;
+if (!globalThis.crypto) Object.defineProperty(globalThis, "crypto", { value: crypto.webcrypto, configurable: true });
 globalThis.window = globalThis;
 globalThis.window.__L2G_RELEASE__ = {
   application: "L2G Integrated Suite", version: "0.4.0", product_runtime_compatibility_baseline: "85d6e783a250b373cd4b9ea356e4c341336f9259",
