@@ -99,13 +99,17 @@ namespace L2G {
     const workspace = document.querySelector<HTMLElement>("#workspace");
     if (!workspace) return;
     const target = workspace.querySelector<HTMLElement>('[data-v05-workspace="pre-engagement"], [data-v05-workspace="interviews"], [data-v05-workspace="interview-live"]');
-    if (!target || target.querySelector("[data-v05-import-ui]")) return;
+    if (!target) return;
+    const existing = target.querySelector<HTMLElement>("[data-v05-import-ui]");
+    if (existing?.dataset.importStatus === importStatus) return;
     importRendering = true;
     try {
-      target.insertAdjacentHTML("afterbegin", `<section data-v05-import-ui>
+      const html = `<section data-v05-import-ui data-import-status="${ix(importStatus)}">
         ${importStatus ? `<div class="notice ok" role="status">${ix(importStatus)}</div>` : ""}
         <div class="card-actions"><button data-v05-import-action="choose">Import reviewed context</button><span class="meta">Recognized stable JSON packages only; preview and explicit apply are required.</span></div>
-      </section>`);
+      </section>`;
+      if (existing) existing.outerHTML = html;
+      else target.insertAdjacentHTML("afterbegin", html);
     } finally {
       importRendering = false;
     }
