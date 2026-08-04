@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -15,12 +16,21 @@ RELEASE_DIR = ROOT / "releases" / "v0.4.0"
 RELEASE = json.loads((ROOT / "release" / "release.json").read_text(encoding="utf-8"))
 REGISTRY = json.loads((REPO / "apps" / "integrated-suite-v0.2" / "contracts" / "registry.json").read_text(encoding="utf-8"))
 
+
+def compile_typescript() -> None:
+    local = ROOT / "node_modules" / ".bin" / ("tsc.cmd" if os.name == "nt" else "tsc")
+    compiler = str(local) if local.exists() else shutil.which("tsc")
+    if not compiler:
+        raise SystemExit("TypeScript compiler is unavailable. Run npm ci in apps/integrated-suite-v0.4.")
+    subprocess.run([compiler, "-p", str(ROOT / "tsconfig.build.json")], cwd=ROOT, check=True)
+
+
 for directory in (BUILD, DIST, RELEASE_DIR):
     if directory.exists():
         shutil.rmtree(directory)
     directory.mkdir(parents=True, exist_ok=True)
 
-subprocess.run(["npx", "tsc", "-p", str(ROOT / "tsconfig.build.json")], cwd=ROOT, check=True)
+compile_typescript()
 script = (BUILD / "app.js").read_text(encoding="utf-8").strip()
 style = (ROOT / "src" / "styles.css").read_text(encoding="utf-8").strip()
 template = (ROOT / "src" / "template.html").read_text(encoding="utf-8")
