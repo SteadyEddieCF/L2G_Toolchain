@@ -4,13 +4,13 @@ This directory contains the durable architecture, migration, UX-governance, proj
 
 ## Status
 
-- L2G Integrated Suite Foundation v0.1.0 is current, merged by PR #122 at `711b84ebbf675a8e005dbfba80a8dfbd42213bc9`.
-- Milestone 0 issue #117 is closed completed.
-- The rolling ten-release roadmap is merged through PR #124.
-- v0.2.0 Encrypted Project Safety Foundation is governed by issue #123.
-- ADR-0007, the v0.2.0 threat model, and the v0.2.0 acceptance matrix define the cryptographic implementation gate.
-- v0.2.0 remains synthetic-only and does not authorize production, client, FCI, or CUI data.
-- No substantive production module migration is authorized by these planning records.
+- L2G Integrated Suite v0.2.0 Encrypted Project Safety Foundation is current, merged by PR #127 at `72584f3a9fd8f82ea580cc29903e06678907d2f8`.
+- Its portable HTML SHA-256 is `84526756161fa44bc2dcaebe791a2ea1b73c06341c7563e34693aa6b7231af86`.
+- Milestone 0 issue #117 and v0.2 issue #123 are closed completed.
+- v0.3.0 Engagement Spine is governed by issue #126.
+- ADR-0008, the `l2g_engagement_v1` contract, v0.3 UX record, threat model, and acceptance matrix define the implementation gate.
+- v0.3.0 remains synthetic-only and does not authorize production, client, FCI, or CUI data.
+- No substantive Evidence, Scope, Practice Review, SSP, or Deliverables migration is authorized by these planning records.
 - The existing standalone tools remain authoritative during migration.
 - The integrated suite must evolve inside this monorepo unless a demonstrated technical constraint requires otherwise.
 - The repository is intentionally public, but all source, fixtures, issues, screenshots, logs, Actions artifacts, Releases, and test packages must remain free of client data, FCI, CUI, secrets, and client-identifying content.
@@ -25,7 +25,9 @@ The current sequence is:
 - architecture and migration planning — PR #116, merge commit `8fd6d14754e72a401aad85d70b64e150f1882ba2`;
 - UX handoff and public-repository posture — PR #121;
 - Integrated Suite Foundation v0.1.0 — PR #122, merge commit `711b84ebbf675a8e005dbfba80a8dfbd42213bc9`;
-- rolling roadmap and README reconciliation — PR #124, merge commit `f0b91a0ce211a7d20db8e71cdd08f709a8bcd987`.
+- rolling roadmap and README reconciliation — PR #124, merge commit `f0b91a0ce211a7d20db8e71cdd08f709a8bcd987`;
+- v0.2 security design — PR #125, merge commit `6b35e955e854d3ba5507a7a97f8f9bdaa1cdacec`;
+- Integrated Suite v0.2.0 — PR #127, merge commit `72584f3a9fd8f82ea580cc29903e06678907d2f8`.
 
 The authoritative current exact-suite snapshot is `suite-2026.08.03-rg4-validated-mcfirecoal-v1.2.0`. The earlier `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0` record remains immutable.
 
@@ -43,6 +45,10 @@ Commit `85d6e783a250b373cd4b9ea356e4c341336f9259` remains the governed standalon
 - `L2G_Integrated_Suite_Rolling_10_Release_Roadmap_v1.md`
 - `L2G_Integrated_Suite_v0.2.0_Threat_Model_v1.md`
 - `L2G_Integrated_Suite_v0.2.0_Acceptance_v1.md`
+- `L2G_Engagement_v1_Contract_v1.md`
+- `L2G_Integrated_Suite_v0.3.0_Engagement_Spine_UX_v1.md`
+- `L2G_Integrated_Suite_v0.3.0_Threat_Model_v1.md`
+- `L2G_Integrated_Suite_v0.3.0_Acceptance_v1.md`
 
 ## Architecture decisions
 
@@ -53,6 +59,7 @@ Commit `85d6e783a250b373cd4b9ea356e4c341336f9259` remains the governed standalon
 - `docs/architecture/adr/ADR-0005-project-encryption-posture.md`
 - `docs/architecture/adr/ADR-0006-project-persistence-history-and-recovery.md`
 - `docs/architecture/adr/ADR-0007-encrypted-project-envelope-and-recovery.md`
+- `docs/architecture/adr/ADR-0008-engagement-spine.md`
 
 ## Governing principles
 
@@ -65,3 +72,4 @@ Commit `85d6e783a250b373cd4b9ea356e4c341336f9259` remains the governed standalon
 7. Architecture, UX, security, and release decisions must be persisted in the repository rather than existing only in chat history.
 8. Public repository visibility never authorizes client, FCI, CUI, secret, or proprietary engagement content in repository-controlled surfaces.
 9. Encryption is necessary but not sufficient for production-data authorization.
+10. Engagement projections are read-only; imported metadata remains candidate material until explicitly reviewed.
