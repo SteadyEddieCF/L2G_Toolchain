@@ -54,7 +54,7 @@ test("opens an encrypted v0.3 project through the real UI and migrates empty v0.
     notes: 0,
     historyAction: "project.migrated-v05",
     checkpoint: "Migration to v0.5 Pre-Engagement and Interview Sessions",
-    migrationNotice: "Legacy project migrated. Save a new encrypted v0.5 project before continuing consequential work."
+    migrationNotice: "Earlier project migrated to v0.5. Save a new encrypted v0.5 project file."
   });
 
   await page.getByRole("button", { name: /Pre-Engagement/ }).click();
