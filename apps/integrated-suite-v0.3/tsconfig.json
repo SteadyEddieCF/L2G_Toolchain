@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "none",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
+  },
+  "files": [
+    "src/types.ts",
+    "../integrated-suite-v0.2/src/util.ts",
+    "../integrated-suite-v0.2/src/zip.ts",
+    "src/project.ts",
+    "src/encryption.ts",
+    "src/recovery.ts",
+    "src/app.ts"
+  ]
+}
