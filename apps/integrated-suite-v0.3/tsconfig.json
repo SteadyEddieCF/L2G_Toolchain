@@ -17,7 +17,7 @@
     "../integrated-suite-v0.2/src/util.ts",
     "../integrated-suite-v0.2/src/zip.ts",
     "src/project.ts",
-    "../integrated-suite-v0.2/src/encryption.ts",
+    "src/encryption.ts",
     "src/recovery.ts",
     "src/app.ts"
   ]
