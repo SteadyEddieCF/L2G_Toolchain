@@ -27,6 +27,7 @@
     "src/protection.ts",
     "src/recovery.ts",
     "src/hash-worker.ts",
+    "src/v05-ui.ts",
     "src/app.ts"
   ]
 }
