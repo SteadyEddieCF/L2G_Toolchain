@@ -1,16 +1,24 @@
 import { test, expect } from "@playwright/test";
+import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { openV05, repoRoot, enterPassphrase } from "./integrated-suite-v05-helpers.mjs";
 
 const legacyMigrationPassphrase = "Synthetic-V05-Legacy-Migration-Passphrase";
+const v05AppRoot = path.join(repoRoot, "apps", "integrated-suite-v0.5");
 const legacyFixture = path.join(
-  repoRoot,
-  "apps",
-  "integrated-suite-v0.5",
+  v05AppRoot,
   "build",
   "fixtures",
   "synthetic-v03-encrypted-project.l2g"
 );
+
+test.beforeAll(() => {
+  const npm = process.platform === "win32" ? "npm.cmd" : "npm";
+  execFileSync(npm, ["--prefix", v05AppRoot, "run", "fixture:migration"], {
+    cwd: repoRoot,
+    stdio: "inherit"
+  });
+});
 
 test("opens an encrypted v0.3 project through the real UI and migrates empty v0.5 authorities", async ({ page }) => {
   await openV05(page);
