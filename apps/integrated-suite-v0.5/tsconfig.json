@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "none",
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "WebWorker"],
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
+  },
+  "files": [
+    "src/types.ts",
+    "../integrated-suite-v0.2/src/util.ts",
+    "../integrated-suite-v0.2/src/zip.ts",
+    "src/v05-common.ts",
+    "src/engagement.ts",
+    "src/evidence.ts",
+    "src/pre-engagement.ts",
+    "src/interviews.ts",
+    "src/v05-adapters.ts",
+    "src/v05-targets.ts",
+    "src/v05-project-types.ts",
+    "src/project.ts",
+    "../integrated-suite-v0.3/src/encryption.ts",
+    "src/protection.ts",
+    "src/recovery.ts",
+    "src/hash-worker.ts",
+    "src/v05-workspaces.ts",
+    "src/v05-authority-ui.ts",
+    "src/v05-import-ui.ts",
+    "src/v05-labels.ts",
+    "src/app.ts"
+  ]
+}

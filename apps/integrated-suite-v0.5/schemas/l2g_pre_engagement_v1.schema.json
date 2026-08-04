@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l2g.local/schemas/l2g_pre_engagement_v1.schema.json",
+  "title": "L2G Pre-Engagement v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_kind", "schema_version", "pre_engagement_id", "requests", "instruments", "assignments", "submissions", "responses", "exceptions", "candidates", "import_receipts", "projection_policy"],
+  "properties": {
+    "schema_kind": {"const": "l2g_pre_engagement_v1"},
+    "schema_version": {"const": "1.0"},
+    "pre_engagement_id": {"$ref": "#/$defs/preEngagementId"},
+    "requests": {"type": "array", "maxItems": 500, "items": {"$ref": "#/$defs/request"}},
+    "instruments": {"type": "array", "maxItems": 100, "items": {"$ref": "#/$defs/instrument"}},
+    "assignments": {"type": "array", "maxItems": 1000, "items": {"$ref": "#/$defs/assignment"}},
+    "submissions": {"type": "array", "maxItems": 2000, "items": {"$ref": "#/$defs/submission"}},
+    "responses": {"type": "array", "maxItems": 10000, "items": {"$ref": "#/$defs/response"}},
+    "exceptions": {"type": "array", "maxItems": 2000, "items": {"$ref": "#/$defs/exception"}},
+    "candidates": {"type": "array", "maxItems": 5000, "items": {"$ref": "#/$defs/candidate"}},
+    "import_receipts": {"type": "array", "maxItems": 250, "items": {"$ref": "#/$defs/importReceipt"}},
+    "projection_policy": {"$ref": "#/$defs/projectionPolicy"}
+  },
+  "$defs": {
+    "typedId": {"type": "string", "maxLength": 160, "pattern": "^[A-Za-z][A-Za-z0-9_-]*_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "preEngagementId": {"type": "string", "pattern": "^pre_engagement_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "requestId": {"type": "string", "pattern": "^intake_request_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "instrumentId": {"type": "string", "pattern": "^intake_instrument_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "sectionId": {"type": "string", "pattern": "^section_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "itemId": {"type": "string", "pattern": "^intake_item_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "assignmentId": {"type": "string", "pattern": "^intake_assignment_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "submissionId": {"type": "string", "pattern": "^intake_submission_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "responseId": {"type": "string", "pattern": "^intake_response_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "exceptionId": {"type": "string", "pattern": "^intake_exception_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "candidateId": {"type": "string", "pattern": "^pre_engagement_candidate_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "importId": {"type": "string", "pattern": "^pre_engagement_import_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"},
+    "timestamp": {"type": "string", "format": "date-time", "maxLength": 40},
+    "dateOrEmpty": {"type": "string", "maxLength": 10, "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}$"},
+    "visibility": {"enum": ["advisor-only", "client-safe", "approved-for-client-presentation"]},
+    "lifecycle": {"enum": ["draft", "active", "superseded", "archived"]},
+    "reviewState": {"enum": ["not-requested", "pending", "in-review", "reviewed", "changes-requested", "closed"]},
+    "operationalState": {"enum": ["not-requested", "requested", "in-progress", "partially-received", "received", "needs-clarification", "satisfied", "cancelled", "superseded"]},
+    "currencyState": {"enum": ["current", "stale", "conflict", "superseded", "unsupported"]},
+    "refs": {"type": "array", "maxItems": 200, "uniqueItems": true, "items": {"$ref": "#/$defs/typedId"}},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_kind", "source_id", "source_location_ref", "asserted_at", "asserted_by", "confidence"],
+      "properties": {
+        "source_kind": {"type": "string", "minLength": 1, "maxLength": 120},
+        "source_id": {"type": "string", "minLength": 1, "maxLength": 300},
+        "source_label": {"type": "string", "maxLength": 300},
+        "source_location_ref": {"type": ["string", "null"], "maxLength": 300},
+        "asserted_at": {"$ref": "#/$defs/timestamp"},
+        "asserted_by": {"enum": ["advisor", "client", "reviewer", "migration", "system", "import"]},
+        "confidence": {"enum": ["not-evaluated", "low", "medium", "high"]}
+      }
+    },
+    "request": {
+      "type": "object", "additionalProperties": false,
+      "required": ["request_id", "kind", "title", "description", "owner_label", "participant_refs", "organization_refs", "due_date", "operational_state", "lifecycle", "review_state", "visibility", "related_refs", "provenance", "created_at", "updated_at"],
+      "properties": {
+        "request_id": {"$ref": "#/$defs/requestId"},
+        "kind": {"enum": ["questionnaire", "inventory", "document", "participant", "clarification", "evidence-reference", "other"]},
+        "title": {"type": "string", "minLength": 1, "maxLength": 300},
+        "description": {"type": "string", "maxLength": 8000},
+        "owner_label": {"type": "string", "maxLength": 300},
+        "participant_refs": {"$ref": "#/$defs/refs"},
+        "organization_refs": {"$ref": "#/$defs/refs"},
+        "due_date": {"$ref": "#/$defs/dateOrEmpty"},
+        "operational_state": {"$ref": "#/$defs/operationalState"},
+        "lifecycle": {"$ref": "#/$defs/lifecycle"},
+        "review_state": {"$ref": "#/$defs/reviewState"},
+        "visibility": {"$ref": "#/$defs/visibility"},
+        "related_refs": {"$ref": "#/$defs/refs"},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "created_at": {"$ref": "#/$defs/timestamp"},
+        "updated_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "section": {
+      "type": "object", "additionalProperties": false,
+      "required": ["section_id", "title", "order", "item_refs"],
+      "properties": {
+        "section_id": {"$ref": "#/$defs/sectionId"},
+        "title": {"type": "string", "minLength": 1, "maxLength": 300},
+        "order": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "item_refs": {"type": "array", "maxItems": 500, "uniqueItems": true, "items": {"$ref": "#/$defs/itemId"}}
+      }
+    },
+    "instrumentItem": {
+      "type": "object", "additionalProperties": false,
+      "required": ["item_id", "section_ref", "order", "kind", "prompt", "client_safe_help", "value_type", "required", "options", "applicability_note", "visibility", "source_refs", "provenance"],
+      "properties": {
+        "item_id": {"$ref": "#/$defs/itemId"},
+        "section_ref": {"$ref": "#/$defs/sectionId"},
+        "order": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "kind": {"enum": ["question", "inventory-field", "check", "file-request", "participant-request", "instruction", "heading"]},
+        "prompt": {"type": "string", "maxLength": 8000},
+        "client_safe_help": {"type": "string", "maxLength": 8000},
+        "value_type": {"enum": ["none", "short-text", "long-text", "integer", "decimal", "boolean", "date", "single-select", "multi-select", "reference-list"]},
+        "required": {"type": "boolean"},
+        "options": {"type": "array", "maxItems": 200, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+        "applicability_note": {"type": "string", "maxLength": 8000},
+        "visibility": {"$ref": "#/$defs/visibility"},
+        "source_refs": {"$ref": "#/$defs/refs"},
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "instrument": {
+      "type": "object", "additionalProperties": false,
+      "required": ["instrument_id", "kind", "title", "version_label", "version_number", "lifecycle", "visibility", "sections", "items", "provenance", "created_at", "updated_at"],
+      "properties": {
+        "instrument_id": {"$ref": "#/$defs/instrumentId"},
+        "kind": {"enum": ["questionnaire", "inventory", "checklist", "file-request", "participant-request", "mixed"]},
+        "title": {"type": "string", "minLength": 1, "maxLength": 300},
+        "version_label": {"type": "string", "minLength": 1, "maxLength": 100},
+        "version_number": {"type": "integer", "minimum": 1, "maximum": 1000000},
+        "lifecycle": {"$ref": "#/$defs/lifecycle"},
+        "visibility": {"$ref": "#/$defs/visibility"},
+        "sections": {"type": "array", "maxItems": 500, "items": {"$ref": "#/$defs/section"}},
+        "items": {"type": "array", "maxItems": 500, "items": {"$ref": "#/$defs/instrumentItem"}},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "created_at": {"$ref": "#/$defs/timestamp"},
+        "updated_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "snapshotItem": {
+      "type": "object", "additionalProperties": false,
+      "required": ["item_id", "section_ref", "order", "kind", "prompt", "client_safe_help", "value_type", "required", "options", "applicability_note", "visibility"],
+      "properties": {
+        "item_id": {"$ref": "#/$defs/itemId"}, "section_ref": {"$ref": "#/$defs/sectionId"}, "order": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "kind": {"enum": ["question", "inventory-field", "check", "file-request", "participant-request", "instruction", "heading"]},
+        "prompt": {"type": "string", "maxLength": 8000}, "client_safe_help": {"type": "string", "maxLength": 8000},
+        "value_type": {"enum": ["none", "short-text", "long-text", "integer", "decimal", "boolean", "date", "single-select", "multi-select", "reference-list"]},
+        "required": {"type": "boolean"}, "options": {"type": "array", "maxItems": 200, "uniqueItems": true, "items": {"type": "string", "maxLength": 300}},
+        "applicability_note": {"type": "string", "maxLength": 8000}, "visibility": {"$ref": "#/$defs/visibility"}
+      }
+    },
+    "assignment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["assignment_id", "request_ref", "instrument_ref", "instrument_version_number", "snapshot", "participant_refs", "organization_refs", "assigned_at", "due_date", "instructions", "operational_state", "currency_state", "lifecycle", "visibility", "provenance", "created_at", "updated_at"],
+      "properties": {
+        "assignment_id": {"$ref": "#/$defs/assignmentId"}, "request_ref": {"$ref": "#/$defs/requestId"}, "instrument_ref": {"$ref": "#/$defs/instrumentId"},
+        "instrument_version_number": {"type": "integer", "minimum": 1, "maximum": 1000000},
+        "snapshot": {"type": "object", "additionalProperties": false, "required": ["snapshot_hash", "title", "items"], "properties": {"snapshot_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "title": {"type": "string", "minLength": 1, "maxLength": 300}, "items": {"type": "array", "maxItems": 500, "items": {"$ref": "#/$defs/snapshotItem"}}}},
+        "participant_refs": {"$ref": "#/$defs/refs"}, "organization_refs": {"$ref": "#/$defs/refs"}, "assigned_at": {"$ref": "#/$defs/timestamp"}, "due_date": {"$ref": "#/$defs/dateOrEmpty"},
+        "instructions": {"type": "string", "maxLength": 8000}, "operational_state": {"$ref": "#/$defs/operationalState"}, "currency_state": {"$ref": "#/$defs/currencyState"}, "lifecycle": {"$ref": "#/$defs/lifecycle"}, "visibility": {"$ref": "#/$defs/visibility"}, "provenance": {"$ref": "#/$defs/provenance"}, "created_at": {"$ref": "#/$defs/timestamp"}, "updated_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "submission": {
+      "type": "object", "additionalProperties": false,
+      "required": ["submission_id", "assignment_ref", "request_ref", "receipt_method", "asserted_submitter_participant_ref", "asserted_submitter_label", "received_at", "response_refs", "review_state", "lifecycle", "visibility", "provenance", "created_at", "updated_at"],
+      "properties": {
+        "submission_id": {"$ref": "#/$defs/submissionId"}, "assignment_ref": {"$ref": "#/$defs/assignmentId"}, "request_ref": {"$ref": "#/$defs/requestId"},
+        "receipt_method": {"enum": ["local-entry", "advisor-facilitated-entry", "imported-package", "meeting-context-import", "other"]},
+        "asserted_submitter_participant_ref": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^participant_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"}]},
+        "asserted_submitter_label": {"type": "string", "maxLength": 300}, "received_at": {"$ref": "#/$defs/timestamp"},
+        "response_refs": {"type": "array", "maxItems": 500, "uniqueItems": true, "items": {"$ref": "#/$defs/responseId"}},
+        "review_state": {"$ref": "#/$defs/reviewState"}, "lifecycle": {"$ref": "#/$defs/lifecycle"}, "visibility": {"$ref": "#/$defs/visibility"}, "provenance": {"$ref": "#/$defs/provenance"}, "created_at": {"$ref": "#/$defs/timestamp"}, "updated_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "response": {
+      "type": "object", "additionalProperties": false,
+      "required": ["response_id", "submission_ref", "assignment_ref", "item_ref", "item_version_number", "origin", "value_type", "value", "display_text", "currency_state", "lifecycle", "review_state", "visibility", "supersedes_response_ref", "superseded_by_response_ref", "related_source_refs", "provenance", "created_at", "updated_at"],
+      "properties": {
+        "response_id": {"$ref": "#/$defs/responseId"}, "submission_ref": {"$ref": "#/$defs/submissionId"}, "assignment_ref": {"$ref": "#/$defs/assignmentId"}, "item_ref": {"$ref": "#/$defs/itemId"},
+        "item_version_number": {"type": "integer", "minimum": 1, "maximum": 1000000},
+        "origin": {"enum": ["client-provided", "advisor-entered-on-behalf", "source-derived-candidate", "imported-context", "advisor-interpretation"]},
+        "value_type": {"enum": ["none", "short-text", "long-text", "integer", "decimal", "boolean", "date", "single-select", "multi-select", "reference-list"]},
+        "value": {"oneOf": [{"type": "null"}, {"type": "string", "maxLength": 16000}, {"type": "number"}, {"type": "boolean"}, {"type": "array", "maxItems": 200, "uniqueItems": true, "items": {"type": "string", "maxLength": 300}}]},
+        "display_text": {"type": "string", "maxLength": 16000}, "currency_state": {"$ref": "#/$defs/currencyState"}, "lifecycle": {"$ref": "#/$defs/lifecycle"}, "review_state": {"$ref": "#/$defs/reviewState"}, "visibility": {"$ref": "#/$defs/visibility"},
+        "supersedes_response_ref": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/responseId"}]}, "superseded_by_response_ref": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/responseId"}]}, "related_source_refs": {"$ref": "#/$defs/refs"}, "provenance": {"$ref": "#/$defs/provenance"}, "created_at": {"$ref": "#/$defs/timestamp"}, "updated_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "exception": {
+      "type": "object", "additionalProperties": false,
+      "required": ["exception_id", "kind", "title", "detail", "affected_refs", "owner_label", "due_date", "operational_state", "review_state", "visibility", "resolution", "provenance", "created_at", "updated_at"],
+      "properties": {
+        "exception_id": {"$ref": "#/$defs/exceptionId"}, "kind": {"enum": ["missing-submission", "incomplete-response", "conflicting-response", "ambiguous-source", "stale-assignment", "invalid-participant", "unsupported-import", "due-date", "traceability", "other"]},
+        "title": {"type": "string", "minLength": 1, "maxLength": 300}, "detail": {"type": "string", "maxLength": 8000}, "affected_refs": {"$ref": "#/$defs/refs"}, "owner_label": {"type": "string", "maxLength": 300}, "due_date": {"$ref": "#/$defs/dateOrEmpty"},
+        "operational_state": {"enum": ["open", "waiting", "blocked", "resolved", "cancelled"]}, "review_state": {"$ref": "#/$defs/reviewState"}, "visibility": {"$ref": "#/$defs/visibility"},
+        "resolution": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["disposition", "rationale", "resulting_record_ref", "resolved_at", "resolved_by"], "properties": {"disposition": {"enum": ["keep-current", "superseding-response", "merged-response", "deferred", "closed"]}, "rationale": {"type": "string", "minLength": 1, "maxLength": 8000}, "resulting_record_ref": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/typedId"}]}, "resolved_at": {"$ref": "#/$defs/timestamp"}, "resolved_by": {"enum": ["advisor", "client", "reviewer"]}}}]},
+        "provenance": {"$ref": "#/$defs/provenance"}, "created_at": {"$ref": "#/$defs/timestamp"}, "updated_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidate_id", "source_refs", "target_domain", "target_type", "proposed_operation", "proposed_fields", "rationale", "state", "target_candidate_ref", "target_decision_ref", "visibility", "supersedes_candidate_ref", "superseded_by_candidate_ref", "provenance", "created_at", "updated_at"],
+      "properties": {
+        "candidate_id": {"$ref": "#/$defs/candidateId"}, "source_refs": {"$ref": "#/$defs/refs"}, "target_domain": {"enum": ["engagement", "evidence", "scope", "practice-review", "ssp", "reviews-actions"]}, "target_type": {"type": "string", "minLength": 1, "maxLength": 160}, "proposed_operation": {"enum": ["create", "modify", "link", "supersede"]},
+        "proposed_fields": {"type": "object", "maxProperties": 100, "additionalProperties": {"type": "string", "maxLength": 8000}, "propertyNames": {"maxLength": 100, "not": {"enum": ["__proto__", "prototype", "constructor"]}}},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 8000}, "state": {"enum": ["draft", "awaiting-review", "published-to-target", "returned", "withdrawn", "superseded", "closed"]},
+        "target_candidate_ref": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/typedId"}]}, "target_decision_ref": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/typedId"}]}, "visibility": {"$ref": "#/$defs/visibility"},
+        "supersedes_candidate_ref": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/candidateId"}]}, "superseded_by_candidate_ref": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/candidateId"}]}, "provenance": {"$ref": "#/$defs/provenance"}, "created_at": {"$ref": "#/$defs/timestamp"}, "updated_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "importReceipt": {
+      "type": "object", "additionalProperties": false,
+      "required": ["import_receipt_id", "package_kind", "package_version", "package_sha256", "package_size_bytes", "source_evidence_ref", "registry_version", "disposition", "created_refs", "modified_refs", "rejected_rows", "warnings", "created_at"],
+      "properties": {
+        "import_receipt_id": {"$ref": "#/$defs/importId"}, "package_kind": {"enum": ["l2g_intake_package_v1", "l2g_meeting_context_v1", "l2g_scope_context_v1"]}, "package_version": {"const": "1.0"}, "package_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "package_size_bytes": {"type": "integer", "minimum": 0, "maximum": 16777216},
+        "source_evidence_ref": {"oneOf": [{"type": "null"}, {"type": "string", "pattern": "^evidence_[A-Za-z0-9][A-Za-z0-9_-]{0,140}$"}]}, "registry_version": {"type": "string", "minLength": 1, "maxLength": 100}, "disposition": {"enum": ["previewed", "applied", "applied-reviewed-subset", "rejected", "returned", "failed"]},
+        "created_refs": {"type": "array", "maxItems": 1000, "uniqueItems": true, "items": {"$ref": "#/$defs/typedId"}}, "modified_refs": {"type": "array", "maxItems": 1000, "uniqueItems": true, "items": {"$ref": "#/$defs/typedId"}}, "rejected_rows": {"type": "array", "maxItems": 1000, "items": {"type": "string", "maxLength": 1000}}, "warnings": {"type": "array", "maxItems": 1000, "items": {"type": "string", "maxLength": 1000}}, "created_at": {"$ref": "#/$defs/timestamp"}
+      }
+    },
+    "projectionPolicy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["client_visible_values", "search_index_persistence", "client_include_internal_provenance", "client_include_candidates", "client_include_exceptions"],
+      "properties": {
+        "client_visible_values": {"const": ["client-safe", "approved-for-client-presentation"]},
+        "search_index_persistence": {"const": "none"},
+        "client_include_internal_provenance": {"const": false},
+        "client_include_candidates": {"const": false},
+        "client_include_exceptions": {"const": false}
+      }
+    }
+  }
+}

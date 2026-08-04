@@ -1,0 +1,94 @@
+name: Integrated Suite Pre-Engagement and Interview v0.5
+
+on:
+  pull_request:
+    paths:
+      - 'apps/integrated-suite-v0.5/**'
+      - 'apps/integrated-suite/current_release.json'
+      - 'apps/integrated-suite-v0.2/src/util.ts'
+      - 'apps/integrated-suite-v0.2/src/zip.ts'
+      - 'apps/integrated-suite-v0.2/contracts/registry.json'
+      - 'apps/integrated-suite-v0.3/src/encryption.ts'
+      - 'tests/playwright/integrated-suite-v05*.mjs'
+      - '.github/workflows/integrated-suite-v05.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v05-candidate-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/integrated-suite-v0.5/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root QA dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install locked v0.5 build dependency
+        run: npm ci --prefix apps/integrated-suite-v0.5 --no-audit --no-fund
+      - name: Typecheck, build, validate, run domain, adapter, scale, migration, crypto, hygiene, and determinism tests
+        run: npm test --prefix apps/integrated-suite-v0.5
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run v0.5 workflow, adapter, migration, disclosure, recovery, responsive, and accessibility tests
+        run: npx playwright test tests/playwright/integrated-suite-v05.spec.mjs tests/playwright/integrated-suite-v05-import.spec.mjs tests/playwright/integrated-suite-v05-migration.spec.mjs --project=chromium
+      - name: Upload v0.5 Linux candidate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v05-linux-candidate
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            apps/integrated-suite-v0.5/dist/**
+            apps/integrated-suite-v0.5/releases/v0.5.0/**
+            apps/integrated-suite-v0.5/build/fixtures/**
+            test-results/**
+
+  v05-candidate-windows:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/integrated-suite-v0.5/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root QA dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install locked v0.5 build dependency
+        run: npm ci --prefix apps/integrated-suite-v0.5 --no-audit --no-fund
+      - name: Build and validate the deterministic v0.5 candidate on Windows
+        run: npm test --prefix apps/integrated-suite-v0.5
+      - name: Install Chromium
+        run: npx playwright install chromium
+      - name: Run native Windows file-origin v0.5 workflow smoke
+        run: npx playwright test tests/playwright/integrated-suite-v05-file.spec.mjs --project=chromium
+      - name: Upload v0.5 Windows candidate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v05-windows-candidate
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            apps/integrated-suite-v0.5/dist/**
+            apps/integrated-suite-v0.5/releases/v0.5.0/**
+            apps/integrated-suite-v0.5/build/fixtures/**
+            test-results/**
