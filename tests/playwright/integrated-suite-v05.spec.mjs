@@ -26,24 +26,51 @@ test("builds the v0.5 portable shell with restrictive CSP and zero network", asy
   expect(requests).toEqual([]);
 });
 
-test("reviews Pre-Engagement responses without changing origin or accepted target state", async ({ page }) => {
+test("reviews and publishes Pre-Engagement proposals through target-owned Engagement decisions", async ({ page }) => {
   await openV05(page);
   await openPreEngagement(page);
   await expect(page.getByText("advisor-entered-on-behalf", { exact: true })).toBeVisible();
   await expect(page.getByText(/assignments received/)).toBeVisible();
-  const before = await page.evaluate(() => window.__L2G_TEST__.store.document.state.engagement.open_questions.length);
+  const before = await page.evaluate(() => ({
+    openQuestions: window.__L2G_TEST__.store.document.state.engagement.open_questions.length,
+    targetCandidates: window.__L2G_TEST__.store.document.state.engagement.candidates.length
+  }));
   await page.getByRole("button", { name: "Approve response" }).click();
   await expect(page.getByText("Response approved; its source origin was preserved.")).toBeVisible();
   await expect(page.getByText("advisor-entered-on-behalf", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Create proposal" }).click();
   await expect(page.getByText("Proposal queued without changing accepted Engagement records.")).toBeVisible();
-  const state = await page.evaluate(() => ({
+  await page.getByRole("button", { name: "Publish to Engagement review" }).click();
+  await expect(page.getByText("Engagement-owned candidate created; accepted Engagement records are unchanged.")).toBeVisible();
+  let state = await page.evaluate(() => ({
     openQuestions: window.__L2G_TEST__.store.document.state.engagement.open_questions.length,
-    candidates: window.__L2G_TEST__.store.document.state.pre_engagement.candidates.length,
+    targetCandidates: window.__L2G_TEST__.store.document.state.engagement.candidates.length,
+    sourceCandidates: window.__L2G_TEST__.store.document.state.pre_engagement.candidates.length,
+    sourceState: window.__L2G_TEST__.store.document.state.pre_engagement.candidates[0].state,
     origin: window.__L2G_TEST__.store.document.state.pre_engagement.responses[0].origin,
     review: window.__L2G_TEST__.store.document.state.pre_engagement.responses[0].review_state
   }));
-  expect(state).toEqual({ openQuestions: before, candidates: 1, origin: "advisor-entered-on-behalf", review: "reviewed" });
+  expect(state).toEqual({
+    openQuestions: before.openQuestions,
+    targetCandidates: before.targetCandidates + 1,
+    sourceCandidates: 1,
+    sourceState: "published-to-target",
+    origin: "advisor-entered-on-behalf",
+    review: "reviewed"
+  });
+  await page.getByRole("button", { name: "Reject target proposal" }).click();
+  await expect(page.getByText("Engagement rejected the target candidate; the source proposal is now returned.")).toBeVisible();
+  state = await page.evaluate(() => ({
+    openQuestions: window.__L2G_TEST__.store.document.state.engagement.open_questions.length,
+    targetState: window.__L2G_TEST__.store.document.state.engagement.candidates.at(-1).state,
+    sourceState: window.__L2G_TEST__.store.document.state.pre_engagement.candidates[0].state,
+    targetRef: window.__L2G_TEST__.store.document.state.pre_engagement.candidates[0].target_candidate_ref,
+    decisionRef: window.__L2G_TEST__.store.document.state.pre_engagement.candidates[0].target_decision_ref
+  }));
+  expect(state.openQuestions).toBe(before.openQuestions);
+  expect(state.targetState).toBe("rejected");
+  expect(state.sourceState).toBe("returned");
+  expect(state.targetRef).toBe(state.decisionRef);
 });
 
 test("facilitates a session with separate statements, Advisor notes, Client projection, confirmation, and recovery state", async ({ page }) => {
