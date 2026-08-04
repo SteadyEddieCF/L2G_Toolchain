@@ -147,7 +147,7 @@ await assert.rejects(
     source_documents: [{ source_document_id: "source_missing_trace", name: "Synthetic.txt", sha256: sourceHash, size_bytes: 1 }],
     meeting_segments: [{ record_id: "orphan", title: "No source link", summary: "Must be rejected." }]
   }, "missing-trace.json"),
-  /no reviewable source-traceable Evidence records/i
+  /no reviewable .*context/i
 );
 
 const activePreview = await preview(
