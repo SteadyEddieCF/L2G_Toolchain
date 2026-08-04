@@ -1,0 +1,71 @@
+// @ts-nocheck
+var L2G;
+(function (L2G) {
+    const WORKSPACES = [
+        { id: "overview", label: "Overview", icon: "⌂", description: "Factual engagement awareness, next work, project protection, and recovery state." },
+        { id: "pre-engagement", label: "Pre-Engagement", icon: "◫", description: "Canonical engagement identity, people, assumptions, decisions, milestones, blockers, and candidates." },
+        { id: "evidence", label: "Evidence", icon: "▤", description: "Read-only Engagement projection. Parsing, OCR, and Evidence authority remain excluded." },
+        { id: "scope", label: "Scope", icon: "◇", description: "Read-only Engagement projection. No authoritative Scope records are created." },
+        { id: "practice-review", label: "Practice Review", icon: "☑", description: "Read-only Engagement projection. No CMMC conclusions are calculated." },
+        { id: "ssp", label: "SSP", icon: "▣", description: "Read-only Engagement projection. Governed SSP content remains standalone." },
+        { id: "deliverables", label: "Deliverables", icon: "⇩", description: "Read-only Engagement projection and compatibility catalog. No documents are generated." },
+        { id: "reviews-actions", label: "Reviews & Actions", icon: "!", description: "History, checkpoints, and proposals without silent Engagement mutation." }
+    ];
+    const TABS = [
+        { id: "identity", label: "Identity" }, { id: "people", label: "People & Organizations" }, { id: "assumptions", label: "Assumptions & Constraints" },
+        { id: "decisions", label: "Decisions & Questions" }, { id: "milestones", label: "Milestones & Blockers" }, { id: "candidates", label: "Candidate Review" }
+    ];
+    class App {
+        root;
+        store = new L2G.ProjectStore(L2G.createNewProject());
+        recovery = new L2G.RecoveryStore();
+        protection = {};
+        saveState = "Encrypted recovery unavailable until a passphrase is created";
+        recoveryTimer;
+        readOnly = false;
+        migrationSource = "";
+        searchTerm = "";
+        lastFocus;
+        constructor(root) {
+            this.root = root;
+            this.store.subscribe(() => {
+                this.saveState = this.protection.baseKey ? "Changes pending encrypted recovery" : "Unprotected session; encrypted recovery unavailable";
+                this.render();
+                this.scheduleRecovery();
+            });
+        }
+        async start() {
+            this.render();
+            try { const record = await this.recovery.load(); if (record) this.showRecoveryUnlock(record); }
+            catch (error) { this.toast(`Recovery could not be read: ${L2G.errorMessage(error)}`, "warning"); }
+            window.__L2G_TEST__ = {
+                getDocument: () => L2G.deepClone(this.store.document),
+                getProjection: (profile = this.store.document.state.profile, workspace = this.store.document.state.active_workspace) => L2G.buildEngagementProjection(this.store.document.state.engagement, profile, workspace),
+                createCandidate: (target, fields) => this.store.execute("Create test candidate", "candidate", "test", state => L2G.createCandidate(state.engagement, target, fields)),
+                decideCandidate: (id, action, rationale, fields) => this.store.execute(`Test ${action} candidate`, "candidate", id, state => L2G.decideCandidate(state.engagement, id, action, rationale, fields)),
+                supersedeCandidate: (id, fields, rationale) => this.store.execute("Test supersede candidate", "candidate", id, state => L2G.supersedeCandidate(state.engagement, id, fields, rationale)),
+                serializeInner: () => L2G.serializeInnerProject(this.store.document),
+                encrypt: async (passphrase, purpose = "portable-project") => L2G.encryptProject(this.store.document, await L2G.importPassphrase(passphrase), purpose),
+                decrypt: (bytes, passphrase, purpose = "portable-project") => L2G.decryptProject(bytes, passphrase, purpose),
+                replaceDocument: document => this.store.replaceDocument(document)
+            };
+        }
+        render() {
+            const documentValue = this.store.document;
+            const state = documentValue.state;
+            const profile = state.profile;
+            const advisor = profile === "advisor" && !this.readOnly;
+            const reviewer = profile === "reviewer";
+            const workspace = WORKSPACES.find(item => item.id === state.active_workspace) ?? WORKSPACES[0];
+            const protectedSession = Boolean(this.protection.baseKey);
+            const profileLabel = profile[0].toUpperCase() + profile.slice(1);
+            const projection = L2G.buildEngagementProjection(state.engagement, profile, workspace.id);
+            const identity = projection.identity;
+            const client = profile === "client";
+            this.root.innerHTML = `<div class="app-shell theme-system profile-${profile}" data-testid="app-shell">
+        <a class="skip-link" href="#workspace-main">Skip to workspace</a>
+        <header class="top-bar">
+          <button class="icon-button" id="rail-toggle" aria-label="${state.rail_collapsed ? "Expand" : "Collapse"} navigation rail">☰</button>
+          <div class="engagement-identity"><strong id="top-engagement-name">${L2G.escapeHtml(identity.engagement_name || "Untitled engagement")}</strong><span>${L2G.escapeHtml(identity.phase)} · ${L2G.escapeHtml(identity.target_level)}</span></div>
+          <span class="protection-badge ${protectedSession ? "protected" : "unprotected"}" data-testid="protection-state">${protectedSession ? "🔒 Encrypted session" : "⚠ Unprotected session"}</span>
+          <div class="save-state" role="status" aria-live="polite" data-testid="save-state">${L2G.escapeHtml(this.saveState)}</div>

@@ -1,0 +1,28 @@
+              <article><p class="eyebrow">Active blockers</p><div class="metric">${projection.blockers.filter(item => ["open", "waiting"].includes(item.operational_state)).length}</div><p>Work-management labels only</p></article>
+              ${candidateCount === null ? "" : `<article><p class="eyebrow">Candidate review</p><div class="metric">${candidateCount}</div><p>Awaiting explicit Advisor decision</p></article>`}
+              <article class="next-work wide"><p class="eyebrow">Suggested next work</p><h2>Factual planning queue</h2><ol class="next-list">${next.map(item => `<li><strong>${L2G.escapeHtml(item.title)}</strong><span>${L2G.escapeHtml(item.detail)}</span></li>`).join("")}</ol><p class="qualification">No readiness, compliance, certification, evidence-sufficiency, scoring, or Met/Not Met conclusion is calculated.</p></article>
+              <article class="wide"><p class="eyebrow">Recent Engagement activity</p><ol class="history-list">${[...this.store.document.history].reverse().slice(0, 8).map(event => `<li><time>${L2G.escapeHtml(new Date(event.timestamp).toLocaleString())}</time><strong>${L2G.escapeHtml(event.summary)}</strong><span>${L2G.escapeHtml(event.action)}</span></li>`).join("")}</ol></article>
+            </section>`;
+        }
+        preEngagement(advisor, projection) {
+            const tab = this.store.document.state.pre_engagement_tab ?? "identity";
+            return `<section class="engagement-workspace"><div class="subtabs" role="tablist" aria-label="Pre-Engagement sections">${TABS.map(item => `<button role="tab" data-tab="${item.id}" aria-selected="${tab === item.id}" class="subtab ${tab === item.id ? "active" : ""}">${L2G.escapeHtml(item.label)}</button>`).join("")}</div><div role="tabpanel" class="tab-panel">${this.tabContent(tab, advisor, projection)}</div></section>`;
+        }
+        tabContent(tab, advisor, projection) {
+            const domain = this.store.document.state.engagement;
+            const profile = this.store.document.state.profile;
+            const disabled = advisor ? "" : "disabled";
+            if (tab === "identity") {
+                const i = projection.identity;
+                return `<div class="form-card"><div class="section-title"><div><h2>Accepted engagement identity</h2><p>Owned by Engagement. Target level and information label are descriptive planning metadata only.</p></div><span class="chip">accepted</span></div><div class="field-grid">${this.input("Engagement name", "engagement_name", i.engagement_name, disabled)}${this.input("Client name", "client_name", i.client_name, disabled)}${this.input("System / program", "system_name", i.system_name, disabled)}${this.input("Delivery context", "delivery_context", i.delivery_context, disabled)}${this.select("Target level", "target_level", i.target_level, ["CMMC Level 2", "CMMC Level 1", "Other", "Not specified"], disabled)}${this.select("Phase", "phase", i.phase, ["planning", "discovery", "scoping", "practice-review", "ssp-development", "delivery", "review", "closed"], disabled)}${this.input("Start date", "start_date", i.start_date, disabled, "date")}${this.input("Target end date", "target_end_date", i.target_end_date, disabled, "date")}${this.select("Information label", "information_label", i.information_label, ["Synthetic", "Public", "Internal", "FCI", "CUI", "Unknown"], disabled)}${this.select("Visibility", "visibility", i.visibility, ["advisor-only", "client-safe", "approved-for-client-presentation"], disabled)}</div><label class="field full"><span>Objectives</span><textarea data-identity="objectives" ${disabled} maxlength="8000">${L2G.escapeHtml(i.objectives)}</textarea></label></div>`;
+            }
+            if (tab === "people") return this.people(advisor, projection);
+            if (tab === "assumptions") return this.dualLists("Assumptions", this.filter(domain.assumptions, profile), "Constraints", this.filter(domain.constraints, profile), advisor, "assumption", "constraint");
+            if (tab === "decisions") return this.dualLists("Decisions", this.filter(domain.decisions, profile), "Open questions", this.filter(domain.open_questions, profile), advisor, "decision", "open-question");
+            if (tab === "milestones") return this.dualLists("Milestones", projection.milestones, "Blockers", projection.blockers, advisor, "milestone", "blocker");
+            return this.candidates(advisor);
+        }
+        people(advisor, projection) {
+            const term = this.searchTerm.trim().toLowerCase();
+            const participants = projection.participants.filter(item => !term || `${item.name} ${item.role}`.toLowerCase().includes(term));
+            const orgs = projection.organizations.filter(item => !term || `${item.name} ${item.relationship}`.toLowerCase().includes(term));
