@@ -181,6 +181,13 @@ IDs are opaque, immutable, unique across the project, and unrelated to filenames
 
 Nullable keys remain present with `null` where the value is unavailable. This prevents ambiguous unknown-key and missing-key behavior.
 
+The `fingerprint` key is always present. Its value is either:
+
+- an object with exactly `algorithm: "SHA-256"` and a valid 64-character lowercase hexadecimal `sha256`; or
+- `null`, allowed only when `origin_kind` is `external-reference`, the source bytes have never been selected, `size_bytes` is `0`, `review_state` is `needs-attention`, and `trust_state` is `exception-open`.
+
+No other source kind may use a null fingerprint. Once exact bytes are registered, the external reference receives a new hashed source identity or is explicitly linked/superseded according to the revision rules; the unhashed record is not silently rewritten into a different byte identity.
+
 ### Origin kinds
 
 - `local-file`
@@ -188,7 +195,7 @@ Nullable keys remain present with `null` where the value is unavailable. This pr
 - `generated-output-reference`
 - `external-reference`
 
-`external-reference` may have a null fingerprint and zero size only when the source bytes have not been selected. It must have `review_state: needs-attention` and `trust_state: exception-open` until exact bytes are registered.
+An `external-reference` with no selected bytes uses `fingerprint: null` under the exact conditions above. It remains a factual unresolved reference, not an exact linked source, until reviewed source bytes are registered.
 
 ### Lifecycle
 
@@ -238,8 +245,9 @@ Trust state is an exception-workflow indicator. It is not authenticity, evidence
 
 ### Fingerprint rules
 
-- algorithm is exactly `SHA-256`;
-- digest is exactly 64 lowercase hexadecimal characters;
+- a non-null fingerprint has algorithm exactly `SHA-256`;
+- its digest is exactly 64 lowercase hexadecimal characters;
+- `null` is permitted only for the unresolved `external-reference` case defined above;
 - a digest identifies bytes, not trust or meaning;
 - the digest cannot be edited after registration;
 - changed bytes create a new source identity and revision relationship.
@@ -660,7 +668,7 @@ Rules:
 
 - construct from a deep clone after profile filtering;
 - recursively freeze before handing it to any workspace renderer;
-- Client View receives no candidate mappings, verification receipts, import receipts, provenance, original names, internal exception detail, or hidden counts;
+- Client View receives no candidate mappings, verification receipts, import receipts, provenance, original names, fingerprints, internal exception detail, or hidden counts;
 - Reviewer View includes provenance and receipts but is direct-edit read-only;
 - attempted projection mutation cannot alter Evidence authority.
 
