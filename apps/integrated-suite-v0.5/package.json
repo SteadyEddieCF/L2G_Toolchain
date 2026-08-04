@@ -1,13 +1,13 @@
 {
-  "name": "@l2g/integrated-suite-evidence-catalog",
-  "version": "0.4.0",
+  "name": "@l2g/integrated-suite-pre-engagement-interview",
+  "version": "0.5.0",
   "private": true,
-  "description": "Offline encrypted reference-only Evidence Catalog Core for L2G Integrated Suite.",
+  "description": "Offline encrypted Pre-Engagement and Interview Sessions vertical slice for L2G Integrated Suite.",
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "python scripts/build.py",
     "validate": "python scripts/validate.py",
-    "test:domain": "tsc -p tsconfig.domain-test.json && node scripts/test_domain.mjs",
+    "test:domain": "tsc -p tsconfig.domain-test.json && node scripts/test_domain.mjs && node scripts/test_v05_domains.mjs",
     "test:determinism": "python scripts/check_determinism.py",
     "test": "npm run typecheck && npm run build && npm run validate && npm run test:domain && npm run test:determinism"
   },
