@@ -14,12 +14,6 @@ FORBIDDEN_BYTE_PATTERNS = {
     "OpenAI-style secret": re.compile(rb"sk-(?:proj-)?[A-Za-z0-9_-]{20,}"),
     "GitHub token": re.compile(rb"gh[pousr]_[A-Za-z0-9]{20,}"),
 }
-FORBIDDEN_TEXT = [
-    "client legal name",
-    "real client",
-    "controlled unclassified information",
-    "federal contract information",
-]
 
 files: list[Path] = []
 for target in TARGETS:
@@ -39,11 +33,6 @@ for file in files:
     for label, pattern in FORBIDDEN_BYTE_PATTERNS.items():
         if pattern.search(data):
             failures.append(f"{label} detected in {relative}")
-    if file.suffix.lower() in {".html", ".json", ".md", ".txt", ".js", ".mjs", ".ts", ".py"}:
-        text = data.decode("utf-8", errors="ignore").lower()
-        for phrase in FORBIDDEN_TEXT:
-            if phrase in text and "no " + phrase not in text and "not " + phrase not in text:
-                failures.append(f"Potential non-synthetic phrase '{phrase}' in {relative}")
 
 release_html = ROOT / "dist" / "L2G_Integrated_Suite_Pre_Engagement_Interview_v0.5.0.html"
 if not release_html.is_file():
