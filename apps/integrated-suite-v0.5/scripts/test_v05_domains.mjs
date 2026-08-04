@@ -167,24 +167,10 @@ importedLive.participant_statements[0].recording_method = "imported-context";
 assert.throws(() => L.validateInterviewSessionsDomain(importedLive), /require import provenance/i);
 
 const secondDomain = L.createSyntheticInterviewSessions(timestamp);
-const secondReady = structuredClone(secondDomain.sessions[0]);
-secondReady.session_id = "interview_session_duplicate_active_test";
-secondReady.lifecycle = "in-progress";
-secondReady.actual_start = timestamp;
-secondReady.active_session_question_ref = null;
-secondReady.start_snapshot = {
-  plan_ref: secondReady.plan_ref,
-  plan_snapshot_hash: secondReady.plan_snapshot_hash,
-  plan_title: secondReady.title,
-  ordered_session_question_refs: [],
-  attendee_participant_refs: [],
-  attendee_display_labels: [],
-  facilitator_label: secondReady.facilitator_label,
-  started_at: timestamp,
-  started_profile: "advisor",
-  initial_session_question_ref: null
-};
-secondDomain.sessions.push(secondReady);
+const firstActive = L.startInterviewSession(secondDomain, secondDomain.sessions[0].session_id, "advisor");
+const duplicateActive = structuredClone(firstActive);
+duplicateActive.session_id = "interview_session_duplicate_active_test";
+secondDomain.sessions.push(duplicateActive);
 assert.throws(() => L.validateInterviewSessionsDomain(secondDomain), /Only one Interview session/i);
 
 console.log("Integrated Suite v0.5 Pre-Engagement and Interview domain tests passed.");
