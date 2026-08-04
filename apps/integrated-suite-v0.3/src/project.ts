@@ -203,9 +203,8 @@ namespace L2G {
     const withProfile = <T extends { visibility: Visibility; provenance: Provenance }>(records: T[]): Array<Omit<T, "provenance"> & { provenance?: Provenance }> => records.filter(record => include(record.visibility)).map(record => {
       const clone = deepClone(record) as T;
       if (profile === "client") {
-        const output = { ...clone } as T & { provenance?: Provenance };
-        delete output.provenance;
-        return output;
+        const { provenance: _provenance, ...output } = clone;
+        return output as Omit<T, "provenance">;
       }
       return clone;
     });
