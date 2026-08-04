@@ -43,7 +43,7 @@ test("reviews Pre-Engagement responses without changing origin or accepted targe
     origin: window.__L2G_TEST__.store.document.state.pre_engagement.responses[0].origin,
     review: window.__L2G_TEST__.store.document.state.pre_engagement.responses[0].review_state
   }));
-  expect(state).toEqual({ openQuestions: before, candidates: 1, origin: "advisor-entered-on-behalf", review: "approved" });
+  expect(state).toEqual({ openQuestions: before, candidates: 1, origin: "advisor-entered-on-behalf", review: "reviewed" });
 });
 
 test("facilitates a session with separate statements, Advisor notes, Client projection, confirmation, and recovery state", async ({ page }) => {
@@ -57,9 +57,9 @@ test("facilitates a session with separate statements, Advisor notes, Client proj
   await page.locator('[data-v05-form="statement"]').getByRole("button", { name: "Record separate statement" }).click();
   await expect(page.getByText("Participant statement recorded as a separate locally asserted record.")).toBeVisible();
 
-  await page.locator('[data-v05-form="advisor-note"] input[name="title"]').fill("Internal access concern");
-  await page.locator('[data-v05-form="advisor-note"] textarea[name="text"]').fill("Advisor-only detail must never appear in Client Presentation Mode.");
-  await page.locator('[data-v05-form="advisor-note"]').getByRole("button", { name: "Save Advisor-only note" }).click();
+  await page.locator('[data-v05-form="note"] input[name="title"]').fill("Internal access concern");
+  await page.locator('[data-v05-form="note"] textarea[name="text"]').fill("Advisor-only detail must never appear in Client Presentation Mode.");
+  await page.locator('[data-v05-form="note"]').getByRole("button", { name: "Save Advisor-only note" }).click();
   await expect(page.getByText("Advisor-only note saved and excluded from Client projection.")).toBeVisible();
   await expect(page.getByText("Internal access concern", { exact: true })).toBeVisible();
 
