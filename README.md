@@ -6,7 +6,7 @@ Monorepo for independently versioned, local/offline CMMC L2G modules, package co
 
 | Product or module | Current supplied release | Next bounded action |
 |---|---:|---|
-| **L2G Integrated Suite** | **v0.3.0** | v0.4.0 Evidence Catalog Core architecture/contract/UX/security design is governed by issue #130; implementation is not authorized until that design gate merges |
+| **L2G Integrated Suite** | **v0.4.0** | v0.5.0 Pre-Engagement and Interview Sessions design is governed by issue #133; implementation requires accepted domain contracts, Interview Mode UX, threat model, and exact acceptance matrix |
 | L2G Control Center | v0.3.4 | v0.4 read-only action/blocker and regression-overview synchronization remains eligible for a separately bounded issue; no downstream authority transfer |
 | DocConverter-L2G | v7.9.5.1 | Preserve the exact runtime and registered McFirecoal v1.2.0 handshake baseline until a concrete extraction or package defect is demonstrated |
 | L2G Scoper | v3.12 | Preserve the exact scope-context and scope-return behavior until downstream adoption demonstrates a concrete need |
@@ -16,25 +16,27 @@ Monorepo for independently versioned, local/offline CMMC L2G modules, package co
 
 ## Integrated Suite baseline
 
-L2G Integrated Suite v0.3.0 Engagement Spine was promoted by PR #129 and merged at `5cc028f78c683347081fbdd50b2e4773bb7ffd50`.
+L2G Integrated Suite v0.4.0 Evidence Catalog Core was promoted by PR #132 and merged at `fff6c801c101bad63455b83703f20e095308f6e7`.
 
-- portable artifact: `L2G_Integrated_Suite_Engagement_Spine_v0.3.0.html`
-- portable HTML SHA-256: `d4fe85feddf08b0e069546c04b40f3bb6e063da8fdba485b047beb879e847c2a`
+- portable artifact: `L2G_Integrated_Suite_Evidence_Catalog_v0.4.0.html`
+- portable HTML SHA-256: `60c1fe78ecf1ce19fcca696f93f043aa26be3515a7bb1f3d07c3708fae8e4f09`
 - project kind: `l2g_project_v1`
 - encrypted envelope: `l2g_encrypted_project_v1` version `1.0`
 - Engagement schema: `l2g_engagement_v1` version `1.0`
+- Evidence schema: `l2g_evidence_index_v1` version `1.0`
+- Evidence projection: `l2g_evidence_projection_v1` version `1.0`
 - normal runtime dependencies: zero
 - runtime model: local, offline, no install, no telemetry, no runtime network
 - current data boundary: synthetic-only; not authorized for production, client, FCI, or CUI data
 - current pointer: `apps/integrated-suite/current_release.json`
 - rolling roadmap: `docs/integrated-suite/L2G_Integrated_Suite_Rolling_10_Release_Roadmap_v1.md`
-- next design gate: issue #130, v0.4.0 Evidence Catalog Core
+- next design gate: issue #133, v0.5.0 Pre-Engagement and Interview Sessions
 
-The current Integrated Suite provides the shared shell and eight workflow workspaces; Advisor, Client, and Reviewer presentation profiles; encrypted portable projects and encrypted browser recovery; command history, Undo/Redo, checkpoints, and lock/unlock; canonical Engagement identity, participants, organizations, assumptions, decisions, questions, constraints, milestones, blockers, candidates, immutable workspace projections, factual next work, restrictive CSP, deterministic build, SBOM, and adversarial project validation.
+The current Integrated Suite provides the shared shell and eight workflow workspaces; Advisor, Client, and Reviewer presentation profiles; encrypted portable projects and encrypted browser recovery; command history, Undo/Redo, checkpoints, and lock/unlock; canonical Engagement identity and planning records; canonical reference-only Evidence source identity, fingerprints, relink, revisions, duplicate disposition, source locations, bounded derived records, target-owned candidates, profile-filtered transient search, and reviewed stable-package adapters; restrictive CSP; deterministic build; SBOM; and adversarial project validation.
 
-The v0.4 design preserves original evidence outside the project, uses SHA-256 only as byte identity, requires exact-first session relinking, represents changed bytes as new revisions, rebuilds search only after profile filtering, and keeps DocConverter packages as stable low-authority compatibility inputs. It does not authorize implementation until the ADR, contract, UX, threat model, and acceptance matrix are reviewed and merged.
+Original evidence remains outside the `.l2g` project. SHA-256 establishes byte equality only, browser file associations remain session-only, changed bytes create new source revisions, and imported or interview-derived information cannot silently mutate another domain. Existing standalone module releases remain authoritative and independently distributable.
 
-Existing standalone module releases remain authoritative and independently distributable. No current Integrated Suite release authorizes production, client, FCI, or CUI data or establishes readiness, compliance, assessment, certification, scoring, risk, evidence sufficiency, or Met/Not Met conclusions.
+No current Integrated Suite release authorizes production, client, FCI, or CUI data or establishes readiness, compliance, assessment, certification, scoring, risk, evidence sufficiency, implementation, or Met/Not Met conclusions. Presentation profiles remain non-security modes and are not safe client-distribution artifacts.
 
 ## Current contract and suite baseline
 
@@ -47,7 +49,7 @@ The prior exact-version technical regression snapshot `suite-2026.07.26-workshop
 ## Repository layout
 
 - `apps/integrated-suite/` — Integrated Suite current pointer and shared release governance
-- `apps/integrated-suite-v0.1/` through `apps/integrated-suite-v0.3/` — additive versioned Integrated Suite source, schemas, build tooling, release packages, and validation evidence
+- `apps/integrated-suite-v0.1/` through `apps/integrated-suite-v0.4/` — additive versioned Integrated Suite source, schemas, build tooling, release packages, and validation evidence
 - `docs/integrated-suite/` — architecture, ADRs, acceptance records, migration planning, UX information architecture, threat models, field-level contracts, decision/risk register, and rolling roadmap
 - `modules/` — independently versioned standalone applications and release governance
 - `contracts/` — package-route registry and contract documentation
