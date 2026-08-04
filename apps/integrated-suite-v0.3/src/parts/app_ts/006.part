@@ -1,0 +1,38 @@
+            this.by("help").onclick = () => this.help(); this.by("about").onclick = () => this.about(); this.by("overflow").onclick = () => { const menu = this.by("menu"); menu.hidden = !menu.hidden; };
+            document.getElementById("context")?.addEventListener("click", () => { this.store.document.state.inspector_open = !this.store.document.state.inspector_open; this.render(); });
+            this.by("close-inspector").onclick = () => { this.store.document.state.inspector_open = false; this.render(); document.getElementById("context")?.focus(); };
+            document.querySelectorAll("[data-workspace]").forEach(button => button.onclick = () => { this.store.document.state.active_workspace = button.dataset.workspace; this.render(); });
+            document.querySelectorAll("[data-tab]").forEach(button => button.onclick = () => { this.store.document.state.pre_engagement_tab = button.dataset.tab; this.render(); });
+            document.querySelectorAll("[data-action]").forEach(button => button.onclick = () => void this.action(button.dataset.action));
+            this.by("open-input").onchange = event => void this.openSelected(event);
+            document.querySelectorAll("[data-identity]").forEach(input => input.onchange = () => this.updateIdentity(input.dataset.identity, input.value));
+            document.getElementById("add-record")?.addEventListener("click", () => this.addRecordDialog(this.defaultTypeForTab()));
+            document.querySelectorAll("[data-add-type]").forEach(button => button.onclick = () => this.addRecordDialog(button.dataset.addType));
+            document.querySelectorAll("[data-deactivate-participant]").forEach(button => button.onclick = () => this.deactivateParticipant(button.dataset.deactivateParticipant));
+            document.querySelectorAll("[data-deactivate-org]").forEach(button => button.onclick = () => this.deactivateOrganization(button.dataset.deactivateOrg));
+            document.querySelectorAll("[data-candidate-action]").forEach(button => button.onclick = () => this.candidateAction(button.dataset.id, button.dataset.candidateAction));
+            document.querySelectorAll("[data-review]").forEach(button => button.onclick = () => this.reviewAction(button.dataset.id, button.dataset.review));
+            document.querySelectorAll("[data-restore]").forEach(button => button.onclick = () => { if (confirm("Restore this checkpoint?")) { this.store.restoreCheckpoint(button.dataset.restore); this.toast("Checkpoint restored; history retained.", "success"); } });
+        }
+        defaultTypeForTab() { return ({ people: "participant", assumptions: "assumption", decisions: "decision", milestones: "milestone", candidates: "candidate" })[this.store.document.state.pre_engagement_tab] ?? "participant"; }
+        async action(action) {
+            this.by("menu").hidden = true;
+            if (action === "new") { if (!confirm("Create a new synthetic project? Existing browser recovery will be replaced after a passphrase is set.")) return; this.protection = {}; this.migrationSource = ""; this.store.replaceDocument(L2G.createNewProject()); this.saveState = "Encrypted recovery unavailable until a passphrase is created"; this.render(); }
+            else if (action === "open") this.by("open-input").click();
+            else if (action === "save" || action === "backup") await this.save(action === "backup");
+            else if (action === "checkpoint") { const name = prompt("Checkpoint name", `Checkpoint ${this.store.document.checkpoints.length + 1}`); if (name !== null) this.store.createCheckpoint(name); }
+            else if (action === "lock") await this.lock();
+            else if (action === "clear-recovery") { await this.recovery.clear(); this.saveState = "Browser recovery cleared"; this.render(); this.toast("Encrypted browser recovery cleared.", "success"); }
+        }
+        async ensurePassphrase() {
+            if (this.protection.baseKey) return true;
+            return new Promise(resolve => {
+                this.dialog("Create project passphrase", `<form id="passphrase-form" class="dialog-form"><p>This passphrase protects portable project files and browser recovery. It cannot be reset or recovered.</p><label class="field"><span>Passphrase</span><input id="pass-one" type="password" autocomplete="new-password" required minlength="12"></label><label class="field"><span>Confirm passphrase</span><input id="pass-two" type="password" autocomplete="new-password" required minlength="12"></label><p class="passphrase-note">Use a unique passphrase of at least 12 characters. L2G does not store it.</p><div class="dialog-actions"><button type="button" data-cancel class="secondary-button">Cancel</button><button type="submit" class="primary-button">Create encrypted session</button></div></form>`);
+                this.by("passphrase-form").onsubmit = event => { event.preventDefault(); const first = this.by("pass-one").value; const second = this.by("pass-two").value; if (first !== second) return this.toast("Passphrases do not match.", "error"); try { L2G.validatePassphrase(first); } catch (error) { return this.toast(L2G.errorMessage(error), "error"); } void L2G.importPassphrase(first).then(key => { this.protection.baseKey = key; this.by("pass-one").value = ""; this.by("pass-two").value = ""; this.closeDialog(); this.saveState = "Encrypted session active; recovery will be written after change or save"; this.render(); resolve(true); }); };
+                this.by("passphrase-form").querySelector("[data-cancel]").onclick = () => { this.closeDialog(); resolve(false); };
+            });
+        }
+        async save(backup) {
+            try {
+                if (!await this.ensurePassphrase()) return;
+                this.saveState = "Encrypting project…"; this.render();

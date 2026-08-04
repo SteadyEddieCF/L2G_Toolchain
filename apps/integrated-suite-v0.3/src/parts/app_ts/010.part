@@ -1,0 +1,7 @@
+        dialog(title, body) { this.lastFocus = document.activeElement; const dialog = this.by("dialog"); this.by("dialog-content").innerHTML = `<h2 id="dialog-title">${L2G.escapeHtml(title)}</h2>${body}`; if (!dialog.open) dialog.showModal(); }
+        closeDialog() { const dialog = this.by("dialog"); if (dialog.open) dialog.close(); this.lastFocus?.focus?.(); }
+        toast(text, kind) { const region = document.getElementById("toast-region"); if (!region) return; const item = document.createElement("div"); item.className = `toast ${kind}`; item.textContent = text; region.append(item); setTimeout(() => item.remove(), 5000); }
+        by(identifier) { const element = document.getElementById(identifier); if (!element) throw new Error(`Missing element: ${identifier}`); return element; }
+    }
+    const root = document.getElementById("app"); if (!root) throw new Error("Application root missing."); void new App(root).start();
+})(L2G || (L2G = {}));
