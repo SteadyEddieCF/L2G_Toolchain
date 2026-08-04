@@ -1,33 +1,36 @@
 {
   "kind": "l2g_integrated_suite_current_release_v1",
   "status": "current",
-  "version": "0.2.0",
-  "artifact": "apps/integrated-suite-v0.2/releases/v0.2.0/L2G_Integrated_Suite_Encrypted_Project_v0.2.0.html",
-  "sha256": "84526756161fa44bc2dcaebe791a2ea1b73c06341c7563e34693aa6b7231af86",
+  "version": "0.3.0",
+  "artifact": "apps/integrated-suite-v0.3/releases/v0.3.0/L2G_Integrated_Suite_Engagement_Spine_v0.3.0.html",
+  "sha256": "d4fe85feddf08b0e069546c04b40f3bb6e063da8fdba485b047beb879e847c2a",
   "project_kind": "l2g_project_v1",
   "envelope_kind": "l2g_encrypted_project_v1",
-  "governing_issue": 123,
-  "promotion_pr": 127,
-  "validated_candidate_head": "fb431939815eacffda198030c0d63c5b4ccc4f59",
-  "fixed_vector_sha256": "e23492e6012f710b2eba94801fa2f863ab20d94f8e65f8e66d2267eeaa7a8d66",
+  "engagement_schema_kind": "l2g_engagement_v1",
+  "engagement_schema_version": "1.0",
+  "governing_issue": 126,
+  "promotion_pr": 129,
+  "validated_candidate_head": "c7c26fc01148614fc709c6822e24fb60b7858dd7",
+  "fixed_vector_sha256": "0091fb76fa5ee058b4072aa8e9d236942604851e65efdb68b1ea03758b3a5535",
+  "legacy_v02_fixture_sha256": "46f620e1de5bd8ec543f26c9c80007db2b3fc8251077608d449c83eed7f480e8",
   "validation_runs": {
-    "integrated_suite_v02": 30862444620,
-    "playwright_qa": 30862444611,
-    "rg4_merged_main": 30862444632,
-    "repository_validation": 30862444608
+    "integrated_suite_v03": 30926876220,
+    "playwright_qa": 30926877185,
+    "rg4_merged_main": 30926876034,
+    "repository_validation": 30926876422
   },
   "release_artifacts": {
     "linux": {
-      "id": 8874847192,
-      "digest": "sha256:66d0624a098c44657fab645a9afbfdd6d17d47ed72524586ef67cc42b355c318"
+      "id": 8899489095,
+      "digest": "sha256:4ed1b91281dfc6bdf9978c05229c7b1ef992f501e412d562a2b5b769aff9d3ba"
     },
     "windows_file_origin": {
-      "id": 8874856252,
-      "digest": "sha256:cb678436cadef3b5c3a8ffc1104ef00e6146bb8ef20b9ed5524a642e9f51145c"
+      "id": 8899489478,
+      "digest": "sha256:41f973e8d028e78015e3f13ad1e24ce062e46041e0f09c7f91092604b76f354a"
     }
   },
   "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
-  "implementation_branch_baseline": "6b35e955e854d3ba5507a7a97f8f9bdaa1cdacec",
+  "implementation_branch_baseline": "c65fee2dd893e23a0adaf339c8efbc7a7f929dde",
   "synthetic_only": true,
   "production_data_authorized": false
 }
