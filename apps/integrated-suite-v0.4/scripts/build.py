@@ -48,8 +48,10 @@ csp = "; ".join([
 html = template.replace("__L2G_STYLE__", style).replace("__L2G_CSP__", csp)
 html = html.replace("window.__L2G_RELEASE__=__L2G_RELEASE_JSON__;window.__L2G_CONTRACT_REGISTRY__=__L2G_REGISTRY_JSON__;", bootstrap)
 html = html.replace("__L2G_SCRIPT__", script)
-if "__L2G_" in html:
-    raise SystemExit("Unreplaced build placeholder remains")
+placeholder_tokens = ["__L2G_STYLE__", "__L2G_CSP__", "__L2G_RELEASE_JSON__", "__L2G_REGISTRY_JSON__", "__L2G_SCRIPT__"]
+remaining = [token for token in placeholder_tokens if token in html]
+if remaining:
+    raise SystemExit("Unreplaced build placeholder remains: " + ", ".join(remaining))
 
 artifact = DIST / RELEASE["artifact_name"]
 artifact.write_text(html, encoding="utf-8", newline="\n")
