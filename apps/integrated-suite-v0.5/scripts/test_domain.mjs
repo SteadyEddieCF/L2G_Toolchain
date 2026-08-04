@@ -134,8 +134,10 @@ const legacyBytes = await legacyV03Package(L.createNewProject());
 const migrated = await L.deserializeInnerProject(legacyBytes, true);
 assert.equal(migrated.legacy, true);
 assert.equal(migrated.document.state.evidence.sources.length, 0);
-assert.equal(migrated.document.history.at(-1).action, "evidence.migrated-v03");
-assert.equal(migrated.document.checkpoints.at(-1).name, "Migration to v0.4 Evidence Catalog Core");
+assert.equal(migrated.document.state.pre_engagement.requests.length, 0);
+assert.equal(migrated.document.state.interviews.sessions.length, 0);
+assert.equal(migrated.document.history.at(-1).action, "project.migrated-v05");
+assert.equal(migrated.document.checkpoints.at(-1).name, "Migration to v0.5 Pre-Engagement and Interview Sessions");
 
 const passphrase = "Synthetic-V04-Strong-Passphrase";
 const keys = await L.deriveProjectKeys(passphrase);
