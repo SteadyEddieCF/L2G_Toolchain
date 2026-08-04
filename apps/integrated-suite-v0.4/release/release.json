@@ -1,0 +1,14 @@
+{
+  "application": "L2G Integrated Suite",
+  "version": "0.4.0",
+  "artifact_name": "L2G_Integrated_Suite_Evidence_Catalog_v0.4.0.html",
+  "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
+  "synthetic_only": true,
+  "production_data_authorized": false,
+  "project_kind": "l2g_project_v1",
+  "envelope_kind": "l2g_encrypted_project_v1",
+  "engagement_schema_kind": "l2g_engagement_v1",
+  "engagement_schema_version": "1.0",
+  "evidence_schema_kind": "l2g_evidence_index_v1",
+  "evidence_schema_version": "1.0"
+}
