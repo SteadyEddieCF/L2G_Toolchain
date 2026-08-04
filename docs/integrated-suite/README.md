@@ -4,30 +4,33 @@ This directory contains the durable architecture, migration, UX-governance, proj
 
 ## Status
 
-- L2G Integrated Suite v0.4.0 Evidence Catalog Core is current, merged by PR #132 at `fff6c801c101bad63455b83703f20e095308f6e7`.
-- Its portable HTML SHA-256 is `60c1fe78ecf1ce19fcca696f93f043aa26be3515a7bb1f3d07c3708fae8e4f09`.
-- Milestone 0 issue #117, v0.2 issue #123, v0.3 issue #126, and v0.4 issue #130 are closed completed.
-- v0.5.0 Pre-Engagement and Interview Sessions is governed by issue #133.
-- The v0.5 design package defines two separate authorities: `l2g_pre_engagement_v1` at `domains/pre-engagement.json` and `l2g_interview_sessions_v1` at `domains/interview-sessions.json`.
-- v0.5 implementation is not authorized until ADR-0010, both field-level contracts, the Interview Mode UX/prototype handoff, threat model, acceptance matrix, and reconciled governance records are reviewed and merged.
-- The current release and planned v0.5 release remain synthetic-only and do not authorize production, client, FCI, or CUI data.
-- No authoritative Scope, Practice Review, SSP, or Deliverables migration is authorized by v0.5.
+- L2G Integrated Suite v0.5.0 Pre-Engagement and Interview Sessions is current, promoted by PR #137 and merged at `f0668fb3bf4bba2fc3574ce40e3c26dab413c93d`.
+- Its final validated head is `43f3d3709a0e7c030ec44f4667f1a1bd4d54e42e`.
+- Its portable HTML SHA-256 is `03838726fabb81e43a1e567f8c72680513b5e3d95609f656a6301b906963b1f3`.
+- Milestone 0 issue #117, v0.2 issue #123, v0.3 issue #126, v0.4 issue #130, and v0.5 issue #133 are closed completed.
+- v0.6.0 Scope Vertical Slice design is governed by issue #139.
+- Issue #139 authorizes design and planning only. No v0.6 implementation begins until the Scope ADR, field-level contract, UX record, threat model, compatibility posture, profile/non-disclosure rules, and exact acceptance matrix are reviewed and merged.
+- The current release and planned v0.6 design remain synthetic-only and do not authorize production, client, FCI, or CUI data.
+- No authoritative Scope, Practice Review, SSP, or Deliverables migration is authorized beyond the promoted Engagement, Evidence, Pre-Engagement, and Interview authorities.
 - DocConverter-L2G remains the authoritative standalone intake-file ingestion, extraction, normalization, Exception & Trust Queue, and provenance tool; stable package contracts remain unchanged compatibility inputs.
+- L2G Scoper v3.12 remains the authoritative standalone scoping application while issue #139 defines the integrated Scope authority and compatibility posture.
 - Original evidence remains outside the `.l2g` project by default. Reference metadata, hashes, bounded derived summaries, source locations, provenance, and candidates are stored only under reviewed encrypted-project limits.
-- Engagement owns canonical engagement identity, participants, organizations, and planning records. Evidence owns source identity, fingerprints, provenance, source relationships, and Evidence-origin candidates.
-- Pre-Engagement owns intake requests, instruments, immutable assignment snapshots, submissions, responses, intake exceptions, completeness projections, imports, and Pre-Engagement-origin candidates.
-- Interview Sessions owns question/version records, frozen session plans, sessions, participant statements, advisor notes, confirmations, summaries, follow-ups, parking-lot items, imports, and Interview-origin candidates.
+- Engagement owns canonical engagement identity, participants, organizations, and planning records.
+- Evidence owns source identity, fingerprints, provenance, source relationships, and Evidence-origin candidates.
+- Pre-Engagement owns intake requests, instruments, immutable assignment snapshots, submissions, responses, response-origin attribution, intake exceptions, factual completeness, imports, and Pre-Engagement-origin candidates.
+- Interview Sessions owns question/version records, frozen plans, sessions, participant statements, Advisor notes, confirmations, summaries, follow-ups, parking-lot items, imports, and Interview-origin candidates.
 - Intake and Interview outputs remain in their source authority or become target-owned candidates; they may not silently mutate Engagement, Evidence, Scope, Practice Review, SSP, Deliverables, or Reviews & Actions.
-- Raw advisor notes remain Advisor-only in v0.5. Client-visible summaries are separate records and profile filtering occurs before render, count, search, inspector, focus restoration, and accessibility-tree construction.
-- A client confirmation is a locally recorded facilitation event bound to an exact record version; it is not authenticated identity, an electronic signature, client approval of the full engagement, or an assessment conclusion.
+- Raw Advisor notes remain Advisor-only. Client-visible summaries are separate records, and profile filtering occurs before render, count, search, inspector, focus restoration, live-region announcements, and accessibility-tree construction.
+- A Client confirmation is a locally recorded facilitation event bound to an exact record version; it is not authenticated identity, an electronic signature, client approval of the full engagement, or an assessment conclusion.
 - At most one Interview session may be In progress or Paused. Start, Pause, and End create named checkpoints; Pause preserves valid drafts without approving or publishing them.
-- The existing standalone tools remain authoritative during migration.
+- Strict compatibility preview occurs before mutation. Meeting context remains imported context rather than direct testimony, intake content does not become a client answer automatically, and Scope context cannot create authoritative Scope records.
+- The existing standalone tools remain authoritative and independently distributable during migration.
 - The Integrated Suite evolves inside this monorepo unless a demonstrated technical constraint requires otherwise.
 - The repository is intentionally public, but all source, fixtures, Issues, pull requests, screenshots, logs, Actions artifacts, Releases, and test packages must remain free of client data, FCI, CUI, secrets, private local paths, client-identifying content, and proprietary unlicensed material.
 
 ## Baseline and reconciliation
 
-The current sequence is:
+The promoted sequence is:
 
 - Builder/Merger v3.10.1 — PR #113, merge commit `d3cd223befb3aa1b53b2feea291b9f38b8d2645e`;
 - Workshop v79.1 — PR #112, merge commit `e14ed000e490040182b529d7e2b3bc7155c03287`;
@@ -42,7 +45,9 @@ The current sequence is:
 - Integrated Suite v0.3.0 — PR #129, merge commit `5cc028f78c683347081fbdd50b2e4773bb7ffd50`;
 - v0.4 Evidence Catalog design — PR #131, merge commit `5011e83e855c29dc5a40ea97c81ae1892bff463b`;
 - Integrated Suite v0.4.0 — PR #132, merge commit `fff6c801c101bad63455b83703f20e095308f6e7`;
-- v0.5 Pre-Engagement and Interview Sessions design gate — issue #133 and ADR-0010 design package.
+- v0.5 Pre-Engagement and Interview Sessions design package — ADR-0010 and issue #133;
+- Integrated Suite v0.5.0 — PR #137, merge commit `f0668fb3bf4bba2fc3574ce40e3c26dab413c93d`;
+- v0.6 Scope Vertical Slice design gate — issue #139.
 
 The authoritative current exact-suite snapshot remains `suite-2026.08.03-rg4-validated-mcfirecoal-v1.2.0`. The earlier `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0` record remains immutable.
 
@@ -80,15 +85,18 @@ Commit `85d6e783a250b373cd4b9ea356e4c341336f9259` remains the governed standalon
 - `L2G_Integrated_Suite_v0.4.0_Threat_Model_v1.md`
 - `L2G_Integrated_Suite_v0.4.0_Acceptance_v1.md`
 
-### v0.5 Pre-Engagement and Interview Sessions design gate
+### v0.5 Pre-Engagement and Interview Sessions
 
 - `L2G_Pre_Engagement_v1_Contract_v1.md`
 - `L2G_Interview_Sessions_v1_Contract_v1.md`
 - `L2G_Integrated_Suite_v0.5.0_Pre_Engagement_Interview_UX_v1.md`
 - `L2G_Integrated_Suite_v0.5.0_Threat_Model_v1.md`
 - `L2G_Integrated_Suite_v0.5.0_Acceptance_v1.md`
+- `apps/integrated-suite-v0.5/release/VALIDATION_REPORT_v0.5.0.md`
 
-These records become implementation authority only after reviewed merge. They do not change the current release pointer, add runtime code, add schema JSON, alter stable packages, or authorize production data.
+### v0.6 Scope Vertical Slice
+
+Issue #139 requires a reviewed Scope ADR, field-level contract, Scope workbench UX/usability record, threat model, exact acceptance matrix, Scoper compatibility posture, profile-safe projection rules, and reconciled governance records before implementation begins.
 
 ## Architecture decisions
 
@@ -117,12 +125,13 @@ These records become implementation authority only after reviewed merge. They do
 10. Engagement, Evidence, Pre-Engagement, and Interview projections are read-only; imported metadata remains candidate material until explicitly reviewed.
 11. A SHA-256 match establishes byte equality only; it does not establish authenticity, relevance, currency, or sufficiency.
 12. Browser source-file associations are session-only and never portable project state.
-13. Changed source bytes create new revision identities rather than silently replacing prior evidence records.
+13. Changed source bytes create new revision identities rather than silently replacing prior Evidence records.
 14. Search indexes are transient and built only after profile filtering.
 15. Original evidence remains reference-only unless a later security and size decision explicitly approves embedding.
-16. Intake responses and interview statements preserve origin, exact source/version, asserted participant/profile, and provenance.
-17. Participant statements, advisor notes, confirmations, summaries, and candidates are separate records; none silently replaces another.
-18. Raw advisor notes and approved client-visible summaries are filtered before render, search, count, inspector, focus restoration, and accessibility-tree construction.
+16. Intake responses and Interview statements preserve origin, exact source/version, asserted participant/profile, and provenance.
+17. Participant statements, Advisor notes, confirmations, summaries, and candidates are separate records; none silently replaces another.
+18. Raw Advisor notes and approved Client-visible summaries are filtered before render, search, count, inspector, focus restoration, live-region announcements, and accessibility-tree construction.
 19. Instruments, assignments, questions, and session plans preserve immutable version/snapshot identity. Stale plans require explicit review.
 20. Pause/recovery preserves valid drafts and exact session position without creating a second active session or publishing/approving content.
-21. Audio/video capture, automated transcription, AI-generated answers, automatic question promotion, hidden scoring, and automatic assessment conclusions require separately approved scope and are excluded from v0.5.
+21. Audio/video capture, automated transcription, AI-generated answers, automatic question promotion, hidden scoring, and automatic assessment conclusions require separately approved scope and remain excluded.
+22. Scope must become a separate target-owned authority; Evidence, intake, Interview, and generated context may propose but may not establish the authoritative boundary.
