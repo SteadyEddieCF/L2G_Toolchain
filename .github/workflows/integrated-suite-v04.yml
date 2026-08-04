@@ -49,6 +49,8 @@ jobs:
           retention-days: 30
           if-no-files-found: error
           path: |
+            apps/integrated-suite-v0.4/src/**
+            apps/integrated-suite-v0.4/*.json
             apps/integrated-suite-v0.4/dist/**
             apps/integrated-suite-v0.4/releases/v0.4.0/**
             apps/integrated-suite-v0.4/build/fixtures/**
@@ -87,6 +89,8 @@ jobs:
           retention-days: 30
           if-no-files-found: error
           path: |
+            apps/integrated-suite-v0.4/src/**
+            apps/integrated-suite-v0.4/*.json
             apps/integrated-suite-v0.4/dist/**
             apps/integrated-suite-v0.4/releases/v0.4.0/**
             apps/integrated-suite-v0.4/build/fixtures/**
