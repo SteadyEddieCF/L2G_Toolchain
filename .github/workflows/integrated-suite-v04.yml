@@ -1,0 +1,93 @@
+name: Integrated Suite Evidence Catalog v0.4
+
+on:
+  pull_request:
+    paths:
+      - 'apps/integrated-suite-v0.4/**'
+      - 'apps/integrated-suite-v0.2/src/util.ts'
+      - 'apps/integrated-suite-v0.2/src/zip.ts'
+      - 'apps/integrated-suite-v0.2/contracts/registry.json'
+      - 'apps/integrated-suite-v0.3/src/encryption.ts'
+      - 'tests/playwright/integrated-suite-v04*.mjs'
+      - '.github/workflows/integrated-suite-v04.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v04-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/integrated-suite-v0.4/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root QA dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install locked v0.4 build dependency
+        run: npm ci --prefix apps/integrated-suite-v0.4 --no-audit --no-fund
+      - name: Typecheck, build, validate, run Evidence domain, migration, adapter, crypto, and determinism tests
+        run: npm test --prefix apps/integrated-suite-v0.4
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run Evidence hashing, relink, duplicate, candidate, import, recovery, profile, responsive, and accessibility tests
+        run: npx playwright test tests/playwright/integrated-suite-v04.spec.mjs --project=chromium
+      - name: Upload v0.4 Linux evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v04-linux
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            apps/integrated-suite-v0.4/dist/**
+            apps/integrated-suite-v0.4/releases/v0.4.0/**
+            apps/integrated-suite-v0.4/build/fixtures/**
+            test-results/**
+
+  v04-windows-file-origin:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/integrated-suite-v0.4/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install root QA dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install locked v0.4 build dependency
+        run: npm ci --prefix apps/integrated-suite-v0.4 --no-audit --no-fund
+      - name: Build and validate v0.4 on Windows
+        run: npm test --prefix apps/integrated-suite-v0.4
+      - name: Install Chromium
+        run: npx playwright install chromium
+      - name: Run native Windows file-origin v0.4 Evidence smoke
+        run: npx playwright test tests/playwright/integrated-suite-v04-file.spec.mjs --project=chromium
+      - name: Upload Windows file-origin evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v04-windows-file-origin
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            apps/integrated-suite-v0.4/dist/**
+            apps/integrated-suite-v0.4/releases/v0.4.0/**
+            apps/integrated-suite-v0.4/build/fixtures/**
+            test-results/**
