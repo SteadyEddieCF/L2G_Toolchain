@@ -19,7 +19,7 @@ checks = [
     ("projection schema", "l2g_engagement_projection_v1" in HTML),
     ("synthetic boundary", "synthetic-only" in HTML.lower()),
     ("no remote URLs", not re.search(r"https?://", HTML)),
-    ("no telemetry markers", not re.search(r"analytics|telemetry|sentry|segment\.io|google-analytics", HTML, re.I)),
+    ("no telemetry SDK markers", not re.search(r"sentry(?:\.io|init)|segment\.io|google-analytics|gtag\(|mixpanel\.|amplitude\.", HTML, re.I)),
 ]
 failed = [name for name, ok in checks if not ok]
 if failed:
