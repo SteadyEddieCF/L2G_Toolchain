@@ -516,16 +516,15 @@ Evidence does not store target decisions as authority. When a target command exi
 - `revision-registration`
 - `duplicate-registration`
 
-### Result
+### Persisted result
 
 - `exact-match`
-- `hash-mismatch`
 - `duplicate-existing`
 - `new-revision-created`
-- `cancelled`
-- `error`
 
-Receipts contain no source bytes, paths, file handles, passphrases, or keys. Cancelled and error receipts may be represented by history only if no governed source existed; when persisted, their selected metadata must be bounded and sanitized.
+Only a completed digest followed by an explicit successful Advisor action creates a verification receipt and history event. A hash mismatch shown during staging, user cancellation, worker error, limit rejection, or discarded preview remains transient and writes no receipt or history. If the user responds to a mismatch by creating a revision or associating another exact source, the resulting successful action is recorded under the appropriate persisted result.
+
+Receipts contain no source bytes, paths, file handles, passphrases, or keys.
 
 ## Import receipt
 
@@ -564,6 +563,8 @@ Receipts contain no source bytes, paths, file handles, passphrases, or keys. Can
 - `rejected`
 - `superseded`
 
+`partial` means the Advisor explicitly approved a reviewed valid subset while leaving identified invalid, ambiguous, or excluded preview rows unapplied. The selected valid subset commits atomically in one command; the receipt identifies both applied references and warnings/excluded rows. Parser failure, unsupported package identity, or an unreviewed malformed batch never causes an automatic partial mutation.
+
 The package bytes are not retained. The receipt preserves package identity and the normalized records created from an explicit import preview. Unknown package kinds or versions never partially mutate governed state.
 
 ## Runtime-only session link map
@@ -593,13 +594,14 @@ For each selected file:
 2. enforce source and batch size limits;
 3. hash the complete bytes in a cancellable worker;
 4. compare the digest to the intended source;
-5. if exact, create an exact verification receipt and associate the runtime File;
+5. if exact, create an exact verification receipt and associate the runtime File after confirmation;
 6. otherwise compare the digest to every active catalog source;
 7. if another exact source exists, offer association with that source or explicit duplicate registration;
 8. if no exact source exists, offer Cancel or Create New Revision;
 9. never replace an existing fingerprint or source identity;
-10. validate the complete proposed state before mutation;
-11. append command history and create a checkpoint for batch relink/revision operations.
+10. write no governed record for a cancelled, failed, or discarded staging result;
+11. validate the complete proposed state before successful mutation;
+12. append command history and create a checkpoint for confirmed batch relink/revision operations.
 
 Filename, size, media type, and modified time may rank possible intended records in the review UI but cannot produce an exact relink result.
 
@@ -629,13 +631,12 @@ Advisor-visible governed records plus review/history emphasis, but no editing re
 ### Client searchable fields
 
 - client label;
-- approved display label where explicitly allowed;
 - approved tags;
 - client-visible derived titles/summaries/fields;
 - client-visible location labels and relationship labels;
 - client-visible states intentionally approved for presentation.
 
-Client search excludes original names, fingerprints, provenance, confidence, parser diagnostics, raw import names, collection hints, exception details, duplicate rationale, verification receipts, candidate mappings, history rationale, and hidden-record counts.
+The Advisor `display_label` is not a Client-search fallback. Client search excludes original names, fingerprints, provenance, confidence, parser diagnostics, raw import names, collection hints, exception details, duplicate rationale, verification receipts, candidate mappings, history rationale, and hidden-record counts.
 
 Search queries, index tokens, result selections, snippets, and recent-query state are not persisted.
 
@@ -699,6 +700,8 @@ Deterministic priority order:
 8. import preview awaiting decision;
 9. stale verification based on an explicit project preference;
 10. informational no-work state.
+
+Persisted next-work uses governed records only. A transient hash mismatch may appear in the active session review flow but is not recreated after reload unless the Advisor explicitly creates a revision, records a trust exception, or otherwise commits a governed decision.
 
 Next-work text is factual and must not contain readiness, compliance, evidence-sufficiency, scoring, certification, risk, implementation, or Met/Not Met conclusions.
 
@@ -826,11 +829,12 @@ Migrate through the existing deterministic v0.3 path, then apply the empty v0.4 
 5. stage normalized records without mutating the catalog;
 6. preserve valid source document IDs and source locations in provenance;
 7. show warnings and rejected rows in an import preview;
-8. require explicit Advisor Apply, Modify, or Reject;
-9. create one import receipt and one checkpoint for an applied batch;
-10. never infer missing scope, practice, responsibility, evidence-sufficiency, SSP, or client-approval values;
-11. reject unsupported package versions and ambiguous source references without partial mutation;
-12. leave the stable legacy contract and standalone runtime unchanged.
+8. require explicit Advisor Apply, Modify, Apply Reviewed Subset, or Reject;
+9. commit the selected valid set atomically and create one import receipt and one checkpoint;
+10. record excluded/rejected preview rows in receipt warnings without creating governed source records for them;
+11. never infer missing scope, practice, responsibility, evidence-sufficiency, SSP, or client-approval values;
+12. reject unsupported package versions and ambiguous source references without automatic partial mutation;
+13. leave the stable legacy contract and standalone runtime unchanged.
 
 ## Security qualification
 
