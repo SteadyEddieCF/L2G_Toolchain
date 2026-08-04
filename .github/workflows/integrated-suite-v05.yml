@@ -4,10 +4,12 @@ on:
   pull_request:
     paths:
       - 'apps/integrated-suite-v0.5/**'
+      - 'apps/integrated-suite/current_release.json'
       - 'apps/integrated-suite-v0.2/src/util.ts'
       - 'apps/integrated-suite-v0.2/src/zip.ts'
       - 'apps/integrated-suite-v0.2/contracts/registry.json'
       - 'apps/integrated-suite-v0.3/src/encryption.ts'
+      - 'tests/playwright/integrated-suite-v05*.mjs'
       - '.github/workflows/integrated-suite-v05.yml'
   workflow_dispatch:
 
@@ -15,9 +17,9 @@ permissions:
   contents: read
 
 jobs:
-  v05-domain-foundation-linux:
+  v05-candidate-linux:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,22 +27,28 @@ jobs:
           node-version: '22'
           cache: npm
           cache-dependency-path: apps/integrated-suite-v0.5/package-lock.json
-      - name: Install locked v0.5 TypeScript dependency
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install locked v0.5 build dependency
         run: npm ci --prefix apps/integrated-suite-v0.5 --no-audit --no-fund
-      - name: Strict TypeScript check
-        run: npm run typecheck --prefix apps/integrated-suite-v0.5
-      - name: Compile isolated domain harness
-        run: npx --prefix apps/integrated-suite-v0.5 tsc -p apps/integrated-suite-v0.5/tsconfig.domain-test.json
-      - name: Run inherited v0.4 non-regression domain tests
-        run: node apps/integrated-suite-v0.5/scripts/test_domain.mjs
-      - name: Run v0.5 Pre-Engagement and Interview domain tests
-        run: node apps/integrated-suite-v0.5/scripts/test_v05_domains.mjs
-      - name: Run v0.5 persistence and migration tests
-        run: node apps/integrated-suite-v0.5/scripts/test_v05_project.mjs
+      - name: Typecheck, build, validate, run domain, persistence, migration, crypto, and determinism tests
+        run: npm test --prefix apps/integrated-suite-v0.5
+      - name: Upload v0.5 Linux candidate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v05-linux-candidate
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            apps/integrated-suite-v0.5/dist/**
+            apps/integrated-suite-v0.5/releases/v0.5.0/**
+            apps/integrated-suite-v0.5/build/fixtures/**
 
-  v05-domain-foundation-windows:
+  v05-candidate-windows:
     runs-on: windows-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -48,15 +56,21 @@ jobs:
           node-version: '22'
           cache: npm
           cache-dependency-path: apps/integrated-suite-v0.5/package-lock.json
-      - name: Install locked v0.5 TypeScript dependency
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install locked v0.5 build dependency
         run: npm ci --prefix apps/integrated-suite-v0.5 --no-audit --no-fund
-      - name: Strict TypeScript check on Windows
-        run: npm run typecheck --prefix apps/integrated-suite-v0.5
-      - name: Compile isolated domain harness on Windows
-        run: npx --prefix apps/integrated-suite-v0.5 tsc -p apps/integrated-suite-v0.5/tsconfig.domain-test.json
-      - name: Run inherited and v0.5 domain tests on Windows
-        shell: pwsh
-        run: |
-          node apps/integrated-suite-v0.5/scripts/test_domain.mjs
-          node apps/integrated-suite-v0.5/scripts/test_v05_domains.mjs
-          node apps/integrated-suite-v0.5/scripts/test_v05_project.mjs
+      - name: Build and validate the deterministic v0.5 candidate on Windows
+        run: npm test --prefix apps/integrated-suite-v0.5
+      - name: Upload v0.5 Windows candidate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v05-windows-candidate
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            apps/integrated-suite-v0.5/dist/**
+            apps/integrated-suite-v0.5/releases/v0.5.0/**
+            apps/integrated-suite-v0.5/build/fixtures/**
