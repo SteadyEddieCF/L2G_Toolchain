@@ -50,7 +50,7 @@ Passing this matrix does not authorize production, client, FCI, or CUI data and 
 - produce the same digest regardless of chunk boundaries;
 - expose progress and cancellation without blocking the primary UI;
 - reject a file above 2 GiB or a batch above 500 files before hashing;
-- cancelling, worker failure, limit rejection, or invalid staged metadata leaves governed state unchanged;
+- cancelling, worker failure, limit rejection, discarded preview, or invalid staged metadata leaves governed state, history, checkpoints, and persistent receipts unchanged;
 - original bytes are absent from ProjectStore state, command history, checkpoints, recovery, localStorage, logs, and generated QA evidence;
 - batch commit is atomic and creates one named checkpoint.
 
@@ -61,7 +61,10 @@ Passing this matrix does not authorize production, client, FCI, or CUI data and 
 - reject or sanitize control characters, bidi controls, separators, drive letters, URIs, and directory structures according to the contract;
 - persist no `File`, Blob, handle, absolute path, `webkitRelativePath`, user profile, or drive metadata;
 - support local-file, legacy-package-record, generated-output-reference, and external-reference origin kinds;
+- fingerprint key is always present and may be null only for an unresolved external reference under the exact contract state/size rules;
+- no other origin kind accepts a null fingerprint;
 - unhashed external references remain needs-attention/exception-open and cannot be treated as exact linked sources;
+- registering exact bytes for an external reference creates or links a hashed source identity rather than silently rewriting byte identity;
 - file type, extension, size, and modified time remain hints and never override a digest result;
 - fingerprint language says byte equality only and does not assert authenticity or sufficiency.
 
@@ -71,20 +74,22 @@ Passing this matrix does not authorize production, client, FCI, or CUI data and 
 - show session link state distinctly from portable saved state;
 - clear associations on lock, project close, reload, project replacement, migration, failed unlock, and explicit unlink;
 - saving and reopening the project returns sources to unlinked runtime state;
-- source identity and verification history remain preserved when session links clear.
+- source identity and successful verification history remain preserved when session links clear.
 
 ### Relink Evidence
 
 - reselect and hash source bytes before any relink mutation;
 - exact intended-source digest creates a `linked-exact` session association, verification receipt, and history event without changing source identity;
 - name/size/modified hints cannot create an exact relink result;
-- wrong same-name bytes produce a blocking mismatch;
+- wrong same-name bytes produce a blocking transient mismatch;
 - mismatch cannot force-replace a fingerprint;
 - when bytes match another source, offer association to that exact source or explicit duplicate registration;
 - changed bytes may create a new revision source with a new ID and fingerprint;
 - revision creation preserves the old source and adds validated `revision-of` and optional supersession links;
-- batch relink summary is factual and atomic for governed record changes;
-- wrong/malformed/cancelled relink leaves active governed state unchanged.
+- verification receipts persist only explicit successful results: exact-match, duplicate-existing, or new-revision-created;
+- a staged mismatch, cancelled operation, worker error, limit rejection, or discarded preview writes no receipt, history, checkpoint, or governed record;
+- batch relink summary is factual and atomic for confirmed governed record changes;
+- wrong, malformed, failed, or cancelled relink leaves active governed state unchanged.
 
 ### Exact duplicate detection and disposition
 
@@ -150,11 +155,13 @@ For each recognized package kind/version:
 - verify registry presence and expected stability metadata;
 - reject duplicate JSON keys, forbidden prototype keys, unsafe archive paths, duplicate paths, CRC/integrity failures, compression/recursive archive violations, unsupported version, and size violations;
 - stage a preview without mutating Evidence;
-- show accepted candidates, modifications, warnings, and rejected records;
+- show valid candidates, proposed modifications, warnings, and rejected records;
 - preserve valid source document IDs and source locations in provenance;
 - generate separately opaque integrated IDs;
-- require Advisor Apply, Modify, or Reject;
-- apply atomically with one import receipt, checkpoint, and history event;
+- require Advisor Apply, Modify, Apply Reviewed Subset, or Reject;
+- commit the selected valid set atomically with one import receipt, checkpoint, and history event;
+- treat `partial` only as an explicitly approved valid subset; rejected/ambiguous preview rows create no governed records and are documented in receipt warnings;
+- never perform automatic partial mutation after parser, identity, version, integrity, or batch validation failure;
 - preserve package name/hash/size/kind/version/registry version and normalized record refs without retaining package bytes;
 - reject missing source traceability or ambiguous source refs without invented values;
 - infer no Scope, responsibility, practice, SSP, evidence-sufficiency, client approval, readiness, compliance, risk, or Met/Not Met result;
@@ -179,7 +186,7 @@ Required negative inputs:
 - invalid location;
 - raw JSON fragments outside bounded flat fields;
 - unsupported nested payload;
-- partial malformed batch.
+- malformed batch that attempts automatic partial mutation.
 
 ### Search
 
@@ -187,7 +194,8 @@ Required negative inputs:
 - rebuild on project open/unlock, profile change, Evidence mutation, import application, and migration;
 - store no search index, tokens, snippets, query history, recent results, or result selections in `.l2g`, recovery, localStorage, history, or telemetry;
 - Advisor and Reviewer search the allowed contract fields;
-- Client search only approved client labels, approved tags, approved derived content, and approved visible states/relationships;
+- Client search only explicit approved client labels, approved tags, approved derived content, and approved visible states/relationships;
+- Advisor display labels are not Client-search fallback terms;
 - hidden original names, fingerprints, collection labels, provenance, confidence, diagnostics, exceptions, duplicates, candidates, receipts, imports, and history contribute no Client terms or counts;
 - clear results, autocomplete, and inspector before profile-switch render;
 - hidden record queries return the generic Client no-result state only;
@@ -199,7 +207,8 @@ Required negative inputs:
 - Reviewer View is direct-edit read-only and emphasizes change/history/source traceability;
 - Client View is constructed before rendering, counting, next-work, search indexing, or inspector creation;
 - Client-visible sources require client-visible record visibility and nonempty client label;
-- Client projection omits original names, collection labels, raw package names, fingerprints unless separately approved by future design, confidence, provenance, diagnostics, exception details, duplicate rationale, candidates, verification receipts, import receipts, internal history, and hidden IDs;
+- Client projection omits original names, collection labels, raw package names, fingerprints, confidence, provenance, diagnostics, exception details, duplicate rationale, candidates, verification receipts, import receipts, internal history, and hidden IDs;
+- fingerprint presentation is outside v0.4 and requires a later reviewed design;
 - hidden records do not affect counts, search, next-work, autocomplete, snippets, empty states, DOM text, accessibility tree, or screenshots;
 - profile switch closes/clears incompatible inspector and search state;
 - every workspace receives a deep-cloned recursively frozen Evidence projection;
@@ -209,7 +218,8 @@ Required negative inputs:
 ### Factual next work
 
 - deterministic ordering follows the contract;
-- support hash mismatch/changed source, open trust exception, missing/unavailable source, unresolved duplicate group, failed/partial/unsupported processing, unreviewed source, returned/unpublished candidate, pending import, stale verification, and no-work informational state;
+- support governed changed-source/revision state, open trust exception, missing/unavailable source, unresolved duplicate group, failed/partial/unsupported processing, unreviewed source, returned/unpublished candidate, pending import, stale verification, and no-work informational state;
+- transient uncommitted hash mismatch may appear only in the active review flow and is not recreated after reload;
 - Client calculation uses only Client-visible records and approved state text;
 - next-work contains no readiness, compliance, evidence-sufficiency, certification, scoring, risk, implementation, or Met/Not Met language.
 
