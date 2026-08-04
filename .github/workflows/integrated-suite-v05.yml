@@ -35,6 +35,8 @@ jobs:
         run: node apps/integrated-suite-v0.5/scripts/test_domain.mjs
       - name: Run v0.5 Pre-Engagement and Interview domain tests
         run: node apps/integrated-suite-v0.5/scripts/test_v05_domains.mjs
+      - name: Run v0.5 persistence and migration tests
+        run: node apps/integrated-suite-v0.5/scripts/test_v05_project.mjs
 
   v05-domain-foundation-windows:
     runs-on: windows-latest
@@ -57,3 +59,4 @@ jobs:
         run: |
           node apps/integrated-suite-v0.5/scripts/test_domain.mjs
           node apps/integrated-suite-v0.5/scripts/test_v05_domains.mjs
+          node apps/integrated-suite-v0.5/scripts/test_v05_project.mjs
