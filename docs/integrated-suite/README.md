@@ -4,16 +4,17 @@ This directory contains the durable architecture, migration, UX-governance, proj
 
 ## Status
 
-- L2G Integrated Suite v0.3.0 Engagement Spine is current, merged by PR #129 at `5cc028f78c683347081fbdd50b2e4773bb7ffd50`.
-- Its portable HTML SHA-256 is `d4fe85feddf08b0e069546c04b40f3bb6e063da8fdba485b047beb879e847c2a`.
-- Milestone 0 issue #117, v0.2 issue #123, and v0.3 issue #126 are closed completed.
-- v0.4.0 Evidence Catalog Core is governed by issue #130.
-- ADR-0009, the `l2g_evidence_index_v1` contract, Evidence UX record, threat model, and acceptance matrix define the v0.4 implementation gate.
-- v0.4 production implementation is not authorized until that design package is reviewed and merged.
-- v0.3 and the planned v0.4 release remain synthetic-only and do not authorize production, client, FCI, or CUI data.
-- No substantive Pre-Engagement, Scope, Practice Review, SSP, or Deliverables migration is authorized by the v0.4 planning records.
+- L2G Integrated Suite v0.4.0 Evidence Catalog Core is current, merged by PR #132 at `fff6c801c101bad63455b83703f20e095308f6e7`.
+- Its portable HTML SHA-256 is `60c1fe78ecf1ce19fcca696f93f043aa26be3515a7bb1f3d07c3708fae8e4f09`.
+- Milestone 0 issue #117, v0.2 issue #123, v0.3 issue #126, and v0.4 issue #130 are closed completed.
+- v0.5.0 Pre-Engagement and Interview Sessions is governed by issue #133.
+- v0.5 requires accepted domain contracts, an Interview Mode UX prototype/usability handoff, profile/non-disclosure rules, compatibility-adapter posture, threat-model update, and exact acceptance matrix before implementation.
+- The current release and planned v0.5 release remain synthetic-only and do not authorize production, client, FCI, or CUI data.
+- No authoritative Scope, Practice Review, SSP, or Deliverables migration is authorized by the v0.5 planning issue.
 - DocConverter-L2G remains the authoritative standalone intake, extraction, normalization, Exception & Trust Queue, and provenance tool; its stable package contracts remain unchanged compatibility inputs.
-- Original evidence remains outside the `.l2g` project by default. Reference metadata, hashes, bounded derived summaries, source locations, provenance, and candidates may be stored only under the reviewed encrypted-project limits.
+- Original evidence remains outside the `.l2g` project by default. Reference metadata, hashes, bounded derived summaries, source locations, provenance, and candidates are stored only under reviewed encrypted-project limits.
+- Engagement owns canonical engagement identity and planning records. Evidence owns source identity, provenance, reference metadata, source relationships, and Evidence-origin candidates.
+- Pre-Engagement and Interview Session outputs must remain in their own authority or become target-owned candidates; they may not silently mutate Engagement, Evidence, Scope, Practice Review, SSP, Deliverables, or Reviews & Actions.
 - The existing standalone tools remain authoritative during migration.
 - The Integrated Suite evolves inside this monorepo unless a demonstrated technical constraint requires otherwise.
 - The repository is intentionally public, but all source, fixtures, Issues, pull requests, screenshots, logs, Actions artifacts, Releases, and test packages must remain free of client data, FCI, CUI, secrets, private local paths, client-identifying content, and proprietary unlicensed material.
@@ -33,7 +34,9 @@ The current sequence is:
 - Integrated Suite v0.2.0 — PR #127, merge commit `72584f3a9fd8f82ea580cc29903e06678907d2f8`;
 - v0.3 Engagement design package — PR #128, merge commit `c65fee2dd893e23a0adaf339c8efbc7a7f929dde`;
 - Integrated Suite v0.3.0 — PR #129, merge commit `5cc028f78c683347081fbdd50b2e4773bb7ffd50`;
-- v0.4 Evidence Catalog design — issue #130 and the ADR-0009 planning branch/PR.
+- v0.4 Evidence Catalog design — PR #131, merge commit `5011e83e855c29dc5a40ea97c81ae1892bff463b`;
+- Integrated Suite v0.4.0 — PR #132, merge commit `fff6c801c101bad63455b83703f20e095308f6e7`;
+- v0.5 Pre-Engagement and Interview Sessions design gate — issue #133.
 
 The authoritative current exact-suite snapshot remains `suite-2026.08.03-rg4-validated-mcfirecoal-v1.2.0`. The earlier `suite-2026.07.26-workshop-v79-mcfirecoal-v1.2.0` record remains immutable.
 
@@ -64,12 +67,16 @@ Commit `85d6e783a250b373cd4b9ea356e4c341336f9259` remains the governed standalon
 - `L2G_Integrated_Suite_v0.3.0_Threat_Model_v1.md`
 - `L2G_Integrated_Suite_v0.3.0_Acceptance_v1.md`
 
-### v0.4 Evidence Catalog Core design gate
+### v0.4 Evidence Catalog Core
 
 - `L2G_Evidence_Index_v1_Contract_v1.md`
 - `L2G_Integrated_Suite_v0.4.0_Evidence_Catalog_UX_v1.md`
 - `L2G_Integrated_Suite_v0.4.0_Threat_Model_v1.md`
 - `L2G_Integrated_Suite_v0.4.0_Acceptance_v1.md`
+
+### v0.5 Pre-Engagement and Interview Sessions design gate
+
+Issue #133 governs the upcoming architecture decision, field-level contracts, Interview Mode UX prototype/usability handoff, profile/non-disclosure rules, compatibility adapters, threat model, and exact acceptance matrix. These records do not yet exist and implementation is not authorized until they are reviewed and merged.
 
 ## Architecture decisions
 
@@ -100,3 +107,6 @@ Commit `85d6e783a250b373cd4b9ea356e4c341336f9259` remains the governed standalon
 13. Changed source bytes create new revision identities rather than silently replacing prior evidence records.
 14. Search indexes are transient and built only after profile filtering.
 15. Original evidence remains reference-only unless a later security and size decision explicitly approves embedding.
+16. Interview responses and notes must preserve statement type, source, authoring profile, and provenance; summaries cannot silently replace raw records.
+17. Raw advisor notes and approved client-visible summaries are separate records and must be filtered before render, search, count, inspector, and accessibility-tree construction.
+18. Audio/video capture, automated transcription, AI-generated answers, hidden scoring, and automatic assessment conclusions require separately approved scope and are excluded from v0.5.
