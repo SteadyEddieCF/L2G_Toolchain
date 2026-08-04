@@ -13,32 +13,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  repair-source:
-    if: github.event_name == 'pull_request' && github.head_ref == 'agent/integrated-suite-v0.4.0-evidence-catalog'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 0
-      - name: Apply exact source repairs
-        run: python apps/integrated-suite-v0.4/scripts/apply_source_repairs.py
-      - name: Commit repaired source when needed
-        shell: bash
-        run: |
-          if git diff --quiet; then
-            echo "Source already repaired."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add apps/integrated-suite-v0.4/src apps/integrated-suite-v0.4/tsconfig.json
-          git commit -m "Repair v0.4 source integration defects"
-          git push origin HEAD:${{ github.head_ref }}
-
   v04-linux:
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -72,8 +49,6 @@ jobs:
           retention-days: 30
           if-no-files-found: error
           path: |
-            apps/integrated-suite-v0.4/src/**
-            apps/integrated-suite-v0.4/*.json
             apps/integrated-suite-v0.4/dist/**
             apps/integrated-suite-v0.4/releases/v0.4.0/**
             apps/integrated-suite-v0.4/build/fixtures/**
@@ -112,8 +87,6 @@ jobs:
           retention-days: 30
           if-no-files-found: error
           path: |
-            apps/integrated-suite-v0.4/src/**
-            apps/integrated-suite-v0.4/*.json
             apps/integrated-suite-v0.4/dist/**
             apps/integrated-suite-v0.4/releases/v0.4.0/**
             apps/integrated-suite-v0.4/build/fixtures/**
