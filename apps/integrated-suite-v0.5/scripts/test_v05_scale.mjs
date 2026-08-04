@@ -95,7 +95,7 @@ const plan = interviews.plans[0];
 const basePlanItem = plan.items[0];
 plan.items = scaleQuestions.slice(0, 250).map((question, index) => ({
   ...structuredClone(basePlanItem),
-  plan_item_id: L.newId("plan_item"),
+  plan_item_id: index === 0 ? basePlanItem.plan_item_id : L.newId("interview_plan_item"),
   order: index + 1,
   question_ref: question.question_id,
   question_version_number: question.version_number,
