@@ -11,7 +11,7 @@ async function openScope(page) {
   await expect(page.locator("#scope-title")).toBeVisible({ timeout: 30000 });
 }
 
-async function profile(page, value) {
+async function setProfile(page, value) {
   const select = page.locator("select").filter({ has: page.locator(`option[value="${value}"]`) }).first();
   await select.selectOption(value);
   await expect(page.locator("#scope-title")).toBeVisible();
@@ -125,14 +125,15 @@ test("stale decision comparison creates and accepts a linked superseding draft",
   });
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   await page.getByRole("button", { name: "Compare versions" }).click();
-  await expect(page.getByRole("heading", { name: "Compare stale decision versions" })).toBeVisible();
-  await expect(page.getByRole("table")).toContainText("Changed");
+  const comparison = page.getByRole("dialog", { name: "Compare stale decision versions" });
+  await expect(comparison).toBeVisible();
+  await expect(comparison.getByRole("table")).toContainText("Changed");
   const before = await page.evaluate(() => ({
     disposition: window.__L2G_TEST__.store.document.state.scope.assets[0].scope_disposition,
     category: window.__L2G_TEST__.store.document.state.scope.assets[0].asset_category,
     decisions: window.__L2G_TEST__.store.document.state.scope.decisions.length
   }));
-  await page.getByRole("button", { name: "Create superseding draft" }).click();
+  await comparison.getByRole("button", { name: "Create superseding draft", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Review atomic effects" })).toBeVisible();
   const linked = await page.evaluate(() => {
     const decisions = window.__L2G_TEST__.store.document.state.scope.decisions;
@@ -167,7 +168,7 @@ test("Reviewer terminal decisions expose no actions and reject direct dispositio
     decision.version++;
     window.L2G.v06Render(document.getElementById("workspace"), hooks.store);
   });
-  await profile(page, "reviewer");
+  await setProfile(page, "reviewer");
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   await expect(page.locator("[data-v06-review]")).toHaveCount(0);
   const message = await page.evaluate(() => {
@@ -216,11 +217,10 @@ test("mixed exact, same-name, and new Scoper records require independent treatme
   const chooser = page.waitForEvent("filechooser");
   await page.getByRole("button", { name: "Import Scoper package" }).click();
   (await chooser).setFiles({ name: "mixed-identity.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(fixture)) });
-  const rows = page.locator(".scope-import-records fieldset");
-  await expect(rows).toHaveCount(3);
-  const exact = rows.filter({ hasText: "Exact application asset" });
-  const same = rows.filter({ hasText: "Application service" });
-  const fresh = rows.filter({ hasText: "New synthetic endpoint" });
+  const exact = page.getByRole("group", { name: "Exact application asset", exact: true });
+  const same = page.getByRole("group", { name: "Application service", exact: true });
+  const fresh = page.getByRole("group", { name: "New synthetic endpoint", exact: true });
+  await expect(page.locator(".scope-import-records fieldset")).toHaveCount(3);
   await expect(exact.locator("select[data-v06-treatment]")).toHaveValue("link");
   await expect(exact.locator("select[data-v06-target]")).not.toHaveValue("");
   await expect(page.getByRole("button", { name: "Apply reviewed subset atomically" })).toBeDisabled();
@@ -230,10 +230,7 @@ test("mixed exact, same-name, and new Scoper records require independent treatme
   const result = await page.evaluate(() => {
     const scope = window.__L2G_TEST__.store.document.state.scope;
     const receipt = scope.import_receipts.at(-1);
-    const imported = scope.candidates.filter(item => [
-      "assets:same-name-distinct",
-      "assets:genuinely-new"
-    ].includes(item.proposed_values.source_import_record_id));
+    const imported = scope.candidates.filter(item => ["assets:same-name-distinct", "assets:genuinely-new"].includes(item.proposed_values.source_import_record_id));
     return { selected: receipt.selected_record_ids.length, candidateTreatments: imported.map(item => item.proposed_values.identity_treatment), acceptedFields: scope.assets[0].scope_disposition };
   });
   expect(result.selected).toBe(3);
