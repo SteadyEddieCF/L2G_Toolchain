@@ -36,12 +36,15 @@ test("v0.6 Scope workbench exposes the governed six-view workflow", async ({ pag
   expect(remote).toEqual([]);
 });
 
-test("Scope decision acceptance changes only named Scope authority fields", async ({ page }) => {
-  page.on("dialog", dialog => dialog.accept());
+test("Scope decision acceptance changes only reviewed named Scope authority fields", async ({ page }) => {
   await openScope(page);
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   await expect(page.getByText("Propose application service in scope")).toBeVisible();
   await page.getByRole("button", { name: "Accept exact decision" }).click();
+  await expect(page.getByRole("heading", { name: "Review Scope decision effects" })).toBeVisible();
+  await expect(page.getByText(/Asset category and Scope disposition are separate dimensions/i)).toBeVisible();
+  await expect(page.getByText(/changes only the selected Scope-owned fields/i)).toBeVisible();
+  await page.getByRole("button", { name: "Accept selected Scope changes" }).click();
   await page.getByRole("button", { name: "Systems & Assets", exact: true }).click();
   const asset = page.getByRole("button", { name: /Application service/i }).first();
   await expect(asset).toContainText("Cui Asset");
