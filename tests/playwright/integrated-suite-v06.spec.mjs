@@ -32,7 +32,7 @@ test("v0.6 Scope workbench exposes the governed six-view workflow", async ({ pag
     await expect(page.getByRole("button", { name: label, exact: true })).toBeVisible();
   }
   await expect(page.getByText("Synthetic-only. Scope records and locally asserted data labels do not establish readiness, compliance, risk, evidence sufficiency, implementation, certification, or Met/Not Met.", { exact: true })).toBeVisible();
-  await expect(page.getByText("Synthetic CUI environment proposal")).toBeVisible();
+  await expect(page.locator(".scope-list-card").filter({ hasText: "Proposed service boundary" }).first()).toBeVisible();
   expect(remote).toEqual([]);
 });
 
@@ -71,7 +71,10 @@ test("Scope diagrams are object-linked representations with accessible alternati
   await expect(diagramCard).toBeVisible();
   await expect(diagramCard.getByText("Accessible text alternative")).toBeVisible();
   await diagramCard.getByText("Accessible text alternative").click();
-  await expect(diagramCard.getByText(/Includes Synthetic CUI environment proposal/i)).toBeVisible();
+  const diagramAlternative = diagramCard.locator("details p");
+  await expect(diagramAlternative).toContainText("Synthetic boundary diagram.");
+  await expect(diagramAlternative).toContainText("Includes");
+  await expect(diagramAlternative).toContainText("recorded relationship");
   await diagramCard.getByRole("button", { name: "Mark reviewed" }).click();
   await expect(diagramCard).toContainText("Reviewed");
 });
