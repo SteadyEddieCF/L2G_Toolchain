@@ -7,7 +7,8 @@ namespace L2G {
     event.preventDefault();
     event.stopImmediatePropagation();
 
-    const selectedRef = !v06Dialog && !v06Preview ? v06Selected : "";
+    const tabletDrawer = window.matchMedia("(max-width: 1100px)").matches;
+    const selectedRef = tabletDrawer && !v06Dialog && !v06Preview ? v06Selected : "";
     const restoreSelector = selectedRef
       ? `[data-v06-ref="${CSS.escape(selectedRef)}"]`
       : "#scope-title";
