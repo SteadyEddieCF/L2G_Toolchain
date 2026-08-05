@@ -6,6 +6,15 @@ namespace L2G {
     "awaiting-review",
     "awaiting-confirmation"
   ]);
+  const V061_CLOSURE_AUTHORITY_FIELDS = new Set([
+    "asset_category",
+    "scope_disposition",
+    "boundary_relationship",
+    "implementation_location",
+    "responsibility_model",
+    "diagram_review_state",
+    "resolution_state"
+  ]);
 
   export interface ScopeDecisionVersionComparison {
     decision_id: string;
@@ -113,6 +122,93 @@ namespace L2G {
     return next;
   }
 
+  function acceptSupersedingScopeDecisionAtomically(
+    scope: ScopeDomain,
+    id: string,
+    priorId: string,
+    profile: PresentationProfile,
+    modified?: ScopeFieldChange[]
+  ): ScopeDecision {
+    const prospective = deepClone(scope);
+    const next = prospective.decisions.find(item => item.id === id);
+    const prior = prospective.decisions.find(item => item.id === priorId);
+    if (!next || !prior || next.supersedes_decision_ref !== prior.id || prior.superseded_by_decision_ref !== next.id) {
+      throw new Error("Superseding Scope decision linkage is incomplete.");
+    }
+    if (!["draft", "proposed", "awaiting-confirmation", "awaiting-review", "returned"].includes(next.decision_state)) {
+      throw new Error("Superseding Scope decision is not acceptance-ready.");
+    }
+    const changes = modified ? deepClone(modified) : deepClone(next.field_changes);
+    if (!changes.length) throw new Error("Superseding Scope decision requires at least one reviewed field change.");
+    const map = scopeRecordMap(prospective);
+    const newRefs: ScopeVersionedRef[] = [];
+
+    prior.decision_state = "superseded";
+    prior.lifecycle = "superseded";
+    prior.currency_state = "superseded";
+    prior.review_state = "closed";
+    prior.superseded_by_decision_ref = next.id;
+    prior.updated_at = nowIso();
+    prior.updated_by_profile = profile;
+    prior.version++;
+
+    for (const ref of next.affected_record_refs) {
+      const record = map.get(ref.id);
+      if (!record || record.version !== ref.version) {
+        throw new Error("Superseding Scope decision is stale because an affected exact version changed.");
+      }
+      for (const change of changes) {
+        if (!V061_CLOSURE_AUTHORITY_FIELDS.has(change.field)) {
+          throw new Error(`Unsupported Scope authority field: ${change.field}.`);
+        }
+        for (const other of prospective.decisions) {
+          if (
+            other.id === next.id ||
+            other.id === prior.id ||
+            other.decision_state !== "accepted" ||
+            other.currency_state !== "current"
+          ) continue;
+          if (
+            other.affected_record_refs.some(item => item.id === ref.id) &&
+            other.field_changes.some(item => item.field === change.field)
+          ) {
+            throw new Error(`A conflicting accepted decision already governs ${ref.id}:${change.field}.`);
+          }
+        }
+        (record as unknown as Record<string, unknown>)[change.field] = change.new_value;
+      }
+      if ("decision_refs" in record) {
+        const refs = (record as unknown as { decision_refs: string[] }).decision_refs;
+        if (!refs.includes(next.id)) refs.push(next.id);
+      }
+      record.version++;
+      record.updated_at = nowIso();
+      record.updated_by_profile = profile;
+      newRefs.push({ id: record.id, version: record.version });
+    }
+
+    next.field_changes = changes;
+    next.affected_record_refs = newRefs;
+    next.decision_state = "accepted";
+    next.accepted_at = nowIso();
+    next.accepted_by_profile = profile;
+    next.review_state = "reviewed";
+    next.currency_state = "current";
+    next.supersedes_decision_ref = prior.id;
+    next.updated_at = nowIso();
+    next.updated_by_profile = profile;
+    next.version++;
+    prospective.updated_at = nowIso();
+    prospective.revision++;
+    refreshScopeCurrency(prospective);
+    prior.currency_state = "superseded";
+    validateScopeDomain(prospective);
+    Object.assign(scope, prospective);
+    const committed = scope.decisions.find(item => item.id === id);
+    if (!committed) throw new Error("Superseding Scope decision transaction did not commit.");
+    return committed;
+  }
+
   function acceptScopeDecisionWithSupersession(
     scope: ScopeDomain,
     id: string,
@@ -122,31 +218,7 @@ namespace L2G {
     const pending = scope.decisions.find(item => item.id === id);
     const priorId = pending?.supersedes_decision_ref ?? null;
     if (!priorId) return V061_CLOSURE_BASE_ACCEPT_SCOPE_DECISION(scope, id, profile, modified);
-
-    const prospective = deepClone(scope);
-    const next = prospective.decisions.find(item => item.id === id);
-    const prior = prospective.decisions.find(item => item.id === priorId);
-    if (!next || !prior) throw new Error("Superseding Scope decision linkage is incomplete.");
-    prior.decision_state = "superseded";
-    prior.lifecycle = "superseded";
-    prior.currency_state = "superseded";
-    prior.review_state = "closed";
-    prior.superseded_by_decision_ref = next.id;
-    prior.updated_at = nowIso();
-    prior.updated_by_profile = profile;
-    prior.version++;
-    prospective.updated_at = nowIso();
-    prospective.revision++;
-
-    V061_CLOSURE_BASE_ACCEPT_SCOPE_DECISION(prospective, id, profile, modified);
-    const accepted = prospective.decisions.find(item => item.id === id);
-    if (!accepted) throw new Error("Accepted superseding Scope decision was not preserved.");
-    accepted.supersedes_decision_ref = prior.id;
-    validateScopeDomain(prospective);
-    Object.assign(scope, prospective);
-    const committed = scope.decisions.find(item => item.id === id);
-    if (!committed) throw new Error("Superseding Scope decision transaction did not commit.");
-    return committed;
+    return acceptSupersedingScopeDecisionAtomically(scope, id, priorId, profile, modified);
   }
 
   function recordScopeReviewerDispositionWithStateGate(
