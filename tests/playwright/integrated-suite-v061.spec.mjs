@@ -69,6 +69,7 @@ test("v0.6.1 rebuilds Client diagram DOM and alternatives from visible projected
   const clientDiagram = page.locator(".scope-diagram-card").filter({ hasText: "Scope diagram 2" }).first();
   await expect(clientDiagram).toBeVisible();
   await expect(clientDiagram).not.toContainText(secret);
+  await expect(clientDiagram.locator(".scope-diagram-canvas")).toHaveAttribute("role", "region");
   await expect(clientDiagram.locator(".scope-diagram-canvas")).not.toHaveAttribute("aria-label", new RegExp(secret));
   await clientDiagram.getByText("Accessible text alternative").click();
   await expect(clientDiagram.locator("details p")).not.toContainText(secret);
@@ -79,4 +80,76 @@ test("v0.6.1 rebuilds Client diagram DOM and alternatives from visible projected
   expect(accessibility.violations.filter(item => ["serious", "critical"].includes(item.impact))).toEqual([]);
   expect(remote).toEqual([]);
   expect(errors).toEqual([]);
+});
+
+test("v0.6.1 accepts disposition while asset category remains independently unresolved", async ({ page }) => {
+  await openScope(page);
+  await page.getByRole("button", { name: "Decisions", exact: true }).click();
+  await page.getByRole("button", { name: "Accept exact decision" }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog.getByRole("heading", { name: "Review Scope decision effects" })).toBeVisible();
+  const categoryChange = dialog.locator("label").filter({ hasText: "asset category" });
+  const dispositionChange = dialog.locator("label").filter({ hasText: "scope disposition" });
+  await expect(categoryChange).toContainText("unclassified → cui-asset");
+  await expect(dispositionChange).toContainText("proposed-in-scope → accepted-in-scope");
+  await categoryChange.locator("input[type=checkbox]").uncheck();
+  await dialog.getByRole("button", { name: "Accept selected Scope changes" }).click();
+
+  await page.getByRole("button", { name: "Systems & Assets", exact: true }).click();
+  const asset = page.getByRole("button", { name: /Application service/i }).first();
+  await expect(asset).toContainText("Unclassified");
+  await expect(asset).toContainText("Accepted In Scope");
+});
+
+test("v0.6.1 blocks stale Scope decision acceptance before mutation", async ({ page }) => {
+  await openScope(page);
+  await page.evaluate(() => {
+    const hooks = window.__L2G_TEST__;
+    hooks.store.document.state.scope.decisions[0].currency_state = "stale";
+  });
+  await page.getByRole("button", { name: "Decisions", exact: true }).click();
+  await page.getByRole("button", { name: "Accept exact decision" }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog.getByText(/Acceptance is unavailable because an affected exact record version changed or the proposal is conflicted/i)).toBeVisible();
+  await expect(dialog.getByRole("button", { name: "Accept selected Scope changes" })).toBeDisabled();
+});
+
+test("v0.6.1 publishes one Scope unknown question candidate and no live agenda content", async ({ page }) => {
+  await openScope(page);
+  const interviewsBefore = await page.evaluate(() => JSON.stringify(window.__L2G_TEST__.store.document.state.interviews));
+  await page.getByRole("button", { name: /Confirm provider support access/i }).first().click();
+  await expect(page.getByRole("button", { name: "Publish question candidate" })).toBeVisible();
+  await page.getByRole("button", { name: "Publish question candidate" }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog.getByRole("heading", { name: "Publish Scope unknown to Session Planner" })).toBeVisible();
+  await expect(dialog).toContainText(/does not add a live agenda item/i);
+  await dialog.getByRole("button", { name: "Publish question candidate" }).click();
+  await expect(dialog).toContainText(/has not been added to a live agenda or accepted as a client statement/i);
+  const interviewsAfter = await page.evaluate(() => JSON.stringify(window.__L2G_TEST__.store.document.state.interviews));
+  expect(interviewsAfter).toBe(interviewsBefore);
+  await dialog.getByRole("button", { name: "Close action review" }).click();
+  await page.getByRole("button", { name: "Decisions", exact: true }).click();
+  await expect(page.getByText("Question: Confirm provider support access", { exact: true })).toBeVisible();
+});
+
+test("v0.6.1 Reviewer can concur with changes without directly mutating Scope objects", async ({ page }) => {
+  await openScope(page);
+  const objectBefore = await page.evaluate(() => JSON.stringify(window.__L2G_TEST__.store.document.state.scope.assets[0]));
+  await switchProfile(page, "reviewer");
+  await page.getByRole("button", { name: "Decisions", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Concur with changes" })).toBeVisible();
+  await page.getByRole("button", { name: "Concur with changes" }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog.getByRole("heading", { name: /Reviewer disposition — Concur with changes/i })).toBeVisible();
+  await dialog.getByLabel("Reviewer comment").fill("Concur after the Advisor updates the independent category proposal.");
+  await dialog.getByRole("button", { name: "Concur with changes" }).click();
+  await expect(dialog).toHaveCount(0);
+  const result = await page.evaluate(() => ({
+    object: JSON.stringify(window.__L2G_TEST__.store.document.state.scope.assets[0]),
+    disposition: window.__L2G_TEST__.store.document.state.scope.decisions[0].reviewer_disposition,
+    reviewState: window.__L2G_TEST__.store.document.state.scope.decisions[0].review_state
+  }));
+  expect(result.object).toBe(objectBefore);
+  expect(result.disposition).toBe("concur-with-changes");
+  expect(result.reviewState).toBe("changes-requested");
 });
