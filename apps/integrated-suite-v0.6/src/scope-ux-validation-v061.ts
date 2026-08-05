@@ -38,6 +38,9 @@ namespace L2G {
         id: ref.id,
         version: prospectiveMap.get(ref.id)?.version ?? ref.version
       }));
+      if (decision.decision_state === "accepted" && decision.currency_state === "stale") {
+        decision.currency_state = "current";
+      }
     }
     V061_HISTORICAL_DIAGRAM_VALIDATE(prospective);
   }
