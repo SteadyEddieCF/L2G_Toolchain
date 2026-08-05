@@ -101,7 +101,7 @@ test("Scoper return preview is non-mutating until reviewed subset apply", async 
       providers: [{ id: "provider-browser-1", name: "Browser synthetic provider", type: "csp" }]
     }))
   });
-  await expect(page.getByRole("heading", { name: "Review Scope package" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Review Scope package identity" })).toBeVisible();
   await expect(page.getByText("Browser synthetic server")).toBeVisible();
   await page.getByRole("button", { name: "Apply reviewed subset atomically" }).click();
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
