@@ -45,7 +45,7 @@ test("v0.6.1 Systems and Assets offers profile-safe search and separate dimensio
 test("v0.6.1 Provider and flow inspectors expose responsibility, support-access, crossing, and transport context", async ({ page }) => {
   await openScope(page);
   await page.getByRole("button", { name: "Providers & Services", exact: true }).click();
-  await page.getByRole("button", { name: /Cloud provider/i }).first().click();
+  await page.locator(".scope-object-list .scope-object-row").filter({ hasText: "Cloud provider" }).first().click();
   const providerInspector = page.locator(".scope-inspector");
   await expect(providerInspector.getByRole("heading", { name: "Provider and responsibility context" })).toBeVisible();
   await expect(providerInspector).toContainText(/provider-managed/i);
@@ -53,7 +53,7 @@ test("v0.6.1 Provider and flow inspectors expose responsibility, support-access,
   await expect(providerInspector).toContainText("Confirm provider support access");
 
   await page.getByRole("button", { name: "Data Flows", exact: true }).click();
-  await page.getByRole("button", { name: /Client upload path/i }).first().click();
+  await page.locator(".scope-flow-list .scope-flow-card").filter({ hasText: "Client upload path" }).first().click();
   const flowInspector = page.locator(".scope-inspector");
   await expect(flowInspector.getByRole("heading", { name: "Flow crossing and transport context" })).toBeVisible();
   await expect(flowInspector).toContainText("HTTPS upload");
@@ -67,7 +67,7 @@ test("v0.6.1 compacts minimum-height metrics and provides accessible tablet insp
   await expect(page.locator(".scope-metrics")).toHaveCSS("display", "flex");
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.getByRole("button", { name: "Systems & Assets", exact: true }).click();
-  const row = page.getByRole("button", { name: /Application service/i }).first();
+  const row = page.locator(".scope-object-list .scope-object-row").filter({ hasText: "Application service" }).first();
   await row.focus();
   await row.click();
   const inspector = page.locator(".scope-inspector");
