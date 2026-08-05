@@ -37,9 +37,7 @@ test("v0.6.1 clears Advisor-only Scope selection and inspector before Client ren
   await page.getByRole("button", { name: new RegExp(secret) }).click();
   await expect(page.getByRole("heading", { name: secret, exact: true })).toBeVisible();
   await expect(page.locator(".scope-inspector")).toContainText("Advisor Only");
-
   await switchProfile(page, "client");
-
   await expect(page.getByText(secret, { exact: true })).toHaveCount(0);
   await expect(page.locator(".scope-inspector-heading")).toHaveCount(0);
   await expect(page.locator("body")).not.toContainText(secret);
@@ -56,14 +54,12 @@ test("v0.6.1 rebuilds Client diagram DOM and alternatives from visible projected
   await openScope(page);
   const secret = "Advisor-only diagram node — hidden from Client";
   await addAdvisorOnlyAsset(page, secret);
-
   await page.getByRole("button", { name: "Generate diagram" }).click();
   await page.getByRole("button", { name: "Diagrams", exact: true }).click();
   const generated = page.locator(".scope-diagram-card").filter({ hasText: "Scope diagram 2" }).first();
   await expect(generated).toBeVisible();
   await expect(generated).toContainText(secret);
   await generated.getByRole("button", { name: "Mark reviewed" }).click();
-
   await switchProfile(page, "client");
   await page.getByRole("button", { name: "Diagrams", exact: true }).click();
   const clientDiagram = page.locator(".scope-diagram-card").filter({ hasText: "Scope diagram 2" }).first();
@@ -75,7 +71,6 @@ test("v0.6.1 rebuilds Client diagram DOM and alternatives from visible projected
   await expect(clientDiagram.locator("details p")).not.toContainText(secret);
   await expect(clientDiagram.locator(".scope-client-diagram-qualification")).toContainText(/omitted internal records and relationships are not shown or counted/i);
   await expect(page.locator("body")).not.toContainText(secret);
-
   const accessibility = await new AxeBuilder({ page }).analyze();
   expect(accessibility.violations.filter(item => ["serious", "critical"].includes(item.impact))).toEqual([]);
   expect(remote).toEqual([]);
@@ -94,7 +89,6 @@ test("v0.6.1 accepts disposition while asset category remains independently unre
   await expect(dispositionChange).toContainText("proposed-in-scope → accepted-in-scope");
   await categoryChange.locator("input[type=checkbox]").uncheck();
   await dialog.getByRole("button", { name: "Accept selected Scope changes" }).click();
-
   await page.getByRole("button", { name: "Systems & Assets", exact: true }).click();
   const asset = page.getByRole("button", { name: /Application service/i }).first();
   await expect(asset).toContainText("Unclassified");
@@ -104,8 +98,7 @@ test("v0.6.1 accepts disposition while asset category remains independently unre
 test("v0.6.1 blocks stale Scope decision acceptance before mutation", async ({ page }) => {
   await openScope(page);
   await page.evaluate(() => {
-    const hooks = window.__L2G_TEST__;
-    hooks.store.document.state.scope.decisions[0].currency_state = "stale";
+    window.__L2G_TEST__.store.document.state.scope.decisions[0].currency_state = "stale";
   });
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   await page.getByRole("button", { name: "Accept exact decision" }).click();
@@ -152,4 +145,51 @@ test("v0.6.1 Reviewer can concur with changes without directly mutating Scope ob
   expect(result.object).toBe(objectBefore);
   expect(result.disposition).toBe("concur-with-changes");
   expect(result.reviewState).toBe("changes-requested");
+});
+
+test("v0.6.1 requires explicit treatments for exact and same-name Scoper records", async ({ page }) => {
+  await openScope(page);
+  const existing = await page.evaluate(() => ({
+    id: window.__L2G_TEST__.store.document.state.scope.assets[0].id,
+    label: window.__L2G_TEST__.store.document.state.scope.assets[0].label,
+    before: JSON.stringify(window.__L2G_TEST__.store.document.state.scope.assets[0])
+  }));
+  const chooser = page.waitForEvent("filechooser");
+  await page.getByRole("button", { name: "Import Scoper package" }).click();
+  const fileChooser = await chooser;
+  await fileChooser.setFiles({
+    name: "same-name-scope-return.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify({
+      kind: "l2g_scope_return_package_v1",
+      version: "1.0",
+      producer: "Synthetic same-name identity fixture",
+      assets: [
+        { id: existing.id, name: existing.label, type: "cloud-resource", description: "Exact stable identity" },
+        { id: "asset-distinct-same-name", name: existing.label, type: "server", description: "Distinct record sharing a presentation label" }
+      ]
+    }))
+  });
+  const dialog = page.getByRole("dialog");
+  await expect(dialog.getByRole("heading", { name: "Review Scope package identity" })).toBeVisible();
+  await expect(dialog).toContainText(/Similar names do not establish identity/i);
+  const rows = dialog.locator("[data-v061-import-row]");
+  await expect(rows).toHaveCount(2);
+  await expect(rows.nth(0)).toContainText(/Stable source identity matches one exact Scope record/i);
+  await expect(rows.nth(1)).toContainText(/same label appears 2 times|Similar names do not establish identity/i);
+  const apply = dialog.getByRole("button", { name: "Apply reviewed subset atomically" });
+  await expect(apply).toBeDisabled();
+  await rows.nth(0).locator("select[data-v061-treatment]").selectOption("link");
+  await rows.nth(1).locator("select[data-v061-treatment]").selectOption("keep-separate");
+  await expect(apply).toBeEnabled();
+  await apply.click();
+  await expect(dialog).toHaveCount(0);
+  const result = await page.evaluate(() => ({
+    after: JSON.stringify(window.__L2G_TEST__.store.document.state.scope.assets[0]),
+    candidates: window.__L2G_TEST__.store.document.state.scope.candidates.filter(item => item.source_domain === "compatibility-import" && item.label === window.__L2G_TEST__.store.document.state.scope.assets[0].label).length,
+    receipt: window.__L2G_TEST__.store.document.state.scope.import_receipts.at(-1)?.diagnostics ?? []
+  }));
+  expect(result.after).toBe(existing.before);
+  expect(result.candidates).toBe(1);
+  expect(result.receipt.some(item => item.includes("Treatment assets:"))).toBe(true);
 });
