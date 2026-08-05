@@ -1,0 +1,12 @@
+title = "L2G Toolchain Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Exact synthetic values used only by repository-controlled adversarial tests"
+regexTarget = "match"
+regexes = [
+  '''ghp_SYNTHETIC_NOT_A_SECRET_000000000000000000''',
+  '''sk-SYNTHETIC-NOT-A-SECRET-000000000000'''
+]
