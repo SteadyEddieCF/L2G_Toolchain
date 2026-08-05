@@ -26,7 +26,7 @@
     "../integrated-suite-v0.5/src/v05-project-types.ts",
     "src/scope.ts",
     "../integrated-suite-v0.5/src/project.ts",
-    "src/v06-project.ts",
+    "src/v06-project-fixed.ts",
     "../integrated-suite-v0.3/src/encryption.ts",
     "../integrated-suite-v0.5/src/protection.ts",
     "../integrated-suite-v0.5/src/recovery.ts",
