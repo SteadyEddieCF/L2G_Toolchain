@@ -5,28 +5,32 @@ import { loadL2G } from "./test-harness.mjs";
 const L = loadL2G();
 const document = L.createNewProject();
 const scope = document.state.scope;
-const asset = scope.assets[0];
-const decision = scope.decisions[0];
-assert.equal(asset.asset_category, "unclassified");
-assert.equal(asset.scope_disposition, "proposed-in-scope");
+const initialAsset = scope.assets[0];
+const initialDecision = scope.decisions[0];
+assert.equal(initialAsset.asset_category, "unclassified");
+assert.equal(initialAsset.scope_disposition, "proposed-in-scope");
 
-L.acceptScopeDecision(scope, decision.id, "advisor");
-assert.equal(asset.asset_category, "cui-asset");
-assert.equal(asset.scope_disposition, "accepted-in-scope");
-assert.equal(decision.decision_state, "accepted");
-assert.equal(decision.affected_record_refs[0].version, asset.version);
+L.acceptScopeDecision(scope, initialDecision.id, "advisor");
+const acceptedAsset = scope.assets.find(item => item.id === initialAsset.id);
+const acceptedDecision = scope.decisions.find(item => item.id === initialDecision.id);
+assert.ok(acceptedAsset);
+assert.ok(acceptedDecision);
+assert.equal(acceptedAsset.asset_category, "cui-asset");
+assert.equal(acceptedAsset.scope_disposition, "accepted-in-scope");
+assert.equal(acceptedDecision.decision_state, "accepted");
+assert.equal(acceptedDecision.affected_record_refs[0].version, acceptedAsset.version);
 L.validateScopeDomain(scope);
 
 const conflicting = L.createScopeDecision(scope, {
   label: "Conflicting exclusion proposal",
   type: "scope-disposition",
-  affected: [{ id: asset.id, version: asset.version }],
+  affected: [{ id: acceptedAsset.id, version: acceptedAsset.version }],
   changes: [{ field: "scope_disposition", old_value: "accepted-in-scope", new_value: "accepted-out-of-scope" }],
   rationale: "Synthetic conflict test.",
   client_rationale: "A conflicting treatment was proposed for discussion."
 }, "advisor");
 assert.throws(() => L.acceptScopeDecision(scope, conflicting.id, "advisor"), /conflicting accepted decision/i);
-assert.equal(asset.scope_disposition, "accepted-in-scope");
+assert.equal(scope.assets.find(item => item.id === acceptedAsset.id)?.scope_disposition, "accepted-in-scope");
 
 const advisorProjection = L.buildScopeProjection(scope, "advisor");
 const clientProjection = L.buildScopeProjection(scope, "client");
@@ -37,7 +41,7 @@ assert.equal(clientProjection.counts.candidates, 0);
 
 const diagram = scope.diagrams[0];
 assert.equal(diagram.currency_state, "stale");
-assert.equal(diagram.stale_ref_diagnostics.some(item => item.includes(asset.id)), true);
+assert.equal(diagram.stale_ref_diagnostics.some(item => item.includes(acceptedAsset.id)), true);
 
 const evidenceHash = crypto.createHash("sha256").update(L.stableStringify(document.state.evidence, 0)).digest("hex");
 const candidate = L.createScopeCandidate(scope, { source_domain: "evidence", source_ref: { id: "evidence-candidate-synthetic", version: 1 }, kind: "asset", label: "Imported synthetic asset", values: { label: "Imported synthetic asset", object_kind: "server" }, visibility: "advisor-only" }, "advisor");
