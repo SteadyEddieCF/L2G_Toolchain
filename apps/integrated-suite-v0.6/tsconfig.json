@@ -32,6 +32,7 @@
     "src/scope-targets.ts",
     "../integrated-suite-v0.5/src/project.ts",
     "src/v06-project-fixed.ts",
+    "src/scope-targets-v061.ts",
     "../integrated-suite-v0.3/src/encryption.ts",
     "../integrated-suite-v0.5/src/protection.ts",
     "../integrated-suite-v0.5/src/recovery.ts",
@@ -42,9 +43,11 @@
     "../integrated-suite-v0.5/src/v05-labels.ts",
     "../integrated-suite-v0.5/src/app.ts",
     "src/scope-ui-v061-part1.ts",
+    "src/scope-ui-labels-v061.ts",
     "src/scope-ui-v061-part2.ts",
     "src/scope-ui-v061-part34.ts",
     "src/scope-ui-v061-part56.ts",
-    "src/scope-ui-v061-part78.ts"
+    "src/scope-ui-v061-part78.ts",
+    "src/scope-ui-focus-v061.ts"
   ]
 }
