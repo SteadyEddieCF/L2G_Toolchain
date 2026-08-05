@@ -38,6 +38,7 @@
     "../integrated-suite-v0.5/src/v05-import-ui.ts",
     "../integrated-suite-v0.5/src/v05-labels.ts",
     "../integrated-suite-v0.5/src/app.ts",
-    "src/scope-ui-v06.ts"
+    "src/scope-ui-v06.ts",
+    "src/scope-ux-v061.ts"
   ]
 }
