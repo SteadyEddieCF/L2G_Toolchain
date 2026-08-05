@@ -2,7 +2,7 @@
 
 ## Status
 
-Draft design gate under issue #143 and PR #145. This record does not authorize implementation.
+Final design-gate review phase under issue #143 and PR #145. The specialist UX dependency is received and reconciled. This record still does not authorize implementation until PR #145 is reviewed, passes exact-head CI, and merges.
 
 ## Exact baseline
 
@@ -16,8 +16,9 @@ Draft design gate under issue #143 and PR #145. This record does not authorize i
 - standalone Workshop baseline: v79.1, independently distributable
 - design branch: `agent/integrated-suite-v07-practice-review-design`
 - design PR: #145
+- current-release UX correction route: issue #146 targeting bounded v0.6.1
 
-## Current design package
+## Complete design package
 
 1. `docs/architecture/adr/ADR-0012-canonical-practice-review-authority.md`
 2. `docs/integrated-suite/L2G_Practice_Review_v1_Contract_v1.md`
@@ -25,6 +26,11 @@ Draft design gate under issue #143 and PR #145. This record does not authorize i
 4. `docs/integrated-suite/L2G_Integrated_Suite_v0.7.0_Threat_Model_v1.md`
 5. `docs/integrated-suite/L2G_Integrated_Suite_v0.7.0_Workshop_Compatibility_v1.md`
 6. `docs/integrated-suite/L2G_Integrated_Suite_v0.7.0_Acceptance_v1.md`
+7. `docs/integrated-suite/L2G_Integrated_Suite_v0.7.0_UX_Finding_Reconciliation_v1.md`
+8. `docs/integrated-suite/L2G_Integrated_Suite_v0.7.0_UX_Helper_Design_and_Acceptance_Addendum_v1.md`
+9. this status record
+
+## Authority and workflow design
 
 The design proposes:
 
@@ -43,35 +49,36 @@ The design proposes:
 - empty-domain migration from earlier valid projects;
 - no automatic or hidden formal assessment conclusion.
 
-## UX helper dependency
+## UX helper reconciliation
 
-The active v0.6 Scope UX helper review is a required input before PR #145 may merge.
+The specialist handoff was received as `L2G_Integrated_Suite_v0.6_Scope_Workbench_UX_Implementation_Review.md`, SHA-256 `cd3c46a8d615d9957e3f5d77776bedd46135c050116bf9a766abc19de91bd9a7`.
 
-The helper may identify bounded corrections or reusable rules for:
+The helper reviewed an older v0.6 candidate, so every release blocker was rechecked against promoted `main`:
 
-- shell orientation and workspace navigation;
-- list/detail/inspector hierarchy;
-- state-chip density and terminology;
-- decision/candidate review workflows;
-- diagram and accessible-alternative presentation;
-- import preview and ambiguity handling;
-- Advisor, Reviewer, and Client disclosure behavior;
-- 1440×900, 1280×720, and tablet-landscape layouts;
-- keyboard navigation, focus restoration, live regions, and accessibility;
-- light/dark mode readability.
+- the old missing-browser-CI finding was already satisfied before v0.6 promotion;
+- projection-safe selection/inspector, Client-safe diagram rendering, structured decision review, import ambiguity, diagram supersession/accessibility, Unknown publication, and Reviewer Concur with changes remain valid current-release corrections;
+- those corrections are routed separately to issue #146;
+- reusable interaction, profile, responsive, accessibility, ambiguity, stale/supersession, and evidence requirements are binding through the UX helper addendum;
+- every helper blocker, important correction, deferred improvement, and strength has a unique disposition in the reconciliation record.
 
-Reconciliation rules:
+## Binding shared UX requirements
 
-1. Release-blocking v0.6 findings are handled through a separately bounded v0.6 correction issue/PR when they affect the promoted runtime.
-2. Shared-pattern findings are incorporated into the v0.7 UX, threat, and acceptance records before design merge.
-3. Practice Review-specific findings are added to the v0.7 design package.
-4. Findings do not change domain authority merely to simplify presentation.
-5. Findings do not introduce readiness, compliance, risk, scoring, certification, Evidence-sufficiency, implementation-effectiveness, or Met/Not Met semantics.
-6. Findings do not authorize v0.7 implementation before the design gate merges.
+The future implementation must, at minimum:
+
+1. build the active projection before counts, search, selection, inspector, differences, history, related labels, focus, live regions, visual alternatives, export, or accessibility-tree content;
+2. clear/rebuild transient state as one transaction on profile change;
+3. use structured application review surfaces for authority-changing and target-publication commands;
+4. display exact current → proposed effects, stale/conflict state, target authority, atomicity, and exclusions;
+5. require explicit identity treatment for ambiguous imports and never auto-merge by name;
+6. preserve exact historical records and use domain-authorized versioning/supersession rather than in-place rewrite;
+7. use semantic dialogs and tablet drawers with keyboard/focus parity;
+8. keep minimum-height desktop/tablet work surfaces compact and task-centered;
+9. avoid raw numeric priority labels or score-like terminology;
+10. prove Client non-disclosure, keyboard/accessibility, native Windows `file://`, zero network, deterministic packaging, recovery, and frozen compatibility on frozen candidate and unchanged final heads.
+
+The exact supplemental tests are UXH-001 through UXH-015 in the UX helper addendum.
 
 ## Design review checklist
-
-The design PR remains draft until all items are satisfied:
 
 - [x] ADR-0012 defines the authority boundary.
 - [x] Field-level domain/projection contract exists.
@@ -79,13 +86,21 @@ The design PR remains draft until all items are satisfied:
 - [x] Threat model exists.
 - [x] Workshop v79.1 compatibility posture exists.
 - [x] Exact acceptance matrix exists.
-- [ ] UX helper findings are received and classified.
-- [ ] Release-blocking v0.6 findings, if any, are routed separately.
-- [ ] Shared-pattern and Practice Review findings are reconciled into the v0.7 records.
-- [ ] Root README, Integrated Suite planning index, roadmap, and decision/risk register are reconciled to the final reviewed design package.
-- [ ] PR #145 exact-head CI is green after the final reconciliation.
+- [x] UX helper findings are received and classified.
+- [x] Obsolete helper findings are distinguished from promoted-release behavior.
+- [x] Still-valid v0.6 findings are routed separately to issue #146.
+- [x] Shared-pattern and Practice Review findings are incorporated through a binding design/acceptance addendum.
+- [x] Root README, Integrated Suite planning index, roadmap, and decision/risk register already identify v0.6 as current and issue #143 as the next design gate through post-promotion reconciliation merge `1871d63e...`; issue #146 records the new bounded correction route.
+- [ ] PR #145 exact-head CI is green after the final UX reconciliation commits.
 - [ ] No unresolved review threads remain.
-- [ ] PR #145 is reviewed and merged before any implementation branch is created.
+- [ ] PR #145 is marked ready, reviewed, and merged before any implementation branch is created.
+
+## Implementation sequencing
+
+1. Validate and merge PR #145 as a documentation-only design gate.
+2. Prioritize issue #146 current-release correction before beginning the broad v0.7 runtime implementation.
+3. A v0.7 implementation branch may be created only after PR #145 merges, and should remain paused behind any issue #146 disclosure/authority corrections that affect reusable shell behavior.
+4. Do not mix v0.6.1 runtime changes into the v0.7 design PR.
 
 ## Implementation prohibition
 
@@ -100,4 +115,4 @@ Until PR #145 merges:
 
 ## Next action
 
-Receive the UX helper handoff, classify every finding, reconcile the complete design package and durable planning records, validate the exact final design head, and merge the design gate only if all authority, compatibility, security, UX, and acceptance requirements remain coherent.
+Run the complete exact-head design PR matrix after these reconciliation commits, confirm no unresolved review threads, mark PR #145 ready, and merge the design gate only if all authority, compatibility, security, UX, and acceptance requirements remain coherent. Then begin issue #146 before broad v0.7 implementation.
