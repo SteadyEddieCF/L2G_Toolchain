@@ -7,7 +7,7 @@ const artifact = pathToFileURL(path.join(process.cwd(), "apps/integrated-suite-v
 test("v0.6 Scope primary workflow runs from a native file origin", async ({ page }) => {
   const remote = [];
   page.on("request", request => { if (/^https?:/i.test(request.url())) remote.push(request.url()); });
-  await page.goto(artifact);
+  await page.goto(artifact, { waitUntil: "domcontentloaded", timeout: 30000 });
   await page.locator('[data-workspace="scope"]').click();
   await expect(page.getByRole("heading", { name: "Scope", exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Systems & Assets", exact: true }).click();
