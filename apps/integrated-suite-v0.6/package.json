@@ -1,6 +1,6 @@
 {
   "name": "@l2g/integrated-suite-scope",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "description": "Offline encrypted canonical Scope vertical slice for L2G Integrated Suite.",
   "scripts": {
