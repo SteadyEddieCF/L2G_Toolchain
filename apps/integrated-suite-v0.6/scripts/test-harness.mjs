@@ -12,11 +12,11 @@ export function loadL2G() {
   globalThis.window = globalThis;
   globalThis.window.__L2G_RELEASE__ = {
     application: "L2G Integrated Suite",
-    version: "0.6.0",
+    version: "0.6.1",
     product_runtime_compatibility_baseline: "85d6e783a250b373cd4b9ea356e4c341336f9259",
     synthetic_only: true,
     production_data_authorized: false,
-    artifact_name: "L2G_Integrated_Suite_Scope_v0.6.0.html",
+    artifact_name: "L2G_Integrated_Suite_Scope_v0.6.1.html",
     envelope_kind: "l2g_encrypted_project_v1",
     project_kind: "l2g_project_v1",
     engagement_schema_kind: "l2g_engagement_v1",
@@ -38,24 +38,35 @@ export function loadL2G() {
   return globalThis.L2G;
 }
 
+async function packProject(L, document, includeScope) {
+  const payloads = new Map();
+  payloads.set("manifest.json", L.utf8(L.stableStringify(document.manifest)));
+  payloads.set("domains/engagement.json", L.utf8(L.stableStringify(document.state.engagement)));
+  payloads.set("domains/evidence-index.json", L.utf8(L.stableStringify(document.state.evidence)));
+  payloads.set("domains/pre-engagement.json", L.utf8(L.stableStringify(document.state.pre_engagement)));
+  payloads.set("domains/interview-sessions.json", L.utf8(L.stableStringify(document.state.interviews)));
+  if (includeScope) payloads.set("domains/scope.json", L.utf8(L.stableStringify(document.state.scope)));
+  payloads.set("domains/reviews-actions.json", L.utf8(L.stableStringify(document.state.reviews_actions)));
+  payloads.set("history/events.ndjson", L.utf8(`${document.history.map(event => JSON.stringify(event)).join("\n")}\n`));
+  payloads.set("history/checkpoints.json", L.utf8(L.stableStringify(document.checkpoints)));
+  payloads.set("compatibility/current-registry.json", L.utf8(L.stableStringify(globalThis.window.__L2G_CONTRACT_REGISTRY__)));
+  const records = [];
+  for (const [entryPath, data] of [...payloads.entries()].sort(([a], [b]) => a.localeCompare(b))) records.push({ path: entryPath, sha256: await L.sha256Hex(data), size: data.length });
+  payloads.set("integrity/sha256-manifest.json", L.utf8(L.stableStringify({ algorithm: "SHA-256", entries: records })));
+  return L.createStoredZip([...payloads.entries()].map(([entryPath, data]) => ({ path: entryPath, data })));
+}
+
 export async function makeLegacyV05Bytes(L, current) {
   const legacy = structuredClone(current);
   delete legacy.state.scope;
   legacy.manifest.application.version = "0.5.0";
   legacy.manifest.domain_index = legacy.manifest.domain_index.filter(item => item.path !== "domains/scope.json");
   legacy.checkpoints = legacy.checkpoints.map(item => { const clone = structuredClone(item); delete clone.state.scope; return clone; });
-  const payloads = new Map();
-  payloads.set("manifest.json", L.utf8(L.stableStringify(legacy.manifest)));
-  payloads.set("domains/engagement.json", L.utf8(L.stableStringify(legacy.state.engagement)));
-  payloads.set("domains/evidence-index.json", L.utf8(L.stableStringify(legacy.state.evidence)));
-  payloads.set("domains/pre-engagement.json", L.utf8(L.stableStringify(legacy.state.pre_engagement)));
-  payloads.set("domains/interview-sessions.json", L.utf8(L.stableStringify(legacy.state.interviews)));
-  payloads.set("domains/reviews-actions.json", L.utf8(L.stableStringify(legacy.state.reviews_actions)));
-  payloads.set("history/events.ndjson", L.utf8(`${legacy.history.map(event => JSON.stringify(event)).join("\n")}\n`));
-  payloads.set("history/checkpoints.json", L.utf8(L.stableStringify(legacy.checkpoints)));
-  payloads.set("compatibility/current-registry.json", L.utf8(L.stableStringify(globalThis.window.__L2G_CONTRACT_REGISTRY__)));
-  const records = [];
-  for (const [entryPath, data] of [...payloads.entries()].sort(([a], [b]) => a.localeCompare(b))) records.push({ path: entryPath, sha256: await L.sha256Hex(data), size: data.length });
-  payloads.set("integrity/sha256-manifest.json", L.utf8(L.stableStringify({ algorithm: "SHA-256", entries: records })));
-  return L.createStoredZip([...payloads.entries()].map(([entryPath, data]) => ({ path: entryPath, data })));
+  return packProject(L, legacy, false);
+}
+
+export async function makePriorV060Bytes(L, current) {
+  const prior = structuredClone(current);
+  prior.manifest.application.version = "0.6.0";
+  return packProject(L, prior, true);
 }
