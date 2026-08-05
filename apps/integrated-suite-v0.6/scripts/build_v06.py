@@ -22,7 +22,7 @@ if schema_count != 1:
     raise SystemExit("Unable to patch the v0.6 schema inheritance block.")
 
 compile_needle = 'compile_typescript()\nscript = (BUILD / "app.js").read_text(encoding="utf-8").strip()'
-compile_replacement = '''compile_typescript()
+compile_replacement = """compile_typescript()
 compiled_path = BUILD / "app.js"
 compiled = compiled_path.read_text(encoding="utf-8")
 legacy_pre_interview = compiled.count("Pre-Engagement & Interviews")
@@ -41,8 +41,8 @@ observer_replacement = '''        const badge = document.querySelector(".release
 if compiled.count(observer_needle) != 1:
     raise SystemExit("Unable to apply the idempotent v0.6 shell-observer patch.")
 compiled = compiled.replace(observer_needle, observer_replacement, 1)
-compiled_path.write_text(compiled, encoding="utf-8", newline="\n")
-script = compiled.strip()'''
+compiled_path.write_text(compiled, encoding="utf-8", newline="\\n")
+script = compiled.strip()"""
 if compile_needle not in source:
     raise SystemExit("Unable to locate the v0.6 TypeScript compilation boundary.")
 source = source.replace(compile_needle, compile_replacement, 1)
