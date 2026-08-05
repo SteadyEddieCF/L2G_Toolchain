@@ -121,25 +121,32 @@ namespace L2G {
   ): ScopeDecision {
     const pending = scope.decisions.find(item => item.id === id);
     const priorId = pending?.supersedes_decision_ref ?? null;
-    const accepted = V061_CLOSURE_BASE_ACCEPT_SCOPE_DECISION(scope, id, profile, modified);
-    if (!priorId) return accepted;
-    const prior = scope.decisions.find(item => item.id === priorId);
-    if (!prior) throw new Error("Superseded Scope decision was not found after acceptance.");
+    if (!priorId) return V061_CLOSURE_BASE_ACCEPT_SCOPE_DECISION(scope, id, profile, modified);
+
+    const prospective = deepClone(scope);
+    const next = prospective.decisions.find(item => item.id === id);
+    const prior = prospective.decisions.find(item => item.id === priorId);
+    if (!next || !prior) throw new Error("Superseding Scope decision linkage is incomplete.");
     prior.decision_state = "superseded";
     prior.lifecycle = "superseded";
     prior.currency_state = "superseded";
     prior.review_state = "closed";
-    prior.superseded_by_decision_ref = accepted.id;
+    prior.superseded_by_decision_ref = next.id;
     prior.updated_at = nowIso();
     prior.updated_by_profile = profile;
     prior.version++;
+    prospective.updated_at = nowIso();
+    prospective.revision++;
+
+    V061_CLOSURE_BASE_ACCEPT_SCOPE_DECISION(prospective, id, profile, modified);
+    const accepted = prospective.decisions.find(item => item.id === id);
+    if (!accepted) throw new Error("Accepted superseding Scope decision was not preserved.");
     accepted.supersedes_decision_ref = prior.id;
-    accepted.updated_at = nowIso();
-    accepted.version++;
-    scope.updated_at = nowIso();
-    scope.revision++;
-    validateScopeDomain(scope);
-    return accepted;
+    validateScopeDomain(prospective);
+    Object.assign(scope, prospective);
+    const committed = scope.decisions.find(item => item.id === id);
+    if (!committed) throw new Error("Superseding Scope decision transaction did not commit.");
+    return committed;
   }
 
   function recordScopeReviewerDispositionWithStateGate(
