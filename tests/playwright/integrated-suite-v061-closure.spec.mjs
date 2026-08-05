@@ -230,7 +230,10 @@ test("mixed exact, same-name, and new Scoper records require independent treatme
   const result = await page.evaluate(() => {
     const scope = window.__L2G_TEST__.store.document.state.scope;
     const receipt = scope.import_receipts.at(-1);
-    const imported = scope.candidates.filter(item => item.provenance.source_label === "mixed-identity.json");
+    const imported = scope.candidates.filter(item => [
+      "assets:same-name-distinct",
+      "assets:genuinely-new"
+    ].includes(item.proposed_values.source_import_record_id));
     return { selected: receipt.selected_record_ids.length, candidateTreatments: imported.map(item => item.proposed_values.identity_treatment), acceptedFields: scope.assets[0].scope_disposition };
   });
   expect(result.selected).toBe(3);
