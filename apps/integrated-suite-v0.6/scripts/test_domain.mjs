@@ -5,7 +5,7 @@ import { loadL2G } from "./test-harness.mjs";
 const L = loadL2G();
 const document = L.createNewProject();
 L.validateProjectDocument(document, true);
-assert.equal(document.manifest.application.version, "0.6.0");
+assert.equal(document.manifest.application.version, "0.6.1");
 assert.equal(document.state.engagement.schema_kind, "l2g_engagement_v1");
 assert.equal(document.state.evidence.schema_kind, "l2g_evidence_index_v1");
 assert.equal(document.state.pre_engagement.schema_kind, "l2g_pre_engagement_v1");
@@ -28,7 +28,8 @@ assert.equal(new TextDecoder().decode(inner).includes("domains/scope.json"), tru
 const reopened = await L.deserializeInnerProject(inner, false);
 assert.equal(reopened.legacy, false);
 assert.equal(reopened.document.state.scope.assets.length, document.state.scope.assets.length);
+assert.equal(reopened.document.manifest.application.version, "0.6.1");
 
 const abc = new TextEncoder().encode("abc");
 assert.equal(L.hashBytesInChunksForTest(abc, 1), "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad");
-console.log(JSON.stringify({ inherited_domains: true, canonical_scope: true, target_non_mutation: true, deterministic_inner_round_trip: true }));
+console.log(JSON.stringify({ release_version: "0.6.1", inherited_domains: true, canonical_scope: true, target_non_mutation: true, deterministic_inner_round_trip: true }));
