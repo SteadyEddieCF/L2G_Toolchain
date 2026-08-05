@@ -7,7 +7,7 @@ const repo = process.cwd();
 const artifact = pathToFileURL(path.join(repo, "apps/integrated-suite-v0.6/dist/L2G_Integrated_Suite_Scope_v0.6.0.html")).href;
 
 async function openScope(page) {
-  await page.goto(artifact);
+  await page.goto(artifact, { waitUntil: "domcontentloaded", timeout: 30000 });
   await page.locator('[data-workspace="scope"]').click();
   await expect(page.getByRole("heading", { name: "Scope", exact: true })).toBeVisible();
   await expect(page.getByText("Objects describe the environment; Scope-owned decisions establish accepted authority.")).toBeVisible();
