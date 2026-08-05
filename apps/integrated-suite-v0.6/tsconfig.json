@@ -42,6 +42,6 @@
     "src/scope-ux-v061.ts",
     "src/scope-actions-v061.ts",
     "src/scope-import-v061.ts",
-    "src/scope-diagram-v061.ts"
+    "src/scope-diagram-v061-fixed.ts"
   ]
 }
