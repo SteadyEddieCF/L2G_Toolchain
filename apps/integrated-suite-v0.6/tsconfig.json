@@ -29,6 +29,7 @@
     "src/scope-ux-domain-v061.ts",
     "src/scope-ux-receipts-v061.ts",
     "src/scope-ux-validation-v061.ts",
+    "src/scope-ux-closure-domain-v061.ts",
     "src/scope-projection-history-v061.ts",
     "src/scope-targets.ts",
     "../integrated-suite-v0.5/src/project.ts",
@@ -49,6 +50,7 @@
     "src/scope-ui-v061-part34.ts",
     "src/scope-ui-v061-part56.ts",
     "src/scope-ui-v061-part78.ts",
-    "src/scope-ui-focus-v061.ts"
+    "src/scope-ui-focus-v061.ts",
+    "src/scope-ux-closure-ui-v061.ts"
   ]
 }
