@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ARTIFACT = ROOT / "dist" / "L2G_Integrated_Suite_Scope_v0.6.0.html"
+ARTIFACT = ROOT / "dist" / "L2G_Integrated_Suite_Scope_v0.6.1.html"
 
 def build() -> str:
     subprocess.run([sys.executable, str(ROOT / "scripts" / "build_v06.py")], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
@@ -15,5 +15,5 @@ def build() -> str:
 first = build()
 second = build()
 if first != second:
-    raise SystemExit(f"v0.6 deterministic build failed: {first} != {second}")
-print(f"v0.6 deterministic build passed: {first}")
+    raise SystemExit(f"v0.6.1 deterministic build failed: {first} != {second}")
+print(f"v0.6.1 deterministic build passed: {first}")

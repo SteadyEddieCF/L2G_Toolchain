@@ -1,7 +1,7 @@
 {
   "application": "L2G Integrated Suite",
-  "version": "0.6.0",
-  "artifact_name": "L2G_Integrated_Suite_Scope_v0.6.0.html",
+  "version": "0.6.1",
+  "artifact_name": "L2G_Integrated_Suite_Scope_v0.6.1.html",
   "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
   "synthetic_only": true,
   "production_data_authorized": false,

@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
 BUILD = ROOT / "build"
 DIST = ROOT / "dist"
-RELEASE_DIR = ROOT / "releases" / "v0.6.0"
+RELEASE_DIR = ROOT / "releases" / "v0.6.1"
 RELEASE = json.loads((ROOT / "release" / "release.json").read_text(encoding="utf-8"))
 REGISTRY = json.loads((REPO / "apps" / "integrated-suite-v0.2" / "contracts" / "registry.json").read_text(encoding="utf-8"))
 BASE = REPO / "apps" / "integrated-suite-v0.5"
@@ -40,7 +40,7 @@ style = "\n".join([
 template = (BASE / "src" / "template.html").read_text(encoding="utf-8")
 template = template.replace(
     "L2G Integrated Suite v0.5.0 — Pre-Engagement and Interview Sessions",
-    "L2G Integrated Suite v0.6.0 — Scope Vertical Slice",
+    "L2G Integrated Suite v0.6.1 — Scope UX Completion",
 )
 release_json = json.dumps(RELEASE, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 registry_json = json.dumps(REGISTRY, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
@@ -102,7 +102,8 @@ manifest = {
     "scope_projection_kind": RELEASE["scope_projection_kind"],
     "scope_projection_version": RELEASE["scope_projection_version"],
     "product_runtime_compatibility_baseline": RELEASE["product_runtime_compatibility_baseline"],
-    "implementation_baseline": "97d5ebaf7d4b63b8c062e4c3e4a9e11f919e592e",
+    "implementation_baseline": "3cfa31e8e5100927ca1a96221e5af715108eddd6",
+    "correction_design_baseline": "98b64a02ef1ea190267820cd999a17df6c96e815",
     "runtime_network_dependencies": 0,
     "synthetic_only": True,
     "production_data_authorized": False,
@@ -135,17 +136,17 @@ sbom = {
     "spdxVersion": "SPDX-2.3",
     "dataLicense": "CC0-1.0",
     "SPDXID": "SPDXRef-DOCUMENT",
-    "name": "L2G Integrated Suite Scope v0.6.0",
-    "documentNamespace": f"https://l2g.local/spdx/integrated-suite-v0.6.0/{sha}",
+    "name": "L2G Integrated Suite Scope v0.6.1",
+    "documentNamespace": f"https://l2g.local/spdx/integrated-suite-v0.6.1/{sha}",
     "creationInfo": {"created": "2026-08-05T00:00:00Z", "creators": ["Tool: deterministic-build.py"]},
     "packages": [
-        {"name":"L2G Integrated Suite","SPDXID":"SPDXRef-Package-L2G","versionInfo":"0.6.0","downloadLocation":"NOASSERTION","filesAnalyzed":True,"checksums":[{"algorithm":"SHA256","checksumValue":sha}],"licenseConcluded":"NOASSERTION","licenseDeclared":"NOASSERTION","copyrightText":"NOASSERTION"},
+        {"name":"L2G Integrated Suite","SPDXID":"SPDXRef-Package-L2G","versionInfo":"0.6.1","downloadLocation":"NOASSERTION","filesAnalyzed":True,"checksums":[{"algorithm":"SHA256","checksumValue":sha}],"licenseConcluded":"NOASSERTION","licenseDeclared":"NOASSERTION","copyrightText":"NOASSERTION"},
         {"name":"TypeScript","SPDXID":"SPDXRef-Package-TypeScript","versionInfo":"5.8.3","downloadLocation":"https://registry.npmjs.org/typescript/-/typescript-5.8.3.tgz","filesAnalyzed":False,"licenseConcluded":"Apache-2.0","licenseDeclared":"Apache-2.0","copyrightText":"NOASSERTION"},
     ],
     "relationships": [{"spdxElementId":"SPDXRef-DOCUMENT","relationshipType":"DESCRIBES","relatedSpdxElement":"SPDXRef-Package-L2G"}],
 }
 (DIST / "sbom.spdx.json").write_text(json.dumps(sbom, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-(DIST / "RELEASE_NOTES.md").write_text((ROOT / "release" / "RELEASE_NOTES_v0.6.0.md").read_text(encoding="utf-8"), encoding="utf-8")
+(DIST / "RELEASE_NOTES.md").write_text((ROOT / "release" / "RELEASE_NOTES_v0.6.1.md").read_text(encoding="utf-8"), encoding="utf-8")
 
 for file in sorted(DIST.iterdir()):
     shutil.copy2(file, RELEASE_DIR / file.name)
