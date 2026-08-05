@@ -72,7 +72,7 @@ test("v0.6.1 rebuilds Client diagram DOM and alternatives from visible projected
   await expect(clientDiagram.locator(".scope-diagram-canvas")).not.toHaveAttribute("aria-label", new RegExp(secret));
   await clientDiagram.getByText("Accessible text alternative").click();
   await expect(clientDiagram.locator("details p")).not.toContainText(secret);
-  await expect(clientDiagram.getByText(/omitted internal records and relationships are not shown or counted/i)).toBeVisible();
+  await expect(clientDiagram.locator(".scope-client-diagram-qualification")).toContainText(/omitted internal records and relationships are not shown or counted/i);
   await expect(page.locator("body")).not.toContainText(secret);
 
   const accessibility = await new AxeBuilder({ page }).analyze();
