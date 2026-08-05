@@ -31,16 +31,6 @@ if legacy_pre_interview < 1 or legacy_evidence_core < 1:
     raise SystemExit("Unable to reconcile inherited release labels for the v0.6 shell.")
 compiled = compiled.replace("Pre-Engagement & Interviews", "Scope Vertical Slice")
 compiled = compiled.replace("Evidence Catalog Core", "Scope Vertical Slice")
-observer_needle = '''        const badge = document.querySelector(".release-badge");
-        if (badge)
-            badge.textContent = `v${window.__L2G_RELEASE__.version} · Scope Vertical Slice`;'''
-observer_replacement = '''        const badge = document.querySelector(".release-badge");
-        const desiredBadge = `v${window.__L2G_RELEASE__.version} · Scope Vertical Slice`;
-        if (badge && badge.textContent !== desiredBadge)
-            badge.textContent = desiredBadge;'''
-if compiled.count(observer_needle) != 1:
-    raise SystemExit("Unable to apply the idempotent v0.6 shell-observer patch.")
-compiled = compiled.replace(observer_needle, observer_replacement, 1)
 compiled_path.write_text(compiled, encoding="utf-8", newline="\\n")
 script = compiled.strip()"""
 if compile_needle not in source:

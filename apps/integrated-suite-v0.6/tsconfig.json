@@ -2,7 +2,12 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "none",
-    "lib": ["ES2022", "DOM", "DOM.Iterable", "WebWorker"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable",
+      "WebWorker"
+    ],
     "strict": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
@@ -26,6 +31,7 @@
     "../integrated-suite-v0.5/src/v05-project-types.ts",
     "src/scope.ts",
     "src/scope-runtime-fixes.ts",
+    "src/scope-ux-domain-v061.ts",
     "src/scope-targets.ts",
     "../integrated-suite-v0.5/src/project.ts",
     "src/v06-project-fixed.ts",
@@ -38,6 +44,10 @@
     "../integrated-suite-v0.5/src/v05-import-ui.ts",
     "../integrated-suite-v0.5/src/v05-labels.ts",
     "../integrated-suite-v0.5/src/app.ts",
-    "src/scope-ui-v06.ts"
+    "src/scope-ui-v061-part1.ts",
+    "src/scope-ui-v061-part2.ts",
+    "src/scope-ui-v061-part34.ts",
+    "src/scope-ui-v061-part56.ts",
+    "src/scope-ui-v061-part78.ts"
   ]
 }

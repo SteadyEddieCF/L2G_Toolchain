@@ -29,7 +29,13 @@ required_runtime_markers = {
     "atomic Scope decision adapter": "Accepted Scope decision was not preserved after validation.",
     "source-to-Scope adapter": "Scope publication requires an exact source record identifier and version.",
     "historical diagram validation": "references a missing or invalid historical Scope version",
-    "Scope import authority": "Applied a reviewed Scope package subset atomically as low-authority candidates."
+    "projection-safe diagram qualification": "Internal records and relationships omitted by this presentation profile are not shown or counted.",
+    "exact decision effect review": "Asset category and Scope disposition are separate dimensions.",
+    "explicit import identity treatment": "Similar names do not establish identity.",
+    "non-destructive diagram refresh": "Prior exact representation preserved; refreshed draft created with reciprocal supersession.",
+    "Session Planner candidate publication": "Session Planner question candidate created. It has not been added to a live agenda or accepted as a client statement.",
+    "complete reviewer disposition": "Concur with changes",
+    "Scope import authority": "Applied a reviewed Scope package subset atomically as low-authority candidates or explicit links."
 }
 missing_runtime = [label for label, marker in required_runtime_markers.items() if marker not in html]
 if missing_runtime:
