@@ -6,9 +6,11 @@ const L = loadL2G();
 {
   const document = L.createNewProject();
   const scope = document.state.scope;
-  const prior = scope.decisions[0];
-  const asset = scope.assets[0];
-  L.acceptScopeDecision(scope, prior.id, "advisor");
+  const priorId = scope.decisions[0].id;
+  const assetId = scope.assets[0].id;
+  L.acceptScopeDecision(scope, priorId, "advisor");
+  let prior = scope.decisions.find(item => item.id === priorId);
+  let asset = scope.assets.find(item => item.id === assetId);
   const acceptedDisposition = asset.scope_disposition;
   const acceptedCategory = asset.asset_category;
   asset.description = "Governed descriptive change after decision acceptance.";
@@ -16,14 +18,19 @@ const L = loadL2G();
   asset.updated_at = new Date().toISOString();
   scope.revision++;
   L.refreshScopeCurrency(scope);
+  prior = scope.decisions.find(item => item.id === priorId);
   assert.equal(prior.decision_state, "accepted");
   assert.equal(prior.currency_state, "stale");
 
-  const comparison = L.compareScopeDecisionVersions(scope, prior.id);
+  const comparison = L.compareScopeDecisionVersions(scope, priorId);
   assert.equal(comparison.records.length, 1);
   assert.equal(comparison.records[0].expected_version < comparison.records[0].current_version, true);
 
-  const next = L.createSupersedingScopeDecisionDraft(scope, prior.id, "advisor");
+  const created = L.createSupersedingScopeDecisionDraft(scope, priorId, "advisor");
+  const nextId = created.id;
+  prior = scope.decisions.find(item => item.id === priorId);
+  const next = scope.decisions.find(item => item.id === nextId);
+  asset = scope.assets.find(item => item.id === assetId);
   assert.equal(prior.decision_state, "accepted");
   assert.equal(prior.currency_state, "stale");
   assert.equal(prior.superseded_by_decision_ref, next.id);
@@ -33,13 +40,15 @@ const L = loadL2G();
   assert.equal(asset.scope_disposition, acceptedDisposition);
   assert.equal(asset.asset_category, acceptedCategory);
 
-  L.acceptScopeDecision(scope, next.id, "advisor");
+  L.acceptScopeDecision(scope, nextId, "advisor");
+  prior = scope.decisions.find(item => item.id === priorId);
+  const acceptedNext = scope.decisions.find(item => item.id === nextId);
   assert.equal(prior.decision_state, "superseded");
   assert.equal(prior.currency_state, "superseded");
-  assert.equal(next.decision_state, "accepted");
-  assert.equal(next.currency_state, "current");
-  assert.equal(next.supersedes_decision_ref, prior.id);
-  assert.equal(prior.superseded_by_decision_ref, next.id);
+  assert.equal(acceptedNext.decision_state, "accepted");
+  assert.equal(acceptedNext.currency_state, "current");
+  assert.equal(acceptedNext.supersedes_decision_ref, prior.id);
+  assert.equal(prior.superseded_by_decision_ref, acceptedNext.id);
   L.validateScopeDomain(scope);
 }
 
@@ -68,6 +77,7 @@ const L = loadL2G();
 {
   const document = L.createNewProject();
   const scope = document.state.scope;
+  const assetId = scope.assets[0].id;
   const asset = scope.assets[0];
   const packageBytes = new TextEncoder().encode(JSON.stringify({
     kind: "l2g_scope_return_package_v1",
@@ -94,7 +104,7 @@ const L = loadL2G();
   const beforeDisposition = asset.scope_disposition;
   const receipt = L.applyScopeImport(scope, preview, "advisor");
   assert.equal(receipt.selected_record_ids.length, 3);
-  assert.equal(asset.scope_disposition, beforeDisposition);
+  assert.equal(scope.assets.find(item => item.id === assetId).scope_disposition, beforeDisposition);
   const imported = scope.candidates.filter(item => item.provenance.source_label === "mixed-identity.json");
   assert.equal(imported.length, 2);
   assert.equal(imported.some(item => item.proposed_values.identity_treatment === "keep-separate"), true);
