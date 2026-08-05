@@ -31,7 +31,7 @@ test("v0.6 Scope workbench exposes the governed six-view workflow", async ({ pag
   for (const label of ["Boundary", "Systems & Assets", "Providers & Services", "Data Flows", "Decisions", "Diagrams"]) {
     await expect(page.getByRole("button", { name: label, exact: true })).toBeVisible();
   }
-  await expect(page.getByText("Synthetic-only.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Synthetic-only. Scope records and locally asserted data labels do not establish readiness, compliance, risk, evidence sufficiency, implementation, certification, or Met/Not Met.", { exact: true })).toBeVisible();
   await expect(page.getByText("Synthetic CUI environment proposal")).toBeVisible();
   expect(remote).toEqual([]);
 });
@@ -67,12 +67,13 @@ test("Client Scope projection removes Advisor analysis, candidates, and hidden c
 test("Scope diagrams are object-linked representations with accessible alternatives", async ({ page }) => {
   await openScope(page);
   await page.getByRole("button", { name: "Diagrams", exact: true }).click();
-  await expect(page.getByText("Synthetic boundary diagram")).toBeVisible();
-  await expect(page.getByText("Accessible text alternative")).toBeVisible();
-  await page.getByText("Accessible text alternative").click();
-  await expect(page.getByText(/Includes Synthetic CUI environment proposal/i)).toBeVisible();
-  await page.getByRole("button", { name: "Mark reviewed" }).click();
-  await expect(page.getByText("Reviewed", { exact: true })).toBeVisible();
+  const diagramCard = page.locator(".scope-diagram-card").filter({ hasText: "Synthetic boundary diagram" }).first();
+  await expect(diagramCard).toBeVisible();
+  await expect(diagramCard.getByText("Accessible text alternative")).toBeVisible();
+  await diagramCard.getByText("Accessible text alternative").click();
+  await expect(diagramCard.getByText(/Includes Synthetic CUI environment proposal/i)).toBeVisible();
+  await diagramCard.getByRole("button", { name: "Mark reviewed" }).click();
+  await expect(diagramCard).toContainText("Reviewed");
 });
 
 test("Scoper return preview is non-mutating until reviewed subset apply", async ({ page }) => {
