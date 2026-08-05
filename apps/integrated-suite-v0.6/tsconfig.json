@@ -2,12 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "none",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable",
-      "WebWorker"
-    ],
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "WebWorker"],
     "strict": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
@@ -32,6 +27,7 @@
     "src/scope.ts",
     "src/scope-runtime-fixes.ts",
     "src/scope-ux-domain-v061.ts",
+    "src/scope-ux-receipts-v061.ts",
     "src/scope-targets.ts",
     "../integrated-suite-v0.5/src/project.ts",
     "src/v06-project-fixed.ts",
