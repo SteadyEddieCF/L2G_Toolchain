@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l2g.local/schemas/l2g_scope_projection_v1.schema.json",
+  "title": "L2G Scope Projection v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["projection_kind","projection_version","workspace","profile","generated_at","source_scope_id","source_scope_revision","boundaries","systems","assets","providers","services","locations","enclaves","data_flows","assumptions","unknowns","dependencies","diagrams","decisions","candidates","counts","next_work","qualifications"],
+  "properties": {
+    "projection_kind": {"const": "l2g_scope_projection_v1"},
+    "projection_version": {"const": "1.0"},
+    "workspace": {"const": "scope"},
+    "profile": {"enum": ["advisor","client","reviewer"]},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "source_scope_id": {"type": "string", "pattern": "^scope_"},
+    "source_scope_revision": {"type": "integer", "minimum": 0},
+    "boundaries": {"type": "array"},
+    "systems": {"type": "array"},
+    "assets": {"type": "array"},
+    "providers": {"type": "array"},
+    "services": {"type": "array"},
+    "locations": {"type": "array"},
+    "enclaves": {"type": "array"},
+    "data_flows": {"type": "array"},
+    "assumptions": {"type": "array"},
+    "unknowns": {"type": "array"},
+    "dependencies": {"type": "array"},
+    "diagrams": {"type": "array"},
+    "decisions": {"type": "array"},
+    "candidates": {"type": "array"},
+    "counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "next_work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind","record_ref","title","detail","priority"],
+        "properties": {
+          "kind": {"enum": ["candidate","decision","unknown","stale","diagram","validation","informational"]},
+          "record_ref": {"type": "string"},
+          "title": {"type": "string", "maxLength": 500},
+          "detail": {"type": "string", "maxLength": 100000},
+          "priority": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "qualifications": {"type": "array", "items": {"type": "string", "maxLength": 100000}}
+  }
+}
