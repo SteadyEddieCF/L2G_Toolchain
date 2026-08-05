@@ -2,7 +2,7 @@
 
 ## Status
 
-Final design-gate review phase under issue #143 and PR #145. The specialist UX dependency is received and reconciled. This record still does not authorize implementation until PR #145 is reviewed, passes exact-head CI, and merges.
+Final design-gate validation under issue #143 and PR #145. The specialist UX dependency is received and reconciled. This record still does not authorize implementation until PR #145 is reviewed, passes exact-head CI, and merges.
 
 ## Exact baseline
 
