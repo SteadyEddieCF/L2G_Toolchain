@@ -3,7 +3,7 @@ namespace L2G {
     main.querySelectorAll<HTMLElement>("[data-v06-close-dialog]").forEach(button => button.addEventListener("click", () => { v06Dialog = null; v06FocusSelector = "#scope-title"; v06Render(main, store); }));
     main.querySelector<HTMLFormElement>("#v06-add-boundary-form")?.addEventListener("submit", event => {
       event.preventDefault();
-      const data = new FormData(event.currentTarget);
+      const data = new FormData(event.currentTarget as HTMLFormElement);
       const label = String(data.get("label") ?? "");
       const purpose = String(data.get("purpose") ?? "");
       store.execute("scope.boundary.created", "scope_boundary", newId("scope-action"), "Created a draft Scope boundary proposal.", document => {
@@ -14,7 +14,7 @@ namespace L2G {
     });
     main.querySelector<HTMLFormElement>("#v06-add-asset-form")?.addEventListener("submit", event => {
       event.preventDefault();
-      const data = new FormData(event.currentTarget);
+      const data = new FormData(event.currentTarget as HTMLFormElement);
       const label = String(data.get("label") ?? "");
       const kind = String(data.get("kind") ?? "other");
       const description = String(data.get("description") ?? "");
@@ -75,7 +75,7 @@ namespace L2G {
         questionId = publishScopeUnknownToSessionPlanner(v06Scope(document), id, document.state.interviews, document.state.profile).question_id;
       });
       v06Dialog = null;
-      v06Announcement = `Session Planner question candidate ${questionId} created. It was not added to a live agenda or accepted as a client statement.`;
+      v06Announcement = `Session Planner question candidate created. It has not been added to a live agenda or accepted as a client statement. Candidate: ${questionId}.`;
     }));
     main.querySelectorAll<HTMLButtonElement>("[data-v06-candidate-submit]").forEach(button => button.addEventListener("click", () => {
       const id = button.dataset.v06CandidateSubmit ?? "";
@@ -152,7 +152,7 @@ namespace L2G {
     input.click();
   }
 
-  export async function v06LoadImport(file: File): Promise<void> {
+  async function v06LoadImport(file: File): Promise<void> {
     try {
       const hooks = v06Hooks();
       if (!hooks) return;
