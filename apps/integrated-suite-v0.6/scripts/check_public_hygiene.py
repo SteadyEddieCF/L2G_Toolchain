@@ -3,7 +3,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+SELF = Path(__file__).resolve()
+ROOT = SELF.parents[1]
 TEXT_SUFFIXES = {".ts", ".css", ".json", ".md", ".py", ".mjs", ".yml", ".yaml"}
 SKIP = {"node_modules", "build", "dist", "releases"}
 patterns = {
@@ -15,7 +16,12 @@ patterns = {
 }
 violations = []
 for path in ROOT.rglob("*"):
-    if not path.is_file() or path.suffix not in TEXT_SUFFIXES or any(part in SKIP for part in path.parts):
+    if (
+        not path.is_file()
+        or path.resolve() == SELF
+        or path.suffix not in TEXT_SUFFIXES
+        or any(part in SKIP for part in path.parts)
+    ):
         continue
     text = path.read_text(encoding="utf-8", errors="replace")
     for label, pattern in patterns.items():
