@@ -45,6 +45,12 @@ jobs:
       - name: Run Scope authority, candidate, diagram, profile, and import tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_scope.mjs
+      - name: Run v0.6.1 projection, ambiguity, diagram supersession, publication, and reviewer tests
+        working-directory: apps/integrated-suite-v0.6
+        run: node scripts/test_v061_ux.mjs
+      - name: Run v0.6.1 stale recovery, reviewer state gate, and mixed import closure tests
+        working-directory: apps/integrated-suite-v0.6
+        run: node scripts/test_v061_closure.mjs
       - name: Run Engagement, Evidence, Pre-Engagement, and Interview publication boundary tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_targets.mjs
@@ -64,8 +70,8 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
-      - name: Run v0.6 Scope workflow, import, profile, diagram, responsive, accessibility, and zero-network tests
-        run: npx playwright test tests/playwright/integrated-suite-v06.spec.mjs --project=chromium
+      - name: Run v0.6 Scope and focused v0.6.1 closure browser matrices
+        run: npx playwright test tests/playwright/integrated-suite-v06.spec.mjs tests/playwright/integrated-suite-v061-closure.spec.mjs --project=chromium
       - uses: actions/upload-artifact@v4
         with:
           name: integrated-suite-v06-linux-candidate
@@ -104,6 +110,12 @@ jobs:
       - name: Run Scope authority, candidate, diagram, profile, and import tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_scope.mjs
+      - name: Run v0.6.1 projection, ambiguity, diagram supersession, publication, and reviewer tests
+        working-directory: apps/integrated-suite-v0.6
+        run: node scripts/test_v061_ux.mjs
+      - name: Run v0.6.1 stale recovery, reviewer state gate, and mixed import closure tests
+        working-directory: apps/integrated-suite-v0.6
+        run: node scripts/test_v061_closure.mjs
       - name: Run Engagement, Evidence, Pre-Engagement, and Interview publication boundary tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_targets.mjs
@@ -120,8 +132,8 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Install Chromium
         run: npx playwright install chromium
-      - name: Run native Windows file-origin v0.6 Scope workflow smoke
-        run: npx playwright test tests/playwright/integrated-suite-v06-file-smoke.spec.mjs --project=chromium
+      - name: Run native Windows file-origin v0.6 and focused v0.6.1 closure workflows
+        run: npx playwright test tests/playwright/integrated-suite-v06-file-smoke.spec.mjs tests/playwright/integrated-suite-v061-closure.spec.mjs --project=chromium
       - uses: actions/upload-artifact@v4
         with:
           name: integrated-suite-v06-windows-candidate
