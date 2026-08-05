@@ -12,28 +12,33 @@ artifact = DIST / RELEASE["artifact_name"]
 manifest_path = DIST / "release-manifest.json"
 
 if not artifact.is_file() or not manifest_path.is_file():
-    raise SystemExit("Build the v0.6 candidate before validation.")
+    raise SystemExit("Build the v0.6.1 candidate before validation.")
 html = artifact.read_text(encoding="utf-8")
 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 sha = hashlib.sha256(artifact.read_bytes()).hexdigest()
 if manifest.get("sha256") != sha:
     raise SystemExit("Release manifest SHA-256 does not match the portable HTML.")
-if manifest.get("version") != "0.6.0" or RELEASE.get("version") != "0.6.0":
-    raise SystemExit("Release version identity is not v0.6.0.")
+if manifest.get("version") != "0.6.1" or RELEASE.get("version") != "0.6.1":
+    raise SystemExit("Release version identity is not v0.6.1.")
 if manifest.get("scope_schema_kind") != "l2g_scope_v1" or manifest.get("scope_projection_kind") != "l2g_scope_projection_v1":
     raise SystemExit("Scope schema/projection identity is missing from the manifest.")
-if "v0.6.0 — Scope Vertical Slice" not in html or "l2g_scope_v1" not in html or "domains/scope.json" not in html:
-    raise SystemExit("Portable HTML does not expose the v0.6 Scope identity and archive path.")
+if "v0.6.1 — Scope UX Completion" not in html or "l2g_scope_v1" not in html or "domains/scope.json" not in html:
+    raise SystemExit("Portable HTML does not expose the v0.6.1 Scope identity and archive path.")
 required_runtime_markers = {
     "Scope workbench": "Objects describe the environment; Scope-owned decisions establish accepted authority.",
     "atomic Scope decision adapter": "Accepted Scope decision was not preserved after validation.",
     "source-to-Scope adapter": "Scope publication requires an exact source record identifier and version.",
     "historical diagram validation": "references a missing or invalid historical Scope version",
-    "Scope import authority": "Applied a reviewed Scope package subset atomically as low-authority candidates."
+    "structured decision review": "Review Scope decision effects",
+    "explicit import identity review": "Similar names do not establish identity.",
+    "question publication": "It has not been added to a live agenda or accepted as a client statement.",
+    "diagram supersession": "Preserve prior and create refreshed draft",
+    "projection-safe diagram qualification": "Omitted internal records and relationships are not shown or counted.",
+    "advisor completion": "Start an intentionally empty Scope"
 }
 missing_runtime = [label for label, marker in required_runtime_markers.items() if marker not in html]
 if missing_runtime:
-    raise SystemExit("Portable HTML omitted required v0.6 runtime layers: " + ", ".join(missing_runtime))
+    raise SystemExit("Portable HTML omitted required v0.6.1 runtime layers: " + ", ".join(missing_runtime))
 if any(token in html for token in ("__L2G_STYLE__", "__L2G_CSP__", "__L2G_SCRIPT__", "__L2G_RELEASE_JSON__")):
     raise SystemExit("Portable HTML contains an unreplaced build placeholder.")
 if "connect-src 'none'" not in html or "default-src 'none'" not in html:
