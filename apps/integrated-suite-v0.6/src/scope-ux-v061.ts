@@ -96,6 +96,10 @@ namespace L2G {
       if (profile === "client" && id && !records.has(id)) button.remove();
     });
 
+    document.querySelectorAll<HTMLElement>(".scope-diagram-canvas").forEach(canvas => {
+      if (canvas.getAttribute("role") !== "region") canvas.setAttribute("role", "region");
+    });
+
     if (profile !== "client") return;
 
     document.querySelectorAll<HTMLElement>(".scope-diagram-card").forEach(card => {
