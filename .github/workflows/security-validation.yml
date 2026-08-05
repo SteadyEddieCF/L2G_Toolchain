@@ -1,0 +1,93 @@
+name: Security Validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 8 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dependencies:
+    name: Dependency audits
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            apps/integrated-suite-v0.6/package-lock.json
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Audit root QA dependencies; block high and critical
+        run: |
+          npm ci --no-audit --no-fund
+          npm audit --audit-level=high --json > npm-audit-root.json || { cat npm-audit-root.json; exit 1; }
+      - name: Audit current Integrated Suite dependencies; block high and critical
+        run: |
+          npm ci --no-audit --no-fund --prefix apps/integrated-suite-v0.6
+          npm --prefix apps/integrated-suite-v0.6 audit --audit-level=high --json > npm-audit-integrated-v06.json || { cat npm-audit-integrated-v06.json; exit 1; }
+      - name: Audit exact Python quality dependencies
+        run: |
+          python -m pip install --disable-pip-version-check pip-audit==2.10.1
+          python -m pip_audit -r quality/requirements.txt --format json --output pip-audit-quality.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: dependency-audit-reports
+          path: |
+            npm-audit-*.json
+            pip-audit-quality.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  secrets:
+    name: Gitleaks repository and history scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: .gitleaks.toml
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: 'true'
+
+  workflows-and-privacy:
+    name: Workflow security and privacy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: zizmorcore/zizmor-action@5f14fd08f7cf1cb1609c1e344975f152c7ee938d # v0.5.6
+        continue-on-error: true
+      - name: Block high-risk workflow patterns and report legacy pinning debt
+        run: python quality/scripts/quality_gate.py workflows
+      - name: Block high-confidence sensitive-data patterns
+        run: python quality/scripts/quality_gate.py privacy
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: workflow-privacy-reports
+          path: quality-reports/
+          if-no-files-found: error
+          retention-days: 14
