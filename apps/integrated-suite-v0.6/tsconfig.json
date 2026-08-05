@@ -51,6 +51,7 @@
     "src/scope-ui-v061-part56.ts",
     "src/scope-ui-v061-part78.ts",
     "src/scope-ui-focus-v061.ts",
-    "src/scope-ux-closure-ui-v061.ts"
+    "src/scope-ux-closure-ui-v061.ts",
+    "src/scope-ux-closure-focus-v061.ts"
   ]
 }
