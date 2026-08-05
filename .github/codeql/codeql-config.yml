@@ -1,0 +1,10 @@
+name: L2G CodeQL configuration
+queries:
+  - uses: security-and-quality
+paths-ignore:
+  - '**/dist/**'
+  - '**/releases/**'
+  - '**/node_modules/**'
+  - 'fixtures/**'
+  - 'tests/playwright/**/*-snapshots/**'
+  - 'validation/**/evidence/**'
