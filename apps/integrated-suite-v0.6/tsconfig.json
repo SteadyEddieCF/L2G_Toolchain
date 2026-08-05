@@ -29,6 +29,7 @@
     "src/scope-ux-domain-v061.ts",
     "src/scope-ux-receipts-v061.ts",
     "src/scope-ux-validation-v061.ts",
+    "src/scope-projection-history-v061.ts",
     "src/scope-targets.ts",
     "../integrated-suite-v0.5/src/project.ts",
     "src/v06-project-fixed.ts",
