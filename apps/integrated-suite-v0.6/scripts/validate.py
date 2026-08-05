@@ -35,7 +35,15 @@ required_runtime_markers = {
     "non-destructive diagram refresh": "Prior exact representation preserved; refreshed draft created with reciprocal supersession.",
     "Session Planner candidate publication": "Session Planner question candidate created. It has not been added to a live agenda or accepted as a client statement.",
     "complete reviewer disposition": "Concur with changes",
-    "Scope import authority": "Applied a reviewed Scope package subset atomically as low-authority candidates or explicit links."
+    "Scope import authority": "Applied a reviewed Scope package subset atomically as low-authority candidates or explicit links.",
+    "tablet inspector closure": ".scope-inspector.empty-inspector{display:none}",
+    "sequential search focus closure": "v061RestoreInspectorFocus",
+    "actionable diagram relationships": "Opened visible governed relationship",
+    "calculated diagram fit": "Diagram fit calculated from visible bounds",
+    "stale decision comparison": "Compare stale decision versions",
+    "superseding decision recovery": "Created a current-version superseding Scope decision draft",
+    "reviewer terminal state gate": "terminal or non-reviewable decision state",
+    "exact Unknown publication versions": "Scope Unknown identity"
 }
 missing_runtime = [label for label, marker in required_runtime_markers.items() if marker not in html]
 if missing_runtime:
