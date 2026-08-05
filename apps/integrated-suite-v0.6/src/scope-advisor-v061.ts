@@ -2,7 +2,7 @@ namespace L2G {
   interface V061AdvisorHooks { store: ProjectStore; }
 
   let v061AdvisorQueued = false;
-  let v061InspectorReturnTarget: HTMLElement | null = null;
+  let v061InspectorReturnRef = "";
 
   function v061AdvisorHooks(): V061AdvisorHooks | null {
     return ((window as unknown as { __L2G_TEST__?: V061AdvisorHooks }).__L2G_TEST__) ?? null;
@@ -64,9 +64,15 @@ namespace L2G {
       return;
     }
     const selected = projection.boundaries.find(item => item.id === v061AdvisorSelectedId()) ?? projection.boundaries[0]!;
+    const relatedDiagramRefs = [...new Set([
+      ...selected.diagram_refs,
+      ...projection.diagrams
+        .filter(diagram => diagram.included_record_refs.some(ref => ref.id === selected.id))
+        .map(diagram => diagram.id)
+    ])];
     const detail = document.createElement("section");
     detail.className = "scope-panel v061-boundary-detail";
-    detail.innerHTML = `<div class="scope-panel-heading"><h2>${v061AdvisorEscape(selected.client_label || selected.label)}</h2><span>${v061AdvisorEscape(selected.scope_disposition)}</span></div><p>${v061AdvisorEscape(selected.purpose || selected.plain_language_summary)}</p><div class="v061-context-grid"><section><h3>Included records</h3><ul>${v061AdvisorGroupLabels(selected.included_refs, map)}</ul></section><section><h3>Excluded records</h3><ul>${v061AdvisorGroupLabels(selected.excluded_refs, map)}</ul></section><section><h3>Entry and exit context</h3><ul>${v061AdvisorGroupLabels(selected.entry_exit_point_refs, map)}</ul></section><section><h3>Locations and enclaves</h3><ul>${v061AdvisorGroupLabels([...selected.location_refs, ...selected.enclave_refs], map)}</ul></section><section><h3>Blocking unknowns</h3><ul>${v061AdvisorGroupLabels(selected.unknown_refs, map)}</ul></section><section><h3>Related representations</h3><ul>${v061AdvisorGroupLabels(selected.diagram_refs, map)}</ul></section></div>`;
+    detail.innerHTML = `<div class="scope-panel-heading"><h2>${v061AdvisorEscape(selected.client_label || selected.label)}</h2><span>${v061AdvisorEscape(selected.scope_disposition)}</span></div><p>${v061AdvisorEscape(selected.purpose || selected.plain_language_summary)}</p><div class="v061-context-grid"><section><h3>Included records</h3><ul>${v061AdvisorGroupLabels(selected.included_refs, map)}</ul></section><section><h3>Excluded records</h3><ul>${v061AdvisorGroupLabels(selected.excluded_refs, map)}</ul></section><section><h3>Entry and exit context</h3><ul>${v061AdvisorGroupLabels(selected.entry_exit_point_refs, map)}</ul></section><section><h3>Locations and enclaves</h3><ul>${v061AdvisorGroupLabels([...selected.location_refs, ...selected.enclave_refs], map)}</ul></section><section><h3>Blocking unknowns</h3><ul>${v061AdvisorGroupLabels(selected.unknown_refs, map)}</ul></section><section><h3>Related representations</h3><ul>${v061AdvisorGroupLabels(relatedDiagramRefs, map)}</ul></section></div>`;
     canvas.append(detail);
   }
 
@@ -167,7 +173,7 @@ namespace L2G {
     const target = event.target;
     if (!(target instanceof Element)) return;
     const selectable = target.closest<HTMLElement>("[data-v06-ref]");
-    if (selectable) v061InspectorReturnTarget = selectable;
+    if (selectable) v061InspectorReturnRef = selectable.dataset.v06Ref ?? "";
     if (target.closest("[data-v061-start-import]")) document.querySelector<HTMLButtonElement>("#v06-import")?.click();
     if (target.closest("[data-v061-start-candidates]")) document.querySelector<HTMLButtonElement>('[data-v06-tab="decisions"]')?.click();
     const flow = target.closest<HTMLElement>("[data-v061-open-flow]");
@@ -182,8 +188,15 @@ namespace L2G {
     if (event.key !== "Escape") return;
     const inspector = document.querySelector<HTMLElement>(".scope-inspector:not(.empty-inspector)");
     if (!inspector || !matchMedia("(max-width: 1100px)").matches) return;
+    const returnRef = v061InspectorReturnRef;
     document.querySelector<HTMLButtonElement>("#v06-close")?.click();
-    queueMicrotask(() => v061InspectorReturnTarget?.focus());
+    queueMicrotask(() => {
+      const selector = returnRef ? `.scope-object-row[data-v06-ref="${CSS.escape(returnRef)}"], .scope-flow-card[data-v06-ref="${CSS.escape(returnRef)}"], .scope-list-card[data-v06-ref="${CSS.escape(returnRef)}"]` : "";
+      const target = selector ? document.querySelector<HTMLElement>(selector) : null;
+      const fallback = document.querySelector<HTMLElement>("#scope-title");
+      if (!target && fallback) fallback.tabIndex = -1;
+      (target ?? fallback)?.focus();
+    });
   });
 
   const v061AdvisorRoot = document.getElementById("app");
