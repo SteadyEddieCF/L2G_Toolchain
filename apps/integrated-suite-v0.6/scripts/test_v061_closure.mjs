@@ -105,7 +105,10 @@ const L = loadL2G();
   const receipt = L.applyScopeImport(scope, preview, "advisor");
   assert.equal(receipt.selected_record_ids.length, 3);
   assert.equal(scope.assets.find(item => item.id === assetId).scope_disposition, beforeDisposition);
-  const imported = scope.candidates.filter(item => item.provenance.source_label === "mixed-identity.json");
+  const imported = scope.candidates.filter(item => [
+    "assets:same-name-distinct",
+    "assets:genuinely-new"
+  ].includes(item.proposed_values.source_import_record_id));
   assert.equal(imported.length, 2);
   assert.equal(imported.some(item => item.proposed_values.identity_treatment === "keep-separate"), true);
   assert.equal(imported.some(item => item.proposed_values.identity_treatment === "create"), true);
