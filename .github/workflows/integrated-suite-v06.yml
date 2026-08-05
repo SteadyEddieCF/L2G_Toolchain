@@ -1,0 +1,59 @@
+name: Integrated Suite Scope v0.6
+
+on:
+  pull_request:
+    paths:
+      - 'apps/integrated-suite-v0.6/**'
+      - 'apps/integrated-suite-v0.5/**'
+      - 'apps/integrated-suite-v0.4/**'
+      - 'apps/integrated-suite-v0.3/**'
+      - 'apps/integrated-suite-v0.2/**'
+      - 'tests/playwright/integrated-suite-v06*'
+      - '.github/workflows/integrated-suite-v06.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v06-build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/integrated-suite-v0.6/package-lock.json
+      - name: Install locked v0.6 build dependency
+        working-directory: apps/integrated-suite-v0.6
+        run: npm ci --no-audit --no-fund
+      - name: Typecheck and build v0.6 candidate
+        working-directory: apps/integrated-suite-v0.6
+        run: npm run typecheck && npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v06-linux-build
+          path: apps/integrated-suite-v0.6/dist/
+          if-no-files-found: error
+
+  v06-build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/integrated-suite-v0.6/package-lock.json
+      - name: Install locked v0.6 build dependency
+        working-directory: apps/integrated-suite-v0.6
+        run: npm ci --no-audit --no-fund
+      - name: Typecheck and build v0.6 candidate
+        working-directory: apps/integrated-suite-v0.6
+        run: npm run typecheck && npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: integrated-suite-v06-windows-build
+          path: apps/integrated-suite-v0.6/dist/
+          if-no-files-found: error
