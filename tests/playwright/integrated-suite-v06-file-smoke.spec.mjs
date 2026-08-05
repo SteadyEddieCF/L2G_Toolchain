@@ -36,7 +36,8 @@ test("v0.6 Scope primary workflow runs from a native file origin", async ({ page
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   await expect(page.getByText("Propose application service in scope")).toBeVisible();
   await page.getByRole("button", { name: "Diagrams", exact: true }).click();
-  await expect(page.getByText("Synthetic boundary diagram")).toBeVisible();
+  const diagramCard = page.locator(".scope-diagram-card").filter({ hasText: "Synthetic boundary diagram" }).first();
+  await expect(diagramCard).toBeVisible();
   expect(remote).toEqual([]);
   expect(pageErrors).toEqual([]);
 });
