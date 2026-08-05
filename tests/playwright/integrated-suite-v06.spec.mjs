@@ -74,7 +74,7 @@ test("Scope diagrams are object-linked representations with accessible alternati
   await expect(diagramCard).toBeVisible();
   await expect(diagramCard.getByText("Accessible text alternative")).toBeVisible();
   await diagramCard.getByText("Accessible text alternative").click();
-  const diagramAlternative = diagramCard.locator("details p");
+  const diagramAlternative = diagramCard.locator("details").filter({ hasText: "Accessible text alternative" }).locator("p").first();
   await expect(diagramAlternative).toContainText("Synthetic boundary diagram.");
   await expect(diagramAlternative).toContainText("Includes");
   await expect(diagramAlternative).toContainText("recorded relationship");
