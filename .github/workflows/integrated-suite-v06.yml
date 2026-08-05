@@ -45,6 +45,9 @@ jobs:
       - name: Run Scope authority, candidate, diagram, profile, and import tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_scope.mjs
+      - name: Run v0.6.1 projection, ambiguity, diagram supersession, publication, and reviewer tests
+        working-directory: apps/integrated-suite-v0.6
+        run: node scripts/test_v061_ux.mjs
       - name: Run Engagement, Evidence, Pre-Engagement, and Interview publication boundary tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_targets.mjs
@@ -104,6 +107,9 @@ jobs:
       - name: Run Scope authority, candidate, diagram, profile, and import tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_scope.mjs
+      - name: Run v0.6.1 projection, ambiguity, diagram supersession, publication, and reviewer tests
+        working-directory: apps/integrated-suite-v0.6
+        run: node scripts/test_v061_ux.mjs
       - name: Run Engagement, Evidence, Pre-Engagement, and Interview publication boundary tests
         working-directory: apps/integrated-suite-v0.6
         run: node scripts/test_v06_targets.mjs
