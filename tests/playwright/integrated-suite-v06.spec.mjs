@@ -33,6 +33,20 @@ async function bodyAria(page) {
   return body.innerText();
 }
 
+async function mutateExactAssetVersionAndRender(page) {
+  await page.evaluate(() => {
+    const hooks = window.__L2G_TEST__;
+    const scope = hooks.store.document.state.scope;
+    const asset = scope.assets[0];
+    asset.version++;
+    asset.updated_at = new Date().toISOString();
+    scope.revision++;
+    window.L2G.refreshScopeCurrency(scope);
+    window.L2G.v06Render(document.getElementById("workspace"), hooks.store);
+  });
+  await expect(page.getByRole("heading", { name: "Scope", exact: true })).toBeVisible();
+}
+
 test("v0.6 Scope workbench preserves the governed six-view workflow and zero network", async ({ page }) => {
   const remote = [];
   const pageErrors = [];
@@ -110,13 +124,14 @@ test("Client diagrams rebuild nodes, edges, counts, and alternatives from the Cl
 
 test("decision review shows exact atomic effects and permits disposition without category", async ({ page }) => {
   await openScope(page);
+  const categoryIndex = await page.evaluate(() => window.__L2G_TEST__.store.document.state.scope.decisions[0].field_changes.findIndex(change => change.field === "asset_category"));
+  expect(categoryIndex).toBeGreaterThanOrEqual(0);
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   await page.getByRole("button", { name: "Review atomic effects" }).click();
   await expect(page.getByRole("heading", { name: "Review atomic effects" })).toBeVisible();
   await expect(page.getByText(/Asset category and Scope disposition are separate dimensions/)).toBeVisible();
   await expect(page.getByText(/changes only the listed Scope-owned fields/)).toBeVisible();
-  const categoryRow = page.locator(".scope-change-row").filter({ hasText: "Asset Category" });
-  await categoryRow.locator('input[type="checkbox"]').uncheck();
+  await page.locator(`[data-v06-change-index="${categoryIndex}"]`).uncheck();
   await page.getByRole("button", { name: "Modify and accept" }).click();
   await page.getByRole("button", { name: "Systems & Assets", exact: true }).click();
   const asset = page.getByRole("button", { name: /Application service/i }).first();
@@ -127,15 +142,7 @@ test("decision review shows exact atomic effects and permits disposition without
 
 test("stale decisions are visibly gated before acceptance", async ({ page }) => {
   await openScope(page);
-  await page.evaluate(() => {
-    const hooks = window.__L2G_TEST__;
-    hooks.store.execute("scope.test.stale-decision", "scope_asset", "scope-test-stale", "Changed exact asset version.", document => {
-      const asset = document.state.scope.assets[0];
-      asset.version++;
-      asset.updated_at = new Date().toISOString();
-      document.state.scope.revision++;
-    });
-  });
+  await mutateExactAssetVersionAndRender(page);
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   const review = page.getByRole("button", { name: "Review atomic effects" });
   await expect(review).toBeDisabled();
@@ -150,15 +157,7 @@ test("same-name Scoper records require explicit identity treatment and never aut
   await fileChooser.setFiles({
     name: "same-name-scope-return.json",
     mimeType: "application/json",
-    buffer: Buffer.from(JSON.stringify({
-      kind: "l2g_scope_return_package_v1",
-      version: "1.0",
-      producer: "Synthetic Scoper v3.12 browser fixture",
-      assets: [
-        { id: "same-name-1", name: "Application service", type: "server" },
-        { id: "same-name-2", name: "Application service", type: "cloud-resource" }
-      ]
-    }))
+    buffer: Buffer.from(JSON.stringify({ kind: "l2g_scope_return_package_v1", version: "1.0", producer: "Synthetic Scoper v3.12 browser fixture", assets: [{ id: "same-name-1", name: "Application service", type: "server" }, { id: "same-name-2", name: "Application service", type: "cloud-resource" }] }))
   });
   await expect(page.getByRole("heading", { name: "Review Scope package" })).toBeVisible();
   const rows = page.locator(".scope-import-records fieldset").filter({ hasText: "Application service" });
@@ -182,15 +181,7 @@ test("diagram edges, keyboard alternative, controls, stale diagnostics, and supe
   await original.getByText("Nodes and relationships").click();
   await expect(original.getByRole("heading", { name: "Relationships" })).toBeVisible();
   await original.getByRole("button", { name: "Mark reviewed" }).click();
-  await page.evaluate(() => {
-    const hooks = window.__L2G_TEST__;
-    hooks.store.execute("scope.test.stale-diagram", "scope_asset", "scope-test-stale-diagram", "Changed exact asset version.", document => {
-      const asset = document.state.scope.assets[0];
-      asset.version++;
-      asset.updated_at = new Date().toISOString();
-      document.state.scope.revision++;
-    });
-  });
+  await mutateExactAssetVersionAndRender(page);
   await page.getByRole("button", { name: "Diagrams", exact: true }).click();
   const stale = page.locator(".scope-diagram-card").filter({ hasText: "Synthetic boundary diagram" }).first();
   await expect(stale.getByText("This representation is stale.")).toBeVisible();
@@ -221,17 +212,19 @@ test("Unknown publication creates one draft Session Planner question and zero li
   expect(after.planItems).toBe(before.planItems);
   expect(after.question.lifecycle).toBe("draft");
   expect(after.question.question_id).toBe(after.unknownRef);
+  expect(after.question.provenance.source_record_id).toContain("scope-unknown");
   await expect(page.getByText(/not added to a live agenda or accepted as a client statement/)).toBeVisible();
 });
 
 test("Reviewer supports Concur with changes without direct object mutation", async ({ page }) => {
   await openScope(page);
   const original = await page.evaluate(() => window.__L2G_TEST__.store.document.state.scope.assets[0].scope_disposition);
+  const dispositionIndex = await page.evaluate(() => window.__L2G_TEST__.store.document.state.scope.decisions[0].field_changes.findIndex(change => change.field === "scope_disposition"));
+  expect(dispositionIndex).toBeGreaterThanOrEqual(0);
   await switchProfile(page, "reviewer");
   await page.getByRole("button", { name: "Decisions", exact: true }).click();
   await page.getByRole("button", { name: "Concur with changes" }).click();
-  const dispositionRow = page.locator(".scope-change-row").filter({ hasText: "Scope Disposition" });
-  await dispositionRow.locator("input[data-v06-review-change]").fill("accepted-out-of-scope");
+  await page.locator(`[data-v06-review-change="${dispositionIndex}"]`).fill("accepted-out-of-scope");
   await page.locator("#v06-review-comment").fill("Concur with the modified disposition for Advisor acceptance.");
   await page.getByRole("button", { name: "Record Concur With Changes" }).click();
   const state = await page.evaluate(() => ({ disposition: window.__L2G_TEST__.store.document.state.scope.decisions[0].reviewer_disposition, proposed: window.__L2G_TEST__.store.document.state.scope.decisions[0].field_changes.find(change => change.field === "scope_disposition").new_value, object: window.__L2G_TEST__.store.document.state.scope.assets[0].scope_disposition }));
@@ -244,12 +237,12 @@ test("migrated empty Scope remains no-inference and exposes bounded start action
   await openScope(page);
   await page.evaluate(() => {
     const hooks = window.__L2G_TEST__;
-    const document = structuredClone(hooks.store.document);
-    document.state.scope = window.L2G.emptyScopeDomain();
-    hooks.store.replace(document, true);
+    const documentValue = structuredClone(hooks.store.document);
+    documentValue.state.scope = window.L2G.emptyScopeDomain();
+    hooks.store.replace(documentValue, true);
   });
   await expect(page.getByText("Nothing was inferred from the prior project.")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Import Scoper package" })).toBeVisible();
+  await expect(page.locator("#v06-empty-import")).toBeVisible();
   await expect(page.getByRole("button", { name: "Review source candidates" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Add boundary proposal" })).toBeVisible();
   const counts = await page.evaluate(() => { const scope = window.__L2G_TEST__.store.document.state.scope; return Object.fromEntries(["boundaries", "systems", "assets", "providers", "services", "data_flows", "decisions", "diagrams"].map(key => [key, scope[key].length])); });
