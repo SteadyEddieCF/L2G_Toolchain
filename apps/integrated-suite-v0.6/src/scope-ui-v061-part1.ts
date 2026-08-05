@@ -5,8 +5,8 @@ namespace L2G {
     | { kind: "review"; id: string; action: ScopeDecision["reviewer_disposition"] }
     | { kind: "unknown"; id: string }
     | { kind: "candidate"; id: string }
-    | { kind: "add-boundary" }
-    | { kind: "add-asset" };
+    | { kind: "add-boundary"; id?: never }
+    | { kind: "add-asset"; id?: never };
   export interface V06TestHooks { store: ProjectStore; }
 
   export let v06Tab: V06ScopeTab = "boundary";
