@@ -54,7 +54,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-  secrets:
+  secret-scan:
     name: Gitleaks repository and history scan
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -72,14 +72,17 @@ jobs:
     name: Workflow security and privacy
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - uses: zizmorcore/zizmor-action@5f14fd08f7cf1cb1609c1e344975f152c7ee938d # v0.5.6
+      - uses: zizmorcore/zizmor-action@5f14fd08f7cf1cb1609c1e344975f152c7ee938d # zizmor 1.25.2
         continue-on-error: true
+        with:
+          inputs: .github/workflows
+          version: 1.25.2
+          online-audits: 'false'
+          advanced-security: 'false'
+          annotations: 'false'
+          color: 'false'
       - name: Block high-risk workflow patterns and report legacy pinning debt
         run: python quality/scripts/quality_gate.py workflows
       - name: Block high-confidence sensitive-data patterns
