@@ -6,13 +6,21 @@ namespace L2G {
     if (!v06Dialog && !v06Preview && !v06Selected) return;
     event.preventDefault();
     event.stopImmediatePropagation();
+
+    const selectedRef = !v06Dialog && !v06Preview ? v06Selected : "";
+    const restoreSelector = selectedRef
+      ? `[data-v06-ref="${CSS.escape(selectedRef)}"]`
+      : "#scope-title";
     v06Dialog = null;
     v06Preview = null;
     v06Selected = "";
-    v06FocusSelector = "#scope-title";
+    v06FocusSelector = restoreSelector;
     const main = document.getElementById("workspace");
     if (!main) return;
     v06Render(main, hooks.store);
-    queueMicrotask(() => document.getElementById("scope-title")?.focus());
+    queueMicrotask(() => {
+      const target = main.querySelector<HTMLElement>(restoreSelector) ?? document.getElementById("scope-title");
+      target?.focus();
+    });
   }, true);
 }
