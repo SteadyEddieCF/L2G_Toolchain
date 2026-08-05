@@ -1,9 +1,9 @@
 {
   "kind": "l2g_integrated_suite_current_release_v1",
   "status": "current",
-  "version": "0.5.0",
-  "artifact": "apps/integrated-suite-v0.5/releases/v0.5.0/L2G_Integrated_Suite_Pre_Engagement_Interview_v0.5.0.html",
-  "sha256": "03838726fabb81e43a1e567f8c72680513b5e3d95609f656a6301b906963b1f3",
+  "version": "0.6.0",
+  "artifact": "apps/integrated-suite-v0.6/releases/v0.6.0/L2G_Integrated_Suite_Scope_v0.6.0.html",
+  "sha256": "1a06f10d874d0873b8add9cb398f980651ad605367d5fcf3dd354ce948220a46",
   "project_kind": "l2g_project_v1",
   "envelope_kind": "l2g_encrypted_project_v1",
   "engagement_schema_kind": "l2g_engagement_v1",
@@ -20,27 +20,31 @@
   "interview_schema_version": "1.0",
   "interview_projection_kind": "l2g_interview_projection_v1",
   "interview_projection_version": "1.0",
-  "governing_issue": 133,
-  "promotion_pr": 137,
-  "validated_candidate_head": "875b4592ac15e129df6e7e026009ef3b48e0aef6",
+  "scope_schema_kind": "l2g_scope_v1",
+  "scope_schema_version": "1.0",
+  "scope_projection_kind": "l2g_scope_projection_v1",
+  "scope_projection_version": "1.0",
+  "governing_issue": 139,
+  "promotion_pr": 142,
+  "validated_candidate_head": "24b326620d3cb7d8f49d266299b9aa0116c4e4fe",
   "validation_runs": {
-    "integrated_suite_v05": 30956392379,
-    "playwright_qa": 30956392381,
-    "rg4_merged_main": 30956392472,
-    "repository_validation": 30956392549
+    "integrated_suite_v06": 30978524966,
+    "playwright_qa": 30978524994,
+    "rg4_merged_main": 30978524979,
+    "repository_validation": 30978524942
   },
   "release_artifacts": {
     "linux": {
-      "id": 8911204137,
-      "digest": "sha256:b0682a15526bad21f046708a9860ec090ebf8db091f83d1a9b1407250ada4737"
+      "id": 8919223109,
+      "digest": "sha256:aeb47be475106a73b9ea34110eddd0f32d485ae4ce0df136d4b2f17a6a43660a"
     },
     "windows_file_origin": {
-      "id": 8911202835,
-      "digest": "sha256:1dd350515850b08d071fce0c31c0bab3add9d44bf223341dc90958844a0ac860"
+      "id": 8919247412,
+      "digest": "sha256:4e75c5bf8d15884cfb7d13684b33db87db40e051a921cc963ac4e376b9a2a8d6"
     }
   },
   "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
-  "implementation_branch_baseline": "cca2acef47dd4427eb1cd8620f56c42ff15f786b",
+  "implementation_branch_baseline": "97d5ebaf7d4b63b8c062e4c3e4a9e11f919e592e",
   "synthetic_only": true,
   "production_data_authorized": false
 }

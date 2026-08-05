@@ -1,0 +1,18 @@
+{
+  "name": "@l2g/integrated-suite-scope",
+  "version": "0.6.0",
+  "private": true,
+  "description": "Offline encrypted canonical Scope vertical slice for L2G Integrated Suite.",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "python scripts/build_v06.py",
+    "validate": "python scripts/validate.py",
+    "test:domain": "tsc -p tsconfig.domain-test.json && node scripts/test_domain.mjs && node scripts/test_v06_scope.mjs && node scripts/test_v06_targets.mjs && node scripts/test_v06_project.mjs && node scripts/test_v06_scale.mjs",
+    "test:hygiene": "python scripts/check_public_hygiene.py",
+    "test:determinism": "python scripts/check_determinism.py",
+    "test": "npm run typecheck && npm run build && npm run validate && npm run test:domain && npm run test:hygiene && npm run test:determinism"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}
