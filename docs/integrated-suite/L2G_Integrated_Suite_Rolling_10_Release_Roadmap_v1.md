@@ -25,7 +25,8 @@ This roadmap records the current Integrated Suite release and the bounded sequen
 - current standalone module releases remain authoritative and independently distributable
 - governed standalone product/runtime compatibility baseline: `85d6e783a250b373cd4b9ea356e4c341336f9259`
 - next bounded release: v0.6.0 issue #139, Scope Vertical Slice
-- v0.6 implementation authority begins only after the issue #139 design package is reviewed and merged
+- active design review: PR #141
+- v0.6 implementation authority begins only after PR #141 passes the design gate and merges
 
 ## Promoted release history
 
@@ -42,7 +43,7 @@ This roadmap records the current Integrated Suite release and the bounded sequen
 | Sequence | Release | Working title | Primary outcome | Authority and safety boundary | Status |
 |---:|---|---|---|---|---|
 | 1 | **v0.5.0** | Pre-Engagement and Interview Sessions | Intake requests, instruments, immutable assignments, submissions/responses, meeting/session records, Interview Mode, questions, statements, Advisor notes, confirmations, summaries, follow-ups, compatibility previews, and candidate outputs | Pre-Engagement and Interview Sessions are separate authorities; outputs remain candidates until owning domains explicitly accept them | **Current — merged by PR #137** |
-| 2 | **v0.6.0** | Scope Vertical Slice | Authoritative boundary, systems, assets, providers, services, data flows, assumptions, unknowns, decisions, diagrams, and legacy Scoper compatibility | Scope owns authoritative scope records; Engagement, Evidence, intake, and Interview sources may propose but not directly mutate Scope | **Design gate — issue #139** |
+| 2 | **v0.6.0** | Scope Vertical Slice | Authoritative boundary, systems, assets, providers, services, locations, enclaves, data flows, assumptions, unknowns, dependencies, decisions, diagrams, and legacy Scoper compatibility | Scope owns authoritative Scope records; Engagement, Evidence, intake, Interview, imported, and generated sources may propose but not directly mutate Scope | **Design review — issue #139 / PR #141** |
 | 3 | **v0.7.0** | Practice Review Vertical Slice | Facilitated practice review, evidence requests, gaps, recommendations, actions, blockers, responsibility discussion, provider follow-up, and Workshop compatibility | Practice Review owns facilitated conclusions; no automated Met/Not Met, readiness, compliance, or certification claim | Planned |
 | 4 | **v0.8.0** | SSP Vertical Slice | Governed SSP narratives, inheritance, baselines, conflicts, Needs Attention, review history, and SSP handoff/return compatibility | SSP owns governed SSP content; linked inputs cannot silently overwrite narratives | Planned |
 | 5 | **v0.9.0** | Deliverables Vertical Slice | Deterministic workbook/document/presentation assembly, reconciliation, profiles, packaging, manifests, hashes, and output QA | Deliverables render accepted governed records and do not create new assessment conclusions | Planned |
@@ -54,27 +55,36 @@ This roadmap records the current Integrated Suite release and the bounded sequen
 
 ## v0.6.0 design package
 
-Issue #139 requires the following categories of records to merge before implementation begins:
+Issue #139 and draft PR #141 contain the complete proposed design gate:
 
-- a Scope authority ADR defining the canonical domain, archive path, identifiers, state dimensions, target-owned commands, migration, semantic limits, and non-conclusion rules;
-- a field-level Scope contract for boundaries, systems, assets, providers, services, locations, enclaves, flows, assumptions, unknowns, dependencies, diagrams, decisions, candidates, imports, projections, history, and supersession;
-- a Scope workbench UX/usability record covering list/detail navigation, decision ledger, systems/assets/providers/flows views, profile-safe inspector, unresolved dependencies, keyboard behavior, desktop/tablet targets, and Client presentation;
-- a v0.6 threat model covering boundary overstatement, authority confusion, stale diagrams, source-version drift, accidental Client disclosure, malicious imports, identifier collision, dependency cycles, and misleading generated context;
-- strict Scoper compatibility rules for `l2g_scope_context_v1` version `1.0`, preview/apply/return, provenance preservation, duplicate/ambiguous handling, and no-partial-mutation behavior;
-- an exact synthetic acceptance matrix covering source-to-Scope candidates, target-owned decisions, migration, diagrams, profile non-disclosure, encrypted recovery, scale, malformed/oversized/ambiguous imports, accessibility, zero-network, public hygiene, and complete standalone/registered-route non-regression;
-- reconciled planning README, decision/risk register, and rolling roadmap.
+- `docs/architecture/adr/ADR-0011-canonical-scope-authority.md`;
+- `docs/integrated-suite/L2G_Scope_v1_Contract_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Scope_Workbench_UX_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Threat_Model_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Scoper_Compatibility_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Acceptance_v1.md`;
+- reconciled root README, Integrated Suite planning README, decision/risk register, and rolling roadmap.
 
-The issue #139 design gate must preserve these boundaries:
+The proposed design makes these bounded decisions:
 
-1. Scope becomes a separate canonical authority; it does not absorb Engagement, Evidence, Pre-Engagement, Interview Sessions, Practice Review, SSP, Deliverables, or Reviews & Actions.
-2. Evidence records, intake responses, imported context, participant statements, Advisor analysis, and generated suggestions may propose Scope records but cannot establish or silently change the authoritative boundary.
-3. Proposed disposition, Advisor interpretation, client-confirmed statement, accepted Scope decision, reviewer disposition, and superseded decision remain distinguishable records or states with complete history.
-4. Scope decisions preserve rationale, source basis, affected records, dependencies, confirmation/review state, and supersession rather than collapsing into one overloaded status.
-5. Diagrams remain governed representations of accepted or clearly proposed records; they cannot become an independent source of authoritative Scope truth.
-6. `l2g_scope_context_v1` remains a stable standalone compatibility contract, and L2G Scoper v3.12 remains authoritative and independently distributable until separate retirement approval.
-7. Client projections are constructed before count, search, render, inspector, differences, history, focus, live-region, or accessibility-tree construction.
-8. v0.6 introduces no automated boundary determination, automatic applicability, readiness, compliance, risk, scoring, certification, evidence-sufficiency, implementation, or Met/Not Met conclusion.
-9. v0.6 remains synthetic-only and must pass exact candidate-head and final-head Linux and native Windows `file://`, accessibility, migration, scale, zero-network, deterministic-build, public-hygiene, registered-route, and standalone non-regression gates.
+1. Scope becomes one separate canonical authority at `domains/scope.json`, schema `l2g_scope_v1` version `1.0`, with `l2g_scope_projection_v1` version `1.0`.
+2. Scope owns boundaries, systems, assets, providers, services, locations, enclaves, data flows, assumptions, unknowns, dependencies, diagrams, decisions, candidates, imports, projections, and factual next work.
+3. Objects describe the environment. A current accepted Scope decision is required to establish accepted category, disposition, boundary relationship, implementation location, responsibility, flow treatment, and diagram representation approval.
+4. Asset category, Scope disposition, boundary relationship, implementation location, responsibility, lifecycle, operational state, review state, visibility, currency/integrity, and decision state remain separate dimensions.
+5. Proposed disposition, Advisor analysis, participant or Client statement, exact-version locally asserted confirmation, Reviewer disposition, accepted Scope decision, and supersession remain distinguishable records or references.
+6. Source/affected/dependency version drift makes decisions stale. It does not automatically reverse, rewrite, or reaccept them.
+7. Source domains publish candidates through their own commands. Scope creates and decides target-owned candidates without mutating accepted source-domain content.
+8. L2G Scoper v3.12 remains independently distributable. `l2g_scope_context_v1` and `l2g_scope_return_package_v1` version `1.0`, the browser storage key, draft guardrails, optional additive sections, idempotency behavior, and zero-practice route remain frozen.
+9. Compatibility import performs strict package identity/integrity/traceability/path/limit validation and preview. Same-name records never auto-merge; explicit create/link/keep-separate/modify/reject treatment is required; apply is atomic.
+10. Scoper pre-workshop questions become Interview/Practice Review Session Planner candidates, not a second Scope-owned question bank or automatic agenda content.
+11. Scope uses compact views: Boundary, Systems & Assets, Providers & Services, Data Flows, Decisions, and Diagrams, with one consistent right inspector.
+12. Diagrams are exact-version governed representations. Drawing/layout changes do not create or modify objects; referenced-version drift makes a diagram stale; Client text alternatives are generated from the Client-safe projection.
+13. Client projection is constructed before counts, search, render, inspector, differences, history summaries, focus, live regions, diagram text alternatives, or accessibility-tree construction.
+14. Opening a v0.5 project adds one empty Scope domain, a domain-index entry, a named checkpoint, and a history event. Migration infers no objects, decisions, diagrams, categories, dispositions, or conclusions.
+15. The exact acceptance matrix requires candidate-head validation before release metadata and a complete unchanged-final-head rerun before promotion.
+16. v0.6 remains synthetic-only and introduces no automatic boundary determination, automatic applicability, Practice Review findings, SSP narrative authority, Deliverables authority, readiness, compliance, risk, scoring, certification, evidence sufficiency, implementation, or Met/Not Met conclusion.
+
+PR #141 changes only design and planning records. It does not add runtime code, schema JSON, migration code, current-pointer changes, release packaging, stable-contract changes, standalone-module changes, or implementation authorization.
 
 ## Release-wide acceptance pattern
 
@@ -104,9 +114,10 @@ Every release must have:
 - Original evidence remains reference-only by default. Embedding evidence requires a separately approved security and size model.
 - A hash match proves byte equality only; it does not prove authenticity, relevance, currency, or sufficiency.
 - Presentation profiles do not create access control or a safe Client distribution artifact. Client distribution requires curated export.
-- Intake answers, Interview statements, Advisor notes, confirmations, summaries, and Scope candidates must preserve record type, source, version, and provenance.
+- Intake answers, Interview statements, Advisor notes, confirmations, summaries, Scope candidates, decisions, and diagrams must preserve record type, source, exact version, and provenance.
 - A facilitator summary or generated diagram cannot silently replace the governed source records it represents.
 - Imported meeting context is not direct participant testimony, and imported Scope context is not an accepted boundary decision.
+- Same-name or approximately similar records do not establish identity.
 - Paused-session recovery cannot create a second active session or duplicate captured drafts.
 - No release may infer readiness, compliance, certification, evidence sufficiency, scoring, risk, implementation, or Met/Not Met without an explicitly approved domain rule and human decision.
 

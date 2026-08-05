@@ -6,10 +6,10 @@ Monorepo for independently versioned, local/offline CMMC L2G modules, package co
 
 | Product or module | Current supplied release | Next bounded action |
 |---|---:|---|
-| **L2G Integrated Suite** | **v0.5.0** | v0.6.0 Scope Vertical Slice design is governed by issue #139; implementation requires an accepted Scope ADR, field contract, UX record, threat model, compatibility posture, and exact acceptance matrix |
+| **L2G Integrated Suite** | **v0.5.0** | Review and merge the v0.6.0 Scope Vertical Slice design package under issue #139 and PR #141; no implementation begins before that design gate merges |
 | L2G Control Center | v0.3.4 | v0.4 read-only action/blocker and regression-overview synchronization remains eligible for a separately bounded issue; no downstream authority transfer |
 | DocConverter-L2G | v7.9.5.1 | Preserve the exact runtime and registered McFirecoal v1.2.0 handshake baseline until a concrete extraction or package defect is demonstrated |
-| L2G Scoper | v3.12 | Preserve the exact scope-context and scope-return behavior while v0.6 Scope is designed under issue #139 |
+| L2G Scoper | v3.12 | Preserve the exact scope-context and scope-return behavior while Integrated Scope is designed under issue #139 and PR #141; no v3.13 or retirement work is authorized |
 | CMMC L2 Gap Workshop Tool | v79.1 | Preserve the promoted strict workbook-merge and SSP-route behavior; v80 Regression Delta remains a separately bounded workstream |
 | L2G Builder/Merger | v3.10.1 | Preserve the promoted governance-preservation and Word-QA behavior; v3.9 remains reserved for Advisor and Client Delivery Profiles |
 | CMMC L2 SSP Modern Editable | v1.9.17 | Preserve the promoted RG-4 Word-QA consumer behavior, working-data schema v1.9.11, and exactly 110 requirements |
@@ -32,17 +32,37 @@ L2G Integrated Suite v0.5.0 Pre-Engagement and Interview Sessions was promoted b
 - current data boundary: synthetic-only; not authorized for production, client, FCI, or CUI data
 - current pointer: `apps/integrated-suite/current_release.json`
 - rolling roadmap: `docs/integrated-suite/L2G_Integrated_Suite_Rolling_10_Release_Roadmap_v1.md`
-- next design gate: issue #139, v0.6.0 Scope Vertical Slice
+- next design gate: issue #139 and PR #141, v0.6.0 Scope Vertical Slice
 
 The current Integrated Suite provides the shared shell and eight workflow workspaces; Advisor, Client, and Reviewer presentation profiles; encrypted portable projects and encrypted browser recovery; command history, Undo/Redo, named checkpoints, and lock/unlock; canonical Engagement identity and planning records; canonical reference-only Evidence source identity, fingerprints, relink, revisions, duplicate disposition, source locations, bounded derived records, target-owned candidates, profile-filtered transient search, and stable-package adapters; canonical Pre-Engagement requests, versioned instruments, immutable assignment snapshots, submissions, typed responses, response-origin attribution, exceptions, factual completeness, imports, and proposals; and canonical Interview question versions, frozen plans, one-active-session lifecycle, live Interview Mode, participant statements, Advisor-only notes, exact-version locally asserted confirmations, summaries, follow-ups, imports, and proposals.
 
-v0.5 added strict preview-first compatibility handling for current intake, meeting-context, and scope-context packages. Intake content does not become a client-provided answer automatically. Imported meeting context remains imported context rather than direct participant testimony. Scope context may inform questions but does not create authoritative Scope records. Source proposals publish only into target-owned Engagement candidates, and accepted Engagement content changes only through explicit Engagement commands.
+v0.5 added strict preview-first compatibility handling for current intake, meeting-context, and scope-context packages. Intake content does not become a client-provided answer automatically. Imported meeting context remains imported context rather than direct participant testimony. Scope context may inform questions but does not create authoritative Scope records. Source proposals publish only into target-owned candidates, and accepted target content changes only through explicit target-domain commands.
 
 Client projections are constructed before counting, search, rendering, inspector creation, focus restoration, live-region announcements, and accessibility-tree construction. Raw Advisor notes remain exactly Advisor-only. A locally asserted confirmation is bound to an exact statement or approved Client-summary version; it is not authenticated identity, an electronic signature, broad client approval, or an assessment conclusion.
 
-Original evidence remains outside the `.l2g` project. SHA-256 establishes byte equality only, browser file associations remain session-only, changed bytes create new source revisions, and imported, intake, or interview-derived information cannot silently mutate another domain. Existing standalone module releases remain authoritative and independently distributable.
+## v0.6 Scope design gate
 
-No current Integrated Suite release authorizes production, client, FCI, or CUI data or establishes readiness, compliance, assessment, certification, scoring, risk, evidence sufficiency, implementation, or Met/Not Met conclusions. Presentation profiles remain non-security modes and are not safe client-distribution artifacts.
+Issue #139 and draft PR #141 define the next bounded authority boundary. The design package contains:
+
+- `docs/architecture/adr/ADR-0011-canonical-scope-authority.md`;
+- `docs/integrated-suite/L2G_Scope_v1_Contract_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Scope_Workbench_UX_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Threat_Model_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Scoper_Compatibility_v1.md`;
+- `docs/integrated-suite/L2G_Integrated_Suite_v0.6.0_Acceptance_v1.md`;
+- a reconciled decision/risk register, planning README, root README, and rolling roadmap.
+
+The proposed design adds one future Scope domain at `domains/scope.json`, schema `l2g_scope_v1` version `1.0`, with a profile-safe `l2g_scope_projection_v1` version `1.0`. Objects describe boundaries, systems, assets, providers, services, locations, enclaves, flows, assumptions, unknowns, dependencies, and diagrams; Scope-owned decisions establish accepted category, disposition, relationship, responsibility, flow treatment, and diagram-representation state. Source domains may publish candidates but may not directly mutate Scope.
+
+Asset category, scope disposition, boundary relationship, implementation location, responsibility, lifecycle, operational state, review state, visibility, currency/integrity, and decision state remain separate dimensions. Diagrams are exact-version governed representations, not independent authority sources. Unknowns may publish question candidates to Session Planner but never enter a live agenda automatically. Client Scope projections must be constructed before counts, search, render, inspector, differences, history, focus, live-region, diagram text-alternative, or accessibility-tree work.
+
+The design preserves L2G Scoper v3.12 as independently distributable and freezes `l2g_scope_context_v1` and `l2g_scope_return_package_v1` version `1.0`. Preview, explicit duplicate/ambiguity treatment, atomic reviewed apply, return, and optional compatibility export preserve draft guardrails and zero practice records. A v0.5 migration would add an empty Scope domain and infer no objects, decisions, diagrams, categories, dispositions, or conclusions.
+
+PR #141 changes design and planning records only. It does not add runtime code, schema JSON, migration code, release packaging, a current-pointer change, a stable-contract change, standalone-module change, or implementation authorization.
+
+Original evidence remains outside the `.l2g` project. SHA-256 establishes byte equality only, browser file associations remain session-only, changed bytes create new source revisions, and imported, intake, interview, or generated information cannot silently mutate another domain. Existing standalone module releases remain authoritative and independently distributable.
+
+No current release or proposed design authorizes production, client, FCI, or CUI data or establishes readiness, compliance, assessment, certification, scoring, risk, evidence sufficiency, implementation, automatic boundary determination, automatic applicability, or Met/Not Met conclusions. Presentation profiles remain non-security modes and are not safe client-distribution artifacts.
 
 ## Current contract and suite baseline
 
