@@ -1,0 +1,22 @@
+{
+  "application": "L2G Integrated Suite",
+  "version": "0.6.0",
+  "artifact_name": "L2G_Integrated_Suite_Scope_v0.6.0.html",
+  "product_runtime_compatibility_baseline": "85d6e783a250b373cd4b9ea356e4c341336f9259",
+  "synthetic_only": true,
+  "production_data_authorized": false,
+  "project_kind": "l2g_project_v1",
+  "envelope_kind": "l2g_encrypted_project_v1",
+  "engagement_schema_kind": "l2g_engagement_v1",
+  "engagement_schema_version": "1.0",
+  "evidence_schema_kind": "l2g_evidence_index_v1",
+  "evidence_schema_version": "1.0",
+  "pre_engagement_schema_kind": "l2g_pre_engagement_v1",
+  "pre_engagement_schema_version": "1.0",
+  "interview_schema_kind": "l2g_interview_sessions_v1",
+  "interview_schema_version": "1.0",
+  "scope_schema_kind": "l2g_scope_v1",
+  "scope_schema_version": "1.0",
+  "scope_projection_kind": "l2g_scope_projection_v1",
+  "scope_projection_version": "1.0"
+}
