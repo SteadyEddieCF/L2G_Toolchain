@@ -31,7 +31,7 @@ test("v0.6.1 Systems and Assets offers profile-safe search and separate dimensio
   await openScope(page);
   await page.getByRole("button", { name: "Systems & Assets", exact: true }).click();
   const filters = page.locator(".v061-object-filters");
-  await filters.getByLabel("Search systems and assets").fill("Azure application");
+  await filters.getByLabel("Search systems and assets").fill("Application service");
   await expect(filters.locator("[data-v061-filter-status]")).toContainText("1 visible record");
   await expect(page.locator(".scope-object-row:not([hidden])")).toHaveCount(1);
   await filters.getByLabel("Search systems and assets").fill("");
