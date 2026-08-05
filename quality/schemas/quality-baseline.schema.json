@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://l2g.invalid/schemas/l2g_repository_quality_baseline_v1.schema.json",
+  "title": "L2G Repository Quality Baseline v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "version", "effective_date", "current_scope", "blocking", "advisory", "file_processing_limits", "residual_manual_checks"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "kind": {"const": "l2g_repository_quality_baseline_v1"},
+    "version": {"const": "1.0"},
+    "effective_date": {"type": "string", "format": "date"},
+    "current_scope": {"type": "object"},
+    "blocking": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "advisory": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "file_processing_limits": {"type": "object"},
+    "residual_manual_checks": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  }
+}
