@@ -24,6 +24,16 @@ if manifest.get("scope_schema_kind") != "l2g_scope_v1" or manifest.get("scope_pr
     raise SystemExit("Scope schema/projection identity is missing from the manifest.")
 if "v0.6.0 — Scope Vertical Slice" not in html or "l2g_scope_v1" not in html or "domains/scope.json" not in html:
     raise SystemExit("Portable HTML does not expose the v0.6 Scope identity and archive path.")
+required_runtime_markers = {
+    "Scope workbench": "Objects describe the environment; Scope-owned decisions establish accepted authority.",
+    "atomic Scope decision adapter": "Accepted Scope decision was not preserved after validation.",
+    "source-to-Scope adapter": "Scope publication requires an exact source record identifier and version.",
+    "historical diagram validation": "references a missing or invalid historical Scope version",
+    "Scope import authority": "Applied a reviewed Scope package subset atomically as low-authority candidates."
+}
+missing_runtime = [label for label, marker in required_runtime_markers.items() if marker not in html]
+if missing_runtime:
+    raise SystemExit("Portable HTML omitted required v0.6 runtime layers: " + ", ".join(missing_runtime))
 if any(token in html for token in ("__L2G_STYLE__", "__L2G_CSP__", "__L2G_SCRIPT__", "__L2G_RELEASE_JSON__")):
     raise SystemExit("Portable HTML contains an unreplaced build placeholder.")
 if "connect-src 'none'" not in html or "default-src 'none'" not in html:
@@ -42,4 +52,4 @@ for required in ("sbom.spdx.json", "RELEASE_NOTES.md", "SHA256SUMS.txt"):
         raise SystemExit(f"Missing release artifact: {required}")
 if manifest.get("runtime_network_dependencies") != 0 or manifest.get("synthetic_only") is not True or manifest.get("production_data_authorized") is not False:
     raise SystemExit("Release safety metadata is invalid.")
-print(json.dumps({"artifact": artifact.name, "sha256": sha, "scope_schema": "l2g_scope_v1@1.0", "scope_projection": "l2g_scope_projection_v1@1.0", "offline": True}, sort_keys=True))
+print(json.dumps({"artifact": artifact.name, "sha256": sha, "scope_schema": "l2g_scope_v1@1.0", "scope_projection": "l2g_scope_projection_v1@1.0", "runtime_layers": sorted(required_runtime_markers), "offline": True}, sort_keys=True))
