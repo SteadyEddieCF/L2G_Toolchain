@@ -25,7 +25,7 @@ The current release uses locked TypeScript dependencies and its existing typeche
 
 Playwright continues to test representative current workflows, profile filtering, import preview/apply, save/open/recovery behavior supplied by current release tests, responsive desktop/tablet targets, native Windows `file://` operation, and zero unexpected network requests. Axe-core blocks serious and critical findings on governed representative flows. Focused screenshot baselines remain reviewed rather than expanding to every state.
 
-The new quality-browser workflow validates the actual current Integrated Suite artifact on Linux and native Windows. The repository's existing Playwright QA workflow remains authoritative for materializing and validating registered standalone module routes and reviewed screenshot comparisons, including expected/actual/diff artifacts. This avoids duplicated materialization logic and does not auto-accept visual changes.
+The quality-browser workflow validates the actual current Integrated Suite artifact on Linux and native Windows. The repository's existing Playwright QA workflow remains authoritative for materializing and validating registered standalone module routes and reviewed screenshot comparisons, including expected/actual/diff artifacts. This avoids duplicated materialization logic and does not auto-accept visual changes.
 
 Automation does not replace manual keyboard, screen-reader, contrast, responsive-layout, or facilitated-workflow review.
 
@@ -63,11 +63,16 @@ Hypothesis runs deterministic bounded examples on pull requests for parsers and 
 
 - CodeQL scans JavaScript/TypeScript and Python on PRs, pushes to `main`, and weekly.
 - Dependabot monitors root/current npm, quality Python, and GitHub Actions dependencies; updates are grouped, never auto-merged.
-- `npm audit` blocks high/critical findings and reports moderate findings.
+- GitHub Dependency Review evaluates only dependencies introduced or changed by a pull request, blocks high/critical vulnerabilities in runtime, development, and unknown scopes, and displays patched-version and OpenSSF Scorecard context.
+- Dependency Review license blocking is intentionally disabled until the repository approves an explicit license policy; license changes remain a human review item.
+- `npm audit` blocks high/critical findings and reports moderate findings across the current checked dependency sets.
 - `pip-audit` scans the exact quality dependency file.
+- Actionlint is downloaded from its release, verified by SHA-256, and blocks invalid workflow YAML, contexts, expressions, runner configuration, and shell constructs before those defects reach GitHub execution.
 - Gitleaks scans repository content and history available to the event; allowlists and historical fingerprint exceptions are exact and documented.
-- Zizmor reports workflow findings; `pull_request_target`, `write-all`, and direct event-to-shell interpolation block independently.
+- Zizmor reports workflow-security findings; `pull_request_target`, `write-all`, and direct event-to-shell interpolation block independently.
 - New workflows use immutable action commit pins, disabled persisted checkout credentials, and least-privilege permissions.
+
+Actionlint and Dependency Review provide distinct coverage. Additional broad scanners such as Trivy, Semgrep, or a second secret scanner are not part of the baseline because they would largely duplicate CodeQL, dependency audits, Gitleaks, Zizmor, and the repository's deterministic file-boundary checks while adding substantial triage noise.
 
 ### Release artifacts and supply chain
 
@@ -78,7 +83,8 @@ The actual current release artifact is built from a fresh checkout, tested, pack
 - `quality-build.yml`: current locked build, unit/property/file/contract/privacy/offline/HTML/package validation and reports;
 - `quality-browser.yml`: current Integrated Suite browser workflows, axe-core, and native Windows file-origin smoke with reports;
 - existing `Playwright QA`: governed standalone materialization, file-origin checks, accessibility, and reviewed screenshot comparison/diff artifacts;
-- `security-validation.yml`: npm/pip audits, Gitleaks, Zizmor, workflow rules, and privacy scan;
+- `security-validation.yml`: npm/pip audits, checksum-pinned Actionlint, Gitleaks, Zizmor, deterministic workflow rules, and privacy scan;
+- `dependency-review.yml`: pull-request-only review of newly introduced vulnerable dependencies;
 - `codeql.yml`: supported-language CodeQL analysis;
 - `quality-scheduled-deep.yml`: weekly larger property/fuzz profile plus a self-contained current Integrated Suite build and browser regression;
 - existing release-specific workflows remain intact and authoritative.
@@ -90,6 +96,8 @@ The exact machine-readable classification is `quality/baseline.json`. Blocking f
 ## Reports and artifacts
 
 - static JSON reports: `quality-reports/`;
+- Actionlint text report and Zizmor JSON report: workflow-security artifact;
+- Dependency Review findings: workflow log and job summary;
 - Playwright HTML/JSON, traces, screenshots, videos, and diffs: `test-results/`;
 - release candidate: `apps/integrated-suite-v0.6/dist/`;
 - CI uploads reports, deterministic package outputs, SBOM, checksum list, and failure seeds as workflow artifacts;
@@ -105,6 +113,8 @@ Root `package.json` retains stable existing commands and adds:
 
 The current release must be built before artifact-specific static checks. Commands that target generated standalone runtimes require their documented materialization sequence; the existing Playwright QA workflow owns that CI setup. CI performs current Integrated Suite build steps automatically.
 
+Agents with Actionlint already installed may run `actionlint` from the repository root. CI downloads version 1.7.12 and verifies the Linux AMD64 archive against the recorded SHA-256, so Eddie does not need to install or maintain it locally. Dependency Review is inherently pull-request based and runs automatically.
+
 ## False positives and exceptions
 
 Do not add broad path exclusions for fixtures, generated evidence, or test data. Confirm whether the value is synthetic, reduce the pattern or allowlist to the exact value/path or fingerprint, document impact and review conditions, and retain scanner evidence. Dependency exceptions require package, advisory, impact, reason, scope, review condition, and expiration where practical.
@@ -118,6 +128,7 @@ Automation does not replace:
 - client-specific data review;
 - manual keyboard and screen-reader testing;
 - visual inspection of representative light/dark/responsive/import/review/editing states;
+- review of license compatibility for newly introduced dependencies until an approved automated license policy exists;
 - final deliverable review;
 - human approval of scope, evidence, findings, recommendations, actions, SSP content, or conclusions;
 - an explicit production/client/FCI/CUI authorization decision.
