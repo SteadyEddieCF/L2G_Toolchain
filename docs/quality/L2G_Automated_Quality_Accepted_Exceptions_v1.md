@@ -48,6 +48,17 @@ Initial exception register for the repository-wide quality/security baseline. An
 - **Review condition:** any SSP token syntax, generator, path, or security model change requires revalidation and an update to both the validator and Gitleaks expression.
 - **Expiration:** remove when the upstream generic rule no longer misclassifies these governed attributes or when SSP no longer emits them.
 
+## EX-005 — Two exact historical documentation fingerprints trigger the generic API-key rule
+
+- **Affected surface:** one v0.2 roadmap sentence describing encrypted recovery and one Builder/Merger conformance line containing a SHA-256 lineage key.
+- **Scanner/advisory:** Gitleaks `generic-api-key` treats ordinary security prose and a non-secret content hash as credentials.
+- **Impact:** the two immutable historical findings prevent a clean full-history scan despite containing no secret value.
+- **Reason:** one value is design documentation; the other is a published SHA-256 identity used for deterministic lineage, not authentication.
+- **Scope:** `.gitleaksignore` contains only the two full fingerprints: commit, path, rule, and line. It does not suppress future occurrences, current-file matches, another line, or another detector.
+- **Compensating controls:** current content remains scanned by all other rules and by the repository privacy gate; changes that recreate similar text receive new fingerprints and therefore fail until independently reviewed.
+- **Review condition:** re-evaluate if either historical document is rewritten, history is intentionally rewritten, or the upstream generic rule changes.
+- **Expiration:** remove if Gitleaks stops misclassifying those exact historical findings.
+
 ## No dependency vulnerability exceptions at baseline creation
 
 No package/advisory exception is accepted in this change. High and critical relevant npm findings block; `pip-audit` findings block; moderate npm findings are reported and require review. Any future exception must name the package, advisory, impact, reason, affected scope, review condition, and practical expiration.
