@@ -26,8 +26,10 @@
     "privacy scan for private keys, high-confidence credentials, and SSN-like identifiers",
     "Actionlint workflow syntax, context, expression, and shell validation",
     "high-risk GitHub Actions trigger, permission, and shell-interpolation checks",
-    "pull-request dependency review for newly introduced high or critical vulnerabilities",
-    "high and critical npm dependency audit findings",
+    "dependency manifest and lockfile changes without configured audit coverage",
+    "npm dependency-section changes without a corresponding lockfile update",
+    "high and critical npm dependency audit findings across root, foundation, and current Integrated Suite dependencies",
+    "Python quality dependency audit findings",
     "Gitleaks findings",
     "CodeQL high-confidence findings subject to repository review policy",
     "release manifest, SBOM, checksum, and artifact identity validation"
@@ -35,8 +37,7 @@
   "advisory": [
     "legacy workflow action references not yet pinned to immutable commits",
     "moderate npm dependency audit findings",
-    "OpenSSF Scorecard context for dependencies changed by a pull request",
-    "license changes until an explicit repository license policy is approved",
+    "dependency license compatibility until an explicit repository license policy is approved",
     "Zizmor findings that do not match the blocking high-risk workflow rules",
     "static accessible-name and landmark findings requiring browser/manual confirmation",
     "network API tokens that remain unreachable under restrictive CSP",
@@ -57,6 +58,7 @@
     "CMMC interpretation and subject-matter validation",
     "manual keyboard and screen-reader testing",
     "visual review of light, dark, responsive, modal, drawer, import, Scope, Evidence, SSP, and deliverable states as implemented",
+    "dependency license compatibility review until an approved automated license policy exists",
     "final review of scope, evidence, findings, recommendations, SSP content, and deliverables",
     "client-specific data and production-use authorization review"
   ]
