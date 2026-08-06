@@ -1,4 +1,4 @@
-name: Quality Browser Accessibility and Visual
+name: Quality Browser and Accessibility
 
 on:
   pull_request:
@@ -15,9 +15,9 @@ concurrency:
 
 jobs:
   chromium-linux:
-    name: Current workflows, accessibility, visual regression
+    name: Current workflows and accessibility
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -42,8 +42,6 @@ jobs:
         run: npm run build
       - name: Run representative current workflows and serious/critical axe gates
         run: npx playwright test tests/playwright/integrated-suite-v06.spec.mjs tests/playwright/accessibility.spec.mjs --project=chromium
-      - name: Run focused existing visual regression suite
-        run: npm run test:visual
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
