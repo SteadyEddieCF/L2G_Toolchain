@@ -25,6 +25,8 @@ The current release uses locked TypeScript dependencies and its existing typeche
 
 Playwright continues to test representative current workflows, profile filtering, import preview/apply, save/open/recovery behavior supplied by current release tests, responsive desktop/tablet targets, native Windows `file://` operation, and zero unexpected network requests. Axe-core blocks serious and critical findings on governed representative flows. Focused screenshot baselines remain reviewed rather than expanding to every state.
 
+The new quality-browser workflow validates the actual current Integrated Suite artifact on Linux and native Windows. The repository's existing Playwright QA workflow remains authoritative for materializing and validating registered standalone module routes, avoiding duplicated materialization logic.
+
 Automation does not replace manual keyboard, screen-reader, contrast, responsive-layout, or facilitated-workflow review.
 
 ### HTML and semantic validation
@@ -49,13 +51,13 @@ User-controlled values beginning with `=`, `+`, `-`, or `@` are neutralized as t
 
 ### Contracts and data integrity
 
-The current pointer, schema identities, contract registry, unique kind/version routes, release schemas, current and prior migration fixtures, and existing route round trips remain validated. Unknown future versions, invalid enums/identifiers, duplicate identities, broken refs, unsupported fields requiring authority, and silent discard must fail closed or require explicit reviewed migration.
+The current pointer, schema identities, projection identity continuity, contract registry, unique kind/version routes, release schemas, current and prior migration fixtures, and existing route round trips remain validated. Unknown future versions, invalid enums/identifiers, duplicate identities, broken refs, unsupported fields requiring authority, and silent discard must fail closed or require explicit reviewed migration.
 
 Save/reload and export/import tests remain responsible for stable IDs, referential integrity, provenance, timestamps, source relationships, accepted decisions, evidence links, candidate receipts, and non-mutation of source domains.
 
 ### Property and fuzz testing
 
-Hypothesis runs deterministic bounded examples on pull requests for parsers and boundary primitives. A weekly scheduled profile increases examples and retains report/failure artifacts. A failure seed becomes a committed fixture only after it is rewritten as synthetic and documented.
+Hypothesis runs deterministic bounded examples on pull requests for parsers and boundary primitives. A weekly scheduled profile increases examples, rebuilds the current Integrated Suite, reruns its browser regression, and retains report/failure artifacts. A failure seed becomes a committed fixture only after it is rewritten as synthetic and documented.
 
 ### Static security, dependencies, secrets, and workflows
 
@@ -63,9 +65,9 @@ Hypothesis runs deterministic bounded examples on pull requests for parsers and 
 - Dependabot monitors root/current npm, quality Python, and GitHub Actions dependencies; updates are grouped, never auto-merged.
 - `npm audit` blocks high/critical findings and reports moderate findings.
 - `pip-audit` scans the exact quality dependency file.
-- Gitleaks scans repository content and history available to the event; allowlists are exact.
+- Gitleaks scans repository content and history available to the event; allowlists and historical fingerprint exceptions are exact and documented.
 - Zizmor reports workflow findings; `pull_request_target`, `write-all`, and direct event-to-shell interpolation block independently.
-- New workflows use immutable action commit pins and least-privilege permissions.
+- New workflows use immutable action commit pins, disabled persisted checkout credentials, and least-privilege permissions.
 
 ### Release artifacts and supply chain
 
@@ -74,11 +76,11 @@ The actual current release artifact is built from a fresh checkout, tested, pack
 ## GitHub Actions organization
 
 - `quality-build.yml`: current locked build, unit/property/file/contract/privacy/offline/HTML/package validation and reports;
-- `quality-browser.yml`: current browser workflows, axe-core, visual regression, and Windows file-origin smoke with reports/diffs;
+- `quality-browser.yml`: current Integrated Suite browser workflows, axe-core, visual regression, and native Windows file-origin smoke with reports/diffs;
 - `security-validation.yml`: npm/pip audits, Gitleaks, Zizmor, workflow rules, and privacy scan;
 - `codeql.yml`: supported-language CodeQL analysis;
-- `quality-scheduled-deep.yml`: weekly larger property/fuzz and full standalone/current route regression;
-- existing release-specific workflows remain intact and authoritative.
+- `quality-scheduled-deep.yml`: weekly larger property/fuzz profile plus a self-contained current Integrated Suite build and browser regression;
+- existing release-specific and Playwright QA workflows remain intact and authoritative for standalone route materialization and regression.
 
 ## Blocking versus advisory
 
@@ -97,14 +99,14 @@ The exact machine-readable classification is `quality/baseline.json`. Blocking f
 Root `package.json` retains stable existing commands and adds:
 
 - `test`, `test:unit`, `test:e2e`, `test:a11y`, `test:files`, `test:contracts`, `test:offline`, `test:fuzz`;
-- existing `test:visual` remains unchanged;
+- existing `test:visual` and `test:file` remain unchanged;
 - `check:html`, `check:security`, `check:privacy`, `check:package`, `check:all`.
 
-The current release must be built before artifact-specific static checks. CI performs that build automatically.
+The current release must be built before artifact-specific static checks. Commands that target generated standalone runtimes require their documented materialization sequence; the existing Playwright QA workflow owns that CI setup. CI performs current Integrated Suite build steps automatically.
 
 ## False positives and exceptions
 
-Do not add broad path exclusions for fixtures, generated evidence, or test data. Confirm whether the value is synthetic, reduce the pattern or allowlist to the exact value/path, document impact and review conditions, and retain scanner evidence. Dependency exceptions require package, advisory, impact, reason, scope, review condition, and expiration where practical.
+Do not add broad path exclusions for fixtures, generated evidence, or test data. Confirm whether the value is synthetic, reduce the pattern or allowlist to the exact value/path or fingerprint, document impact and review conditions, and retain scanner evidence. Dependency exceptions require package, advisory, impact, reason, scope, review condition, and expiration where practical.
 
 ## Residual manual tests
 
