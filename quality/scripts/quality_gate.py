@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Repository-controlled quality and security baseline for the L2G Toolchain.
-
-The script intentionally uses the Python standard library so the policy/orchestration
-layer is runnable on a clean checkout. Hypothesis is used separately for bounded
-property tests.
-"""
+"""Repository-controlled quality and security baseline for the L2G Toolchain."""
 from __future__ import annotations
 
 import argparse
@@ -19,7 +14,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_DIR = ROOT / "quality-reports"
 BASELINE_PATH = ROOT / "quality" / "baseline.json"
-
+PROJECTION_BASELINE_PATH = ROOT / "quality" / "contracts" / "integrated-projection-identities.json"
 TEXT_SUFFIXES = {
     ".c", ".cc", ".conf", ".cpp", ".css", ".csv", ".html", ".ini", ".js", ".json",
     ".jsx", ".md", ".mjs", ".py", ".sh", ".toml", ".ts", ".tsx", ".txt", ".xml",
@@ -109,9 +104,8 @@ class SemanticHTMLParser(HTMLParser):
         if tag == "dialog" or role in {"dialog", "alertdialog"}:
             self.dialogs.append(attributes)
         for attr in ("aria-labelledby", "aria-describedby", "aria-controls", "aria-owns"):
-            if attributes.get(attr):
-                for value in attributes[attr].split():
-                    self.aria_references.append((attr, value))
+            for value in attributes.get(attr, "").split():
+                self.aria_references.append((attr, value))
 
 
 def _relative(path: Path) -> str:
@@ -133,25 +127,25 @@ def _iter_text_files(paths: Iterable[Path]) -> Iterable[Path]:
                 continue
             if any(part in IGNORED_DIRS for part in path.parts):
                 continue
-            if path.stat().st_size > 5 * 1024 * 1024:
-                continue
-            yield path
+            if path.stat().st_size <= 5 * 1024 * 1024:
+                yield path
 
 
 def _read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="strict")
 
 
-def _write_report(result: GateResult) -> None:
-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    path = REPORT_DIR / f"{result.gate}.json"
-    path.write_text(json.dumps(result.to_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(json.dumps(result.to_dict(), sort_keys=True))
-
-
 def _load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def _write_report(result: GateResult) -> None:
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    (REPORT_DIR / f"{result.gate}.json").write_text(
+        json.dumps(result.to_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    print(json.dumps(result.to_dict(), sort_keys=True))
 
 
 def validate_baseline() -> GateResult:
@@ -177,28 +171,26 @@ def contracts_gate() -> GateResult:
     findings: list[Finding] = []
     pointer_path = ROOT / "apps" / "integrated-suite" / "current_release.json"
     registry_path = ROOT / "contracts" / "registry.json"
-    pointer = _load_json(pointer_path)
-    registry = _load_json(registry_path)
+    try:
+        pointer = _load_json(pointer_path)
+        registry = _load_json(registry_path)
+        projection_baseline = _load_json(PROJECTION_BASELINE_PATH)
+    except Exception as exc:
+        return GateResult("contracts", [Finding("blocking", "contract-json", "quality/contracts or governed registry", str(exc))], {})
+
     if pointer.get("kind") != "l2g_integrated_suite_current_release_v1" or pointer.get("status") != "current":
         findings.append(Finding("blocking", "current-release-pointer", _relative(pointer_path), "current pointer identity/status is invalid"))
     version = str(pointer.get("version", ""))
-    source_dir = ROOT / f"apps/integrated-suite-v{version.rsplit('.', 1)[0]}"
-    if version == "0.6.0":
-        source_dir = ROOT / "apps" / "integrated-suite-v0.6"
+    source_dir = ROOT / "apps" / "integrated-suite-v0.6" if version == "0.6.0" else ROOT / f"apps/integrated-suite-v{version.rsplit('.', 1)[0]}"
     if not source_dir.is_dir():
         findings.append(Finding("blocking", "current-release-source", _relative(source_dir), f"source tree missing for {version}"))
+
     schema_pairs = [
         ("engagement_schema_kind", "engagement_schema_version"),
         ("evidence_schema_kind", "evidence_schema_version"),
         ("pre_engagement_schema_kind", "pre_engagement_schema_version"),
         ("interview_schema_kind", "interview_schema_version"),
         ("scope_schema_kind", "scope_schema_version"),
-    ]
-    projection_pairs = [
-        ("evidence_projection_kind", "evidence_projection_version"),
-        ("pre_engagement_projection_kind", "pre_engagement_projection_version"),
-        ("interview_projection_kind", "interview_projection_version"),
-        ("scope_projection_kind", "scope_projection_version"),
     ]
     available_schema_text = ""
     schema_dirs = sorted(path for path in (ROOT / "apps").glob("integrated-suite-v*/schemas") if path.is_dir())
@@ -210,8 +202,7 @@ def contracts_gate() -> GateResult:
         for schema_path in sorted(schema_dir.glob("*.json")):
             schema_files.append(schema_path)
             try:
-                content = _load_json(schema_path)
-                available_schema_text += json.dumps(content, sort_keys=True)
+                available_schema_text += json.dumps(_load_json(schema_path), sort_keys=True)
             except Exception as exc:
                 findings.append(Finding("blocking", "schema-json", _relative(schema_path), str(exc)))
     for kind_key, version_key in schema_pairs:
@@ -219,24 +210,30 @@ def contracts_gate() -> GateResult:
         schema_version = pointer.get(version_key)
         if kind and kind not in available_schema_text:
             findings.append(Finding("blocking", "schema-kind-missing", "apps/integrated-suite*/schemas", f"{kind}@{schema_version} not found in governed schemas"))
-    governed_projection_text = available_schema_text
-    promoted_artifact = ROOT / str(pointer.get("artifact", ""))
-    if not promoted_artifact.is_file():
-        findings.append(Finding("blocking", "current-release-artifact", _relative(promoted_artifact), "promoted current artifact is missing"))
-    else:
-        governed_projection_text += _read_text(promoted_artifact)
-    for metadata_path in sorted(source_dir.rglob("*.json")) if source_dir.is_dir() else []:
-        if any(part in IGNORED_DIRS for part in metadata_path.parts):
+
+    if projection_baseline.get("kind") != "l2g_integrated_projection_identity_baseline_v1" or projection_baseline.get("version") != "1.0":
+        findings.append(Finding("blocking", "projection-baseline-identity", _relative(PROJECTION_BASELINE_PATH), "unexpected kind/version"))
+    if projection_baseline.get("current_release") != version:
+        findings.append(Finding("blocking", "projection-release-continuity", _relative(PROJECTION_BASELINE_PATH), f"baseline release {projection_baseline.get('current_release')} != pointer release {version}"))
+    projections = projection_baseline.get("projections")
+    if not isinstance(projections, list) or not projections:
+        findings.append(Finding("blocking", "projection-baseline-empty", _relative(PROJECTION_BASELINE_PATH), "projections must be a non-empty list"))
+        projections = []
+    seen_domains: set[str] = set()
+    for entry in projections:
+        domain = str(entry.get("domain", ""))
+        expected_kind = str(entry.get("kind", ""))
+        expected_version = str(entry.get("version", ""))
+        if not domain or domain in seen_domains:
+            findings.append(Finding("blocking", "projection-domain", _relative(PROJECTION_BASELINE_PATH), f"missing or duplicate domain: {domain or '<empty>'}"))
             continue
-        try:
-            governed_projection_text += _read_text(metadata_path)
-        except (UnicodeDecodeError, OSError):
-            continue
-    for kind_key, version_key in projection_pairs:
-        kind = pointer.get(kind_key)
-        projection_version = pointer.get(version_key)
-        if kind and kind not in governed_projection_text:
-            findings.append(Finding("blocking", "projection-kind-missing", _relative(promoted_artifact), f"{kind}@{projection_version} not found in governed current source/artifact"))
+        seen_domains.add(domain)
+        prefix = "pre_engagement" if domain == "pre_engagement" else domain
+        actual_kind = str(pointer.get(f"{prefix}_projection_kind", ""))
+        actual_version = str(pointer.get(f"{prefix}_projection_version", ""))
+        if (actual_kind, actual_version) != (expected_kind, expected_version):
+            findings.append(Finding("blocking", "projection-identity-drift", _relative(pointer_path), f"{domain}: {(actual_kind, actual_version)} != {(expected_kind, expected_version)}"))
+
     contracts = registry.get("contracts")
     if not isinstance(contracts, list) or not contracts:
         findings.append(Finding("blocking", "contract-registry-empty", _relative(registry_path), "contracts must be a non-empty list"))
@@ -252,7 +249,12 @@ def contracts_gate() -> GateResult:
     return GateResult(
         "contracts",
         findings,
-        {"current_version": version, "schema_count": len(schema_files), "contract_count": len(contracts)},
+        {
+            "current_version": version,
+            "schema_count": len(schema_files),
+            "projection_count": len(projections),
+            "contract_count": len(contracts),
+        },
     )
 
 
@@ -266,18 +268,13 @@ def offline_gate(artifact: Path) -> GateResult:
     for match in REMOTE_ASSET_RE.finditer(html):
         findings.append(Finding("blocking", "remote-runtime-asset", _relative(artifact), match.group(0)[:240]))
     for match in NETWORK_API_RE.finditer(html):
-        context = html[max(0, match.start() - 80): match.end() + 120].replace("\n", " ")
+        context = html[max(0, match.start() - 80):match.end() + 120].replace("\n", " ")
         findings.append(Finding("advisory", "network-api-token", _relative(artifact), context[:300]))
     for match in TELEMETRY_RE.finditer(html):
         findings.append(Finding("blocking", "telemetry", _relative(artifact), match.group(0)))
-    active_external = re.findall(r"<(?:a|form)[^>]+(?:href|action)=['\"](https?://[^'\"]+)", html, re.IGNORECASE)
-    for url in active_external:
+    for url in re.findall(r"<(?:a|form)[^>]+(?:href|action)=['\"](https?://[^'\"]+)", html, re.IGNORECASE):
         findings.append(Finding("advisory", "user-initiated-external-link", _relative(artifact), url[:240]))
-    return GateResult(
-        "offline",
-        findings,
-        {"artifact": _relative(artifact), "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(), "bytes": artifact.stat().st_size},
-    )
+    return GateResult("offline", findings, {"artifact": _relative(artifact), "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(), "bytes": artifact.stat().st_size})
 
 
 def html_gate(artifact: Path) -> GateResult:
@@ -311,16 +308,12 @@ def html_gate(artifact: Path) -> GateResult:
             findings.append(Finding("advisory", "control-name", _relative(artifact), f"{tag} lacks a static accessible name: id={identifier or '<none>'}"))
     if parser.landmarks["main"] == 0:
         findings.append(Finding("advisory", "main-landmark", _relative(artifact), "no static main landmark found"))
-    if parser.landmarks["main"] > 1:
+    elif parser.landmarks["main"] > 1:
         findings.append(Finding("advisory", "main-landmark", _relative(artifact), f"{parser.landmarks['main']} static main landmarks found"))
     for dialog in parser.dialogs:
         if not dialog.get("aria-label") and not dialog.get("aria-labelledby"):
             findings.append(Finding("advisory", "dialog-name", _relative(artifact), f"dialog lacks accessible name: id={dialog.get('id', '<none>')}"))
-    return GateResult(
-        "html",
-        findings,
-        {"ids": len(parser.ids), "controls": len(parser.controls), "labels": len(parser.labels_for), "dialogs": len(parser.dialogs), "landmarks": parser.landmarks},
-    )
+    return GateResult("html", findings, {"ids": len(parser.ids), "controls": len(parser.controls), "labels": len(parser.labels_for), "dialogs": len(parser.dialogs), "landmarks": parser.landmarks})
 
 
 def privacy_gate() -> GateResult:
@@ -336,11 +329,13 @@ def privacy_gate() -> GateResult:
             continue
         for label, pattern in SECRET_PATTERNS.items():
             for match in pattern.finditer(text):
-                token = match.group(0)
-                if token in SYNTHETIC_SECRET_ALLOWLIST:
-                    continue
-                findings.append(Finding("blocking", label, _relative(path), f"match at character {match.start()}"))
-        if path.is_relative_to(ROOT / "fixtures"):
+                if match.group(0) not in SYNTHETIC_SECRET_ALLOWLIST:
+                    findings.append(Finding("blocking", label, _relative(path), f"match at character {match.start()}"))
+        try:
+            is_fixture = path.is_relative_to(ROOT / "fixtures")
+        except ValueError:
+            is_fixture = False
+        if is_fixture:
             lowered = text.casefold()
             if path.suffix.casefold() in {".json", ".md", ".txt", ".csv"} and not any(marker in lowered for marker in ("synthetic", "mcfirecoal", "example", "adversarial")):
                 findings.append(Finding("advisory", "fixture-synthetic-marker", _relative(path), "fixture text has no explicit synthetic/example/adversarial marker"))
@@ -362,9 +357,7 @@ def workflow_gate() -> GateResult:
             stripped = line.strip()
             if stripped.startswith("uses:") or stripped.startswith("- uses:"):
                 value = stripped.split("uses:", 1)[1].strip()
-                if value.startswith("./") or value.startswith("docker://"):
-                    continue
-                if not PINNED_ACTION_RE.match(value):
+                if not value.startswith(("./", "docker://")) and not PINNED_ACTION_RE.match(value):
                     findings.append(Finding("advisory", "unpinned-action", _relative(path), f"line {number}: {value}"))
             if "run:" in line and "${{ github.event." in line:
                 findings.append(Finding("blocking", "unsafe-interpolation", _relative(path), f"line {number}: event data interpolated directly into shell"))
@@ -391,10 +384,8 @@ def package_gate(dist: Path) -> GateResult:
         artifact = dist / str(artifact_name)
         if not artifact.is_file():
             findings.append(Finding("blocking", "manifest-artifact", _relative(artifact), "manifest artifact missing"))
-        else:
-            digest = hashlib.sha256(artifact.read_bytes()).hexdigest()
-            if manifest.get("sha256") != digest:
-                findings.append(Finding("blocking", "manifest-sha256", _relative(artifact), "manifest SHA-256 mismatch"))
+        elif manifest.get("sha256") != hashlib.sha256(artifact.read_bytes()).hexdigest():
+            findings.append(Finding("blocking", "manifest-sha256", _relative(artifact), "manifest SHA-256 mismatch"))
     sbom_path = dist / "sbom.spdx.json"
     if sbom_path.is_file():
         try:
@@ -437,11 +428,7 @@ def run_gate(name: str, artifact: Path, dist: Path) -> GateResult:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("gate", choices=["baseline", "contracts", "offline", "html", "privacy", "workflows", "package", "all"])
-    parser.add_argument(
-        "--artifact",
-        type=Path,
-        default=ROOT / "apps" / "integrated-suite-v0.6" / "dist" / "L2G_Integrated_Suite_Scope_v0.6.0.html",
-    )
+    parser.add_argument("--artifact", type=Path, default=ROOT / "apps" / "integrated-suite-v0.6" / "dist" / "L2G_Integrated_Suite_Scope_v0.6.0.html")
     parser.add_argument("--dist", type=Path, default=ROOT / "apps" / "integrated-suite-v0.6" / "dist")
     parser.add_argument("--advisory", action="store_true", help="never return non-zero; reports still classify blocking findings")
     return parser.parse_args()
@@ -455,11 +442,7 @@ def main() -> int:
         result = run_gate(name, args.artifact.resolve(), args.dist.resolve())
         results.append(result)
         _write_report(result)
-    combined = GateResult(
-        "all",
-        [finding for result in results for finding in result.findings],
-        {"gates": {result.gate: result.to_dict()["status"] for result in results}},
-    )
+    combined = GateResult("all", [finding for result in results for finding in result.findings], {"gates": {result.gate: result.to_dict()["status"] for result in results}})
     if args.gate == "all":
         _write_report(combined)
     return 0 if args.advisory or not combined.blocking else 1
