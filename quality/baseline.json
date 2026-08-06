@@ -2,7 +2,7 @@
   "$schema": "./schemas/quality-baseline.schema.json",
   "kind": "l2g_repository_quality_baseline_v1",
   "version": "1.0",
-  "effective_date": "2026-08-05",
+  "effective_date": "2026-08-06",
   "current_scope": {
     "integrated_suite_release": "0.6.0",
     "runtime": "single local HTML file",
@@ -24,7 +24,9 @@
     "contract-registry and current-schema identity validation",
     "archive, JSON, CSV formula-injection, filename, and signature safety tests",
     "privacy scan for private keys, high-confidence credentials, and SSN-like identifiers",
+    "Actionlint workflow syntax, context, expression, and shell validation",
     "high-risk GitHub Actions trigger, permission, and shell-interpolation checks",
+    "pull-request dependency review for newly introduced high or critical vulnerabilities",
     "high and critical npm dependency audit findings",
     "Gitleaks findings",
     "CodeQL high-confidence findings subject to repository review policy",
@@ -33,6 +35,8 @@
   "advisory": [
     "legacy workflow action references not yet pinned to immutable commits",
     "moderate npm dependency audit findings",
+    "OpenSSF Scorecard context for dependencies changed by a pull request",
+    "license changes until an explicit repository license policy is approved",
     "Zizmor findings that do not match the blocking high-risk workflow rules",
     "static accessible-name and landmark findings requiring browser/manual confirmation",
     "network API tokens that remain unreachable under restrictive CSP",
