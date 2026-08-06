@@ -37,6 +37,17 @@ Initial exception register for the repository-wide quality/security baseline. An
 - **Review condition:** establish blocking budgets after at least three comparable successful runs for a promoted release and document runner tolerances.
 - **Expiration target:** before v1.0.0-rc.1.
 
+## EX-004 — Generated SSP `data-token` attributes trigger the generic API-key rule
+
+- **Affected surface:** historical and current generated SSP release HTML under `modules/ssp/releases/`.
+- **Scanner/advisory:** Gitleaks `generic-api-key` identifies the complete `data-token="..."` attribute because its attribute name contains `token`.
+- **Impact:** without a constrained exception, thousands of local lookup identifiers obscure real secret findings and make the full-history gate unusable.
+- **Reason:** these attributes are local UI/index identifiers such as assessment-objective names, not authentication tokens or credentials.
+- **Scope:** the Gitleaks exception requires both the exact SSP release HTML path and a bounded identifier-shaped `data-token` match. It does not exclude the directory, file, line, or other rule findings.
+- **Compensating controls:** `quality/scripts/validate_ssp_data_tokens.py` independently rejects empty, overlength, URL-like, credential-prefix, or non-identifier values before Gitleaks runs. Specific secret rules and all findings outside the exact attribute match remain active.
+- **Review condition:** any SSP token syntax, generator, path, or security model change requires revalidation and an update to both the validator and Gitleaks expression.
+- **Expiration:** remove when the upstream generic rule no longer misclassifies these governed attributes or when SSP no longer emits them.
+
 ## No dependency vulnerability exceptions at baseline creation
 
 No package/advisory exception is accepted in this change. High and critical relevant npm findings block; `pip-audit` findings block; moderate npm findings are reported and require review. Any future exception must name the package, advisory, impact, reason, affected scope, review condition, and practical expiration.
