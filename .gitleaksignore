@@ -1,0 +1,4 @@
+# Exact historical false positives reviewed under EX-005.
+# These fingerprints do not suppress future occurrences or other rules.
+d0b2d8ec0bed12a52ae5a7a93d02dee0f6455547:docs/integrated-suite/L2G_Integrated_Suite_Rolling_10_Release_Roadmap_v1.md:generic-api-key:23
+9ecedfafc2dc5ebac9ad8b04779d93318422798a:modules/builder-merger/releases/v3.10/L2G-BM_v3.10_Contract_Conformance_Report.md:generic-api-key:11
