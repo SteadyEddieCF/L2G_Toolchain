@@ -16,7 +16,10 @@ ROOT = Path(__file__).resolve().parents[2]
 SSP_RELEASES = ROOT / "modules" / "ssp" / "releases"
 ATTRIBUTE_RE = re.compile(r'data-token="([^"]*)"')
 IDENTIFIER_RE = re.compile(r"^[A-Z][A-Z0-9_]*(?:[.:-][A-Z0-9_]+)*$")
-TEMPLATE_VALUE = "${escapeCss(token)}"
+TEMPLATE_VALUES = {
+    "${escapeCss(token)}",
+    "REVIEWER_NOTES_${escapeCss(suffix)}",
+}
 FORBIDDEN_PREFIXES = (
     "AKIA",
     "ASIA",
@@ -60,7 +63,7 @@ def main() -> int:
             if value.startswith(FORBIDDEN_PREFIXES):
                 failures.append(f"{relative}:{line}: credential-like data-token prefix rejected")
                 continue
-            if value != TEMPLATE_VALUE and not IDENTIFIER_RE.fullmatch(value):
+            if value not in TEMPLATE_VALUES and not IDENTIFIER_RE.fullmatch(value):
                 failures.append(f"{relative}:{line}: invalid data-token identifier shape: {value!r}")
 
     if files == 0 or attributes == 0:
