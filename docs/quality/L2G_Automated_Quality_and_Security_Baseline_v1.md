@@ -25,7 +25,7 @@ The current release uses locked TypeScript dependencies and its existing typeche
 
 Playwright continues to test representative current workflows, profile filtering, import preview/apply, save/open/recovery behavior supplied by current release tests, responsive desktop/tablet targets, native Windows `file://` operation, and zero unexpected network requests. Axe-core blocks serious and critical findings on governed representative flows. Focused screenshot baselines remain reviewed rather than expanding to every state.
 
-The new quality-browser workflow validates the actual current Integrated Suite artifact on Linux and native Windows. The repository's existing Playwright QA workflow remains authoritative for materializing and validating registered standalone module routes, avoiding duplicated materialization logic.
+The new quality-browser workflow validates the actual current Integrated Suite artifact on Linux and native Windows. The repository's existing Playwright QA workflow remains authoritative for materializing and validating registered standalone module routes and reviewed screenshot comparisons, including expected/actual/diff artifacts. This avoids duplicated materialization logic and does not auto-accept visual changes.
 
 Automation does not replace manual keyboard, screen-reader, contrast, responsive-layout, or facilitated-workflow review.
 
@@ -76,11 +76,12 @@ The actual current release artifact is built from a fresh checkout, tested, pack
 ## GitHub Actions organization
 
 - `quality-build.yml`: current locked build, unit/property/file/contract/privacy/offline/HTML/package validation and reports;
-- `quality-browser.yml`: current Integrated Suite browser workflows, axe-core, visual regression, and native Windows file-origin smoke with reports/diffs;
+- `quality-browser.yml`: current Integrated Suite browser workflows, axe-core, and native Windows file-origin smoke with reports;
+- existing `Playwright QA`: governed standalone materialization, file-origin checks, accessibility, and reviewed screenshot comparison/diff artifacts;
 - `security-validation.yml`: npm/pip audits, Gitleaks, Zizmor, workflow rules, and privacy scan;
 - `codeql.yml`: supported-language CodeQL analysis;
 - `quality-scheduled-deep.yml`: weekly larger property/fuzz profile plus a self-contained current Integrated Suite build and browser regression;
-- existing release-specific and Playwright QA workflows remain intact and authoritative for standalone route materialization and regression.
+- existing release-specific workflows remain intact and authoritative.
 
 ## Blocking versus advisory
 
