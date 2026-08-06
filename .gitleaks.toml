@@ -21,4 +21,4 @@ description = "Generated SSP release data-token attributes are bounded local ide
 condition = "AND"
 regexTarget = "match"
 paths = ['''^modules/ssp/releases/.*\.html$''']
-regexes = ['''^data-token="(?:\$\{escapeCss\(token\)\}|[A-Z][A-Z0-9_]*(?:[.:-][A-Z0-9_]+)*)"$''']
+regexes = ['''^data-token="(?:\$\{escapeCss\(token\)\}|REVIEWER_NOTES_\$\{escapeCss\(suffix\)\}|[A-Z][A-Z0-9_]*(?:[.:-][A-Z0-9_]+)*)"$''']
