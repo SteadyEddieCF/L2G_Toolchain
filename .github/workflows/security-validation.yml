@@ -70,21 +70,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Report governed SSP practice token shapes
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-
-          values = set()
-          for path in Path('modules/ssp/releases').rglob('*.html'):
-              text = path.read_text(encoding='utf-8', errors='ignore')
-              values.update(re.findall(r'data-token="([^"]+)"', text))
-          print(f'Unique SSP data-token values: {len(values)}')
-          for value in sorted(values)[:130]:
-              print(value)
-          PY
+      - name: Validate governed SSP data-token identifiers
+        run: python quality/scripts/validate_ssp_data_tokens.py
       - name: Install checksum-pinned Gitleaks release
         shell: bash
         run: |
