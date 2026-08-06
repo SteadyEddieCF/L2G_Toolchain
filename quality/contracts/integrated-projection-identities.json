@@ -1,0 +1,28 @@
+{
+  "kind": "l2g_integrated_projection_identity_baseline_v1",
+  "version": "1.0",
+  "current_release": "0.6.0",
+  "purpose": "Identity continuity oracle for projection contracts that do not have standalone payload JSON Schemas.",
+  "projections": [
+    {
+      "domain": "evidence",
+      "kind": "l2g_evidence_projection_v1",
+      "version": "1.0"
+    },
+    {
+      "domain": "pre_engagement",
+      "kind": "l2g_pre_engagement_projection_v1",
+      "version": "1.0"
+    },
+    {
+      "domain": "interview",
+      "kind": "l2g_interview_projection_v1",
+      "version": "1.0"
+    },
+    {
+      "domain": "scope",
+      "kind": "l2g_scope_projection_v1",
+      "version": "1.0"
+    }
+  ]
+}

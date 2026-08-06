@@ -1,0 +1,56 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      root-qa-minor-patch:
+        update-types: [minor, patch]
+    labels: [dependencies, quality]
+
+  - package-ecosystem: npm
+    directory: /apps/integrated-suite
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      integrated-foundation-minor-patch:
+        update-types: [minor, patch]
+    labels: [dependencies, integrated-suite]
+
+  - package-ecosystem: npm
+    directory: /apps/integrated-suite-v0.6
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      integrated-current-minor-patch:
+        update-types: [minor, patch]
+    labels: [dependencies, integrated-suite]
+
+  - package-ecosystem: pip
+    directory: /quality
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+    groups:
+      quality-python-minor-patch:
+        update-types: [minor, patch]
+    labels: [dependencies, quality]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      github-actions-minor-patch:
+        update-types: [minor, patch]
+    labels: [dependencies, github-actions]

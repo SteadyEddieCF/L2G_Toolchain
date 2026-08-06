@@ -1,0 +1,65 @@
+{
+  "$schema": "./schemas/quality-baseline.schema.json",
+  "kind": "l2g_repository_quality_baseline_v1",
+  "version": "1.0",
+  "effective_date": "2026-08-06",
+  "current_scope": {
+    "integrated_suite_release": "0.6.0",
+    "runtime": "single local HTML file",
+    "normal_runtime_network_dependencies": 0,
+    "synthetic_only": true,
+    "production_client_fci_cui_authorized": false,
+    "future_authorities_not_implemented": [
+      "Practice Review runtime",
+      "Integrated SSP authority",
+      "Integrated Deliverables authority"
+    ]
+  },
+  "blocking": [
+    "locked current-release build and deterministic package validation",
+    "current unit/domain/integration tests",
+    "current Integrated Suite browser workflow tests",
+    "serious or critical axe-core findings on governed representative workflows",
+    "offline CSP and active remote-runtime dependency checks",
+    "contract-registry and current-schema identity validation",
+    "archive, JSON, CSV formula-injection, filename, and signature safety tests",
+    "privacy scan for private keys, high-confidence credentials, and SSN-like identifiers",
+    "Actionlint workflow syntax, context, expression, and shell validation",
+    "high-risk GitHub Actions trigger, permission, and shell-interpolation checks",
+    "dependency manifest and lockfile changes without configured audit coverage",
+    "npm dependency-section changes without a corresponding lockfile update",
+    "high and critical npm dependency audit findings across root, foundation, and current Integrated Suite dependencies",
+    "Python quality dependency audit findings",
+    "Gitleaks findings",
+    "CodeQL high-confidence findings subject to repository review policy",
+    "release manifest, SBOM, checksum, and artifact identity validation"
+  ],
+  "advisory": [
+    "legacy workflow action references not yet pinned to immutable commits",
+    "moderate npm dependency audit findings",
+    "dependency license compatibility until an explicit repository license policy is approved",
+    "Zizmor findings that do not match the blocking high-risk workflow rules",
+    "static accessible-name and landmark findings requiring browser/manual confirmation",
+    "network API tokens that remain unreachable under restrictive CSP",
+    "performance budgets until stable runner baselines are recorded",
+    "visual differences pending reviewed baseline acceptance",
+    "deeper scheduled property and fuzz runs"
+  ],
+  "file_processing_limits": {
+    "test_oracle_max_entries": 500,
+    "test_oracle_max_entry_bytes": 26214400,
+    "test_oracle_max_total_bytes": 104857600,
+    "test_oracle_max_compression_ratio": 100,
+    "test_oracle_max_path_depth": 16,
+    "note": "Production limits remain release-owned. These repository test-oracle values must not silently weaken stricter application limits."
+  },
+  "residual_manual_checks": [
+    "facilitated advisor and client workflow review",
+    "CMMC interpretation and subject-matter validation",
+    "manual keyboard and screen-reader testing",
+    "visual review of light, dark, responsive, modal, drawer, import, Scope, Evidence, SSP, and deliverable states as implemented",
+    "dependency license compatibility review until an approved automated license policy exists",
+    "final review of scope, evidence, findings, recommendations, SSP content, and deliverables",
+    "client-specific data and production-use authorization review"
+  ]
+}

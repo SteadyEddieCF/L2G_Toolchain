@@ -1,0 +1,22 @@
+title = "L2G Toolchain Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Exact synthetic values and narrowly structured non-secret identifiers used by repository-controlled tests and generated local applications"
+regexTarget = "match"
+regexes = [
+  '''ghp_SYNTHETIC_NOT_A_SECRET_000000000000000000''',
+  '''sk-SYNTHETIC-NOT-A-SECRET-000000000000''',
+  '''lineage_key"?\s*:\s*"?[0-9a-f]{64}"?''',
+  '''UX_PREF_KEY\s*=\s*['"]cmmc-l2-ssp-ui-v1\.9\.6['"]''',
+  '''secret,\s*"SECRET-ID-7F3A"'''
+]
+
+[[allowlists]]
+description = "Generated SSP release data-token attributes are bounded local identifiers validated independently by quality/scripts/validate_ssp_data_tokens.py"
+condition = "AND"
+regexTarget = "match"
+paths = ['''^modules/ssp/releases/.*\.html$''']
+regexes = ['''^data-token="(?:\$\{escapeCss\(token\)\}|REVIEWER_NOTES_\$\{escapeCss\(suffix\)\}|[A-Z][A-Z0-9_]*(?:[.:-][A-Z0-9_]+)*)"$''']
