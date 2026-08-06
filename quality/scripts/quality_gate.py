@@ -190,12 +190,14 @@ def contracts_gate() -> GateResult:
     schema_pairs = [
         ("engagement_schema_kind", "engagement_schema_version"),
         ("evidence_schema_kind", "evidence_schema_version"),
-        ("evidence_projection_kind", "evidence_projection_version"),
         ("pre_engagement_schema_kind", "pre_engagement_schema_version"),
-        ("pre_engagement_projection_kind", "pre_engagement_projection_version"),
         ("interview_schema_kind", "interview_schema_version"),
-        ("interview_projection_kind", "interview_projection_version"),
         ("scope_schema_kind", "scope_schema_version"),
+    ]
+    projection_pairs = [
+        ("evidence_projection_kind", "evidence_projection_version"),
+        ("pre_engagement_projection_kind", "pre_engagement_projection_version"),
+        ("interview_projection_kind", "interview_projection_version"),
         ("scope_projection_kind", "scope_projection_version"),
     ]
     available_schema_text = ""
@@ -217,6 +219,24 @@ def contracts_gate() -> GateResult:
         schema_version = pointer.get(version_key)
         if kind and kind not in available_schema_text:
             findings.append(Finding("blocking", "schema-kind-missing", "apps/integrated-suite*/schemas", f"{kind}@{schema_version} not found in governed schemas"))
+    governed_projection_text = available_schema_text
+    promoted_artifact = ROOT / str(pointer.get("artifact", ""))
+    if not promoted_artifact.is_file():
+        findings.append(Finding("blocking", "current-release-artifact", _relative(promoted_artifact), "promoted current artifact is missing"))
+    else:
+        governed_projection_text += _read_text(promoted_artifact)
+    for metadata_path in sorted(source_dir.rglob("*.json")) if source_dir.is_dir() else []:
+        if any(part in IGNORED_DIRS for part in metadata_path.parts):
+            continue
+        try:
+            governed_projection_text += _read_text(metadata_path)
+        except (UnicodeDecodeError, OSError):
+            continue
+    for kind_key, version_key in projection_pairs:
+        kind = pointer.get(kind_key)
+        projection_version = pointer.get(version_key)
+        if kind and kind not in governed_projection_text:
+            findings.append(Finding("blocking", "projection-kind-missing", _relative(promoted_artifact), f"{kind}@{projection_version} not found in governed current source/artifact"))
     contracts = registry.get("contracts")
     if not isinstance(contracts, list) or not contracts:
         findings.append(Finding("blocking", "contract-registry-empty", _relative(registry_path), "contracts must be a non-empty list"))
