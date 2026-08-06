@@ -12,6 +12,17 @@ updates:
     labels: [dependencies, quality]
 
   - package-ecosystem: npm
+    directory: /apps/integrated-suite
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      integrated-foundation-minor-patch:
+        update-types: [minor, patch]
+    labels: [dependencies, integrated-suite]
+
+  - package-ecosystem: npm
     directory: /apps/integrated-suite-v0.6
     schedule:
       interval: weekly
