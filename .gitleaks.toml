@@ -10,10 +10,8 @@ regexes = [
   '''ghp_SYNTHETIC_NOT_A_SECRET_000000000000000000''',
   '''sk-SYNTHETIC-NOT-A-SECRET-000000000000''',
   '''lineage_key"?\s*:\s*"?[0-9a-f]{64}"?''',
-  '''lineage key:\s*`[0-9a-f]{64}`''',
   '''UX_PREF_KEY\s*=\s*['"]cmmc-l2-ssp-ui-v1\.9\.6['"]''',
-  '''secret,\s*"SECRET-ID-7F3A"''',
-  '''authenticated encryption,\s*encrypted/disabled recovery'''
+  '''secret,\s*"SECRET-ID-7F3A"'''
 ]
 
 [[allowlists]]
