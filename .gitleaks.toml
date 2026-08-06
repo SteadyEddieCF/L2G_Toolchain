@@ -4,9 +4,15 @@ title = "L2G Toolchain Gitleaks configuration"
 useDefault = true
 
 [allowlist]
-description = "Exact synthetic values used only by repository-controlled adversarial tests"
+description = "Exact synthetic values and narrowly structured non-secret identifiers used by repository-controlled tests and generated local applications"
 regexTarget = "match"
 regexes = [
   '''ghp_SYNTHETIC_NOT_A_SECRET_000000000000000000''',
-  '''sk-SYNTHETIC-NOT-A-SECRET-000000000000'''
+  '''sk-SYNTHETIC-NOT-A-SECRET-000000000000''',
+  '''data-token="(?:AC|AT|AU|CA|CM|IA|IR|MA|MP|PE|PS|RA|SA|SC|SI)\.L2-3\.\d{1,2}\.\d{1,2}"''',
+  '''lineage_key"?\s*:\s*"?[0-9a-f]{64}"?''',
+  '''lineage key:\s*`[0-9a-f]{64}`''',
+  '''UX_PREF_KEY\s*=\s*['"]L2G_SSP_[A-Z0-9_]+['"]''',
+  '''secret,\s*"SECRET-ID-7F3A"''',
+  '''authenticated encryption,\s*encrypted/disabled recovery'''
 ]
