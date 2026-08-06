@@ -62,17 +62,19 @@ Hypothesis runs deterministic bounded examples on pull requests for parsers and 
 ### Static security, dependencies, secrets, and workflows
 
 - CodeQL scans JavaScript/TypeScript and Python on PRs, pushes to `main`, and weekly.
-- Dependabot monitors root/current npm, quality Python, and GitHub Actions dependencies; updates are grouped, never auto-merged.
-- GitHub Dependency Review evaluates only dependencies introduced or changed by a pull request, blocks high/critical vulnerabilities in runtime, development, and unknown scopes, and displays patched-version and OpenSSF Scorecard context.
-- Dependency Review license blocking is intentionally disabled until the repository approves an explicit license policy; license changes remain a human review item.
-- `npm audit` blocks high/critical findings and reports moderate findings across the current checked dependency sets.
+- Dependabot monitors root npm, the Integrated Suite foundation, the current Integrated Suite, quality Python, and GitHub Actions dependencies; updates are grouped and never auto-merged.
+- `quality/dependency-audit-coverage.json` maps every actively governed dependency manifest and lockfile to its blocking audit job.
+- `quality/scripts/dependency_change_gate.py` compares pull-request base and head commits, fails when a changed or newly introduced dependency file lacks audit coverage, and requires npm dependency-section changes to include the sibling lockfile.
+- The dependency job audits root QA dependencies, Integrated Suite foundation dependencies, current Integrated Suite dependencies, and exact quality Python dependencies on every pull request.
+- GitHub's official Dependency Review action was evaluated but is not retained because this repository has Dependency Graph disabled. Leaving it would create a permanently failing check or require Eddie to change repository settings. The repository-controlled gate provides deterministic coverage without a new setting or account.
+- `npm audit` blocks relevant high/critical findings and reports moderate findings across all three governed npm dependency sets.
 - `pip-audit` scans the exact quality dependency file.
 - Actionlint is downloaded from its release, verified by SHA-256, and blocks invalid workflow YAML, contexts, expressions, runner configuration, and shell constructs before those defects reach GitHub execution.
 - Gitleaks scans repository content and history available to the event; allowlists and historical fingerprint exceptions are exact and documented.
 - Zizmor reports workflow-security findings; `pull_request_target`, `write-all`, and direct event-to-shell interpolation block independently.
 - New workflows use immutable action commit pins, disabled persisted checkout credentials, and least-privilege permissions.
 
-Actionlint and Dependency Review provide distinct coverage. Additional broad scanners such as Trivy, Semgrep, or a second secret scanner are not part of the baseline because they would largely duplicate CodeQL, dependency audits, Gitleaks, Zizmor, and the repository's deterministic file-boundary checks while adding substantial triage noise.
+Actionlint and the dependency-change coverage gate provide distinct coverage. Additional broad scanners such as Trivy, Semgrep, or a second secret scanner are not part of the baseline because they would largely duplicate CodeQL, dependency audits, Gitleaks, Zizmor, and the repository's deterministic file-boundary checks while adding substantial triage noise.
 
 ### Release artifacts and supply chain
 
@@ -83,8 +85,7 @@ The actual current release artifact is built from a fresh checkout, tested, pack
 - `quality-build.yml`: current locked build, unit/property/file/contract/privacy/offline/HTML/package validation and reports;
 - `quality-browser.yml`: current Integrated Suite browser workflows, axe-core, and native Windows file-origin smoke with reports;
 - existing `Playwright QA`: governed standalone materialization, file-origin checks, accessibility, and reviewed screenshot comparison/diff artifacts;
-- `security-validation.yml`: npm/pip audits, checksum-pinned Actionlint, Gitleaks, Zizmor, deterministic workflow rules, and privacy scan;
-- `dependency-review.yml`: pull-request-only review of newly introduced vulnerable dependencies;
+- `security-validation.yml`: dependency-change coverage, three npm/pip audit scopes, checksum-pinned Actionlint, Gitleaks, Zizmor, deterministic workflow rules, and privacy scan;
 - `codeql.yml`: supported-language CodeQL analysis;
 - `quality-scheduled-deep.yml`: weekly larger property/fuzz profile plus a self-contained current Integrated Suite build and browser regression;
 - existing release-specific workflows remain intact and authoritative.
@@ -96,8 +97,9 @@ The exact machine-readable classification is `quality/baseline.json`. Blocking f
 ## Reports and artifacts
 
 - static JSON reports: `quality-reports/`;
+- dependency change and audit-coverage report: `quality-reports/dependency-change-gate.json`;
+- npm and Python audit reports: dependency-audit artifact;
 - Actionlint text report and Zizmor JSON report: workflow-security artifact;
-- Dependency Review findings: workflow log and job summary;
 - Playwright HTML/JSON, traces, screenshots, videos, and diffs: `test-results/`;
 - release candidate: `apps/integrated-suite-v0.6/dist/`;
 - CI uploads reports, deterministic package outputs, SBOM, checksum list, and failure seeds as workflow artifacts;
@@ -113,7 +115,7 @@ Root `package.json` retains stable existing commands and adds:
 
 The current release must be built before artifact-specific static checks. Commands that target generated standalone runtimes require their documented materialization sequence; the existing Playwright QA workflow owns that CI setup. CI performs current Integrated Suite build steps automatically.
 
-Agents with Actionlint already installed may run `actionlint` from the repository root. CI downloads version 1.7.12 and verifies the Linux AMD64 archive against the recorded SHA-256, so Eddie does not need to install or maintain it locally. Dependency Review is inherently pull-request based and runs automatically.
+Agents may run `python quality/scripts/dependency_change_gate.py` to verify configured dependency files, or provide `--base` and `--head` commit SHAs to evaluate a change set. Agents with Actionlint already installed may run `actionlint` from the repository root. CI downloads Actionlint version 1.7.12 and verifies the Linux AMD64 archive against the recorded SHA-256, so Eddie does not need to install or maintain it locally.
 
 ## False positives and exceptions
 
@@ -128,7 +130,7 @@ Automation does not replace:
 - client-specific data review;
 - manual keyboard and screen-reader testing;
 - visual inspection of representative light/dark/responsive/import/review/editing states;
-- review of license compatibility for newly introduced dependencies until an approved automated license policy exists;
+- review of dependency license compatibility until an approved automated license policy exists;
 - final deliverable review;
 - human approval of scope, evidence, findings, recommendations, actions, SSP content, or conclusions;
 - an explicit production/client/FCI/CUI authorization decision.
