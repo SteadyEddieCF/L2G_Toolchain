@@ -1,0 +1,46 @@
+{
+  "kind": "l2g_dependency_audit_coverage_v1",
+  "version": "1.0",
+  "covered_files": [
+    {
+      "path": "package.json",
+      "ecosystem": "npm",
+      "audit_job": "root QA npm audit"
+    },
+    {
+      "path": "package-lock.json",
+      "ecosystem": "npm",
+      "audit_job": "root QA npm audit"
+    },
+    {
+      "path": "apps/integrated-suite/package.json",
+      "ecosystem": "npm",
+      "audit_job": "Integrated Suite foundation npm audit"
+    },
+    {
+      "path": "apps/integrated-suite/package-lock.json",
+      "ecosystem": "npm",
+      "audit_job": "Integrated Suite foundation npm audit"
+    },
+    {
+      "path": "apps/integrated-suite-v0.6/package.json",
+      "ecosystem": "npm",
+      "audit_job": "current Integrated Suite npm audit"
+    },
+    {
+      "path": "apps/integrated-suite-v0.6/package-lock.json",
+      "ecosystem": "npm",
+      "audit_job": "current Integrated Suite npm audit"
+    },
+    {
+      "path": "quality/requirements.txt",
+      "ecosystem": "pip",
+      "audit_job": "quality Python pip-audit"
+    }
+  ],
+  "policy": {
+    "pull_request_behavior": "Fail when a changed dependency manifest or lockfile is not listed in covered_files.",
+    "push_and_schedule_behavior": "Validate that every configured coverage path exists.",
+    "historical_release_behavior": "Immutable historical release dependency files are not retroactively added unless modified; any modified or new dependency file must be explicitly covered."
+  }
+}
